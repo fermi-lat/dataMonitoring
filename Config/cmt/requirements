@@ -1,0 +1,20 @@
+package Common
+version v0r0
+
+author E. Charles <echarles@slac.stanford.edu>
+
+use GlastPolicy v*
+use facilities v*
+use xmlBase v* 
+use commonRootData v* 
+
+#the following prepend makes the includes folder available locally: avoid the package_include
+macro_prepend includes "-I $(COMMONROOT) " WIN32 "/I $(COMMONROOT) "
+
+library dataMonCommon *.cxx  -s=Dll *.cxx ${Common_headers}
+
+macro_append ROOT_linkopts " -lHist -lGpad -lGraf -lGui -lGraf3d -lPostscript -lTreePlayer -lGraf3d"
+
+macro Common_linkopts "$(ROOT_linkopts) -L$(Common_cmtpath)/lib -ldataMonCommon"
+
+application ConfigXml2Root ../apps/ConfigXml2Root.cxx
