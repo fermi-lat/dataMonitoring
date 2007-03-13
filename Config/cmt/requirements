@@ -1,4 +1,4 @@
-package Common
+package Config
 version v0r0
 
 author E. Charles <echarles@slac.stanford.edu>
@@ -9,12 +9,12 @@ use xmlBase v*
 use commonRootData v* 
 
 #the following prepend makes the includes folder available locally: avoid the package_include
-macro_prepend includes "-I $(COMMONROOT) " WIN32 "/I $(COMMONROOT) "
+macro_prepend includes "-I $(CONFIGROOT) " WIN32 "/I $(CONFIGROOT) "
 
-library dataMonCommon *.cxx  -s=Dll *.cxx ${Common_headers}
+library dataMonConfig *.cxx  -s=Dll *.cxx ${Config_headers}
 
 macro_append ROOT_linkopts " -lHist -lGpad -lGraf -lGui -lGraf3d -lPostscript -lTreePlayer -lGraf3d"
 
-macro Common_linkopts "$(ROOT_linkopts) -L$(Common_cmtpath)/lib -ldataMonCommon"
+macro Config_linkopts "$(ROOT_linkopts) -L$(Config_cmtpath)/lib -ldataMonConfig"
 
 application ConfigXml2Root ../apps/ConfigXml2Root.cxx
