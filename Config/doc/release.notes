@@ -3,6 +3,7 @@
  Coordinator:E.Charles
  @verbatim
 
+ v0r1p2   13-Mar-2007 EAC Fixed up ConfigXml2Root.cxx application.
  v0r1p1   13-Mar-2007 EAC Added apps/ doc dirs
  v0r1p0   13-Mar-2007 EAC Getting started.
  @endverbatim

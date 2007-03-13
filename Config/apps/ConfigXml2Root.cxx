@@ -10,8 +10,8 @@
 #include "TTree.h"
 
 // local
-#include "Common/LatConfig.h"
-#include "Common/ConfigReader.h"
+#include "Config/LatConfig.h"
+#include "Config/ConfigReader.h"
 
 //
 int main(int argn, char** argc) {
