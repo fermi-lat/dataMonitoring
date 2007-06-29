@@ -10,21 +10,15 @@ echo 'Removing assembled bytecode...'
 echo $CMD
 $CMD
 
-export CMD='rm -f pGEMcontribution.py pTKRcontributionIterator.py pCALcontributionIterator.py pAEMcontributionIterator.py'
+export CMD='rm -f pGEMcontribution.py pTKRcontributionIterator.py pCALcontributionIterator.py'
 echo 'Removing self written code...'
 echo $CMD
 $CMD
 
-export CMD='rm -rf IsocDataFile* report'
+export CMD='rm -f IsocDataFile.root'
 echo 'Removing Default Root File...'
 echo $CMD
 $CMD
 
-export CMD='rm -rf doc'
-echo 'Removing doxygen doc directory...'
-echo $CMD
-$CMD
-
-clear; pwd; ls --color=tty;
 
 echo 'Done.'

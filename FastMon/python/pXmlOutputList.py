@@ -8,17 +8,11 @@
 import logging
 import ROOT
 
-from pXmlElement   import pXmlElement
-from pXmlList      import pXmlList
-#from pAlarmHandler import *
-from pGlobals      import *
+from pXmlElement import pXmlElement
+from pXmlList    import pXmlList
+from pGlobals    import *
 
-import pCUSTOMplots
-from pCUSTOMplots    import *
-
-
-SUPPORTED_PLOT_TYPES = ['TH1F', 'TH2F', 'StripChart', 'RateStripChart',\
-                        'CUSTOM']
+SUPPORTED_PLOT_TYPES = ['TH1F', 'TH2F', 'StripChart']
 LAT_LEVEL            = 'lat'
 TOWER_LEVEL          = 'tower'
 TKR_LAYER_LEVEL      = 'tkr_layer'
@@ -52,42 +46,6 @@ class pPlotXmlRep(pXmlElement):
         ## @var Expression
         ## @brief The input variable(s) for the plot.
 
-        ## @var Cut
-        ## @brief An optional cut which can be applied on the plot.
-        #
-        #  Default is "".
-
-        ## @var XLabel
-        ## @brief The x axis label.
-        #
-        #  Default is "".
-        
-        ## @var YLabel
-        ## @brief the y axis label.
-        #
-        #  Default is "".
-
-        ## @var XLog
-        ## @brief Flag for the log scale on the x axis (used for the report).
-        #
-        #  Default is False.
-
-        ## @var YLog
-        ## @brief Flag for the log scale on the y axis (used for the report).
-        #
-        #  Default is "".
-
-        ## @var DrawOptions
-        ## @brief Draw options used when the corresponding ROOT object(s)
-        #  is (are) drawn on a canvas to be saved as image(s).
-        #
-        #  Default is "".
-
-        ## @var Caption
-        ## @brief The text of the plot caption for the test report.
-        #
-        #  Default is "".
-
         ## @var RootObjects
         ## @brief A dictionary containing the actual ROOT object(s)
         #  (maybe more than one, depending on the Level) to be written
@@ -95,18 +53,11 @@ class pPlotXmlRep(pXmlElement):
         
         pXmlElement.__init__(self, element)
         self.Level       = self.getAttribute('level')
-        if self.Level == '':
+        if self.Level == None:
             self.Level = LAT_LEVEL
-        self.Title        = self.getTagValue('title')
-        self.Expression   = self.getTagValue('expression')
-        self.Cut          = self.getTagValue('cut'   , '')
-        self.XLabel       = self.getTagValue('xlabel', '')
-        self.YLabel       = self.getTagValue('ylabel', '')
-        self.XLog         = self.evalTagValue('xlog', False)
-        self.YLog         = self.evalTagValue('ylog', False)
-        self.DrawOptions  = self.getTagValue('drawoptions', '')
-        self.Caption      = self.getTagValue('caption', '')
-        self.RootObjects  = {}
+        self.Title       = self.getTagValue('title')
+        self.Expression  = self.getTagValue('expression')
+        self.RootObjects = {}
 
     ## @brief Return the suffix to be attached to the plot name or
     #  title for a particular object (e.g. tower or tkr layer), in case
@@ -120,47 +71,14 @@ class pPlotXmlRep(pXmlElement):
     #  The tower Id.
     ## @param layer
     #  The TKR layer Id.
-    ## @param end
-    #  The TKR layer end (namely the id of the GTRC).
         
-    def getSuffix(self, tower=None, layer=None, end=None):
+    def getSuffix(self, tower=None, layer=None):
         suffix = ''
         if tower is not None:
             suffix += '_tower_%d' % tower
         if layer is not None:
             suffix += '_layer_%d' % layer
-        if end is not None:
-            suffix += '_end_%d' % end
         return suffix
-
-
-    ## @brief Return the plot name for a particular object (e.g. tower or
-    #  tkr layer), in case the Level requires it.
-    ## @param self
-    #  The class instance.
-    ## @param tower
-    #  The tower Id.
-    ## @param layer
-    #  The TKR layer Id.
-    ## @param end
-    #  The TKR layer end (namely the id of the GTRC).
-
-    def getExpandedName(self, tower=None, layer=None, end=None):
-        return '%s%s' % (self.Name, self.getSuffix(tower, layer, end))
-
-    ## @brief Return the plot title for a particular object (e.g. tower or
-    #  tkr layer), in case the Level requires it.
-    ## @param self
-    #  The class instance.
-    ## @param tower
-    #  The tower Id.
-    ## @param layer
-    #  The TKR layer Id.
-    ## @param end
-    #  The TKR layer end (namely the id of the GTRC).
-
-    def getExpandedTitle(self, tower=None, layer=None, end=None):
-        return '%s%s' % (self.Title, self.getSuffix(tower, layer, end))
 
     ## @brief Modify the base Expression for a particular object (e.g. tower
     #  or tkr layer), in case the Level requires it. 
@@ -173,58 +91,15 @@ class pPlotXmlRep(pXmlElement):
     #  The tower Id.
     ## @param layer
     #  The TKR layer Id.
-    ## @param end
-    #  The TKR layer end (namely the id of the GTRC).
 
-    def getExpandedExpression(self, tower=None, layer=None, end=None):
+    def getExpression(self, tower=None, layer=None):
         expression = self.Expression
         if tower is not None:
             expression += '[%d]' % tower
         if layer is not None:
             expression += '[%d]' % layer
-        if end is not None:
-            expression += '[%d]' % end
         return expression
 
-    ## @brief Modify the base Cut for a particular object (e.g. tower
-    #  or tkr layer), in case the Level requires it. 
-    #
-    #  Other levels (i.e. cal rows, columns or crystals) can be implemented
-    #  if needed.
-    ## @param self
-    #  The class instance.
-    ## @param tower
-    #  The tower Id.
-    ## @param layer
-    #  The TKR layer Id.
-    ## @param end
-    #  The TKR layer end (namely the id of the GTRC).
-
-    def getExpandedCut(self, tower=None, layer=None, end=None):
-        return self.Cut.replace(self.getExpandedExpression(),\
-                                self.getExpandedExpression(tower, layer, end))
-
-    ## @brief Add the alarms defined for the plot rep to the specified
-    #  alarm handler.
-    ## @param self
-    #  The class instance.
-    ## @param handler
-    #  The alarm handler.
-
-    def addAlarms(self, handler):
-        for element in self.getElementsByTagName('alarm'):
-            if self.Level == LAT_LEVEL:
-                handler.addAlarm(pAlarm(element), self.getExpandedName())
-            elif self.Level == TOWER_LEVEL:
-                for tower in range(NUM_TOWERS):
-                    handler.addAlarm(pAlarm(element),\
-                                     self.getExpandedName(tower))
-            elif self.Level == TKR_LAYER_LEVEL:
-                for tower in range(NUM_TOWERS):
-                    for layer in range(NUM_TKR_LAYERS_PER_TOWER):
-                        handler.addAlarm(pAlarm(element),\
-                                         self.getExpandedName(tower, layer))
-                        
     ## @brief Create the actual ROOT objects.
     ## @param self
     #  The class instance.
@@ -246,52 +121,15 @@ class pPlotXmlRep(pXmlElement):
                     object = self.getRootObject(rootTree, tower, layer)
                     self.RootObjects[object.GetName()] = object
 
-    ## @brief Get the list of names of the ROOT objects, as they would be
-    #  created by createRootObjects().
-    #
-    #  This is ugly, but for the test report one needs to know this list
-    #  to retrieve the objects from the ROOT file produced by the
-    #  pRootTreeDataProcessor via the TFile.Get() function.
-    ## @todo This could be probably implemented better.
-    ## @param self
-    #  The class instance.   
-
-    def getRootObjectsName(self):
-        namesList = []
-        if self.Level == LAT_LEVEL:
-            namesList.append(self.getExpandedName())
-        elif self.Level == TOWER_LEVEL:
-            for tower in range(NUM_TOWERS):
-                namesList.append(self.getExpandedName(tower))
-        elif self.Level == TKR_LAYER_LEVEL:
-            for tower in range(NUM_TOWERS):
-                for layer in range(NUM_TKR_LAYERS_PER_TOWER):
-                    namesList.append(self.getExpandedName(tower, layer))
-        return namesList
-
-    ## @brief Activate all the alarms defined for the plot rep to the specified
-    #  alarm handler.
-    #
-    #  This function perform the actual check on the plots.
-    ## @param self
-    #  The class instance.
-    ## @param handler
-    #  The alarm handler.
-
-    def activateAlarms(self, handler):
-        for plot in self.RootObjects.values():
-            handler.activateAlarms(plot)
-
     ## @brief Class representation.
     ## @param self
     #  The class instance.
 
     def __str__(self):
-        return pXmlElement.__str__(self)            +\
-               'Level     : %s\n' % self.Level      +\
-               'Title     : %s\n' % self.Title      +\
-               'Expression: %s\n' % self.Expression +\
-               'Cut       : %s\n' % self.Cut
+        return pXmlElement.__str__(self)       +\
+               'Level     : %s\n' % self.Level +\
+               'Title     : %s\n' % self.Title +\
+               'Expression: %s\n' % self.Expression
 
 
 ## @brief Class describing the representation of a 1-D histogram.
@@ -323,23 +161,17 @@ class pTH1FXmlRep(pPlotXmlRep):
     ## @brief Return the actual ROOT histogram for the specified Level.
     ## @param self
     #  The class instance.
-    ## @param rootTree
-    #  The ROOT tree containing the (filled) branches from which the
-    #  plots are created.
     ## @param tower
     #  The tower ID for the specified Level.
     ## @param layer
     #  The TKR layer ID for the specified Level.
 
     def getRootObject(self, rootTree, tower=None, layer=None):
-        histogram = ROOT.TH1F(self.getExpandedName(tower, layer),\
-                              self.getExpandedTitle(tower, layer),\
-                              self.NumXBins, self.XMin, self.XMax)
-        histogram.GetXaxis().SetTitle(self.XLabel)
-        histogram.GetYaxis().SetTitle(self.YLabel)
-        rootTree.Project(histogram.GetName(),\
-                         self.getExpandedExpression(tower, layer),\
-                         self.getExpandedCut(tower, layer))
+        name      = '%s%s' % (self.getName(), self.getSuffix(tower, layer))
+        title     = '%s%s' % (self.Title, self.getSuffix(tower, layer))
+        histogram = ROOT.TH1F(name, title, self.NumXBins, self.XMin, self.XMax)
+        expression = self.getExpression(tower, layer)
+        rootTree.Project(histogram.GetName(), expression)
         return histogram
 
     ## @brief Class representation.
@@ -374,7 +206,7 @@ class pTH2FXmlRep(pTH1FXmlRep):
         ## @var YMax
         ## @brief The maximum value on the y axis.
         
-        pTH1FXmlRep.__init__(self, element)
+        pTH1XmlRep.__init__(self, element)
         self.NumYBins = self.evalTagValue('ybins')
         self.YMin     = self.evalTagValue('ymin')
         self.YMax     = self.evalTagValue('ymax')
@@ -382,24 +214,19 @@ class pTH2FXmlRep(pTH1FXmlRep):
     ## @brief Return the actual ROOT histogram for the specified Level.
     ## @param self
     #  The class instance.
-    ## @param rootTree
-    #  The ROOT tree containing the (filled) branches from which the
-    #  plots are created.
     ## @param tower
     #  The tower ID for the specified Level.
     ## @param layer
     #  The TKR layer ID for the specified Level.
 
-    def getRootObject(self, rootTree, tower=None, layer=None):
-        histogram = ROOT.TH2F(self.getExpandedName(tower, layer),\
-                              self.getExpandedTitle(tower, layer),\
+    def getRootObject(self, tower=None, layer=None):
+        name      = '%s%s' % (self.getName(), self.getSuffix(tower, layer))
+        title     = '%s%s' % (self.Title, self.getSuffix(tower, layer))
+        histogram = ROOT.TH2F(name, title,\
                               self.NumXBins, self.XMin, self.XMax,\
                               self.NumYBins, self.YMin, self.YMax)
-        histogram.GetXaxis().SetTitle(self.XLabel)
-        histogram.GetYaxis().SetTitle(self.YLabel)
-        rootTree.Project(histogram.GetName(),\
-                         self.getExpandedExpression(tower, layer),\
-                         self.getExpandedCut(tower, layer))
+        expression = self.getExpression(tower, layer)
+        rootTree.Project(histogram.GetName(), expression)
         return histogram
 
     ## @brief Class representation.
@@ -418,149 +245,42 @@ class pTH2FXmlRep(pTH1FXmlRep):
 
 class pStripChartXmlRep(pPlotXmlRep):
 
-    ## @brief Constructor
-    ## @param self
-    #  The class instance.
-    ## @param element
-    #  The xml element object representing the histogram. 
-
     def __init__(self, element):
-
-        ## @var DTime
-        ## @brief The width of the time bin.
-
-        ## @var YMin
-        ## @brief The minimum value on the y axis.
-
-        ## @var YMax
-        ## @brief The maximum value on the y axis.
-        
         pPlotXmlRep.__init__(self, element)
         self.DTime = float(self.getTagValue('dtime'))
-        self.YMin  = self.evalTagValue('ymin')
-        self.YMax  = self.evalTagValue('ymax')
+        self.YMin     = self.evalTagValue('ymin')
+        self.YMax     = self.evalTagValue('ymax')
 
-    ## @brief Return the actual ROOT histogram for the specified Level.
-    ## @param self
-    #  The class instance.
-    ## @param rootTree
-    #  The ROOT tree containing the (filled) branches from which the
-    #  plots are created.
-    ## @param tower
-    #  The tower ID for the specified Level.
-    ## @param layer
-    #  The TKR layer ID for the specified Level.
-
-    def getRootObject(self, rootTree, tower=None, layer=None):
+    def getRootObject(self, rootTree, tower=None):
+        name       = '%s%s' % (self.getName(), self.getSuffix(tower))
+        title      = '%s%s' % (self.Title, self.getSuffix(tower))
 	tmin = rootTree.GetMinimum('event_timestamp')
         tmax = rootTree.GetMaximum('event_timestamp')
-	# ymin and ymax may be passed in the xml if not try to get
-        #them from the tree
-        # GetMaximum works only on direct tree variable (e.g. not on
-        #cal_log_count[i])
+
+	# ymin and ymax may be passed in the xml if not try to get them from the tree
+        # GetMaximum works only on direct tree variable (e.g. not on cal_log_count[i])
 	# Need to implement something better
-	expression = self.getExpandedExpression()
+	expression = self.getExpression()
         if self.YMin is None:
 	  self.YMin = rootTree.GetMinimum(expression)
         if self.YMax is None:
 	  self.YMax = rootTree.GetMaximum(expression)
 	  
+	expression = self.getExpression(tower)
         #logging.debug('StripChart %s: tmin=%d tmax=%d ymin=%d ymax=%d' %\
 	#		(expression, tmin, tmax, self.YMin, self.YMax) )
         nTimeBin = int((tmax-tmin)/self.DTime)
-	htemp = ROOT.TH2F('htemp', 'htemp', nTimeBin, tmin, tmax, 100,\
-                          self.YMin,self.YMax)
+	htemp = ROOT.TH2F('htemp', 'htemp', nTimeBin, tmin, tmax, 100, self.YMin,self.YMax)
 	#Cut is always on the variable itself now : should come from xml
-        expression = self.getExpandedExpression(tower, layer)
-        cut        = self.getExpandedCut(tower, layer)
-	rootTree.Project('htemp', '%s:event_timestamp'% expression, cut)
+	rootTree.Project('htemp', '%s:event_timestamp'% expression, '%s>0'% expression)
         profile = htemp.ProfileX()
-        profile.SetNameTitle(self.getExpandedName(tower, layer),\
-                             self.getExpandedTitle(tower, layer))
-        profile.GetXaxis().SetTitle(self.XLabel)
-        profile.GetYaxis().SetTitle(self.YLabel)
+        profile.SetNameTitle(name, title)
         del htemp
 	return  profile
 
     def __str__(self):
         return pPlotXmlRep.__str__(self)
-
-
-## @brief Class describing the representation of a different strip chart
-#  variant.
-#
-#  The profile histogram is scaled to the width of the time bin so that
-#  it eventually contains rates, rather than number of events.
-
-class pRateStripChartXmlRep(pStripChartXmlRep):
-
-    ## @brief Constructor
-    ## @param self
-    #  The class instance.
-    ## @param element
-    #  The xml element object representing the histogram. 
-
-    def __init__(self, element):
-        pStripChartXmlRep.__init__(self, element)
-
-    ## @brief Return the actual ROOT histogram for the specified Level.
-    ## @param self
-    #  The class instance.
-    ## @param rootTree
-    #  The ROOT tree containing the (filled) branches from which the
-    #  plots are created.
-    ## @param tower
-    #  The tower ID for the specified Level.
-    ## @param layer
-    #  The TKR layer ID for the specified Level.
     
-    def getRootObject(self, rootTree, tower=None, layer=None):
-        profileTemp = pStripChartXmlRep.getRootObject(self, rootTree,\
-                                                      tower=None, layer=None)
-        profileTemp.Scale(profileTemp.GetSumOfWeights()/self.DTime)
-        return profileTemp
-
-
-## @brief Class describing the representation of a custom plot.
-
-class pCUSTOMXmlRep(pPlotXmlRep):
-
-    ## @brief Constructor
-    ## @param self
-    #  The class instance.
-    ## @param element
-    #  The xml element object representing the histogram. 
-
-    def __init__(self, element):
-
-        ## @var Type
-        ## @brief The type of custom plot.
-        #
-        #  The type is defined in the xml configuration file and a
-        #  corresponding function, whose name must match the type exactly,
-        #  must be defined in the @ref pCUSTOMplots package.
-
-        ## @var ExcludedValues
-        ## @brief Relevant for the tkr_2d_map custom plot type.
-        #
-        #  See the code for details.
-        
-        pPlotXmlRep.__init__(self, element)
-	self.Type           = element.getAttribute('type')
-        self.ExcludedValues = self.evalTagValue('exclude')
-
-    ## @brief Return the custom ROOT histogram
-    ## @param self
-    #  The class instance.
-    ## @param rootTree
-    #  The ROOT tree.
-
-    def getRootObject(self, rootTree):
-        histogram = eval('pCUSTOMplots.%s(rootTree, self)' % self.Type)
-        histogram.GetXaxis().SetTitle(self.XLabel)
-        histogram.GetYaxis().SetTitle(self.YLabel)
-        return histogram
-
 
 ## @brief Class describing an output list for the data monitor (i.e. a
 #  list of representations of the ROOT plots to be filled and saved when
@@ -575,15 +295,6 @@ class pXmlOutputList(pXmlList):
     #  The xml element object representing the list.    
 
     def __init__(self, element):
-
-        ## @var PlotRepsDict
-        ## @brief Dictionary containing all the plot representations in the
-        #  output list, indexed by plot name.
-
-        ## @var EnabledPlotRepsDict
-        ## @brief Dictionary containing all the enabled plot representations
-        #  in the output list, indexed by plot name.
-        
         pXmlList.__init__(self, element)
         self.PlotRepsDict        = {}
         self.EnabledPlotRepsDict = {}
@@ -593,22 +304,19 @@ class pXmlOutputList(pXmlList):
                 self.PlotRepsDict[plotRep.Name] = plotRep
                 if plotRep.Enabled:
                     self.EnabledPlotRepsDict[plotRep.Name] = plotRep
-	
+
     ## @brief Class representation.
     ## @param self
     #  The class instance.
 
     def __str__(self):
         return pXmlList.__str__(self)         +\
-               'Variables        : %s\n' % self.PlotRepsDict.keys()       +\
-               'Enabled variables: %s\n' % self.EnabledPlotRepsDict.keys()
+               'Variables        : %s\n' % self.PlotRepsDict.keys() +\
+               'Enabled variabled: %s\n' % self.EnabledPlotRepsDict.keys()
 
 
 if __name__ == '__main__':
     from xml.dom  import minidom
-    doc = minidom.parse(file('../xml/config.xml'))
+    doc = minidom.parse(file('config.xml'))
     for element in doc.getElementsByTagName('outputList'):
-        list = pXmlOutputList(element)
-        print list
-        for plotRep in list.PlotRepsDict.values():
-            print plotRep
+        print pXmlOutputList(element)

@@ -58,8 +58,11 @@ class pXmlElement:
     #  The attribute name.
 
     def getAttribute(self, attributeName):
-        return str(self.Element.getAttribute(attributeName))
- 
+        try:
+            return str(self.Element.getAttribute(attributeName))
+        except:
+             return None
+
     ## @brief Return the element attribute corresponing to a
     #  given attribute name, as processed by an eval statement.
     #
@@ -120,18 +123,15 @@ class pXmlElement:
     #  The class instance.
     ## @param tagName
     #  The tag name.
-    ## @param defaultValue
-    #  The value to be returned in case the element does not have the
-    #  specified tag.
 
-    def getTagValue(self, tagName, defaultValue=None):
+    def getTagValue(self, tagName):
         elementsList = self.Element.getElementsByTagName(tagName)
         if len(elementsList) > 1:
             sys.exit('Multiple definition of tag %s. Exiting...' % tagName)
         try:
-            return str(elementsList[0].childNodes[0].data).strip()
+            return str(elementsList[0].childNodes[0].data)
         except:
-            return defaultValue
+            return None
 
     ## @brief Return the value of the child tag corresponding to a
     #  given tag name, as returned by an eval statement.
@@ -142,15 +142,14 @@ class pXmlElement:
     #  The class instance.
     ## @param tagName
     #  The tag name.
-    ## @param defaultValue
-    #  The value to be returned in case it's not possible to eval the
-    #  specified tag.
 
-    def evalTagValue(self, tagName, defaultValue=None):
+    def evalTagValue(self, tagName):
         try:
             return eval(self.getTagValue(tagName))
         except:
-            return defaultValue
+            logging.warn('Could not eval tag "%s" for element "%s"' %\
+                         (tagName, self.Name))
+            return None
 
     ## @brief Class representation.
     ## @param self
