@@ -1,0 +1,10 @@
+To compile the IGRF python module you need 
+   * a fortran compiler 
+   * the numpy python package (http://numpy.scipy.org)
+   
+Type make in the python sub-directory to create the fortran/python interface. 
+Include the python sub-directory into your PYTHONPATH environment variable. 
+
+
+   
+   
