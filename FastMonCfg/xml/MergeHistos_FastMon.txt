@@ -20,14 +20,15 @@ CondArrCalHiTrigger_TH1   Sum
 CalLogEndRangeHitCounter_Range1_TH2_TowerLoop   Sum
 CondArrCNOTrigger_TH1   Sum
 AcdGemCNO_GARC_TH1   Sum
-AcdChannelsHits   Sum
+AcdChannelsHits_TH1   Sum
 ToT_0_WhenTkrHitsExist_TowerPlane_TH2   Sum
 DeadZoneDelta_TH1   Sum
 AcdGemROI_Tower_TH1   Sum
-meta_context_open_crate   Sum
+MetaContext_OpenCrate_TH1   Sum
 CondArrROITrigger_TH1   Sum
 CalLogEndRangeHitCounter_Range0_TH2_TowerLoop   Sum
 CalX_NHit_TH1_TowerLoop   Sum
 TkrHitsCounter_Plane_TH1_TowerLoop   Sum
 TkrTotalHits_TH1   Sum
 TkrTrigger_Tower_TH1   Sum
+MetaContext_OpenMode_TH1   Sum
