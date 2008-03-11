@@ -541,6 +541,15 @@
 	    <ylabel>Number of events</ylabel>
             <expression>meta_context_open_crate</expression>
         </TH1F>
+        <TH1F name="meta_context_open_mode" enabled="True">
+	    <title>LAT Mode</title>
+	    <xbins>8</xbins>
+	    <xmin>0</xmin>
+	    <xmax>8</xmax>
+	    <xlabel>Mode (NORMAL, TOO, GRB0, GRB1, GRB2, SOLAR, CALIBRATION, DIAGNOSTIC)</xlabel>
+	    <ylabel>Number of events</ylabel>
+            <expression>meta_context_open_mode</expression>
+        </TH1F>
     </outputList>
 
 </monitoring>
