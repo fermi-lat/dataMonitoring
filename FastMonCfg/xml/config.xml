@@ -534,10 +534,10 @@
     <outputList group="META" name="Meta event base" enabled="True">
         <TH1F name="MetaContext_OpenCrate_TH1" enabled="True">
 	    <title>Crate number</title>
-	    <xbins>10</xbins>
+	    <xbins>16</xbins>
 	    <xmin>0</xmin>
-	    <xmax>10</xmax>
-	    <xlabel>Crate number (EPU0, EPU1, EPU2, SIU0, SIU1, AUX)</xlabel>
+	    <xmax>16</xmax>
+	    <xlabel>Crate number (EPU0, EPU1, EPU2, SIU0, SIU1, AUX, MIXED, RSVD...)</xlabel>
 	    <ylabel>Number of events</ylabel>
             <expression>meta_context_open_crate</expression>
         </TH1F>
