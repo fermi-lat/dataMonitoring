@@ -514,7 +514,7 @@
 		
     <outputList group="ACD" name="ACD base" enabled="True">
 
-        <TH1F name="AcdChannelsHits" enabled="True" level="lat">
+        <TH1F name="AcdChannelsHits_TH1" enabled="True" level="lat">
 	    <title>Number of ACD PMT hit per event</title>
 	    <xbins>195</xbins>
 	    <xmin>-0.5</xmin>
@@ -532,7 +532,7 @@
     Meta event group.
     -->
     <outputList group="META" name="Meta event base" enabled="True">
-        <TH1F name="meta_context_open_crate" enabled="True">
+        <TH1F name="MetaContext_OpenCrate_TH1" enabled="True">
 	    <title>Crate number</title>
 	    <xbins>10</xbins>
 	    <xmin>0</xmin>
@@ -541,7 +541,7 @@
 	    <ylabel>Number of events</ylabel>
             <expression>meta_context_open_crate</expression>
         </TH1F>
-        <TH1F name="meta_context_open_mode" enabled="True">
+        <TH1F name="MetaContext_OpenMode_TH1" enabled="True">
 	    <title>LAT Mode</title>
 	    <xbins>8</xbins>
 	    <xmin>0</xmin>
