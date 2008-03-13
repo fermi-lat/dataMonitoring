@@ -1,0 +1,178 @@
+<monitoring>
+
+  <inputList name="top"> 
+
+
+    <!-- Time stamp -->
+    <object> fastmontimestampdouble </object>
+    
+   <!-- Evt type -->
+   <object>FastMon_condsummary</object> 
+
+    <!-- Environment quantities -->
+   <object> FastMon_spacecraft_latitude</object>
+   <object> FastMon_spacecraft_longitude</object>
+   <object> FastMon_spacecraft_altitude</object>
+
+   <object> FastMon_geomagnetic_cutoff</object>
+   <object> FastMon_geomagnetic_bb0</object>
+   <object> FastMon_geomagnetic_InvariantLambda</object>
+   <object> FastMon_geomagnetic_InvariantLatitude</object>
+   <object> FastMon_geomagnetic_InvariantRadius</object>
+   <object> FastMon_geomagnetic_McIlwainL</object>
+
+     <!-- Tkr Variables -->
+       
+   <object>FastMon_TkrHits</object>	       
+   <object>FastMon_TkrHits_TowerPlane</object> 
+   <object>FastMon_TkrHits_TowerPlaneGTFE</object> 
+
+     <!-- Acd Variables -->	 
+   <object>FastMon_Acd_Tile_Count</object>	       
+
+     <!-- Cal Variables -->	 
+   <object>FastMon_Cal_Tower_Count</object>	       
+   <object>FastMon_CalLogEndRangeHit</object>	       
+   
+  </inputList>
+
+
+  <outputList name="top">
+  
+    <!-- Environment quantities -->
+    <object>
+      <name> FastMon_SpaceCraft_Latitude </name>
+      <formula><![CDATA[ FastMon_spacecraft_latitude ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the space craft latitude </description>
+    </object>
+    <object>
+      <name> FastMon_SpaceCraft_Longitude </name>
+      <formula><![CDATA[ FastMon_spacecraft_longitude ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the space craft longitude</description>
+    </object>
+    <object>
+      <name> FastMon_SpaceCraft_Altitude </name>
+      <formula><![CDATA[ FastMon_spacecraft_altitude ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the space craft altitude with respect to the earth surface (km)</description>
+    </object>
+
+    <object>
+      <name> FastMon_GeoMag_cutoff </name>
+      <formula><![CDATA[ FastMon_geomagnetic_cutoff ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the Rigidity cutoff in GeV from approximation DipoleMoment divided by McIlwain_L squared </description>
+    </object>
+    <object>
+      <name> FastMon_GeoMag_bb0 </name>
+      <formula><![CDATA[ FastMon_geomagnetic_bb0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of BAbs divided by BEquator </description>
+    </object>
+    <object>
+      <name> FastMon_GeoMag_InvariantLambda </name>
+      <formula><![CDATA[ FastMon_geomagnetic_InvariantLambda ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the geomagnetic invariant lambda (only valid for BB0_le_10)</description>
+    </object>
+    <object>
+      <name> FastMon_GeoMag_InvariantLatitude </name>
+      <formula><![CDATA[ FastMon_geomagnetic_InvariantLatitude ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the geomagnetic invariant latitude </description>
+    </object>
+    <object>
+      <name> FastMon_GeoMag_InvariantRadius </name>
+      <formula><![CDATA[ FastMon_geomagnetic_InvariantRadius ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the geomagnetic invariant radius (only valid for BB0_le_10) </description>
+    </object>
+    <object>
+      <name> FastMon_GeoMag_McIlwainL </name>
+      <formula><![CDATA[ FastMon_geomagnetic_McIlwainL ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the McIlwain L parameter </description>
+    </object>
+
+     <!-- Tkr Variables -->
+     <object>
+      <name> FastMon_TkrHits_TowerPlaneGTFE[16][36][24] </name>
+      <formula><![CDATA[ FastMon_TkrHits_TowerPlaneGTFE ]]></formula>
+      <cut><![CDATA[FastMon_condsummary&30 ]]></cut>
+      <type> mean </type>
+      <description> Vector reporting the accumulated (in the time bin)  number of Tkr Hits for tower,plane, GTFE </description>
+    </object>
+ 
+
+    <object>
+      <name> FastMon_TkrHits </name>
+      <formula><![CDATA[ FastMon_TkrHits ]]></formula>
+      <cut><![CDATA[FastMon_condsummary&30 ]]></cut>
+      <type> mean </type>
+      <description> Mean number of Tkr Hits</description>
+    </object>
+
+    <object>
+      <name> FastMon_TkrHits_TowerPlane[16][36] </name>
+      <formula><![CDATA[ foreachtower: foreachtkrplane: FastMon_TkrHits_TowerPlane[tower][tkrplane] ]]></formula>
+      <cut><![CDATA[FastMon_condsummary&30 ]]></cut>
+      <type> mean </type>
+      <description> Vector reporting the mean number of Tkr Hits for tower,plane </description>
+    </object>
+
+     <object>
+      <name> FastMon_NTkrHits_TowerPlane[16][36] </name>
+      <formula><![CDATA[ FastMon_TkrHits_TowerPlane ]]></formula>
+      <cut><![CDATA[(FastMon_condsummary&32)>0 ]]></cut>
+      <type> counter </type>
+      <description> Accumulated number of Tkr Hits in the time bin for each tower and  plane, only for periodic triggers (Noise Hits).  </description>
+    </object>
+
+     <!-- Cal Variables -->
+
+    <object>
+      <name> FastMon_CalTowerCount </name>
+      <formula><![CDATA[ FastMon_Cal_Tower_Count ]]></formula>
+      <cut><![CDATA[FastMon_condsummary&30 ]]></cut>
+      <type> mean </type>
+      <description> Mean number of Cal module with at least one CDE hit</description>
+    </object>
+
+    <object>
+      <name> FM_CalLogRHit_TowerCalLayerCalColumnFR[16][8][12][2][4] </name>
+      <formula><![CDATA[ FastMon_CalLogEndRangeHit ]]></formula>
+      <cut><![CDATA[ (FastMon_condsummary&30)>0 && (FastMon_condsummary&32)==0]]></cut>	    
+      <type> mean </type>
+      <description> Mean number of of hits in each Cal log end for each range</description>
+    </object>
+
+   
+
+     <!-- Acd Variables -->
+
+    <object>
+      <name> FastMon_AcdTileCount </name>
+      <formula><![CDATA[ FastMon_Acd_Tile_Count ]]></formula>
+      <cut><![CDATA[FastMon_condsummary&30 ]]></cut>
+      <type> mean </type>
+      <description> Mean number of Acd tiles hit</description>
+    </object>
+ 
+
+  </outputList>
+
+
+  <eventCut><![CDATA[ ]]></eventCut>
+  <timestamp> fastmontimestampdouble </timestamp>
+</monitoring>

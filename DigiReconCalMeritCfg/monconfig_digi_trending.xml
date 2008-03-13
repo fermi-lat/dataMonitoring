@@ -1,0 +1,1174 @@
+<monitoring>
+
+  <inputList name="top"> 
+
+    <!-- TEST variables -->
+    <object> nACD </object>
+    <object> Gem_elapsed </object>
+    
+    <!-- Time stamp -->
+    <object> timestampdouble </object>
+    <object> timestamp </object> <!-- some functions need time stamp as int -->
+    
+    <!-- Event classification information -->
+    <object> condsummary </object>
+    <object> condarrcallo  </object>
+    <object> condarrcalhi </object>
+    <object> condarrtkr </object>
+    <object> condarrcno </object>
+    <object> condarrroi </object>
+    <object> LivetimeLast</object>
+    <object> ElapsedLast</object>
+    <object> DeadZoneLast</object>
+    <object> DiscardedLast</object>
+    <object> PrescaledLast</object>
+    <object> DeadZoneDelta </object>
+    <object> DiscardedDelta </object>
+    <object> PrescaledDelta </object>
+    <object> DeltaWindowOpen </object>
+    <object> DeltaEventTime </object>
+    <object> TkrTriggerTower </object>
+    <object> CalHiTriggerTower </object> 
+    <object> CalLoTriggerTower </object>
+    <object> CalReadoutRange </object>
+    <object> Range4 </object>
+    <object> OBFStatus </object>
+    <object> Sequence </object>
+    <object> FilterBits </object>
+     <object> TriggerEngine </object>
+    <object> DeltaEventTimeManual </object> 
+    <object> DatagramInfo </object>
+    <object> DeltaEvtID </object>
+    <object> Delta_CCSDSTime_EvtTime </object>
+
+    <!-- Acd Variables -->
+    
+    <object>AcdGemVeto_AcdTile</object>
+    <object>AcdGemROI_Tower </object>
+    <object>AcdGemCNO_GARC  </object>
+    <object>AcdHit_AcdTile  </object>
+    <object>AcdSingleHit </object>
+    <object>AcdPmtA_OverThreshold_AcdTile  </object>
+    <object>AcdPmtB_OverThreshold_AcdTile  </object>
+    <object>AcdVetoA_AcdTile  </object>
+    <object>AcdVetoB_AcdTile  </object>
+    <object>AcdVetoA_OR_B_AcdTile </object>
+    <object>AcdSingleVeto_AcdTile </object>
+    <object>AcdPha_PmtIdPmtRangeAcdTile</object>
+    <object>AcdHit_GafeGarc </object>
+    <object>AcdVeto_GafeGarc </object>
+
+    <!-- Tkr Variables -->
+       
+    <object> TkrHitsTowerPlane </object>
+    <object> IsTkrDigi_TowerPlane </object>
+    <object> ToT_con0_TowerPlane  </object>
+    <object> ToT_con1_TowerPlane  </object>
+
+     <!-- Cal Variables -->
+    <object> CalXHit_TowerCalLayerCalColumn </object>
+    <object> CalXHit_TowerCalLayer </object>
+    <object> CalXAdc_TowerCalLayerCalColumnFaceRange </object>
+    
+  </inputList>
+
+
+  <outputList name="top">
+  
+
+   
+
+    <!-- ********************  Event classification information   *********************** -->
+          
+     <object>
+      <name> Trigger_CALLO </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[condsummary&4  ]]></cut>
+      <type> rate </type>
+      <description> CAL-LO trigger rate </description>
+    </object>
+
+
+     <object>
+      <name> Trigger_CALHI </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[condsummary&8  ]]></cut>
+      <type> rate </type>
+      <description> CAL-HI trigger rate </description>
+    </object>
+
+      <object>
+      <name> Trigger_CNO </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[condsummary&16  ]]></cut>
+      <type> rate </type>
+      <description> CNO trigger rate </description>
+    </object>
+
+       <object>
+      <name> Trigger_TRK </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[condsummary&2]]></cut>
+      <type> rate </type>
+      <description> TKR trigger rate </description>
+    </object>
+
+       <object>
+      <name> Trigger_ROI </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[condsummary&1]]></cut>
+      <type> rate </type>
+      <description> ROI trigger rate </description>
+    </object>
+
+
+     <object>
+      <name> Trigger_TRK_And_ROI </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&1) && (condsummary&2)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR trigger and ROI (mostly charge particles) </description>
+    </object>
+
+     <object>
+      <name> Trigger_TRK_And_NotROI </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[!(condsummary&1) && (condsummary&2)]]></cut>
+      <type> rate </type>
+      <description> Rate TKR trigger and not ROI (mostly non charge particles) rate </description>
+    </object>
+
+     <object>
+      <name> Trigger_Periodic </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[condsummary&32]]></cut>
+      <type> rate </type>
+      <description> Periodic trigger rate </description>
+    </object>
+
+     <object>
+      <name> Trigger_NOTPeriodic </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[!(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of events with NOT periodic trigger  </description>
+    </object>
+
+    
+
+     <object>
+      <name> CondsummaryBitAnd30_NOTPeriodic </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[condsummary&30 && !(condsummary&32)]]></cut>
+      <type> counter </type>
+      <description> Counter of events with condsummaryBitAnd30 AND NotcondsummaryBitAnd32) </description>
+    </object>
+
+
+     <object>
+      <name> Trigger_Solicited </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[condsummary&64]]></cut>
+      <type> rate </type>
+      <description> Solicited trigger rate </description>
+    </object>
+
+     <object>
+      <name> Trigger_External </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[condsummary&128]]></cut>
+      <type> rate </type>
+      <description> External trigger rate </description>
+    </object>
+
+     <object>
+      <name> Trigger_ANY </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[condsummary&255]]></cut>
+      <type> rate </type>
+      <description> Rate of any of the trigger bits in condsummary word </description>
+    </object>
+
+     <object>
+      <name> Trigger_ANYPhysics </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[condsummary&15]]></cut>
+      <type> rate </type>
+      <description> Rate of any non-artificially created trigger (i.e. bits [1-4]) in condsummary word  </description>
+    </object>
+      
+       <object>
+      <name> TkrTrigger_Tower[16] </name>
+      <formula><![CDATA[ foreachtower: TkrTriggerTower[tower] ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> Rate of tracker triggers in [tower], calculated during the specified time bin. </description>
+    </object>
+
+       <object>
+      <name> OBF_GammaFilter </name>
+      <formula><![CDATA[ OBFStatus[0] ]]></formula>
+      <cut><![CDATA[ OBFStatus[0]>0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts passing the onboard gamma filter, calculated during the specified time bin. </description>
+    </object>
+
+	  <object>
+      <name> OBF_MipFilter </name>
+      <formula><![CDATA[ OBFStatus[1] ]]></formula>
+      <cut><![CDATA[ OBFStatus[1]>0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts passing the onboard Mip filter, calculated during the specified time bin. </description>
+    </object>
+
+
+	    <object>
+      <name> OBF_HFCFilter </name>
+      <formula><![CDATA[ OBFStatus[2] ]]></formula>
+      <cut><![CDATA[ OBFStatus[2]>0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts passing the onboard HFC filter, calculated during the specified time bin. </description>
+    </object>
+
+	    <object>
+      <name> OBF_DFCFilter </name>
+      <formula><![CDATA[ OBFStatus[3] ]]></formula>
+      <cut><![CDATA[OBFStatus[3]>0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts passing the onboard DFC filter, calculated during the specified time bin. </description>
+    </object>
+
+      <object>
+      <name> ComputationFailed_OBF_GammaFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ OBFStatus[0]<0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts for which the Gamma Filter could not be computed. </description>
+    </object>
+
+	  <object>
+      <name> ComputationFailed_OBF_MipFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ OBFStatus[1]<0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts for which the Mip Filter  could not be computed. </description>
+    </object>
+
+
+	    <object>
+      <name> ComputationFailed_OBF_HFCFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ OBFStatus[2]<0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts for which the HFC Filter  could not be computed. </description>
+    </object>
+
+	    <object>
+      <name> ComputationFailed_OBF_DFCFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[OBFStatus[3]<0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts for which the DFC Filter  could not be computed.</description>
+    </object>
+
+
+       
+     <object>
+      <name> GemRate </name>
+      <formula><![CDATA[ Sequence ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> counterdiffrate[10000,17,MCOktTest] </type>
+      <description> Rate of evts before any filter (computed using DigiEvent->getMetaEvent().scalers().sequence().) </description>
+    </object>
+
+     <!-- The cut FilterBits[0]>0 is to ensure that the filter bits were computed
+	  If computation could not be done, then all components are set 
+	  to -1 in FilterBits vector -->
+      <object>
+      <name> GammaFilterBit[32] </name>
+      <formula><![CDATA[ FilterBits ]]></formula>
+      <cut><![CDATA[ FilterBits[0]>0]]></cut>
+      <type> rate </type>
+      <description> Vector [32] storing the rate of evts passing the 32 Gamma filters. </description>
+    </object>
+
+       <object>
+      <name> GammaFilterBit_ComputationFailed </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ FilterBits[0]<0]]></cut>
+      <type> rate </type>
+      <description> Rate of evts for which the GammaFilterBits could not be computed. </description>
+    </object>
+     
+       <object>
+      <name> Deadzone </name>
+      <formula><![CDATA[ DeadZoneDelta ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> Rate of GEM deadzone events </description>
+    </object>
+
+         <object>
+      <name> Discarded </name>
+      <formula><![CDATA[ DiscardedDelta ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> Rate of GEM discarded events </description>
+    </object>
+
+    <object>
+      <name> Prescaled </name>
+      <formula><![CDATA[ PrescaledDelta  ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> Rate of GEM prescaled events </description>
+    </object>
+
+     
+    <object>
+      <name> Trigger_CALLO_And_GammaFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&4)  && (OBFStatus[0]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of events with CAL-LO trigger AND GammaFilter </description>
+    </object>
+
+
+     <object>
+      <name> Trigger_CALHI_And_GammaFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&8) && (OBFStatus[0]>0)  ]]></cut>
+      <type> rate </type>
+      <description> Rate of events with CAL-HI trigger AND GammaFilter  </description>
+    </object>
+
+      <object>
+      <name> Trigger_CNO_And_GammaFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&16) && (OBFStatus[0]>0)  ]]></cut>
+      <type> rate </type>
+      <description> Rate of events with CNO  trigger AND GammaFilter  </description>
+    </object>
+
+       <object>
+      <name> Trigger_TRK_And_GammaFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&2) && (OBFStatus[0]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of events with TKR trigger AND GammaFilter  </description>
+    </object>
+
+         <object>
+      <name> Trigger_ROI_And_GammaFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&1) &&  (OBFStatus[0]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of events with ROI trigger AND GammaFilter  </description>
+    </object>
+
+
+     <object>
+      <name> Trigger_TRK_And_ROI_And_GammaFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&1) && (condsummary&2) && (OBFStatus[0]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR trigger and ROI (mostly charge particles) AND GammaFilter. We expect to have very low rates of events fulfilling those somewhat contradictory requirements.</description>
+    </object>
+
+     <object>
+      <name> Trigger_TRK_And_NotROI_And_GammaFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[!(condsummary&1) && (condsummary&2) && (OBFStatus[0]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR trigger and not ROI (mostly non charge particles) AND GammaFilter. We expect to have essentially the same rate as without the GammaFilter. </description>
+    </object>
+
+
+     <object>
+      <name> Trigger_CALLO_And_OneOfOther3Filters </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&4)  && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of events with CAL-LO trigger AND ANY of the following Filters: Mip OR HFC OR DFC.  </description>
+    </object>
+
+
+     <object>
+      <name> Trigger_CALHI_And_OneOfOther3Filters </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&8) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)  ]]></cut>
+      <type> rate </type>
+      <description> Rate of events with CAL-HI trigger AND ANY of the following Filters: Mip OR HFC OR DFC.  </description>
+    </object>
+
+      <object>
+      <name> Trigger_CNO_And_OneOfOther3Filters </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&16) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)  ]]></cut>
+      <type> rate </type>
+      <description> Rate of events with CNO trigger AND ANY of the following Filters: Mip OR HFC OR DFC.  </description>
+    </object>
+
+       <object>
+      <name> Trigger_TRK_And_OneOfOther3Filters </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&2) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of events with TKR trigger AND ANY of the following Filters: Mip OR HFC OR DFC.  </description>
+    </object>
+
+           <object>
+      <name> Trigger_ROI_And_OneOfOther3Filters </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&1) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of events with ROI trigger AND ANY of the following Filters: Mip OR HFC OR DFC.  </description>
+    </object>
+
+
+     <object>
+      <name> Trigger_TRK_And_ROI_And_OneOfOther3Filters </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&1) && (condsummary&2) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR trigger and ROI (mostly charged particles) AND ANY of the following Filters: Mip OR HFC OR DFC. </description>
+    </object>
+
+     <object>
+      <name> Trigger_TRK_And_NotROI_And_OneOfOther3Filters </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[!(condsummary&1) && (condsummary&2) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate TKR trigger and not ROI (mostly non charge particles) AND ANY of the following Filters: Mip OR HFC OR DFC. </description>
+    </object>
+
+
+      <object>
+      <name> TriggerEngine[16] </name>
+      <formula><![CDATA[ TriggerEngine ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> Rate of Trigger Engines (DigiEvent->getL1T().getGemEngine()) </description>
+    </object>
+
+       <object>
+      <name> CalHiTrigger_Tower[16] </name>
+      <formula><![CDATA[ CalHiTriggerTower ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL HI Triggers per tower. Periodic triggers are not taken into account. </description>
+    </object>
+
+         <object>
+      <name> CalLoTrigger_Tower[16] </name>
+      <formula><![CDATA[ CalLoTriggerTower ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Lo Triggers per tower. Periodic triggers are not taken into account. </description>
+    </object>
+
+     
+
+
+      <!-- ********************  Detector information   *********************** -->
+
+
+      <!--  ______________  ACD  _______________ -->
+
+     
+       <object>
+	<name> AcdDigis </name>
+	<formula><![CDATA[ RFun::loopoveracdtilesbool(AcdHit_AcdTile)]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description> Rate of ACD Digis. </description>
+      </object>
+
+     
+        <object>
+	<name> AcdGemVeto_AcdTile[128] </name>
+	<formula><![CDATA[ foreachacdtile: AcdGemVeto_AcdTile[acdtile] ]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description> Vector [AcdTile] reporting the rate of ACD GEM vetos. </description>
+      </object>
+
+      <object>
+	<name> AcdGemROI_Tower[16] </name>
+	<formula><![CDATA[ foreachtower: AcdGemROI_Tower[tower] ]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description> Vector [tower] reporting the rate of ACD GEM ROI. </description>
+      </object>
+
+       <object>
+	<name> AcdGemCNO_GARC[12] </name>
+	<formula><![CDATA[ foreachgarc: AcdGemCNO_GARC[garc] ]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description> Vector [GARC] reporting the rate of ACD CNO triggers.</description>
+      </object>
+
+       <object>
+	<name> AcdHit_AcdTile[128] </name>
+	<formula><![CDATA[ foreachacdtile: AcdHit_AcdTile[acdtile] ]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description> Vector [AcdTile] reporting the rate of ACD hits. </description>
+      </object>
+
+
+
+     <object>
+      <name> Normalized_AcdHit_AcdTile[128] </name>
+      <formula><![CDATA[foreachacdtile:  Rate_Trigger_NOTPeriodic >0 ? (Rate_AcdHit_AcdTile[acdtile]/Rate_Trigger_NOTPeriodic) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [acdtile] reporting the normalized number hits in the ACD tile defined by coordinate acdtile. The used normalization factor is the number of NOT periodic triggers. This is an indicator of the OCCUPANCY IN THE ACD. </description>
+    </object>
+
+
+
+      <object>
+      <name> Normalized_AcdHit_AcdTile_err[128]  </name>
+      <formula><![CDATA[foreachacdtile: ( Rate_Trigger_NOTPeriodic >0 && Rate_AcdHit_AcdTile[acdtile] >0 ) ? (Rate_AcdHit_AcdTile[acdtile]/Rate_Trigger_NOTPeriodic * TMath::Sqrt(pow(Rate_Trigger_NOTPeriodic_err/Rate_Trigger_NOTPeriodic,2)+pow(Rate_AcdHit_AcdTile_err[acdtile]/Rate_AcdHit_AcdTile[acdtile],2))) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [acdtile] reporting the error in quantity  OutF_Normalized_AcdHit_AcdTile. </description>
+    </object>
+
+
+
+
+
+       <object>
+	<name> AcdPmtA_OverThreshold_AcdTile[128] </name>
+	<formula><![CDATA[ foreachacdtile: AcdPmtA_OverThreshold_AcdTile[acdtile]]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description> Vector[AcdTile] reporting the rate of PMT A being above threshold. </description>
+      </object>
+
+      
+       <object>
+	<name> AcdPmtB_OverThreshold_AcdTile[128] </name>
+	<formula><![CDATA[foreachacdtile: AcdPmtB_OverThreshold_AcdTile[acdtile] ]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description>Vector[AcdTile] reporting the rate of PMT B being above threshold.</description>
+      </object>
+
+       <object>
+	<name> SingleAcdPmt_OverThreshold_AcdTile[128] </name>
+	<formula><![CDATA[foreachacdtile: (AcdPmtA_OverThreshold_AcdTile[acdtile] && !AcdPmtB_OverThreshold_AcdTile[acdtile]) || (AcdPmtB_OverThreshold_AcdTile[acdtile] && !AcdPmtA_OverThreshold_AcdTile[acdtile])]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description>Vector[AcdTile] reporting the rate of ONE (and only one) of the two PMTs (A OR B) being above threshold.  </description>
+      </object>
+       
+
+       <object>
+	<name> AnyAcdPmt_OverThreshold_AcdTile[128] </name>
+	<formula><![CDATA[foreachacdtile: AcdPmtA_OverThreshold_AcdTile[acdtile] || AcdPmtB_OverThreshold_AcdTile[acdtile]]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description>Vector[AcdTile] reporting the rate of at least one PMT being above threshold. </description>
+      </object>
+
+        
+        <object>
+	<name> AcdVetoA_AcdTile[128]  </name>
+	<formula><![CDATA[ foreachacdtile: AcdVetoA_AcdTile[acdtile] ]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description> Vector[AcdTile] reporting the rate of vetos from PMT A.</description>
+      </object>
+
+	<object>
+	<name> AcdVetoB_AcdTile[128]  </name>
+	<formula><![CDATA[ foreachacdtile: AcdVetoB_AcdTile[acdtile] ]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description> Vector[AcdTile] reporting the rate of vetos from PMT B. </description>
+      </object>
+    
+
+	<object>
+	<name> SingleAcdVeto_AcdTile[128]  </name>
+	<formula><![CDATA[ foreachacdtile:  (AcdVetoA_AcdTile[acdtile] && !AcdVetoB_AcdTile[acdtile]) || (!AcdVetoA_AcdTile[acdtile] && AcdVetoB_AcdTile[acdtile])   ]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description> Vector[AcdTile] reporting the rate of ONE (and only one) of the two PMTs producing a Veto.</description>
+      </object>
+
+
+	<object>
+	<name> AnyAcdVeto_AcdTile[128]  </name>
+	<formula><![CDATA[ foreachacdtile:  AcdVetoA_AcdTile[acdtile] || AcdVetoB_AcdTile[acdtile]   ]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description> Vector[AcdTile] reporting the rate of ACD Vetos (produced by one or by the two PMTs).  </description>
+      </object>
+   
+	<object>
+	<name>  AcdPha_PmtA_AcdTile[128] </name>
+	<formula><![CDATA[AcdPha_PmtIdPmtRangeAcdTile[0][0] ]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> mean </type>
+	<description> Vector [AcdTile] reporting the mean pulse height from PMT A  during the specified time bin. Only the LOW PMT range is being considered. </description>
+      </object>
+
+
+      <object>
+	<name>  AcdPha_PmtB_AcdTile[128] </name>
+	<formula><![CDATA[AcdPha_PmtIdPmtRangeAcdTile[1][0] ]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> mean </type>
+	<description> Vector [AcdTile] reporting the mean pulse height from PMT B during the specified time bin. Only the LOW PMT range is being considered.   </description>
+      </object>
+
+   
+      
+
+
+      <!--  ______________  Tracker _______________ -->
+
+   
+
+    <object>
+      <name> TkrTotalHits </name>
+      <formula><![CDATA[ RFun::loopovertowerANDtkrplanes(TkrHitsTowerPlane) ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Rate of tracker hits (all towers and planes included). </description>
+    </object>
+
+    <object>
+      <name> TkrTotalHitsPerEvt </name>
+      <formula><![CDATA[ RFun::loopovertowerANDtkrplanes(TkrHitsTowerPlane) ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> mean </type>
+      <description> Mean number of tracker hits (all towers and planes included) per event. </description>
+    </object>
+
+
+    
+
+    <object>
+      <name> TkrHits_Tower[16] </name>
+      <formula><![CDATA[ foreachtower: RFun::loopovertkrplanes(TkrHitsTowerPlane[tower]) ]]></formula>
+      <cut><![CDATA[condsummary&30 ]]></cut>
+      <type> rate </type>
+      <description> Rate of tracker hits in [tower]. </description>
+    </object>
+
+
+    <object>
+      <name> TkrHitsPerEvt_Tower[16] </name>
+      <formula><![CDATA[ foreachtower: RFun::loopovertkrplanes(TkrHitsTowerPlane[tower]) ]]></formula>
+      <cut><![CDATA[condsummary&30 ]]></cut>
+      <type> mean </type>
+      <description> Mean number of tracker hits in [tower]. </description>
+    </object>
+
+    
+
+    
+    <object>
+      <name> TkrHits_TowerPlane[16][36] </name>
+      <formula><![CDATA[ foreachtower: foreachtkrplane: TkrHitsTowerPlane[tower][tkrplane] ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Rate of tracker hits in [tower][tkrplane]. </description>
+    </object>
+
+    
+     <object>
+      <name> TkrHitsPerEvt_TowerPlane[16][36] </name>
+      <formula><![CDATA[ foreachtower: foreachtkrplane: TkrHitsTowerPlane[tower][tkrplane] ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> mean </type>
+      <description> Mean number of tracker hits in [tower][tkrplane]. </description>
+    </object>
+
+
+    
+
+ 
+     <object>
+      <name> Normalized_TkrHits_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane:   Rate_Trigger_NOTPeriodic >0 ? (Rate_TkrHits_TowerPlane[tower][tkrplane]/Rate_Trigger_NOTPeriodic) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector  [tower][tkrplane] reporting the normalized number hits in the tracker plane defined by coordinates tower,tkrplane. The used normalization factor is the number of NOT periodic triggers. This is an indicator of the OCCUPANCY IN THE TRACKER. </description>
+    </object>
+
+
+
+      <object>
+      <name> Normalized_TkrHits_TowerPlane_err[16][36]   </name>
+      <formula><![CDATA[ foreachtower: foreachtkrplane:  (Rate_Trigger_NOTPeriodic >0 && Rate_TkrHits_TowerPlane[tower][tkrplane] >0 ) ? (Rate_TkrHits_TowerPlane[tower][tkrplane]/Rate_Trigger_NOTPeriodic * TMath::Sqrt(pow(Rate_Trigger_NOTPeriodic_err/Rate_Trigger_NOTPeriodic,2)+pow(Rate_TkrHits_TowerPlane_err[tower][tkrplane]/Rate_TkrHits_TowerPlane[tower][tkrplane],2))) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_TkrHits_TowerPlane. </description>
+    </object>
+    
+
+
+
+     <object>
+      <name> TkrTriggerWithLessThan6Layers_Tower[16] </name>
+      <formula><![CDATA[ foreachtower: TkrTriggerTower[tower]&&(RFun::getconsecutiveplaneshit(TkrHitsTowerPlane[tower])<6) ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Vector [tower] reporting the rate of events in which there was a tracker trigger and the number of consecutive tracker planes hit is less than 6. </description>
+    </object>
+
+     <object>
+      <name> NormalizedTkrTriggerWithLessThan6Layers_Tower[16] </name>
+      <formula><![CDATA[foreachtower: Rate_TkrTrigger_Tower[tower] >0.0 ? (Rate_TkrTriggerWithLessThan6Layers_Tower[tower]/Rate_TkrTrigger_Tower[tower]) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower] reporting the normalized number of events in which there was a tracker trigger and the number of consecutive tracker planes hit is less than 6. The used normalization factor is the Tkr Triggers in the specific [tower]. This is a meanigful parameter reporting about the HIT INEFFICIENCY in that [tower]. </description>
+    </object>
+
+
+     <object>
+      <name> NormalizedTkrTriggerWithLessThan6Layers_Tower_err[16] </name>
+      <formula><![CDATA[foreachtower: (Rate_TkrTrigger_Tower[tower] >0 && Rate_TkrTriggerWithLessThan6Layers_Tower[tower] >0 ) ? ((Rate_TkrTriggerWithLessThan6Layers_Tower[tower]/Rate_TkrTrigger_Tower[tower])*TMath::Sqrt(pow(Rate_TkrTrigger_Tower_err[tower]/Rate_TkrTrigger_Tower[tower],2)+pow(Rate_TkrTriggerWithLessThan6Layers_Tower_err[tower]/Rate_TkrTriggerWithLessThan6Layers_Tower[tower],2))) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower] reporting the error in quantity OutF_NormalizedTkrTriggerWithLessThan6Layers_Tower.  </description>
+    </object>
+     
+
+
+     <object>
+      <name> ConsecutivePlanesHit_Tower[16] </name>
+      <formula><![CDATA[ foreachtower: TkrTriggerTower[tower]>0 ? (RFun::getconsecutiveplaneshit(TkrHitsTowerPlane[tower])) : -1.0 ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> truncatedmean[1,36] </type>
+      <description> Mean number of consecutive tracker planes hit in [tower] per event triggereing that [tower] </description>
+    </object>
+
+     <object>
+      <name> EmptyTowers_Tower[16] </name>
+      <formula><![CDATA[runonce: RFun::getemptytowers(TkrTriggerTower)# foreachtower: runonceformula[tower] > 0.5 ]]></formula>
+      <cut><![CDATA[condsummary&30 ]]></cut>
+      <type> counter </type>
+      <description> Number of times [tower] did not trigger and was not boundary to a tower that triggered </description>
+    </object>
+
+     <object>
+      <name> HitsInEmptyTower_Tower[16] </name>
+      <formula><![CDATA[runonce: RFun::getemptytowers(TkrTriggerTower)# foreachtower: RFun::gethitsinemptytower(runonceformula[tower],TkrHitsTowerPlane[tower]) ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> counter </type>
+      <description> Number of hits when the tower was empty </description>
+    </object>
+
+     <object>
+      <name> NormalizedHitsInEmptyTower_Tower[16] </name>
+      <formula><![CDATA[foreachtower: Counter_EmptyTowers_Tower[tower] >0 ? (Counter_HitsInEmptyTower_Tower[tower]/double(Counter_EmptyTowers_Tower[tower])) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower] reporting the normalized number of hits when the tower was empty: HitsInEmptyTower_Tower/EmptyTowers_Tower. This good indicator of the NOISE OCCUPANCY in that [tower].</description>
+    </object>
+
+      <object>
+      <name> NormalizedHitsInEmptyTower_Tower_err[16] </name>
+      <formula><![CDATA[foreachtower: Counter_EmptyTowers_Tower[tower] >0 && Counter_HitsInEmptyTower_Tower[tower] >0 ? ((Counter_HitsInEmptyTower_Tower[tower]/double(Counter_EmptyTowers_Tower[tower]))*TMath::Sqrt(1./double(Counter_EmptyTowers_Tower[tower])+1./double(Counter_HitsInEmptyTower_Tower[tower]))) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector  [tower] reporting the error in quantity OutF_NormalizedHitsInEmptyTower_Tower. </description>
+    </object>
+
+
+
+      <object>
+      <name> TkrDigi_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane : IsTkrDigi_TowerPlane[tower][tkrplane] > 0.5 ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Vector [tower][tkrplane] reporting the rate of TkrDigi objects.</description>
+    </object>
+
+
+
+     <object>
+      <name> TkrDigi_Tower[16] </name>
+      <formula><![CDATA[foreachtower: RFun::loopovertkrplanes(IsTkrDigi_TowerPlane[tower]) ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Vector [tower] reporting the rate of TkrDigi objects.</description>
+    </object>
+
+
+   
+     <object>
+      <name> TkrDigi </name>
+      <formula><![CDATA[ RFun::loopovertowerANDtkrplanes(IsTkrDigi_TowerPlane) ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Rate of TkrDigis (all towers and planes included).</description>
+    </object>
+
+  
+
+     <object>
+      <name> ToT_con0_250_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con0_TowerPlane[tower][tkrplane]==250 ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Vector [tower][tkrtracker] reporting the rate of ToT==250 (saturation) in controller 0. </description>
+    </object>
+
+     <object>
+      <name> ToT_con1_250_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con1_TowerPlane[tower][tkrplane]==250 ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Vector [tower][tkrtracker] reporting the rate of ToT==250 (saturation) in controller 1. </description>
+    </object>
+
+     <object>
+      <name> ToT_250_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con0_TowerPlane[tower][tkrplane]==250 || ToT_con1_TowerPlane[tower][tkrplane]==250]]></formula>
+      <cut><![CDATA[condsummary&30 ]]></cut>
+      <type> rate </type>
+      <description> Vector [tower][tkrtracker] reporting the rate of ToT==250 (saturation) in either controller 0 or controller 1.  </description>
+    </object>
+     
+
+     
+      <object>
+      <name> Normalized_ToT_250_TowerPlane[16][36]  </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 ? (Rate_ToT_250_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane]) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower][tkrplane] reporting the normalized of number of events in with ToT==250 (saturation) in either controller 0 or controller 1. The used normalization factor is the number of Tkr Digis in that [tower][tkrplane]. This is a good indicator of events with SIGNAL OVERFLOW. </description>
+    </object>
+
+
+      <object>
+      <name> Normalized_ToT_250_TowerPlane_err[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_ToT_250_TowerPlane[tower][tkrplane] >0 ) ? ((Rate_ToT_250_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*TMath::Sqrt(pow(Rate_TkrDigi_TowerPlane_err[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane],2)+pow(Rate_ToT_250_TowerPlane_err[tower][tkrplane]/Rate_ToT_250_TowerPlane[tower][tkrplane],2))) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_ToT_250_TowerPlane. </description>
+    </object>
+
+
+
+
+
+    <object>
+      <name> ToT_con0_0_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: IsTkrDigi_TowerPlane[tower][tkrplane]>0.5 && ToT_con0_TowerPlane[tower][tkrplane]==0 ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Vector [tower][tkrtracker] reporting the rate of ToT==0, in controller 0. Only events for which TkrDigi exists for that tower,tkrplane are considered. </description>
+    </object>
+
+     <object>
+      <name> ToT_con1_0_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: IsTkrDigi_TowerPlane[tower][tkrplane]>0.5 && ToT_con1_TowerPlane[tower][tkrplane]==0 ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Vector [tower][tkrtracker] reporting the rate of ToT==0, in controller 1. Only events for which TkrDigi exists for that tower,tkrplane are considered. </description>
+    </object>
+
+     <object>
+      <name> ToT_0_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: IsTkrDigi_TowerPlane[tower][tkrplane]>0.5 && ToT_con0_TowerPlane[tower][tkrplane]==0 && ToT_con1_TowerPlane[tower][tkrplane]==0 ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Vector [tower][tkrtracker] reporting the rate of ToT==0 for both controller 0 and controller 1. Only events for which TkrDigi exists for that tower,tkrplane are considered.  </description>
+    </object>
+
+
+      
+      <object>
+      <name> Normalized_ToT_0_TowerPlane[16][36]  </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 ? (Rate_ToT_0_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane]) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower][tkrplane] reporting the normalized of number of events with ToT==0  for both controller 0 and controller 1. The used normalization factor is the number of Tkr Digis in that [tower][tkrplane]. This is a good indicator of events with TIMING PROBLEMS. </description>
+    </object>
+
+
+      <object>
+      <name> Normalized_ToT_0_TowerPlane_err[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_ToT_0_TowerPlane[tower][tkrplane] >0 ) ? ((Rate_ToT_0_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*TMath::Sqrt(pow(Rate_TkrDigi_TowerPlane_err[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane],2)+pow(Rate_ToT_0_TowerPlane_err[tower][tkrplane]/Rate_ToT_0_TowerPlane[tower][tkrplane],2))) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_ToT_0_TowerPlane. </description>
+    </object>
+
+
+     
+
+
+
+    <object>
+      <name> ToT_con0_Greater250_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con0_TowerPlane[tower][tkrplane]>250 ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Vector [tower][tkrplane] reporting the rate of evts with ToT>250 (overlapped trigger) in controller 0.  </description>
+    </object>
+
+    <object>
+      <name> ToT_con1_Greater250_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con1_TowerPlane[tower][tkrplane]>250 ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Vector [tower][tkrplane] reporting the rate of evts with ToT>250 (overlapped trigger) in controller 1.  </description>
+    </object>
+
+     <object>
+      <name> ToT_Greater250_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con0_TowerPlane[tower][tkrplane]>250 || ToT_con1_TowerPlane[tower][tkrplane]>250]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Vector [tower][tkrplane] reporting the rate of evts with ToT>250 (overlapped trigger) in either controller 0 or controller 1.  </description>
+    </object>
+
+
+         <object>
+      <name> Normalized_ToT_Greater250_TowerPlane[16][36]  </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 ? (Rate_ToT_Greater250_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane]) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower][tkrplane] reporting the normalized number of events with ToT> 250  for either controller 0 or controller 1. The used normalization factor is the number of Tkr Digis in that [tower][tkrplane]. This is a good indicator of events with REMNANT INFORMATION FROM PREVIOUS EVENTS. </description>
+    </object>
+
+
+      <object>
+      <name> Normalized_ToT_Greater250_TowerPlane_err[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_ToT_Greater250_TowerPlane[tower][tkrplane] >0 ) ? ((Rate_ToT_Greater250_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*TMath::Sqrt(pow(Rate_TkrDigi_TowerPlane_err[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane],2)+pow(Rate_ToT_Greater250_TowerPlane_err[tower][tkrplane]/Rate_ToT_Greater250_TowerPlane[tower][tkrplane],2))) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_ToT_Greater250_TowerPlane. </description>
+    </object>
+
+
+
+
+
+    <object>
+      <name> ToT_con0_Trunc_1_249_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con0_TowerPlane[tower][tkrplane] ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> truncatedmean[1,249] </type>
+      <description> Vector [tower][trkplane] reporting the truncated mean (only range [1,249] is used) ToT value per event in controller 0. This is the AVERAGE TOT WITHOUT OUTLIERS for controller 0. </description>
+    </object>
+
+    <object>
+      <name> ToT_con1_Trunc_1_249_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con1_TowerPlane[tower][tkrplane] ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> truncatedmean[1,249] </type>
+      <description> Vector [tower][trkplane] reporting the truncated mean (only range [1,249] is used) ToT value per event in controller 1. This is the AVERAGE TOT WITHOUT OUTLIERS for controller 1. </description>
+    </object>
+
+
+     <object>
+      <name> ToT_0_WhenTkrHitsExist_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: (IsTkrDigi_TowerPlane[tower][tkrplane]>0.5) && (ToT_con0_TowerPlane[tower][tkrplane]==0) && (ToT_con1_TowerPlane[tower][tkrplane]==0) && (TkrHitsTowerPlane[tower][tkrplane]>0)]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> rate </type>
+      <description> Vector [tower][tkrplane] reporting the rate of ToT==0 in both controller 0 and controller 1, when TkrDigi exists and there is at least one hit. </description>
+    </object>
+
+
+       <object>
+      <name> Normalized_ToT_0_WhenTkrHitsExist_TowerPlane[16][36]  </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 ? (Rate_ToT_0_WhenTkrHitsExist_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane]) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower][tkrplane] reporting the normalized of number of events with ToT==0  for both controller 0 and controller 1 when there is at least one hit in that tower,tkrplane. The used normalization factor is the number of Tkr Digis in that [tower][tkrplane]. This quantity is more demanding than Normalized_ToT_0_TowerPlane. </description>
+    </object>
+
+
+      <object>
+      <name> Normalized_ToT_0_WhenTkrHitsExist_TowerPlane_err[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_ToT_0_WhenTkrHitsExist_TowerPlane[tower][tkrplane] >0 ) ? ((Rate_ToT_0_WhenTkrHitsExist_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*TMath::Sqrt(pow(Rate_TkrDigi_TowerPlane_err[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane],2)+pow(Rate_ToT_0_WhenTkrHitsExist_TowerPlane_err[tower][tkrplane]/Rate_ToT_0_WhenTkrHitsExist_TowerPlane[tower][tkrplane],2))) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_ToT_0_WhenTkrHitsExist_TowerPlane. </description>
+    </object>
+
+
+      
+
+     <!-- Calorimeter -->
+
+
+     <object>
+      <name> CalXHit_Hit_TowerCalLayerCalColumn[16][8][12] </name>
+      <formula><![CDATA[CalXHit_TowerCalLayerCalColumn]]></formula>
+      <cut><![CDATA[condsummary&30 && !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Vector[tower][callayer][calcolumn] reporting the hit rate in a crystal defined by the coordinates tower,callayer,calcolumn. Periodic triggers are NOT taken into account. </description>
+    </object>
+
+     <object>
+       <name> Norm_CalXHit_Hit_TowerCalLayerCalColumn[16][8][12]  </name>
+      <formula><![CDATA[foreachtower: foreachcallayer: foreachcalcolumn: Rate_Trigger_NOTPeriodic >0 ? (Rate_CalXHit_Hit_TowerCalLayerCalColumn[tower][callayer][calcolumn]/Rate_Trigger_NOTPeriodic) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower][callayer][calcolumn] reporting the normalized number hits in crystal log defined by coordinates tower,callayer,callcolumn. The used normalization factor is the number of NOT periodic triggers. This is an indicator of the OCCUPANCY IN THE CALORIMETER. </description>
+    </object>
+
+
+
+      <object>
+      <name> Norm_CalXHit_Hit_TowerCalLayerCalColumn_err[16][8][12]  </name>
+      <formula><![CDATA[foreachtower: foreachcallayer: foreachcalcolumn: ( Rate_Trigger_NOTPeriodic >0 && Rate_CalXHit_Hit_TowerCalLayerCalColumn[tower][callayer][calcolumn] >0 ) ? (Rate_CalXHit_Hit_TowerCalLayerCalColumn[tower][callayer][calcolumn]/Rate_Trigger_NOTPeriodic * TMath::Sqrt(pow(Rate_Trigger_NOTPeriodic_err/Rate_Trigger_NOTPeriodic,2)+pow(Rate_CalXHit_Hit_TowerCalLayerCalColumn_err[tower][callayer][calcolumn]/Rate_CalXHit_Hit_TowerCalLayerCalColumn[tower][callayer][calcolumn],2))) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower][callayer][calcolumn]  reporting the error in quantity  OutF_Normalized_CalXHit_Hit_TowerCalLayerCalColumn. </description>
+    </object>
+
+
+
+     <object>
+      <name> CalXHit_Hit_TowerCalLayer[16][8] </name>
+      <formula><![CDATA[CalXHit_TowerCalLayer]]></formula>
+      <cut><![CDATA[condsummary&30 && !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Vector[tower][callayer] reporting the hit rate in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account. </description>
+    </object>
+
+
+    
+
+     <object>
+      <name> CalXHit_ZEROHit_TowerCalLayerCalColumn[16][8][12] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: (CalXHit_TowerCalLayerCalColumn[tower][callayer][calcolumn]<0.5)]]></formula>
+      <cut><![CDATA[condsummary&30 && !(condsummary&32)]]></cut>
+      <type> counter </type>
+      <description> Vector[tower][callayer][calcolumn] reporting the number ZERO hits in a crystal defined by the coordinates tower,callayer,calcolumn. Periodic triggers are NOT taken into account. </description>
+    </object>
+     
+
+     
+<!--  TEST quantity
+      <object>
+      <name> CalXHit_ZEROHit_TowerCalLayer[16][8] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: (CalXHit_TowerCalLayer[tower][callayer]<0.5)]]></formula>
+      <cut><![CDATA[condsummary&30 && !(condsummary&32)]]></cut>
+      <type> counter </type>
+      <description> Vector[tower][callayer] reporting the number of ZERO hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account. </description>
+    </object>
+-->
+
+      <object>
+      <name> CalXHit_ZEROHit_TowerCalLayer[16][8] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: (RFun::loopovercalcolumns(CalXHit_TowerCalLayerCalColumn[tower][callayer])<0.5)]]></formula>
+      <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
+      <type> counter </type>
+      <description> Vector[tower][callayer] reporting the number of ZERO hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account.  </description>
+    </object>
+
+
+
+
+     <object>
+      <name> CalXHit_ZEROHit_Fraction_TowerCalLayer[16][8] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: Counter_CondsummaryBitAnd30_NOTPeriodic>0 ? (double(Counter_CalXHit_ZEROHit_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic)) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+     
+      <description> Fraction of events with ZERO hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account. The normalization factor used to compute the fraction is CondsummaryBitAnd30_NOTPeriodic_Counter</description>
+     </object>
+     
+      <object>
+      <name> CalXHit_ZEROHit_Fraction_TowerCalLayer_err[16][8] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: Counter_CondsummaryBitAnd30_NOTPeriodic>0 && Counter_CalXHit_ZEROHit_TowerCalLayer[tower][callayer]>0 ? (double(Counter_CalXHit_ZEROHit_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic)*TMath::Sqrt(1./Counter_CondsummaryBitAnd30_NOTPeriodic + 1./Counter_CalXHit_ZEROHit_TowerCalLayer[tower][callayer])) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+     
+      <description> Error in quantity CalXHit_ZEROHit_Fraction_TowerCalLayer. </description>
+     </object>
+     
+     
+    
+
+     <object>
+      <name> CalXHit_MHit_TowerCalLayer[16][8] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: RFun::loopovercalcolumns(CalXHit_TowerCalLayerCalColumn[tower][callayer])]]></formula>
+      <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
+      <type> mean </type>
+      <description> Vector[tower][callayer] reporting the MEAN number of hits (per event) in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account. </description>
+    </object>
+
+
+
+
+
+     <object>
+      <name> CalXHit_NTowerHit_Tower[16] </name>
+      <formula><![CDATA[ foreachtower: RFun::loopovercallayers(CalXHit_TowerCalLayer[tower])]]></formula>
+      <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Vector[tower] reporting the rate of calorimeter crystal hits in that tower. Periodic triggers are NOT taken into account. </description>
+    </object>
+
+ 
+
+     <object>
+      <name> CalXHit_Hit </name>
+      <formula><![CDATA[ RFun::loopovertowerANDcallayers(CalXHit_TowerCalLayer)]]></formula>
+      <cut><![CDATA[condsummary&30 && !(condsummary&32) ]]></cut>
+      <type> rate </type>
+      <description> Rate of calorimeter crystal hits (all towers, layers and columns). Periodic triggers are NOT taken into account. </description>
+    </object>
+
+
+     <object>
+      <name> Cal_NHit </name>
+      <formula><![CDATA[ RFun::loopovertowerANDcallayers(CalXHit_TowerCalLayer)]]></formula>
+      <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
+      <type> mean </type>
+      <description> MEAN number of calorimeter crystal hits per event (integrated over all towers, layers and columns). Periodic triggers are NOT taken into account. </description>
+    </object>
+
+      <object>
+      <name> Cal_NHit_ZeroNotCounted </name>
+      <formula><![CDATA[ RFun::loopovertowerANDcallayers(CalXHit_TowerCalLayer)]]></formula>
+      <cut><![CDATA[ condsummary&30 && !(condsummary&32) && RFun::loopovertowerANDcallayers(CalXHit_TowerCalLayer) >0]]></cut>
+      <type> mean </type>
+      <description> MEAN number of calorimeter crystal hits per event (integrated over all towers, layers and columns). Periodic triggers are NOT taken into account. Only events with more than one CalXHit are taken into account. </description>
+    </object>
+
+
+
+     
+
+  </outputList>
+
+  <eventCut><![CDATA[ ]]></eventCut>
+  <timestamp> timestampdouble </timestamp>
+</monitoring>

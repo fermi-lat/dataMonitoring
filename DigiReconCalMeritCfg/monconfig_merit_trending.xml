@@ -1,0 +1,488 @@
+<monitoring>
+
+  <inputList name="top"> 
+
+
+    <!-- Time stamp -->
+    <object> timestampdouble </object>
+    
+    <!-- Trigger related vars -->
+    <object>GltWord</object>  <!-- TO BE DELETED at some point, use GltGemSummary instead!! -->
+    <object>GltGemSummary </object> 
+
+    <!-- Filter variables -->
+    <object>FilterStatus_HI</object>
+
+
+    <!-- ACD -->
+    <object>AcdCornerDoca</object>
+    <object>AcdTileCount</object>
+    <object>AcdRibbonCount </object>
+
+    <object>AcdVtxActiveDist</object>
+    
+    <!-- Tracker -->
+
+     <object>TkrTwrEdge </object>
+    <object> Tkr1TwrGap</object>
+    <object> Tkr1LATEdge</object>
+
+    <object> TkrSurplusHCInside</object>
+    <object> TkrThinHits</object>
+    <object> TkrThickHits</object>
+    <object> TkrBlankHits</object>
+
+     <object> TkrSurplusHitsInside </object>
+      <object> TkrSurplusHitRatio </object>
+
+      <!-- Calorimeter -->
+
+      <object> CalMipNum </object>
+    <object> CalEnergyRaw </object>
+    <object> CalEnergyCorr</object>
+
+    <object> CalCsIRLn </object>
+    <object> CalTwrEdgeCntr </object>
+    <object> CalTrackAngle</object>
+
+    <object> CalTransRms </object>
+
+<!--    
+    <object> </object>
+    <object> </object>
+    <object> </object>
+
+    <object> </object>
+    <object> </object>
+    <object> </object>
+
+    <object> </object>
+    <object> </object>
+    <object> </object>
+    -->
+
+    <!-- CTB variables -->
+        
+    <object>CTBBestZDir</object>		
+    <object>CTBClassLevel</object>		
+    <object>CTBBestEnergyProb</object>
+    <object>CTBCORE</object>			
+    <object>CTBBestEnergy</object>		
+    <object>CTBBestEnergyRatio</object>
+
+    <object> CTBGAM</object>
+    <object> CTBCalDocaAngle </object>
+
+
+    <!-- FT1 variables -->
+
+    <object> FT1Energy </object>
+    <object> FT1Theta </object>
+    <object> FT1Phi </object>
+    <object> FT1ZenithTheta </object>
+    <object> FT1EarthAzimuth </object>
+
+
+
+
+
+   
+  </inputList>
+
+
+  <outputList name="top">
+  
+    <!-- Gem quantities -->
+
+    <object>
+      <name> GltWord </name>
+      <formula><![CDATA[ GltWord ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of GltWord</description>
+    </object>
+
+     <object>
+      <name> GltGemSummary</name>
+      <formula><![CDATA[ GltGemSummary ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of GltGemSummary</description>
+    </object>
+
+    
+
+    <!-- RAtes -->
+    <object>
+      <name> EvtsBeforeCuts </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> Rate of events before applicaltion of cuts.</description>
+    </object>
+
+     <object>
+      <name> EvtsBeforeCutsBelow105ZenithTheta </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ FT1ZenithTheta<105 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 105.</description>
+    </object>
+
+     <object>
+      <name> EvtsBeforeCutsAbove105ZenithTheta </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ FT1ZenithTheta>105 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta larger than 105.</description>
+    </object>
+
+     <object>
+      <name> TransientEvts </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) ]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of TRANSIENT gamma cuts from pass5. </description>
+    </object>
+
+      <object>
+      <name> DiffuseEvts </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) ]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of DIFFUSE gamma cuts from pass5. </description>
+    </object>
+
+
+       <object>
+      <name> SourceEvts </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) ]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of SOURCE gamma cuts from pass5. </description>
+    </object>
+
+
+
+       <object>
+      <name> TransientEvtsBelowZenithTheta105 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1ZenithTheta<105 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of TRANSIENT gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 105. </description>
+    </object>
+
+      <object>
+      <name> DiffuseEvtsBelowZenithTheta105  </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1ZenithTheta<105 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of DIFFUSE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 105. </description>
+    </object>
+
+
+       <object>
+      <name> SourceEvtsBelowZenithTheta105  </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1ZenithTheta<105]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of SOURCE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 105. </description>
+    </object>
+
+
+       <!-- ACD -->
+
+
+     <object>
+      <name> AcdTileCount </name>
+      <formula><![CDATA[ AcdTileCount ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdCornerDoca</description>
+    </object>
+
+
+	 <object>
+      <name> AcdRibbonCount </name>
+      <formula><![CDATA[ AcdRibbonCount ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdRibbonCount</description>
+    </object>
+
+       <object>
+      <name> AcdCornerDoca </name>
+      <formula><![CDATA[ AcdCornerDoca ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdCornerDoca</description>
+    </object>
+
+          <object>
+      <name> AcdVtxActiveDist </name>
+      <formula><![CDATA[ AcdVtxActiveDist ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdVtxActiveDist</description>
+    </object>
+
+
+	  <!-- Tracker-->
+
+
+    
+    <object>
+      <name> TkrTwrEdge </name>
+      <formula><![CDATA[ TkrTwrEdge ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of TkrTwrEdge</description>
+    </object>
+
+    <object>
+      <name> Tkr1TwrGap </name>
+      <formula><![CDATA[ Tkr1TwrGap ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of Tkr1TwrGap </description>
+    </object>
+
+    <object>
+      <name> Tkr1LATEdge</name>
+      <formula><![CDATA[  Tkr1LATEdge ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of Tkr1LATEdge</description>
+    </object>
+
+
+     <object>
+      <name> TkrSurplusHCInside </name>
+      <formula><![CDATA[  TkrSurplusHCInside ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of TkrSurplusHCInside </description>
+    </object>
+
+    <object>
+      <name> TkrThinHits </name>
+      <formula><![CDATA[ TkrThinHits ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of TkrThinHits </description>
+    </object>
+
+    <object>
+      <name> TkrThickHits</name>
+      <formula><![CDATA[ TkrThickHits ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of TkrThickHits</description>
+    </object>
+
+ 
+     <object>
+      <name> TkrBlankHits </name>
+      <formula><![CDATA[ TkrBlankHits ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of TkrBlankHits</description>
+    </object>
+
+      <object>
+      <name> TkrSurplusHitsInside </name>
+      <formula><![CDATA[ TkrSurplusHitsInside ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of TkrSurplusHitsInside.</description>
+    </object>
+
+    <object>
+      <name> TkrSurplusHitRatio </name>
+      <formula><![CDATA[  TkrSurplusHitRatio ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of TkrSurplusHitRatio.</description>
+    </object>
+
+
+
+    <!-- Calorimeter -->
+
+
+    <object>
+      <name> CalMipNum </name>
+      <formula><![CDATA[ CalMipNum ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of CalMipNum</description>
+    </object>
+
+    <object>
+      <name> CalEnergyRaw</name>
+      <formula><![CDATA[ CalEnergyRaw ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of CalEnergyRaw</description>
+    </object>
+
+     <object>
+      <name> CalEnergyCorr </name>
+      <formula><![CDATA[ CalEnergyCorr ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of CalEnergyCorr</description>
+    </object>
+
+
+
+    <object>
+      <name>  CalCsIRLn </name>
+      <formula><![CDATA[  CalCsIRLn  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of  CalCsIRLn </description>
+    </object>
+
+    <object>
+      <name> CalTwrEdgeCntr</name>
+      <formula><![CDATA[ CalTwrEdgeCntr ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of CalTwrEdgeCntr</description>
+    </object>
+
+     <object>
+      <name> CalTrackAngle</name>
+      <formula><![CDATA[ CalTrackAngle ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of CalTrackAngle </description>
+    </object>
+
+
+     <object>
+      <name> CalTransRms</name>
+      <formula><![CDATA[ CalTransRms ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of CalTransRms</description>
+    </object>
+
+     <!-- CTB variables -->
+
+     
+    <object>
+      <name> CTBCORE</name>
+      <formula><![CDATA[ CTBCORE ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of CTBCORE</description>
+    </object>
+
+    <object>
+      <name> CTBBestEnergy</name>
+      <formula><![CDATA[ CTBBestEnergy ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of CTBBestEnergy</description>
+    </object>
+<object>
+      <name> CTBGAM</name>
+      <formula><![CDATA[ CTBGAM ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of CTBGAM</description>
+    </object>
+<object>
+      <name> CTBCalDocaAngle  </name>
+      <formula><![CDATA[ CTBCalDocaAngle  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of CTBCalDocaAngle </description>
+    </object>
+
+
+    <!-- FT1 Variables -->
+
+     <object>
+      <name> FT1Energy</name>
+      <formula><![CDATA[ FT1Energy ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of FT1Energy</description>
+    </object>
+
+    <object>
+      <name> FT1Theta</name>
+      <formula><![CDATA[ FT1Theta ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of FT1Theta</description>
+    </object>
+
+     <object>
+      <name> FT1Phi</name>
+      <formula><![CDATA[ FT1Phi ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of FT1Phi</description>
+    </object>
+
+    <object>
+      <name> FT1ZenithTheta</name>
+      <formula><![CDATA[ FT1ZenithTheta ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of FT1ZenithTheta </description>
+    </object>
+
+
+
+    <object>
+      <name> FT1EarthAzimuth</name>
+      <formula><![CDATA[ FT1EarthAzimuth ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of FT1EarthAzimuth</description>
+    </object>
+<!--
+    <object>
+      <name> </name>
+      <formula><![CDATA[  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of </description>
+    </object>
+
+     <object>
+      <name> </name>
+      <formula><![CDATA[  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of </description>
+    </object>
+
+    <object>
+      <name> </name>
+      <formula><![CDATA[  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of </description>
+    </object>
+
+    <object>
+      <name> </name>
+      <formula><![CDATA[  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of </description>
+    </object>
+
+-->
+	  
+  </outputList>
+
+  <eventCut><![CDATA[ ]]></eventCut>
+  <timestamp> timestampdouble </timestamp>
+</monitoring>

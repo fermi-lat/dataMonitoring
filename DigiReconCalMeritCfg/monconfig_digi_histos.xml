@@ -1,0 +1,894 @@
+<monitoring>
+
+  <inputList name="top"> 
+
+    <!-- TEST variables -->
+    <object> nACD </object>
+    <object> Gem_elapsed </object>
+    
+    <!-- Time stamp -->
+    <object> timestampdouble </object>
+
+    <!-- Event classification information -->
+    <object> condsummary </object>
+    <object> condarrcallo  </object>
+    <object> condarrcalhi </object>
+    <object> condarrtkr </object>
+    <object> condarrcno </object>
+    <object> condarrroi </object>
+    <object> LivetimeLast</object>
+    <object> ElapsedLast</object>
+    <object> DeadZoneLast</object>
+    <object> DiscardedLast</object>
+    <object> PrescaledLast</object>
+    <object> DeadZoneDelta </object>
+    <object> DiscardedDelta </object>
+    <object> PrescaledDelta </object>
+    <object> DeltaWindowOpen </object>
+    <object> DeltaEventTime </object>
+    <object> TkrTriggerTower </object>
+    <object> CalHiTriggerTower </object> 
+    <object> CalLoTriggerTower </object>
+    <object> CalReadoutRange </object>
+    <object> Range4 </object>
+    <object> TriggerEngine </object>
+    <object> DeltaEventTimeManual </object> 
+    <object> Tick20MHzDeviation </object>
+    <object> CrateNumber </object>
+    <object> Sequence </object>
+    <object> DatagramInfo </object>
+    <object> DeltaEvtID </object>
+    <object> Delta_CCSDSTime_EvtTime </object>
+    <object> NewSecond </object>
+
+
+
+    <!-- Acd Variables -->
+    
+    <object>AcdGemVeto_AcdTile</object>
+    <object>AcdGemROI_Tower </object>
+    <object>AcdGemCNO_GARC  </object>
+    <object>AcdHit_AcdTile  </object>
+    <object>AcdSingleHit </object>
+    <object>AcdPmtA_OverThreshold_AcdTile  </object>
+    <object>AcdPmtB_OverThreshold_AcdTile  </object>
+    <object>AcdVetoA_AcdTile  </object>
+    <object>AcdVetoB_AcdTile  </object>
+    <object>AcdVetoA_AcdTileDigiId </object>
+    <object>AcdVetoB_AcdTileDigiId </object>
+    <object>AcdVetoA_OR_B_AcdTile </object>
+    <object>AcdSingleVeto_AcdTile </object>
+    <object>AcdPha_PmtIdPmtRangeAcdTile</object>
+    <object>AcdHit_GafeGarc </object>
+    <object>AcdVeto_GafeGarc </object>
+        
+    <!-- Tkr Variables -->
+       
+    <object> TkrHitsTowerPlane </object>
+    <object> IsTkrDigi_TowerPlane </object>
+    <object> ToT_con0_TowerPlane  </object>
+    <object> ToT_con1_TowerPlane  </object>
+
+     <!-- Cal Variables -->
+    <object> CalXHit_TowerCalLayerCalColumn </object>
+    <object> CalXHit_TowerCalLayer </object>
+    <object> CalXAdc_TowerCalLayerCalColumnFaceRange </object>
+
+  </inputList>
+
+
+  <outputList name="top">
+  
+    
+
+     <!-- ********************  Event classification information   *********************** -->
+          
+     <object>
+      <name> CondSummaryWord_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[34,-0.5,33.5] </type>
+      <titledesc> Distribution of CondSummary Word values </titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word values. Values up to 33 are being displayed. </description>
+    </object>
+
+      <object>
+      <name> CondSummaryWord_Extended_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[201,-0.5,200.5] </type>
+      <titledesc> Distribution of CondSummary Word values </titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word values. Values up to 250 are being displayed. </description>
+    </object>
+
+
+      <object>
+      <name> CondArrTKRTrigger_TH1 </name>
+      <formula><![CDATA[ condarrtkr ]]></formula>
+      <cut><![CDATA[ condsummary&2 ]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival TKR triggers </titledesc>
+      <axisdesc> [Condition arrival times for TKR triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival times for TKR triggers. Periodic triggers have been taken out. </description>
+    </object>
+
+      <object>
+      <name> CondArrCalLowTrigger_TH1 </name>
+      <formula><![CDATA[ condarrcallo ]]></formula>
+      <cut><![CDATA[ condsummary&4 ]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival Cal-Low triggers </titledesc>
+      <axisdesc> [Condition arrival times for Cal-Low triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival times for Cal-Low triggers. Periodic triggers have been taken out. </description>
+    </object>
+
+      <object>
+      <name> CondArrCalHiTrigger_TH1 </name>
+      <formula><![CDATA[ condarrcalhi ]]></formula>
+      <cut><![CDATA[ condsummary&8 ]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival Cal-Hi triggers </titledesc>
+      <axisdesc> [Condition arrival times for Cal-Hi triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival times for Cal-Hi triggers. Periodic triggers have been taken out. </description>
+    </object>
+
+      <object>
+      <name> CondArrCNOTrigger_TH1 </name>
+      <formula><![CDATA[ condarrcno ]]></formula>
+      <cut><![CDATA[ condsummary&16 ]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival CNO triggers </titledesc>
+      <axisdesc> [Condition arrival times for CNO triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival times for CNO triggers. Periodic triggers have been taken out. </description>
+    </object>
+
+       <object>
+      <name> CondArrROITrigger_TH1 </name>
+      <formula><![CDATA[ condarrroi ]]></formula>
+      <cut><![CDATA[ condsummary&1 ]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival ROI triggers </titledesc>
+      <axisdesc> [Condition arrival times for ROI triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival times for ROI triggers. Periodic triggers have been taken out. </description>
+    </object>
+
+       
+      <object>
+      <name> DiscardedDelta_TH1 </name>
+      <formula><![CDATA[ DiscardedDelta ]]></formula>
+      <cut><![CDATA[ !(condsummary&32) ]]></cut>
+      <type> histogram-1d[31,-0.5,30.5] </type>
+      <titledesc> Number of GEM discarded events between two successive read out events. </titledesc>
+      <axisdesc> [Number Gem discarded events, N] </axisdesc>
+      <description> Number of GEM discarded events between two successive read out events. Periodic triggers have been taken out. </description>
+    </object>
+
+     <object>
+      <name> DeadZoneDelta_TH1 </name>
+      <formula><![CDATA[ DeadZoneDelta ]]></formula>
+      <cut><![CDATA[ !(condsummary&32) ]]></cut>
+      <type> histogram-1d[31,-0.5,30.5] </type>
+      <titledesc> Number of GEM deadzone events between two successive read out events. </titledesc>
+      <axisdesc> [Number Gem deadzone events, N] </axisdesc>
+      <description> Number of GEM deadzone events between two successive read out events. Periodic triggers have been taken out. </description>
+    </object>
+
+      <object>
+      <name> PrescaledDelta_TH1 </name>
+      <formula><![CDATA[ PrescaledDelta ]]></formula>
+      <cut><![CDATA[ !(condsummary&32) ]]></cut>
+      <type> histogram-1d[31,-0.5,30.5] </type>
+      <titledesc> Number of GEM prescaled events between two successive read out events. </titledesc>
+      <axisdesc> [Number Gem prescaled events, N] </axisdesc>
+      <description> Number of GEM prescaled events between two successive read out events. Periodic triggers have been taken out. </description>
+    </object>
+
+
+
+     <object>
+      <name> TkrTrigger_Tower_TH1 </name>
+      <formula><![CDATA[ TkrTriggerTower ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
+      <titledesc> Number of tracker triggers per tower </titledesc>
+      <axisdesc> [Tower number, N] </axisdesc>
+      <description> Number of tracker triggers per tower </description>
+    </object>
+
+
+   
+  
+
+         <object>
+      <name> CalHiTrigger_Tower_TH1 </name>
+      <formula><![CDATA[ CalHiTriggerTower ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
+      <titledesc> Number of Cal HI triggers per tower </titledesc>
+      <axisdesc> [Tower number, N] </axisdesc>
+      <description> Number of Cal HI triggers  per tower </description>
+    </object>
+
+
+
+
+     <object>
+      <name> CalLoTrigger_Tower_TH1 </name>
+      <formula><![CDATA[ CalLoTriggerTower ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
+      <titledesc> Number of Cal LOW triggers per tower </titledesc>
+      <axisdesc> [Tower number, N] </axisdesc>
+      <description> Number of Cal LOW triggers  per tower </description>
+    </object>
+
+
+     
+        <object>
+      <name> TkrTrigger_Tower_TH1 </name>
+      <formula><![CDATA[ TkrTriggerTower ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
+      <titledesc> Number of tracker triggers per tower </titledesc>
+      <axisdesc> [Tower number, N] </axisdesc>
+      <description> Number of tracker triggers per tower </description>
+    </object>
+
+
+   
+  
+
+         <object>
+      <name> CalHiTrigger_Tower_TH1 </name>
+      <formula><![CDATA[ CalHiTriggerTower ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
+      <titledesc> Number of Cal HI triggers per tower </titledesc>
+      <axisdesc> [Tower number, N] </axisdesc>
+      <description> Number of Cal HI triggers  per tower </description>
+    </object>
+
+
+
+
+     <object>
+      <name> CalLoTrigger_Tower_TH1 </name>
+      <formula><![CDATA[ CalLoTriggerTower ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
+      <titledesc> Number of Cal LOW triggers per tower </titledesc>
+      <axisdesc> [Tower number, N] </axisdesc>
+      <description> Number of Cal LOW triggers  per tower </description>
+    </object>
+
+     <object>
+      <name> DeltaWindowOpen_TH1 </name>
+      <formula><![CDATA[ DeltaWindowOpen*0.00005 ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-1d[100,0.,4] </type>
+      <titledesc>  GEM Delta window open time in milliseconds </titledesc>
+      <axisdesc> [DeltaWindowOpen time (ms), N] </axisdesc>
+      <description> GEM Delta window open time in milliseconds. </description>
+    </object>
+
+
+
+     <object>
+      <name> DeltaEventTime_TH1 </name>
+      <formula><![CDATA[ DeltaEventTime*0.00005 ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-1d[100,0.,4] </type>
+      <titledesc>  GEM Delta Event time in milliseconds </titledesc>
+      <axisdesc> [DeltaEvent time (ms), N] </axisdesc>
+      <description> GEM Delta Event time in milliseconds. </description>
+    </object>
+
+
+
+     <object>
+      <name> DeltaWindowOpen_Zoom_TH1 </name>
+      <formula><![CDATA[ DeltaWindowOpen ]]></formula>
+      <cut><![CDATA[ (condsummary&30) && (DeltaWindowOpen<1500)]]></cut>
+      <type> histogram-1d[160,0.,1600] </type>
+      <titledesc>  GEM Delta window open time in 50 ns ticks </titledesc>
+      <axisdesc> [DeltaWindowOpen time (nominally 50 ns ticks), N] </axisdesc>
+      <description> Delta window open time as measured by the GEM in system clock ticks with a cut of 1500 ticks. </description>
+    </object>
+
+
+
+     <object>
+      <name> DeltaEventTime_Zoom_TH1 </name>
+      <formula><![CDATA[ DeltaEventTime ]]></formula>
+      <cut><![CDATA[ (condsummary&30) && (DeltaWindowOpen<1500)]]></cut>
+      <type> histogram-1d[160,0.,1600] </type>
+      <titledesc>  GEM Delta Event time in 50 ns ticks </titledesc>
+      <axisdesc> [DeltaEvent time (50 ns ticks), N] </axisdesc>
+      <description> Delta event time as measured by the GEM in system clock ticks with a cut of 1500 ticks. </description>
+    </object>
+
+      <object>
+      <name> TimeLastDiscardedEvt_TH1 </name>
+      <formula><![CDATA[ DeltaEventTime-DeltaWindowOpen ]]></formula>
+      <cut><![CDATA[ (condsummary&30) && (DeltaWindowOpen<65500) && (DeltaEventTime<65500)]]></cut>
+      <type> histogram-1d[210,-1000.,20000] </type>
+      <titledesc>  Time of last discarded event in 50 ns ticks </titledesc>
+      <axisdesc> [Time of last discarded event (50 ns ticks), N] </axisdesc>
+      <description> Time between the previous read out event and the last discarded event in system clock ticks (nominally 50 ns). Only non-saturated values of the GEM time counters have been used. </description>
+    </object>
+
+       <object>
+      <name> TimeLastDiscardedEvt_Zoom_TH1 </name>
+      <formula><![CDATA[ DeltaEventTime-DeltaWindowOpen ]]></formula>
+      <cut><![CDATA[ (condsummary&30) && (DeltaWindowOpen<65500) && (DeltaEventTime<65500) && (DeltaEventTime-DeltaWindowOpen < 2000)]]></cut>
+      <type> histogram-1d[210,-100.,2000] </type>
+      <titledesc>  Time of last discarded event in 50 ns ticks (ZOOM below 2000 ticks) </titledesc>
+      <axisdesc> [Time of last discarded event (50 ns ticks), N] </axisdesc>
+      <description> Time between the previous read out event and the last discarded event in system clock ticks (nominally 50 ns). Only non-saturated values of the GEM time counters have been used. Only clock ticks up to 2000 are being displayed. </description>
+    </object>
+
+     
+          
+
+      <object>
+      <name> TriggerEngine_TH1 </name>
+      <formula><![CDATA[ TriggerEngine ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
+      <titledesc>  Distribution of Trigger Engines  </titledesc>
+      <axisdesc> [Trigger Engine, N] </axisdesc>
+      <description> Distribution of Trigger Engines. </description>
+    </object>
+
+      
+
+      
+       <object>
+      <name> DeltaEventTimeManual_TH1 </name>
+      <formula><![CDATA[ DeltaEventTimeManual*1000. ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-1d[10100,0.0,10.1] </type>
+      <titledesc> Distribution of Delta Event Time computed manually</titledesc>
+      <axisdesc> [Time (ms), N] </axisdesc>
+      <description>  Distribution of Delta Event Time computed manually using the event time stamp.</description>
+    </object>
+
+
+        <object>
+      <name> DeltaEventTimeManual_Zoom_TH1 </name>
+      <formula><![CDATA[ DeltaEventTimeManual*1000. ]]></formula>
+      <cut><![CDATA[ condsummary&30 && (DeltaEventTimeManual*1000. < 0.4)]]></cut>
+      <type> histogram-1d[4100,0.0,0.41] </type>
+      <titledesc> Distribution of Delta Event Time computed manually  (ZOOM)</titledesc>
+      <axisdesc> [Time (ms), N] </axisdesc>
+      <description>  Distribution of Delta Event Time computed manually using the event time stamp. Only Delta times smaller than 0.4 ms are displayed. </description>
+    </object>
+
+	 <object>
+      <name> Tick20MHzDeviation_TH1 </name>
+      <formula><![CDATA[ Tick20MHzDeviation ]]></formula>
+      <cut><![CDATA[ (NewSecond&1)]]></cut>
+      <type> histogram-1d[200,-1000,1000] </type>
+      <titledesc> Number of ticks between successive 1-PPS</titledesc>
+      <axisdesc> [Clock ticks (nominal 50 ns), N] </axisdesc>
+      <description>  Number of ticks between successive 1-PPS - Deviation from 20 MHz.</description>
+    </object>
+
+
+     <object>
+      <name> Tick20MHzDeviation_Zoom_TH1 </name>
+      <formula><![CDATA[ Tick20MHzDeviation ]]></formula>
+      <cut><![CDATA[ (NewSecond&1) && (Tick20MHzDeviation<200) && (Tick20MHzDeviation> -200)]]></cut>
+      <type> histogram-1d[400,-200,200] </type>
+      <titledesc> Number of ticks between successive 1-PPS (ZOOM)</titledesc>
+      <axisdesc> [Clock ticks (nominal 50 ns), N] </axisdesc>
+      <description>  Number of ticks between successive 1-PPS - Deviation from 20 MHz. Only deviations smaller than 200 ticks are being displayed.</description>
+    </object>
+
+      <object>
+      <name> Tick20MHzDeviation_SuperZoom_TH1 </name>
+      <formula><![CDATA[ Tick20MHzDeviation ]]></formula>
+      <cut><![CDATA[ (NewSecond&1) && (Tick20MHzDeviation<200) && (Tick20MHzDeviation> -200)]]></cut>
+      <type> histogram-1d[40,-20,20] </type>
+      <titledesc> Number of ticks between successive 1-PPS (ZOOM)</titledesc>
+      <axisdesc> [Clock ticks (nominal 50 ns), N] </axisdesc>
+      <description>  Number of ticks between successive 1-PPS - Deviation from 20 MHz. Only deviations smaller than 200 ticks are being displayed.</description>
+    </object>
+
+    
+
+     <object>
+      <name> CrateNumber_TH1 </name>
+      <formula><![CDATA[ CrateNumber ]]></formula>
+      <cut><![CDATA[ condsummary&30]]></cut>
+      <type> histogram-1d[12,-1.5,10.5] </type>
+      <titledesc> Crate Number </titledesc>
+      <axisdesc> [Crate number, N] </axisdesc>
+      <description>  Crate number (Epu0 - Epu1 - Epu2 - Siu0 - Siu1 - Aux); source from which this datagram comes from.  </description>
+    </object>
+
+
+
+     <object>
+      <name> Delta_CCSDSTime_EvtTime_Epu0_TH1 </name>
+      <formula><![CDATA[ Delta_CCSDSTime_EvtTime ]]></formula>
+      <cut><![CDATA[ DatagramInfo[0] == 0 ]]></cut>
+      <type> histogram-1d[100,-5.0,20.0] </type>
+      <titledesc> CCSDS time minus Evt time for EPU0 </titledesc>
+      <axisdesc> [Time difference [seconds], N] </axisdesc>
+      <description>CCSDS Secondary Header time (digi->getCcsds().getUtc()) MINUS the evt time stamp (digi->getTimeStamp()) for events from EPU0.  </description>
+    </object>
+
+      <object>
+      <name> Delta_CCSDSTime_EvtTime_Epu1_TH1 </name>
+      <formula><![CDATA[ Delta_CCSDSTime_EvtTime ]]></formula>
+      <cut><![CDATA[ DatagramInfo[0] == 1]]></cut>
+      <type> histogram-1d[100,-5.0,20.0] </type>
+      <titledesc> CCSDS time minus Evt time for EPU1 </titledesc>
+      <axisdesc> [Time difference [seconds], N] </axisdesc>
+      <description>CCSDS Secondary Header time (digi->getCcsds().getUtc()) MINUS the evt time stamp (digi->getTimeStamp()) for events from EPU1.  </description>
+    </object>
+
+
+       
+     <object>
+      <name> DeltaEvtID_Epu0_TH1 </name>
+      <formula><![CDATA[ DeltaEvtID ]]></formula>
+      <cut><![CDATA[DatagramInfo[0] == 0]]></cut>
+      <type> histogram-1d[105,-4.5,100.5] </type>
+      <titledesc> Delta Evt ID for EPU0 </titledesc>
+      <axisdesc> [Delta Evt ID, N] </axisdesc>
+      <description> Delta Evt ID (digi->getMetaEvent().scalers().sequence()) between consecutive events for EPU0.</description>
+    </object>
+
+      <object>
+      <name> DeltaEvtID_Epu1_TH1 </name>
+      <formula><![CDATA[ DeltaEvtID ]]></formula>
+      <cut><![CDATA[ DatagramInfo[0] == 1]]></cut>
+      <type> histogram-1d[105,-4.5,100.5] </type>
+      <titledesc> Delta Evt ID for EPU1 </titledesc>
+      <axisdesc> [Delta Evt ID, N]  </axisdesc>
+      <description>Delta Evt ID (digi->getMetaEvent().scalers().sequence()) between consecutive events for EPU1.  </description>
+    </object>
+
+
+
+      <!-- ********************  Detector information   *********************** -->
+
+
+      <!--  ______________  ACD  _______________ -->
+
+     
+      <object>
+      <name> Acd_GemVeto_AcdTile_TH1 </name>
+      <formula><![CDATA[ AcdGemVeto_AcdTile ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
+      <titledesc> Number of Acd Gem vetos by tile. Expect to see spikes at 15,31,47,63. These are the large tiles at the bottom of the sides of the ACD. </titledesc>
+      <axisdesc> [Tile number, N] </axisdesc>
+      <description> Number of Acd Gem vetos by tile. Expect to see spikes at 15,31,47,63. These are the large tiles at the bottom of the sides of the ACD. </description>
+    </object>
+
+
+
+
+
+           <object>
+      <name> AcdGemROI_Tower_TH1 </name>
+      <formula><![CDATA[ AcdGemROI_Tower ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[16,-0.5,15.5,0] </type>
+      <titledesc> Number of Acd ROI by tower. This bit is set if any of the tile in the ROI fired a veto. This bit is independent of if the Tower bit is set. </titledesc>
+      <axisdesc> [Tower number, N] </axisdesc>
+      <description> Number of Acd ROI by tower. This bit is set if any of the tile in the ROI fired a veto. This bit is independent of if the Tower bit is set. </description>
+    </object>
+
+      
+
+
+
+     <object>
+      <name> AcdGemCNO_GARC_TH1 </name>
+      <formula><![CDATA[ AcdGemCNO_GARC ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[12,-0.5,11.5,0] </type>
+      <titledesc>  Number of Acd CNO by board. This bit is the OR of all the CNO signals on a single board. Because of the tile to board mapping, a factor two variation between boards is normal. </titledesc>
+      <axisdesc> [Electronic Board number, N] </axisdesc>
+      <description> Number of Acd Cno by board. This bit is the OR of all the CNO signals on a single board. Because of the tile to board mapping, a factor two variation between boards is normal. </description>
+    </object>
+
+      
+
+
+        <object>
+      <name> AcdDigis_TH1 </name>
+      <formula><![CDATA[ RFun::loopoveracdtilesbool(AcdHit_AcdTile) ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-1d[111,-0.5,110] </type>
+      <titledesc> Distribution of ACD Digis per event</titledesc>
+      <axisdesc> [Number of ACD Digis, N] </axisdesc>
+      <description> Distribution of ACD digis per event. This is just the total number of tiles that have at least one PMT above the zero suppression threshold. </description>
+    </object>
+
+
+	<object>
+      <name> AcdHitMap_TH1 </name>
+      <formula><![CDATA[ AcdHit_AcdTile ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
+      <titledesc>  ACD Hit Map</titledesc>
+      <axisdesc> [ACD GEM ID, N] </axisdesc>
+      <description> ACD Hit map: distribution of ACD GEM IDs for all Digis (hits)</description>
+    </object>
+ 
+    <object>
+      <name> AcdSingleHitMap_TH1 </name>
+      <formula><![CDATA[ AcdSingleHit ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[128,-0.5,127.5] </type>
+      <titledesc>  ACD Single Hit Map</titledesc>
+      <axisdesc> [ACD GEM ID, N] </axisdesc>
+      <description> ACD single hit map: distribution of ACD GEM IDs for all single hits </description>
+    </object>
+
+
+	
+
+     <object>
+      <name> AcdVetoMap_TH1 </name>
+      <formula><![CDATA[ AcdVetoA_OR_B_AcdTile ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
+      <titledesc>  ACD Veto Map</titledesc>
+      <axisdesc> [ACD GEM ID, N] </axisdesc>
+      <description> ACD Veto Map: distribution of ACD Vetos (produced by one or by the two PMTs). </description>
+    </object>
+
+     <object>
+      <name> AcdVetoAMap_TH1 </name>
+      <formula><![CDATA[ AcdVetoA_AcdTile ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
+      <titledesc>  ACD Veto Map from PMTA</titledesc>
+      <axisdesc> [ACD GEM ID, N] </axisdesc>
+      <description> ACD Veto Map from PMTA: distribution of ACD Vetos produced by PMT A. </description>
+    </object>
+
+     <object>
+      <name> AcdVetoBMap_TH1 </name>
+      <formula><![CDATA[ AcdVetoB_AcdTile ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
+      <titledesc>  ACD Veto Map from PMTB</titledesc>
+      <axisdesc> [ACD GEM ID, N] </axisdesc>
+      <description> ACD Veto Map from PMTB: distribution of ACD Vetos produced by PMT B. </description>
+    </object>
+   
+     <object>
+      <name> AcdVetoA_DigiIdMap_TH1 </name>
+      <formula><![CDATA[ AcdVetoA_AcdTileDigiId ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[604,-0.5,603.5,0] </type>
+      <titledesc>  ACD Veto Map from PMTA (Digi ID)</titledesc>
+      <axisdesc> [ACD DIGI ID, N] </axisdesc>
+      <description> ACD Veto Map from PMTA using Digi ID: distribution of ACD Vetos produced by PMT A using the tile number provided by acdDigi->getId().getId(). </description>
+    </object>
+
+     <object>
+      <name> AcdVetoB_DigiIdMap_TH1 </name>
+      <formula><![CDATA[ AcdVetoB_AcdTileDigiId ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[604,-0.5,603.5,0] </type>
+      <titledesc>  ACD Veto Map from PMTB (Digi ID)</titledesc>
+      <axisdesc> [ACD DIGI ID, N] </axisdesc>
+      <description> ACD Veto Map from PMTB using Digi ID: distribution of ACD Vetos produced by PMT B using the tile number provided by acdDigi->getId().getId(). </description>
+    </object>
+
+
+     <object>
+      <name> AcdVetoA_And_B_DigiIdMap_TH1 </name>
+      <formula><![CDATA[ foreachacdtiledigiid: ((AcdVetoA_AcdTileDigiId[acdtiledigiid] >0) && (AcdVetoB_AcdTileDigiId[acdtiledigiid] >0)) ? 1.0 : 0.0  ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[604,-0.5,603.5,0] </type>
+      <titledesc>  ACD Veto Map for PMTA AND PMTB (Digi ID)</titledesc>
+      <axisdesc> [ACD DIGI ID, N] </axisdesc>
+      <description> Distribution of ACD Vetos produced by PMT A And PMT B, using the tile number provided by acdDigi->getId().getId(). </description>
+    </object>
+
+
+    <object>
+      <name> AcdVetoA_Or_B_DigiIdMap_TH1 </name>
+      <formula><![CDATA[ foreachacdtiledigiid: ((AcdVetoA_AcdTileDigiId[acdtiledigiid] >0) || (AcdVetoB_AcdTileDigiId[acdtiledigiid] >0)) ? 1.0 : 0.0  ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[604,-0.5,603.5,0] </type>
+      <titledesc>  ACD Veto Map for PMTA OR PMTB (Digi ID)</titledesc>
+      <axisdesc> [ACD DIGI ID, N] </axisdesc>
+      <description> Distribution of ACD Vetos produced by PMT A OR PMT B, using the tile number provided by acdDigi->getId().getId(). </description>
+    </object>
+
+
+       <object>
+      <name> AcdVetoA_And_NotB_DigiIdMap_TH1 </name>
+      <formula><![CDATA[ foreachacdtiledigiid: ((AcdVetoA_AcdTileDigiId[acdtiledigiid] >0) && (AcdVetoB_AcdTileDigiId[acdtiledigiid] ==0)) ? 1.0 : 0.0  ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[604,-0.5,603.5,0] </type>
+      <titledesc>  ACD Veto Map for PMTA AND NOT PMTB (Digi ID)</titledesc>
+      <axisdesc> [ACD DIGI ID, N] </axisdesc>
+      <description> Distribution of ACD Vetos produced by PMT A And NOT PMT B, using the tile number provided by acdDigi->getId().getId(). </description>
+    </object>
+
+       <object>
+      <name> AcdVetoB_And_NotA_DigiIdMap_TH1 </name>
+      <formula><![CDATA[ foreachacdtiledigiid: ((AcdVetoA_AcdTileDigiId[acdtiledigiid] ==0) && (AcdVetoB_AcdTileDigiId[acdtiledigiid] >0)) ? 1.0 : 0.0  ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[604,-0.5,603.5,0] </type>
+      <titledesc>  ACD Veto Map for PMTB AND NOT PMTB (Digi ID)</titledesc>
+      <axisdesc> [ACD DIGI ID, N] </axisdesc>
+      <description> Distribution of ACD Vetos produced by PMT B And NOT PMT A, using the tile number provided by acdDigi->getId().getId(). </description>
+    </object>
+
+
+      <object>
+      <name> AcdSingleVetoMap_TH1 </name>
+      <formula><![CDATA[ AcdSingleVeto_AcdTile ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
+      <titledesc>  ACD Single Veto Map</titledesc>
+      <axisdesc> [ACD GEM ID, N] </axisdesc>
+      <description> ACD Single Veto Map: distribution of ACD Vetos (produced by one and only one PMT). </description>
+    </object>
+
+
+       <object>
+      <name> AcdPhaMap_PMTA_LowPMTRange_TH2 </name>
+      <formula><![CDATA[ AcdPha_PmtIdPmtRangeAcdTile[0][0] ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-index-2d[128,-0.5,127.5, 4101, -1.5,4099.5,-1] </type>
+      <titledesc>  ACD Pha Map PMT A (Low Range)</titledesc>
+      <axisdesc> [ACD GEM ID, Pha] </axisdesc>
+      <description> ACD Pha Map for PMT A. Only considered entries where the Low PMT range was used.</description>
+    </object>
+
+        <object>
+      <name> AcdPhaMap_PMTB_LowPMTRange_TH2 </name>
+      <formula><![CDATA[ AcdPha_PmtIdPmtRangeAcdTile[1][0] ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-index-2d[128,-0.5,127.5, 4101, -1.5,4099.5,-1] </type>
+      <titledesc>  ACD Pha Map PMT B (Low Range)</titledesc>
+      <axisdesc> [ACD GEM ID, Pha] </axisdesc>
+      <description> ACD Pha Map for PMT B. Only considered entries where the Low PMT range was used.</description>
+    </object>
+
+	  <object>
+      <name> AcdPhaMap_PMTA_HighPMTRange_TH2 </name>
+      <formula><![CDATA[ AcdPha_PmtIdPmtRangeAcdTile[0][1] ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-index-2d[128,-0.5,127.5, 4101, -1.5,4099.5,-1] </type>
+      <titledesc>  ACD Pha Map PMT A (High Range)</titledesc>
+      <axisdesc> [ACD GEM ID, Pha] </axisdesc>
+      <description> ACD Pha Map for PMT A. Only considered entries where the High PMT range was used.</description>
+    </object>
+
+        <object>
+      <name> AcdPhaMap_PMTB_HighPMTRange_TH2 </name>
+      <formula><![CDATA[ AcdPha_PmtIdPmtRangeAcdTile[1][1] ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-index-2d[128,-0.5,127.5, 4101, -1.5,4099.5,-1] </type>
+      <titledesc>  ACD Pha Map PMT B (High Range)</titledesc>
+      <axisdesc> [ACD GEM ID, Pha] </axisdesc>
+      <description> ACD Pha Map for PMT B. Only considered entries where the High PMT range was used.</description>
+    </object>
+
+
+    <object>
+      <name> AcdHitMap_GafeGarc_TH2 </name>
+      <formula><![CDATA[ AcdHit_GafeGarc ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-2d[18,-0.5,17.5, 12, -0.5,11.5,0] </type>
+      <titledesc>  ACD Hit Map Garc:Gafe </titledesc>
+      <axisdesc> [GAFE, GARC] </axisdesc>
+      <description> ACD Hit Map Garc:Gafe. </description>
+    </object>
+
+
+      <object>
+      <name> AcdVetoMap_GafeGarc_TH2 </name>
+      <formula><![CDATA[ AcdVeto_GafeGarc ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-2d[18,-0.5,17.5, 12, -0.5,11.5,0] </type>
+      <titledesc>  ACD Veto Map Garc:Gafe </titledesc>
+      <axisdesc> [GAFE, GARC] </axisdesc>
+      <description> ACD Veto Map Garc:Gafe. </description>
+    </object>
+
+
+      <!--  ______________  Tracker _______________ -->
+
+   
+       <object>
+      <name> TkrHits_TH1 </name>
+      <formula><![CDATA[ RFun::loopovertowerANDtkrplanes(TkrHitsTowerPlane) ]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[300,0.0,3000] </type>
+      <titledesc> Distribution of strip hits per event  (all towers included). </titledesc>
+      <axisdesc> [Number of strip hits, N] </axisdesc>
+      <description> Distribution of the number of strip hits per event (all towers included).  </description>
+    </object>
+
+
+       
+      <object>
+      <name> TkrHits_TH1_Tower[16] </name>
+      <formula><![CDATA[ foreachtower: RFun::loopovertkrplanes(TkrHitsTowerPlane[tower]) ]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[200,0,1000] </type>
+      <!--<titledesc> Number of strip hits in a tower </titledesc>-->
+      <axisdesc> [Number of strip hits, N] </axisdesc>
+      <description> Distribution of the number of strip hits per tower.  </description>
+    </object>
+
+
+
+        
+     <object>
+      <name> TkrPlanesHit_TH1_Tower[16] </name>
+      <formula><![CDATA[ foreachtower: RFun::getplaneshit(TkrHitsTowerPlane[tower]) ]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[38,-0.5,37.5] </type>
+      <!--<titledesc> Number of planes hit in a tower </titledesc>-->
+      <axisdesc> [Number of planes hit, N] </axisdesc>
+      <description> Distribution of the number of planes hit in a tower.  </description>
+    </object>
+
+
+         <object>
+      <name> TkrHitsCounter_TowerPlane_TH2 </name>
+      <formula><![CDATA[ TkrHitsTowerPlane ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-2d[16,-0.5,15.5, 36, -0.5,35.5,0] </type>
+      <titledesc>  Number of strip hits vs Tower and Tkr plane. </titledesc>
+      <axisdesc> [Tower number, Tracker plane, N] </axisdesc>
+      <description> Number of strip hits vs Tower and Tkr plane. </description>
+    </object>
+
+     
+      <object>
+      <name> ZeroTkrHitsCounter_TowerPlane_TH2 </name>
+      <formula><![CDATA[ foreachtower: foreachtkrplane: (TkrHitsTowerPlane[tower][tkrplane] ==0)]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-2d[16,-0.5,15.5, 36, -0.5,35.5,0] </type>
+      <titledesc>  Counter for ZERO strip hits vs Tower and Tracker plane. </titledesc>
+      <axisdesc> [Tower number, Tracker plane, N] </axisdesc>
+      <description> Counter for ZERO strip hits vs Tower and Tracker plane.  </description>
+    </object>
+
+
+
+      
+      <object>
+      <name> HitsInEmptyTower_Tower_TH1 </name>
+      <formula><![CDATA[ runonce: RFun::getemptytowers(TkrTriggerTower)# foreachtower: RFun::gethitsinemptytower(runonceformula[tower],TkrHitsTowerPlane[tower])  ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[16,-0.5,15.5,0] </type>
+      <titledesc>  Number of hits when the tower was empty vs tower number  </titledesc>
+      <axisdesc> [Tower number, N] </axisdesc>
+      <description> Number of hits when the tower was empty vs tower number </description>
+    </object>
+
+
+
+       <object>
+      <name> TkrDigiCounter_TowerPlane_TH2 </name>
+      <formula><![CDATA[ foreachtower: foreachtkrplane : IsTkrDigi_TowerPlane[tower][tkrplane] > 0.5]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-2d[16,-0.5,15.5, 36, -0.5,35.5,0] </type>
+      <titledesc>  Number of TkrDigi objects in each vs Tower and Tracker plane.  </titledesc>
+      <axisdesc> [Tower number, Tracker plane, N] </axisdesc>
+      <description> Number of TkrDigi objects in each vs Tower and Tracker plane.  </description>
+    </object>
+
+
+         
+      <object>
+      <name> TkrDigiCounter_Tower_TH1 </name>
+      <formula><![CDATA[ foreachtower: RFun::loopovertkrplanes(IsTkrDigi_TowerPlane[tower]) ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-1d[16,-0.5,15.5,0] </type>
+      <titledesc>  Number of TkrDigi objects vs tower number  </titledesc>
+      <axisdesc> [Tower number, N] </axisdesc>
+      <description> Number of TkrDigi objects vs tower number. </description>
+    </object>
+
+         
+     <object>
+      <name> TkrDigis_TH1 </name>
+      <formula><![CDATA[ RFun::loopovertowerANDtkrplanes(IsTkrDigi_TowerPlane)]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[201,-0.5,200.5,0] </type>
+      <titledesc> Distribution of tracker Digis per event  (all towers included). </titledesc>
+      <axisdesc> [Number of TkrDigis, N] </axisdesc>
+      <description> Distribution of the number of TkrDigis per event (all towers included).  </description>
+    </object>
+
+
+     
+     <object>
+      <name> ToT_0_WhenTkrHitsExist_TowerPlane_TH2 </name>
+      <formula><![CDATA[ foreachtower: foreachtkrplane: (IsTkrDigi_TowerPlane[tower][tkrplane]>0.5) && (ToT_con0_TowerPlane[tower][tkrplane]==0) && (ToT_con1_TowerPlane[tower][tkrplane]==0) && (TkrHitsTowerPlane[tower][tkrplane]>0) ]]></formula>
+      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <type> histogram-vecdim-2d[16,-0.5,15.5, 36, -0.5,35.5,0] </type>
+      <titledesc>  Number of times that, existing TkrDigi and having at least one hit, ToT==0 in both controller 0 and controller 1 in [tower][trkplane]  </titledesc>
+      <axisdesc> [Tower number, Tracker plane, N] </axisdesc>
+      <description> Number of times that, existing TkrDigi and having at least one hit, ToT==0 in both controller 0 and controller 1 in [tower][trkplane]  </description>
+    </object>
+
+
+
+
+     <!-- Calorimeter -->
+
+     <object>
+      <name> CalXHit_NHit_Counter_TowerCalLayer_TH2 </name>
+      <formula><![CDATA[ CalXHit_TowerCalLayer ]]></formula>
+      <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
+      <type> histogram-vecdim-2d[16,-0.5,15.5, 8, -0.5,7.5, 0] </type>
+      <titledesc>  Number of hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account.   </titledesc>
+      <axisdesc> [Tower number, Cal-Layer, N] </axisdesc>
+      <description> Number of hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account.  </description>
+    </object>
+
+      <object>
+      <name> ZeroCalXHit_NHit_Counter_TowerCalLayer_TH2 </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: (CalXHit_TowerCalLayer[tower][callayer]<0.5) ]]></formula>
+      <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
+      <type> histogram-vecdim-2d[16,-0.5,15.5, 8, -0.5,7.5,0] </type>
+      <titledesc>  Number of times there is ZERO hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account.   </titledesc>
+      <axisdesc> [Tower number, Cal-layer, N] </axisdesc>
+      <description> Number of times there is ZERO hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account.  </description>
+    </object>
+
+          
+     <object>
+      <name> CalX_NHit_TH1_Tower[16] </name>
+      <formula><![CDATA[ foreachtower: RFun::loopovercallayers(CalXHit_TowerCalLayer[tower])]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[151,-0.5,150.5,0] </type>
+     <!-- <titledesc> Distribution of Cal crystals hits per event in this tower </titledesc>-->
+      <axisdesc> [Number of CalX_Hits in this tower, N] </axisdesc>
+      <description> Distribution of  Cal crystals hits per event in this tower.  </description>
+    </object>
+
+
+
+     
+      <object>
+      <name> CalX_Total_NHit_TH1 </name>
+      <formula><![CDATA[ RFun::loopovertowerANDcallayers(CalXHit_TowerCalLayer)]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[201,-0.5,200.5,0] </type>
+      <titledesc> Distribution of Cal crystals hits per event (all towers included). </titledesc>
+      <axisdesc> [Number of CalX_Hits, N] </axisdesc>
+      <description> Distribution of  Cal crystals hits  per event (all towers included).  </description>
+    </object>
+
+
+    
+      
+       <object>
+      <name> CalXReadoutRange_TH2 </name>
+      <formula><![CDATA[ CalReadoutRange ]]></formula>
+      <cut><![CDATA[!(condsummary&32)]]></cut>
+      <type> histogram-index-2d[3072,-0.5,3071.5, 5, -0.5,4.5,-1] </type>
+      <titledesc> Cal readout range used vs cal channel. Periodic triggers are NOT taken into account.   </titledesc>
+      <axisdesc> [Cal channel, Range, N] </axisdesc>
+      <description> Cal readout range used vs cal channel. Periodic triggers are NOT taken into account.  </description>
+    </object>
+
+
+  </outputList>
+
+  <eventCut><![CDATA[ ]]></eventCut>
+  <timestamp> timestampdouble </timestamp>
+</monitoring>
