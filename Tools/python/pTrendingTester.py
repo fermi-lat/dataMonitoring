@@ -5,6 +5,7 @@ logging.basicConfig(level = logging.DEBUG)
 
 import os
 import sys
+import time
 
 from pDataBaseBugger import *
 from pRootFileBugger import *
@@ -18,6 +19,13 @@ class pTrendingTester:
         logging.info('Testing run %d...' % runId)
         self.DataBaseBugger = pTrendingDataBaseBugger(runId)
         self.RootFileBugger = pRootFileBugger(rootFilePath)
+        self.Prefix = self.RootFileBugger.Prefix
+        logFileName = '%s.log' % time.asctime().replace(' ', '_')
+        logFilePath = os.path.join('log', logFileName)
+        self.LogFile = file(logFilePath, 'w')
+
+    def __del__(self):
+        self.LogFile.close()
 
     def __getRunId(self, filePath):
         runString = ''
@@ -32,8 +40,9 @@ class pTrendingTester:
 
     def run(self, variable, selection):
         errorCode = False
-        logging.info('Running on variable %s, selection %s...' %\
-                         (variable, selection))
+        message = 'Running on "%s", selection: "%s"...' % (variable, selection)
+        logging.info(message)
+        self.LogFile.writelines('%s\n' % message)
         dbDataPoints = self.DataBaseBugger.getDataPoints(variable, selection)
         rootDataPoints = self.RootFileBugger.getDataPoints(variable, selection)
         dbNumPoints = len(dbDataPoints)
@@ -51,21 +60,22 @@ class pTrendingTester:
                 print dbPoint, rootPoint, difference
                 errorCode = True
         if errorCode:
-            logging.error('*** Found errors! ***')
+            message = '*** Found errors! ***'
+            logging.error(message)
+            self.LogFile.writelines('%s\n' % message)
         else:
-            logging.info('Got %d points. All ok.' % numPoints)
+            message = 'Got %d points. All ok.' % numPoints
+            logging.info(message)
+            self.LogFile.writelines('%s\n' % message)
 
     def runRandom(self, numTests = 10):
         for i in range(numTests):
             variable = self.RootFileBugger.getRandomBranchName()
-            variable = 'Mean_AcdPha_PmtB_AcdTile'
             selection = self.RootFileBugger.getRandomSelection(variable)
-            self.run(variable, selection)
+            self.run('%s%s' % (self.Prefix, variable), selection)
 
 
 if __name__ == '__main__':
-    #runId = 258292096
-    #rootFilePath = '../trending/chuncks/r0258292096_digiTrend.root'
     from optparse import OptionParser
     parser = OptionParser(usage = 'usage: %prog [options] rootFilePath')
     (opts, args) = parser.parse_args()
@@ -74,5 +84,4 @@ if __name__ == '__main__':
         parser.error('Exactly one argument required.')
     rootFilePath = args[0]
     tester = pTrendingTester(rootFilePath)
-    #tester.runRandom()
-    tester.run('Digi_Trend_Mean_AcdPha_PmtB_AcdTile', 'acdtile=23')
+    tester.runRandom()

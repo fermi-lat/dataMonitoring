@@ -36,12 +36,24 @@ SELECTION_DICT = {'Tower':\
                   'TriggerEngine':\
                       'triggerengine=%d'
                   }
-
+LABEL_DICT = {'fastMon': 'FastMon_Trend_',
+              'digi'   : 'Digi_Trend_'   ,
+              'recon'  : 'Recon_Trend_'
+              }
 
 
 class pRootFileBugger:
     
     def __init__(self, filePath):
+        self.Type = None
+        for (key, value) in LABEL_DICT.items():
+            if key in filePath:
+                self.Type = key
+                self.Prefix = value
+        if self.Type is None:
+            logging.error('The filename must contain "%s", "%s" or "%s".' %\
+                              tuple(LABEL_DICT.keys()))
+            sys.exit('Abort.')
         logging.debug('Opening %s...' % filePath)
         self.RootFile = ROOT.TFile(filePath)
         if self.RootFile.IsZombie():
@@ -87,9 +99,7 @@ class pRootFileBugger:
         return self.getSelection(branchName, self.getRandomIndex(branchName))
 
     def getDataPoints(self, variable, selection):
-        variable = variable.replace('FastMon_Trend_', '')
-        variable = variable.replace('Digi_Trend_', '')
-        variable = variable.replace('Recon_Trend_', '')
+        variable = variable.replace(self.Prefix, '')
         dataPoints = []
         indexString = ''
         if selection != '':
