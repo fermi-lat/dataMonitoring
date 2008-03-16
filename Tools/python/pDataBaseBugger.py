@@ -82,6 +82,6 @@ class pTrendingDataBaseBugger(pUrlReader):
 
 
 if __name__ == '__main__':
-    bugger = pTrendingDataBaseBugger(258292096)
+    bugger = pTrendingDataBaseBugger(258309760)
     print bugger.getDataPoints('Digi_Trend_Mean_AcdPha_PmtB_AcdTile',\
                                    'acdtile=23')
