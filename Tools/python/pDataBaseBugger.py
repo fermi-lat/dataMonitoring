@@ -49,6 +49,7 @@ class pTrendingDataBaseBugger(pUrlReader):
                  self.getVariableString(variable),\
                  self.getSelectionString(selection),\
                  self.getRunIdString())
+        dataUrl = dataUrl.replace('&&', '&')
         if allPoints:
             dataUrl += '&%s' % self.getAllPointsOptionString()
         return dataUrl

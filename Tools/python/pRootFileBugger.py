@@ -1,6 +1,7 @@
 
 import ROOT
 import sys
+import random
 import logging
 logging.basicConfig(level = logging.DEBUG)
 
@@ -8,6 +9,34 @@ from pDataPoint import pDataPoint
 
 TREE_NAME = 'Time'
 MET_OFFSET = 978307200000
+SELECTION_DICT = {'Tower':\
+                      'tower=%d',
+                  'TowerCalLayer':\
+                      'tower=%d,callayer=%d',
+                  'TowerCalLayerCalColumn':\
+                      'tower=%d,callayer=%d,calcolumn%d',
+                  'TowerCalLayerCalColumnCalXFace':\
+                      'tower=%d,callayer=%d,calcolumn=%d,calxface=%d',
+                  'TowerCalLayerCalColumnCalXFaceRange':\
+                      'tower=%d,callayer=%d,calcolumn=%d,calxface=%d,range=%d',
+                  'TowerPlane':\
+                      'tower=%d,plane=%d',
+                  'TowerPlaneGTFE':\
+                      'tower=%d,plane=%d,gtfe=%d',
+                  'AcdTile':\
+                      'acdtile=%d',
+                  'GARC':\
+                      'garc=%d',
+                  'XYZ':\
+                      'xyz=%d',
+                  'ReconNumTracks':\
+                      'reconnumtracks=%d',
+                  'GammaFilterBit':\
+                      'gammafilterbit=%d',
+                  'TriggerEngine':\
+                      'triggerengine=%d'
+                  }
+
 
 
 class pRootFileBugger:
@@ -18,7 +47,44 @@ class pRootFileBugger:
         if self.RootFile.IsZombie():
             sys.exit('Could not open %s.' % filePath)
         logging.debug('Retrieving the ROOT tree...')
-        self.RootTree = self.RootFile.Get(TREE_NAME)          
+        self.RootTree = self.RootFile.Get(TREE_NAME)
+        self.__fillBranchesDict()
+
+    def __fillBranchesDict(self):
+        self.BranchesDict = {}
+        for i in range(self.RootTree.GetListOfBranches().LastIndex() + 1):
+            branchName = self.RootTree.GetListOfBranches().At(i).GetName()
+            self.BranchesDict[branchName] = self.getBranchShape(branchName)
+
+    def getBranchShape(self, branchName):
+        title = self.RootTree.GetBranch(branchName).GetTitle()
+        shape = title.replace(branchName, '').split('/')[0]
+        if shape == '':
+            shape = (1,)
+        else:
+            shape = shape.replace('][', ',').replace('[', '(').replace(']', ')')
+            if ',' not in shape:
+                shape = shape.replace(')', ',)')
+            shape = eval(shape)
+        return shape
+
+    def getRandomBranchName(self):
+        return random.choice(self.BranchesDict.keys())
+
+    def getRandomIndex(self, branchName):
+        index = []
+        for i in self.getBranchShape(branchName):
+            index.append(random.choice(range(i)))
+        return tuple(index)
+
+    def getSelection(self, branchName, index):
+        for (key, value) in SELECTION_DICT.items():
+            if key in branchName:
+                return value % index
+        return ''
+
+    def getRandomSelection(self, branchName):
+        return self.getSelection(branchName, self.getRandomIndex(branchName))
 
     def getDataPoints(self, variable, selection):
         variable = variable.replace('FastMon_Trend_', '')
