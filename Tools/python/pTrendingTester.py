@@ -21,7 +21,7 @@ class pTrendingTester:
         self.RootFileBugger = pRootFileBugger(rootFilePath)
         self.Prefix = self.RootFileBugger.Prefix
         logFileName = '%s.log' % time.asctime().replace(' ', '_')
-        logFilePath = os.path.join('log', logFileName)
+        logFilePath = os.path.join('..', 'log', logFileName)
         self.LogFile = file(logFilePath, 'w')
 
     def __del__(self):
