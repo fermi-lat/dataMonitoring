@@ -25,7 +25,10 @@ class pTrendingTester:
         self.LogFile = file(logFilePath, 'w')
 
     def __del__(self):
-        self.LogFile.close()
+        try:
+            self.LogFile.close()
+        except:
+            pass
 
     def __getRunId(self, filePath):
         runString = ''
