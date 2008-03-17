@@ -43,12 +43,15 @@ class pTrendingDataBaseBugger(pUrlReader):
     def getAllPointsOptionString(self):
         return 'forceSmallest=true&maxBins=-1'
 
-    def getDataUrl(self, variable, selection, allPoints = True):
-        dataUrl = '%sgetData?%s&%s&%s' %\
+    def getDataSourceMode(self, mode):
+        return 'dataSourceMode=%s' % mode
+
+    def getDataUrl(self, variable, selection, allPoints = True, mode = 'Prod'):
+        dataUrl = '%sgetData?%s&%s&%s&%s' %\
             (DB_BASE_URL,\
                  self.getVariableString(variable),\
                  self.getSelectionString(selection),\
-                 self.getRunIdString())
+                 self.getRunIdString(), self.getDataSourceMode(mode))
         dataUrl = dataUrl.replace('&&', '&')
         if allPoints:
             dataUrl += '&%s' % self.getAllPointsOptionString()
