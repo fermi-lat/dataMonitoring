@@ -768,7 +768,7 @@
 
       
       <object>
-      <name> HitsInEmptyTower_Tower_TH1 </name>
+      <name> TkrHitsInEmptyTower_Tower_TH1 </name>
       <formula><![CDATA[ runonce: RFun::getemptytowers(TkrTriggerTower)# foreachtower: RFun::gethitsinemptytower(runonceformula[tower],TkrHitsTowerPlane[tower])  ]]></formula>
       <cut><![CDATA[ condsummary&30 ]]></cut>
       <type> histogram-vecdim-1d[16,-0.5,15.5,0] </type>
@@ -822,6 +822,27 @@
       <titledesc>  Number of times that, existing TkrDigi and having at least one hit, ToT==0 in both controller 0 and controller 1 in [tower][trkplane]  </titledesc>
       <axisdesc> [Tower number, Tracker plane, N] </axisdesc>
       <description> Number of times that, existing TkrDigi and having at least one hit, ToT==0 in both controller 0 and controller 1 in [tower][trkplane]  </description>
+    </object>
+
+
+     <object>
+      <name> ToT_con0_TH1_TowerPlane[16][36] </name>
+      <formula><![CDATA[ ToT_con0_TowerPlane ]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[263,-1.5,261.5,0] </type>
+      <titledesc> ToT for controller 0. </titledesc>
+      <axisdesc> [ToT value, N] </axisdesc>
+      <description> Distribution of ToT values for controller 0 from the tower,tkrplane defined by the suffix (range [0,15] and [0,35]). </description>
+    </object>
+
+     <object>
+      <name> ToT_con1_TH1_TowerPlane[16][36] </name>
+      <formula><![CDATA[ ToT_con1_TowerPlane ]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[263,-1.5,261.5,0] </type>
+      <titledesc> ToT for controller 1. </titledesc>
+      <axisdesc> [ToT value, N] </axisdesc>
+      <description> Distribution of ToT values for controller 1 from the tower,tkrplane defined by the suffix (range [0,15] and [0,35]). </description>
     </object>
 
 

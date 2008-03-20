@@ -106,10 +106,10 @@
       <name> ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile[128] </name>
       <formula><![CDATA[foreachacdtile: (AcdVetoA_AcdTile[acdtile] >0 && AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0][acdtile]<1.1)? AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0][acdtile] : -1 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
-      <type> histogram-1d[110,0.0,1.10,-1] </type>
+      <type> histogram-1d[330,0.0,3.30,-1] </type>
       <titledesc>  Angle corrected Mip values for PMT A for extrapolated acd tile (zoom) </titledesc>
       <axisdesc> [Mip value (angle corrected), N] </axisdesc>
-      <description> Distribution of Mip values corrected for incoming angle for PMT A from the extrapolated acd tile index in the name suffix (range [0,127]). Distribution is truncated at 1.1 Mip. Only events with Veto from PMT A from this tile are considered.  </description>
+      <description> Distribution of Mip values corrected for incoming angle for PMT A from the extrapolated acd tile index in the name suffix (range [0,127]). Distribution is truncated at 3.3 Mip. The peak should be located at about 1 Mip. Only events with Veto from PMT A from this tile are considered.  </description>
     </object>
 
 
@@ -117,10 +117,10 @@
       <name> ReconAcdPhaMipsCorrectedAngle_PMTB_Zoom_TH1_AcdTile[128] </name>
       <formula><![CDATA[foreachacdtile: (AcdVetoB_AcdTile[acdtile] >0 && AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1][acdtile]<1.1)? AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1][acdtile] : -1 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
-      <type> histogram-1d[110,0.0,1.10,-1] </type>
+      <type> histogram-1d[330,0.0,3.30,-1] </type>
       <titledesc>  Angle corrected Mip values for PMT B for extrapolated acd tile (zoom) </titledesc>
       <axisdesc> [Mip value (angle corrected), N] </axisdesc>
-      <description> Distribution of Mip values corrected for incoming angle for PMT B from the extrapolated acd tile index in the name suffix (range [0,127]). Distribution is truncated at 1.1 Mip. Only events with Veto from PMT A from this tile are considered.  </description>
+      <description> Distribution of Mip values corrected for incoming angle for PMT B from the extrapolated acd tile index in the name suffix (range [0,127]). Distribution is truncated at 3.3 Mip. The peak should be located at about 1 Mip. Only events with Veto from PMT B from this tile are considered.  </description>
     </object>
 
 
@@ -223,7 +223,7 @@
 
 
 	       <object>
-      <name> ReconAcdGlobalPosNotMatchedTracks_RibbonXOriented_TH1_Pos[3] </name>
+      <name> ReconAcdGlobalPosNotMatchedTracks_RibbonXOriented_TH1_XYZ[3] </name>
       <formula><![CDATA[ foreachpos: AcdGlobalPos_ExtrapolatedTrack_MatchedFacePosXYZ[0][5][pos] ]]></formula>
       <cut><![CDATA[condsummary&30]]></cut>
       <type> histogram-1d[500,-1000.,1000.,10000] </type>
@@ -234,7 +234,7 @@
 
 
          <object>
-      <name> ReconAcdGlobalPosNotMatchedTracks_RibbonYOriented_TH1_Pos[3] </name>
+      <name> ReconAcdGlobalPosNotMatchedTracks_RibbonYOriented_TH1_XYZ[3] </name>
       <formula><![CDATA[ foreachpos: AcdGlobalPos_ExtrapolatedTrack_MatchedFacePosXYZ[0][6][pos] ]]></formula>
       <cut><![CDATA[condsummary&30]]></cut>
       <type> histogram-1d[500,-1000.,1000.,10000] </type>
@@ -296,7 +296,7 @@
     </object>
 
        <object>
-      <name> ReconAcdGlobalPosONLYMatchedTracks_RibbonXOriented_TH1_Pos[3] </name>
+      <name> ReconAcdGlobalPosONLYMatchedTracks_RibbonXOriented_TH1_XYZ[3] </name>
       <formula><![CDATA[ foreachpos: AcdGlobalPos_ExtrapolatedTrack_MatchedFacePosXYZ[1][5][pos] ]]></formula>
       <cut><![CDATA[condsummary&30]]></cut>
       <type> histogram-1d[500,-1000.,1000.,10000] </type>
@@ -307,7 +307,7 @@
 
 
          <object>
-      <name> ReconAcdGlobalPosONLYMatchedTracks_RibbonYOriented_TH1_Pos[3] </name>
+      <name> ReconAcdGlobalPosONLYMatchedTracks_RibbonYOriented_TH1_XYZ[3] </name>
       <formula><![CDATA[ foreachpos: AcdGlobalPos_ExtrapolatedTrack_MatchedFacePosXYZ[1][6][pos] ]]></formula>
       <cut><![CDATA[condsummary&30]]></cut>
       <type> histogram-1d[500,-1000.,1000.,10000] </type>

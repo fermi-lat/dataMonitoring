@@ -106,7 +106,7 @@
     </object>
 
        <object>
-      <name> Trigger_TRK </name>
+      <name> Trigger_TKR </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[condsummary&2]]></cut>
       <type> rate </type>
@@ -123,7 +123,7 @@
 
 
      <object>
-      <name> Trigger_TRK_And_ROI </name>
+      <name> Trigger_TKR_And_ROI </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[(condsummary&1) && (condsummary&2)]]></cut>
       <type> rate </type>
@@ -131,7 +131,7 @@
     </object>
 
      <object>
-      <name> Trigger_TRK_And_NotROI </name>
+      <name> Trigger_TKR_And_NotROI </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[!(condsummary&1) && (condsummary&2)]]></cut>
       <type> rate </type>
@@ -351,7 +351,7 @@
     </object>
 
        <object>
-      <name> Trigger_TRK_And_GammaFilter </name>
+      <name> Trigger_TKR_And_GammaFilter </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[(condsummary&2) && (OBFStatus[0]>0)]]></cut>
       <type> rate </type>
@@ -368,7 +368,7 @@
 
 
      <object>
-      <name> Trigger_TRK_And_ROI_And_GammaFilter </name>
+      <name> Trigger_TKR_And_ROI_And_GammaFilter </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[(condsummary&1) && (condsummary&2) && (OBFStatus[0]>0)]]></cut>
       <type> rate </type>
@@ -376,7 +376,7 @@
     </object>
 
      <object>
-      <name> Trigger_TRK_And_NotROI_And_GammaFilter </name>
+      <name> Trigger_TKR_And_NotROI_And_GammaFilter </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[!(condsummary&1) && (condsummary&2) && (OBFStatus[0]>0)]]></cut>
       <type> rate </type>
@@ -410,7 +410,7 @@
     </object>
 
        <object>
-      <name> Trigger_TRK_And_OneOfOther3Filters </name>
+      <name> Trigger_TKR_And_OneOfOther3Filters </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[(condsummary&2) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
       <type> rate </type>
@@ -427,7 +427,7 @@
 
 
      <object>
-      <name> Trigger_TRK_And_ROI_And_OneOfOther3Filters </name>
+      <name> Trigger_TKR_And_ROI_And_OneOfOther3Filters </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[(condsummary&1) && (condsummary&2) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
       <type> rate </type>
@@ -435,7 +435,7 @@
     </object>
 
      <object>
-      <name> Trigger_TRK_And_NotROI_And_OneOfOther3Filters </name>
+      <name> Trigger_TKR_And_NotROI_And_OneOfOther3Filters </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[!(condsummary&1) && (condsummary&2) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
       <type> rate </type>
@@ -920,36 +920,34 @@
 
      
 
-
-
-    <object>
-      <name> ToT_con0_Greater250_TowerPlane[16][36] </name>
-      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con0_TowerPlane[tower][tkrplane]>250 ]]></formula>
+<object>
+      <name> ToT_con0_255_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con0_TowerPlane[tower][tkrplane]==255 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
       <type> rate </type>
-      <description> Vector [tower][tkrplane] reporting the rate of evts with ToT>250 (overlapped trigger) in controller 0.  </description>
+      <description> Vector [tower][tkrplane] reporting the rate of evts with ToT==255 (overlapped trigger) in controller 0.  </description>
     </object>
 
     <object>
-      <name> ToT_con1_Greater250_TowerPlane[16][36] </name>
-      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con1_TowerPlane[tower][tkrplane]>250 ]]></formula>
+      <name> ToT_con1_255_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con1_TowerPlane[tower][tkrplane]==255 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
       <type> rate </type>
-      <description> Vector [tower][tkrplane] reporting the rate of evts with ToT>250 (overlapped trigger) in controller 1.  </description>
+      <description> Vector [tower][tkrplane] reporting the rate of evts with ToT==255 (overlapped trigger) in controller 1.  </description>
     </object>
 
      <object>
-      <name> ToT_Greater250_TowerPlane[16][36] </name>
-      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con0_TowerPlane[tower][tkrplane]>250 || ToT_con1_TowerPlane[tower][tkrplane]>250]]></formula>
+      <name> ToT_255_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ToT_con0_TowerPlane[tower][tkrplane]==255 || ToT_con1_TowerPlane[tower][tkrplane]==255]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
       <type> rate </type>
-      <description> Vector [tower][tkrplane] reporting the rate of evts with ToT>250 (overlapped trigger) in either controller 0 or controller 1.  </description>
+      <description> Vector [tower][tkrplane] reporting the rate of evts with ToT==255 (overlapped trigger) in either controller 0 or controller 1.  </description>
     </object>
 
 
          <object>
-      <name> Normalized_ToT_Greater250_TowerPlane[16][36]  </name>
-      <formula><![CDATA[foreachtower: foreachtkrplane: Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 ? (Rate_ToT_Greater250_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane]) : 0.0 ]]></formula>
+      <name> Normalized_ToT_255_TowerPlane[16][36]  </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 ? (Rate_ToT_255_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane]) : 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -958,15 +956,13 @@
 
 
       <object>
-      <name> Normalized_ToT_Greater250_TowerPlane_err[16][36] </name>
-      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_ToT_Greater250_TowerPlane[tower][tkrplane] >0 ) ? ((Rate_ToT_Greater250_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*TMath::Sqrt(pow(Rate_TkrDigi_TowerPlane_err[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane],2)+pow(Rate_ToT_Greater250_TowerPlane_err[tower][tkrplane]/Rate_ToT_Greater250_TowerPlane[tower][tkrplane],2))) : 0.0 ]]></formula>
+      <name> Normalized_ToT_255_TowerPlane_err[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_ToT_255_TowerPlane[tower][tkrplane] >0 ) ? ((Rate_ToT_255_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*TMath::Sqrt(pow(Rate_TkrDigi_TowerPlane_err[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane],2)+pow(Rate_ToT_255_TowerPlane_err[tower][tkrplane]/Rate_ToT_255_TowerPlane[tower][tkrplane],2))) : 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_ToT_Greater250_TowerPlane. </description>
+      <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_ToT_255_TowerPlane. </description>
     </object>
-
-
 
 
 

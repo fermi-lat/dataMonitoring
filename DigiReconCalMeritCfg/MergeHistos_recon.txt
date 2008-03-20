@@ -15,15 +15,15 @@
        ReconAcdGlobalPosNotMatchedTracks_MinusYFace_TH2  Sum
        ReconAcdGlobalPosNotMatchedTracks_PlusXFace_TH2  Sum
        ReconAcdGlobalPosNotMatchedTracks_PlusYFace_TH2  Sum
-       ReconAcdGlobalPosNotMatchedTracks_RibbonXOriented_TH1_Pos_PosLoop  Sum
-       ReconAcdGlobalPosNotMatchedTracks_RibbonYOriented_TH1_Pos_PosLoop  Sum
+       ReconAcdGlobalPosNotMatchedTracks_RibbonXOriented_TH1_XYZ_XYZLoop  Sum
+       ReconAcdGlobalPosNotMatchedTracks_RibbonYOriented_TH1_XYZ_XYZLoop  Sum
        ReconAcdGlobalPosONLYMatchedTracks_TopFace_TH2  Sum
        ReconAcdGlobalPosONLYMatchedTracks_MinusXFace_TH2  Sum
        ReconAcdGlobalPosONLYMatchedTracks_MinusYFace_TH2  Sum
        ReconAcdGlobalPosONLYMatchedTracks_PlusXFace_TH2  Sum
        ReconAcdGlobalPosONLYMatchedTracks_PlusYFace_TH2  Sum
-       ReconAcdGlobalPosONLYMatchedTracks_RibbonXOriented_TH1_Pos_PosLoop  Sum
-       ReconAcdGlobalPosONLYMatchedTracks_RibbonYOriented_TH1_Pos_PosLoop  Sum
+       ReconAcdGlobalPosONLYMatchedTracks_RibbonXOriented_TH1_XYZ_XYZLoop  Sum
+       ReconAcdGlobalPosONLYMatchedTracks_RibbonYOriented_TH1_XYZ_XYZLoop  Sum
        ReconNumTracks_TH1  Sum
        ReconVertex_YXDir_TH2  Sum
        ReconVertex_ZDir_TH1  Sum

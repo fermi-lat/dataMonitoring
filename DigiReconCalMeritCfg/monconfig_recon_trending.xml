@@ -112,7 +112,7 @@
 
 
       <object>
-      <name> RecEnergy_TowerCalLayerCalColumnCalXFace[16][8][12][2] </name>
+      <name> ReconEnergy_TowerCalLayerCalColumnCalXFace[16][8][12][2] </name>
       <formula><![CDATA[foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: CalXtalFaceSignal[tower][callayer][calcolumn][calxface]]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
       <type> truncatedmean[1.0,10000000]  </type>
