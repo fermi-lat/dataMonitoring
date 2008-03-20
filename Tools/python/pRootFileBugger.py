@@ -12,17 +12,17 @@ MET_OFFSET = 978307200000
 SELECTION_DICT = {'Tower':\
                       'tower=%d',
                   'TowerCalLayer':\
-                      'tower=%d,callayer=%d',
+                      'tower=%d&callayer=%d',
                   'TowerCalLayerCalColumn':\
-                      'tower=%d,callayer=%d,calcolumn%d',
+                      'tower=%d&callayer=%d&calcolumn=%d',
                   'TowerCalLayerCalColumnCalXFace':\
-                      'tower=%d,callayer=%d,calcolumn=%d,calxface=%d',
+                      'tower=%d&callayer=%d&calcolumn=%d&calxface=%d',
                   'TowerCalLayerCalColumnCalXFaceRange':\
-                      'tower=%d,callayer=%d,calcolumn=%d,calxface=%d,range=%d',
+                      'tower=%d&callayer=%d&calcolumn=%d&calxface=%d&range=%d',
                   'TowerPlane':\
-                      'tower=%d,plane=%d',
+                      'tower=%d&plane=%d',
                   'TowerPlaneGTFE':\
-                      'tower=%d,plane=%d,gtfe=%d',
+                      'tower=%d&plane=%d&gtfe=%d',
                   'AcdTile':\
                       'acdtile=%d',
                   'GARC':\
