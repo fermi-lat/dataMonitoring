@@ -68,7 +68,7 @@ class pTrendingDataBaseBugger(pUrlReader):
             if '<trendingdata>' in line:
                 time = data[lineNumber + 5].split()[3]
                 time = time.replace('value="', '').replace('"', '')
-                time = float(time)
+                time = int(time)
                 value = data[lineNumber + 1].split()[3]
                 value = value.replace('value="', '').replace('"/>', '')
                 value = float(value)

@@ -42,8 +42,9 @@ class pTrendingTester:
             sys.exit('Abort')
 
     def run(self, variable, selection):
-        errorCode = False
+        numErrors = 0
         message = 'Running on "%s", selection: "%s"...' % (variable, selection)
+        logging.debug(self.RootFileBugger.getBranchInfo(variable))
         logging.info(message)
         self.LogFile.writelines('%s\n' % message)
         dbDataPoints = self.DataBaseBugger.getDataPoints(variable, selection)
@@ -54,16 +55,20 @@ class pTrendingTester:
         if (dbNumPoints != rootNumPoints):
             logging.error('Got %d points from db, %d from root file.' %\
                               (dbNumPoints, rootNumPoints))
-            errorCode = True
         for i in range(dbNumPoints):
             dbPoint = dbDataPoints[i]
             rootPoint = rootDataPoints[i]
             difference = dbPoint - rootPoint
             if not (difference.isNull()):
-                print dbPoint, rootPoint, difference
-                errorCode = True
-        if errorCode:
-            message = '*** Found errors! ***'
+                print 'Point number %d' % i
+                print 'DB point  : ', dbPoint
+                print 'ROOT point: ', rootPoint
+                print 'Difference: ', difference
+                print
+                numErrors += 1
+        if numErrors:
+            message = 'Found %d errors (%d points) in "%s", selection "%s"!' %\
+                      (numErrors, numPoints, variable, selection)
             logging.error(message)
             self.LogFile.writelines('%s\n' % message)
         else:
@@ -87,4 +92,4 @@ if __name__ == '__main__':
         parser.error('Exactly one argument required.')
     rootFilePath = args[0]
     tester = pTrendingTester(rootFilePath)
-    tester.runRandom()
+    tester.runRandom(1)

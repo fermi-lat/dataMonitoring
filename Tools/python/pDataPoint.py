@@ -8,11 +8,13 @@ class pDataPoint:
         self.Error = error
         
     def isNull(self):
-        return abs(self.Timestamp) < 10 and self.Value == 0 and self.Error == 0
+        return self.Timestamp == 0 and \
+               abs(self.Value) < 1.e-10 and \
+               abs(self.Error) < 1.e-10
 
     def getTextRepresentation(self):
-        return '(t = %.1f, value = %.3f += %.3f)' %\
-            (self.Timestamp, self.Value, self.Error)
+        return '(t = %d, value = %.10f += %.10f)' %\
+               (self.Timestamp, self.Value, self.Error)
        
     def __cmp__(self, other):
         return int(self.Timestamp - other.Timestamp)

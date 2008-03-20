@@ -2,6 +2,7 @@
 import ROOT
 import sys
 import random
+import numpy
 import logging
 logging.basicConfig(level = logging.DEBUG)
 
@@ -9,38 +10,43 @@ from pDataPoint import pDataPoint
 
 TREE_NAME = 'Time'
 MET_OFFSET = 978307200000
-SELECTION_DICT = {'Tower':\
-                      'tower=%d',
-                  'TowerCalLayer':\
-                      'tower=%d&callayer=%d',
-                  'TowerCalLayerCalColumn':\
-                      'tower=%d&callayer=%d&calcolumn=%d',
-                  'TowerCalLayerCalColumnCalXFace':\
-                      'tower=%d&callayer=%d&calcolumn=%d&calxface=%d',
-                  'TowerCalLayerCalColumnCalXFaceRange':\
-                      'tower=%d&callayer=%d&calcolumn=%d&calxface=%d&range=%d',
-                  'TowerPlane':\
-                      'tower=%d&plane=%d',
-                  'TowerPlaneGTFE':\
-                      'tower=%d&plane=%d&gtfe=%d',
-                  'AcdTile':\
-                      'acdtile=%d',
-                  'GARC':\
-                      'garc=%d',
-                  'XYZ':\
-                      'xyz=%d',
-                  'ReconNumTracks':\
-                      'reconnumtracks=%d',
-                  'GammaFilterBit':\
-                      'gammafilterbit=%d',
-                  'TriggerEngine':\
-                      'triggerengine=%d'
-                  }
-LABEL_DICT = {'fastMon': 'FastMon_Trend_',
-              'digi'   : 'Digi_Trend_'   ,
-              'recon'  : 'Recon_Trend_'
-              }
-
+SELECTION_DICT = {
+    'Tower': 'tower=%d',
+    'TowerCalLayer': 'tower=%d&callayer=%d',
+    'TowerCalLayerCalColumn': 'tower=%d&callayer=%d&calcolumn=%d',
+    'TowerCalLayerCalColumnCalXFace':\
+      'tower=%d&callayer=%d&calcolumn=%d&calxface=%d',
+    'TowerCalLayerCalColumnCalXFaceRange':\
+      'tower=%d&callayer=%d&calcolumn=%d&calxface=%d&range=%d',
+    'TowerPlane': 'tower=%d&plane=%d',
+    'TowerPlaneGTFE': 'tower=%d&plane=%d&gtfe=%d',
+    'AcdTile': 'acdtile=%d',
+    'GARC': 'garc=%d',
+    'XYZ': 'xyz=%d',
+    'ReconNumTracks': 'reconnumtracks=%d',
+    'GammaFilterBit': 'gammafilterbit=%d',
+    'TriggerEngine': 'triggerengine=%d'
+    }
+LABEL_DICT = {
+    'fastMon': 'FastMon_Trend_',
+    'digi'   : 'Digi_Trend_'   ,
+    'recon'  : 'Recon_Trend_'
+    }
+PREFIX_LIST = ['CounterDiffRate', 'Counter', 'Mean', 'OutF', 'Rate']
+SUFFIX_LIST = ['err', 'n']
+ROOT2NUMPYDICT = {
+    'C' : 'c',      #a character string terminated by the 0 char
+    'B' : 'int8',   #an 8 bit signed integer (Char_t)
+    'b' : 'uint8',  #an 8 bit unsigned integer (UChar_t)
+    'S' : 'int16',  #a 16 bit signed integer (Short_t)
+    's' : 'uint16', #a 16 bit unsigned integer (UShort_t)
+    'I' : 'int32',  #a 32 bit signed integer (Int_t)
+    'i' : 'uint32', #a 32 bit unsigned integer (UInt_t)
+    'F' : 'float32',#a 32 bit floating point (Float_t)
+    'D' : 'float64',#a 64 bit floating point (Double_t)
+    'L' : 'int64',  #a 64 bit signed integer (Long64_t)
+    'l' : 'uint64'  #a 64 bit unsigned integer (ULong64_t)
+    }
 
 class pRootFileBugger:
     
@@ -66,45 +72,69 @@ class pRootFileBugger:
         self.BranchesDict = {}
         for i in range(self.RootTree.GetListOfBranches().LastIndex() + 1):
             branchName = self.RootTree.GetListOfBranches().At(i).GetName()
-            self.BranchesDict[branchName] = self.getBranchShape(branchName)
+            if (branchName.split('_')[0] in PREFIX_LIST) and \
+                   (branchName.split('_')[-1] not in SUFFIX_LIST):
+                self.BranchesDict[branchName] = self.getBranchDescr(branchName)
 
-    def getBranchShape(self, branchName):
+    def getBranchDescr(self, branchName):
         title = self.RootTree.GetBranch(branchName).GetTitle()
+        type  = title[-1]
         shape = title.replace(branchName, '').split('/')[0]
         if shape == '':
             shape = (1,)
         else:
-            shape = shape.replace('][', ',').replace('[', '(').replace(']', ')')
+            shape =\
+                  shape.replace('][', ',').replace('[', '(').replace(']', ')')
             if ',' not in shape:
                 shape = shape.replace(')', ',)')
             shape = eval(shape)
-        return shape
+        return (type, shape)
 
     def getRandomBranchName(self):
         return random.choice(self.BranchesDict.keys())
 
-    def getRandomIndex(self, branchName):
+    def getRandomIndex(self, branchShape):
         index = []
-        for i in self.getBranchShape(branchName):
+        for i in branchShape:
             index.append(random.choice(range(i)))
-        return tuple(index)
+        index = tuple(index)
+        logging.debug('Random index from shape %s: %s' % (branchShape, index))
+        return index
 
     def getSelection(self, branchName, index):
-        for (key, value) in SELECTION_DICT.items():
-            if key in branchName:
-                return value % index
-        return ''
+        try:
+            for (key, value) in SELECTION_DICT.items():
+                if key in branchName:
+                    return value % index
+            return ''
+        except TypeError:
+            sys.exit('Could not determine selection for branch %s, index %s' %\
+                     (branchName, index))
 
     def getRandomSelection(self, branchName):
-        return self.getSelection(branchName, self.getRandomIndex(branchName))
+        (branchType, branchShape) = self.BranchesDict[branchName]
+        return self.getSelection(branchName, self.getRandomIndex(branchShape))
+
+    def getBranchInfo(self, variable):
+        branchName = variable.replace(self.Prefix, '')
+        (branchType, branchShape) = self.BranchesDict[branchName]
+        return '%s: type = %s, shape = %s' % (branchName, branchType,\
+                                              branchShape)
 
     def getDataPoints(self, variable, selection):
-        variable = variable.replace(self.Prefix, '')
-        dataPoints = []
-        indexString = ''
+        branchName = variable.replace(self.Prefix, '')
+        (branchType, branchShape) = self.BranchesDict[branchName]
+        varArray = numpy.zeros(branchShape, ROOT2NUMPYDICT[branchType])
+        errArray = numpy.zeros(branchShape, ROOT2NUMPYDICT[branchType])
+        self.RootTree.SetBranchAddress(branchName, varArray)
+        self.RootTree.SetBranchAddress('%s_err' % branchName, errArray)
         if selection != '':
-            for item in selection.split(','):
+            indexString = ''
+            for item in selection.split('&'):
                 indexString += '[%s]' % item.split('=')[1].strip()
+        else:
+            indexString = '[0]'
+        dataPoints = []
         for i in range(self.RootTree.GetEntriesFast()):
             self.RootTree.GetEntry(i)
             if i != self.RootTree.GetEntriesFast() - 1:
@@ -113,9 +143,9 @@ class pRootFileBugger:
             else:
                 time = self.RootTree.Bin_Start +\
                     self.RootTree.TrueTimeInterval/2.
-            time = time*1000 + MET_OFFSET
-            value = eval('self.RootTree.%s%s' % (variable, indexString))
-            error = eval('self.RootTree.%s_err%s' % (variable, indexString))
+            time = int(time*1000 + MET_OFFSET)
+            value = eval('varArray%s' % indexString)
+            error = eval('errArray%s' % indexString)
             dataPoints.append(pDataPoint(time, value, error))
         return dataPoints
             
