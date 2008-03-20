@@ -60,11 +60,12 @@ class pTrendingTester:
             rootPoint = rootDataPoints[i]
             difference = dbPoint - rootPoint
             if not (difference.isNull()):
-                print 'Point number %d' % i
-                print 'DB point  : ', dbPoint
-                print 'ROOT point: ', rootPoint
-                print 'Difference: ', difference
-                print
+                message =  'Point number %d\n' % i
+                message += 'DB point  : %s\n'  % dbPoint
+                message += 'ROOT point: %s\n'  % rootPoint
+                message += 'Difference: %s\n\n'% difference
+                print message
+                self.LogFile.writelines('%s\n' % message)
                 numErrors += 1
         if numErrors:
             message = 'Found %d errors (%d points) in "%s", selection "%s"!' %\
@@ -76,7 +77,7 @@ class pTrendingTester:
             logging.info(message)
             self.LogFile.writelines('%s\n' % message)
 
-    def runRandom(self, numTests = 10):
+    def runRandom(self, numTests):
         for i in range(numTests):
             variable = self.RootFileBugger.getRandomBranchName()
             selection = self.RootFileBugger.getRandomSelection(variable)
@@ -86,10 +87,13 @@ class pTrendingTester:
 if __name__ == '__main__':
     from optparse import OptionParser
     parser = OptionParser(usage = 'usage: %prog [options] rootFilePath')
+    parser.add_option('-n', '--num-entries', dest = 'n',
+                      default = 1, type = int,
+                      help = 'number of queries to the database')
     (opts, args) = parser.parse_args()
     if len(args) != 1:
         parser.print_help()
         parser.error('Exactly one argument required.')
     rootFilePath = args[0]
     tester = pTrendingTester(rootFilePath)
-    tester.runRandom(1)
+    tester.runRandom(opts.n)

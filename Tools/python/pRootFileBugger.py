@@ -104,7 +104,7 @@ class pRootFileBugger:
     def getSelection(self, branchName, index):
         try:
             for (key, value) in SELECTION_DICT.items():
-                if key in branchName:
+                if key == branchName.split('_')[-1]:
                     return value % index
             return ''
         except TypeError:
@@ -124,10 +124,10 @@ class pRootFileBugger:
     def getDataPoints(self, variable, selection):
         branchName = variable.replace(self.Prefix, '')
         (branchType, branchShape) = self.BranchesDict[branchName]
-        varArray = numpy.zeros(branchShape, ROOT2NUMPYDICT[branchType])
-        errArray = numpy.zeros(branchShape, ROOT2NUMPYDICT[branchType])
-        self.RootTree.SetBranchAddress(branchName, varArray)
-        self.RootTree.SetBranchAddress('%s_err' % branchName, errArray)
+        self.VarArray = numpy.zeros(branchShape, ROOT2NUMPYDICT[branchType])
+        self.ErrArray = numpy.zeros(branchShape, ROOT2NUMPYDICT[branchType])
+        self.RootTree.SetBranchAddress(branchName, self.VarArray)
+        self.RootTree.SetBranchAddress('%s_err' % branchName, self.ErrArray)
         if selection != '':
             indexString = ''
             for item in selection.split('&'):
@@ -144,9 +144,10 @@ class pRootFileBugger:
                 time = self.RootTree.Bin_Start +\
                     self.RootTree.TrueTimeInterval/2.
             time = int(time*1000 + MET_OFFSET)
-            value = eval('varArray%s' % indexString)
-            error = eval('errArray%s' % indexString)
+            value = eval('self.VarArray%s' % indexString)
+            error = eval('self.ErrArray%s' % indexString)
             dataPoints.append(pDataPoint(time, value, error))
+        self.RootTree.ResetBranchAddresses()
         return dataPoints
             
 
