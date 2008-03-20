@@ -35,6 +35,9 @@
      <object> TkrSurplusHitsInside </object>
       <object> TkrSurplusHitRatio </object>
 
+      <object> Tkr1KalEne </object> 
+      <object> Tkr1KalThetaMS </object>
+
       <!-- Calorimeter -->
 
       <object> CalMipNum </object>
@@ -305,6 +308,21 @@
       <description> Mean value (per evt) of TkrSurplusHitRatio.</description>
     </object>
 
+     <object>
+      <name> Tkr1KalEne </name>
+      <formula><![CDATA[  Tkr1KalEne ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of Tkr1KalEne.</description>
+    </object>
+
+     <object>
+      <name> Tkr1KalThetaMS </name>
+      <formula><![CDATA[  Tkr1KalThetaMS ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of Tkr1KalThetaMS.</description>
+    </object>
 
 
     <!-- Calorimeter -->

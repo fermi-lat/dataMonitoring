@@ -1,0 +1,168 @@
+<monitoring>
+
+  <inputList name="top"> 
+
+
+    <!-- Time stamp -->
+    <object> timestampdouble </object>
+    
+    <!-- Trigger related vars -->
+    <object>GltWord</object>  <!-- TO BE DELETED at some point, use GltGemSummary instead!! -->
+    <object>GltGemSummary </object> 
+
+    <!-- Filter variables -->
+    <object>FilterStatus_HI</object>
+
+
+    <!-- ACD -->
+    <object>AcdCornerDoca</object>
+    <object>AcdTileCount</object>
+    <object>AcdRibbonCount </object>
+
+    <object>AcdVtxActiveDist</object>
+    
+    <!-- Tracker -->
+
+     <object>TkrTwrEdge </object>
+    <object> Tkr1TwrGap</object>
+    <object> Tkr1LATEdge</object>
+
+    <object> TkrSurplusHCInside</object>
+    <object> TkrThinHits</object>
+    <object> TkrThickHits</object>
+    <object> TkrBlankHits</object>
+
+     <object> TkrSurplusHitsInside </object>
+      <object> TkrSurplusHitRatio </object>
+
+      <object> Tkr1KalEne </object> 
+      <object> Tkr1KalThetaMS </object>
+
+      <!-- Calorimeter -->
+
+      <object> CalMipNum </object>
+    <object> CalEnergyRaw </object>
+    <object> CalEnergyCorr</object>
+
+    <object> CalCsIRLn </object>
+    <object> CalTwrEdgeCntr </object>
+    <object> CalTrackAngle</object>
+
+    <object> CalTransRms </object>
+
+<!--    
+    <object> </object>
+    <object> </object>
+    <object> </object>
+
+    <object> </object>
+    <object> </object>
+    <object> </object>
+
+    <object> </object>
+    <object> </object>
+    <object> </object>
+    -->
+
+    <!-- CTB variables -->
+        
+    <object>CTBBestZDir</object>		
+    <object>CTBClassLevel</object>		
+    <object>CTBBestEnergyProb</object>
+    <object>CTBCORE</object>			
+    <object>CTBBestEnergy</object>		
+    <object>CTBBestEnergyRatio</object>
+
+    <object> CTBGAM</object>
+    <object> CTBCalDocaAngle </object>
+
+
+    <!-- FT1 variables -->
+
+    <object> FT1Energy </object>
+    <object> FT1Theta </object>
+    <object> FT1Phi </object>
+    <object> FT1ZenithTheta </object>
+    <object> FT1EarthAzimuth </object>
+
+
+
+
+
+   
+  </inputList>
+
+
+  <outputList name="top">
+  
+    <!-- Gem quantities -->
+
+
+    
+
+    <!-- RAtes -->
+
+       <!-- ACD -->
+
+
+	  <!-- Tracker-->
+
+
+
+     <object>
+      <name> Tkr1KalEne_TH1 </name>
+      <formula><![CDATA[ Tkr1KalEne ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[501,-10000,5000000] </type>
+      <titledesc> Tkr1KalEne </titledesc>
+      <axisdesc> [Tkr1KalEne (MeV), N] </axisdesc>
+      <description> Distribution of Tkr1KalEne values. Values up to 5000000 MeV are being displayed. </description>
+    </object>
+
+     <object>
+      <name> Tkr1KalEne_Zoom_TH1 </name>
+      <formula><![CDATA[ Tkr1KalEne ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[501,-10,5000] </type>
+      <titledesc> Tkr1KalEne </titledesc>
+      <axisdesc> [Tkr1KalEne (MeV), N] </axisdesc>
+      <description> Distribution of Tkr1KalEne values. Values up to 5000 MeV are being displayed. </description>
+    </object>
+
+   
+
+       <object>
+      <name> Tkr1KalThetaMS_TH1 </name>
+      <formula><![CDATA[ Tkr1KalThetaMS ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[501,-0.01,5.0] </type>
+      <titledesc> Tkr1KalThetaMS </titledesc>
+      <axisdesc> [Tkr1KalThetaMS (rad), N] </axisdesc>
+      <description> Distribution of Tkr1KalThetaMS values. Values up to 5.0 rad are being displayed. </description>
+    </object>
+
+     <object>
+      <name> Tkr1KalThetaMS_Zoom_TH1 </name>
+      <formula><![CDATA[ Tkr1KalThetaMS ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[501,-0.0002,0.1] </type>
+      <titledesc> Tkr1KalThetaMS </titledesc>
+      <axisdesc> [Tkr1KalThetaMS (rad), N] </axisdesc>
+      <description> Distribution of Tkr1KalThetaMS values. Values up to 0.1 rad are being displayed. </description>
+    </object>
+
+
+
+
+    <!-- Calorimeter -->
+
+     <!-- CTB variables -->
+
+    <!-- FT1 Variables -->
+
+	  
+  </outputList>
+
+  <eventCut><![CDATA[ ]]></eventCut>
+  <timestamp> timestampdouble </timestamp>
+</monitoring>
