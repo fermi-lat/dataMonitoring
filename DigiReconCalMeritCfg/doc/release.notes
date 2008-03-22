@@ -1,0 +1,42 @@
+
+v1r0p5 2008/03/21 (DEV)
+-------------------------
+
+Added 
+doc/release.notes  (this file !!)
+
+
+v1r0p4 2008/03/21 (DEV)
+-------------------------
+Corrected bug when merging ToT distributions. 
+File changed:
+MergeHistos_digi.txt
+
+
+v1r0p3 2008/03/20 (DEV)
+-------------------------
+Correct bugs introduced in the previous changes. 
+The files changed were:
+MergeHistos_digi_CalLongTime.txt monconfig_recon_trending.xml
+
+
+v1r0p2 2008/03/20 (DEV)
+-------------------------
+Changes in config files to address issues descrived in Jira:
+GDQMQ-38
+
+The config files changed were the following ones:
+monconfig_merit_trending.xml  monconfig_merit_histos.xml(added)
+
+
+v1r0p1  2008/03/20 (DEV)
+-------------------------
+Changes in config files to address issues descrived in Jiras:
+GDQMQ-21 GDQMQ-22 GDQMQ-35 GDQMQ-36 GDQMQ-39 GDQMQ-40
+
+The config files changed were the following ones:
+monconfig_digi_trending.xml monconfig_digi_histos.xml monconfig_recon_trending.xml monconfig_recon_histos.xml MergeHistos_digi.txt MergeHistos_recon.txt MergeHistos_digi_CalLongTime.txt
+
+
+v1r0p0  2008/03/12 (PROD)
+-------------------------
