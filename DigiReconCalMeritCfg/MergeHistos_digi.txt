@@ -63,8 +63,8 @@
        TkrDigiCounter_Tower_TH1  Sum
        TkrDigis_TH1  Sum
        ToT_0_WhenTkrHitsExist_TowerPlane_TH2  Sum
-       ToT_con0_TH1_TowerPlane_TowerLoop_TrackerLoop  Sum
-       ToT_con1_TH1_TowerPlane_TowerLoop_TrackerLoop  Sum
+       ToT_con0_TH1_TowerPlane_TowerLoop_PlaneLoop  Sum
+       ToT_con1_TH1_TowerPlane_TowerLoop_PlaneLoop  Sum
        CalXHit_NHit_Counter_TowerCalLayer_TH2  Sum
        ZeroCalXHit_NHit_Counter_TowerCalLayer_TH2  Sum
        CalX_NHit_TH1_Tower_TowerLoop  Sum
