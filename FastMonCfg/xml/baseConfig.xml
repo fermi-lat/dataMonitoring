@@ -192,7 +192,7 @@
             <shape>(1)</shape>
 	</variable-->
 
- 	<variable name="meta_context_current_missing_gps" enabled="True">
+ 	<variable name="meta_context_current_source_gps" enabled="True">
 	    <type>uint64</type>
             <shape>(1)</shape>
 	</variable>
@@ -246,7 +246,7 @@
             <shape>(1)</shape>
 	</variable-->
 
- 	<variable name="meta_context_previous_missing_gps" enabled="True">
+ 	<variable name="meta_context_previous_source_gps" enabled="True">
 	    <type>uint64</type>
             <shape>(1)</shape>
 	</variable>
