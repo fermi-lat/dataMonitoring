@@ -31,12 +31,13 @@ class pTrendingTester:
             pass
 
     def __getRunId(self, filePath):
-        runString = ''
-        for character in os.path.basename(filePath):
-            if character.isdigit():
-                runString += character
-        if len(runString) == 10:
-            return int(runString)
+        pieces = os.path.basename(filePath).split('_')
+        for piece in pieces:
+            if len(piece) == 11 and piece[0] == 'r':
+                try:
+                    return int(piece[1:])
+                except:
+                    pass
         else:
             logging.error('Could not extract the runId from %s.' % filePath)
             sys.exit('Abort')
