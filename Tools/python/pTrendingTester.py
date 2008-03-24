@@ -78,9 +78,11 @@ class pTrendingTester:
             logging.info(message)
             self.LogFile.writelines('%s\n' % message)
 
-    def runRandom(self, numTests):
+    def runRandom(self, numTests, quantity = None):
+        variable = quantity
         for i in range(numTests):
-            variable = self.RootFileBugger.getRandomBranchName()
+            if quantity is None: 
+                variable = self.RootFileBugger.getRandomBranchName()
             selection = self.RootFileBugger.getRandomSelection(variable)
             self.run('%s%s' % (self.Prefix, variable), selection)
 
@@ -91,10 +93,13 @@ if __name__ == '__main__':
     parser.add_option('-n', '--num-entries', dest = 'n',
                       default = 1, type = int,
                       help = 'number of queries to the database')
+    parser.add_option('-q', '--quantity', dest = 'q',
+                      default = None, type = str,
+                      help = 'the quantity to be tested')
     (opts, args) = parser.parse_args()
     if len(args) != 1:
         parser.print_help()
         parser.error('Exactly one argument required.')
     rootFilePath = args[0]
     tester = pTrendingTester(rootFilePath)
-    tester.runRandom(opts.n)
+    tester.runRandom(opts.n, opts.q)
