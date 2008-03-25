@@ -42,7 +42,7 @@ class pTrendingTester:
             logging.error('Could not extract the runId from %s.' % filePath)
             sys.exit('Abort')
 
-    def run(self, variable, selection):
+    def __run(self, variable, selection):
         numErrors = 0
         message = 'Running on "%s", selection: "%s"...' % (variable, selection)
         logging.debug(self.RootFileBugger.getBranchInfo(variable))
@@ -78,13 +78,18 @@ class pTrendingTester:
             logging.info(message)
             self.LogFile.writelines('%s\n' % message)
 
-    def runRandom(self, numTests, quantity = None):
-        variable = quantity
+    def run(self, numTests, quantity, selection):
         for i in range(numTests):
-            if quantity is None: 
-                variable = self.RootFileBugger.getRandomBranchName()
-            selection = self.RootFileBugger.getRandomSelection(variable)
-            self.run('%s%s' % (self.Prefix, variable), selection)
+            if quantity is None:
+                q = self.RootFileBugger.getRandomBranchName()
+            else:
+                q = quantity
+            if selection is None:
+                s = self.RootFileBugger.getRandomSelection(q)
+            else:
+                s = selection
+            self.__run('%s%s' % (self.Prefix, q), s)
+            
 
 
 if __name__ == '__main__':
@@ -95,11 +100,14 @@ if __name__ == '__main__':
                       help = 'number of queries to the database')
     parser.add_option('-q', '--quantity', dest = 'q',
                       default = None, type = str,
-                      help = 'the quantity to be tested')
+                      help = 'the trending quantity to be tested')
+    parser.add_option('-s', '--selection', dest = 's',
+                      default = None, type = str,
+                      help = 'the selection on the quantity under test')
     (opts, args) = parser.parse_args()
     if len(args) != 1:
         parser.print_help()
         parser.error('Exactly one argument required.')
     rootFilePath = args[0]
     tester = pTrendingTester(rootFilePath)
-    tester.runRandom(opts.n, opts.q)
+    tester.run(opts.n, opts.q, opts.s)
