@@ -34,6 +34,8 @@ class pTrendingDataBaseBugger(pUrlReader):
             self.BaseUrl = DB_BASE_URL
         else:
             self.BaseUrl = baseUrl
+        if self.BaseUrl[-1] != '/':
+            self.BaseUrl += '/'
 
     def getVariableString(self, variable):
         return 'selectedData=%s' % variable
