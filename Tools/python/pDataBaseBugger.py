@@ -28,8 +28,12 @@ class pUrlReader:
 
 class pTrendingDataBaseBugger(pUrlReader):
 
-    def __init__(self, runId):
+    def __init__(self, runId, baseUrl = None):
         self.RunId = runId
+        if baseUrl is None:
+            self.BaseUrl = DB_BASE_URL
+        else:
+            self.BaseUrl = baseUrl
 
     def getVariableString(self, variable):
         return 'selectedData=%s' % variable
@@ -48,10 +52,10 @@ class pTrendingDataBaseBugger(pUrlReader):
 
     def getDataUrl(self, variable, selection, allPoints = True, mode = 'Prod'):
         dataUrl = '%sgetData?%s&%s&%s&%s' %\
-            (DB_BASE_URL,\
-                 self.getVariableString(variable),\
-                 self.getSelectionString(selection),\
-                 self.getRunIdString(), self.getDataSourceMode(mode))
+            (self.BaseUrl,\
+             self.getVariableString(variable),\
+             self.getSelectionString(selection),\
+             self.getRunIdString(), self.getDataSourceMode(mode))
         dataUrl = dataUrl.replace('&&', '&')
         if allPoints:
             dataUrl += '&%s' % self.getAllPointsOptionString()

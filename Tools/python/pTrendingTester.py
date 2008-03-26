@@ -13,11 +13,10 @@ from pRootFileBugger import *
 
 class pTrendingTester:
     
-    def __init__(self, rootFilePath, runId = None):
-        if runId is None:
-            runId = self.__getRunId(rootFilePath)
+    def __init__(self, rootFilePath, dbUrl = None):
+        runId = self.__getRunId(rootFilePath)
         logging.info('Testing run %d...' % runId)
-        self.DataBaseBugger = pTrendingDataBaseBugger(runId)
+        self.DataBaseBugger = pTrendingDataBaseBugger(runId, dbUrl)
         self.RootFileBugger = pRootFileBugger(rootFilePath)
         self.Prefix = self.RootFileBugger.Prefix
         logFileName = '%s.log' % time.asctime().replace(' ', '_')
@@ -110,10 +109,13 @@ if __name__ == '__main__':
     parser.add_option('-s', '--selection', dest = 's',
                       default = None, type = str,
                       help = 'the selection on the quantity under test')
+    parser.add_option('-u', '--url', dest = 'u',
+                      default = None, type = str,
+                      help = 'the url for quering the database')
     (opts, args) = parser.parse_args()
     if len(args) != 1:
         parser.print_help()
         parser.error('Exactly one argument required.')
     rootFilePath = args[0]
-    tester = pTrendingTester(rootFilePath)
+    tester = pTrendingTester(rootFilePath, opts.u)
     tester.run(opts.n, opts.q, opts.s, opts.t)
