@@ -123,19 +123,29 @@ class pRootFileBugger:
         return '%s: type = %s, shape = %s' % (branchName, branchType,\
                                               branchShape)
 
-    def getTimestamp(self, row):
+    def getTimeBinStart(self, row):
         if row == 0:
             binStart = self.RootTree.Bin_End - self.RootTree.TrueTimeInterval
-            binEnd = self.RootTree.Bin_End
         elif row == self.RootTree.GetEntriesFast() - 1:
             binStart = self.RootTree.Bin_Start
-            binEnd = self.RootTree.Bin_Start + self.RootTree.TrueTimeInterval
         else:
             binStart = self.RootTree.Bin_Start
+        return int(binStart*1000 + MET_OFFSET)
+
+    def getTimeBinEnd(self, row):
+        if row == 0:
             binEnd = self.RootTree.Bin_End
-        binStart = int(binStart*1000 + MET_OFFSET)
-        binEnd = int(binEnd*1000 + MET_OFFSET)
-        return (binEnd + binStart)/2
+        elif row == self.RootTree.GetEntriesFast() - 1:
+            binEnd = self.RootTree.Bin_Start + self.RootTree.TrueTimeInterval
+        else:
+            binEnd = self.RootTree.Bin_End
+        return int(binEnd*1000 + MET_OFFSET)
+
+    def getTimeBinWidth(self, row):
+        return self.getTimeBinEnd(row) - self.getTimeBinStart(row)
+
+    def getTimeBinCenter(self, row):
+        return (self.getTimeBinEnd(row) + self.getTimeBinStart(row))/2
 
     def getDataPoints(self, variable, selection):
         branchName = variable.replace(self.Prefix, '')
@@ -153,10 +163,13 @@ class pRootFileBugger:
         dataPoints = []
         for i in range(self.RootTree.GetEntriesFast()):
             self.RootTree.GetEntry(i)
-            time = self.getTimestamp(i)
+            time = self.getTimeBinCenter(i)
+            timeBinWidth = self.getTimeBinWidth(i)
             value = eval('self.VarArray%s' % indexString)
             error = eval('self.ErrArray%s' % indexString)
-
+            if 'Rate' in variable:
+                value = (value/error)*(value/error)/timeBinWidth
+                error = sqrt((value/error)*(value/error)/timeBinWidth/timeBinWidth)
 
 ##             if 'Mean' in variable:
 ##                 try:
