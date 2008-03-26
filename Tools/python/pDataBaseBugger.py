@@ -66,7 +66,12 @@ class pTrendingDataBaseBugger(pUrlReader):
         dataPoints = []
         for (lineNumber, line) in enumerate(data):
             if '<trendingdata>' in line:
-                time = data[lineNumber + 5].split()[3]
+                try:
+                    time = data[lineNumber + 5].split()[3]
+                except IndexError:
+                    # This handle the case in which the min/max thing is
+                    # missing.
+                    time = data[lineNumber + 3].split()[3]
                 time = time.replace('value="', '').replace('"', '')
                 time = int(time)
                 value = data[lineNumber + 1].split()[3]
