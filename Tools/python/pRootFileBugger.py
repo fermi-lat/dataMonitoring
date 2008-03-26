@@ -130,7 +130,7 @@ class pRootFileBugger:
             binStart = self.RootTree.Bin_Start
         else:
             binStart = self.RootTree.Bin_Start
-        return int(binStart*1000 + MET_OFFSET)
+        return binStart
 
     def getTimeBinEnd(self, row):
         if row == 0:
@@ -139,13 +139,15 @@ class pRootFileBugger:
             binEnd = self.RootTree.Bin_Start + self.RootTree.TrueTimeInterval
         else:
             binEnd = self.RootTree.Bin_End
-        return int(binEnd*1000 + MET_OFFSET)
-
-    def getTimeBinWidth(self, row):
-        return self.getTimeBinEnd(row) - self.getTimeBinStart(row)
+        return binEnd
 
     def getTimeBinCenter(self, row):
-        return (self.getTimeBinEnd(row) + self.getTimeBinStart(row))/2
+        binStart = int(self.getTimeBinStart(row)*1000 + MET_OFFSET)
+        binEnd = int(self.getTimeBinEnd(row)*1000 + MET_OFFSET)
+        return (binStart + binEnd)/2
+
+    def getTimeBinWidth(self, row):
+        return (self.getTimeBinEnd(row) - self.getTimeBinStart(row))
 
     def getDataPoints(self, variable, selection):
         branchName = variable.replace(self.Prefix, '')
@@ -153,7 +155,8 @@ class pRootFileBugger:
         self.VarArray = numpy.zeros(branchShape, ROOT2NUMPYDICT[branchType])
         self.ErrArray = numpy.zeros(branchShape, ROOT2NUMPYDICT[branchType])
         self.RootTree.SetBranchAddress(branchName, self.VarArray)
-        self.RootTree.SetBranchAddress('%s_err' % branchName, self.ErrArray)
+        if not ('Counter_' in variable):
+            self.RootTree.SetBranchAddress('%s_err' % branchName,self.ErrArray)
         if selection != '':
             indexString = ''
             for item in selection.split('&'):
@@ -164,24 +167,9 @@ class pRootFileBugger:
         for i in range(self.RootTree.GetEntriesFast()):
             self.RootTree.GetEntry(i)
             time = self.getTimeBinCenter(i)
-            timeBinWidth = self.getTimeBinWidth(i)
+            timeBinWidth = self.getTimeBinWidth(i)        
             value = eval('self.VarArray%s' % indexString)
             error = eval('self.ErrArray%s' % indexString)
-            if 'Rate' in variable:
-                value = (value/error)*(value/error)/timeBinWidth
-                error = sqrt((value/error)*(value/error)/timeBinWidth/timeBinWidth)
-
-##             if 'Mean' in variable:
-##                 try:
-##                     value = (value/(error*error))/(1/(error*error))
-##                     error = 1/sqrt(1/(error*error))
-##                 except:
-##                     pass
-##             elif 'Rate' in variable:
-##                 error = sqrt((value/error)*(value/error)/DELTA_TIME/DELTA_TIME)
-##                 value = (value/error)*(value/error)/DELTA_TIME
-                
-                
             dataPoints.append(pDataPoint(time, value, error))
         self.RootTree.ResetBranchAddresses()
         return dataPoints
