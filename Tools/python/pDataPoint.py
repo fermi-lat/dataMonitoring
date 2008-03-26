@@ -1,6 +1,6 @@
 
 
-MAX_DISCREPANCY = 1.e-10
+MAX_DISCREPANCY = 1.e-12
 
 class pDataPoint:
 
