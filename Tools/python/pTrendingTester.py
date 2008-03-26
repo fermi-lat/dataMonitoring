@@ -78,10 +78,13 @@ class pTrendingTester:
             logging.info(message)
             self.LogFile.writelines('%s\n' % message)
 
-    def run(self, numTests, quantity, selection):
+    def run(self, numTests, quantity, selection, trendType):
         for i in range(numTests):
             if quantity is None:
-                q = self.RootFileBugger.getRandomBranchName()
+                q = self.RootFileBugger.getRandomBranchName(trendType)
+                if q is None:
+                    sys.exit('Could not find branches of type "%s". Abort.' %\
+                             trendType)
             else:
                 q = quantity
             if selection is None:
@@ -98,6 +101,9 @@ if __name__ == '__main__':
     parser.add_option('-n', '--num-entries', dest = 'n',
                       default = 1, type = int,
                       help = 'number of queries to the database')
+    parser.add_option('-t', '--type', dest = 't',
+                      default = None, type = str,
+                      help = 'the type of the (random) quantity to be tested')
     parser.add_option('-q', '--quantity', dest = 'q',
                       default = None, type = str,
                       help = 'the trending quantity to be tested')
@@ -110,4 +116,4 @@ if __name__ == '__main__':
         parser.error('Exactly one argument required.')
     rootFilePath = args[0]
     tester = pTrendingTester(rootFilePath)
-    tester.run(opts.n, opts.q, opts.s)
+    tester.run(opts.n, opts.q, opts.s, opts.t)

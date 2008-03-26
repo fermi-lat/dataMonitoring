@@ -34,7 +34,7 @@ LABEL_DICT = {
     'digi'   : 'Digi_Trend_'   ,
     'recon'  : 'Recon_Trend_'
     }
-PREFIX_LIST = ['CounterDiffRate', 'Counter', 'Mean', 'OutF', 'Rate']
+TREND_TYPE_LIST = ['CounterDiffRate_', 'Counter_', 'Mean_', 'OutF_', 'Rate_']
 SUFFIX_LIST = ['err', 'n']
 ROOT2NUMPYDICT = {
     'C' : 'c',      #a character string terminated by the 0 char
@@ -49,6 +49,8 @@ ROOT2NUMPYDICT = {
     'L' : 'int64',  #a 64 bit signed integer (Long64_t)
     'l' : 'uint64'  #a 64 bit unsigned integer (ULong64_t)
     }
+ 
+
 
 class pRootFileBugger:
     
@@ -69,14 +71,19 @@ class pRootFileBugger:
         logging.debug('Retrieving the ROOT tree...')
         self.RootTree = self.RootFile.Get(TREE_NAME)
         self.__fillBranchesDict()
-
+   
     def __fillBranchesDict(self):
         self.BranchesDict = {}
+        self.BranchesTypeDict = {}
+        for trendType in TREND_TYPE_LIST:
+            self.BranchesTypeDict[trendType] = []
         for i in range(self.RootTree.GetListOfBranches().LastIndex() + 1):
             branchName = self.RootTree.GetListOfBranches().At(i).GetName()
-            if (branchName.split('_')[0] in PREFIX_LIST) and \
-                   (branchName.split('_')[-1] not in SUFFIX_LIST):
+            trendType = '%s_' % branchName.split('_')[0]
+            suffix = branchName.split('_')[-1]
+            if trendType in TREND_TYPE_LIST and suffix not in SUFFIX_LIST:
                 self.BranchesDict[branchName] = self.getBranchDescr(branchName)
+                self.BranchesTypeDict[trendType].append(branchName)
 
     def getBranchDescr(self, branchName):
         title = self.RootTree.GetBranch(branchName).GetTitle()
@@ -92,8 +99,14 @@ class pRootFileBugger:
             shape = eval(shape)
         return (type, shape)
 
-    def getRandomBranchName(self):
-        return random.choice(self.BranchesDict.keys())
+    def getRandomBranchName(self, trendType = None):
+        if trendType == None:
+            return random.choice(self.BranchesDict.keys())
+        else:
+            try:
+                return random.choice(self.BranchesTypeDict['%s_' % trendType])
+            except:
+                return None
 
     def getRandomIndex(self, branchShape):
         index = []
