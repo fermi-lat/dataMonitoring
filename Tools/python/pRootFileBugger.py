@@ -7,9 +7,11 @@ import logging
 logging.basicConfig(level = logging.DEBUG)
 
 from pDataPoint import pDataPoint
+from math       import sqrt
 
 TREE_NAME = 'Time'
 MET_OFFSET = 978307200000
+DELTA_TIME = 15.0
 SELECTION_DICT = {
     'Tower': 'tower=%d',
     'TowerCalLayer': 'tower=%d&callayer=%d',
@@ -121,6 +123,20 @@ class pRootFileBugger:
         return '%s: type = %s, shape = %s' % (branchName, branchType,\
                                               branchShape)
 
+    def getTimestamp(self, row):
+        if row == 0:
+            binStart = self.RootTree.Bin_End - self.RootTree.TrueTimeInterval
+            binEnd = self.RootTree.Bin_End
+        elif row == self.RootTree.GetEntriesFast() - 1:
+            binStart = self.RootTree.Bin_Start
+            binEnd = self.RootTree.Bin_Start + self.RootTree.TrueTimeInterval
+        else:
+            binStart = self.RootTree.Bin_Start
+            binEnd = self.RootTree.Bin_End
+        binStart = int(binStart*1000 + MET_OFFSET)
+        binEnd = int(binEnd*1000 + MET_OFFSET)
+        return (binEnd + binStart)/2
+
     def getDataPoints(self, variable, selection):
         branchName = variable.replace(self.Prefix, '')
         (branchType, branchShape) = self.BranchesDict[branchName]
@@ -137,15 +153,22 @@ class pRootFileBugger:
         dataPoints = []
         for i in range(self.RootTree.GetEntriesFast()):
             self.RootTree.GetEntry(i)
-            if i != self.RootTree.GetEntriesFast() - 1:
-                time = self.RootTree.Bin_End -\
-                    self.RootTree.TrueTimeInterval/2.
-            else:
-                time = self.RootTree.Bin_Start +\
-                    self.RootTree.TrueTimeInterval/2.
-            time = int(time*1000 + MET_OFFSET)
+            time = self.getTimestamp(i)
             value = eval('self.VarArray%s' % indexString)
             error = eval('self.ErrArray%s' % indexString)
+
+
+##             if 'Mean' in variable:
+##                 try:
+##                     value = (value/(error*error))/(1/(error*error))
+##                     error = 1/sqrt(1/(error*error))
+##                 except:
+##                     pass
+##             elif 'Rate' in variable:
+##                 error = sqrt((value/error)*(value/error)/DELTA_TIME/DELTA_TIME)
+##                 value = (value/error)*(value/error)/DELTA_TIME
+                
+                
             dataPoints.append(pDataPoint(time, value, error))
         self.RootTree.ResetBranchAddresses()
         return dataPoints
