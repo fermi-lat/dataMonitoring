@@ -2,12 +2,14 @@
 *** v1r0p2 ***
 
 - doc/relese.notes moved to doc/release.notes.
+* Relevant jira(s): GDQMQ-64
 
 
 *** v1r0p1 ***
 
 - missingGps changed to sourceGps.
 - release.notes added.
+* Relevant jira(s): GDQMQ-43, GDQMQ-64
 
 
 *** v1r0p0 ***
