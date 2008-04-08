@@ -1,4 +1,52 @@
 
+v1r0p7 2008/04/07  (DEV)
+----------------------------
+
+Added new quantities in digi trending (monconfig_digi_trending.xml)
+
+CalXHit_ZEROHit_Frac_TowerCalLayerCalColumn[16][8][12]
+CalXHit_ZEROHit_Frac_TowerCalLayerCalColumn_err[16][8][12]
+NTkrHits_TowerPlane[16][36]
+Normalized_NTkrHits_TowerPlane[16][36]
+Normalized_NTkrHits_TowerPlane_err[16][36]
+
+Added ACD pedestals in digi CalLong trending/histos
+
+trending:
+AcdPedestal_PmtA_LowPMTRange_AcdTile[128]
+AcdPedestal_PmtB_LowPMTRange_AcdTile[128]
+
+histos:
+ACD_PedMean_PMTA_LowRange_TH1
+ACD_PedMean_PMTB_LowRange_TH1
+ACD_PedRMS_PMTA_LowRange_TH1
+ACD_PedRMS_PMTB_LowRange_TH1
+
+Added actual distributions of pedestals for ACD and CAL and 
+the optical gains. Those distributions will be fitted later on, 
+extracting the meaningful quantities Mean/RMS; that should be 
+comparable to the truncated ones. 
+
+
+ACD_Ped_PMTA_LowRange_TH1_AcdTile[128]
+ACD_Ped_PMTB_LowRange_TH1_AcdTile[128]
+CalXAdcPed_TH1_TowerCalLayerCalColumnFR[16][8][12][2][4]
+RPM_TH1_TowerCalLayerCalColumn[16][8][12]
+RPp_TH1_TowerCalLayerCalColumn[16][8][12]
+RMm_TH1_TowerCalLayerCalColumn[16][8][12]
+
+Level of truncation is decreased from 10%, per side of distribution,
+down to 2%. In this way the RMS from the truncation will be 
+sensitive to outliers whose fraction is more than 2% of total number 
+of events. 
+
+
+
+
+*********************************************
+V1r0p6 Requested to BECOME PROD: 2008/04/04 
+*********************************************
+
 v1r0p6 2008/04/01 (DEV)
 -------------------------
 
