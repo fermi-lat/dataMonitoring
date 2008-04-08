@@ -1,3 +1,9 @@
+*** v1r0p5 ***
+
+- Added meta_context_current_earlyevent and meta_context_previous_earlyevent
+  in the baseConfig configuration file.
+* Relevant jira(s): GDQMQ-70
+
 
 *** v1r0p4 ***
 
