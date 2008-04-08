@@ -206,7 +206,7 @@
     </object>
 
        <object>
-      <name> OBF_GammaFilter </name>
+      <name> OBF_GAMMAFilter </name>
       <formula><![CDATA[ OBFStatus[0] ]]></formula>
       <cut><![CDATA[ OBFStatus[0]>0 ]]></cut>
       <type> rate </type>
@@ -214,7 +214,7 @@
     </object>
 
 	  <object>
-      <name> OBF_MipFilter </name>
+      <name> OBF_MIPFilter </name>
       <formula><![CDATA[ OBFStatus[1] ]]></formula>
       <cut><![CDATA[ OBFStatus[1]>0 ]]></cut>
       <type> rate </type>
@@ -223,23 +223,23 @@
 
 
 	    <object>
-      <name> OBF_HFCFilter </name>
+      <name> OBF_HIPFilter </name>
       <formula><![CDATA[ OBFStatus[2] ]]></formula>
       <cut><![CDATA[ OBFStatus[2]>0 ]]></cut>
       <type> rate </type>
-      <description> Rate of evts passing the onboard HFC filter, calculated during the specified time bin. </description>
+      <description> Rate of evts passing the onboard HIP filter, calculated during the specified time bin. </description>
     </object>
 
 	    <object>
-      <name> OBF_DFCFilter </name>
+      <name> OBF_DGNFilter </name>
       <formula><![CDATA[ OBFStatus[3] ]]></formula>
       <cut><![CDATA[OBFStatus[3]>0 ]]></cut>
       <type> rate </type>
-      <description> Rate of evts passing the onboard DFC filter, calculated during the specified time bin. </description>
+      <description> Rate of evts passing the onboard DGN filter, calculated during the specified time bin. </description>
     </object>
 
       <object>
-      <name> ComputationFailed_OBF_GammaFilter </name>
+      <name> ComputationFailed_OBF_GAMMAFilter </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ OBFStatus[0]<0 ]]></cut>
       <type> rate </type>
@@ -247,7 +247,7 @@
     </object>
 
 	  <object>
-      <name> ComputationFailed_OBF_MipFilter </name>
+      <name> ComputationFailed_OBF_MIPFilter </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ OBFStatus[1]<0 ]]></cut>
       <type> rate </type>
@@ -256,19 +256,19 @@
 
 
 	    <object>
-      <name> ComputationFailed_OBF_HFCFilter </name>
+      <name> ComputationFailed_OBF_HIPFilter </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ OBFStatus[2]<0 ]]></cut>
       <type> rate </type>
-      <description> Rate of evts for which the HFC Filter  could not be computed. </description>
+      <description> Rate of evts for which the HIP Filter  could not be computed. </description>
     </object>
 
 	    <object>
-      <name> ComputationFailed_OBF_DFCFilter </name>
+      <name> ComputationFailed_OBF_DGNFilter </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[OBFStatus[3]<0 ]]></cut>
       <type> rate </type>
-      <description> Rate of evts for which the DFC Filter  could not be computed.</description>
+      <description> Rate of evts for which the DGN Filter  could not be computed.</description>
     </object>
 
 
@@ -389,7 +389,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[(condsummary&4)  && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
       <type> rate </type>
-      <description> Rate of events with CAL-LO trigger AND ANY of the following Filters: Mip OR HFC OR DFC.  </description>
+      <description> Rate of events with CAL-LO trigger AND ANY of the following Filters: Mip OR HIP OR DGN.  </description>
     </object>
 
 
@@ -398,7 +398,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[(condsummary&8) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)  ]]></cut>
       <type> rate </type>
-      <description> Rate of events with CAL-HI trigger AND ANY of the following Filters: Mip OR HFC OR DFC.  </description>
+      <description> Rate of events with CAL-HI trigger AND ANY of the following Filters: Mip OR HIP OR DGN.  </description>
     </object>
 
       <object>
@@ -406,7 +406,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[(condsummary&16) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)  ]]></cut>
       <type> rate </type>
-      <description> Rate of events with CNO trigger AND ANY of the following Filters: Mip OR HFC OR DFC.  </description>
+      <description> Rate of events with CNO trigger AND ANY of the following Filters: Mip OR HIP OR DGN.  </description>
     </object>
 
        <object>
@@ -414,7 +414,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[(condsummary&2) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
       <type> rate </type>
-      <description> Rate of events with TKR trigger AND ANY of the following Filters: Mip OR HFC OR DFC.  </description>
+      <description> Rate of events with TKR trigger AND ANY of the following Filters: Mip OR HIP OR DGN.  </description>
     </object>
 
            <object>
@@ -422,7 +422,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[(condsummary&1) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
       <type> rate </type>
-      <description> Rate of events with ROI trigger AND ANY of the following Filters: Mip OR HFC OR DFC.  </description>
+      <description> Rate of events with ROI trigger AND ANY of the following Filters: Mip OR HIP OR DGN.  </description>
     </object>
 
 
@@ -431,7 +431,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[(condsummary&1) && (condsummary&2) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
       <type> rate </type>
-      <description> Rate of TKR trigger and ROI (mostly charged particles) AND ANY of the following Filters: Mip OR HFC OR DFC. </description>
+      <description> Rate of TKR trigger and ROI (mostly charged particles) AND ANY of the following Filters: Mip OR HIP OR DGN. </description>
     </object>
 
      <object>
@@ -439,7 +439,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[!(condsummary&1) && (condsummary&2) && (OBFStatus[1]>0 || OBFStatus[2]>0 || OBFStatus[2]>0)]]></cut>
       <type> rate </type>
-      <description> Rate TKR trigger and not ROI (mostly non charge particles) AND ANY of the following Filters: Mip OR HFC OR DFC. </description>
+      <description> Rate TKR trigger and not ROI (mostly non charge particles) AND ANY of the following Filters: Mip OR HIP OR DGN. </description>
     </object>
 
 
@@ -630,7 +630,7 @@
       </object>
 
    
-      
+        
 
 
       <!--  ______________  Tracker _______________ -->
