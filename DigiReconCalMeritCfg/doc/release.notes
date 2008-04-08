@@ -1,3 +1,29 @@
+v1r0p8 2008/04/08  (DEV)
+----------------------------
+
+Change of NAMES in OBF variables in digi trending job 
+(config file monconfig_digi_trending.xml):
+
+FROM: 
+OBF_GammaFilter  
+OBF_MipFilter  
+OBF_HFCFilter  
+OBF_DFCFilter  
+ComputationFailed_OBF_GammaFilter  
+ComputationFailed_OBF_MipFilter  
+ComputationFailed_OBF_HFCFilter  
+ComputationFailed_OBF_DFCFilter  
+
+TO: 
+OBF_GAMMAFilter  
+OBF_MIPFilter  
+OBF_HIPFilter  
+OBF_DGNFilter  
+ComputationFailed_OBF_GAMMAFilter  
+ComputationFailed_OBF_MIPFilter  
+ComputationFailed_OBF_HIPFilter  
+ComputationFailed_OBF_DGNFilter 
+
 
 v1r0p7 2008/04/07  (DEV)
 ----------------------------
@@ -11,6 +37,7 @@ Normalized_NTkrHits_TowerPlane[16][36]
 Normalized_NTkrHits_TowerPlane_err[16][36]
 
 Added ACD pedestals in digi CalLong trending/histos
+This addresses JIRA GDQMQ-59.
 
 trending:
 AcdPedestal_PmtA_LowPMTRange_AcdTile[128]
