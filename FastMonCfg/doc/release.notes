@@ -1,11 +1,11 @@
 
-*** v3r0p4 ***
+*** v1r0p4 ***
 
 - Bug fix in the text configuration file for the merging of FastMon histograms.
 * Relevant jira(s): GDQMQ-71
 
 
-*** v3r0p3 ***
+*** v1r0p3 ***
 
 - Release notes updated with references to the relevant jira. No change in any
 of the functionalities at all.
