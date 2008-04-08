@@ -693,8 +693,16 @@
       <description> Mean number of tracker hits in [tower][tkrplane]. </description>
     </object>
 
-
+      <object>
+      <name> NTkrHits_TowerPlane[16][36] </name>
+      <formula><![CDATA[ foreachtower: foreachtkrplane: TkrHitsTowerPlane[tower][tkrplane] ]]></formula>
+      <cut><![CDATA[ condsummary&32]]></cut>
+      <type> rate </type>
+      <description> Rate of tracker hits in [tower][tkrplane] during periodic triggers. This is an indicator of the noise in the tracker. </description>
+    </object>
     
+
+   
 
  
      <object>
@@ -717,6 +725,24 @@
       <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_TkrHits_TowerPlane. </description>
     </object>
     
+         <object>
+      <name> Normalized_NTkrHits_TowerPlane[16][36] </name>
+      <formula><![CDATA[foreachtower: foreachtkrplane:   Rate_Trigger_Periodic >0 ? (Rate_NTkrHits_TowerPlane[tower][tkrplane]/Rate_Trigger_Periodic) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector  [tower][tkrplane] reporting the normalized number hits in the tracker plane defined by coordinates tower,tkrplane during periodic triggers. The used normalization factor is the number of periodic triggers. This is an good indicator of noise in the tracker. </description>
+    </object>
+
+
+      <object>
+      <name> Normalized_NTkrHits_TowerPlane_err[16][36]   </name>
+      <formula><![CDATA[ foreachtower: foreachtkrplane:  (Rate_Trigger_Periodic >0 && Rate_NTkrHits_TowerPlane[tower][tkrplane] >0 ) ? (Rate_NTkrHits_TowerPlane[tower][tkrplane]/Rate_Trigger_Periodic * TMath::Sqrt(pow(Rate_Trigger_Periodic_err/Rate_Trigger_Periodic,2)+pow(Rate_NTkrHits_TowerPlane_err[tower][tkrplane]/Rate_NTkrHits_TowerPlane[tower][tkrplane],2))) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_NTkrHits_TowerPlane. </description>
+    </object>
 
 
 
@@ -1108,6 +1134,28 @@
      
       <description> Error in quantity CalXHit_ZEROHit_Fraction_TowerCalLayer. </description>
      </object>
+
+
+      <object>
+      <name> CalXHit_ZEROHit_Frac_TowerCalLayerCalColumn[16][8][12] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: Counter_CondsummaryBitAnd30_NOTPeriodic>0 ? (double(Counter_CalXHit_ZEROHit_TowerCalLayerCalColumn[tower][callayer][calcolumn])/double(Counter_CondsummaryBitAnd30_NOTPeriodic)) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+     
+      <description> Fraction of events with ZERO hits in a calorimeter crystal defined by the coordinates tower,callayer,calcolumn. Periodic triggers are NOT taken into account. The normalization factor used to compute the fraction is CondsummaryBitAnd30_NOTPeriodic_Counter</description>
+     </object>
+     
+      <object>
+      <name> CalXHit_ZEROHit_Frac_TowerCalLayerCalColumn_err[16][8][12] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: Counter_CondsummaryBitAnd30_NOTPeriodic>0 && Counter_CalXHit_ZEROHit_TowerCalLayerCalColumn[tower][callayer][calcolumn]>0 ? (double(Counter_CalXHit_ZEROHit_TowerCalLayerCalColumn[tower][callayer][calcolumn])/double(Counter_CondsummaryBitAnd30_NOTPeriodic)*TMath::Sqrt(1./Counter_CondsummaryBitAnd30_NOTPeriodic + 1./Counter_CalXHit_ZEROHit_TowerCalLayerCalColumn[tower][callayer][calcolumn])) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+     
+      <description> Error in quantity CalXHit_ZEROHit_Fraction_TowerCalLayerCalColumn. </description>
+     </object>
+
      
      
     
