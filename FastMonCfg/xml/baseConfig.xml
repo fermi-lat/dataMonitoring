@@ -172,6 +172,11 @@
 
     <inputList group="META" name="META Current TimeTone" enabled="True">
 
+ 	<variable name="meta_context_current_earlyevent" enabled="True">
+	    <type>uint64</type>
+            <shape>(1)</shape>
+	</variable>
+
  	<variable name="meta_context_current_incomplete" enabled="True">
 	    <type>uint64</type>
             <shape>(1)</shape>
@@ -192,7 +197,7 @@
             <shape>(1)</shape>
 	</variable-->
 
- 	<variable name="meta_context_current_missing_gps" enabled="True">
+ 	<variable name="meta_context_current_source_gps" enabled="True">
 	    <type>uint64</type>
             <shape>(1)</shape>
 	</variable>
@@ -226,6 +231,11 @@
 
     <inputList group="META" name="META Previous TimeTone" enabled="True">
 
+ 	<variable name="meta_context_previous_earlyevent" enabled="True">
+	    <type>uint64</type>
+            <shape>(1)</shape>
+	</variable>
+
  	<variable name="meta_context_previous_incomplete" enabled="True">
 	    <type>uint64</type>
             <shape>(1)</shape>
@@ -246,7 +256,7 @@
             <shape>(1)</shape>
 	</variable-->
 
- 	<variable name="meta_context_previous_missing_gps" enabled="True">
+ 	<variable name="meta_context_previous_source_gps" enabled="True">
 	    <type>uint64</type>
             <shape>(1)</shape>
 	</variable>
