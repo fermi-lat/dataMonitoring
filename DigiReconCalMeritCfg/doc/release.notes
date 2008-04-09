@@ -1,3 +1,9 @@
+v1r0p9 2008/04/09 (DEV)
+----------------------------------------------
+Add FastMon trending quantity "meta_context_open_mode" to trend the LAT mode as
+requested by GDQMQ-13.
+
+
 v1r0p8 2008/04/08  (DEV)
 ----------------------------
 
