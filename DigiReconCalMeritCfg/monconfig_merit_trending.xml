@@ -18,8 +18,18 @@
     <object>AcdCornerDoca</object>
     <object>AcdTileCount</object>
     <object>AcdRibbonCount </object>
+ 
+    <object>AcdActiveDist3D </object>
+    <object>AcdTkr1ActiveDist </object>
+    <object>AcdTkr1ActDistTileEnergy </object>
+    <object>AcdRibbonActDist </object>
+    <object>AcdRibbonEnergy </object>
+    <object>AcdTotalEnergy </object>
+    <object>AcdActDistTileEnergy </object>
 
     <object>AcdVtxActiveDist</object>
+
+
     
     <!-- Tracker -->
 
@@ -228,6 +238,64 @@
       <type> mean </type>
       <description> Mean value (per evt) of AcdVtxActiveDist</description>
     </object>
+
+
+    <object>
+      <name> AcdActiveDist3D </name>
+      <formula><![CDATA[ AcdActiveDist3D ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdActiveDist3D</description>
+    </object>
+
+    <object>
+      <name> AcdTkr1ActiveDist </name>
+      <formula><![CDATA[ AcdTkr1ActiveDist ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdTkr1ActiveDist</description>
+    </object>
+
+    <object>
+      <name> AcdTkr1ActDistTileEnergy </name>
+      <formula><![CDATA[ AcdTkr1ActDistTileEnergy ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdTkr1ActDistTileEnergy </description>
+    </object>
+
+    <object>
+      <name> AcdRibbonActDist </name>
+      <formula><![CDATA[ AcdRibbonActDist ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdRibbonActDist</description>
+    </object>
+
+    <object>
+      <name> AcdRibbonEnergy </name>
+      <formula><![CDATA[ AcdRibbonEnergy ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdRibbonEnergy </description>
+    </object>
+
+     <object>
+      <name> AcdTotalEnergy </name>
+      <formula><![CDATA[ AcdTotalEnergy ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdTotalEnergy </description>
+    </object>
+
+    <object>
+      <name> AcdActDistTileEnergy </name>
+      <formula><![CDATA[ AcdActDistTileEnergy ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdActDistTileEnergy</description>
+    </object>
+
 
 
 	  <!-- Tracker-->
