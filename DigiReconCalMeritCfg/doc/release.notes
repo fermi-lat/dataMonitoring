@@ -1,3 +1,9 @@
+v1r0p10  2008/04/09 (DEV)
+-------------------------
+Changes in the config files to address the Jiras:
+GDQMQ-74, GDQMQ-75, GDQMQ-77. 
+
+
 v1r0p9 2008/04/09 (DEV)
 ----------------------------------------------
 Add FastMon trending quantity "meta_context_open_mode" to trend the LAT mode as
