@@ -11,6 +11,7 @@
 
    <!-- Context information -->
    <object>FastMon_meta_context_open_mode</object> 
+   <object>FastMon_meta_context_open_modechanges</object> 
 
    <!-- Environment quantities -->
    <object> FastMon_spacecraft_latitude</object>
@@ -49,6 +50,14 @@
       <cut><![CDATA[ ]]></cut>
       <type> mean </type>
       <description> Mean value of the LAT mode as read from the datagram open mode </description>
+    </object>
+    <object>
+      <name> FastMon_MetaContext_OpenMode_Changes </name>
+      <formula><![CDATA[ FastMon_meta_context_open_modechanges ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the LAT mode changes as read from the datagram open mode.
+                    This is a counter, reset at the beginning of each run </description>
     </object>
   
   
