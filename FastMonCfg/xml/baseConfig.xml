@@ -172,6 +172,11 @@
 
     <inputList group="META" name="META Current TimeTone" enabled="True">
 
+ 	<variable name="meta_context_current_earlyevent" enabled="True">
+	    <type>uint64</type>
+            <shape>(1)</shape>
+	</variable>
+
  	<variable name="meta_context_current_incomplete" enabled="True">
 	    <type>uint64</type>
             <shape>(1)</shape>
@@ -225,6 +230,11 @@
    </inputList>
 
     <inputList group="META" name="META Previous TimeTone" enabled="True">
+
+ 	<variable name="meta_context_previous_earlyevent" enabled="True">
+	    <type>uint64</type>
+            <shape>(1)</shape>
+	</variable>
 
  	<variable name="meta_context_previous_incomplete" enabled="True">
 	    <type>uint64</type>

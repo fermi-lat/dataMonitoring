@@ -2,6 +2,38 @@
 
 <monitoring>
 
+    <inputList group="Meta Event" name="Meta advanced">
+	<variable name="clocktics_dev_20MHz" enabled="True">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+    </inputList>
+
+    <outputList group="Meta Event" name="Meta advanced">
+        <TH1F name="Tick20MHzDeviation_TH1">
+	    <expression><![CDATA[ clocktics_dev_20MHz ]]></expression>
+	    <cut><![CDATA[ clocktics_dev_20MHz!=-9999 ]]></cut>
+	    <xbins>1500</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>1499.5</xmax>
+	    <title>Number of ticks between successive 1-PPS - Deviation from 20 MHz.</title>
+	    <xlabel>Number of ticks between successive 1-PPS</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Number of ticks between successive 1-PPS - Deviation from 20 MHz. </caption>
+        </TH1F>
+        <TH1F name="Tick20MHzDeviation_Zoom_TH1">
+	    <expression><![CDATA[ clocktics_dev_20MHz ]]></expression>
+	    <cut><![CDATA[ clocktics_dev_20MHz!=-9999 ]]></cut>
+	    <xbins>200</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>199.5</xmax>
+	    <title>Number of ticks between successive 1-PPS - Deviation from 20 MHz - Zoom</title>
+	    <xlabel>Number of ticks between successive 1-PPS</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Number of ticks between successive 1-PPS - Deviation from 20 MHz - Zoom </caption>
+        </TH1F>
+    </outputList>
+
     <inputList group="GEM" name="GEM base">
 	<variable name="condsummary">
 	    <type>int</type>
