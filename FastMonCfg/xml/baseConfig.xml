@@ -72,7 +72,7 @@
 	</variable>
 	
  	<variable name="meta_context_open_crate" enabled="True">
-	    <type>uint8</type>
+	    <type>uint16</type>
             <shape>(1)</shape>
 	</variable>
 	
@@ -82,7 +82,7 @@
 	</variable>
 	
  	<variable name="meta_context_open_mode" enabled="True">
-	    <type>uint8</type>
+	    <type>uint16</type>
             <shape>(1)</shape>
 	</variable>
 	
@@ -92,7 +92,7 @@
 	</variable>
 	
  	<variable name="meta_context_open_reason" enabled="True">
-	    <type>uint8</type>
+	    <type>uint16</type>
             <shape>(1)</shape>
 	</variable>
 	
@@ -106,7 +106,7 @@
 	</variable>
 	
  	<variable name="meta_context_close_reason" enabled="True">
-	    <type>uint8</type>
+	    <type>uint16</type>
             <shape>(1)</shape>
 	</variable>
 	
@@ -120,12 +120,12 @@
 	</variable>
 	
  	<variable name="meta_context_run_origin" enabled="True">
-	    <type>uint8</type>
+	    <type>uint16</type>
             <shape>(1)</shape>
 	</variable>
 
  	<variable name="meta_context_run_platform" enabled="True">
-	    <type>uint8</type>
+	    <type>uint16</type>
             <shape>(1)</shape>
 	</variable>
 	
