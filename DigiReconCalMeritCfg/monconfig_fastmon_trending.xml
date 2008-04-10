@@ -9,10 +9,7 @@
    <!-- Evt type -->
    <object>FastMon_condsummary</object> 
 
-   <!-- Context information -->
-   <object>FastMon_meta_context_open_mode</object> 
-
-   <!-- Environment quantities -->
+    <!-- Environment quantities -->
    <object> FastMon_spacecraft_latitude</object>
    <object> FastMon_spacecraft_longitude</object>
    <object> FastMon_spacecraft_altitude</object>
@@ -41,16 +38,6 @@
 
 
   <outputList name="top">
-  
-   <!-- Context information -->
-    <object>
-      <name> FastMon_MetaContext_OpenMode </name>
-      <formula><![CDATA[ FastMon_meta_context_open_mode ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the LAT mode as read from the datagram open mode </description>
-    </object>
-  
   
     <!-- Environment quantities -->
     <object>

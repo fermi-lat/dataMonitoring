@@ -32,3 +32,6 @@ TkrHitsCounter_Plane_TH1_Tower_TowerLoop   Sum
 TkrTotalHits_TH1   Sum
 MetaContext_OpenMode_TH1   Sum
 TkrTrigger_Tower_TH1   Sum
+Tick20MHzDeviation_TH1   Sum
+Tick20MHzDeviation_Zoom_TH1   Sum
+Tick20MHzDeviation_SuperZoom_TH1   Sum
