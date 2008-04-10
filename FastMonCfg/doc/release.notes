@@ -1,3 +1,10 @@
+*** v1r0p6 ***
+ - Add the quantity clocktics_dev_20MHz that counts the number of tics between
+   1pps and gives the deviation with respect to expected 20MHz, and 2 associated
+   histograms in the config configuration file.
+  
+* Relevant jira(s): GDQMQ-27
+
 *** v1r0p5 ***
 
 - Added meta_context_current_earlyevent and meta_context_previous_earlyevent
