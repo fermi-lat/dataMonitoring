@@ -1,3 +1,9 @@
+v1r0p12 2008/04/09 (DEV)
+----------------------------------------------
+Add FastMon trending quantity "meta_context_open_modechanges" 
+to trend the LAT mode changes as
+requested by GDQMQ-13.
+
 v1r0p11 2008/04/09  (DEV)
 ----------------------------------------
 Change of names in config files to keep consistency. 
