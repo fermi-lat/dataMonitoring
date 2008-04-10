@@ -1,3 +1,21 @@
+v1r0p11 2008/04/09  (DEV)
+----------------------------------------
+Change of names in config files to keep consistency. 
+
+Config filenames:
+
+monconfig_digi_CalLongTime_Trending.xml
+monconfig_digi_CalLongTime_histos.xml
+MergeHistos_digi_CalLongTime.txt
+
+are moved to:
+
+monconfig_digi_long_trending.xml
+monconfig_digi_long_histos.xml
+MergeHistos_digi_long.txt
+
+
+
 v1r0p10  2008/04/09 (DEV)
 -------------------------
 Changes in the config files to address the Jiras:
