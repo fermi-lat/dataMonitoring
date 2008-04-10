@@ -1,3 +1,9 @@
+*** v1r0p9 ***
+ - Synchronized Histograms for Clock ticks deviation to 20MHz
+   with the digiEOR.   
+* Relevant jira(s): GDQMQ-27
+
+
 *** v1r0p8 ***
  - Bug fix on the previous fix. Numpy uint8 is interpreted by ROOT as Char_t.
    Original type of the quantities was enum, that is compatible with any uint
