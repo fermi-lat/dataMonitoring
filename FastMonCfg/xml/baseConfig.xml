@@ -67,32 +67,32 @@
     <inputList group="META" name="META OpenInfo" enabled="True">
 
  	<variable name="meta_context_open_action" enabled="True">
-	    <type>uint64</type>
+	    <type>uint32</type>
             <shape>(1)</shape>
 	</variable>
 	
  	<variable name="meta_context_open_crate" enabled="True">
-	    <type>uint64</type>
+	    <type>uint8</type>
             <shape>(1)</shape>
 	</variable>
 	
  	<variable name="meta_context_open_datagrams" enabled="True">
-	    <type>uint64</type>
+	    <type>uint32</type>
             <shape>(1)</shape>
 	</variable>
 	
  	<variable name="meta_context_open_mode" enabled="True">
-	    <type>uint64</type>
+	    <type>uint8</type>
             <shape>(1)</shape>
 	</variable>
 	
  	<variable name="meta_context_open_modechanges" enabled="True">
-	    <type>uint64</type>
+	    <type>uint32</type>
             <shape>(1)</shape>
 	</variable>
 	
  	<variable name="meta_context_open_reason" enabled="True">
-	    <type>uint64</type>
+	    <type>uint8</type>
             <shape>(1)</shape>
 	</variable>
 	
@@ -101,12 +101,12 @@
     <inputList group="META" name="META CloseInfo" enabled="True">
 
  	<variable name="meta_context_close_action" enabled="True">
-	    <type>uint64</type>
+	    <type>uint32</type>
             <shape>(1)</shape>
 	</variable>
 	
  	<variable name="meta_context_close_reason" enabled="True">
-	    <type>uint64</type>
+	    <type>uint8</type>
             <shape>(1)</shape>
 	</variable>
 	
@@ -120,12 +120,12 @@
 	</variable>
 	
  	<variable name="meta_context_run_origin" enabled="True">
-	    <type>uint64</type>
+	    <type>uint8</type>
             <shape>(1)</shape>
 	</variable>
 
  	<variable name="meta_context_run_platform" enabled="True">
-	    <type>uint64</type>
+	    <type>uint8</type>
             <shape>(1)</shape>
 	</variable>
 	
@@ -173,7 +173,7 @@
     <inputList group="META" name="META Current TimeTone" enabled="True">
 
  	<variable name="meta_context_current_earlyevent" enabled="True">
-	    <type>uint64</type>
+	    <type>bool_</type>
             <shape>(1)</shape>
 	</variable>
 
@@ -198,22 +198,22 @@
 	</variable-->
 
  	<variable name="meta_context_current_source_gps" enabled="True">
-	    <type>uint64</type>
+	    <type>bool_</type>
             <shape>(1)</shape>
 	</variable>
 
  	<variable name="meta_context_current_missing_cpupps" enabled="True">
-	    <type>uint64</type>
+	    <type>bool_</type>
             <shape>(1)</shape>
 	</variable>
 
  	<variable name="meta_context_current_missing_latpps" enabled="True">
-	    <type>uint64</type>
+	    <type>bool_</type>
             <shape>(1)</shape>
 	</variable>
 
  	<variable name="meta_context_current_missing_timetone" enabled="True">
-	    <type>uint64</type>
+	    <type>bool_</type>
             <shape>(1)</shape>
 	</variable>
 
@@ -232,7 +232,7 @@
     <inputList group="META" name="META Previous TimeTone" enabled="True">
 
  	<variable name="meta_context_previous_earlyevent" enabled="True">
-	    <type>uint64</type>
+	    <type>bool_</type>
             <shape>(1)</shape>
 	</variable>
 
@@ -257,22 +257,22 @@
 	</variable-->
 
  	<variable name="meta_context_previous_source_gps" enabled="True">
-	    <type>uint64</type>
+	    <type>bool_</type>
             <shape>(1)</shape>
 	</variable>
 
  	<variable name="meta_context_previous_missing_cpupps" enabled="True">
-	    <type>uint64</type>
+	    <type>bool_</type>
             <shape>(1)</shape>
 	</variable>
 
  	<variable name="meta_context_previous_missing_latpps" enabled="True">
-	    <type>uint64</type>
+	    <type>bool_</type>
             <shape>(1)</shape>
 	</variable>
 
  	<variable name="meta_context_previous_missing_timetone" enabled="True">
-	    <type>uint64</type>
+	    <type>bool_</type>
             <shape>(1)</shape>
 	</variable>
 
