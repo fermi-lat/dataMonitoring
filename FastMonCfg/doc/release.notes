@@ -1,3 +1,11 @@
+*** v1r0p8 ***
+ - Bug fix on the previous fix. Numpy uint8 is interpreted by ROOT as Char_t.
+   Original type of the quantities was enum, that is compatible with any uint
+   type. So DFI enum types are now uint16 and the monitoring application is
+   happy.
+* Relevant jira(s): GDQMQ-80
+
+
 *** v1r0p7 ***
  - Fix the type of the meta_context quantities according to DFI documentation.
 * Relevant jira(s): GDQMQ-80
