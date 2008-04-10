@@ -1,5 +1,28 @@
+*** v1r0p7 ***
+ - Fix the type of the meta_context quantities according to DFI documentation.
+* Relevant jira(s): GDQMQ-80
 
-*** v3r0p3 ***
+
+*** v1r0p6 ***
+ - Add the quantity clocktics_dev_20MHz that counts the number of tics between
+   1pps and gives the deviation with respect to expected 20MHz, and 2 associated
+   histograms in the config configuration file.  
+* Relevant jira(s): GDQMQ-27
+
+*** v1r0p5 ***
+
+- Added meta_context_current_earlyevent and meta_context_previous_earlyevent
+  in the baseConfig configuration file.
+* Relevant jira(s): GDQMQ-70
+
+
+*** v1r0p4 ***
+
+- Bug fix in the text configuration file for the merging of FastMon histograms.
+* Relevant jira(s): GDQMQ-71
+
+
+*** v1r0p3 ***
 
 - Release notes updated with references to the relevant jira. No change in any
 of the functionalities at all.
