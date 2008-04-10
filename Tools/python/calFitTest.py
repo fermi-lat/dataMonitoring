@@ -13,6 +13,14 @@ kFunction.SetParameter(2, 1)
 kFunction.SetParameter(3, 2.)
 
 
+def testHyperGaussian():
+    kFunction.SetRange(-5.0, 5.0)
+    for exponent in [1.1, 1.5, 2.0, 3.0]:
+        kFunction.SetParameter(3, exponent)
+        kFunction.Draw()
+        ROOT.gPad.Update()
+        raw_input('Press enter to exit.')
+
 def findRMSCorrectionFactors():
     histogram = ROOT.TH1F('testHisto', 'testHisto', 100, -5, 5)
     outputDict = {}
@@ -70,7 +78,8 @@ def testNormalization():
 
 
 if __name__ == '__main__':
+    testHyperGaussian()
     #findRMSCorrectionFactors()
     #testRMSCorrectionFactors()
     #findNormalization()
-    testNormalization()
+    #testNormalization()
