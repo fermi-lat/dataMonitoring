@@ -7,6 +7,7 @@ requested by GDQMQ-13.
 v1r0p11 2008/04/09  (DEV)
 ----------------------------------------
 Change of names in config files to keep consistency. 
+This addresses Jira GDQMQ-76.
 
 Config filenames:
 
@@ -39,6 +40,7 @@ v1r0p8 2008/04/08  (DEV)
 
 Change of NAMES in OBF variables in digi trending job 
 (config file monconfig_digi_trending.xml):
+This addresses Jira GDQMQ-67
 
 FROM: 
 OBF_GammaFilter  
@@ -64,7 +66,8 @@ ComputationFailed_OBF_DGNFilter
 v1r0p7 2008/04/07  (DEV)
 ----------------------------
 
-Added new quantities in digi trending (monconfig_digi_trending.xml)
+Added new quantities in digi trending (monconfig_digi_trending.xml).
+This addresses Jira GDQMQ-90.
 
 CalXHit_ZEROHit_Frac_TowerCalLayerCalColumn[16][8][12]
 CalXHit_ZEROHit_Frac_TowerCalLayerCalColumn_err[16][8][12]
@@ -85,11 +88,13 @@ ACD_PedMean_PMTB_LowRange_TH1
 ACD_PedRMS_PMTA_LowRange_TH1
 ACD_PedRMS_PMTB_LowRange_TH1
 
+
+
 Added actual distributions of pedestals for ACD and CAL and 
 the optical gains. Those distributions will be fitted later on, 
 extracting the meaningful quantities Mean/RMS; that should be 
 comparable to the truncated ones. 
-
+This addresses Jira GDQMQ-91.
 
 ACD_Ped_PMTA_LowRange_TH1_AcdTile[128]
 ACD_Ped_PMTB_LowRange_TH1_AcdTile[128]
@@ -101,7 +106,7 @@ RMm_TH1_TowerCalLayerCalColumn[16][8][12]
 Level of truncation is decreased from 10%, per side of distribution,
 down to 2%. In this way the RMS from the truncation will be 
 sensitive to outliers whose fraction is more than 2% of total number 
-of events. 
+of events. This addresses Jira GDQMQ-92
 
 
 
