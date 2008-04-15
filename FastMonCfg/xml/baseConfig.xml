@@ -29,6 +29,18 @@
 	    <type>double</type>
             <shape>(1)</shape>
 	</variable>
+	<variable name="spacecraft_pitch" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="spacecraft_roll" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="spacecraft_yaw" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
 	<variable name="geomagnetic_cutoff" enabled="True" reset="False">
 	    <type>double</type>
             <shape>(1)</shape>
