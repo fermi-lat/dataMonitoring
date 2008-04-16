@@ -1,3 +1,10 @@
+v1r0p13 2008/04/16  (DEV)
+----------------------------------
+Change in monconfig_recon_trending.xml to address 
+problem described in Jira GDQMQ-97.
+
+
+
 v1r0p12 2008/04/09 (DEV)
 ----------------------------------------------
 Add FastMon trending quantity "meta_context_open_modechanges" 
