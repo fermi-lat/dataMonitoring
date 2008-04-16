@@ -1,3 +1,10 @@
+
+v1r0p14 2008/04/16  (DEV)
+----------------------------------
+
+Live time fraction related quatities removed from 
+monconfig_digi_trending.xml
+
 v1r0p13 2008/04/16  (DEV)
 ----------------------------------
 Change in monconfig_recon_trending.xml to address 
