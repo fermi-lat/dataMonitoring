@@ -13,13 +13,22 @@
     <!-- Filter variables -->
     <object>FilterStatus_HI</object>
 
-
     <!-- ACD -->
-    <object>AcdCornerDoca</object>
+
+      <object>AcdCornerDoca</object>
     <object>AcdTileCount</object>
     <object>AcdRibbonCount </object>
+ 
+    <object>AcdActiveDist3D </object>
+    <object>AcdTkr1ActiveDist </object>
+    <object>AcdTkr1ActDistTileEnergy </object>
+    <object>AcdRibbonActDist </object>
+    <object>AcdRibbonEnergy </object>
+    <object>AcdTotalEnergy </object>
+    <object>AcdActDistTileEnergy </object>
 
     <object>AcdVtxActiveDist</object>
+
     
     <!-- Tracker -->
 
@@ -32,7 +41,7 @@
     <object> TkrThickHits</object>
     <object> TkrBlankHits</object>
 
-     <object> TkrSurplusHitsInside </object>
+<!--     <object> TkrSurplusHitsInside </object> -->
       <object> TkrSurplusHitRatio </object>
 
       <object> Tkr1KalEne </object> 
@@ -95,28 +104,346 @@
 
   <outputList name="top">
   
+
+    <!-- Trending quantities that are used to fill histograms (ONLY RATES !!)-->
+
+    <object>
+      <name> EvtsBeforeCuts </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> Rate of events before applicaltion of cuts.</description>
+    </object>
+
+     <object>
+      <name> EvtsBeforeCutsBelow105ZenithTheta </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ FT1ZenithTheta<105 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 105.</description>
+    </object>
+
+     <object>
+      <name> EvtsBeforeCutsAbove105ZenithTheta </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ FT1ZenithTheta>105 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta larger than 105.</description>
+    </object>
+
+     <object>
+      <name> TransientEvts </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) ]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of TRANSIENT gamma cuts from pass5. </description>
+    </object>
+
+
+
+      <object>
+      <name> DiffuseEvts </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) ]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of DIFFUSE gamma cuts from pass5. </description>
+    </object>
+
+
+       <object>
+      <name> SourceEvts </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) ]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of SOURCE gamma cuts from pass5. </description>
+    </object>
+
+
+
+
+
+
     <!-- Gem quantities -->
 
 
-    
-
     <!-- RAtes -->
 
+
+          <object>
+      <name> Rate_EvtsBeforeCuts_TH1 </name>
+      <formula><![CDATA[ Rate_EvtsBeforeCuts ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,1000] </type>
+      <titledesc> Rate_EvtsBeforeCuts </titledesc>
+      <axisdesc> [RateEvtsBeforeCuts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_EvtsBeforeCuts  values. </description>
+    </object>
+
+	      <object>
+      <name> Rate_EvtsBeforeCutsAbove105ZenithTheta_TH1 </name>
+      <formula><![CDATA[ Rate_EvtsBeforeCutsAbove105ZenithTheta ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,500] </type>
+      <titledesc> Rate_EvtsBeforeCutsAbove105ZenithTheta </titledesc>
+      <axisdesc> [Rate_EvtsBeforeCutsAbove105ZenithTheta(Hz), N] </axisdesc>
+      <description> Distribution of Rate_EvtsBeforeCutsAbove105ZenithTheta  values. </description>
+    </object>
+
+	       <object>
+      <name> Rate_TransientEvts_TH1 </name>
+      <formula><![CDATA[ Rate_TransientEvts ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,50] </type>
+      <titledesc> Rate_TransientEvts </titledesc>
+      <axisdesc> [Rate_TransientEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_TransientEvts  values. </description>
+    </object>
+
+	      <object>
+      <name> Rate_DiffuseEvts_TH1 </name>
+      <formula><![CDATA[ Rate_DiffuseEvts ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,20] </type>
+      <titledesc> Rate_DiffuseEvts </titledesc>
+      <axisdesc> [Rate_DiffuseEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_DiffuseEvts  values. </description>
+    </object>
+
+	 <object>
+      <name> Rate_SourceEvts_TH1 </name>
+      <formula><![CDATA[ Rate_SourceEvts ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,20] </type>
+      <titledesc> Rate_SourceEvts </titledesc>
+      <axisdesc> [Rate_SourceEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_SourceEvts  values. </description>
+    </object>
+
+
+
+
        <!-- ACD -->
+
+    <object>
+      <name> AcdCornerDoca_TH1 </name>
+      <formula><![CDATA[ AcdCornerDoca ]]></formula>
+      <cut><![CDATA[ AcdCornerDoca != (-2000) ]]></cut>
+      <type> histogram-1d[400,-2005,2005] </type>
+      <titledesc> AcdCornerDoca </titledesc>
+      <axisdesc> [AcdCornerDoca(units), N] </axisdesc>
+      <description> Distribution of AcdCornerDoca  values. </description>
+    </object>
+
+    <object>
+      <name> AcdTileCount_TH1 </name>
+      <formula><![CDATA[ AcdTileCount ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[100,0,100] </type>
+      <titledesc> AcdTileCount </titledesc>
+      <axisdesc> [AcdTileCount, N] </axisdesc>
+      <description> Distribution of AcdTileCount  values. </description>
+    </object>
+
+    <object>
+      <name> AcdRibbonCount_TH1 </name>
+      <formula><![CDATA[ AcdRibbonCount ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[20,0,20] </type>
+      <titledesc> AcdRibbonCount </titledesc>
+      <axisdesc> [AcdRibbonCount, N] </axisdesc>
+      <description> Distribution of AcdRibbonCount  values. </description>
+    </object>
+
+
+    <object>
+      <name> AcdActiveDist3D_TH1 </name>
+      <formula><![CDATA[ AcdActiveDist3D ]]></formula>
+      <cut><![CDATA[ AcdActiveDist3D != (-2000) ]]></cut>
+      <type> histogram-1d[401,-2005,2005] </type>
+      <titledesc> AcdActiveDist3D </titledesc>
+      <axisdesc> [AcdActiveDist3D(mm), N] </axisdesc>
+      <description> Distribution of AcdActiveDist3D  values. </description>
+    </object>
+
+    <object>
+      <name> AcdTkr1ActiveDist_TH1 </name>
+      <formula><![CDATA[ AcdTkr1ActiveDist ]]></formula>
+      <cut><![CDATA[AcdTkr1ActiveDist != (-2000) ]]></cut>
+      <type> histogram-1d[401,-2005,2005] </type>
+      <titledesc> AcdTkr1ActiveDist </titledesc>
+      <axisdesc> [AcdTkr1ActiveDist(mm), N] </axisdesc>
+      <description> Distribution of AcdTkr1ActiveDist  values. </description>
+    </object>
+
+    <object>
+      <name> AcdRibbonActDist_TH1 </name>
+      <formula><![CDATA[ AcdRibbonActDist ]]></formula>
+      <cut><![CDATA[ AcdRibbonActDist != (-2000)  ]]></cut>
+      <type> histogram-1d[401,-2005,2005] </type>
+      <titledesc> AcdRibbonActDist </titledesc>
+      <axisdesc> [AcdRibbonActDist(mm), N] </axisdesc>
+      <description> Distribution of AcdRibbonActDist  values. </description>
+    </object>
+
+     <object>
+      <name> AcdVtxActiveDist_TH1 </name>
+      <formula><![CDATA[ AcdVtxActiveDist ]]></formula>
+      <cut><![CDATA[ AcdVtxActiveDist != (-2000) ]]></cut>
+      <type> histogram-1d[401,-2005,2005] </type>
+      <titledesc> AcdVtxActiveDist </titledesc>
+      <axisdesc> [AcdVtxActiveDist(mm), N] </axisdesc>
+      <description> Distribution of AcdVtxActiveDist  values. </description>
+    </object>
+
+    
+ 
+        <object>
+      <name> AcdRibbonEnergy_Log10_TH1 </name>
+      <formula><![CDATA[ TMath::Log10(AcdRibbonEnergy) ]]></formula>
+      <cut><![CDATA[ AcdRibbonEnergy>0 ]]></cut>
+      <type> histogram-1d[120,-4,8] </type>
+      <titledesc> log10(AcdRibbonEnergy) </titledesc>
+      <axisdesc> [log10(AcdRibbonEnergy), N] </axisdesc>
+      <description> Distribution of log10(AcdRibbonEnergy) values. </description>
+    </object>
+
+
+	    <object>
+      <name> AcdTotalEnergy_Log10_TH1 </name>
+      <formula><![CDATA[ TMath::Log10(AcdTotalEnergy) ]]></formula>
+      <cut><![CDATA[ AcdTotalEnergy>0 ]]></cut>
+      <type> histogram-1d[120,-4,8] </type>
+      <titledesc> log10(AcdTotalEnergy) </titledesc>
+      <axisdesc> [log10(AcdTotalEnergy), N] </axisdesc>
+      <description> Distribution of log10(AcdTotalEnergy) values. </description>
+    </object>
+
+
+	        <object>
+      <name> AcdActDistTileEnergy_Log10_TH1 </name>
+      <formula><![CDATA[ TMath::Log10(AcdActDistTileEnergy) ]]></formula>
+      <cut><![CDATA[ AcdActDistTileEnergy>0 ]]></cut>
+      <type> histogram-1d[120,-4,8] </type>
+      <titledesc> log10(AcdActDistTileEnergy) </titledesc>
+      <axisdesc> [log10(AcdActDistTileEnergy), N] </axisdesc>
+      <description> Distribution of log10(AcdActDistTileEnergy) values. Only positive values of AcdActDistTileEnergy are being used.</description>
+    </object>
+
+		    <object>
+      <name> AcdTkr1ActDistTileEnergy_Log10_TH1 </name>
+      <formula><![CDATA[ TMath::Log10(AcdTkr1ActDistTileEnergy) ]]></formula>
+      <cut><![CDATA[ AcdTkr1ActDistTileEnergy>0 ]]></cut>
+      <type> histogram-1d[120,-4,8] </type>
+      <titledesc> log10(AcdTkr1ActDistTileEnergy) </titledesc>
+      <axisdesc> [log10(AcdTkr1ActDistTileEnergy), N] </axisdesc>
+      <description> Distribution of log10(AcdTkr1ActDistTileEnergy) values. </description>
+    </object>
+
+
+	   
 
 
 	  <!-- Tracker-->
 
+        <object>
+      <name> TkrTwrEdge_TH1 </name>
+      <formula><![CDATA[ TkrTwrEdge ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[200,0,200] </type>
+      <titledesc> TkrTwrEdge </titledesc>
+      <axisdesc> [TkrTwrEdge(mm), N] </axisdesc>
+      <description> Distribution of TkrTwrEdge  values. </description>
+    </object>
+          <object>
+      <name> Tkr1TwrGap_TH1 </name>
+      <formula><![CDATA[ Tkr1TwrGap ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[300,0,300] </type>
+      <titledesc> Tkr1TwrGap </titledesc>
+      <axisdesc> [Tkr1TwrGap(mm), N] </axisdesc>
+      <description> Distribution of Tkr1TwrGap  values. </description>
+    </object>
+	    <object>
+      <name> Tkr1LATEdge_TH1 </name>
+      <formula><![CDATA[ Tkr1LATEdge ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[200,-1000,1000] </type>
+      <titledesc> Tkr1LATEdge </titledesc>
+      <axisdesc> [Tkr1LATEdge(units), N] </axisdesc>
+      <description> Distribution of Tkr1LATEdge  values. </description>
+    </object>
+
+	    	    <object>
+      <name> Tkr1LATEdge_ZOOM_TH1 </name>
+      <formula><![CDATA[ Tkr1LATEdge ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[250,0,500] </type>
+      <titledesc> Tkr1LATEdge (zoom)</titledesc>
+      <axisdesc> [Tkr1LATEdge(mm), N] </axisdesc>
+      <description> Distribution of Tkr1LATEdge  values. Only values in range 0-500 are displayed </description>
+    </object>
+          <object>
+      <name> TkrSurplusHCInside_TH1 </name>
+      <formula><![CDATA[ TkrSurplusHCInside ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[200,0,2000] </type>
+      <titledesc> TkrSurplusHCInside </titledesc>
+      <axisdesc> [TkrSurplusHCInside, N] </axisdesc>
+      <description> Distribution of TkrSurplusHCInside  values. </description>
+    </object>
+
+
+       <object>
+      <name> TkrThinHits_TH1 </name>
+      <formula><![CDATA[ TkrThinHits ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[150,0,1500] </type>
+      <titledesc> TkrThinHits </titledesc>
+      <axisdesc> [TkrThinHits, N] </axisdesc>
+      <description> Distribution of TkrThinHits  values. </description>
+    </object>
+          <object>
+      <name> TkrThickHits_TH1 </name>
+      <formula><![CDATA[ TkrThickHits ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[150,0,1500] </type>
+      <titledesc> TkrThickHits </titledesc>
+      <axisdesc> [TkrThickHits, N] </axisdesc>
+      <description> Distribution of TkrThickHits  values. </description>
+    </object>
+	    <object>
+      <name> TkrBlankHits_TH1 </name>
+      <formula><![CDATA[ TkrBlankHits ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[100,0,500] </type>
+      <titledesc> TkrBlankHits </titledesc>
+      <axisdesc> [TkrBlankHits(units), N] </axisdesc>
+      <description> Distribution of TkrBlankHits  values. </description>
+    </object>
+          <object>
+      <name> TkrSurplusHitRatio_TH1 </name>
+      <formula><![CDATA[ TkrSurplusHitRatio ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[200,0,200] </type>
+      <titledesc> TkrSurplusHitRatio </titledesc>
+      <axisdesc> [TkrSurplusHitRatio, N] </axisdesc>
+      <description> Distribution of TkrSurplusHitRatio  values. </description>
+    </object>
 
 
      <object>
-      <name> Tkr1KalEne_TH1 </name>
-      <formula><![CDATA[ Tkr1KalEne ]]></formula>
-      <cut><![CDATA[  ]]></cut>
-      <type> histogram-1d[501,-10000,5000000] </type>
-      <titledesc> Tkr1KalEne </titledesc>
-      <axisdesc> [Tkr1KalEne (MeV), N] </axisdesc>
-      <description> Distribution of Tkr1KalEne values. Values up to 5000000 MeV are being displayed. </description>
+      <name> Tkr1KalEne_Log10_TH1 </name>
+      <formula><![CDATA[ TMath::Log10(Tkr1KalEne) ]]></formula>
+      <cut><![CDATA[ Tkr1KalEne>0 ]]></cut>
+      <type> histogram-1d[120,-4,8] </type>
+      <titledesc> Log10(Tkr1KalEne) </titledesc>
+      <axisdesc> [Log10(Tkr1KalEne (MeV)), N] </axisdesc>
+      <description> Distribution of Log10(Tkr1KalEne) values. Values up to 5000000 MeV are being displayed. </description>
     </object>
 
      <object>
@@ -156,9 +483,250 @@
 
     <!-- Calorimeter -->
 
+ 
+
+
+        <object>
+      <name> CalMipNum_TH1 </name>
+      <formula><![CDATA[ CalMipNum ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[100,0,100] </type>
+      <titledesc> CalMipNum </titledesc>
+      <axisdesc> [CalMipNum, N] </axisdesc>
+      <description> Distribution of CalMipNum  values. </description>
+    </object>
+	
+	    <object>
+      <name> CalCsIRLn_TH1 </name>
+      <formula><![CDATA[ CalCsIRLn ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[100,0,50] </type>
+      <titledesc> CalCsIRLn </titledesc>
+      <axisdesc> [CalCsIRLn, N] </axisdesc>
+      <description> Distribution of CalCsIRLn  values. </description>
+    </object>
+
+
+	        <object>
+      <name> CalTwrEdgeCntr_TH1 </name>
+      <formula><![CDATA[ CalTwrEdgeCntr ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[200,0,200] </type>
+      <titledesc> CalTwrEdgeCntr </titledesc>
+      <axisdesc> [CalTwrEdgeCntr(units), N] </axisdesc>
+      <description> Distribution of CalTwrEdgeCntr  values. </description>
+    </object>
+
+
+         <object>
+      <name> CalTrackAngle_TH1 </name>
+      <formula><![CDATA[ CalTrackAngle ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[100,-0.5,4.5] </type>
+      <titledesc> CalTrackAngle </titledesc>
+      <axisdesc> [CalTrackAngle(units), N] </axisdesc>
+      <description> Distribution of CalTrackAngle  values. </description>
+    </object>
+	
+	    <object>
+      <name> CalTransRms_TH1 </name>
+      <formula><![CDATA[ CalTransRms ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[60,0,600] </type>
+      <titledesc> CalTransRms </titledesc>
+      <axisdesc> [CalTransRms(mm), N] </axisdesc>
+      <description> Distribution of CalTransRms  values. </description>
+    </object>
+
+	    	    <object>
+      <name> CalTransRms_Zoom_TH1 </name>
+      <formula><![CDATA[ CalTransRms ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[100,0,50] </type>
+      <titledesc> CalTransRms (zoom) </titledesc>
+      <axisdesc> [CalTransRms(mm), N] </axisdesc>
+      <description> Distribution of CalTransRms  values. Only values in range 0-50 are displayed.</description>
+    </object>
+
+
+
+	      <object>
+      <name> CalEnergyRaw_Log10_TH1 </name>
+      <formula><![CDATA[ TMath::Log10(CalEnergyRaw) ]]></formula>
+      <cut><![CDATA[ CalEnergyRaw>0 ]]></cut>
+      <type> histogram-1d[120,-4,8] </type>
+      <titledesc> log10(CalEnergyRaw) </titledesc>
+      <axisdesc> [log10(CalEnergyRaw), N] </axisdesc>
+      <description> Distribution of log10(CalEnergyRaw) values. </description>
+    </object>
+
+	      
+	      <object>
+      <name> CalEnergyCorr_Log10_TH1 </name>
+      <formula><![CDATA[ TMath::Log10(CalEnergyCorr) ]]></formula>
+      <cut><![CDATA[ CalEnergyCorr>0 ]]></cut>
+      <type> histogram-1d[120,-4,8] </type>
+      <titledesc> log10(CalEnergyCorr) </titledesc>
+      <axisdesc> [log10(CalEnergyCorr), N] </axisdesc>
+      <description> Distribution of log10(CalEnergyCorr) values. </description>
+    </object>
+
+
+
+
      <!-- CTB variables -->
 
+     <object>
+      <name> CTBBestEnergy_Log10_TH1 </name>
+      <formula><![CDATA[ TMath::Log10(CTBBestEnergy) ]]></formula>
+      <cut><![CDATA[ CTBBestEnergy>0 ]]></cut>
+      <type> histogram-1d[120,-4,8] </type>
+      <titledesc> log10(CTBBestEnergy) </titledesc>
+      <axisdesc> [log10(CTBBestEnergy), N] </axisdesc>
+      <description> Distribution of log10(CTBBestEnergy) values. </description>
+    </object>
+
+
+      <object>
+      <name> CTBBestZDir_TH1 </name>
+      <formula><![CDATA[ CTBBestZDir ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[200,-1,1] </type>
+      <titledesc> CTBBestZDir </titledesc>
+      <axisdesc> [CTBBestZDir(cosinus), N] </axisdesc>
+      <description> Distribution of CTBBestZDir values. </description>
+    </object>
+
+
+        <object>
+      <name> CTBClassLevel_TH1 </name>
+      <formula><![CDATA[ CTBClassLevel ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[5,-0.5,4.5] </type>
+      <titledesc> CTBClassLevel </titledesc>
+      <axisdesc> [CTBClassLevel, N] </axisdesc>
+      <description> Distribution of CTBClassLevel values. </description>
+    </object>
+
+ 
+
+         <object>
+      <name> CTBBestEnergyProb_TH1 </name>
+      <formula><![CDATA[ CTBBestEnergyProb ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[100,0,1] </type>
+      <titledesc> CTBBestEnergyProb </titledesc>
+      <axisdesc> [CTBBestEnergyProb, N] </axisdesc>
+      <description> Distribution of CTBBestEnergyProb  values. </description>
+    </object>
+
+	   <object>
+      <name> CTBCORE_TH1 </name>
+      <formula><![CDATA[ CTBCORE ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[100,0,1] </type>
+      <titledesc> CTBCORE </titledesc>
+      <axisdesc> [CTBCORE, N] </axisdesc>
+      <description> Distribution of CTBCORE  values. </description>
+    </object>
+
+	     <object>
+      <name> CTBBestEnergyRatio_TH1 </name>
+      <formula><![CDATA[ CTBBestEnergyRatio ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[200,0,20] </type>
+      <titledesc> CTBBestEnergyRatio </titledesc>
+      <axisdesc> [CTBBestEnergyRatio, N] </axisdesc>
+      <description> Distribution of CTBBestEnergyRatio  values. </description>
+    </object>
+
+	       <object>
+      <name> CTBGAM_TH1 </name>
+      <formula><![CDATA[ CTBGAM ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[100,0,1] </type>
+      <titledesc> CTBGAM </titledesc>
+      <axisdesc> [CTBGAM(units), N] </axisdesc>
+      <description> Distribution of CTBGAM  values. </description>
+    </object>
+
+
+    <object>
+      <name> CTBCalDocaAngle_TH1 </name>
+      <formula><![CDATA[ CTBCalDocaAngle ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[200,0,2000] </type>
+      <titledesc> CTBCalDocaAngle </titledesc>
+      <axisdesc> [CTBCalDocaAngle(units), N] </axisdesc>
+      <description> Distribution of CTBCalDocaAngle  values. </description>
+    </object>
+
+    <object>
+      <name> CTBCalDocaAngle_Zoom_TH1 </name>
+      <formula><![CDATA[ CTBCalDocaAngle ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[150,0,150] </type>
+      <titledesc> CTBCalDocaAngle Zoom </titledesc>
+      <axisdesc> [CTBCalDocaAngle, N] </axisdesc>
+      <description> Distribution of CTBCalDocaAngle  values. </description>
+    </object>
+
+
+   
+
     <!-- FT1 Variables -->
+
+    <object>
+      <name> FT1Energy_Log10_TH1 </name>
+      <formula><![CDATA[ TMath::Log10(FT1Energy) ]]></formula>
+      <cut><![CDATA[ FT1Energy>0 ]]></cut>
+      <type> histogram-1d[120,-4,8] </type>
+      <titledesc> log10(FT1Energy) </titledesc>
+      <axisdesc> [log10(FT1Energy), N] </axisdesc>
+      <description> Distribution of log10(FT1Energy) values. </description>
+    </object>
+
+     <object>
+      <name> FT1Theta_TH1 </name>
+      <formula><![CDATA[ FT1Theta ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[182,-2,362] </type>
+      <titledesc> FT1Theta </titledesc>
+      <axisdesc> [FT1Theta(deg), N] </axisdesc>
+      <description> Distribution of FT1Theta values. </description>
+    </object>
+
+     <object>
+      <name> FT1Phi_TH1 </name>
+      <formula><![CDATA[ FT1Phi ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[182,-2,362] </type>
+      <titledesc> FT1Phi </titledesc>
+      <axisdesc> [FT1Phi(deg), N] </axisdesc>
+      <description> Distribution of FT1Phi values. </description>
+    </object>
+    
+
+      <object>
+      <name> FT1ZenithTheta_TH1 </name>
+      <formula><![CDATA[ FT1ZenithTheta ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[182,-2,362] </type>
+      <titledesc> FT1ZenithTheta </titledesc>
+      <axisdesc> [FT1ZenithTheta(deg), N] </axisdesc>
+      <description> Distribution of FT1ZenithTheta values. </description>
+    </object>
+
+     <object>
+      <name> FT1EarthAzimuth_TH1 </name>
+      <formula><![CDATA[ FT1EarthAzimuth ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-1d[182,-2,362] </type>
+      <titledesc> FT1EarthAzimuth </titledesc>
+      <axisdesc> [FT1EarthAzimuth(deg), N] </axisdesc>
+      <description> Distribution of FT1EarthAzimuth values. </description>
+    </object>
+    
 
 	  
   </outputList>
