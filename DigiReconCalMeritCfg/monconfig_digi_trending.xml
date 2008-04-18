@@ -477,7 +477,7 @@
 	 
 	 <object>
 	   <name> TriggerRate_ANYPhysics_LiveTimeCorrected </name>
-	   <formula><![CDATA[foronetime: DoubleDiffRate_LiveTimeFraction>0 ? (Rate_Trigger_ANYPhysics*100/DoubleDiffRate_LiveTimeFraction) : 0.0]]></formula>
+	   <formula><![CDATA[foronetime: DoubleDiffRate_LiveTimeFraction>0 ? (Double_t(Rate_Trigger_ANYPhysics*100.)/DoubleDiffRate_LiveTimeFraction) : 0.0]]></formula>
 	   <cut><![CDATA[ ]]></cut>
 	   <source>output</source>
 	   <type> outputfloat </type>
@@ -487,7 +487,7 @@
 <!--	 Error of livetime is NOT taken into account, since that cannot be computed -->
 	 <object>
 	   <name> TriggerRate_ANYPhysics_LiveTimeCorrected_err </name>
-	   <formula><![CDATA[ foronetime: DoubleDiffRate_LiveTimeFraction>0 ? (Rate_Trigger_ANYPhysics_err*100/DoubleDiffRate_LiveTimeFraction) : 0.0]]></formula>
+	   <formula><![CDATA[ foronetime: DoubleDiffRate_LiveTimeFraction>0 ? (Double_t(Rate_Trigger_ANYPhysics_err*100)/DoubleDiffRate_LiveTimeFraction) : 0.0]]></formula>
 	   <cut><![CDATA[ ]]></cut>
 	   <source>output</source>
 	   <type> outputfloat </type>
