@@ -1,3 +1,9 @@
+v1r0p16 2008/04/16 (DEV)
+--------------------------
+
+Bug fix addressed by Jira GDQMQ-98.
+
+
 v1r0p15 2008/04/16  (DEV)
 ----------------------------------
 Corrected bug introduced when openning twice a comment.
