@@ -1,3 +1,11 @@
+
+v1r0p17 2008/04/16 (DEV)
+--------------------------
+
+Bug fix in Trigger Rates corrected with the LiveTimeFraction. 
+That is in a way related also to Jira GDQMQ-98.
+
+
 v1r0p16 2008/04/16 (DEV)
 --------------------------
 
