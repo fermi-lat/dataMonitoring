@@ -467,12 +467,11 @@
       <description> Rate of CAL Lo Triggers per tower. Periodic triggers are not taken into account. </description>
     </object>
 
-     <!--
-	 <object>
+ 	 <object>
 	   <name> LiveTimeFraction </name>
-	   <formula><![CDATA[ LivetimeLast*0.00000005*100 ]]></formula>
+	   <formula><![CDATA[ LivetimeLast]]></formula>
 	   <cut><![CDATA[condsummary&30]]></cut>
-	   <type> doublediffrate </type>
+	   <type> doublediffrate[MC] </type>
 	   <description> Fraction of livetime (in percent) per time interval </description>
 	 </object>
 	 
@@ -485,7 +484,7 @@
 	   <description> Rate of any non-artificially created trigger (i.e. bits [1-4]) in condsummary word, corrected for the livetime.  </description>
 	 </object>
 	 
-	 Error of livetime is NOT taken into account, since that cannot be computed 
+<!--	 Error of livetime is NOT taken into account, since that cannot be computed -->
 	 <object>
 	   <name> TriggerRate_ANYPhysics_LiveTimeCorrected_err </name>
 	   <formula><![CDATA[ foronetime: DoubleDiffRate_LiveTimeFraction>0 ? (Rate_Trigger_ANYPhysics_err*100/DoubleDiffRate_LiveTimeFraction) : 0.0]]></formula>
