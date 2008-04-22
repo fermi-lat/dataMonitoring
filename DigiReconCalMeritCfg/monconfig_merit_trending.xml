@@ -42,7 +42,7 @@
     <object> TkrThickHits</object>
     <object> TkrBlankHits</object>
 
-     <object> TkrSurplusHitsInside </object>
+  <!--   <object> TkrSurplusHitsInside </object>-->
       <object> TkrSurplusHitRatio </object>
 
       <object> Tkr1KalEne </object> 
@@ -50,7 +50,7 @@
 
       <!-- Calorimeter -->
 
-      <object> CalMipNum </object>
+     <!-- <object> CalMipNum </object> OBSOLETE -->
     <object> CalEnergyRaw </object>
     <object> CalEnergyCorr</object>
 
@@ -83,7 +83,7 @@
     <object>CTBBestEnergy</object>		
     <object>CTBBestEnergyRatio</object>
 
-    <object> CTBGAM</object>
+    <!-- <object> CTBGAM</object>  OBSOLETE -->
     <object> CTBCalDocaAngle </object>
 
 
@@ -96,7 +96,13 @@
     <object> FT1EarthAzimuth </object>
 
 
+    <!-- Pt parameters --> 
 
+     <object> PtMcIlwainB </object>
+    <object> PtMcIlwainL </object>
+    <object> PtLat </object>
+    <object> PtLon </object>
+    <object> PtMagLat </object>
 
 
    
@@ -123,7 +129,56 @@
       <description> Mean value (per evt) of GltGemSummary</description>
     </object>
 
-    
+    <!-- Pt parameters --> 
+
+    <object>
+      <name>  PtMcIlwainB </name>
+      <formula><![CDATA[  PtMcIlwainB  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value  of  PtMcIlwainB</description>
+    </object>
+
+      <object>
+      <name>  PtMcIlwainL </name>
+      <formula><![CDATA[ PtMcIlwainL  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value  of PtMcIlwainL</description>
+    </object>
+
+       <object>
+      <name>  RigidityCutoff </name>
+      <formula><![CDATA[ 14.56/(PtMcIlwainL*PtMcIlwainL)  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value of Rigidity cutoff (GeV) </description>
+    </object>
+      
+      <object>
+      <name> PtLat </name>
+      <formula><![CDATA[ PtLat  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value  of PtLat</description>
+    </object>
+
+      <object>
+      <name> PtLon </name>
+      <formula><![CDATA[ PtLon  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value  of PtLon</description>
+    </object>
+
+        <object>
+      <name> PtMagLat </name>
+      <formula><![CDATA[ PtMagLat  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value  of PtMagLat</description>
+    </object>
+
 
     <!-- RAtes -->
     <object>
@@ -134,13 +189,22 @@
       <description> Rate of events before applicaltion of cuts.</description>
     </object>
 
-     <object>
-      <name> EvtsBeforeCutsBelow105ZenithTheta </name>
+    <object>
+      <name> EvtsBeforeCuts_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1ZenithTheta<105 ]]></cut>
+      <cut><![CDATA[ FT1Energy>100 ]]></cut>
       <type> rate </type>
-      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 105.</description>
+      <description> Rate of events with FT1Energy larger than 100 MeV, before applicaltion of cuts.</description>
     </object>
+
+     <object>
+      <name> EvtsBeforeCutsBelow105ZenithTheta_E100MeV </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ FT1ZenithTheta<105 && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 105 and FT1Energy larger than 100 MeV.</description>
+    </object>
+
 
      <object>
       <name> EvtsBeforeCutsAbove105ZenithTheta </name>
@@ -158,6 +222,16 @@
       <description> Rate of events after application of TRANSIENT gamma cuts from pass5. </description>
     </object>
 
+     <object>
+      <name> TransientEvts_E100MeV </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1Energy>100 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events with FT1Energy above 100 MeV, after application of TRANSIENT gamma cuts from pass5. </description>
+    </object>
+
+
+
       <object>
       <name> DiffuseEvts </name>
       <formula><![CDATA[ 1 ]]></formula>
@@ -166,6 +240,14 @@
       <description> Rate of events after application of DIFFUSE gamma cuts from pass5. </description>
     </object>
 
+      <object>
+      <name> DiffuseEvts_E100MeV </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events with FT1Energy above 100 MeV, after application of DIFFUSE gamma cuts from pass5. </description>
+    </object>
+      
 
        <object>
       <name> SourceEvts </name>
@@ -173,6 +255,14 @@
       <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) ]]></cut>
       <type> rate </type>
       <description> Rate of events after application of SOURCE gamma cuts from pass5. </description>
+    </object>
+
+       <object>
+      <name> SourceEvts_E100MeV </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events with FT1Energy above 100 MeV, after application of SOURCE gamma cuts from pass5. </description>
     </object>
 
 
@@ -185,12 +275,30 @@
       <description> Rate of events after application of TRANSIENT gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 105. </description>
     </object>
 
+
+          <object>
+      <name> TransientEvtsBelowZenithTheta105_E100MeV </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1ZenithTheta<105 && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of TRANSIENT gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 105 and FT1Energy above 100 MeV. </description>
+    </object>
+
+
       <object>
       <name> DiffuseEvtsBelowZenithTheta105  </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1ZenithTheta<105 ]]></cut>
       <type> rate </type>
       <description> Rate of events after application of DIFFUSE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 105. </description>
+    </object>
+
+       <object>
+      <name> DiffuseEvtsBelowZenithTheta105_E100MeV  </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1ZenithTheta<105 && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of DIFFUSE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 105 and FT1Energy above 100 MeV. </description>
     </object>
 
 
@@ -200,6 +308,14 @@
       <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1ZenithTheta<105]]></cut>
       <type> rate </type>
       <description> Rate of events after application of SOURCE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 105. </description>
+    </object>
+
+         <object>
+      <name> SourceEvtsBelowZenithTheta105_E100MeV  </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1ZenithTheta<105 && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of SOURCE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 105 and FT1Energy above 100 MeV. </description>
     </object>
 
 
@@ -231,7 +347,33 @@
       <description> Mean value (per evt) of AcdCornerDoca</description>
     </object>
 
-          <object>
+ 
+    <object>
+      <name> AcdRibbonEnergy </name>
+      <formula><![CDATA[ AcdRibbonEnergy ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdRibbonEnergy </description>
+    </object>
+
+     <object>
+      <name> AcdTotalEnergy </name>
+      <formula><![CDATA[ AcdTotalEnergy ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdTotalEnergy </description>
+    </object>
+
+    <object>
+      <name> AcdActDistTileEnergy </name>
+      <formula><![CDATA[ AcdActDistTileEnergy ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdActDistTileEnergy</description>
+    </object>
+
+<!-- Distances will not be trended
+             <object>
       <name> AcdVtxActiveDist </name>
       <formula><![CDATA[ AcdVtxActiveDist ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -272,31 +414,7 @@
       <description> Mean value (per evt) of AcdRibbonActDist</description>
     </object>
 
-    <object>
-      <name> AcdRibbonEnergy </name>
-      <formula><![CDATA[ AcdRibbonEnergy ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type> mean </type>
-      <description> Mean value (per evt) of AcdRibbonEnergy </description>
-    </object>
-
-     <object>
-      <name> AcdTotalEnergy </name>
-      <formula><![CDATA[ AcdTotalEnergy ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type> mean </type>
-      <description> Mean value (per evt) of AcdTotalEnergy </description>
-    </object>
-
-    <object>
-      <name> AcdActDistTileEnergy </name>
-      <formula><![CDATA[ AcdActDistTileEnergy ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type> mean </type>
-      <description> Mean value (per evt) of AcdActDistTileEnergy</description>
-    </object>
-
-
+-->
 
 	  <!-- Tracker-->
 
@@ -360,6 +478,7 @@
       <description> Mean value (per evt) of TkrBlankHits</description>
     </object>
 
+<!-- It does not exist
       <object>
       <name> TkrSurplusHitsInside </name>
       <formula><![CDATA[ TkrSurplusHitsInside ]]></formula>
@@ -367,6 +486,7 @@
       <type> mean </type>
       <description> Mean value (per evt) of TkrSurplusHitsInside.</description>
     </object>
+-->
 
     <object>
       <name> TkrSurplusHitRatio </name>
@@ -395,14 +515,6 @@
 
     <!-- Calorimeter -->
 
-
-    <object>
-      <name> CalMipNum </name>
-      <formula><![CDATA[ CalMipNum ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type> mean </type>
-      <description> Mean value (per evt) of CalMipNum</description>
-    </object>
 
     <object>
       <name> CalEnergyRaw</name>
@@ -442,7 +554,7 @@
       <name> CalTrackAngle</name>
       <formula><![CDATA[ CalTrackAngle ]]></formula>
       <cut><![CDATA[]]></cut>
-      <type> mean </type>
+      <type> truncatedmean[0,4] </type>
       <description> Mean value (per evt) of CalTrackAngle </description>
     </object>
 
@@ -473,14 +585,8 @@
       <type> mean </type>
       <description> Mean value (per evt) of CTBBestEnergy</description>
     </object>
-<object>
-      <name> CTBGAM</name>
-      <formula><![CDATA[ CTBGAM ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type> mean </type>
-      <description> Mean value (per evt) of CTBGAM</description>
-    </object>
-<object>
+
+    <object>
       <name> CTBCalDocaAngle  </name>
       <formula><![CDATA[ CTBCalDocaAngle  ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -503,7 +609,7 @@
       <name> FT1Theta</name>
       <formula><![CDATA[ FT1Theta ]]></formula>
       <cut><![CDATA[]]></cut>
-      <type> mean </type>
+      <type> truncatedmean[0,360] </type>
       <description> Mean value (per evt) of FT1Theta</description>
     </object>
 
@@ -511,7 +617,7 @@
       <name> FT1Phi</name>
       <formula><![CDATA[ FT1Phi ]]></formula>
       <cut><![CDATA[]]></cut>
-      <type> mean </type>
+      <type> truncatedmean[0,360] </type>
       <description> Mean value (per evt) of FT1Phi</description>
     </object>
 
@@ -519,7 +625,7 @@
       <name> FT1ZenithTheta</name>
       <formula><![CDATA[ FT1ZenithTheta ]]></formula>
       <cut><![CDATA[]]></cut>
-      <type> mean </type>
+      <type> truncatedmean[0,360] </type>
       <description> Mean value (per evt) of FT1ZenithTheta </description>
     </object>
 
@@ -529,7 +635,7 @@
       <name> FT1EarthAzimuth</name>
       <formula><![CDATA[ FT1EarthAzimuth ]]></formula>
       <cut><![CDATA[]]></cut>
-      <type> mean </type>
+      <type> truncatedmean[0,360] </type>
       <description> Mean value (per evt) of FT1EarthAzimuth</description>
     </object>
 <!--

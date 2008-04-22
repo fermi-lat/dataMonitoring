@@ -49,8 +49,7 @@
 
       <!-- Calorimeter -->
 
-      <object> CalMipNum </object>
-    <object> CalEnergyRaw </object>
+     <object> CalEnergyRaw </object>
     <object> CalEnergyCorr</object>
 
     <object> CalCsIRLn </object>
@@ -82,7 +81,6 @@
     <object>CTBBestEnergy</object>		
     <object>CTBBestEnergyRatio</object>
 
-    <object> CTBGAM</object>
     <object> CTBCalDocaAngle </object>
 
 
@@ -115,12 +113,29 @@
       <description> Rate of events before applicaltion of cuts.</description>
     </object>
 
+    <object>
+      <name> EvtsBeforeCuts_E100MeV </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ FT1Energy>100 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events with FT1Energy above 100 MeV, before applicaltion of cuts.</description>
+    </object>
+
      <object>
       <name> EvtsBeforeCutsBelow105ZenithTheta </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1ZenithTheta<105 ]]></cut>
       <type> rate </type>
       <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 105.</description>
+    </object>
+
+
+      <object>
+      <name> EvtsBeforeCutsBelow105ZenithTheta_E100MeV </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ FT1ZenithTheta<105 && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 105 and FT1Energy larger than 100 MeV.</description>
     </object>
 
      <object>
@@ -139,7 +154,13 @@
       <description> Rate of events after application of TRANSIENT gamma cuts from pass5. </description>
     </object>
 
-
+      <object>
+      <name> TransientEvts_E100MeV </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1Energy>100 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events with FT1Energy above 100 MeV, after application of TRANSIENT gamma cuts from pass5. </description>
+    </object>
 
       <object>
       <name> DiffuseEvts </name>
@@ -147,6 +168,14 @@
       <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) ]]></cut>
       <type> rate </type>
       <description> Rate of events after application of DIFFUSE gamma cuts from pass5. </description>
+    </object>
+
+         <object>
+      <name> DiffuseEvts_E100MeV </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events with FT1Energy above 100 MeV, after application of DIFFUSE gamma cuts from pass5. </description>
     </object>
 
 
@@ -158,9 +187,40 @@
       <description> Rate of events after application of SOURCE gamma cuts from pass5. </description>
     </object>
 
+       
+       <object>
+      <name> SourceEvts_E100MeV </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events with FT1Energy above 100 MeV, after application of SOURCE gamma cuts from pass5. </description>
+    </object>
 
 
 
+       <object>
+      <name> TransientEvtsBelowZenithTheta105_E100MeV </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1ZenithTheta<105 && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of TRANSIENT gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 105 and FT1Energy above 100 MeV. </description>
+    </object>
+
+       <object>
+      <name> DiffuseEvtsBelowZenithTheta105_E100MeV  </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1ZenithTheta<105 && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of DIFFUSE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 105 and FT1Energy above 100 MeV. </description>
+    </object>
+
+       <object>
+      <name> SourceEvtsBelowZenithTheta105_E100MeV  </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1ZenithTheta<105 && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of SOURCE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 105 and FT1Energy above 100 MeV. </description>
+    </object>
 
 
     <!-- Gem quantities -->
@@ -169,7 +229,7 @@
     <!-- RAtes -->
 
 
-          <object>
+     <object>
       <name> Rate_EvtsBeforeCuts_TH1 </name>
       <formula><![CDATA[ Rate_EvtsBeforeCuts ]]></formula>
       <cut><![CDATA[  ]]></cut>
@@ -180,7 +240,18 @@
       <description> Distribution of Rate_EvtsBeforeCuts  values. </description>
     </object>
 
-	      <object>
+     <object>
+      <name> Rate_EvtsBeforeCuts_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_EvtsBeforeCuts_E100MeV ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,200] </type>
+      <titledesc> Rate_EvtsBeforeCuts </titledesc>
+      <axisdesc> [RateEvtsBeforeCuts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_EvtsBeforeCuts_E100MeV values. </description>
+    </object>
+
+     <object>
       <name> Rate_EvtsBeforeCutsAbove105ZenithTheta_TH1 </name>
       <formula><![CDATA[ Rate_EvtsBeforeCutsAbove105ZenithTheta ]]></formula>
       <cut><![CDATA[  ]]></cut>
@@ -190,8 +261,21 @@
       <axisdesc> [Rate_EvtsBeforeCutsAbove105ZenithTheta(Hz), N] </axisdesc>
       <description> Distribution of Rate_EvtsBeforeCutsAbove105ZenithTheta  values. </description>
     </object>
+     
+      <object>
+      <name> Rate_EvtsBeforeCutsAbove105ZenithTheta_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_EvtsBeforeCutsBelow105ZenithTheta_E100MeV ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,200] </type>
+      <titledesc> Rate_EvtsBeforeCutsAbove105ZenithTheta </titledesc>
+      <axisdesc> [Rate_EvtsBeforeCutsAbove105ZenithTheta(Hz), N] </axisdesc>
+      <description> Distribution of Rate_EvtsBeforeCutsBelow105ZenithTheta_E100MeV values. </description>
+    </object>
 
-	       <object>
+	      
+
+    <object>
       <name> Rate_TransientEvts_TH1 </name>
       <formula><![CDATA[ Rate_TransientEvts ]]></formula>
       <cut><![CDATA[  ]]></cut>
@@ -224,8 +308,72 @@
       <description> Distribution of Rate_SourceEvts  values. </description>
     </object>
 
+	 <object>
+      <name> Rate_TransientEvts_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_TransientEvts_E100MeV ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,20] </type>
+      <titledesc> Rate_TransientEvts_E100MeV </titledesc>
+      <axisdesc> [Rate_TransientEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_TransientEvts_E100MeV  values. </description>
+    </object>
+
+	      <object>
+      <name> Rate_DiffuseEvts_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_DiffuseEvts_E100MeV ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,10] </type>
+      <titledesc> Rate_DiffuseEvts_E100MeV </titledesc>
+      <axisdesc> [Rate_DiffuseEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_DiffuseEvts_E100MeV  values. </description>
+    </object>
+
+	 <object>
+      <name> Rate_SourceEvts_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_SourceEvts_E100MeV ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,10] </type>
+      <titledesc> Rate_SourceEvts_E100MeV </titledesc>
+      <axisdesc> [Rate_SourceEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_SourceEvts_E100MeV  values. </description>
+    </object>
 
 
+    <object>
+      <name> Rate_TransientEvtsBelowZenithTheta105_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_TransientEvtsBelowZenithTheta105_E100MeV ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,20] </type>
+      <titledesc> Rate_TransientEvtsBelowZenithTheta105_E100MeV </titledesc>
+      <axisdesc> [Rate_TransientEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_TransientEvtsBelowZenithTheta105_E100MeV  values. </description>
+    </object>
+
+	      <object>
+      <name> Rate_DiffuseEvtsBelowZenithTheta105_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_DiffuseEvtsBelowZenithTheta105_E100MeV ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,10] </type>
+      <titledesc> Rate_DiffuseEvtsBelowZenithTheta105_E100MeV </titledesc>
+      <axisdesc> [Rate_DiffuseEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_DiffuseEvtsBelowZenithTheta105_E100MeV  values. </description>
+    </object>
+
+	 <object>
+      <name> Rate_SourceEvtsBelowZenithTheta105_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_SourceEvtsBelowZenithTheta105_E100MeV ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,10] </type>
+      <titledesc> Rate_SourceEvtsBelowZenithTheta105_E100MeV </titledesc>
+      <axisdesc> [Rate_SourceEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_SourceEvtsBelowZenithTheta105_E100MeV  values. </description>
+    </object>
 
        <!-- ACD -->
 
@@ -486,15 +634,6 @@
  
 
 
-        <object>
-      <name> CalMipNum_TH1 </name>
-      <formula><![CDATA[ CalMipNum ]]></formula>
-      <cut><![CDATA[  ]]></cut>
-      <type> histogram-1d[100,0,100] </type>
-      <titledesc> CalMipNum </titledesc>
-      <axisdesc> [CalMipNum, N] </axisdesc>
-      <description> Distribution of CalMipNum  values. </description>
-    </object>
 	
 	    <object>
       <name> CalCsIRLn_TH1 </name>
@@ -522,7 +661,7 @@
       <name> CalTrackAngle_TH1 </name>
       <formula><![CDATA[ CalTrackAngle ]]></formula>
       <cut><![CDATA[  ]]></cut>
-      <type> histogram-1d[100,-0.5,4.5] </type>
+      <type> histogram-1d[120,-1.5,4.5] </type>
       <titledesc> CalTrackAngle </titledesc>
       <axisdesc> [CalTrackAngle(units), N] </axisdesc>
       <description> Distribution of CalTrackAngle  values. </description>
@@ -640,15 +779,6 @@
       <description> Distribution of CTBBestEnergyRatio  values. </description>
     </object>
 
-	       <object>
-      <name> CTBGAM_TH1 </name>
-      <formula><![CDATA[ CTBGAM ]]></formula>
-      <cut><![CDATA[  ]]></cut>
-      <type> histogram-1d[100,0,1] </type>
-      <titledesc> CTBGAM </titledesc>
-      <axisdesc> [CTBGAM(units), N] </axisdesc>
-      <description> Distribution of CTBGAM  values. </description>
-    </object>
 
 
     <object>
