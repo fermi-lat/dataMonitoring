@@ -1,3 +1,9 @@
+*** v1r0p12 ***
+ - Added quantities spacecraft_zra, spacecraft_zdec
+   They're calculated from M7 in pSCPosition from the quaternion.
+* Relevant jira(s): GDQMQ-62
+
+
 *** v1r0p11 ***
  - Added quantities spacecraft_roll, spacecraft_pitch, spacecraft_yaw
    They're calculated from M7 in pSCPosition from the quaternion.
