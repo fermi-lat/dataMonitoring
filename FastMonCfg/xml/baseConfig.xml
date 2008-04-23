@@ -41,6 +41,14 @@
 	    <type>double</type>
             <shape>(1)</shape>
 	</variable>
+	<variable name="spacecraft_zra" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="spacecraft_zdec" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
 	<variable name="geomagnetic_cutoff" enabled="True" reset="False">
 	    <type>double</type>
             <shape>(1)</shape>
