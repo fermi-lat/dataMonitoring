@@ -40,7 +40,7 @@
     <object> DeltaEvtID </object>
     <object> Delta_CCSDSTime_EvtTime </object>
     <object> NewSecond </object>
-
+    <object> CurrentORPreviousTimeToneMissing </object>
 
 
     <!-- Acd Variables -->
@@ -366,10 +366,22 @@
       <description>  Distribution of Delta Event Time computed manually using the event time stamp. Only Delta times smaller than 0.4 ms are displayed. </description>
     </object>
 
+
+
+     <object>
+      <name> TimeToneMissingCurrentORPrevious_TH1 </name>
+      <formula><![CDATA[ CurrentORPreviousTimeToneMissing]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> histogram-1d[3,-0.5,2.5] </type>
+      <titledesc> TimeTone is incomplete for Previous or Current event</titledesc>
+      <axisdesc> [Incomplete Time Tone, N] </axisdesc>
+      <description> Incomplete time tone for previous or current event. ONE means that the time tone was incomplete, ZERO means that it was complete.</description>
+    </object>
+
 	 <object>
       <name> Tick20MHzDeviation_TH1 </name>
       <formula><![CDATA[ Tick20MHzDeviation ]]></formula>
-      <cut><![CDATA[ (NewSecond&1)]]></cut>
+      <cut><![CDATA[ NewSecond&1 && !CurrentORPreviousTimeToneMissing]]></cut>
       <type> histogram-1d[200,-1000,1000] </type>
       <titledesc> Number of ticks between successive 1-PPS</titledesc>
       <axisdesc> [Clock ticks (nominal 50 ns), N] </axisdesc>
@@ -380,7 +392,7 @@
      <object>
       <name> Tick20MHzDeviation_Zoom_TH1 </name>
       <formula><![CDATA[ Tick20MHzDeviation ]]></formula>
-      <cut><![CDATA[ (NewSecond&1) && (Tick20MHzDeviation<200) && (Tick20MHzDeviation> -200)]]></cut>
+      <cut><![CDATA[ (NewSecond&1) && !CurrentORPreviousTimeToneMissing && (Tick20MHzDeviation<200) && (Tick20MHzDeviation> -200)]]></cut>
       <type> histogram-1d[400,-200,200] </type>
       <titledesc> Number of ticks between successive 1-PPS (ZOOM)</titledesc>
       <axisdesc> [Clock ticks (nominal 50 ns), N] </axisdesc>
@@ -390,7 +402,7 @@
       <object>
       <name> Tick20MHzDeviation_SuperZoom_TH1 </name>
       <formula><![CDATA[ Tick20MHzDeviation ]]></formula>
-      <cut><![CDATA[ (NewSecond&1) && (Tick20MHzDeviation<200) && (Tick20MHzDeviation> -200)]]></cut>
+      <cut><![CDATA[ (NewSecond&1) && !CurrentORPreviousTimeToneMissing && (Tick20MHzDeviation<200) && (Tick20MHzDeviation> -200)]]></cut>
       <type> histogram-1d[40,-20,20] </type>
       <titledesc> Number of ticks between successive 1-PPS (ZOOM)</titledesc>
       <axisdesc> [Clock ticks (nominal 50 ns), N] </axisdesc>
