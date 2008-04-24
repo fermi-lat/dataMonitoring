@@ -17,6 +17,11 @@
    <object> FastMon_spacecraft_latitude</object>
    <object> FastMon_spacecraft_longitude</object>
    <object> FastMon_spacecraft_altitude</object>
+   <object> FastMon_spacecraft_pitch</object>
+   <object> FastMon_spacecraft_roll</object>
+   <object> FastMon_spacecraft_yaw</object>
+   <object> FastMon_spacecraft_zra</object>
+   <object> FastMon_spacecraft_zdec</object>
 
    <object> FastMon_geomagnetic_cutoff</object>
    <object> FastMon_geomagnetic_bb0</object>
@@ -61,29 +66,65 @@
     </object>
   
   
-    <!-- Environment quantities -->
+    <!-- Spacecraft quantities -->
     <object>
       <name> FastMon_SpaceCraft_Latitude </name>
       <formula><![CDATA[ FastMon_spacecraft_latitude ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <type> mean </type>
-      <description> Mean value of the space craft latitude </description>
+      <description> Mean value of the spacecraft latitude </description>
     </object>
     <object>
       <name> FastMon_SpaceCraft_Longitude </name>
       <formula><![CDATA[ FastMon_spacecraft_longitude ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <type> mean </type>
-      <description> Mean value of the space craft longitude</description>
+      <description> Mean value of the spacecraft longitude</description>
     </object>
     <object>
       <name> FastMon_SpaceCraft_Altitude </name>
       <formula><![CDATA[ FastMon_spacecraft_altitude ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <type> mean </type>
-      <description> Mean value of the space craft altitude with respect to the earth surface (km)</description>
+      <description> Mean value of the spacecraft altitude with respect to the earth surface (km)</description>
+    </object>
+    <object>
+      <name> FastMon_SpaceCraft_Pitch </name>
+      <formula><![CDATA[ FastMon_spacecraft_pitch ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the spacecraft pitch angle</description>
+    </object>
+    <object>
+      <name> FastMon_SpaceCraft_Roll </name>
+      <formula><![CDATA[ FastMon_spacecraft_roll ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the spacecraft roll angle</description>
+    </object>
+    <object>
+      <name> FastMon_SpaceCraft_Yaw </name>
+      <formula><![CDATA[ FastMon_spacecraft_yaw ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the spacecraft yaw angle</description>
+    </object>
+    <object>
+      <name> FastMon_SpaceCraft_ZaxisRA </name>
+      <formula><![CDATA[ FastMon_spacecraft_zra ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the spacecraft z axis right ascension</description>
+    </object>
+    <object>
+      <name> FastMon_SpaceCraft_ZaxisDec </name>
+      <formula><![CDATA[ FastMon_spacecraft_zdec ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the spacecraft z axis declination</description>
     </object>
 
+    <!-- Environment quantities -->
     <object>
       <name> FastMon_GeoMag_cutoff </name>
       <formula><![CDATA[ FastMon_geomagnetic_cutoff ]]></formula>
