@@ -1,3 +1,10 @@
+v1r1p0  2008/04/24 (DEV)
+----------------------------
+
+Added the following quantities from FastMon trending :
+FastMon_SpaceCraft_Pitch, FastMon_SpaceCraft_Roll, FastMon_SpaceCraft_Yaw,
+FastMon_SpaceCraft_ZaxisRA, FastMon_SpaceCraft_ZaxisDec. GDQMQ-62
+
 
 v1r0p18  2008/04/21 (DEV)
 ----------------------------
