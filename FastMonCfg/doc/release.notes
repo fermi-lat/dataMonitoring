@@ -1,3 +1,7 @@
+*** v1r1p0 ***
+ - Updated cut on plots for clock ticks deviation to 20MHz
+* Relevant jira(s): GDQMQ-104 and 105
+
 *** v1r0p12 ***
  - Added quantities spacecraft_zra, spacecraft_zdec
    They're calculated from M7 in pSCPosition from the quaternion.
