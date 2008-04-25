@@ -23,6 +23,7 @@
        TriggerEngine_TH1  Sum
        DeltaEventTimeManual_TH1  Sum
        DeltaEventTimeManual_Zoom_TH1  Sum
+       GPSInLock_TH1  Sum
        TimeToneMissingCurrentORPrevious_TH1  Sum
        Tick20MHzDeviation_TH1  Sum
        Tick20MHzDeviation_Zoom_TH1  Sum
