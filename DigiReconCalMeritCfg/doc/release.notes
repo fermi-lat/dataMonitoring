@@ -1,4 +1,8 @@
 
+v1r1p3 2008/04/24 (DEV)
+---------------------------
+Limitted range of some histograms iwth distributions of ACD, CAL pedestals and optical gains. This addressess Jira GDQMQ-106.
+
 v1r1p2 2008/04/24 (DEV)
 ---------------------------
 Added sourceGps info. 
