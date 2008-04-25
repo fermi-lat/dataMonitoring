@@ -40,6 +40,8 @@
     <object> DatagramInfo </object>
     <object> DeltaEvtID </object>
     <object> Delta_CCSDSTime_EvtTime </object>
+    <object> NewSecond </object>
+    <object>sourceGps </object>
 
     <!-- Acd Variables -->
     
@@ -494,7 +496,16 @@
 	   <description> Error in Rate of any non-artificially created trigger (i.e. bits [1-4]) in condsummary word, corrected for the livetime.   </description>
 	 </object>
 
--->
+	      <object>
+      <name> GPS_OUTofLock </name>
+      <formula><![CDATA[ !sourceGps ]]></formula>
+      <cut><![CDATA[ NewSecond&1]]></cut>
+      <type> rate </type>
+      <description> Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock.  </description>
+    </object>
+
+  
+
 
       <!-- ********************  Detector information   *********************** -->
 

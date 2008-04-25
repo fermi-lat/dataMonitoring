@@ -41,6 +41,7 @@
     <object> Delta_CCSDSTime_EvtTime </object>
     <object> NewSecond </object>
     <object> CurrentORPreviousTimeToneMissing </object>
+    <object> sourceGps </object>
 
 
     <!-- Acd Variables -->
@@ -367,6 +368,15 @@
     </object>
 
 
+     <object>
+      <name> GPSInLock_TH1 </name>
+      <formula><![CDATA[ sourceGps]]></formula>
+      <cut><![CDATA[ NewSecond&1 ]]></cut>
+      <type> histogram-1d[3,-0.5,2.5] </type>
+      <titledesc> GPS in Lock</titledesc>
+      <axisdesc> [GPS in Lock, N] </axisdesc>
+      <description> GPS in lock (TimeTone::sourceGps()). One means that is in lock (expected), Zero means that is out of lock (this should not happen).</description>
+    </object>
 
      <object>
       <name> TimeToneMissingCurrentORPrevious_TH1 </name>
