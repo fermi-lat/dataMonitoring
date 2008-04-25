@@ -198,8 +198,8 @@
       <name> FastMon_NTkrHits_TowerPlane[16][36] </name>
       <formula><![CDATA[ FastMon_TkrHits_TowerPlane ]]></formula>
       <cut><![CDATA[(FastMon_condsummary&32)>0 ]]></cut>
-      <type> counter </type>
-      <description> Accumulated number of Tkr Hits in the time bin for each tower and  plane, only for periodic triggers (Noise Hits).  </description>
+      <type> rate </type>
+      <description> Rate of Tkr Hits in the time bin for each tower and  plane, only for periodic triggers (Noise Hits).  </description>
     </object>
 
      <!-- Cal Variables -->
