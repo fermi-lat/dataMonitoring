@@ -169,7 +169,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<name> ACD_Ped_PMTA_LowRange_TH1_AcdTile[128]</name>
 	 <formula><![CDATA[AcdPha_PmtIdPmtRangeAcdTile[0][0]]]></formula>
 	 <cut><![CDATA[ condsummary&32 && (!ZeroSuppress)]]></cut>
-	 <type> histogram-1d[10001,0,10001, -1] </type>
+	 <type> histogram-1d[1001,0,1001, -1] </type>
 	 <titledesc> Pedestal distribution for ACD PMTA range Low</titledesc>
 	 <axisdesc> [Pedestal (ADC counts), N] </axisdesc>
 	 <description> Pedestal distribution for ACD PMTA range Low. Only periodic triggers with NOT-Zero supressed are taken into account.</description>
@@ -179,7 +179,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<name> ACD_Ped_PMTB_LowRange_TH1_AcdTile[128]</name>
 	 <formula><![CDATA[AcdPha_PmtIdPmtRangeAcdTile[1][0]]]></formula>
 	 <cut><![CDATA[ condsummary&32 && (!ZeroSuppress)]]></cut>
-	 <type> histogram-1d[10001,0,10001, -1] </type>
+	 <type> histogram-1d[1001,0,1001, -1] </type>
 	 <titledesc> Pedestal distribution for ACD PMTB range Low</titledesc>
 	 <axisdesc> [Pedestal (ADC counts), N] </axisdesc>
 	 <description> Pedestal distribution for ACD PMTB range Low. Only periodic triggers with NOT-Zero supressed are taken into account.</description>
@@ -244,7 +244,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	 <name> CalXAdcPed_TH1_TowerCalLayerCalColumnFR[16][8][12][2][4]</name>
 	 <formula><![CDATA[CalXAdc_TowerCalLayerCalColumnFaceRange]]></formula>
 	 <cut><![CDATA[ condsummary&32 && Range4 && (!ZeroSuppress)]]></cut>
-	 <type> histogram-1d[10002,-1,10001] </type>
+	 <type> histogram-1d[1002,-1,1001] </type>
 	 <titledesc> Pedestal distribution</titledesc>
 	 <axisdesc> [Pedestal (ADC counts), N] </axisdesc>
 	 <description> Pedestal distribution. Only periodic triggers with 4-range readout and NOT-Zero supressed are taken into account.</description>
@@ -445,7 +445,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       <name> RPM_TH1_TowerCalLayerCalColumn[16][8][12] </name>
       <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][1],RFun::calped(timestamp,tower,callayer,calcolumn,0,1), CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][1], RFun::calped(timestamp,tower,callayer,calcolumn,1,1), 50)]]></formula>
       <cut><![CDATA[!(condsummary&32) && Range4]]></cut>
-      <type> histogram-1d[10000,0,50,-1] </type>
+      <type> histogram-1d[1000,0,5,-1] </type>
       <description> Distribution of the ratio LEX1(plus face) / LEX1(minus face) = P/M. This ratio is expected to be close to 1. Pedestals (extracted from data base) are subtracted before computing the ratio. Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
     </object>
 
@@ -454,7 +454,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       <name> RPp_TH1_TowerCalLayerCalColumn[16][8][12] </name>
       <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][1],RFun::calped(timestamp,tower,callayer,calcolumn,0,1), CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][2], RFun::calped(timestamp,tower,callayer,calcolumn,0,2), 50)]]></formula>
       <cut><![CDATA[!(condsummary&32) && Range4]]></cut>
-      <type> histogram-1d[10000,0,50,-1] </type>
+      <type> histogram-1d[5000,0,25,-1] </type>
       <description> Distribution of the ratio LEX1(plus face) / HEX8 (plus face) = P/p. This ratio is expected to be close to 6. Pedestals (extracted from data base) are subtracted before computing the ratio.  Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
     </object>
 
@@ -462,7 +462,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       <name> RMm_TH1_TowerCalLayerCalColumn[16][8][12] </name>
       <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][1],RFun::calped(timestamp,tower,callayer,calcolumn,1,1), CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][2], RFun::calped(timestamp,tower,callayer,calcolumn,1,2), 50)]]></formula>
       <cut><![CDATA[!(condsummary&32) && Range4]]></cut>
-      <type> histogram-1d[10000,0,50,-1]  </type>
+      <type> histogram-1d[5000,0,25,-1]  </type>
       <description> Distribution of the ratio LEX1(minus face) / HEX8(minus face) = M/m. This ratio is expected to be close to 6. Pedestals (extracted from data base) are subtracted before computing the ratio. Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
     </object>
       
