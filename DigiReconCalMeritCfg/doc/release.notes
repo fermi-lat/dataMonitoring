@@ -1,7 +1,13 @@
 
+v1r1p4  2008/04/25 (DEV)
+--------------------------
+Change FastMon_NTkrHits_TowerPlane[16][36] from counter to rate.
+This addresses Jira GDQMQ-77.
+
+
 v1r1p3 2008/04/24 (DEV)
 ---------------------------
-Limitted range of some histograms iwth distributions of ACD, CAL pedestals and optical gains. This addressess Jira GDQMQ-106.
+Limitted range of histograms iwth distributions of ACD, CAL pedestals and optical gains. This addressess Jira GDQMQ-106.
 
 v1r1p2 2008/04/24 (DEV)
 ---------------------------
