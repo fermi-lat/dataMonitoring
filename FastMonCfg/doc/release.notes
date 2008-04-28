@@ -1,8 +1,11 @@
+*** v1r1p2 ***
+ -'Added cuts for events with 0 hits for CalX_Total_NHit_TH1 and CalX_NHit_TH1
+* Relevant jira(s): GDQMQ-32
+
 *** v1r1p1 ***
  - Added quantity new_second that is True for the first event for which the
    second has changed, to be used in fastmon trending. 
 * Relevant jira(s): GDQMQ-103
-
 
 *** v1r1p0 ***
  - Updated cut on plots for clock ticks deviation to 20MHz
