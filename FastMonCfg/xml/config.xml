@@ -179,7 +179,7 @@
     <outputList group="GEM" name="GEM arrival times" enabled="True">				
         <TH1F name="CondArrTKRTrigger_TH1">
 	    <expression><![CDATA[ condarrtkr ]]></expression>
-	    <cut><![CDATA[ !(condsummary&32) ]]></cut>
+	    <cut><![CDATA[ !(condsummary&32) && (condsummary&2)]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -190,7 +190,7 @@
         </TH1F>
         <TH1F name="CondArrCalLoTrigger_TH1">
 	    <expression><![CDATA[ condarrcallo ]]></expression>
-	    <cut><![CDATA[ !(condsummary&32) ]]></cut>
+	    <cut><![CDATA[ !(condsummary&32) && (condsummary&4)]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -201,7 +201,7 @@
         </TH1F>
         <TH1F name="CondArrCalHiTrigger_TH1">
 	    <expression><![CDATA[ condarrcalhi ]]></expression>
-	    <cut><![CDATA[ !(condsummary&32) ]]></cut>
+	    <cut><![CDATA[ !(condsummary&32) && (condsummary&8)]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -212,7 +212,7 @@
         </TH1F>
         <TH1F name="CondArrCNOTrigger_TH1">
 	    <expression><![CDATA[ condarrcno ]]></expression>
-	    <cut><![CDATA[ !(condsummary&32) ]]></cut>
+	    <cut><![CDATA[ !(condsummary&32) && (condsummary&16) ]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -223,7 +223,7 @@
         </TH1F>
         <TH1F name="CondArrROITrigger_TH1">
 	    <expression><![CDATA[ condarrroi ]]></expression>
-	    <cut><![CDATA[ !(condsummary&32) ]]></cut>
+	    <cut><![CDATA[ !(condsummary&32) && (condsummary&1)]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
