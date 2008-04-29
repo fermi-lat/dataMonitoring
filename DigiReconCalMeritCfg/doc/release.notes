@@ -1,4 +1,9 @@
 
+v1r1p5  2008/04/28 (DEV)
+--------------------------
+Added histograms to be used for calculation of LAC thresholds. 
+This addresses jira GDQMQ-109.
+
 v1r1p4  2008/04/25 (DEV)
 --------------------------
 Change FastMon_NTkrHits_TowerPlane[16][36] from counter to rate.
