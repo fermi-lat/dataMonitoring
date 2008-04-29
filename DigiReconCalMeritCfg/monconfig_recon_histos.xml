@@ -500,6 +500,52 @@
       <description> Distribution of measured energy (MeV) in the crystal log defined by the coordinates (suffix in the histogram name) tower,callayer,calcolum. Energies up to 5 MeV are shown in the histogram. Those events whose energy could not be reconstructed for this crystal log are not shown in the histogram.</description>
     </object>
 
+<!-- NOT used. Too many histograms !!! 
+Remove comments and XXXX (this is needed for producing merging files) in names to be used 
+<object>
+      <nameXXXX> ReconEnergyFromCalTuple_TH1_TowerCalLayerCalColumn[16][8][12][2] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn:foreachcalxface: (CalXtalFaceSignal[tower][callayer][calcolumn][calxface]>0.0 && CalXtalFaceSignal[tower][callayer][calcolumn][calxface]<=10000.0) ? CalXtalFaceSignal[tower][callayer][calcolumn][calxface] : -1.0  ]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[200,0.0,10000.,-1] </type>
+      <titledesc> Distribution of measured energy (MeV) in the crystal log/face (from CalTuple).  </titledesc>
+      <axisdesc> [Measured crystal log energy (MeV), N] </axisdesc>
+      <description> Distribution of measured energy (MeV) in the crystal log defined by the coordinates (suffix in the histogram name) tower,callayer,calcolum,calxface. Energies up to 10000 MeV are shown in the histogram. Those events whose energy could not be reconstructed for this crystal log are not shown in the histogram.</description>
+    </object>
+
+<object>
+      <nameXXXX> ReconEnergyFromCalTuple_VeryLowEnergy_TH1_TowerCalLayerCalColumn[16][8][12][2] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn:foreachcalxface: (CalXtalFaceSignal[tower][callayer][calcolumn][calxface]>0.0 && CalXtalFaceSignal[tower][callayer][calcolumn][calxface]<=5.0) ? CalXtalFaceSignal[tower][callayer][calcolumn][calxface] : -1.0 ]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[160,-2.0,6.,-1] </type>
+      <titledesc> Distribution of measured energy (MeV) in the crystal log/face (from CalTuple). </titledesc>
+      <axisdesc> [Measured crystal log energy (MeV), N] </axisdesc>
+      <description> Distribution of measured energy (MeV) in the crystal log defined by the coordinates (suffix in the histogram name) tower,callayer,calcolum,calxface. Energies up to 5 MeV are shown in the histogram. Those events whose energy could not be reconstructed for this crystal log are not shown in the histogram.</description>
+    </object>
+-->
+
+<object>
+      <name> Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn[16][8][12] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: (CalXtalFaceSignal[tower][callayer][calcolumn][0]>0.0 && CalXtalFaceSignal[tower][callayer][calcolumn][0] <=5.0 && CalXtalFaceSignal[tower][callayer][calcolumn][0] > 1.1*CalXtalFaceSignal[tower][callayer][calcolumn][1]) ? CalXtalFaceSignal[tower][callayer][calcolumn][0] : -1.0 ]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[160,-2.0,6.,-1] </type>
+      <titledesc> Low energy tail of the distribution of measured energy (MeV) in the crystal log for POS face (from CalTuple).  </titledesc>
+      <axisdesc> [Measured crystal log energy (MeV), N] </axisdesc>
+      <description> Low energy tail of the distribution of measured energy (MeV) in the crystal log for POS face (from CalTuple). Energies up to 5 MeV are shown in the histogram. The distribution corresponds to the POS face of crystal log defined by the coordinates (suffix in the histogram name) tower,callayer,calcolum.  Those events whose energy could not be reconstructed for this crystal log are not shown in the histogram.</description>
+    </object>
+
+
+<object>
+      <name> Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn[16][8][12] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: (CalXtalFaceSignal[tower][callayer][calcolumn][1]>0.0 && CalXtalFaceSignal[tower][callayer][calcolumn][1] <=5.0 && CalXtalFaceSignal[tower][callayer][calcolumn][1] > 1.1*CalXtalFaceSignal[tower][callayer][calcolumn][0]) ? CalXtalFaceSignal[tower][callayer][calcolumn][1] : -1.0 ]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[160,-2.0,6.,-1] </type>
+      <titledesc> Low energy tail of the distribution of measured energy (MeV) in the crystal log for NEG face (from CalTuple).  </titledesc>
+      <axisdesc> [Measured crystal log energy (MeV), N] </axisdesc>
+      <description> Low energy tail of the distribution of measured energy (MeV) in the crystal log for NEG face (from CalTuple). Energies up to 5 MeV are shown in the histogram. The distribution corresponds to the NEG face of crystal log defined by the coordinates (suffix in the histogram name) tower,callayer,calcolum.  Those events whose energy could not be reconstructed for this crystal log are not shown in the histogram.</description>
+    </object>
+
+
+
      <object>
       <name> ReconEnergy_VeryLowEnergy_TH1 </name>
       <formula><![CDATA[ (RFun::loopovertowerANDcallayersANDcalcolumns_float(ReconEnergy_TowerCalLayerCalColumn)>0.0 && RFun::loopovertowerANDcallayersANDcalcolumns_float(ReconEnergy_TowerCalLayerCalColumn)<=5.0) ? RFun::loopovertowerANDcallayersANDcalcolumns_float(ReconEnergy_TowerCalLayerCalColumn) : -1.0]]></formula>
