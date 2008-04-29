@@ -3,6 +3,10 @@
 <monitoring>
 
     <inputList group="Meta Event" name="Meta advanced">
+	<variable name="new_second" enabled="True">
+	    <type>bool_</type>
+            <shape>(1)</shape>
+	</variable>	
 	<variable name="clocktics_dev_20MHz" enabled="True">
 	    <type>double</type>
             <shape>(1)</shape>
@@ -175,7 +179,7 @@
     <outputList group="GEM" name="GEM arrival times" enabled="True">				
         <TH1F name="CondArrTKRTrigger_TH1">
 	    <expression><![CDATA[ condarrtkr ]]></expression>
-	    <cut><![CDATA[ !(condsummary&32) ]]></cut>
+	    <cut><![CDATA[ !(condsummary&32) && (condsummary&2)]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -186,7 +190,7 @@
         </TH1F>
         <TH1F name="CondArrCalLoTrigger_TH1">
 	    <expression><![CDATA[ condarrcallo ]]></expression>
-	    <cut><![CDATA[ !(condsummary&32) ]]></cut>
+	    <cut><![CDATA[ !(condsummary&32) && (condsummary&4)]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -197,7 +201,7 @@
         </TH1F>
         <TH1F name="CondArrCalHiTrigger_TH1">
 	    <expression><![CDATA[ condarrcalhi ]]></expression>
-	    <cut><![CDATA[ !(condsummary&32) ]]></cut>
+	    <cut><![CDATA[ !(condsummary&32) && (condsummary&8)]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -208,7 +212,7 @@
         </TH1F>
         <TH1F name="CondArrCNOTrigger_TH1">
 	    <expression><![CDATA[ condarrcno ]]></expression>
-	    <cut><![CDATA[ !(condsummary&32) ]]></cut>
+	    <cut><![CDATA[ !(condsummary&32) && (condsummary&16) ]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -219,7 +223,7 @@
         </TH1F>
         <TH1F name="CondArrROITrigger_TH1">
 	    <expression><![CDATA[ condarrroi ]]></expression>
-	    <cut><![CDATA[ !(condsummary&32) ]]></cut>
+	    <cut><![CDATA[ !(condsummary&32) && (condsummary&1)]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -369,7 +373,7 @@
 	    <xmax>200.5</xmax>
 	    <xlabel>Number of CalX_Hits</xlabel>
             <expression>CalXHit</expression>
-	    <cut><![CDATA[ (condsummary&30)>0  ]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0 && CalXHit>0 ]]></cut>
         </TH1F>
 	
         <TH1F name="CalX_NHit_TH1" enabled="True" level="tower">
@@ -380,7 +384,7 @@
 	    <ylog>True</ylog>
 	    <xlabel>Number of Cal crystals in this tower</xlabel>
             <expression>CalXHit_Tower</expression>
-	    <cut><![CDATA[ (condsummary&30)>0  ]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0  && CalXHit_Tower>0]]></cut>
         </TH1F>
 	
         <TH1F name="CalTower_NHit_TH1" enabled="True" level="lat">
