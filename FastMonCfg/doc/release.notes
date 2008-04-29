@@ -1,5 +1,10 @@
+*** v1r1p3 ***
+ - Added cut for the corresponding trigger primitive when plotting the condition
+   arrival time
+* Relevant jira(s): GDQMQ-108
+
 *** v1r1p2 ***
- -'Added cuts for events with 0 hits for CalX_Total_NHit_TH1 and CalX_NHit_TH1
+ - Added cuts for events with 0 hits for CalX_Total_NHit_TH1 and CalX_NHit_TH1
 * Relevant jira(s): GDQMQ-32
 
 *** v1r1p1 ***
