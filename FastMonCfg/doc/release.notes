@@ -1,3 +1,7 @@
+*** v1r1p4 ***
+ - Added cut on sollicited triggers for all the plots
+* Relevant jira(s): GDQMQ-49
+
 *** v1r1p3 ***
  - Added cut for the corresponding trigger primitive when plotting the condition
    arrival time
