@@ -1,3 +1,8 @@
+*** v1r1p5 ***
+ - Added quantities gem_delta_event_time, gem_delta_window_open_time,
+   PrescaledDelta, and corresponding histograms to match the DigiEOR 
+* Relevant jira(s): GDQMQ-102
+
 *** v1r1p4 ***
  - Added cut on sollicited triggers for all the plots
 * Relevant jira(s): GDQMQ-49
