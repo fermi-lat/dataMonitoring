@@ -1,3 +1,9 @@
+*** v1r1p6 ***
+ - Added new histograms in MergeHisto file DeltaEventTime_TH1
+   DeltaEventTime_Zoom_TH1 DeltaWindowOpen_TH1 DeltaWindowOpen_Zoom_TH1
+   PrescaledDelta_TH1  
+* Relevant jira(s): GDQMQ-102
+
 *** v1r1p5 ***
  - Added quantities gem_delta_event_time, gem_delta_window_open_time,
    PrescaledDelta, and corresponding histograms to match the DigiEOR 
