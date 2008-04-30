@@ -74,6 +74,14 @@
 	    <type>int</type>
             <shape>(1)</shape>
 	</variable>
+	<variable name="gem_delta_event_time">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="gem_delta_window_open_time">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
 	<variable name="LivetimeLast">
 	    <type>int</type>
             <shape>(1)</shape>
@@ -90,6 +98,10 @@
 	    <type>int</type>
             <shape>(1)</shape>
 	</variable>
+	<variable name="PrescaledDelta" reset="False">
+	    <type>int</type>
+            <shape>(2)</shape>
+	</variable>
 	<variable name="DiscardedDelta" reset="False">
 	    <type>int</type>
             <shape>(2)</shape>
@@ -97,10 +109,6 @@
 	<variable name="DeadZoneDelta" reset="False">
 	    <type>int</type>
             <shape>(2)</shape>
-	</variable>
-	<variable name="LivetimeLast">
-	    <type>int</type>
-            <shape>(1)</shape>
 	</variable>
 	<variable name="TkrTriggerTower" >
 	    <type>int</type>
@@ -174,6 +182,62 @@
 	    <ylabel></ylabel>
 	    <caption></caption>
         </TH1F-->
+	
+        <TH1F name="DeltaEventTime_TH1">
+	    <expression><![CDATA[ gem_delta_event_time*0.00005 ]]> </expression>
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>
+	    <xbins>100</xbins>
+	    <xmin>0</xmin>
+	    <xmax>4</xmax>
+	    <title>GEM Delta Event time in milliseconds</title>
+	    <xlabel>DeltaEvent time (ms)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption> GEM Delta Event time in milliseconds.</caption>
+        </TH1F>
+        <TH1F name="DeltaEventTime_Zoom_TH1">
+	    <expression><![CDATA[ gem_delta_event_time ]]> </expression>
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>
+	    <xbins>160</xbins>
+	    <xmin>0</xmin>
+	    <xmax>1600</xmax>
+	    <title>GEM Delta Event time in 50 ns ticks</title>
+	    <xlabel>DeltaEvent time (50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption> Delta event time as measured by the GEM in system clock ticks with a cut of 1500 ticks.</caption>
+        </TH1F>
+        <TH1F name="DeltaWindowOpen_TH1">
+	    <expression><![CDATA[ gem_delta_window_open_time*0.00005 ]]> </expression>
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>
+	    <xbins>100</xbins>
+	    <xmin>0</xmin>
+	    <xmax>4</xmax>
+	    <title>GEM Delta window open time in milliseconds</title>
+	    <xlabel>DeltaWindowOpen time (ms)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption> GEM Delta window open time in milliseconds.</caption>
+        </TH1F>
+        <TH1F name="DeltaWindowOpen_Zoom_TH1">
+	    <expression><![CDATA[ gem_delta_window_open_time ]]> </expression>
+	    <cut><![CDATA[ (condsummary&30) && (gem_delta_window_open_time<1500)]]></cut>
+	    <xbins>160</xbins>
+	    <xmin>0</xmin>
+	    <xmax>1600</xmax>
+	    <title>GEM Delta window open time in 50 ns ticks</title>
+	    <xlabel>DeltaWindowOpen time (nominally 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption> Delta window open time as measured by the GEM in system clock ticks with a cut of 1500 ticks.</caption>
+        </TH1F>
+        <TH1F name="PrescaledDelta_TH1">
+	    <expression><![CDATA[ PrescaledLast ]]> </expression>
+	    <cut><![CDATA[ !(condsummary&32) ]]></cut>
+	    <xbins>31</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>30.5</xmax>
+	    <title>Number of GEM prescaled events between two successive read out events.</title>
+	    <xlabel>Number Gem prescaled events</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Number of GEM prescaled events between two successive read out events. Periodic triggers have been taken out.</caption>
+        </TH1F>
     </outputList>
 						
     <outputList group="GEM" name="GEM arrival times" enabled="True">				
