@@ -1,4 +1,9 @@
 
+v1r1p7  2008/04/30 (DEV)
+---------------------------
+Change MCOktTest for MC in config files. 
+This addresses Jira GDQMQ-111
+
 v1r1p6  2008/04/30 (DEV)
 ----------------------------
 Changes to address jiras GDQMQ-32 and GDQMQ-110.
