@@ -37,7 +37,6 @@
        ReconEnergy_VeryLowEnergy_TH1_TowerCalLayer_TowerLoop_CalLayerLoop  Sum
        ReconEnergy_TowerCalLayer_TH2  Sum
        ZeroReconEnergy_TowerCalLayer_TH2  Sum
-       ReconEnergyFailed_TowerCalLayer_TH2  Sum
        ReconEnergy_VeryLowEnergy_TH1_TowerCalLayerCalColumn_TowerLoop_CalLayerLoop_CalColumnLoop  Sum
        Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_TowerLoop_CalLayerLoop_CalColumnLoop  Sum
        Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_TowerLoop_CalLayerLoop_CalColumnLoop  Sum
