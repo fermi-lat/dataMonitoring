@@ -4,7 +4,7 @@
 
 <!-- TKR
  -->
-  <alarmList group="TKR" name="TKR base" enabled="">
+  <alarmList group="TKR" name="TKR base" enabled="True">
 
     <alarmSet name="ReconNumTracks_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
