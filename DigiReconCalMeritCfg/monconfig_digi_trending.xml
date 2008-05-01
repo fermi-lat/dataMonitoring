@@ -279,7 +279,7 @@
       <name> GemRate </name>
       <formula><![CDATA[ Sequence ]]></formula>
       <cut><![CDATA[ ]]></cut>
-      <type> counterdiffrate[10000,17,MCOktTest] </type>
+      <type> counterdiffrate[10000,17,MC] </type>
       <description> Rate of evts before any filter (computed using DigiEvent->getMetaEvent().scalers().sequence().) </description>
     </object>
 
