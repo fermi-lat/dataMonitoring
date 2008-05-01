@@ -1,4 +1,10 @@
 
+*** v1r1p0 ***
+
+- Added a configuration file for the alarm post-processing tool.
+* Relevant jira(s): GDM-27
+
+
 *** v1r0p4 ***
 
 - Typo fixed in the relese.notes.
