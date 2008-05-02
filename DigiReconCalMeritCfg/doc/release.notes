@@ -1,3 +1,13 @@
+v1r1p9 2008/05/02  (DEV)
+---------------------------
+Implemented quantity FastMon_MetaContext_GPS_OUTofLock that counts the rate of
+seconds in which the GPS is out of lock, GDQMQ-103.
+Added a cut to remove solicited triggers in FastMon trending
+and  FastMon trending histograms, GDQMQ-49.
+
+This is related to Jiras GDQMQ-49 and GDQMQ-103.
+
+
 v1r1p8 2008/04/30  (DEV)
 ---------------------------
 Bunch of merit new rates and histograms of rates. 
