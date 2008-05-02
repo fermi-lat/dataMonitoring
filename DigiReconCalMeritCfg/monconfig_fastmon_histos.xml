@@ -49,7 +49,7 @@
            <object>
       <name> FastMon_TkrHits_TH1 </name>
       <formula><![CDATA[ FastMon_TkrHits ]]></formula>
-      <cut><![CDATA[ FastMon_condsummary&30  ]]></cut>
+      <cut><![CDATA[ FastMon_condsummary&30 && !(FastMon_condsummary&64) ]]></cut>
       <type> histogram-1d[300,0.0,3000] </type>
       <titledesc> Distribution of strip hits per event  (all towers included). </titledesc>
       <axisdesc> [Number of strip hits, N] </axisdesc>
@@ -59,7 +59,7 @@
         <object>
       <name> FastMon_TkrHits_TestRFun_TH1 </name>
       <formula><![CDATA[ RFun::loopovertowerANDtkrplanes_int(FastMon_TkrHits_TowerPlane) ]]></formula>
-      <cut><![CDATA[ FastMon_condsummary&30  ]]></cut>
+      <cut><![CDATA[ FastMon_condsummary&30 && !(FastMon_condsummary&64)  ]]></cut>
       <type> histogram-1d[300,0.0,3000] </type>
       <titledesc> Distribution of strip hits per event  (all towers included). </titledesc>
       <axisdesc> [Number of strip hits, N] </axisdesc>
@@ -71,7 +71,7 @@
       <object>
       <name> FastMon_TkrHits_TH1_Tower[16] </name>
       <formula><![CDATA[ foreachtower: RFun::loopovertkrplanes_int(FastMon_TkrHits_TowerPlane[tower]) ]]></formula>
-      <cut><![CDATA[ FastMon_condsummary&30  ]]></cut>
+      <cut><![CDATA[ FastMon_condsummary&30 && !(FastMon_condsummary&64)  ]]></cut>
       <type> histogram-1d[200,0,1000] </type>
       <titledesc> Number of strip hits in a tower </titledesc>
       <axisdesc> [Number of strip hits, N] </axisdesc>
