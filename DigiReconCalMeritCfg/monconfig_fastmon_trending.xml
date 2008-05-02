@@ -12,6 +12,8 @@
    <!-- Context information -->
    <object>FastMon_meta_context_open_mode</object> 
    <object>FastMon_meta_context_open_modechanges</object> 
+   <object>FastMon_meta_context_current_source_gps</object> 
+   <object>FastMon_new_second</object> 
 
    <!-- Environment quantities -->
    <object> FastMon_spacecraft_latitude</object>
@@ -61,10 +63,22 @@
       <formula><![CDATA[ FastMon_meta_context_open_modechanges ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <type> mean </type>
-      <description> Mean value of the LAT mode changes as read from the datagram open mode.
-                    This is a counter, reset at the beginning of each run </description>
+      <description>
+        Mean value of the LAT mode changes as read from the datagram open mode.
+        This is a counter, reset at the beginning of each run
+      </description>
     </object>
-  
+    <object>
+      <name> FastMon_MetaContext_GPS_OUTofLock </name>
+      <formula><![CDATA[ !(FastMon_meta_context_current_source_gps) ]]></formula>
+      <cut><![CDATA[ FastMon_new_second&1]]></cut>
+      <type> rate </type>
+      <description>
+        Rate of number of seconds in which the GPS is out of lock.
+        This rate should be ZERO, meaning that GPS is always in lock.
+      </description>
+    </object>
+
   
     <!-- Spacecraft quantities -->
     <object>
@@ -172,7 +186,7 @@
      <object>
       <name> FastMon_TkrHits_TowerPlaneGTFE[16][36][24] </name>
       <formula><![CDATA[ FastMon_TkrHits_TowerPlaneGTFE ]]></formula>
-      <cut><![CDATA[FastMon_condsummary&30 ]]></cut>
+      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64)]]></cut>
       <type> mean </type>
       <description> Vector reporting the accumulated (in the time bin)  number of Tkr Hits for tower,plane, GTFE </description>
     </object>
@@ -181,7 +195,7 @@
     <object>
       <name> FastMon_TkrHits </name>
       <formula><![CDATA[ FastMon_TkrHits ]]></formula>
-      <cut><![CDATA[FastMon_condsummary&30 ]]></cut>
+      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64)]]></cut>
       <type> mean </type>
       <description> Mean number of Tkr Hits</description>
     </object>
@@ -189,7 +203,7 @@
     <object>
       <name> FastMon_TkrHits_TowerPlane[16][36] </name>
       <formula><![CDATA[ foreachtower: foreachtkrplane: FastMon_TkrHits_TowerPlane[tower][tkrplane] ]]></formula>
-      <cut><![CDATA[FastMon_condsummary&30 ]]></cut>
+      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64)]]></cut>
       <type> mean </type>
       <description> Vector reporting the mean number of Tkr Hits for tower,plane </description>
     </object>
@@ -197,7 +211,7 @@
      <object>
       <name> FastMon_NTkrHits_TowerPlane[16][36] </name>
       <formula><![CDATA[ FastMon_TkrHits_TowerPlane ]]></formula>
-      <cut><![CDATA[(FastMon_condsummary&32)>0 ]]></cut>
+      <cut><![CDATA[(FastMon_condsummary&32)>0 && !(FastMon_condsummary&64)]]></cut>
       <type> rate </type>
       <description> Rate of Tkr Hits in the time bin for each tower and  plane, only for periodic triggers (Noise Hits).  </description>
     </object>
@@ -207,7 +221,7 @@
     <object>
       <name> FastMon_CalTowerCount </name>
       <formula><![CDATA[ FastMon_Cal_Tower_Count ]]></formula>
-      <cut><![CDATA[FastMon_condsummary&30 ]]></cut>
+      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64)]]></cut>
       <type> mean </type>
       <description> Mean number of Cal module with at least one CDE hit</description>
     </object>
@@ -215,7 +229,7 @@
     <object>
       <name> FM_CalLogRHit_TowerCalLayerCalColumnFR[16][8][12][2][4] </name>
       <formula><![CDATA[ FastMon_CalLogEndRangeHit ]]></formula>
-      <cut><![CDATA[ (FastMon_condsummary&30)>0 && (FastMon_condsummary&32)==0]]></cut>	    
+      <cut><![CDATA[ (FastMon_condsummary&30)>0 && (FastMon_condsummary&32)==0 && !(FastMon_condsummary&64)]]></cut>	    
       <type> mean </type>
       <description> Mean number of of hits in each Cal log end for each range</description>
     </object>
@@ -227,7 +241,7 @@
     <object>
       <name> FastMon_AcdTileCount </name>
       <formula><![CDATA[ FastMon_Acd_Tile_Count ]]></formula>
-      <cut><![CDATA[FastMon_condsummary&30 ]]></cut>
+      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64)]]></cut>
       <type> mean </type>
       <description> Mean number of Acd tiles hit</description>
     </object>
