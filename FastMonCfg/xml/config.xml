@@ -140,7 +140,7 @@
     <outputList group="GEM" name="GEM base">
         <TH1F name="CondSummaryWord_TH1">
 	    <expression><![CDATA[ condsummary ]]></expression>
-	    <cut><![CDATA[ !(condsummary&64) ]]></cut>
+	    <cut><![CDATA[ ]]></cut>
 	    <xbins>65</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>64.5</xmax>
@@ -171,18 +171,6 @@
 	    <ylabel>N</ylabel>
 	    <caption>Number of GEM deadzone events between two successive read out events. Periodic triggers have been taken out.</caption>
         </TH1F>
-        <!--TH1F name="">
-	    <expression><![CDATA[  ]]></expression>
-	    <cut><![CDATA[  ]]></cut>
-	    <xbins></xbins>
-	    <xmin></xmin>
-	    <xmax></xmax>
-	    <title></title>
-	    <xlabel></xlabel>
-	    <ylabel></ylabel>
-	    <caption></caption>
-        </TH1F-->
-	
         <TH1F name="DeltaEventTime_TH1">
 	    <expression><![CDATA[ gem_delta_event_time*0.00005 ]]> </expression>
 	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>
@@ -239,6 +227,89 @@
 	    <caption>Number of GEM prescaled events between two successive read out events. Periodic triggers have been taken out.</caption>
         </TH1F>
     </outputList>
+
+    <outputList group="GEM" name="GEM Trigger coincidences">
+
+        <TH1F name="CondSummaryWord_WithROI_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&1 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a ROI trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a ROI trigger</caption>
+        </TH1F>
+        <TH1F name="CondSummaryWord_WithTKR_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&2 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a TKR trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a TKR trigger</caption>
+        </TH1F>
+        <TH1F name="CondSummaryWord_WithCalLo_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&4 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a Cal-Low trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a Cal-Low trigger</caption>
+        </TH1F>
+        <TH1F name="CondSummaryWord_WithCalHi_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&8 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a Cal-High trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a Cal-High trigger</caption>
+        </TH1F>
+        <TH1F name="CondSummaryWord_WithCNO_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&16 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a CNO trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a CNO trigger</caption>
+        </TH1F>
+        <TH1F name="CondSummaryWord_WithPeriodic_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&32 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a Periodic trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a Periodic trigger</caption>
+        </TH1F>
+        <TH1F name="CondSummaryWord_WithSolicited_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&64 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a Solicited trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a Solicited trigger</caption>
+        </TH1F>
+
+    </outputList>
+
 						
     <outputList group="GEM" name="GEM arrival times" enabled="True">				
         <TH1F name="CondArrTKRTrigger_TH1">
@@ -269,8 +340,8 @@
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
-	    <title>Distribution of Condition arrival Cal-Hi triggers</title>
-	    <xlabel>Condition arrival times for Cal-Hi triggers (nomially 50 ns ticks)</xlabel>
+	    <title>Distribution of Condition arrival Cal-High triggers</title>
+	    <xlabel>Condition arrival times for Cal-High triggers (nomially 50 ns ticks)</xlabel>
 	    <ylabel>N</ylabel>
 	    <caption>Distribution of Condition arrival times for Cal-Hi triggers. Periodic triggers have been taken out.</caption>
         </TH1F>
@@ -298,6 +369,248 @@
         </TH1F>
     </outputList>				
 
+    <outputList group="GEM" name="GEM Trigger alignment to TKR" enabled="True">				
+
+        <TH1F name="CondArrROI_TKROpensWindow_TH1">
+	    <expression><![CDATA[ condarrroi ]]></expression>
+	    <cut><![CDATA[ (condsummary&1) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival ROI triggers when TKR opened the window</title>
+	    <xlabel>Condition arrival times for ROI triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for ROI triggers, when TKR opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalLo_TKROpensWindow_TH1">
+	    <expression><![CDATA[ condarrcallo ]]></expression>
+	    <cut><![CDATA[ (condsummary&4) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of condition arrival Cal-Low triggers when TKR opened the window</title>
+	    <xlabel>Condition arrival times for Cal_Low triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for Cal-Low triggers, when TKR opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalHi_TKROpensWindow_TH1">
+	    <expression><![CDATA[ condarrcalhi ]]></expression>
+	    <cut><![CDATA[ (condsummary&8) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of condition arrival Cal-High triggers when TKR opened the window</title>
+	    <xlabel>Condition arrival times for Cal-High triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for Cal-High triggers, when TKR opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCNO_TKROpensWindow_TH1">
+	    <expression><![CDATA[ condarrcno ]]></expression>
+	    <cut><![CDATA[ (condsummary&16) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of condition arrival CNO triggers when TKR opened the window</title>
+	    <xlabel>Condition arrival times for CNO triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for CNO triggers, when TKR opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+
+    </outputList>				
+    <outputList group="GEM" name="GEM Trigger alignment to Cal-Low" enabled="True">				
+
+        <TH1F name="CondArrROI_CalLoOpensWindow_TH1">
+	    <expression><![CDATA[ condarrroi ]]></expression>
+	    <cut><![CDATA[ (condsummary&1) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival ROI triggers when Cal-Low opened the window</title>
+	    <xlabel>Condition arrival times for ROI triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for ROI triggers, when Cal-Low opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrTKR_CalLoOpensWindow_TH1">
+	    <expression><![CDATA[ condarrtkr ]]></expression>
+	    <cut><![CDATA[ (condsummary&2) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival TKR triggers when Cal-Low opened the window</title>
+	    <xlabel>Condition arrival times for TKR triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for TKR triggers, when Cal-Low opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalHi_CalLoOpensWindow_TH1">
+	    <expression><![CDATA[ condarrcalhi ]]></expression>
+	    <cut><![CDATA[ (condsummary&8) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival Cal-High triggers when Cal-Low opened the window</title>
+	    <xlabel>Condition arrival times for Cal-High triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for Cal-High triggers, when Cal-Low opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalCNO_CalLoOpensWindow_TH1">
+	    <expression><![CDATA[ condarrcno ]]></expression>
+	    <cut><![CDATA[ (condsummary&16) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival CNO triggers when Cal-Low opened the window</title>
+	    <xlabel>Condition arrival times for CNO triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for CNO triggers, when Cal-Low opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+    </outputList>				
+    
+    <outputList group="GEM" name="GEM Trigger alignment to Cal-High" enabled="True">				
+
+        <TH1F name="CondArrROI_CalHiOpensWindow_TH1">
+	    <expression><![CDATA[ condarrroi ]]></expression>
+	    <cut><![CDATA[ (condsummary&1) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival ROI triggers when Cal-High opened the window</title>
+	    <xlabel>Condition arrival times for ROI triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for ROI triggers, when Cal-High opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrTKR_CalHiOpensWindow_TH1">
+	    <expression><![CDATA[ condarrtkr ]]></expression>
+	    <cut><![CDATA[ (condsummary&2) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival TKR triggers when Cal-High opened the window</title>
+	    <xlabel>Condition arrival times for TKR triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for TKR triggers, when Cal-High opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalLo_CalHiOpensWindow_TH1">
+	    <expression><![CDATA[ condarrcallo ]]></expression>
+	    <cut><![CDATA[ (condsummary&4) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival Cal-Low triggers when Cal-High opened the window</title>
+	    <xlabel>Condition arrival times for Cal-Low triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for Cal-Low triggers, when Cal-High opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCNO_CalHiOpensWindow_TH1">
+	    <expression><![CDATA[ condarrcno ]]></expression>
+	    <cut><![CDATA[ (condsummary&16) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival CNO triggers when Cal-High opened the window</title>
+	    <xlabel>Condition arrival times for CNO triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for CNO triggers, when Cal-High opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>	
+    </outputList>				
+
+    <outputList group="GEM" name="GEM Trigger alignment to CNO" enabled="True">				
+
+        <TH1F name="CondArrROI_CNOOpensWindow_TH1">
+	    <expression><![CDATA[ condarrroi ]]></expression>
+	    <cut><![CDATA[ (condsummary&1) && (condsummary&16) && (condarrcno==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival ROI triggers when CNO opened the window</title>
+	    <xlabel>Condition arrival times for ROI triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for ROI triggers, when CNO opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrTKR_CNOOpensWindow_TH1">
+	    <expression><![CDATA[ condarrtkr ]]></expression>
+	    <cut><![CDATA[ (condsummary&2) && (condsummary&16) && (condarrcno==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival TKR triggers when CNO opened the window</title>
+	    <xlabel>Condition arrival times for TKR triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for TKR triggers, when CNO opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalLo_CNOOpensWindow_TH1">
+	    <expression><![CDATA[ condarrcallo ]]></expression>
+	    <cut><![CDATA[ (condsummary&4) && (condsummary&16) && (condarrcno==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival Cal-Low triggers when CNO opened the window</title>
+	    <xlabel>Condition arrival times for Cal-Low triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for Cal-Low triggers, when CNO opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalHi_CNOOpensWindow_TH1">
+	    <expression><![CDATA[ condarrcalhi ]]></expression>
+	    <cut><![CDATA[ (condsummary&8) && (condsummary&16) && (condarrcno==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival Cal-High triggers when CNO opened the window</title>
+	    <xlabel>Condition arrival times for Cal-High triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for Cal-High triggers, when CNO opened the window.
+	        Periodic and sollicited triggers have been taken out.
+	    </caption>
+        </TH1F>
+	
+    </outputList>				
+
+    
     <outputList group="GEM" name="GEM trigger vectors" enabled="True">
         <CUSTOM type="gem_vector_map" name="TkrTrigger_Tower_TH1" enabled="True">
 	    <title>Number of tracker triggers per tower</title>
