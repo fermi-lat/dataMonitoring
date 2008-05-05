@@ -1,3 +1,10 @@
+*** v1r1p8 ***
+ - Added histograms of the condition arrival time for other trigger types when
+   a specific trigger opens the window.
+ - Added histograms for condition summary word with a specific trigger type. 
+* Relevant jira(s): GDQMQ-113 and GDQMQ-114
+
+
 *** v1r1p7 ***
  - Added quantities meta_LATC_master, aka meta.hardwareKey, and meta.softwareKey
    for good measure. That's the hardware configuration for the current run. 
