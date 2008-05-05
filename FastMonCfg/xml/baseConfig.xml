@@ -81,7 +81,15 @@
 	    <type>double</type>
             <shape>(1)</shape>
 	</variable>
-	
+	<variable name="meta_softwareKey" enabled="True">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="meta_LATC_master" enabled="True">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+
     </inputList>
 
     <inputList group="META" name="META OpenInfo" enabled="True">
