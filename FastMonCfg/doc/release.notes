@@ -1,3 +1,9 @@
+*** v1r1p9 ***
+ - Bug fix : histograms added in the previous tag are also now in the
+   MergeHisto text file.
+* Relevant jira(s): GDQMQ-113 and GDQMQ-114
+
+
 *** v1r1p8 ***
  - Added histograms of the condition arrival time for other trigger types when
    a specific trigger opens the window.
