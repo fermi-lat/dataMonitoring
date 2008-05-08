@@ -20,7 +20,7 @@ class pLaTeXWriter:
         self.LaTeXFilePath = filePath
         self.LaTexFolderPath = os.path.dirname(self.LaTeXFilePath)
         if self.LaTexFolderPath == '':
-            self.LaTexFolderPath = os.path.curdir
+            sys.exit('Please do not choose the current folder for the report.')
         self.cleanup()
         try:
             self.LaTeXFile = file(self.LaTeXFilePath, 'w')
@@ -48,7 +48,7 @@ class pLaTeXWriter:
         self.LaTeXFile.writelines('\n')
 
     def writeHeader(self, pagesize = 'letterpaper',
-                    packages = ['graphicx', 'rotating'],
+                    packages = ['graphicx', 'rotating', 'color'],
                     textwidth = '19.0 truecm', textheight = '23.0 truecm',
                     margin = '-1.0 truecm'):
         self.write('\\documentclass[oneside, 12pt, %s]{report}' % pagesize)
@@ -65,6 +65,9 @@ class pLaTeXWriter:
         self.write('\\pagestyle{empty}')
         self.newline()
         self.startCentering()
+
+    def writeColorText(self, text, color):
+        self.write('\\textcolor{%s}{%s}' % (color, text))
 
     def writeTrailer(self):
         self.stopCentering()
@@ -113,10 +116,8 @@ class pLaTeXWriter:
  
 
 if __name__ == '__main__':
-    writer = pLaTeXWriter('test.tex')
+    writer = pLaTeXWriter('./test/test.tex')
     writer.writeHeader()
-    writer.addLogo()
-    writer.write('This is a test.')
-    writer.addPanel('Panel 2',\
-                    ['plot-0EnvPanel2', 'plot-0EnvPanel2', 'plot-1EnvPanel2'])
+    writer.writeColorText('This is a test.', 'red')
     writer.writeTrailer()
+    writer.compile()
