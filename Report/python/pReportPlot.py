@@ -1,6 +1,7 @@
 import os
 import sys
 import logging
+import re
 
 
 class pReportPlot:
@@ -18,6 +19,9 @@ class pReportPlot:
     #
     #  Note that this is the html caption, as it appears on the web interface,
     #  so it needs some manipulation to be put in the LaTeX report.
+    #
+    #  Here is a good example for a caption:
+    #  LAT Mode: <font color="black">FM</font>, <font color="red">TT</font>
 
     ## @var RightCaption
     ## @brief The caption to be put on the right of the plot.
@@ -31,9 +35,25 @@ class pReportPlot:
         self.LeftCaption = ''
         self.RightCaption = ''
 
-    def getLaTeXCaption(self):
-        pass
-
+    def getLaTeXCaption(self, caption):
+        if not caption.count('</font>'):
+            return caption
+        latexCaption = ''
+        captionPieces = caption.split('</font>')
+        for piece in captionPieces:
+            if piece != '':
+                tag = re.search('<font.*?>', piece).group()
+                color = re.search('(?<=color=").*(?=">)', piece).group()
+                latexCaption += piece.replace(tag, '\\textcolor{')
+                latexCaption += '}{%s}' % color
+        return latexCaption
+ 
+    def getLeftLaTeXCaption(self):
+        return self.getLaTeXCaption(self.LeftCaption)
+    
+    def getRightLaTeXCaption(self):
+        return self.getLaTeXCaption(self.RightCaption)
+    
     def getTextSummary(self):
         summary = 'Plot summary\n'
         summary += 'Image name   : "%s"\n' % self.ImageName
@@ -43,3 +63,13 @@ class pReportPlot:
 
     def __str__(self):
         return self.getTextSummary()
+
+
+if __name__ == '__main__':
+    plot = pReportPlot('Plot-0', 'Plot-0EnvPanel1')
+    plot.LeftCaption = 'Test caption'
+    plot.RightCaption ='LAT Mode: <font color="black">FM</font>, <font color="red">TT</font>'
+    print plot
+    print plot.getLeftLaTeXCaption()
+    print plot.getRightLaTeXCaption()
+    
