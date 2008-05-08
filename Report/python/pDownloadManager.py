@@ -7,28 +7,31 @@ logging.basicConfig(level = logging.DEBUG)
 
 
 BASE_REPORT_URL = 'http://glast-ground.slac.stanford.edu/Reports/'
-DOWNLOAD_FOLDER = 'download'
 
 
 class pDownloadManager:
 
-    def downloadUrl(self, url, targetFolder = DOWNLOAD_FOLDER,\
-                    options = ''):
+    def __init__(self, downloadFolder = 'download'):
+        self.DownloadFolder = downloadFolder
+
+    def downloadUrl(self, url, options = ''):
         command = 'wget -p -nv --convert-links -nH -nd -P%s %s %s' %\
-                  (targetFolder, url, options)
+                  (self.DownloadFolder, url, options)
         logging.info('Executing "%s"' % command)
         logging.debug(commands.getoutput(command))
 
-    def downloadPanel(self, name, startTime, endTime, imageFormat = 'png',\
-                      targetFolder = DOWNLOAD_FOLDER):
+    def downloadPanel(self, name, startTime, endTime, imageFormat = 'png'):
         url = '%sreport.jsp?reportId=%s' % (BASE_REPORT_URL, name)
-        self.downloadUrl(url, targetFolder,\
-                         '&timeInterval=%d-%d&maxBins=-1&imageFormat=%s' %\
-                         (startTime, endTime, imageFormat))
+        options = '&timeInterval=%d-%d&maxBins=-1&imageFormat=%s' %\
+                  (startTime, endTime, imageFormat)
+        self.downloadUrl(url, options)
 
-    def downloadBaseReportUrl(self, targetFolder = DOWNLOAD_FOLDER):
-        self.downloadUrl(BASE_REPORT_URL, targetFolder)
-    
+    def downloadBaseReportUrl(self):
+        self.downloadUrl(BASE_REPORT_URL, self.DownloadFolder)
+
+    def cleanup(self):
+        logging.info('Cleaning up download folder...')
+        os.system('rm -rf %s' % self.DownloadFolder) 
 
 
 if __name__ == '__main__':

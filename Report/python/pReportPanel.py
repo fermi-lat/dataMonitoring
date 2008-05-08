@@ -15,10 +15,10 @@ class pReportPanel(pDownloadManager):
     ## @brief Basic constructor.
 
     def __init__(self, name, startTime, endTime, imageFormat = 'png',\
-                 downloadFolder = 'download', reportFolder = 'tex'):
+                 reportFolder = 'tex'):
+        pDownloadManager.__init__(self)
         self.Name = name
         self.ImageFormat = imageFormat
-        self.DownloadFolder = downloadFolder
         self.ReportFolder = reportFolder
         if not os.path.exists(self.ReportFolder):
             logging.info('Creating directory %s...' % self.ReportFolder)
@@ -26,13 +26,13 @@ class pReportPanel(pDownloadManager):
         self.PlotsList = []
         self.downloadInfo(startTime, endTime)
         self.processInfo()
+        self.cleanup()
 
     ## @brief Download all the panel-related stuff from the server.
         
     def downloadInfo(self, startTime, endTime):
         logging.info('Downloading panel %s...' % self.Name)
-        self.downloadPanel(self.Name, startTime, endTime, self.ImageFormat,\
-                           self.DownloadFolder)
+        self.downloadPanel(self.Name, startTime, endTime, self.ImageFormat)
 
     ## @brief Grab all the downloaded images, rename them and move them
     #  into the report directory, so that they're ready for being compiled.
@@ -97,15 +97,9 @@ class pReportPanel(pDownloadManager):
                     plot.RightCaption = caption
             print plot
 
-        
     def processInfo(self):
         self.processImages()
         self.processPage()
-
-    def cleanup(self):
-        logging.info('Cleaning up %s...' % self.DownloadFolder)
-        os.system('rm -rf %s' % self.DownloadFolder)
-        logging.info('Done.')
 
 
 
