@@ -44,8 +44,8 @@ class pReportPlot:
             if piece != '':
                 tag = re.search('<font.*?>', piece).group()
                 color = re.search('(?<=color=").*(?=">)', piece).group()
-                latexCaption += piece.replace(tag, '\\textcolor{')
-                latexCaption += '}{%s}' % color
+                latexCaption += piece.replace(tag, '\\textcolor{%s}{' % color)
+                latexCaption += '}'
         return latexCaption
  
     def getLeftLaTeXCaption(self):

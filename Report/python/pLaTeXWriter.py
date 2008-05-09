@@ -39,7 +39,9 @@ class pLaTeXWriter:
     def close(self):
         self.LaTeXFile.close()
 
-    def write(self, text, endline = True):
+    def write(self, text, endline = True, percent = False):
+        if percent:
+            text += '%'
         self.LaTeXFile.writelines(text)
         if endline:
             self.newline()
@@ -90,22 +92,39 @@ class pLaTeXWriter:
         self.write('\\includegraphics[width=%s]{%s}' % (width, imageName))
         self.write('\\end{figure}')
         self.newline()
-
-    def addPanel(self, panel, boxWidth = 0.95, topMargin = '0.5 cm'):
+        
+    def addPanel(self, panel, boxWidth = 0.95, plotWidth = 0.92,\
+                 plotHeight = '3 cm', topMargin = '0.5 cm'):
+        titleMinipageWidth = '%.2f\\linewidth' % (1 - boxWidth)
+        plotMinipageWidth = '%.2f\\linewidth' % boxWidth
+        labelsWidth = '%.2f\\linewidth' % ((1 - plotWidth)/2.0)
+        plotWidth = '%.2f\\linewidth' % plotWidth
         self.newline()
         self.write('\\begin{figure}[htp!]')
-        self.write('\\begin{minipage}[c]{%.2f\linewidth}' % (1 - boxWidth))
+        self.write('\\begin{minipage}[c]{%s}' % titleMinipageWidth)
         self.write('\\begin{sideways}%s\\end{sideways}' % panel.Title)
         self.write('\\end{minipage}')
         self.write('\\framebox{')
-        self.write('\\begin{minipage}[c]{%.2f\linewidth}' %  boxWidth)
+        self.write('\\begin{minipage}[c]{%s}' %  plotMinipageWidth)
         self.write('\\rule{0 cm}{%s}\\\\' % topMargin)
         for plot in panel.PlotsList:
-            self.write('\\includegraphics[width=\linewidth]{%s}\\\\' %\
-                       plot.ImageName)
-        self.write('\end{minipage}')
+            self.write('\\makebox[%s]{\\begin{sideways}' % labelsWidth,\
+                       percent = True)
+            self.write('\\makebox[%s]{\\scriptsize %s}' %\
+                       (plotHeight, plot.getLeftLaTeXCaption()),\
+                       percent = True)
+            self.write('\\end{sideways}}', percent = True)
+            self.write('\\includegraphics[width=%s]{%s}' %\
+                       (plotWidth, plot.ImageName), percent = True)
+            self.write('\\makebox[%s]{\\begin{sideways}' % labelsWidth,\
+                       percent = True)
+            self.write('\\makebox[%s]{\\scriptsize %s}' %\
+                       (plotHeight, plot.getRightLaTeXCaption()),\
+                       percent = True)
+            self.write('\\end{sideways}}\\\\', percent = True)            
+        self.write('\\end{minipage}')
         self.write('}')
-        self.write('\end{figure}')
+        self.write('\\end{figure}')
         self.newline()
 
     def compile(self):
