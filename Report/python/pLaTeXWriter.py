@@ -49,18 +49,8 @@ class pLaTeXWriter:
     def newline(self):
         self.LaTeXFile.writelines('\n')
 
-    def writeHeader(self, pagesize = 'letterpaper',
-                    packages = ['graphicx', 'rotating', 'color'],
-                    textwidth = '19.0 truecm', textheight = '23.0 truecm',
-                    margin = '-1.0 truecm'):
-        self.write('\\documentclass[oneside, 12pt, %s]{report}' % pagesize)
-        self.newline()
-        for package in packages:
-            self.write('\\usepackage{%s}' % package)
-        self.newline()
-        self.write('\\textwidth = %s' % textwidth)
-        self.write('\\textheight = %s' % textheight)
-        self.write('\\oddsidemargin %s' % margin)
+    def writeHeader(self):
+        self.write('\\input{../preamble}')
         self.newline()
         self.write('\\begin{document}')
         self.newline()
@@ -101,28 +91,16 @@ class pLaTeXWriter:
         plotWidth = '%.2f\\linewidth' % plotWidth
         self.newline()
         self.write('\\begin{figure}[htp!]')
-        self.write('\\begin{minipage}[c]{%s}' % titleMinipageWidth)
-        self.write('\\begin{sideways}%s\\end{sideways}' % panel.Title)
-        self.write('\\end{minipage}')
-        self.write('\\framebox{')
-        self.write('\\begin{minipage}[c]{%s}' %  plotMinipageWidth)
-        self.write('\\rule{0 cm}{%s}\\\\' % topMargin)
+        self.write('\\gpanellabel{%s}{%s}' % (titleMinipageWidth, panel.Title))
+        self.write('\\gpanelplot{%s}{%s}{' % (plotMinipageWidth, topMargin))
         for plot in panel.PlotsList:
-            self.write('\\makebox[%s]{\\begin{sideways}' % labelsWidth,\
+            self.write('\\gplotlabel{%s}{%s}{%s}' %\
+                       (labelsWidth, plotHeight, plot.getLeftLaTeXCaption()),\
                        percent = True)
-            self.write('\\makebox[%s]{\\scriptsize %s}' %\
-                       (plotHeight, plot.getLeftLaTeXCaption()),\
-                       percent = True)
-            self.write('\\end{sideways}}', percent = True)
             self.write('\\includegraphics[width=%s]{%s}' %\
                        (plotWidth, plot.ImageName), percent = True)
-            self.write('\\makebox[%s]{\\begin{sideways}' % labelsWidth,\
-                       percent = True)
-            self.write('\\makebox[%s]{\\scriptsize %s}' %\
-                       (plotHeight, plot.getRightLaTeXCaption()),\
-                       percent = True)
-            self.write('\\end{sideways}}\\\\', percent = True)            
-        self.write('\\end{minipage}')
+            self.write('\\gplotlabel{%s}{%s}{%s}\\\\' %\
+                       (labelsWidth, plotHeight, plot.getRightLaTeXCaption()))
         self.write('}')
         self.write('\\end{figure}')
         self.newline()

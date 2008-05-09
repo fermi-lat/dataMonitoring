@@ -56,6 +56,7 @@ class pReportPlot:
     
     def getTextSummary(self):
         summary = 'Plot summary\n'
+        summary += 'Plot Name    : "%s"\n' % self.PlotName
         summary += 'Image name   : "%s"\n' % self.ImageName
         summary += 'Right caption: "%s"\n' % self.RightCaption
         summary += 'Left caption : "%s"\n' % self.LeftCaption

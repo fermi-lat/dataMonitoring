@@ -12,7 +12,7 @@ from pDownloadManager import pDownloadManager
 
 
 LOGO_IMAGE_NAME = 'glastLogo.png'
-
+PREAMBLE_NAME = 'preamble.tex'
     
 
 class pReportGenerator(pLaTeXWriter, pDownloadManager):
@@ -28,6 +28,8 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         self.writeHeader()
         logging.info('Copying the GLAST logo into the report folder...')
         os.system('cp %s %s' % (LOGO_IMAGE_NAME, self.LaTexFolderPath))
+        logging.info('Copying the TeX preamble into the report folder...')
+        os.system('cp %s %s' % (PREAMBLE_NAME, self.LaTexFolderPath))
         self.addLogo()
         self.processIndex()
         self.processPanels()

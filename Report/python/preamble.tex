@@ -1,0 +1,34 @@
+
+% Document class.
+\documentclass[oneside, 12pt, letterpaper]{report}
+
+% Required packages.
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{color}
+
+% Document geometry.
+\textwidth = 19.0 truecm
+\textheight = 23.0 truecm
+\oddsidemargin -1.0 truecm
+
+% Vertical label to be put on the left/right of the plots.
+% Usage:
+% \gplotlabel{width}{height}{text}
+\newcommand{\gplotlabel}[3]{%
+\makebox[#1]{\begin{sideways}\makebox[#2]{\scriptsize #3}\end{sideways}}%
+}
+
+% Vertical label to be put on the left of each panel.
+% Usage:
+% \gpanellabel{width}{text}
+\newcommand{\gpanellabel}[2]{%
+\begin{minipage}[c]{#1}\begin{sideways}#2\end{sideways}\end{minipage}%
+}
+
+% Panel plot.
+% Usage:
+% \gpanelplot{width}{topmargin}{content}
+\newcommand{\gpanelplot}[3]{%
+\framebox{\begin{minipage}[c]{#1}\rule{0 pt}{#2} #3\end{minipage}}%
+}
