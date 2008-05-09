@@ -95,7 +95,13 @@ class pReportPanel(pDownloadManager):
                     caption = caption.split('\n')[1].strip()
                     caption = caption.replace('</td>', '')
                     plot.RightCaption = caption
-            print plot
+                    dims = re.search('<img width=.*?height=.*?src=',\
+                                     htmlTableRow, re.DOTALL).group()
+                    width = re.search('(?<=width=").*?(?=")', dims).group()
+                    height = re.search('(?<=height=").*?(?=")', dims).group()
+                    plot.Width = float(width)
+                    plot.Height = float(height)
+            logging.debug(plot)
 
     def processInfo(self):
         self.processImages()

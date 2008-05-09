@@ -84,23 +84,26 @@ class pLaTeXWriter:
         self.newline()
         
     def addPanel(self, panel, boxWidth = 0.95, plotWidth = 0.92,\
-                 plotHeight = '3 cm', topMargin = '0.5 cm'):
-        titleMinipageWidth = '%.2f\\linewidth' % (1 - boxWidth)
-        plotMinipageWidth = '%.2f\\linewidth' % boxWidth
-        labelsWidth = '%.2f\\linewidth' % ((1 - plotWidth)/2.0)
-        plotWidth = '%.2f\\linewidth' % plotWidth
+                 topMargin = '0.5 cm'):
+        labelLineWidth = '%.2f\\linewidth' % ((1 - plotWidth)/2.0)
+        plotLineWidth = '%.2f\\linewidth' % plotWidth
         self.newline()
         self.write('\\begin{figure}[htp!]')
-        self.write('\\gpanellabel{%s}{%s}' % (titleMinipageWidth, panel.Title))
-        self.write('\\gpanelplot{%s}{%s}{' % (plotMinipageWidth, topMargin))
+        self.write('\\gpanellabel{%.2f\\linewidth}{%s}' %\
+                   ((1 - boxWidth), panel.Title))
+        self.write('\\gpanelplot{%.2f\\linewidth}{%s}{\\\\' %\
+                   (boxWidth, topMargin))
         for plot in panel.PlotsList:
+            plotLineHeight = '%.2f\\linewidth' %\
+                             (plotWidth*(plot.Height/plot.Width))
             self.write('\\gplotlabel{%s}{%s}{%s}' %\
-                       (labelsWidth, plotHeight, plot.getLeftLaTeXCaption()),\
-                       percent = True)
+                       (labelLineWidth, plotLineHeight,\
+                        plot.getLeftLaTeXCaption()),  percent = True)
             self.write('\\includegraphics[width=%s]{%s}' %\
-                       (plotWidth, plot.ImageName), percent = True)
+                       (plotLineWidth, plot.ImageName), percent = True)
             self.write('\\gplotlabel{%s}{%s}{%s}\\\\' %\
-                       (labelsWidth, plotHeight, plot.getRightLaTeXCaption()))
+                       (labelLineWidth, plotLineHeight,\
+                        plot.getRightLaTeXCaption()))
         self.write('}')
         self.write('\\end{figure}')
         self.newline()

@@ -29,11 +29,19 @@ class pReportPlot:
     #  Note that this is the html caption, as it appears on the web interface,
     #  so it needs some manipulation to be put in the LaTeX report.
 
+    ## @var Width
+    ## @brief The plot image width (in pixels).
+
+    ## @var Height
+    ## @brief The plot image height (in pixels).
+
     def __init__(self, plotName, imageName):
         self.PlotName = plotName
         self.ImageName = imageName
         self.LeftCaption = ''
         self.RightCaption = ''
+        self.Width = 1000.0
+        self.Height = 15.0
 
     def getLaTeXCaption(self, caption):
         if not caption.count('</font>'):
@@ -60,6 +68,8 @@ class pReportPlot:
         summary += 'Image name   : "%s"\n' % self.ImageName
         summary += 'Right caption: "%s"\n' % self.RightCaption
         summary += 'Left caption : "%s"\n' % self.LeftCaption
+        summary += 'Width        : %s\n'   % self.Width
+        summary += 'Height       : %s'     % self.Height
         return summary
 
     def __str__(self):
