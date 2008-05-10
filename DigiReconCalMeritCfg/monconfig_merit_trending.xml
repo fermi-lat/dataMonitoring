@@ -193,12 +193,50 @@
 
 
     <object>
+      <name> NormRateEvtsBeforeFilters </name>
+      <formula><![CDATA[ RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of events before applicaltion of filters. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
+    <object>
+      <name> NormRateEvtsBeforeFilters_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of events before applicaltion of filters. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
+    <object>
       <name> EvtsBeforeCuts </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <type> rate </type>
       <description> Rate of events before applicaltion of cuts.</description>
     </object>
+
+    <object>
+      <name> NormRateEvtsBeforeCuts </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of events before applicaltion of cuts. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
+
+    <object>
+      <name> NormRateEvtsBeforeCuts_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Normalized Rate of events before applicaltion of cuts. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
 
      <object>
       <name> EvtsBeforeCutsBelow60ZenithTheta</name>
@@ -241,6 +279,26 @@
       <description> Rate of events after application of TRANSIENT gamma cuts from pass5. </description>
     </object>
 
+
+      <object>
+      <name> NormRateTransientEvts </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL,Rate_TransientEvts, Rate_TransientEvts_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of transient events. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
+      <object>
+      <name> NormRateTransientEvts_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL,Rate_TransientEvts, Rate_TransientEvts_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Normalized Rate of transient events. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
+
      <object>
       <name> TransientEvts_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
@@ -259,6 +317,26 @@
       <description> Rate of events after application of DIFFUSE gamma cuts from pass5. </description>
     </object>
 
+       <object>
+      <name> NormRateDiffuseEvts </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_DiffuseEvts",Mean_PtMcIlwainL,Rate_DiffuseEvts, Rate_DiffuseEvts_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of diffuse events. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
+
+        <object>
+      <name> NormRateDiffuseEvts_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_DiffuseEvts",Mean_PtMcIlwainL,Rate_DiffuseEvts, Rate_DiffuseEvts_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of diffuse events. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
+
       <object>
       <name> DiffuseEvts_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
@@ -274,6 +352,25 @@
       <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) ]]></cut>
       <type> rate </type>
       <description> Rate of events after application of SOURCE gamma cuts from pass5. </description>
+    </object>
+
+
+        <object>
+      <name> NormRateSourceEvts </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL,Rate_SourceEvts, Rate_SourceEvts_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of source events. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
+	  <object>
+      <name> NormRateSourceEvts_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL,Rate_SourceEvts, Rate_SourceEvts_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in normalized Rate of source events. The Normalization is done according to the value of PtMcIlwainL.</description>
     </object>
 
        <object>

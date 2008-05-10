@@ -1,3 +1,8 @@
+       DeviationFromOneInSigmas_NormRateEvtsBeforeFilters_TH1  Sum
+       DeviationFromOneInSigmas_NormRateEvtsBeforeCuts_TH1  Sum
+       DeviationFromOneInSigmas_NormRateTransientEvts_TH1  Sum
+       DeviationFromOneInSigmas_NormRateDiffuseEvts_TH1  Sum
+       DeviationFromOneInSigmas_NormRateSourceEvts_TH1  Sum
        Rate_EvtsBeforeFilters_TH1  Sum
        Rate_EvtsBeforeCuts_TH1  Sum
        Rate_EvtsBeforeCuts_E100MeV_TH1  Sum
