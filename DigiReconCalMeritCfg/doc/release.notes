@@ -1,3 +1,17 @@
+
+v1r1p10 2008/05/09  (DEV)
+---------------------------
+Added possibility of trending and histograming normalized rates (from merit). 
+This addresses the Jira GDQMQ-83.
+For the time being the normalized quantities trended and histogrammed are:
+NormRateEvtsBeforeFilters
+NormRateEvtsBeforeCuts
+NormRateTransientEvts
+NormRateDiffuseEvts
+NormRateSourceEvts
+
+
+
 v1r1p9 2008/05/02  (DEV)
 ---------------------------
 Implemented quantity FastMon_MetaContext_GPS_OUTofLock that counts the rate of
