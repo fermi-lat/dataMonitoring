@@ -1,4 +1,15 @@
 
+v1r1p11 2008/05/12  (DEV)
+---------------------------
+Added trending and histograms for other normalized rates.
+This addresses the Jira GDQMQ-83.
+The additional normalized quantities are:
+NormRateEvtsBeforeCutsWithGAMMAFilter
+NormRateTriggerEngine[16]
+NormRateGAMMAFilterAndTriggerEngine[16]
+
+
+
 v1r1p10 2008/05/09  (DEV)
 ---------------------------
 Added possibility of trending and histograming normalized rates (from merit). 
