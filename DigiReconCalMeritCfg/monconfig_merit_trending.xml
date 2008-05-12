@@ -10,6 +10,8 @@
     <object>GltWord</object>  <!-- TO BE DELETED at some point, use GltGemSummary instead!! -->
     <object>GltGemSummary </object> 
     <object>EvtEventId </object>
+    <object>TriggerEngine </object>
+    <object>OBFStatus </object>
 
     <!-- Filter variables -->
     <object>FilterStatus_HI</object>
@@ -239,6 +241,32 @@
 
 
      <object>
+      <name> EvtsBeforeCutsWithGAMMAFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ OBFStatus[0]>0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events before applicaltion of cuts that survive the GAMMA filter</description>
+    </object>
+
+     <object>
+      <name> NormRateEvtsBeforeCutsWithGAMMAFilter </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of events before applicaltion of cuts that survive the OBF GAMMA filter. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
+     <object>
+      <name> NormRateEvtsBeforeCutsWithGAMMAFilter_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in normalized rate of events before applicaltion of cuts that survive the OBF GAMMA filter. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
+     <object>
       <name> EvtsBeforeCutsBelow60ZenithTheta</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1ZenithTheta<60]]></cut>
@@ -333,7 +361,7 @@
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Normalized Rate of diffuse events. The Normalization is done according to the value of PtMcIlwainL.</description>
+      <description> Error in the Normalized Rate of diffuse events. The Normalization is done according to the value of PtMcIlwainL.</description>
     </object>
 
 
@@ -432,6 +460,67 @@
       <cut><![CDATA[ (GltGemSummary&10)>0 && ((GltGemSummary&7)!=3) && (FilterStatus_HI==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
       <type> rate </type>
       <description> Rate of events after application of SOURCE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
+    </object>
+
+
+        <object>
+      <name> MeritTriggerEngine[16]  </name>
+      <formula><![CDATA[ TriggerEngine ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> Rate of Trigger Engines (DigiEvent->getL1T().getGemEngine()) </description>
+    </object>
+
+	   <object>
+      <name> GAMMAFilterAndTriggerEngine[16]  </name>
+      <formula><![CDATA[ TriggerEngine ]]></formula>
+      <cut><![CDATA[ OBFStatus[0]>0]]></cut>
+      <type> rate </type>
+      <description> Rate of Trigger Engines (DigiEvent->getL1T().getGemEngine()) passing the GAMMA filter </description>
+    </object>
+      
+    
+
+     
+       <object>
+      <name> NormRateMeritTriggerEngine[16] </name>
+      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_MeritTriggerEngine",Mean_PtMcIlwainL,Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], "NormRate", engine) ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [16] with the normalized rates for the 16 TriggerEngines. The Normalization is done according to the value of PtMcIlwainL. </description>
+    </object>
+
+
+     
+       <object>
+      <name> NormRateMeritTriggerEngine_err[16] </name>
+      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_MeritTriggerEngine",Mean_PtMcIlwainL,Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], "NormRateErr", engine) ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [16] with the error in the normalized rates for the 16 TriggerEngines (NormRateMeritTriggerEngine[16]). The Normalization is done according to the value of PtMcIlwainL. </description>
+    </object>
+
+       
+       <object>
+      <name> NormRateGAMMAFilterAndTriggerEngine[16] </name>
+       <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], "NormRate", engine) ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [16] with the normalized rates for the 16 TriggerEngines. The Normalization is done according to the value of PtMcIlwainL. </description>
+    </object>
+
+
+     
+       <object>
+      <name> NormRateGAMMAFilterAndTriggerEngine_err[16] </name>
+      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], "NormRateErr", engine) ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Vector [16] with the error in the normalized rates for the 16 TriggerEngines. The Normalization is done according to the value of PtMcIlwainL. </description>
     </object>
 
 
