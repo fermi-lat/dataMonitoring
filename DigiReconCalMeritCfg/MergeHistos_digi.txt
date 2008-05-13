@@ -1,10 +1,39 @@
        CondSummaryWord_TH1  Sum
+       CondSummaryWord_WithROI_TH1  Sum
+       CondSummaryWord_WithTKR_TH1  Sum
+       CondSummaryWord_WithCalLo_TH1  Sum
+       CondSummaryWord_WithCalHi_TH1  Sum
+       CondSummaryWord_WithCNO_TH1  Sum
+       CondSummaryWord_WithPeriodic_TH1  Sum
        CondSummaryWord_Extended_TH1  Sum
+       CondSummaryWord__WithROI_Extended_TH1  Sum
+       CondSummaryWord__WithTKR_Extended_TH1  Sum
+       CondSummaryWord__WithCalLo_Extended_TH1  Sum
+       CondSummaryWord__WithCalHi_Extended_TH1  Sum
+       CondSummaryWord__WithCNO_Extended_TH1  Sum
+       CondSummaryWord__WithPeriodic_Extended_TH1  Sum
+       CondSummaryWord__WithSolicited_Extended_TH1  Sum
        CondArrTKRTrigger_TH1  Sum
        CondArrCalLowTrigger_TH1  Sum
        CondArrCalHiTrigger_TH1  Sum
        CondArrCNOTrigger_TH1  Sum
        CondArrROITrigger_TH1  Sum
+       CondArrROI_TKROpensWindow_TH1  Sum
+       CondArrCalLo_TKROpensWindow_TH1  Sum
+       CondArrCalHi_TKROpensWindow_TH1  Sum
+       CondArrCNO_TKROpensWindow_TH1  Sum
+       CondArrROI_CalLoOpensWindow_TH1  Sum
+       CondArrTKR_CalLoOpensWindow_TH1  Sum
+       CondArrCalHi_CalLoOpensWindow_TH1  Sum
+       CondArrCNO_CalLoOpensWindow_TH1  Sum
+       CondArrROI_CalHiOpensWindow_TH1  Sum
+       CondArrTKR_CalHiOpensWindow_TH1  Sum
+       CondArrCalLo_CalHiOpensWindow_TH1  Sum
+       CondArrCNO_CalHiOpensWindow_TH1  Sum
+       CondArrROI_CNOOpensWindow_TH1  Sum
+       CondArrTKR_CNOOpensWindow_TH1  Sum
+       CondArrCalLo_CNOOpensWindow_TH1  Sum
+       CondArrCalHi_CNOOpensWindow_TH1  Sum
        DiscardedDelta_TH1  Sum
        DeadZoneDelta_TH1  Sum
        PrescaledDelta_TH1  Sum

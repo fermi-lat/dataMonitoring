@@ -94,21 +94,155 @@
       <description> Distribution of condsumary word values. Values up to 33 are being displayed. </description>
     </object>
 
+     <object>
+      <name> CondSummaryWord_WithROI_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&1 ]]></cut>
+      <type> histogram-1d[34,-0.5,33.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a ROI trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word valueswhen there is a ROI trigger. Values up to 33 are being displayed. </description>
+    </object>
+
+
+     <object>
+      <name> CondSummaryWord_WithTKR_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&2 ]]></cut>
+      <type> histogram-1d[34,-0.5,33.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a TKR trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word valueswhen there is a TKR trigger. Values up to 33 are being displayed. </description>
+    </object>
+
+      <object>
+      <name> CondSummaryWord_WithCalLo_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&4 ]]></cut>
+      <type> histogram-1d[34,-0.5,33.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a CalLo trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word valueswhen there is a CalLo trigger. Values up to 33 are being displayed. </description>
+    </object>
+
+     <object>
+      <name> CondSummaryWord_WithCalHi_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&8 ]]></cut>
+      <type> histogram-1d[34,-0.5,33.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a CalHi trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word valueswhen there is a CalHi trigger. Values up to 33 are being displayed. </description>
+    </object>
+
+    
+     <object>
+      <name> CondSummaryWord_WithCNO_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&16 ]]></cut>
+      <type> histogram-1d[34,-0.5,33.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a CNO trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word valueswhen there is a CNO trigger. Values up to 33 are being displayed. </description>
+    </object>
+
+     <object>
+      <name> CondSummaryWord_WithPeriodic_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&32 ]]></cut>
+      <type> histogram-1d[34,-0.5,33.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a Periodic trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word values when there is a Periodic trigger. Values up to 33 are being displayed. </description>
+    </object>
+
+
+
       <object>
       <name> CondSummaryWord_Extended_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
       <cut><![CDATA[  ]]></cut>
-      <type> histogram-1d[201,-0.5,200.5] </type>
+      <type> histogram-1d[129,-0.5,128.5] </type>
       <titledesc> Distribution of CondSummary Word values </titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
-      <description> Distribution of condsumary word values. Values up to 250 are being displayed. </description>
+      <description> Distribution of condsumary word values. Values up to 128 are being displayed. </description>
+    </object>
+
+
+       <object>
+      <name> CondSummaryWord__WithROI_Extended_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&1 ]]></cut>
+      <type> histogram-1d[129,-0.5,128.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a ROI trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word values when there is a ROI trigger. Values up to 128 are being displayed. </description>
+    </object>
+
+         <object>
+      <name> CondSummaryWord__WithTKR_Extended_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&2 ]]></cut>
+      <type> histogram-1d[129,-0.5,128.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a TKR trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word values when there is a TKR trigger. Values up to 128 are being displayed. </description>
+    </object>
+
+	   <object>
+      <name> CondSummaryWord__WithCalLo_Extended_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&4 ]]></cut>
+      <type> histogram-1d[129,-0.5,128.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a CalLo trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word values when there is a CalLo trigger. Values up to 128 are being displayed. </description>
+    </object>
+
+	     <object>
+      <name> CondSummaryWord__WithCalHi_Extended_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&8 ]]></cut>
+      <type> histogram-1d[129,-0.5,128.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a CalHi trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word values when there is a CalHi trigger. Values up to 128 are being displayed. </description>
+    </object>
+	       <object>
+      <name> CondSummaryWord__WithCNO_Extended_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&16 ]]></cut>
+      <type> histogram-1d[129,-0.5,128.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a CNO trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word values when there is a CNO trigger. Values up to 128 are being displayed. </description>
+    </object>
+
+	         <object>
+      <name> CondSummaryWord__WithPeriodic_Extended_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&32 ]]></cut>
+      <type> histogram-1d[129,-0.5,128.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a Periodic trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word values when there is a Periodic trigger. Values up to 128 are being displayed. </description>
+    </object>
+
+    <object>
+      <name> CondSummaryWord__WithSolicited_Extended_TH1 </name>
+      <formula><![CDATA[ condsummary ]]></formula>
+      <cut><![CDATA[ condsummary&1 ]]></cut>
+      <type> histogram-1d[129,-0.5,128.5] </type>
+      <titledesc> Distribution of CondSummary Word values when there is a Solicited trigger</titledesc>
+      <axisdesc> [condsummary value, N] </axisdesc>
+      <description> Distribution of condsumary word values when there is a Solicited trigger. Values up to 128 are being displayed. </description>
     </object>
 
 
       <object>
       <name> CondArrTKRTrigger_TH1 </name>
       <formula><![CDATA[ condarrtkr ]]></formula>
-      <cut><![CDATA[ condsummary&2 ]]></cut>
+      <cut><![CDATA[ condsummary&2 && !(condsummary&32)]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival TKR triggers </titledesc>
       <axisdesc> [Condition arrival times for TKR triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -118,7 +252,7 @@
       <object>
       <name> CondArrCalLowTrigger_TH1 </name>
       <formula><![CDATA[ condarrcallo ]]></formula>
-      <cut><![CDATA[ condsummary&4 ]]></cut>
+      <cut><![CDATA[ condsummary&4 && !(condsummary&32)]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival Cal-Low triggers </titledesc>
       <axisdesc> [Condition arrival times for Cal-Low triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -128,7 +262,7 @@
       <object>
       <name> CondArrCalHiTrigger_TH1 </name>
       <formula><![CDATA[ condarrcalhi ]]></formula>
-      <cut><![CDATA[ condsummary&8 ]]></cut>
+      <cut><![CDATA[ condsummary&8 && !(condsummary&32)]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival Cal-Hi triggers </titledesc>
       <axisdesc> [Condition arrival times for Cal-Hi triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -138,7 +272,7 @@
       <object>
       <name> CondArrCNOTrigger_TH1 </name>
       <formula><![CDATA[ condarrcno ]]></formula>
-      <cut><![CDATA[ condsummary&16 ]]></cut>
+      <cut><![CDATA[ condsummary&16 && !(condsummary&32)]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival CNO triggers </titledesc>
       <axisdesc> [Condition arrival times for CNO triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -148,12 +282,181 @@
        <object>
       <name> CondArrROITrigger_TH1 </name>
       <formula><![CDATA[ condarrroi ]]></formula>
-      <cut><![CDATA[ condsummary&1 ]]></cut>
+      <cut><![CDATA[ condsummary&1 && !(condsummary&32)]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival ROI triggers </titledesc>
       <axisdesc> [Condition arrival times for ROI triggers (nominally 50 ns ticks), N] </axisdesc>
       <description> Distribution of Condition arrival times for ROI triggers. Periodic triggers have been taken out. </description>
     </object>
+
+
+     <object>
+      <name> CondArrROI_TKROpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrroi ]]></formula>
+      <cut><![CDATA[ (condsummary&1) && (condsummary&2) && (condarrtkr==0) &&  !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival ROI triggers when TKR opened the window</titledesc>
+      <axisdesc> [Condition arrival times for ROI triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival ROI triggers when TKR opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+     
+
+     <object>
+      <name> CondArrCalLo_TKROpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrcallo ]]></formula>
+      <cut><![CDATA[ (condsummary&4) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival CalLo triggers when TKR opened the window</titledesc>
+      <axisdesc> [Condition arrival times for CalLo triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival CalLo triggers when TKR opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+      <object>
+      <name> CondArrCalHi_TKROpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrcalhi ]]></formula>
+      <cut><![CDATA[ (condsummary&8) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival CalHi triggers when TKR opened the window</titledesc>
+      <axisdesc> [Condition arrival times for CalHi triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival CalHi triggers when TKR opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+       <object>
+      <name> CondArrCNO_TKROpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrcno ]]></formula>
+      <cut><![CDATA[ (condsummary&16) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival CNO triggers when TKR opened the window</titledesc>
+      <axisdesc> [Condition arrival times for CNO triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival CNO triggers when TKR opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+
+        <object>
+      <name> CondArrROI_CalLoOpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrroi ]]></formula>
+      <cut><![CDATA[ (condsummary&1) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival ROI triggers when CalLo opened the window</titledesc>
+      <axisdesc> [Condition arrival times for ROI triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival ROI triggers when CalLo opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+	   <object>
+      <name> CondArrTKR_CalLoOpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrtkr ]]></formula>
+      <cut><![CDATA[ (condsummary&2) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival TKR triggers when CalLo opened the window</titledesc>
+      <axisdesc> [Condition arrival times for TKR triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival TKR triggers when CalLo opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+	      <object>
+      <name> CondArrCalHi_CalLoOpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrcalhi ]]></formula>
+      <cut><![CDATA[ (condsummary&8) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival CalHi triggers when CalLo opened the window</titledesc>
+      <axisdesc> [Condition arrival times for CalHi triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival CalHi triggers when CalLo opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+    <object>
+      <name> CondArrCNO_CalLoOpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrcno ]]></formula>
+      <cut><![CDATA[ (condsummary&16) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival CNO triggers when CalLo opened the window</titledesc>
+      <axisdesc> [Condition arrival times for CNO triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival CNO triggers when CalLo opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+
+    <object>
+      <name> CondArrROI_CalHiOpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrroi ]]></formula>
+      <cut><![CDATA[ (condsummary&1) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival ROI triggers when CalHi opened the window</titledesc>
+      <axisdesc> [Condition arrival times for ROI triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival ROI triggers when CalHi opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+     <object>
+      <name> CondArrTKR_CalHiOpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrtkr ]]></formula>
+      <cut><![CDATA[ (condsummary&2) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival TKR triggers when CalHi opened the window</titledesc>
+      <axisdesc> [Condition arrival times for TKR triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival TKR triggers when CalHi opened the window. Periodic triggers have been taken out. </description>
+    </object>
+     
+      <object>
+      <name> CondArrCalLo_CalHiOpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrcallo ]]></formula>
+      <cut><![CDATA[ (condsummary&4) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival CalLo triggers when CalHi opened the window</titledesc>
+      <axisdesc> [Condition arrival times for CalLo triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival CalLo triggers when CalHi opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+       <object>
+      <name> CondArrCNO_CalHiOpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrcno ]]></formula>
+      <cut><![CDATA[ (condsummary&16) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival CNO triggers when CalHi opened the window</titledesc>
+      <axisdesc> [Condition arrival times for CNO triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival CNO triggers when CalHi opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+
+
+        <object>
+      <name> CondArrROI_CNOOpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrroi ]]></formula>
+      <cut><![CDATA[ (condsummary&1) && (condsummary&16) && (condarrcno==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival ROI triggers when CNO opened the window</titledesc>
+      <axisdesc> [Condition arrival times for ROI triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival ROI triggers when CNO opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+
+	 <object>
+      <name> CondArrTKR_CNOOpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrtkr ]]></formula>
+      <cut><![CDATA[ (condsummary&2) && (condsummary&16) && (condarrcno==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival TKR triggers when CNO opened the window</titledesc>
+      <axisdesc> [Condition arrival times for TKR triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival TKR triggers when CNO opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+    <object>
+      <name> CondArrCalLo_CNOOpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrcallo ]]></formula>
+      <cut><![CDATA[ (condsummary&4) && (condsummary&16) && (condarrcno==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival CalLo triggers when CNO opened the window</titledesc>
+      <axisdesc> [Condition arrival times for CalLo triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival CalLo triggers when CNO opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
+     <object>
+      <name> CondArrCalHi_CNOOpensWindow_TH1 </name>
+      <formula><![CDATA[ condarrcalhi ]]></formula>
+      <cut><![CDATA[ (condsummary&8) && (condsummary&16) && (condarrcno==0) && !(condsummary&32)]]></cut>
+      <type> histogram-1d[41,-0.5,40.5] </type>
+      <titledesc> Distribution of Condition arrival CalHi triggers when CNO opened the window</titledesc>
+      <axisdesc> [Condition arrival times for CalHi triggers (nominally 50 ns ticks), N] </axisdesc>
+      <description> Distribution of Condition arrival CalHi triggers when CNO opened the window. Periodic triggers have been taken out. </description>
+    </object>
+
 
        
       <object>
