@@ -65,16 +65,27 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
             if 'UTC' in line:
                 self.TimeSpan =\
                      line.strip().replace('<b>', '').replace('</b>', '')
-                #self.write('%s\n' % timeSpan)
         pDownloadManager.cleanup(self)
 
  
 
 if __name__ == '__main__':
+    from optparse import OptionParser
+    parser = OptionParser(usage = 'usage: %prog [options]')
+    parser.add_option('-c', '--config-file', dest = 'c',
+                      default = None, type = str,
+                      help = 'path to the input xml config file')
+    parser.add_option('-o', '--output-file', dest = 'o',
+                      default = './tex/report.tex', type = str,
+                      help = 'path to the output TeX file')
+    (opts, args) = parser.parse_args()
+    if opts.c is None:
+        parser.print_help()
+        parser.error('Please provide the path to the xml config file.')
+    
     startTime = 1208649599000 - 3600*1000*24
     endTime  = 1208649599000
-    reportGenerator = pReportGenerator(startTime, endTime,\
-                                       '../xml/mainreport.xml')
-    reportGenerator.writeReport('./tex/report.tex')
+    reportGenerator = pReportGenerator(startTime, endTime, opts.c)
+    reportGenerator.writeReport(opts.o)
     reportGenerator.compile()
 
