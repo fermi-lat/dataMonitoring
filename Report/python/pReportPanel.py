@@ -48,8 +48,8 @@ class pReportPanel(pDownloadManager):
             imageName = '%s%s' % (plotName, self.Name)
             imagePath = '%s/%s.%s' %\
                         (self.ReportFolder, imageName, self.ImageFormat)
-            if not os.path.exists(imagePath):
-                logging.error('Could not find %s.' % imagePath)
+            if not os.path.exists(string):
+                logging.error('Could not find %s.' % string)
             else:
                 command = 'mv "%s" %s' % (string, imagePath)
                 logging.debug('Executing %s...' % command)
@@ -104,7 +104,7 @@ class pReportPanel(pDownloadManager):
                     height = re.search('(?<=height=").*?(?=")', dims).group()
                     plot.Width = float(width)
                     plot.Height = float(height)
-            logging.debug(plot)
+            #logging.debug(plot)
 
     def processInfo(self):
         self.processImages()
