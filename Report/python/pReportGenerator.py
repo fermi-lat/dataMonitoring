@@ -65,7 +65,10 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
 
     def processIndex(self):
         self.downloadBaseReportUrl()
-        for line in file('%s/index.html' % self.DownloadFolder).readlines():
+        indexPath = '%s/index.html' % self.DownloadFolder
+        if not os.path.exists(indexPath):
+            sys.exit('Could not download main (index) report page.')
+        for line in file(indexPath).readlines():
             #if 'Panel' in line and 'href' in line:
             #    panelName = re.search('(?<=reportId=).*(?=">)', line).group()
             #    self.PanelsList.append(panelName)

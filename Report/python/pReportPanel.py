@@ -64,18 +64,19 @@ class pReportPanel(pDownloadManager):
     #  the blank lines.
 
     def getPageContent(self):
-        titleFound = False
-        pageContent = ''
         try:
+            titleFound = False
+            pageContent = ''
             for line in file(glob('./download/report*')[0]).readlines():
                 if '<h2' in line:
                     titleFound = True
                 if titleFound and not line.isspace():
                     pageContent += line
+            return pageContent
         except:
             logging.error('Could not parse html content for panel %s.' %\
                           self.Name)
-        return pageContent
+            return None
 
     ## @brief Grab the content of the html panel page and extract the
     #  relevant information (i.e. panel title, plot labels etc.)
@@ -85,8 +86,9 @@ class pReportPanel(pDownloadManager):
     def processPage(self):
         logging.info('Processing panel page...')
         pageContent = self.getPageContent()
+        if pageContent is None:
+            return
         self.Title = re.search('(?<=>).*(?=</h2>)', pageContent).group()
-        print self.Title
         htmlTableRows = re.search('(?<=<tr).*(?=</tr>)', pageContent,\
                                       re.DOTALL).group().split('</tr>')
         for plot in self.PlotsList:
@@ -94,13 +96,13 @@ class pReportPanel(pDownloadManager):
                 if plot.PlotName in htmlTableRow:
                     caption = re.search('leftCaption.*?</td>',\
                                         htmlTableRow, re.DOTALL).group()
-                    caption = caption.split('\n')[1].strip()
-                    caption = caption.replace('</td>', '')
+                    caption = caption.split('\n')[2].strip()
+                    caption = caption.replace('</b>', '')
                     plot.LeftCaption = caption
                     caption = re.search('rightCaption.*?</td>',\
                                         htmlTableRow, re.DOTALL).group()
-                    caption = caption.split('\n')[1].strip()
-                    caption = caption.replace('</td>', '')
+                    caption = caption.split('\n')[2].strip()
+                    caption = caption.replace('</b>', '')
                     plot.RightCaption = caption
                     dims = re.search('<img width=.*?height=.*?src=',\
                                      htmlTableRow, re.DOTALL).group()
@@ -108,7 +110,7 @@ class pReportPanel(pDownloadManager):
                     height = re.search('(?<=height=").*?(?=")', dims).group()
                     plot.Width = float(width)
                     plot.Height = float(height)
-            #logging.debug(plot)
+            logging.debug(plot)
 
     def processInfo(self):
         self.processImages()

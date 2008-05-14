@@ -102,7 +102,7 @@ class pLaTeXWriter:
         self.write('\\clearpage')
         self.newline()
         
-    def addPanel(self, panel, boxWidth = 0.9, plotWidth = 0.9,\
+    def addPanel(self, panel, boxWidth = 0.95, plotWidth = 0.92,\
                  topMargin = '0.5 cm'):
         labelLineWidth = '%.2f\\linewidth' % ((1 - plotWidth)/2.0)
         plotLineWidth = '%.2f\\linewidth' % plotWidth
