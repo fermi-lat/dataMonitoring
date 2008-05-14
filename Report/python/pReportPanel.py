@@ -66,11 +66,15 @@ class pReportPanel(pDownloadManager):
     def getPageContent(self):
         titleFound = False
         pageContent = ''
-        for line in file(glob('./download/report*')[0]).readlines():
-            if '<h2' in line:
-                titleFound = True
-            if titleFound and not line.isspace():
-                pageContent += line
+        try:
+            for line in file(glob('./download/report*')[0]).readlines():
+                if '<h2' in line:
+                    titleFound = True
+                if titleFound and not line.isspace():
+                    pageContent += line
+        except:
+            logging.error('Could not parse html content for panel %s.' %\
+                          self.Name)
         return pageContent
 
     ## @brief Grab the content of the html panel page and extract the
