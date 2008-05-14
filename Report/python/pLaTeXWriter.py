@@ -82,6 +82,25 @@ class pLaTeXWriter:
         self.write('\\includegraphics[width=%s]{%s}' % (width, imageName))
         self.write('\\end{figure}')
         self.newline()
+
+    def addPageHeader(self, timeSpan, logoName = 'glastLogo',\
+                      logoWidth = '2cm'):
+        self.write('\\begin{figure}[htp!]')
+        self.write('\\includegraphics[width=%s]{glastLogo}' % logoWidth,\
+                   percent = True)
+        self.write('\\hfill %s \hfill' % timeSpan)
+        self.write('\\includegraphics[width=%s]{glastLogo}' % logoWidth,\
+                   percent = True)
+        self.write('\\end{figure}')
+        self.newline()
+
+    def addPage(self, page, timeSpan):
+        logging.info('Adding new page...')
+        self.addPageHeader(timeSpan)
+        for panel in page.PanelsList:
+            self.addPanel(panel)
+        self.write('\\clearpage')
+        self.newline()
         
     def addPanel(self, panel, boxWidth = 0.95, plotWidth = 0.92,\
                  topMargin = '0.5 cm'):
