@@ -21,13 +21,15 @@ PREAMBLE_NAME = 'preamble.tex'
 
 class pReportGenerator(pLaTeXWriter, pDownloadManager):
     
-    def __init__(self, startTime, endTime, cfgFilePath):
+    def __init__(self, startTime, endTime, cfgFilePath, outputFilePath):
         pDownloadManager.__init__(self)
+        pLaTeXWriter.__init__(self, outputFilePath)
         self.StartTime = startTime
         self.EndTime = endTime
         self.TimeSpan = 'N/A'
         self.XmlBaseElement = pXmlElement(minidom.parse(file(cfgFilePath)))
         self.PagesList = []
+        self.PanelsDict = {}
         self.parseConfiguration()
 
     def parseConfiguration(self):
@@ -38,13 +40,18 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
                 for panelTag in pageTag.getElementsByTagName('panel'):
                     if panelTag.evalAttribute('enabled'):
                         panelName = panelTag.getAttribute('name')
-                        panel = pReportPanel(panelName, self.StartTime,\
-                                             self.EndTime)
+                        if panelName not in self.PanelsDict.keys():
+                            panel = pReportPanel(panelName, self.StartTime,\
+                                                 self.EndTime)
+                            self.PanelsDict[panelName] = panel
+                        else:
+                            logging.info('Panel %s already downloaded.' %\
+                                         panelName)
+                            panel = self.PanelsDict[panelName]
                         page.addPanel(panel)
                 self.PagesList.append(page)
 
-    def writeReport(self, outputFilePath):
-        pLaTeXWriter.__init__(self, outputFilePath)
+    def writeReport(self):
         self.writeHeader()
         logging.info('Copying the GLAST logo into the report folder...')
         os.system('cp %s %s' % (LOGO_IMAGE_NAME, self.LaTexFolderPath))
@@ -85,7 +92,7 @@ if __name__ == '__main__':
     
     startTime = 1208649599000 - 3600*1000*24
     endTime  = 1208649599000
-    reportGenerator = pReportGenerator(startTime, endTime, opts.c)
-    reportGenerator.writeReport(opts.o)
+    reportGenerator = pReportGenerator(startTime, endTime, opts.c, opts.o)
+    reportGenerator.writeReport()
     reportGenerator.compile()
 
