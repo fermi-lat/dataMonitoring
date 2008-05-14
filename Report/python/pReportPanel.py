@@ -48,10 +48,13 @@ class pReportPanel(pDownloadManager):
             imageName = '%s%s' % (plotName, self.Name)
             imagePath = '%s/%s.%s' %\
                         (self.ReportFolder, imageName, self.ImageFormat)
-            command = 'mv "%s" %s' % (string, imagePath)
-            logging.debug('Executing %s...' % command)
-            os.system(command)
-            self.PlotsList.append(pReportPlot(plotName, imageName))
+            if not os.path.exists(imagePath):
+                logging.error('Could not find %s.' % imagePath)
+            else:
+                command = 'mv "%s" %s' % (string, imagePath)
+                logging.debug('Executing %s...' % command)
+                os.system(command)
+                self.PlotsList.append(pReportPlot(plotName, imageName))
 
     ## @brief Read the html panel page and return the relevant content
     #  as a single string.
