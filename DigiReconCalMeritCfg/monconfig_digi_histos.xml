@@ -231,7 +231,7 @@
     <object>
       <name> CondSummaryWord__WithSolicited_Extended_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&1 ]]></cut>
+      <cut><![CDATA[ condsummary&64 ]]></cut>
       <type> histogram-1d[129,-0.5,128.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a Solicited trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
