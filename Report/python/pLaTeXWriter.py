@@ -50,7 +50,7 @@ class pLaTeXWriter:
         self.LaTeXFile.writelines('\n')
 
     def writeHeader(self):
-        self.write('\\input{../preamble}')
+        self.write('\\input{./preamble}')
         self.newline()
         self.write('\\begin{document}')
         self.newline()
@@ -83,7 +83,7 @@ class pLaTeXWriter:
 
     def addPageHeader(self, timeSpan, logoName = 'glastLogo',\
                       logoWidth = '2cm'):
-        self.write('\\vspace*{-20pt}')
+        self.write('\\vspace*{-30pt}')
         self.write('\\begin{figure}[htp!]')
         self.write('\\includegraphics[width=%s]{glastLogo}' % logoWidth,\
                    percent = True)
@@ -107,21 +107,20 @@ class pLaTeXWriter:
         plotLineWidth = '%.2f\\linewidth' % plotWidth
         self.write('\\vspace*{-20pt}')
         self.write('\\begin{figure}[htp!]')
-        self.write('\\gpanellabel{%.2f\\linewidth}{%s}' %\
-                   ((1 - boxWidth), panel.Title))
+        self.write('\\gpanellabel{0.03\\linewidth}{%s}' % panel.Title)
         self.write('\\gpanelplot{%.2f\\linewidth}{%s}{\\\\' %\
                    (boxWidth, topMargin))
         for plot in panel.PlotsList:
-            plotLineHeight = '%.2f\\linewidth' %\
-                             (plotWidth*(plot.Height/plot.Width))
-            self.write('\\vspace*{-18pt}\\\\')
-            self.write('\\gplotlabel{%s}{%s}{%s}' %\
-                       (labelLineWidth, plotLineHeight,\
+            plotLineHeight = '%.3f\\linewidth' %\
+                             (plotWidth*(plot.Height/plot.Width)/2)
+            self.write('\\vspace*{-17pt}\\\\')
+            self.write('\\gplotlabel{%s}{%s}' %\
+                       (plotLineHeight,\
                         plot.getLeftLaTeXCaption()),  percent = True)
             self.write('\\includegraphics[width=%s]{%s}' %\
                        (plotLineWidth, plot.ImageName), percent = True)
-            self.write('\\gplotlabel{%s}{%s}{%s}\\\\' %\
-                       (labelLineWidth, plotLineHeight,\
+            self.write('\\gplotlabel{%s}{%s}\\\\' %\
+                       (plotLineHeight,\
                         plot.getRightLaTeXCaption()))
         self.write('\\vspace*{-12pt}')
         self.write('}')

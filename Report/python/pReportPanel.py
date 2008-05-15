@@ -18,6 +18,7 @@ class pReportPanel(pDownloadManager):
                  reportFolder = 'tex'):
         pDownloadManager.__init__(self)
         self.Name = name
+        self.Title = name
         self.ImageFormat = imageFormat
         self.ReportFolder = reportFolder
         if not os.path.exists(self.ReportFolder):

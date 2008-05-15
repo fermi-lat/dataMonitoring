@@ -14,9 +14,9 @@
 
 % Vertical label to be put on the left/right of the plots.
 % Usage:
-% \gplotlabel{width}{height}{text}
-\newcommand{\gplotlabel}[3]{%
-\makebox[#1]{\begin{sideways}\makebox[#2]{\tiny #3}\end{sideways}}%
+% \gplotlabel{half-height}{text}
+\newcommand{\gplotlabel}[2]{%
+\raisebox{#1}{\parbox[c]{40pt}{\tiny #2}}
 }
 
 % Vertical label to be put on the left of each panel.
@@ -30,5 +30,5 @@
 % Usage:
 % \gpanelplot{width}{topmargin}{content}
 \newcommand{\gpanelplot}[3]{%
-\framebox{\begin{minipage}[c]{#1}\rule{0 pt}{#2} #3\end{minipage}}%
+$\left\{ \begin{minipage}[c]{#1}\rule{0 pt}{#2} #3\end{minipage}\right.$%
 }
