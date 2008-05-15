@@ -20,10 +20,13 @@ class pDownloadManager:
         logging.info('Executing "%s"' % command)
         logging.debug(commands.getoutput(command))
 
-    def downloadPanel(self, name, startTime, endTime, imageFormat = 'png'):
+    def downloadPanel(self, name, startTime, endTime, imageFormat = 'png',
+                      invalidate = True):
         url = '%sreport.jsp?reportId=%s' % (BASE_REPORT_URL, name)
         options = '&timeInterval=%d-%d&maxBins=-1&imageFormat=%s' %\
                   (startTime, endTime, imageFormat)
+        if invalidate:
+            options += '&invalidateWhenDone=true'
         self.downloadUrl(url, options)
 
     def downloadBaseReportUrl(self):
