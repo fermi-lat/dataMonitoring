@@ -68,12 +68,10 @@ class pLaTeXWriter:
         self.close()
 
     def startCentering(self):
-        self.newline()
         self.write('\\begin{center}\n')
         self.newline()
 
     def stopCentering(self):
-        self.newline()
         self.write('\\end{center}\n')
         self.newline()
 
@@ -85,6 +83,7 @@ class pLaTeXWriter:
 
     def addPageHeader(self, timeSpan, logoName = 'glastLogo',\
                       logoWidth = '2cm'):
+        self.write('\\vspace*{-20pt}')
         self.write('\\begin{figure}[htp!]')
         self.write('\\includegraphics[width=%s]{glastLogo}' % logoWidth,\
                    percent = True)
@@ -102,11 +101,11 @@ class pLaTeXWriter:
         self.write('\\clearpage')
         self.newline()
         
-    def addPanel(self, panel, boxWidth = 0.95, plotWidth = 0.92,\
-                 topMargin = '0.5 cm'):
+    def addPanel(self, panel, boxWidth = 0.90, plotWidth = 0.88,\
+                 topMargin = '0.0 cm'):
         labelLineWidth = '%.2f\\linewidth' % ((1 - plotWidth)/2.0)
         plotLineWidth = '%.2f\\linewidth' % plotWidth
-        self.newline()
+        self.write('\\vspace*{-20pt}')
         self.write('\\begin{figure}[htp!]')
         self.write('\\gpanellabel{%.2f\\linewidth}{%s}' %\
                    ((1 - boxWidth), panel.Title))
@@ -115,6 +114,7 @@ class pLaTeXWriter:
         for plot in panel.PlotsList:
             plotLineHeight = '%.2f\\linewidth' %\
                              (plotWidth*(plot.Height/plot.Width))
+            self.write('\\vspace*{-18pt}\\\\')
             self.write('\\gplotlabel{%s}{%s}{%s}' %\
                        (labelLineWidth, plotLineHeight,\
                         plot.getLeftLaTeXCaption()),  percent = True)
@@ -123,6 +123,7 @@ class pLaTeXWriter:
             self.write('\\gplotlabel{%s}{%s}{%s}\\\\' %\
                        (labelLineWidth, plotLineHeight,\
                         plot.getRightLaTeXCaption()))
+        self.write('\\vspace*{-12pt}')
         self.write('}')
         self.write('\\end{figure}')
         self.newline()
