@@ -8,15 +8,19 @@
 \usepackage{color}
 
 % Document geometry.
-\textwidth = 19.0 truecm
-\textheight = 23.0 truecm
-\oddsidemargin -1.0 truecm
+\textwidth = 19.3 truecm
+\textheight = 25.6 truecm
+\oddsidemargin -1.45 truecm
+\topmargin -2.75 truecm
 
 % Vertical label to be put on the left/right of the plots.
 % Usage:
 % \gplotlabel{half-height}{text}
-\newcommand{\gplotlabel}[2]{%
+\newcommand{\gplotleftlabel}[2]{%
 \raisebox{#1}{\parbox[c]{35pt}{\fontsize{4}{8} \selectfont #2}}
+}
+\newcommand{\gplotrightlabel}[2]{%
+\raisebox{#1}{\parbox[c]{15pt}{\fontsize{4}{8} \selectfont #2}}
 }
 
 % Vertical label to be put on the left of each panel.
