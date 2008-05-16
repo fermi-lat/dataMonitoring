@@ -1,3 +1,9 @@
+v1r1p13  2008/05/16  (DEV)
+--------------------------
+Additional monconfig file (monconfig_trackermon_trending.xml) 
+to handle high level tracker monitoring information 
+produced by Hiro Tajima etal. This addresses Jira GDQMQ-119.
+
 v1r1p12 2008/05/12  (DEV)
 ---------------------------
 Added new histograms. This addresses Jira GDQMQ-113 and GDQMQ-114.
