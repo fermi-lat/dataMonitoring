@@ -1,3 +1,9 @@
+*** v1r1p10 ***
+ - New quantity : evt_data_transfer_id that contains the data transfer id,
+   retrieved from the evt header, via LSEReader.runId()
+* Relevant jira(s): GDQMQ-115
+
+
 *** v1r1p9 ***
  - Bug fix : histograms added in the previous tag are also now in the
    MergeHisto text file.
