@@ -1,3 +1,11 @@
+
+v1r1p15  2008/05/16  (DEV)
+--------------------------
+Change variable type object for quantity DataTransferId. 
+Prefix will be Number_ instead of OutF_. 
+The variable type will be UInt_t instead of Float_t. 
+That addresses Jira GDQMQ-115.
+
 v1r1p14  2008/05/16  (DEV)
 --------------------------
 Add DataTransferId. That addresses Jira GDQMQ-115.
