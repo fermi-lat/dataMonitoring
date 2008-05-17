@@ -8,6 +8,8 @@
     
    <!-- Evt type -->
    <object>FastMon_condsummary</object> 
+   <object>FastMon_meta_LATC_master</object> 
+   <object>FastMon_evt_data_transfer_id</object> 
 
    <!-- Context information -->
    <object>FastMon_meta_context_open_mode</object> 
@@ -51,6 +53,20 @@
   <outputList name="top">
   
    <!-- Context information -->
+    <object>
+      <name> FastMon_Evt_DataTransferId </name>
+      <formula><![CDATA[ FastMon_evt_data_transfer_id ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type>outputnumber</type>
+      <description> Last data transfer id, within the time bin </description>
+    </object>
+    <object>
+      <name> FastMon_MetaContext_LATC_Master</name>
+      <formula><![CDATA[ FastMon_meta_LATC_master ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type>outputnumber</type>
+      <description> Last value of the LATC Master key, within the time bin </description>
+    </object>
     <object>
       <name> FastMon_MetaContext_OpenMode </name>
       <formula><![CDATA[ FastMon_meta_context_open_mode ]]></formula>
