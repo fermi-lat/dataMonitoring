@@ -89,8 +89,8 @@
       <name> LastDataTransferId </name>
       <formula><![CDATA[ DataTransferId ]]></formula>
       <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Last data transfer id (within the time bin). A float (Float_t) variable is being used to store the number data transfer id, which is a UInt_t. The reason for that is to have the prefix OutF_ which simplifies things in the ingestion in the database.  </description>
+      <type> outputnumber </type>
+      <description> Last data transfer id (within the time bin).   </description>
     </object>
 
      <object>
