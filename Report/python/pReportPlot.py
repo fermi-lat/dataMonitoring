@@ -35,6 +35,9 @@ class pReportPlot:
     ## @var Height
     ## @brief The plot image height (in pixels).
 
+    ## @var Url
+    ## @brief The url the plot is linked to.
+
     def __init__(self, plotName, imageName):
         self.PlotName = plotName
         self.ImageName = imageName
@@ -42,6 +45,7 @@ class pReportPlot:
         self.RightCaption = ''
         self.Width = 1000.0
         self.Height = 15.0
+        self.Url = 'http://glast-ground.slac.stanford.edu/Reports/'
 
     def getLaTeXCaption(self, caption):
         if not caption.count('</font>'):
@@ -69,7 +73,8 @@ class pReportPlot:
         summary += 'Right caption: "%s"\n' % self.RightCaption
         summary += 'Left caption : "%s"\n' % self.LeftCaption
         summary += 'Width        : %s\n'   % self.Width
-        summary += 'Height       : %s'     % self.Height
+        summary += 'Height       : %s\n'   % self.Height
+        summary += 'Url          : %s'     % self.Url
         return summary
 
     def __str__(self):

@@ -111,6 +111,11 @@ class pReportPanel(pDownloadManager):
                     height = re.search('(?<=height=").*?(?=")', dims).group()
                     plot.Width = float(width)
                     plot.Height = float(height)
+                    href = re.search('href.*?</td>', htmlTableRow, re.DOTALL)
+                    if href:
+                        http = href.group() 
+                        plot.Url = http.split('"')[1].strip()
+
             logging.debug(plot)
 
     def processInfo(self):
