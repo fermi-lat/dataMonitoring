@@ -1,3 +1,8 @@
+*** v1r1p11 ***
+ - Fix variable type for meta_LATC_master and evt_data_transfer_id to uint32 in baseConfig
+* Relevant jira(s): GDQMQ-115
+
+
 *** v1r1p10 ***
  - New quantity : evt_data_transfer_id that contains the data transfer id,
    retrieved from the evt header, via LSEReader.runId()
