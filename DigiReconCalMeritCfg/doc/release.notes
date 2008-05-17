@@ -1,3 +1,7 @@
+v1r1p16  2008/05/17  (DEV)
+--------------------------
+Added new FastMon trending quantity FastMon_Evt_DataTransferId and FastMon_MetaContext_LATC_Master that have type outputnumber, the last value in the time bin is considered.
+That addresses Jiras GDQMQ-115 and 107.
 
 v1r1p15  2008/05/16  (DEV)
 --------------------------
