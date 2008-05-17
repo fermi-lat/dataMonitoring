@@ -86,11 +86,11 @@
             <shape>(1)</shape>
 	</variable>
 	<variable name="meta_LATC_master" enabled="True">
-	    <type>double</type>
+	    <type>uint32</type>
             <shape>(1)</shape>
 	</variable>
  	<variable name="evt_data_transfer_id" enabled="True">
-	    <type>uint64</type>
+	    <type>uint32</type>
             <shape>(1)</shape>
 	</variable>
 
