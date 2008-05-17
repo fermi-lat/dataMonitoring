@@ -9,6 +9,7 @@
     <!-- Time stamp -->
     <object> timestampdouble </object>
     <object> timestamp </object> <!-- some functions need time stamp as int -->
+    <object> DataTransferId </object>
     
     <!-- Event classification information -->
     <object> condsummary </object>
@@ -82,6 +83,16 @@
 
     <!-- ********************  Event classification information   *********************** -->
           
+    
+
+    <object>
+      <name> LastDataTransferId </name>
+      <formula><![CDATA[ DataTransferId ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> outputfloat </type>
+      <description> Last data transfer id (within the time bin). A float (Float_t) variable is being used to store the number data transfer id, which is a UInt_t. The reason for that is to have the prefix OutF_ which simplifies things in the ingestion in the database.  </description>
+    </object>
+
      <object>
       <name> Trigger_CALLO </name>
       <formula><![CDATA[ 1 ]]></formula>
