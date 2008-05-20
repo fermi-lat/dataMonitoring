@@ -1,3 +1,9 @@
+*** v1r1p1 ***
+ - Added quantity new_second that is True for the first event for which the
+   second has changed, to be used in fastmon trending. 
+* Relevant jira(s): GDQMQ-103
+
+
 *** v1r1p0 ***
  - Updated cut on plots for clock ticks deviation to 20MHz
 * Relevant jira(s): GDQMQ-104 and 105
