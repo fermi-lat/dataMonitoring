@@ -568,6 +568,16 @@ Remove comments and XXXX (this is needed for producing merging files) in names t
       <description> Distribution of measured energy (MeV) per event (sum of crystal energies in the CAL cluster) . Energies up to 500000 MeV are displayed.</description>
     </object>
 
+     <object>
+      <name> Log10ReconEnergy_HighEnergy_TH1 </name>
+      <formula><![CDATA[ RFun::loopovertowerANDcallayersANDcalcolumns_float(ReconEnergy_TowerCalLayerCalColumn) > 0.0 ? TMath::Log10(RFun::loopovertowerANDcallayersANDcalcolumns_float(ReconEnergy_TowerCalLayerCalColumn)) : -1.0  ]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[700,-1.,6.,-1] </type>
+      <titledesc> Distribution of the log10 of the measured energy (MeV) per event (sum of crystal energies in the CAL cluster) . Energies up to 1.e6 MeV are displayed.  </titledesc>
+      <axisdesc> [Log10(Measured calorimeter energy [MeV]), N] </axisdesc>
+      <description> Distribution of log10 measured energy [MeV] per event (sum of crystal energies in the CAL cluster) . Energies up to 1.e6 MeV are displayed.</description>
+    </object>
+
 
      <object>
       <name> SuspCalHi_Highest0_TH2 </name>
