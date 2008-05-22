@@ -1,3 +1,10 @@
+v1r1p17  2008/05/22   (DEV)
+---------------------------
+Added Log10 of measured energy (recon job; monconfig_recon_histos.xml). 
+This will show all features in the energy spectra. 
+This addresses Jira GDQMQ-128.
+
+
 v1r1p16  2008/05/17  (DEV)
 --------------------------
 Added new FastMon trending quantity FastMon_Evt_DataTransferId and FastMon_MetaContext_LATC_Master that have type outputnumber, the last value in the time bin is considered.
