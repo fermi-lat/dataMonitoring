@@ -43,6 +43,11 @@
     <object> Delta_CCSDSTime_EvtTime </object>
     <object> NewSecond </object>
     <object>sourceGps </object>
+    <object>FswFilters</object>
+    <object>GemPrescale</object>
+    <object>DGNGemPrescale</object>
+    <object>FswFilters_GammaBits</object>
+
 
     <!-- Acd Variables -->
     
@@ -213,9 +218,9 @@
        <object>
       <name> TkrTrigger_Tower[16] </name>
       <formula><![CDATA[ foreachtower: TkrTriggerTower[tower] ]]></formula>
-      <cut><![CDATA[ ]]></cut>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
       <type> rate </type>
-      <description> Rate of tracker triggers in [tower], calculated during the specified time bin. </description>
+      <description> Rate of tracker triggers in [tower], calculated during the specified time bin. Periodic triggers are not taken into account.</description>
     </object>
 
        <object>
@@ -465,9 +470,17 @@
     </object>
 
        <object>
+      <name> UnPrescaled_TriggerEngine[16] </name>
+      <formula><![CDATA[ foreachengine: TriggerEngine[engine]*DGNGemPrescale ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> UnPrescaled Rate of Trigger Engines; that is the rate of trigger engine (DigiEvent->getL1T().getGemEngine()) corrected for the prescaled (DGNxGEM) factor </description>
+    </object>
+      
+       <object>
       <name> CalHiTrigger_Tower[16] </name>
       <formula><![CDATA[ CalHiTriggerTower ]]></formula>
-      <cut><![CDATA[ condsummary&30]]></cut>
+      <cut><![CDATA[!(condsummary&32)]]></cut>
       <type> rate </type>
       <description> Rate of CAL HI Triggers per tower. Periodic triggers are not taken into account. </description>
     </object>
@@ -475,7 +488,7 @@
          <object>
       <name> CalLoTrigger_Tower[16] </name>
       <formula><![CDATA[ CalLoTriggerTower ]]></formula>
-      <cut><![CDATA[ condsummary&30]]></cut>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
       <type> rate </type>
       <description> Rate of CAL Lo Triggers per tower. Periodic triggers are not taken into account. </description>
     </object>
@@ -515,8 +528,745 @@
       <description> Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock.  </description>
     </object>
 
-  
 
+
+	      <!-- Trigger Rates per tower geometry -->
+
+    <object>
+      <name> CornerTower_TkrTrigger </name>
+      <formula><![CDATA[ TkrTriggerTower[0] || TkrTriggerTower[3] || TkrTriggerTower[12] || TkrTriggerTower[15]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR Triggers occurring in the CORNER towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> CenterTower_TkrTrigger </name>
+      <formula><![CDATA[ TkrTriggerTower[5] || TkrTriggerTower[6] || TkrTriggerTower[9] || TkrTriggerTower[10]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR Triggers occurring in the CENTER towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> PlusXTower_TkrTrigger </name>
+      <formula><![CDATA[ TkrTriggerTower[3] || TkrTriggerTower[7] || TkrTriggerTower[11] || TkrTriggerTower[15]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR Triggers occurring in the PlusX towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> MinusXTower_TkrTrigger </name>
+      <formula><![CDATA[ TkrTriggerTower[0] || TkrTriggerTower[4] || TkrTriggerTower[8] || TkrTriggerTower[12]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR Triggers occurring in the MinusX towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> PlusYTower_TkrTrigger </name>
+      <formula><![CDATA[ TkrTriggerTower[12] || TkrTriggerTower[13] || TkrTriggerTower[14] || TkrTriggerTower[15]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR Triggers occurring in the PlusY towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> MinusYTower_TkrTrigger </name>
+      <formula><![CDATA[ TkrTriggerTower[0] || TkrTriggerTower[1] || TkrTriggerTower[2] || TkrTriggerTower[3]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR Triggers occurring in the MinusY towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> CornerTower_CalLoTrigger </name>
+      <formula><![CDATA[ CalLoTriggerTower[0] || CalLoTriggerTower[3] || CalLoTriggerTower[12] || CalLoTriggerTower[15]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Lo Triggers occurring in the CORNER towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> CenterTower_CalLoTrigger </name>
+      <formula><![CDATA[ CalLoTriggerTower[5] || CalLoTriggerTower[6] || CalLoTriggerTower[9] || CalLoTriggerTower[10]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Lo Triggers occurring in the CENTER towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> PlusXTower_CalLoTrigger </name>
+      <formula><![CDATA[ CalLoTriggerTower[3] || CalLoTriggerTower[7] || CalLoTriggerTower[11] || CalLoTriggerTower[15]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Lo Triggers occurring in the PlusX towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> MinusXTower_CalLoTrigger </name>
+      <formula><![CDATA[ CalLoTriggerTower[0] || CalLoTriggerTower[4] || CalLoTriggerTower[8] || CalLoTriggerTower[12]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Lo Triggers occurring in the MinusX towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> PlusYTower_CalLoTrigger </name>
+      <formula><![CDATA[ CalLoTriggerTower[12] || CalLoTriggerTower[13] || CalLoTriggerTower[14] || CalLoTriggerTower[15]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Lo Triggers occurring in the PlusY towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> MinusYTower_CalLoTrigger </name>
+      <formula><![CDATA[ CalLoTriggerTower[0] || CalLoTriggerTower[1] || CalLoTriggerTower[2] || CalLoTriggerTower[3]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Lo Triggers occurring in the MinusY towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+
+    <object>
+      <name> CornerTower_CalHiTrigger </name>
+      <formula><![CDATA[ CalHiTriggerTower[0] || CalHiTriggerTower[3] || CalHiTriggerTower[12] || CalHiTriggerTower[15]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Hi Triggers occurring in the CORNER towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> CenterTower_CalHiTrigger </name>
+      <formula><![CDATA[ CalHiTriggerTower[5] || CalHiTriggerTower[6] || CalHiTriggerTower[9] || CalHiTriggerTower[10]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Hi Triggers occurring in the CENTER towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> PlusXTower_CalHiTrigger </name>
+      <formula><![CDATA[ CalHiTriggerTower[3] || CalHiTriggerTower[7] || CalHiTriggerTower[11] || CalHiTriggerTower[15]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Hi Triggers occurring in the PlusX towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> MinusXTower_CalHiTrigger </name>
+      <formula><![CDATA[ CalHiTriggerTower[0] || CalHiTriggerTower[4] || CalHiTriggerTower[8] || CalHiTriggerTower[12]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Hi Triggers occurring in the MinusX towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> PlusYTower_CalHiTrigger </name>
+      <formula><![CDATA[ CalHiTriggerTower[12] || CalHiTriggerTower[13] || CalHiTriggerTower[14] || CalHiTriggerTower[15]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Hi Triggers occurring in the PlusY towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> MinusYTower_CalHiTrigger </name>
+      <formula><![CDATA[ CalHiTriggerTower[0] || CalHiTriggerTower[1] || CalHiTriggerTower[2] || CalHiTriggerTower[3]]]></formula>
+      <cut><![CDATA[ !(condsummary&32)]]></cut>
+      <type> rate </type>
+      <description> Rate of CAL Hi Triggers occurring in the MinusY towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+   
+    <!-- Rate of triggers using the Real Flight Sowftware Onboard trigger bits -->
+
+     <object>
+      <name> FswFilters_GAMMA </name>
+      <formula><![CDATA[ FswFilters[0] ]]></formula>
+      <cut><![CDATA[ FswFilters[0]>0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts passing the REAL flight software onboard GAMMA filter, calculated during the specified time bin. </description>
+    </object>
+
+
+     <object>
+      <name> FswFilters_MIP </name>
+      <formula><![CDATA[ FswFilters[1] ]]></formula>
+      <cut><![CDATA[ FswFilters[1]>0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts passing the REAL flight software onboard MIP filter, calculated during the specified time bin. </description>
+    </object>
+
+     <object>
+      <name> FswFilters_HIP </name>
+      <formula><![CDATA[ FswFilters[2] ]]></formula>
+      <cut><![CDATA[ FswFilters[2]>0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts passing the REAL flight software onboard HIP filter, calculated during the specified time bin. </description>
+    </object>
+
+
+     <object>
+      <name> FswFilters_DGN </name>
+      <formula><![CDATA[ FswFilters[3] ]]></formula>
+      <cut><![CDATA[ FswFilters[3]>0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts passing the REAL flight software onboard DGN filter, calculated during the specified time bin. </description>
+    </object>
+
+      <object>
+      <name> FswFilters_PassThru </name>
+      <formula><![CDATA[ FswFilters[4] ]]></formula>
+      <cut><![CDATA[ FswFilters[4]>0]]></cut>
+      <type> rate </type>
+      <description> Rate of evts passing the REAL flight software onboard PassThru filter, calculated during the specified time bin.  </description>
+    </object>
+
+
+
+     <object>
+      <name> FswFilters_GAMMA_And_HIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (FswFilters[0]>0) && (FswFilters[2]>0) ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts passing the REAL flight software onboard GAMMA AND HIP filters, calculated during the specified time bin. </description>
+    </object>
+
+
+      <!-- The cut FswFilters_GammaBits[0]>0 is to ensure that the filter bits were computed
+	  If computation could not be done, then all components are set 
+	  to -1 in FswFilters_GammaBits vector -->
+     <object>
+      <name> FswFilters_GammaFilterBit[32] </name>
+      <formula><![CDATA[ FswFilters_GammaBits ]]></formula>
+      <cut><![CDATA[ FswFilters_GammaBits[0]>0]]></cut>
+      <type> rate </type>
+      <description> Vector [32] storing the rate of evts passing the 32 Gamma filters. </description>
+    </object>
+
+
+     <!-- DGN, Gamma, Hip, Mip  filter simultaneous to others -->
+
+      <object>
+      <name> FswDGN_AND_Trigger_CALLO </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[3]>0 && condsummary&4  ]]></cut>
+      <type> rate </type>
+      <description> CAL-LO trigger rate passing the DGN Flight Software onboard filter</description>
+    </object>
+
+
+     <object>
+      <name> FswDGN_AND_Trigger_CALHI </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[3]>0 && condsummary&8  ]]></cut>
+      <type> rate </type>
+      <description> CAL-HI trigger rate passing the DGN Flight Software onboard filter</description>
+    </object>
+
+      <object>
+      <name> FswDGN_AND_Trigger_CNO </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[3]>0 && condsummary&16  ]]></cut>
+      <type> rate </type>
+      <description> CNO trigger rate passing the DGN Flight Software onboard filter</description>
+    </object>
+
+       <object>
+      <name> FswDGN_AND_Trigger_TKR </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[3]>0 && condsummary&2]]></cut>
+      <type> rate </type>
+      <description> TKR trigger rate passing the DGN Flight Software onboard filter</description>
+    </object>
+
+       <object>
+      <name> FswDGN_AND_Trigger_ROI </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[3]>0 && condsummary&1]]></cut>
+      <type> rate </type>
+      <description> ROI trigger rate passing the DGN Flight Software onboard filter</description>
+    </object>
+
+        <object>
+      <name> FswDGN_AND_TriggerEngine[16] </name>
+      <formula><![CDATA[TriggerEngine ]]></formula>
+      <cut><![CDATA[FswFilters[3]>0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of Trigger Engines (DigiEvent->getL1T().getGemEngine()) passing the DGN Flight Software onboard filter</description>
+    </object>
+
+
+	
+
+		 <object>
+      <name> FswGAMMA_AND_Trigger_CALLO </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[0]>0 && condsummary&4  ]]></cut>
+      <type> rate </type>
+      <description> CAL-LO trigger rate passing the GAMMA Flight Software onboard filter</description>
+    </object>
+
+
+     <object>
+      <name> FswGAMMA_AND_Trigger_CALHI </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[0]>0 && condsummary&8  ]]></cut>
+      <type> rate </type>
+      <description> CAL-HI trigger rate passing the GAMMA Flight Software onboard filter</description>
+    </object>
+
+      <object>
+      <name> FswGAMMA_AND_Trigger_CNO </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[0]>0 && condsummary&16  ]]></cut>
+      <type> rate </type>
+      <description> CNO trigger rate passing the GAMMA Flight Software onboard filter</description>
+    </object>
+
+       <object>
+      <name> FswGAMMA_AND_Trigger_TKR </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[0]>0 && condsummary&2]]></cut>
+      <type> rate </type>
+      <description> TKR trigger rate passing the GAMMA Flight Software onboard filter</description>
+    </object>
+
+       <object>
+      <name> FswGAMMA_AND_Trigger_ROI </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[0]>0 && condsummary&1]]></cut>
+      <type> rate </type>
+      <description> ROI trigger rate passing the GAMMA Flight Software onboard filter</description>
+    </object>
+
+
+       	 <object>
+      <name> FswHIP_AND_Trigger_CALLO </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[2]>0 && condsummary&4  ]]></cut>
+      <type> rate </type>
+      <description> CAL-LO trigger rate passing the HIP Flight Software onboard filter</description>
+    </object>
+
+
+     <object>
+      <name> FswHIP_AND_Trigger_CALHI </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[2]>0 && condsummary&8  ]]></cut>
+      <type> rate </type>
+      <description> CAL-HI trigger rate passing the HIP Flight Software onboard filter</description>
+    </object>
+
+      <object>
+      <name> FswHIP_AND_Trigger_CNO </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[2]>0 && condsummary&16  ]]></cut>
+      <type> rate </type>
+      <description> CNO trigger rate passing the HIP Flight Software onboard filter</description>
+    </object>
+
+       <object>
+      <name> FswHIP_AND_Trigger_TKR </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[2]>0 && condsummary&2]]></cut>
+      <type> rate </type>
+      <description> TKR trigger rate passing the HIP Flight Software onboard filter</description>
+    </object>
+
+       <object>
+      <name> FswHIP_AND_Trigger_ROI </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[2]>0 && condsummary&1]]></cut>
+      <type> rate </type>
+      <description> ROI trigger rate passing the HIP Flight Software onboard filter</description>
+    </object>
+
+
+
+	 <object>
+      <name> FswMIP_AND_Trigger_CALLO </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[1]>0 && condsummary&4  ]]></cut>
+      <type> rate </type>
+      <description> CAL-LO trigger rate passing the MIP Flight Software onboard filter</description>
+    </object>
+
+
+     <object>
+      <name> FswMIP_AND_Trigger_CALHI </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[1]>0 && condsummary&8  ]]></cut>
+      <type> rate </type>
+      <description> CAL-HI trigger rate passing the MIP Flight Software onboard filter</description>
+    </object>
+
+      <object>
+      <name> FswMIP_AND_Trigger_CNO </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[1]>0 && condsummary&16  ]]></cut>
+      <type> rate </type>
+      <description> CNO trigger rate passing the MIP Flight Software onboard filter</description>
+    </object>
+
+       <object>
+      <name> FswMIP_AND_Trigger_TKR </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[1]>0 && condsummary&2]]></cut>
+      <type> rate </type>
+      <description> TKR trigger rate passing the MIP Flight Software onboard filter</description>
+    </object>
+
+       <object>
+      <name> FswMIP_AND_Trigger_ROI </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[1]>0 && condsummary&1]]></cut>
+      <type> rate </type>
+      <description> ROI trigger rate passing the MIP Flight Software onboard filter</description>
+    </object>
+
+     
+        <object>
+      <name> Trigger_TKR_And_ROI_And_FswFilters_GAMMA </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&1) && (condsummary&2) && (FswFilters[0]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR trigger and ROI (mostly charge particles) AND Flight Sowftware GAMMA Filter. We expect to have very low rates of events fulfilling those somewhat contradictory requirements.</description>
+    </object>
+
+     <object>
+      <name> Trigger_TKR_And_NotROI_And_FswFilters_GAMMA </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[!(condsummary&1) && (condsummary&2) && (FswFilters[0]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR trigger and not ROI (mostly non charge particles) AND Flight Sowftware GAMMA Filter. We expect to have essentially the same rate as without the GAMMA Filter. </description>
+    </object>
+
+
+         <object>
+      <name> Trigger_TKR_And_ROI_And_FswFilters_MIP_OR_HIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&1) && (condsummary&2) && (FswFilters[1]>0 || FswFilters[2]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR trigger and ROI (mostly charge particles) AND Flight Sowftware MIP or HIP Filter. </description>
+    </object>
+
+     <object>
+      <name> Trigger_TKR_And_NotROI_And_FswFilters_MIP_OR_HIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[!(condsummary&1) && (condsummary&2) && (FswFilters[1]>0 || FswFilters[2]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR trigger and not ROI (mostly non charge particles) AND Flight Sowftware MIP or HIP Filter. </description>
+    </object>
+	
+
+         <object>
+      <name> Trigger_TKR_And_ROI_And_FswFilters_DGN </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[(condsummary&1) && (condsummary&2) && (FswFilters[3]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR trigger and ROI (mostly charge particles) AND Flight Sowftware DGN Filter. </description>
+    </object>
+
+     <object>
+      <name> Trigger_TKR_And_NotROI_And_FswFilters_DGN </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[!(condsummary&1) && (condsummary&2) && (FswFilters[3]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR trigger and not ROI (mostly non charge particles) AND Flight Sowftware DGN Filter. </description>
+    </object>
+
+         <object>
+      <name> UnPrescaled_Trigger_TKR_And_ROI_And_FswFilters_DGN </name>
+      <formula><![CDATA[ DGNGemPrescale ]]></formula>
+      <cut><![CDATA[(condsummary&1) && (condsummary&2) && (FswFilters[3]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR trigger and ROI (mostly charge particles) AND Flight Sowftware DGN Filter, unprescaled with the DGN (engine dependent) prescale factor. </description>
+    </object>
+
+     <object>
+      <name> UnPrescaled_Trigger_TKR_And_NotROI_And_FswFilters_DGN </name>
+      <formula><![CDATA[ DGNGemPrescale ]]></formula>
+      <cut><![CDATA[!(condsummary&1) && (condsummary&2) && (FswFilters[3]>0)]]></cut>
+      <type> rate </type>
+      <description> Rate of TKR trigger and not ROI (mostly non charge particles) AND Flight Sowftware DGN Filter,unprescaled with the DGN (engine dependent) prescale factor. </description>
+    </object>
+
+
+     <!-- Fractions of events with/without Fsw and Gleam filters -->
+
+     Counter_Evts_NOTFswGAMMA_And_GleamGAMMA
+
+     <object>
+      <name> AllEvts </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> counter </type>
+      <description> All evts counter (in the specified time bin). No cut is being applied. It will be used to normalized quantities. </description>
+    </object>
+     
+     <object>
+      <name> Evts_FswGAMMA_And_GleamGAMMA </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[0]>0 &&  OBFStatus[0]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts passing both the Flight Software GAMMA filter and the Gleam GAMMA filter. This quantity will be fully meaningful when normalized to the total number of events (i.e. converted into fraction). That meaningful quantity is called Normalized_Evts_FswGAMMA_And_GleamGAMMA. </description>
+    </object>
+
+     <object>
+      <name> Normalized_Evts_FswGAMMA_And_GleamGAMMA </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_FswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events passing both the Flight Software GAMMA filter and the Gleam GAMMA filter. </description>
+    </object>
+
+     <object>
+      <name> Normalized_Evts_FswGAMMA_And_GleamGAMMA_err </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_FswGAMMA_And_GleamGAMMA>0) ?  double(Counter_Evts_FswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_FswGAMMA_And_GleamGAMMA)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Fraction of events passing both the Flight Software GAMMA filter and the Gleam GAMMA filter. </description>
+    </object>
+
+
+     <object>
+      <name> Evts_FswGAMMA_And_NOTGleamGAMMA </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[0]>0 &&  OBFStatus[0]==0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts passing the Flight Software GAMMA filter and NOT the Gleam GAMMA filter. This quantity will be fully meaningful when normalized to the total number of events (i.e. converted into fraction). That meaningful quantity is called Normalized_Evts_FswGAMMA_And_NOTGleamGAMMA. </description>
+    </object>
+     
+
+     <object>
+      <name> Normalized_Evts_FswGAMMA_And_NOTGleamGAMMA </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events passing the Flight Software GAMMA filter and NOT the Gleam GAMMA filter. </description>
+    </object>
+
+     
+     <object>
+      <name> Normalized_Evts_FswGAMMA_And_NOTGleamGAMMA_err </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_FswGAMMA_And_NOTGleamGAMMA>0) ?  double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Fraction of events passing both the Flight Software GAMMA filter and NOT the Gleam GAMMA filter. </description>
+    </object>
+
+
+     <object>
+      <name> Evts_NOTFswGAMMA_And_GleamGAMMA </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[0]==0 &&  OBFStatus[0]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts NOT passing the Flight Software GAMMA filter and passing the Gleam GAMMA filter. This quantity will be fully meaningful when normalized to the total number of events (i.e. converted into fraction). That meaningful quantity is called Normalized_Evts_NOTFswGAMMA_And_GleamGAMMA. </description>
+    </object>
+
+      <object>
+      <name> Normalized_Evts_NOTFswGAMMA_And_GleamGAMMA </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events NOT passing the Flight Software GAMMA filter and passing the Gleam GAMMA filter. </description>
+    </object>
+
+     <object>
+      <name> Normalized_Evts_NOTFswGAMMA_And_GleamGAMMA_err </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_NOTFswGAMMA_And_GleamGAMMA>0) ?  double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Fraction of events NOT passing the Flight Software GAMMA filter and passing the Gleam GAMMA filter. </description>
+    </object>
+
+
+     <!-- here -->
+
+     <object>
+      <name> Evts_FswMIP_And_GleamMIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[1]>0 &&  OBFStatus[1]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts passing both the Flight Software MIP filter and the Gleam MIP filter. This quantity will be fully meaningful when normalized to the total number of events (i.e. converted into fraction). That meaningful quantity is called Normalized_Evts_FswMIP_And_GleamMIP. </description>
+    </object>
+
+     <object>
+      <name> Normalized_Evts_FswMIP_And_GleamMIP </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_FswMIP_And_GleamMIP)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events passing both the Flight Software MIP filter and the Gleam MIP filter. </description>
+    </object>
+
+     <object>
+      <name> Normalized_Evts_FswMIP_And_GleamMIP_err </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_FswMIP_And_GleamMIP>0) ?  double(Counter_Evts_FswMIP_And_GleamMIP)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_FswMIP_And_GleamMIP)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Fraction of events passing both the Flight Software MIP filter and the Gleam MIP filter. </description>
+    </object>
+
+
+     <object>
+      <name> Evts_FswMIP_And_NOTGleamMIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[1]>0 &&  OBFStatus[1]==0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts passing the Flight Software MIP filter and NOT the Gleam MIP filter. This quantity will be fully meaningful when normalized to the total number of events (i.e. converted into fraction). That meaningful quantity is called Normalized_Evts_FswMIP_And_NOTGleamMIP. </description>
+    </object>
+     
+
+     <object>
+      <name> Normalized_Evts_FswMIP_And_NOTGleamMIP </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_FswMIP_And_NOTGleamMIP)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events passing the Flight Software MIP filter and NOT the Gleam MIP filter. </description>
+    </object>
+
+     
+     <object>
+      <name> Normalized_Evts_FswMIP_And_NOTGleamMIP_err </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_FswMIP_And_NOTGleamMIP>0) ?  double(Counter_Evts_FswMIP_And_NOTGleamMIP)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_FswMIP_And_NOTGleamMIP)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Fraction of events passing both the Flight Software MIP filter and NOT the Gleam MIP filter. </description>
+    </object>
+
+
+     <object>
+      <name> Evts_NOTFswMIP_And_GleamMIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[1]==0 &&  OBFStatus[1]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts NOT passing the Flight Software MIP filter and passing the Gleam MIP filter. This quantity will be fully meaningful when normalized to the total number of events (i.e. converted into fraction). That meaningful quantity is called Normalized_Evts_NOTFswMIP_And_GleamMIP. </description>
+    </object>
+
+      <object>
+      <name> Normalized_Evts_NOTFswMIP_And_GleamMIP </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_NOTFswMIP_And_GleamMIP)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events NOT passing the Flight Software MIP filter and passing the Gleam MIP filter. </description>
+    </object>
+
+     <object>
+      <name> Normalized_Evts_NOTFswMIP_And_GleamMIP_err </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_NOTFswMIP_And_GleamMIP>0) ?  double(Counter_Evts_NOTFswMIP_And_GleamMIP)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_NOTFswMIP_And_GleamMIP)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Fraction of events NOT passing the Flight Software MIP filter and passing the Gleam MIP filter. </description>
+    </object>
+
+
+
+    
+
+
+
+  <object>
+      <name> Evts_FswHIP_And_GleamHIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[2]>0 &&  OBFStatus[2]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts passing both the Flight Software HIP filter and the Gleam HIP filter. This quantity will be fully meaningful when normalized to the total number of events (i.e. converted into fraction). That meaningful quantity is called Normalized_Evts_FswHIP_And_GleamHIP. </description>
+    </object>
+
+     <object>
+      <name> Normalized_Evts_FswHIP_And_GleamHIP </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_FswHIP_And_GleamHIP)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events passing both the Flight Software HIP filter and the Gleam HIP filter. </description>
+    </object>
+
+     <object>
+      <name> Normalized_Evts_FswHIP_And_GleamHIP_err </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_FswHIP_And_GleamHIP>0) ?  double(Counter_Evts_FswHIP_And_GleamHIP)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_FswHIP_And_GleamHIP)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Fraction of events passing both the Flight Software HIP filter and the Gleam HIP filter. </description>
+    </object>
+
+
+     <object>
+      <name> Evts_FswHIP_And_NOTGleamHIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[2]>0 &&  OBFStatus[2]==0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts passing the Flight Software HIP filter and NOT the Gleam HIP filter. This quantity will be fully meaningful when normalized to the total number of events (i.e. converted into fraction). That meaningful quantity is called Normalized_Evts_FswHIP_And_NOTGleamHIP. </description>
+    </object>
+     
+
+     <object>
+      <name> Normalized_Evts_FswHIP_And_NOTGleamHIP </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_FswHIP_And_NOTGleamHIP)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events passing the Flight Software HIP filter and NOT the Gleam HIP filter. </description>
+    </object>
+
+     
+     <object>
+      <name> Normalized_Evts_FswHIP_And_NOTGleamHIP_err </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_FswHIP_And_NOTGleamHIP>0) ?  double(Counter_Evts_FswHIP_And_NOTGleamHIP)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_FswHIP_And_NOTGleamHIP)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Fraction of events passing both the Flight Software HIP filter and NOT the Gleam HIP filter. </description>
+    </object>
+
+
+     <object>
+      <name> Evts_NOTFswHIP_And_GleamHIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[FswFilters[2]==0 &&  OBFStatus[2]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts NOT passing the Flight Software HIP filter and passing the Gleam HIP filter. This quantity will be fully meaningful when normalized to the total number of events (i.e. converted into fraction). That meaningful quantity is called Normalized_Evts_NOTFswHIP_And_GleamHIP. </description>
+    </object>
+
+      <object>
+      <name> Normalized_Evts_NOTFswHIP_And_GleamHIP </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_NOTFswHIP_And_GleamHIP)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events NOT passing the Flight Software HIP filter and passing the Gleam HIP filter. </description>
+    </object>
+
+     <object>
+      <name> Normalized_Evts_NOTFswHIP_And_GleamHIP_err </name>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_NOTFswHIP_And_GleamHIP>0) ?  double(Counter_Evts_NOTFswHIP_And_GleamHIP)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_NOTFswHIP_And_GleamHIP)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Fraction of events NOT passing the Flight Software HIP filter and passing the Gleam HIP filter. </description>
+    </object>
 
       <!-- ********************  Detector information   *********************** -->
 
