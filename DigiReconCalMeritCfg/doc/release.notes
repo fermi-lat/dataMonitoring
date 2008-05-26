@@ -1,3 +1,9 @@
+
+v1r1p18  2008/05/22   (DEV)
+---------------------------
+Added a bunch of new quantities related to the real flight software 
+filter bits. This addresses Jira GDQMQ-132.
+
 v1r1p17  2008/05/22   (DEV)
 ---------------------------
 Added Log10 of measured energy (recon job; monconfig_recon_histos.xml). 
