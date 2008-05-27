@@ -1,3 +1,8 @@
+v1r1p19  2008/05/22   (DEV)
+---------------------------
+Changed normalization in quantities that relate Flight Software 
+and Gleam filter bits (file monconfig_digi_trending.xml). 
+This addresses Jira GDQMQ-132.
 
 v1r1p18  2008/05/22   (DEV)
 ---------------------------
