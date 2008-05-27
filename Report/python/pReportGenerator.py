@@ -34,6 +34,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
 
     def parseConfiguration(self):
         reportTag = self.XmlBaseElement.getElementByTagName('report')
+        self.Title = reportTag.getAttribute('title', '')
         for pageTag in reportTag.getElementsByTagName('page'):
             if pageTag.evalAttribute('enabled'):
                 page = pReportPage()

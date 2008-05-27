@@ -15,7 +15,7 @@ class pDownloadManager:
         self.DownloadFolder = downloadFolder
 
     def downloadUrl(self, url, options = ''):
-        command = 'wget -p -nv --convert-links -nH -nd -P%s %s %s' %\
+        command = 'wget -p -nv --save-cookies cookies.txt --convert-links -nH -nd -P%s %s %s' %\
                   (self.DownloadFolder, url, options)
         logging.info('Executing "%s"' % command)
         logging.debug(commands.getoutput(command))
