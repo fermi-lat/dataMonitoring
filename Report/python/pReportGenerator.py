@@ -12,6 +12,7 @@ from pReportPanel     import pReportPanel
 from pReportPage      import pReportPage
 from pDownloadManager import pDownloadManager
 from pXmlElement      import pXmlElement
+from pTimeSpan        import pTimeSpan
 from xml.dom          import minidom
 
 
@@ -60,7 +61,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         os.system('cp %s %s' % (PREAMBLE_NAME, self.LaTexFolderPath))
         self.processIndex()
         for page in self.PagesList:
-            self.addPage(page, self.TimeSpan)
+            self.addPage(page, self.TimeSpan.getEricGroveTimeSpan())
         self.processIndex()
         self.writeTrailer()
 
@@ -74,8 +75,8 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
             #    panelName = re.search('(?<=reportId=).*(?=">)', line).group()
             #    self.PanelsList.append(panelName)
             if 'UTC' in line:
-                self.TimeSpan =\
-                     line.strip().replace('<b>', '').replace('</b>', '')
+                timeStr = line.strip().replace('<b>', '').replace('</b>', '')
+                self.TimeSpan = pTimeSpan(timeStr)
         pDownloadManager.cleanup(self)
 
  
