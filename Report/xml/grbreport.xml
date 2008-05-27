@@ -1,8 +1,6 @@
 <?xml version="1.0" ?>
 
-<report>
-
-  <title>GRB report</title>
+<report title="GRB report">
   
   <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
