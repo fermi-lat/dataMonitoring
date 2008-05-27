@@ -1003,14 +1003,20 @@
 
      <!-- Fractions of events with/without Fsw and Gleam filters -->
 
-     Counter_Evts_NOTFswGAMMA_And_GleamGAMMA
-
      <object>
-      <name> AllEvts </name>
+      <name> AllEvts_FswGAMMA </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ ]]></cut>
+      <cut><![CDATA[ FswFilters[0]>0]]></cut>
       <type> counter </type>
-      <description> All evts counter (in the specified time bin). No cut is being applied. It will be used to normalized quantities. </description>
+      <description> Counter for evts passing the Flight Software GAMMA filter (in the specified time bin). It will be used to normalize quantities. </description>
+    </object>
+
+      <object>
+      <name> AllEvts_GleamGAMMA </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ OBFStatus[0]>0]]></cut>
+      <type> counter </type>
+      <description> Counter for evts passing the Gleam GAMMA filter (in the specified time bin). It will be used to normalize quantities. </description>
     </object>
      
      <object>
@@ -1023,16 +1029,16 @@
 
      <object>
       <name> Normalized_Evts_FswGAMMA_And_GleamGAMMA </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_FswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswGAMMA>0) ?  double(Counter_Evts_FswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts_FswGAMMA) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Fraction of events passing both the Flight Software GAMMA filter and the Gleam GAMMA filter. </description>
+      <description> Fraction of events passing both the Flight Software GAMMA filter and the Gleam GAMMA filter. The normalization factor is the number of events passing the Flight Software GAMMA filter.</description>
     </object>
 
      <object>
       <name> Normalized_Evts_FswGAMMA_And_GleamGAMMA_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_FswGAMMA_And_GleamGAMMA>0) ?  double(Counter_Evts_FswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_FswGAMMA_And_GleamGAMMA)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswGAMMA>0 && Counter_Evts_FswGAMMA_And_GleamGAMMA>0) ?  double(Counter_Evts_FswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts_FswGAMMA)*sqrt((1.0/double(Counter_Evts_FswGAMMA_And_GleamGAMMA)) +(1.0/double(Counter_AllEvts_FswGAMMA))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1051,17 +1057,17 @@
 
      <object>
       <name> Normalized_Evts_FswGAMMA_And_NOTGleamGAMMA </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswGAMMA>0) ?  double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)/double(Counter_AllEvts_FswGAMMA) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Fraction of events passing the Flight Software GAMMA filter and NOT the Gleam GAMMA filter. </description>
+      <description> Fraction of events passing the Flight Software GAMMA filter and NOT the Gleam GAMMA filter. The normalization factor is the number of events passing the Flight Software GAMMA filter.</description>
     </object>
 
      
      <object>
       <name> Normalized_Evts_FswGAMMA_And_NOTGleamGAMMA_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_FswGAMMA_And_NOTGleamGAMMA>0) ?  double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswGAMMA>0 && Counter_Evts_FswGAMMA_And_NOTGleamGAMMA>0) ?  double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)/double(Counter_AllEvts_FswGAMMA)*sqrt((1.0/double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)) +(1.0/double(Counter_AllEvts_FswGAMMA))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1079,16 +1085,16 @@
 
       <object>
       <name> Normalized_Evts_NOTFswGAMMA_And_GleamGAMMA </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_GleamGAMMA >0) ?  double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts_GleamGAMMA) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Fraction of events NOT passing the Flight Software GAMMA filter and passing the Gleam GAMMA filter. </description>
+      <description> Fraction of events NOT passing the Flight Software GAMMA filter and passing the Gleam GAMMA filter. The normalization factor is the number of events passing the Gleam GAMMA filter.</description>
     </object>
 
      <object>
       <name> Normalized_Evts_NOTFswGAMMA_And_GleamGAMMA_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_NOTFswGAMMA_And_GleamGAMMA>0) ?  double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_GleamGAMMA>0 && Counter_Evts_NOTFswGAMMA_And_GleamGAMMA>0) ?  double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts_GleamGAMMA)*sqrt((1.0/double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)) +(1.0/double(Counter_AllEvts_GleamGAMMA))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1096,7 +1102,22 @@
     </object>
 
 
-     <!-- here -->
+     <object>
+      <name> AllEvts_FswMIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ FswFilters[1]>0]]></cut>
+      <type> counter </type>
+      <description> Counter for evts passing the Flight Software MIP filter (in the specified time bin). It will be used to normalize quantities. </description>
+    </object>
+
+      <object>
+      <name> AllEvts_GleamMIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ OBFStatus[1]>0]]></cut>
+      <type> counter </type>
+      <description> Counter for evts passing the Gleam MIP filter (in the specified time bin). It will be used to normalize quantities. </description>
+    </object>
+
 
      <object>
       <name> Evts_FswMIP_And_GleamMIP </name>
@@ -1108,16 +1129,16 @@
 
      <object>
       <name> Normalized_Evts_FswMIP_And_GleamMIP </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_FswMIP_And_GleamMIP)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswMIP>0) ?  double(Counter_Evts_FswMIP_And_GleamMIP)/double(Counter_AllEvts_FswMIP) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Fraction of events passing both the Flight Software MIP filter and the Gleam MIP filter. </description>
+      <description> Fraction of events passing both the Flight Software MIP filter and the Gleam MIP filter. The normalization factor is the number of events passing the Flight Software MIP filter.</description>
     </object>
 
      <object>
       <name> Normalized_Evts_FswMIP_And_GleamMIP_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_FswMIP_And_GleamMIP>0) ?  double(Counter_Evts_FswMIP_And_GleamMIP)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_FswMIP_And_GleamMIP)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswMIP>0 && Counter_Evts_FswMIP_And_GleamMIP>0) ?  double(Counter_Evts_FswMIP_And_GleamMIP)/double(Counter_AllEvts_FswMIP)*sqrt((1.0/double(Counter_Evts_FswMIP_And_GleamMIP)) +(1.0/double(Counter_AllEvts_FswMIP))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1136,17 +1157,17 @@
 
      <object>
       <name> Normalized_Evts_FswMIP_And_NOTGleamMIP </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_FswMIP_And_NOTGleamMIP)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswMIP>0) ?  double(Counter_Evts_FswMIP_And_NOTGleamMIP)/double(Counter_AllEvts_FswMIP) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Fraction of events passing the Flight Software MIP filter and NOT the Gleam MIP filter. </description>
+      <description> Fraction of events passing the Flight Software MIP filter and NOT the Gleam MIP filter. The normalization factor is the number of events passing the Flight Software MIP filter.</description>
     </object>
 
      
      <object>
       <name> Normalized_Evts_FswMIP_And_NOTGleamMIP_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_FswMIP_And_NOTGleamMIP>0) ?  double(Counter_Evts_FswMIP_And_NOTGleamMIP)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_FswMIP_And_NOTGleamMIP)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswMIP>0 && Counter_Evts_FswMIP_And_NOTGleamMIP>0) ?  double(Counter_Evts_FswMIP_And_NOTGleamMIP)/double(Counter_AllEvts_FswMIP)*sqrt((1.0/double(Counter_Evts_FswMIP_And_NOTGleamMIP)) +(1.0/double(Counter_AllEvts_FswMIP))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1164,16 +1185,16 @@
 
       <object>
       <name> Normalized_Evts_NOTFswMIP_And_GleamMIP </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_NOTFswMIP_And_GleamMIP)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_GleamMIP>0) ?  double(Counter_Evts_NOTFswMIP_And_GleamMIP)/double(Counter_AllEvts_GleamMIP) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Fraction of events NOT passing the Flight Software MIP filter and passing the Gleam MIP filter. </description>
+      <description> Fraction of events NOT passing the Flight Software MIP filter and passing the Gleam MIP filter. The normalization factor is the number of events passing the Gleam MIP filter.</description>
     </object>
 
      <object>
       <name> Normalized_Evts_NOTFswMIP_And_GleamMIP_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_NOTFswMIP_And_GleamMIP>0) ?  double(Counter_Evts_NOTFswMIP_And_GleamMIP)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_NOTFswMIP_And_GleamMIP)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_GleamMIP>0 && Counter_Evts_NOTFswMIP_And_GleamMIP>0) ?  double(Counter_Evts_NOTFswMIP_And_GleamMIP)/double(Counter_AllEvts_GleamMIP)*sqrt((1.0/double(Counter_Evts_NOTFswMIP_And_GleamMIP)) +(1.0/double(Counter_AllEvts_GleamMIP))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1183,7 +1204,21 @@
 
 
     
+      <object>
+      <name> AllEvts_FswHIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ FswFilters[1]>0]]></cut>
+      <type> counter </type>
+      <description> Counter for evts passing the Flight Software HIP filter (in the specified time bin). It will be used to normalize quantities. </description>
+    </object>
 
+      <object>
+      <name> AllEvts_GleamHIP </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ OBFStatus[1]>0]]></cut>
+      <type> counter </type>
+      <description> Counter for evts passing the Gleam HIP filter (in the specified time bin). It will be used to normalize quantities. </description>
+    </object>
 
 
   <object>
@@ -1196,16 +1231,16 @@
 
      <object>
       <name> Normalized_Evts_FswHIP_And_GleamHIP </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_FswHIP_And_GleamHIP)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswHIP>0) ?  double(Counter_Evts_FswHIP_And_GleamHIP)/double(Counter_AllEvts_FswHIP) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Fraction of events passing both the Flight Software HIP filter and the Gleam HIP filter. </description>
+      <description> Fraction of events passing both the Flight Software HIP filter and the Gleam HIP filter. The normalization factor is the number of events passing the Flight Software HIP filter.</description>
     </object>
 
      <object>
       <name> Normalized_Evts_FswHIP_And_GleamHIP_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_FswHIP_And_GleamHIP>0) ?  double(Counter_Evts_FswHIP_And_GleamHIP)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_FswHIP_And_GleamHIP)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswHIP>0 && Counter_Evts_FswHIP_And_GleamHIP>0) ?  double(Counter_Evts_FswHIP_And_GleamHIP)/double(Counter_AllEvts_FswHIP)*sqrt((1.0/double(Counter_Evts_FswHIP_And_GleamHIP)) +(1.0/double(Counter_AllEvts_FswHIP))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1224,17 +1259,17 @@
 
      <object>
       <name> Normalized_Evts_FswHIP_And_NOTGleamHIP </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_FswHIP_And_NOTGleamHIP)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswHIP>0) ?  double(Counter_Evts_FswHIP_And_NOTGleamHIP)/double(Counter_AllEvts_FswHIP) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Fraction of events passing the Flight Software HIP filter and NOT the Gleam HIP filter. </description>
+      <description> Fraction of events passing the Flight Software HIP filter and NOT the Gleam HIP filter. The normalization factor is the number of events passing the Flight Software HIP filter.</description>
     </object>
 
      
      <object>
       <name> Normalized_Evts_FswHIP_And_NOTGleamHIP_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_FswHIP_And_NOTGleamHIP>0) ?  double(Counter_Evts_FswHIP_And_NOTGleamHIP)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_FswHIP_And_NOTGleamHIP)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswHIP>0 && Counter_Evts_FswHIP_And_NOTGleamHIP>0) ?  double(Counter_Evts_FswHIP_And_NOTGleamHIP)/double(Counter_AllEvts_FswHIP)*sqrt((1.0/double(Counter_Evts_FswHIP_And_NOTGleamHIP)) +(1.0/double(Counter_AllEvts_FswHIP))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1252,16 +1287,16 @@
 
       <object>
       <name> Normalized_Evts_NOTFswHIP_And_GleamHIP </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0) ?  double(Counter_Evts_NOTFswHIP_And_GleamHIP)/double(Counter_AllEvts) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_GleamHIP>0) ?  double(Counter_Evts_NOTFswHIP_And_GleamHIP)/double(Counter_AllEvts_GleamHIP) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Fraction of events NOT passing the Flight Software HIP filter and passing the Gleam HIP filter. </description>
+      <description> Fraction of events NOT passing the Flight Software HIP filter and passing the Gleam HIP filter. The normalization factor is the number of events passing the Gleam HIP filter.</description>
     </object>
 
      <object>
       <name> Normalized_Evts_NOTFswHIP_And_GleamHIP_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts>0 && Counter_Evts_NOTFswHIP_And_GleamHIP>0) ?  double(Counter_Evts_NOTFswHIP_And_GleamHIP)/double(Counter_AllEvts)*sqrt((1.0/double(Counter_Evts_NOTFswHIP_And_GleamHIP)) +(1.0/double(Counter_AllEvts))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Counter_AllEvts_GleamHIP>0 && Counter_Evts_NOTFswHIP_And_GleamHIP>0) ?  double(Counter_Evts_NOTFswHIP_And_GleamHIP)/double(Counter_AllEvts_GleamHIP)*sqrt((1.0/double(Counter_Evts_NOTFswHIP_And_GleamHIP)) +(1.0/double(Counter_AllEvts_GleamHIP))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
