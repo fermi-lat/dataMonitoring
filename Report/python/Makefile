@@ -6,3 +6,4 @@ cleanall:
 	rm -rf download
 	rm -rf tex
 	rm -rf test
+	rm -f cookies.txt
