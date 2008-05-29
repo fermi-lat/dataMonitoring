@@ -1,4 +1,10 @@
-v1r1p19  2008/05/22   (DEV)
+v1r1p20  2008/05/28   (DEV)
+---------------------------
+Added merit parameters. This addresses Jira GDQMQ-137.
+The quantities have not yet been tested because there is no 
+Merit file to be used... waiting for it... 
+
+v1r1p19  2008/05/27   (DEV)
 ---------------------------
 Changed normalization in quantities that relate Flight Software 
 and Gleam filter bits (file monconfig_digi_trending.xml). 
