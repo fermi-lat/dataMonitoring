@@ -62,6 +62,7 @@
        CTBBestEnergy_Log10_TH1  Sum
        CTBBestZDir_TH1  Sum
        CTBClassLevel_TH1  Sum
+       CTBParticleType_TH1  Sum
        CTBBestEnergyProb_TH1  Sum
        CTBCORE_TH1  Sum
        CTBBestEnergyRatio_TH1  Sum
