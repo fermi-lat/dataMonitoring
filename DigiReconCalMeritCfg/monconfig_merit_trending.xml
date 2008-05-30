@@ -2,7 +2,7 @@
 
   <inputList name="top"> 
 
-
+TransientEvtsBelowZenithTheta60
     <!-- Time stamp -->
     <object> timestampdouble </object>
     
@@ -449,7 +449,7 @@
        <object>
       <name> TransientEvtsBelowZenithTheta60 </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ ((FswFilters[0]>0)  && CTBCORE>0. && CTBBestEnergyProb>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && CTBClassLevel>0 && FT1ZenithTheta<60 ]]></cut>
+      <cut><![CDATA[ (FswFilters[0]>0)  && CTBCORE>0. && CTBBestEnergyProb>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && CTBClassLevel>0 && FT1ZenithTheta<60 ]]></cut>
       <type> rate </type>
       <description> Rate of events after application of TRANSIENT gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 60. </description>
     </object>
@@ -679,7 +679,7 @@
 	<object>
       <name> CTBClassLevel_Bkg </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBClassLevel==0) ]]></cut>
+      <cut><![CDATA[ CTBClassLevel==0 ]]></cut>
       <type> rate </type>
       <description> Rate of events that are  considered to be bkg as far as the CTBClassLevel variable is concerned (that is CTBClassLevel=0). </description>
     </object>
@@ -687,7 +687,7 @@
      <object>
       <name> CTBClassLevel_Transients </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBClassLevel>0) ]]></cut>
+      <cut><![CDATA[ CTBClassLevel>0 ]]></cut>
       <type> rate </type>
       <description> Rate of Transient events according to CTBClassLevel variable (that is CTBClassLevel>0). </description>
     </object>
@@ -695,7 +695,7 @@
      <object>
       <name> CTBClassLevel_Source </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBClassLevel>1) ]]></cut>
+      <cut><![CDATA[ CTBClassLevel>1 ]]></cut>
       <type> rate </type>
       <description> Rate of Source events according to CTBClassLevel variable (that is CTBClassLevel>1). </description>
     </object>
@@ -703,7 +703,7 @@
      <object>
       <name> CTBClassLevel_Diffuse </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBClassLevel>2) ]]></cut>
+      <cut><![CDATA[ CTBClassLevel>2 ]]></cut>
       <type> rate </type>
       <description> Rate of Diffuse events according to CTBClassLevel variable (that is CTBClassLevel>2). </description>
     </object>
@@ -1007,7 +1007,7 @@
     <object>
       <name> CTBParticleType_lepton </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBParticleType==1) ]]></cut>
+      <cut><![CDATA[ CTBParticleType==1 ]]></cut>
       <type> rate </type>
       <description> Rate of e-/e+ events, according to CTBParticleType variable (that is CTBParticleType==1). </description>
     </object>
@@ -1015,7 +1015,7 @@
        <object>
       <name> CTBParticleType_proton </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBParticleType==2) ]]></cut>
+      <cut><![CDATA[ CTBParticleType==2 ]]></cut>
       <type> rate </type>
       <description> Rate of proton events, according to CTBParticleType variable (that is CTBParticleType==2). </description>
     </object>
@@ -1023,7 +1023,7 @@
         <object>
       <name> CTBParticleType_alpha </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBParticleType==3) ]]></cut>
+      <cut><![CDATA[ CTBParticleType==3]]></cut>
       <type> rate </type>
       <description> Rate of alpha events, according to CTBParticleType variable (that is CTBParticleType==3). </description>
     </object>
@@ -1031,7 +1031,7 @@
 	 <object>
       <name> CTBParticleType_heavy </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBParticleType==4) ]]></cut>
+      <cut><![CDATA[ CTBParticleType==4 ]]></cut>
       <type> rate </type>
       <description> Rate of heavy ion events, according to CTBParticleType variable (that is CTBParticleType==4). </description>
     </object>
