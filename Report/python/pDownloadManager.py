@@ -15,13 +15,13 @@ class pDownloadManager:
         self.DownloadFolder = downloadFolder
 
     def downloadUrl(self, url, options = ''):
-        command = 'wget -p -nv --save-cookies cookies.txt --convert-links -nH -nd -P%s %s %s' %\
+        command = 'wget -p -nv --save-cookies cookies.txt --convert-links -nH -nd -P%s "%s%s"' %\
                   (self.DownloadFolder, url, options)
         logging.info('Executing "%s"' % command)
         logging.debug(commands.getoutput(command))
 
     def downloadPanel(self, name, startTime, endTime, imageFormat = 'png',
-                      invalidate = True):
+                      invalidate = False):
         url = '%sreport.jsp?reportId=%s' % (BASE_REPORT_URL, name)
         options = '&timeInterval=%d-%d&maxBins=-1&imageFormat=%s' %\
                   (startTime, endTime, imageFormat)
