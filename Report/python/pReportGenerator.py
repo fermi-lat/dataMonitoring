@@ -31,7 +31,9 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         self.XmlBaseElement = pXmlElement(minidom.parse(file(cfgFilePath)))
         self.PagesList = []
         self.PanelsDict = {}
+        self.processIndex()
         self.parseConfiguration()
+        self.invalidateSession()
 
     def parseConfiguration(self):
         reportTag = self.XmlBaseElement.getElementByTagName('report')
@@ -59,10 +61,8 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         os.system('cp %s %s' % (LOGO_IMAGE_NAME, self.LaTexFolderPath))
         logging.info('Copying the TeX preamble into the report folder...')
         os.system('cp %s %s' % (PREAMBLE_NAME, self.LaTexFolderPath))
-        self.processIndex()
         for page in self.PagesList:
             self.addPage(page, self.TimeSpan.getEricGroveTimeSpan())
-        self.processIndex()
         self.writeTrailer()
 
     def processIndex(self):

@@ -21,14 +21,14 @@ class pLaTeXWriter:
         self.LaTexFolderPath = os.path.dirname(self.LaTeXFilePath)
         if self.LaTexFolderPath == '':
             sys.exit('Please do not choose the current folder for the report.')
-        self.cleanup()
+        self.__cleanup()
         try:
             self.LaTeXFile = file(self.LaTeXFilePath, 'w')
         except IOError:
             sys.exit('Could not open %s in write mode. Abort' %\
                      self.LaTeXFilePath)
 
-    def cleanup(self):
+    def __cleanup(self):
         if not os.path.exists(self.LaTexFolderPath):
             logging.info('Creating folder %s...' % self.LaTexFolderPath)
             os.makedirs(self.LaTexFolderPath)
@@ -117,7 +117,7 @@ class pLaTeXWriter:
                        (plotLineHeight,\
                         plot.getLeftLaTeXCaption()),  percent = True)
             self.write('\href{%s}{\\includegraphics[width=%s]{%s}}' %\
-                       (plot.Url,plotLineWidth, plot.ImageName), percent = True)
+                       (plot.Url,plotLineWidth, plot.ImageName), percent=True)
             self.write('\\gplotrightlabel{%s}{%s}\\\\' %\
                        (plotLineHeight,\
                         plot.getRightLaTeXCaption()))
