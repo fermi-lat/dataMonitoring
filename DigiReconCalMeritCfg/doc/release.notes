@@ -1,3 +1,9 @@
+v1r1p20  2008/05/29   (DEV)
+---------------------------
+Corrected few typos in merit trending parameters.
+This addresses Jira GDQMQ-137.
+
+
 v1r1p20  2008/05/28   (DEV)
 ---------------------------
 Added merit parameters. This addresses Jira GDQMQ-137.
