@@ -1027,10 +1027,10 @@
       <name> CTBParticleType_TH1 </name>
       <formula><![CDATA[ CTBParticleType ]]></formula>
       <cut><![CDATA[  ]]></cut>
-      <type> histogram-1d[6,-0.5,5.5] </type>
+      <type> histogram-1d[8,-2.5,5.5] </type>
       <titledesc> CTBParticleType </titledesc>
       <axisdesc> [CTBParticleType, N] </axisdesc>
-      <description> Distribution of CTBParticleType values. 1 = e+/e-, 2 = proton, 3 = alpha, and 4 = heavy ion </description>
+      <description> Distribution of CTBParticleType values. -1 = initialized value, 0 = CTBClassLevel larger or equal than 1 (that is photon candidate),  1 = e+/e-, 2 = proton, 3 = alpha, and 4 = heavy ion </description>
     </object>
 
  

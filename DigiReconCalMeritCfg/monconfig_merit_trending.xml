@@ -1005,6 +1005,22 @@ TransientEvtsBelowZenithTheta60
 
     
     <object>
+      <name> CTBParticleType_initializedvalue </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ CTBParticleType== -1 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events for which CTBParticleType could not be computed, and thus the initialized value remained (that is CTBParticleType == -1). </description>
+    </object>
+
+    <object>
+      <name> CTBParticleType_equalZero </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ CTBParticleType==0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events with CTBParticleType == 0. </description>
+    </object>
+
+    <object>
       <name> CTBParticleType_lepton </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ CTBParticleType==1 ]]></cut>
