@@ -1,3 +1,12 @@
+v1r1p22  2008/06/09   (DEV)
+---------------------------
+Added normalized rates for GPS_OUTofLock. This addresses Jira GDQMQ-138.
+Added rates for CTBParticleType==0 and == -1. 
+Change range of histogram for CTBParticleType to accomodate the values 
+-1 and 0, which were not expected according to documentation provided.
+
+
+
 v1r1p21  2008/05/29   (DEV)
 ---------------------------
 Corrected few typos in merit trending parameters.
