@@ -112,7 +112,7 @@
     </object>	      
     <object>
       <name> NormalizedRate_FastMon_MetaContext_GPS_OUTofLock_err </name> <!-- Rate_NewSecond does not have error !! -->
-      <formula><![CDATA[ foronetime: (Rate_FastMon_NewSecond>0) ? Rate_FastMon_MetaContext_GPS_OUTofLock/Rate_FastMon_NewSecond: : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Rate_FastMon_NewSecond>0) ? Rate_FastMon_MetaContext_GPS_OUTofLock_err/Rate_FastMon_NewSecond: 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source> output </source>
       <type> outputfloat </type>
