@@ -1,3 +1,9 @@
+v1r1p23  2008/06/10   (DEV)
+---------------------------
+Added Normalized rates for FastMon GPS_OUTofLock.
+This addresses Jira GDQMQ-138.
+
+
 v1r1p22  2008/06/09   (DEV)
 ---------------------------
 Added normalized rates for GPS_OUTofLock. This addresses Jira GDQMQ-138.
