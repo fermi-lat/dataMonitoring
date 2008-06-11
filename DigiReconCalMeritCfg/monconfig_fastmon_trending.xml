@@ -95,6 +95,30 @@
       </description>
     </object>
 
+    <object>
+      <name> FastMon_NewSecond </name>
+      <formula><![CDATA[ FastMon_new_second ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> Rate of 'NewSecond'; where 'NewSecond' is a variable set to 1 when current time (in units of seconds) is different to previous' evt time. The variable is 0 otherwise. The time is extracted as digi->getMetaEvent().time().current().timeSecs(). </description>
+    </object>
+    <object>
+      <name> NormalizedRate_FastMon_MetaContext_GPS_OUTofLock </name>
+      <formula><![CDATA[ foronetime: (Rate_FastMon_NewSecond>0) ? Rate_FastMon_MetaContext_GPS_OUTofLock/Rate_FastMon_NewSecond: -1.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source> output </source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones. </description>
+    </object>	      
+    <object>
+      <name> NormalizedRate_FastMon_MetaContext_GPS_OUTofLock_err </name> <!-- Rate_NewSecond does not have error !! -->
+      <formula><![CDATA[ foronetime: (Rate_FastMon_NewSecond>0) ? Rate_FastMon_MetaContext_GPS_OUTofLock/Rate_FastMon_NewSecond: : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source> output </source>
+      <type> outputfloat </type>
+      <description> Error in the normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones. </description>
+    </object>	    
+
   
     <!-- Spacecraft quantities -->
     <object>
