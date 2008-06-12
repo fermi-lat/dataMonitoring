@@ -835,8 +835,6 @@
 	    <xlabel>Number of strip hits</xlabel>
 	    <ylabel>N</ylabel>
             <expression>TkrHits</expression>
-	    <cut><![CDATA[ ]]></cut>
-	    <caption>All triggers included.</caption>
          </TH1F>		
         <CUSTOM type="ZeroTkrHitsCounter_TowerPlane" name="ZeroTkrHitsCounter_TowerPlane_TH2" enabled="True">
 	    <title>Counter of ZERO strip hits vs Tower and Tracker plane</title>
@@ -844,8 +842,6 @@
 	    <xlabel>Tower</xlabel>
 	    <ylabel>Tracker plane</ylabel>
 	    <drawoptions>colz</drawoptions>
-	    <cut><![CDATA[ ]]></cut>
-	    <caption>All triggers included.</caption>
          </CUSTOM>							
     </outputList>
 		
@@ -856,16 +852,12 @@
 	    <xlabel>Tower</xlabel>
 	    <ylabel>Tracker plane</ylabel>
 	    <drawoptions>colz</drawoptions>
-	    <cut><![CDATA[ ]]></cut>
-	    <caption>All triggers included.</caption>
          </CUSTOM>
         <CUSTOM type="TkrHitsCounter_Plane" name="TkrHitsCounter_Plane_TH1" level="tower" enabled="True">
 	    <title>Overall number of hits vs. TKR plane (one per tower)</title>
 	    <caption>Watch out for spikes (but don't get too excited, most likely it's just a noisy strip) and dips</caption>
 	    <xlabel>Tracker plane</xlabel>
 	    <ylabel>N</ylabel>
-	    <cut><![CDATA[ ]]></cut>
-	    <caption>All triggers included.</caption>
         </CUSTOM>    
         <CUSTOM type="TkrHitsCounter_PlaneGTFE" name="TkrHitsCounter_PlaneGTFE_TH2" level="tower" enabled="True">
 	    <title>Overall number of hits vs. TKR plane and front-end chip (one per tower)</title>
@@ -873,8 +865,6 @@
 	    <xlabel>GTFE</xlabel>
 	    <ylabel>Tracker plane</ylabel>
 	    <drawoptions>colz</drawoptions>
-	    <cut><![CDATA[ ]]></cut>
-	    <caption>All triggers included.</caption>
         </CUSTOM>
     </outputList>
 		
@@ -897,7 +887,6 @@
 	    <title>Distribution of the number of planes hit in a tower</title>
 	    <xlabel>Layer number</xlabel>
 	    <cut><![CDATA[ ]]></cut>
-	    <caption>All triggers included.</caption>
 	    <!-- this tag is useless for this CUSTOM plot since it is dedicated to a specific task<expression></expression> -->
         </CUSTOM>			
     </outputList>				
