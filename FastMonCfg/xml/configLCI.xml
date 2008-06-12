@@ -2,14 +2,113 @@
 <!-- Simplified configuration file for LCI run processing -->
 <monitoring>
 
+    <inputList group="Meta Event" name="Meta advanced">
+	<variable name="new_second" enabled="True">
+	    <type>bool_</type>
+            <shape>(1)</shape>
+	</variable>	
+	<variable name="clocktics_dev_20MHz" enabled="True">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+    </inputList>
+
+    <outputList group="Meta Event" name="Meta advanced">
+        <TH1F name="Tick20MHzDeviation_TH1">
+	    <expression><![CDATA[ clocktics_dev_20MHz ]]></expression>
+	    <cut><![CDATA[ clocktics_dev_20MHz!=-9999 ]]></cut>
+	    <xbins>200</xbins>
+	    <xmin>-1000</xmin>
+	    <xmax>1000</xmax>
+	    <title>Number of ticks between successive 1-PPS - Deviation from 20 MHz.</title>
+	    <xlabel>Clock ticks (nominal 50 ns), N</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Number of ticks between successive 1-PPS - Deviation from 20 MHz. </caption>
+        </TH1F>
+        <TH1F name="Tick20MHzDeviation_Zoom_TH1">
+	    <expression><![CDATA[ clocktics_dev_20MHz ]]></expression>
+	    <cut><![CDATA[ clocktics_dev_20MHz!=-9999 ]]></cut>
+	    <xbins>400</xbins>
+	    <xmin>-200</xmin>
+	    <xmax>200</xmax>
+	    <title>Number of ticks between successive 1-PPS - Deviation from 20 MHz - Zoom</title>
+	    <xlabel>Clock ticks (nominal 50 ns), N</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Number of ticks between successive 1-PPS - Deviation from 20 MHz - Zoom </caption>
+        </TH1F>
+        <TH1F name="Tick20MHzDeviation_SuperZoom_TH1">
+	    <expression><![CDATA[ clocktics_dev_20MHz ]]></expression>
+	    <cut><![CDATA[ clocktics_dev_20MHz!=-9999 ]]></cut>
+	    <xbins>40</xbins>
+	    <xmin>-20</xmin>
+	    <xmax>20</xmax>
+	    <title>Number of ticks between successive 1-PPS - Deviation from 20 MHz - Super Zoom</title>
+	    <xlabel>Clock ticks (nominal 50 ns), N</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Number of ticks between successive 1-PPS - Deviation from 20 MHz - Super Zoom </caption>
+        </TH1F>
+    </outputList>
+
     <inputList group="GEM" name="GEM base">
 	<variable name="condsummary">
 	    <type>int</type>
             <shape>(1)</shape>
 	</variable>
+	<variable name="condarrcallo">
+	    <type>int</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="condarrcalhi">
+	    <type>int</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="condarrtkr">
+	    <type>int</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="condarrcno">
+	    <type>int</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="condarrroi">
+	    <type>int</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="gem_delta_event_time">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="gem_delta_window_open_time">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
 	<variable name="LivetimeLast">
 	    <type>int</type>
             <shape>(1)</shape>
+	</variable>
+	<variable name="DeadZoneLast">
+	    <type>int</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="DiscardedLast">
+	    <type>int</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="PrescaledLast">
+	    <type>int</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="PrescaledDelta" reset="False">
+	    <type>int</type>
+            <shape>(2)</shape>
+	</variable>
+	<variable name="DiscardedDelta" reset="False">
+	    <type>int</type>
+            <shape>(2)</shape>
+	</variable>
+	<variable name="DeadZoneDelta" reset="False">
+	    <type>int</type>
+            <shape>(2)</shape>
 	</variable>
 	<variable name="TkrTriggerTower" >
 	    <type>int</type>
@@ -41,15 +140,524 @@
     <outputList group="GEM" name="GEM base">
         <TH1F name="CondSummaryWord_TH1">
 	    <expression><![CDATA[ condsummary ]]></expression>
-	    <cut><![CDATA[  ]]></cut>
-	    <xbins>51</xbins>
-	    <xmin>-10.5</xmin>
-	    <xmax>40.5</xmax>
-	    <title>Distribution of CondSummary Word values</title>
+	    <cut><![CDATA[ ]]></cut>
+	    <xbins>129</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>128.5</xmax>
+	    <title>Distribution of CondSummary Word values. All triggers.</title>
 	    <xlabel>consummary value</xlabel>
 	    <ylabel>N</ylabel>
 	    <caption>Distribution of CondSummary Word values</caption>
         </TH1F>
+        <TH1F name="DiscardedDelta_TH1">
+	    <expression><![CDATA[ DiscardedDelta[0] ]]></expression>
+	    <cut><![CDATA[ ]]></cut>
+	    <xbins>31</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>30.5</xmax>
+	    <title>Number of GEM discarded events between two successive read out events</title>
+	    <xlabel>Number Gem discarded events</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Number of GEM discarded events between two successive read out events. All triggers.</caption>
+        </TH1F>
+        <TH1F name="DeadZoneDelta_TH1">
+	    <expression><![CDATA[ DeadZoneDelta[0] ]]></expression>
+	    <cut><![CDATA[ ]]></cut>
+	    <xbins>31</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>30.5</xmax>
+	    <title>Number of GEM deadzone events between two successive read out events</title>
+	    <xlabel>Number Gem deadzone events</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Number of GEM deadzone events between two successive read out events. All triggers.</caption>
+        </TH1F>
+        <TH1F name="DeltaEventTime_TH1">
+	    <expression><![CDATA[ gem_delta_event_time*0.00005 ]]> </expression>
+	    <cut><![CDATA[ ]]></cut>
+	    <xbins>100</xbins>
+	    <xmin>0</xmin>
+	    <xmax>4</xmax>
+	    <title>GEM Delta Event time in milliseconds</title>
+	    <xlabel>DeltaEvent time (ms)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption> GEM Delta Event time in milliseconds. All triggers.</caption>
+        </TH1F>
+        <TH1F name="DeltaEventTime_Zoom_TH1">
+	    <expression><![CDATA[ gem_delta_event_time ]]> </expression>
+	    <cut><![CDATA[ ]]></cut>
+	    <xbins>160</xbins>
+	    <xmin>0</xmin>
+	    <xmax>1600</xmax>
+	    <title>GEM Delta Event time in 50 ns ticks</title>
+	    <xlabel>DeltaEvent time (50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption> Delta event time as measured by the GEM in system clock ticks with a cut of 1500 ticks. All triggers.</caption>
+        </TH1F>
+        <TH1F name="DeltaWindowOpen_TH1">
+	    <expression><![CDATA[ gem_delta_window_open_time*0.00005 ]]> </expression>
+	    <cut><![CDATA[ ]]></cut>
+	    <xbins>100</xbins>
+	    <xmin>0</xmin>
+	    <xmax>4</xmax>
+	    <title>GEM Delta window open time in milliseconds</title>
+	    <xlabel>DeltaWindowOpen time (ms)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption> GEM Delta window open time in milliseconds. All triggers.</caption>
+        </TH1F>
+        <TH1F name="DeltaWindowOpen_Zoom_TH1">
+	    <expression><![CDATA[ gem_delta_window_open_time ]]> </expression>
+	    <cut><![CDATA[ (gem_delta_window_open_time<1500) ]]></cut>
+	    <xbins>160</xbins>
+	    <xmin>0</xmin>
+	    <xmax>1600</xmax>
+	    <title>GEM Delta window open time in 50 ns ticks</title>
+	    <xlabel>DeltaWindowOpen time (nominally 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption> Delta window open time as measured by the GEM in system clock ticks with a cut of 1500 ticks. All triggers.</caption>
+        </TH1F>
+        <TH1F name="PrescaledDelta_TH1">
+	    <expression><![CDATA[ PrescaledLast ]]> </expression>
+	    <cut><![CDATA[ ]]></cut>
+	    <xbins>31</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>30.5</xmax>
+	    <title>Number of GEM prescaled events between two successive read out events.</title>
+	    <xlabel>Number Gem prescaled events</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Number of GEM prescaled events between two successive read out events. All triggers.</caption>
+        </TH1F>
+    </outputList>
+
+    <outputList group="GEM" name="GEM Trigger coincidences">
+
+        <TH1F name="CondSummaryWord_WithROI_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&1 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a ROI trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a ROI trigger</caption>
+        </TH1F>
+        <TH1F name="CondSummaryWord_WithTKR_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&2 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a TKR trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a TKR trigger</caption>
+        </TH1F>
+        <TH1F name="CondSummaryWord_WithCalLo_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&4 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a Cal-Low trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a Cal-Low trigger</caption>
+        </TH1F>
+        <TH1F name="CondSummaryWord_WithCalHi_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&8 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a Cal-High trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a Cal-High trigger</caption>
+        </TH1F>
+        <TH1F name="CondSummaryWord_WithCNO_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&16 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a CNO trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a CNO trigger</caption>
+        </TH1F>
+        <TH1F name="CondSummaryWord_WithPeriodic_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&32 ]]></cut>
+	    <xbins>65</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>64.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a Periodic trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a Periodic trigger</caption>
+        </TH1F>
+        <TH1F name="CondSummaryWord_WithSolicited_TH1">
+	    <expression><![CDATA[ condsummary ]]></expression>
+	    <cut><![CDATA[ condsummary&64 ]]></cut>
+	    <xbins>129</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>128.5</xmax>
+	    <title>Distribution of CondSummary Word values when there is a Solicited trigger</title>
+	    <xlabel>consummary value</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of CondSummary Word values when there is a Solicited trigger</caption>
+        </TH1F>
+
+    </outputList>
+
+						
+    <outputList group="GEM" name="GEM arrival times" enabled="True">				
+        <TH1F name="CondArrTKRTrigger_TH1">
+	    <expression><![CDATA[ condarrtkr ]]></expression>
+	    <cut><![CDATA[ (condsummary&2) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival TKR triggers</title>
+	    <xlabel>Condition arrival times for TKR triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of Condition arrival times for TKR triggers. All triggers with TKR.</caption>
+        </TH1F>
+        <TH1F name="CondArrCalLoTrigger_TH1">
+	    <expression><![CDATA[ condarrcallo ]]></expression>
+	    <cut><![CDATA[ (condsummary&4) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival Cal-Low triggers</title>
+	    <xlabel>Condition arrival times for Cal-Low triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of Condition arrival times for Cal-Low triggers. All triggers with Cal-Low.</caption>
+        </TH1F>
+        <TH1F name="CondArrCalHiTrigger_TH1">
+	    <expression><![CDATA[ condarrcalhi ]]></expression>
+	    <cut><![CDATA[ (condsummary&8) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival Cal-High triggers</title>
+	    <xlabel>Condition arrival times for Cal-High triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of Condition arrival times for Cal-Hi triggers. All triggers with Cal-Hi.</caption>
+        </TH1F>
+        <TH1F name="CondArrCNOTrigger_TH1">
+	    <expression><![CDATA[ condarrcno ]]></expression>
+	    <cut><![CDATA[ (condsummary&16) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival CNO triggers</title>
+	    <xlabel>Condition arrival times for CNO triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of Condition arrival times for CNO triggers. All triggers with CNO.</caption>
+        </TH1F>
+        <TH1F name="CondArrROITrigger_TH1">
+	    <expression><![CDATA[ condarrroi ]]></expression>
+	    <cut><![CDATA[ (condsummary&1) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival ROI triggers</title>
+	    <xlabel>Condition arrival times for ROI triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Distribution of Condition arrival times for ROI triggers. All triggers with ROI.</caption>
+        </TH1F>
+    </outputList>				
+
+    <outputList group="GEM" name="GEM Trigger alignment to TKR" enabled="True">				
+
+        <TH1F name="CondArrROI_TKROpensWindow_TH1">
+	    <expression><![CDATA[ condarrroi ]]></expression>
+	    <cut><![CDATA[ (condsummary&1) && (condsummary&2) && (condarrtkr==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival ROI triggers when TKR opened the window</title>
+	    <xlabel>Condition arrival times for ROI triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for ROI triggers, when TKR opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalLo_TKROpensWindow_TH1">
+	    <expression><![CDATA[ condarrcallo ]]></expression>
+	    <cut><![CDATA[ (condsummary&4) && (condsummary&2) && (condarrtkr==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of condition arrival Cal-Low triggers when TKR opened the window</title>
+	    <xlabel>Condition arrival times for Cal_Low triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for Cal-Low triggers, when TKR opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalHi_TKROpensWindow_TH1">
+	    <expression><![CDATA[ condarrcalhi ]]></expression>
+	    <cut><![CDATA[ (condsummary&8) && (condsummary&2) && (condarrtkr==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of condition arrival Cal-High triggers when TKR opened the window</title>
+	    <xlabel>Condition arrival times for Cal-High triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for Cal-High triggers, when TKR opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCNO_TKROpensWindow_TH1">
+	    <expression><![CDATA[ condarrcno ]]></expression>
+	    <cut><![CDATA[ (condsummary&16) && (condsummary&2) && (condarrtkr==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of condition arrival CNO triggers when TKR opened the window</title>
+	    <xlabel>Condition arrival times for CNO triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for CNO triggers, when TKR opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+
+    </outputList>				
+    <outputList group="GEM" name="GEM Trigger alignment to Cal-Low" enabled="True">				
+
+        <TH1F name="CondArrROI_CalLoOpensWindow_TH1">
+	    <expression><![CDATA[ condarrroi ]]></expression>
+	    <cut><![CDATA[ (condsummary&1) && (condsummary&4) && (condarrcallo==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival ROI triggers when Cal-Low opened the window</title>
+	    <xlabel>Condition arrival times for ROI triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for ROI triggers, when Cal-Low opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrTKR_CalLoOpensWindow_TH1">
+	    <expression><![CDATA[ condarrtkr ]]></expression>
+	    <cut><![CDATA[ (condsummary&2) && (condsummary&4) && (condarrcallo==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival TKR triggers when Cal-Low opened the window</title>
+	    <xlabel>Condition arrival times for TKR triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for TKR triggers, when Cal-Low opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalHi_CalLoOpensWindow_TH1">
+	    <expression><![CDATA[ condarrcalhi ]]></expression>
+	    <cut><![CDATA[ (condsummary&8) && (condsummary&4) && (condarrcallo==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival Cal-High triggers when Cal-Low opened the window</title>
+	    <xlabel>Condition arrival times for Cal-High triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for Cal-High triggers, when Cal-Low opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCNO_CalLoOpensWindow_TH1">
+	    <expression><![CDATA[ condarrcno ]]></expression>
+	    <cut><![CDATA[ (condsummary&16) && (condsummary&4) && (condarrcallo==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival CNO triggers when Cal-Low opened the window</title>
+	    <xlabel>Condition arrival times for CNO triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for CNO triggers, when Cal-Low opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+    </outputList>				
+    
+    <outputList group="GEM" name="GEM Trigger alignment to Cal-High" enabled="True">				
+
+        <TH1F name="CondArrROI_CalHiOpensWindow_TH1">
+	    <expression><![CDATA[ condarrroi ]]></expression>
+	    <cut><![CDATA[ (condsummary&1) && (condsummary&8) && (condarrcalhi==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival ROI triggers when Cal-High opened the window</title>
+	    <xlabel>Condition arrival times for ROI triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for ROI triggers, when Cal-High opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrTKR_CalHiOpensWindow_TH1">
+	    <expression><![CDATA[ condarrtkr ]]></expression>
+	    <cut><![CDATA[ (condsummary&2) && (condsummary&8) && (condarrcalhi==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival TKR triggers when Cal-High opened the window</title>
+	    <xlabel>Condition arrival times for TKR triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for TKR triggers, when Cal-High opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalLo_CalHiOpensWindow_TH1">
+	    <expression><![CDATA[ condarrcallo ]]></expression>
+	    <cut><![CDATA[ (condsummary&4) && (condsummary&8) && (condarrcalhi==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival Cal-Low triggers when Cal-High opened the window</title>
+	    <xlabel>Condition arrival times for Cal-Low triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for Cal-Low triggers, when Cal-High opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCNO_CalHiOpensWindow_TH1">
+	    <expression><![CDATA[ condarrcno ]]></expression>
+	    <cut><![CDATA[ (condsummary&16) && (condsummary&8) && (condarrcalhi==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival CNO triggers when Cal-High opened the window</title>
+	    <xlabel>Condition arrival times for CNO triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for CNO triggers, when Cal-High opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>	
+    </outputList>				
+
+    <outputList group="GEM" name="GEM Trigger alignment to CNO" enabled="True">				
+
+        <TH1F name="CondArrROI_CNOOpensWindow_TH1">
+	    <expression><![CDATA[ condarrroi ]]></expression>
+	    <cut><![CDATA[ (condsummary&1) && (condsummary&16) && (condarrcno==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival ROI triggers when CNO opened the window</title>
+	    <xlabel>Condition arrival times for ROI triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for ROI triggers, when CNO opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrTKR_CNOOpensWindow_TH1">
+	    <expression><![CDATA[ condarrtkr ]]></expression>
+	    <cut><![CDATA[ (condsummary&2) && (condsummary&16) && (condarrcno==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival TKR triggers when CNO opened the window</title>
+	    <xlabel>Condition arrival times for TKR triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for TKR triggers, when CNO opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalLo_CNOOpensWindow_TH1">
+	    <expression><![CDATA[ condarrcallo ]]></expression>
+	    <cut><![CDATA[ (condsummary&4) && (condsummary&16) && (condarrcno==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival Cal-Low triggers when CNO opened the window</title>
+	    <xlabel>Condition arrival times for Cal-Low triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for Cal-Low triggers, when CNO opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+        <TH1F name="CondArrCalHi_CNOOpensWindow_TH1">
+	    <expression><![CDATA[ condarrcalhi ]]></expression>
+	    <cut><![CDATA[ (condsummary&8) && (condsummary&16) && (condarrcno==0) ]]></cut>
+	    <xbins>41</xbins>
+	    <xmin>-0.5</xmin>
+	    <xmax>40.5</xmax>
+	    <title>Distribution of Condition arrival Cal-High triggers when CNO opened the window</title>
+	    <xlabel>Condition arrival times for Cal-High triggers (nomially 50 ns ticks)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>
+	        Distribution of Condition arrival times for Cal-High triggers, when CNO opened the window.
+	        Periodic and sollicited triggers have NOT been taken out.
+	    </caption>
+        </TH1F>
+	
+    </outputList>				
+
+    
+    <outputList group="GEM" name="GEM trigger vectors" enabled="True">
+        <CUSTOM type="gem_vector_map" name="TkrTrigger_Tower_TH1" enabled="True">
+	    <title>Number of tracker triggers per tower</title>
+	    <xlabel>Tower number</xlabel>
+	    <ylabel>N</ylabel>
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>	
+	    <expression>TkrTriggerTower</expression>
+        </CUSTOM>
+        <CUSTOM type="gem_vector_map" name="CalHiTrigger_Tower_TH1" enabled="True">
+	    <title>Number of Cal HI triggers per tower</title>
+	    <xlabel>Tower number</xlabel>
+	    <ylabel>N</ylabel>
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>	
+	    <expression>CalHiTriggerTower</expression>
+        </CUSTOM>
+        <CUSTOM type="gem_vector_map" name="CalLoTrigger_Tower_TH1" enabled="True">
+	    <title>Number of Cal LO triggers per tower</title>
+	    <xlabel>Tower number</xlabel>
+	    <ylabel>N</ylabel>
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>	
+	    <expression>CalLoTriggerTower</expression>
+        </CUSTOM>	
+        <CUSTOM type="gem_vector_map" name="AcdGemROI_Tower_TH1" enabled="True">
+	    <title>Number of ACD ROI per tower</title>
+             <caption>This bit is set if any of the tile in the ROI fired a veto. This bit is independent of if the Tower bit is set.</caption>
+	    <xlabel>Tower number</xlabel>
+	    <ylabel>N</ylabel>
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>	
+	    <expression>AcdGemROI_Tower</expression>
+        </CUSTOM>
+        <CUSTOM type="AcdGemVeto_AcdTile" name="Acd_GemVeto_AcdTile_TH1" enabled="True">
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>
+	    <title>Number of Acd Gem vetoes by tile</title>
+	    <xlabel>Acd Tile Number (coded in 128 entries)</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>Reminder tiles 15, 31, 47, 63  are large tiles at the bottom of the sides of the ACD.</caption>
+        </CUSTOM>
+        <CUSTOM type="gem_acd_cable_map" name="AcdGemCNO_GARC_TH1" enabled="True">
+	    <expression><![CDATA[ AcdGemCNO_GARC ]]></expression>
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>
+	    <title>Number of Acd CNO by board</title>
+	    <xlabel>Acd GARC Number</xlabel>
+	    <ylabel>N</ylabel>
+	    <caption>This bit is the OR of the CNO signal on a single board. 
+	             Because of the tile to boad mapping, a factor two variation between boards is normal.
+            </caption>
+        </CUSTOM>						
     </outputList>
 								
     <!--
@@ -79,17 +687,44 @@
     </inputList>
 	    
     <outputList group="CAL" name="CAL in electronics space" enabled="True">
-        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_TH2" enabled="True" level="tower">
-	    <title>To be discussed with Eric Grove</title>
-	    <xlabel>CAL column</xlabel>
+        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range0_TH2" enabled="True" level="tower">
+	    <expression>Range0</expression>
+	    <title>Number of hits in each Cal log end for range 0 (LEX8)</title>
+	    <xlabel>CAL column/side</xlabel>
 	    <ylabel>CAL layer</ylabel>
 	    <drawoptions>colz</drawoptions>	    
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>	    
+        </CUSTOM>
+        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range1_TH2" enabled="True" level="tower">
+	    <expression>Range1</expression>
+	    <title>Number of hits in each Cal log end for range 1 (LEX1)</title>
+	    <xlabel>CAL column/side</xlabel>
+	    <ylabel>CAL layer</ylabel>
+	    <drawoptions>colz</drawoptions>	    
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>	    
+        </CUSTOM>
+        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range2_TH2" enabled="True" level="tower">
+	    <expression>Range2</expression>
+	    <title>Number of hits in each Cal log end for range 2 (HEX8)</title>
+	    <xlabel>CAL column/side</xlabel>
+	    <ylabel>CAL layer</ylabel>
+	    <drawoptions>colz</drawoptions>	    
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>	    
+        </CUSTOM>
+        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range3_TH2" enabled="True" level="tower">
+	    <expression>Range3</expression>
+	    <title>Number of hits in each Cal log end for range 3 (HEX1)</title>
+	    <xlabel>CAL column/side</xlabel>
+	    <ylabel>CAL layer</ylabel>
+	    <drawoptions>colz</drawoptions>	    
+	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>	    
         </CUSTOM>
     </outputList>
     
     <outputList group="CAL" name="CAL base" enabled="True">
         <CUSTOM type="CalXHit_NHit_Counter_TowerCalLayer" name="CalXHit_NHit_Counter_TowerCalLayer_TH2" enabled="True">
-	    <title>Number of hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account</title>
+	    <title>Number of hits in a calorimeter layer defined by the coordinates tower,callayer.
+	           Periodic and solicited triggers have NOT been removed</title>
 	    <xlabel>Tower number</xlabel>
 	    <ylabel>Cal-Layer</ylabel>
 	    <drawoptions>colz</drawoptions>
@@ -98,12 +733,14 @@
         </CUSTOM>
 
         <CUSTOM type="ZeroCalXHit_NHit_Counter_TowerCalLayer" name="ZeroCalXHit_NHit_Counter_TowerCalLayer_TH2" enabled="True">
-	    <title>Number of times there is ZERO hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account</title>
+	    <title>Number of times there is ZERO hits in a calorimeter layer defined by the coordinates tower,callayer.
+	           Periodic and solicited triggers have NOT been removed</title>
 	    <xlabel>Tower number</xlabel>
 	    <ylabel>Cal-Layer</ylabel>
 	    <drawoptions>colz</drawoptions>
 	    <!--expression>CalXHit_TowerCalLayerCalColumn</expression-->
 	    <!--exclude>[0]</exclude-->
+	    <caption>All triggers included.</caption>
         </CUSTOM>
 
         <TH1F name="CalX_Total_NHit_TH1" enabled="True" level="lat">
@@ -113,6 +750,8 @@
 	    <xmax>1600.5</xmax>
 	    <xlabel>Number of CalX_Hits</xlabel>
             <expression>CalXHit</expression>
+	    <cut><![CDATA[ ]]></cut>
+	    <caption>All triggers included.</caption>
         </TH1F>
 	
         <TH1F name="CalX_NHit_TH1" enabled="True" level="tower">
@@ -123,6 +762,8 @@
 	    <ylog>True</ylog>
 	    <xlabel>Number of Cal crystals in this tower</xlabel>
             <expression>CalXHit_Tower</expression>
+	    <cut><![CDATA[ ]]></cut>
+	    <caption>All triggers included.</caption>
         </TH1F>
 	
         <TH1F name="CalTower_NHit_TH1" enabled="True" level="lat">
@@ -132,6 +773,8 @@
 	    <xmax>16.5</xmax>
 	    <xlabel>Number of Cal Towers Hit</xlabel>
             <expression>CalTowerCount</expression>
+	    <cut><![CDATA[ ]]></cut>
+	    <caption>All triggers included.</caption>
         </TH1F>
 	
         <!--CUSTOM type="cal_2d_map" name="cal_hitmap" enabled="True">
@@ -192,14 +835,18 @@
 	    <xlabel>Number of strip hits</xlabel>
 	    <ylabel>N</ylabel>
             <expression>TkrHits</expression>
-        </TH1F>		
+	    <cut><![CDATA[ ]]></cut>
+	    <caption>All triggers included.</caption>
+         </TH1F>		
         <CUSTOM type="ZeroTkrHitsCounter_TowerPlane" name="ZeroTkrHitsCounter_TowerPlane_TH2" enabled="True">
 	    <title>Counter of ZERO strip hits vs Tower and Tracker plane</title>
 	    <caption>Number of times there are no strip hits in a Tracker plane</caption>
 	    <xlabel>Tower</xlabel>
 	    <ylabel>Tracker plane</ylabel>
 	    <drawoptions>colz</drawoptions>
-        </CUSTOM>							
+	    <cut><![CDATA[ ]]></cut>
+	    <caption>All triggers included.</caption>
+         </CUSTOM>							
     </outputList>
 		
     <outputList group="TKR" name="TKR in electronics space" enabled="True">
@@ -209,14 +856,25 @@
 	    <xlabel>Tower</xlabel>
 	    <ylabel>Tracker plane</ylabel>
 	    <drawoptions>colz</drawoptions>
-        </CUSTOM>
+	    <cut><![CDATA[ ]]></cut>
+	    <caption>All triggers included.</caption>
+         </CUSTOM>
+        <CUSTOM type="TkrHitsCounter_Plane" name="TkrHitsCounter_Plane_TH1" level="tower" enabled="True">
+	    <title>Overall number of hits vs. TKR plane (one per tower)</title>
+	    <caption>Watch out for spikes (but don't get too excited, most likely it's just a noisy strip) and dips</caption>
+	    <xlabel>Tracker plane</xlabel>
+	    <ylabel>N</ylabel>
+	    <cut><![CDATA[ ]]></cut>
+	    <caption>All triggers included.</caption>
+        </CUSTOM>    
         <CUSTOM type="TkrHitsCounter_PlaneGTFE" name="TkrHitsCounter_PlaneGTFE_TH2" level="tower" enabled="True">
 	    <title>Overall number of hits vs. TKR plane and front-end chip (one per tower)</title>
 	    <caption>Watch out for white spots---front end chips with no hits---if the statistics is enough</caption>
 	    <xlabel>GTFE</xlabel>
 	    <ylabel>Tracker plane</ylabel>
 	    <drawoptions>colz</drawoptions>
-	    <cut><![CDATA[]]></cut>
+	    <cut><![CDATA[ ]]></cut>
+	    <caption>All triggers included.</caption>
         </CUSTOM>
     </outputList>
 		
@@ -229,6 +887,8 @@
 	    <xlabel>Number of strip hits</xlabel>
 	    <ylabel>N</ylabel>
             <expression>TkrHitsTower</expression>
+	    <cut><![CDATA[ ]]></cut>
+	    <caption>All triggers included.</caption>
         </TH1F>				
     </outputList>
 
@@ -236,7 +896,8 @@
         <CUSTOM type="TkrPlanesHit" name="TkrPlanesHit_TH1" level="tower" enabled="True">
 	    <title>Distribution of the number of planes hit in a tower</title>
 	    <xlabel>Layer number</xlabel>
-	    <caption></caption>
+	    <cut><![CDATA[ ]]></cut>
+	    <caption>All triggers included.</caption>
 	    <!-- this tag is useless for this CUSTOM plot since it is dedicated to a specific task<expression></expression> -->
         </CUSTOM>			
     </outputList>				
@@ -286,16 +947,17 @@
 		
     <outputList group="ACD" name="ACD base" enabled="True">
 
-        <TH1F name="AcdChannelsHits" enabled="True" level="lat">
-	    <title>Number of ACD PMT hit per event</title>
-	    <xbins>195</xbins>
-	    <xmin>-0.5</xmin>
-	    <xmax>194.5</xmax>
-	    <xlabel>N</xlabel>
-	    <ylabel>Number of ACD hits</ylabel>
-      <expression>acd_tile_count</expression>
-			<caption>This is the number of PHA values per event</caption>
-        </TH1F>
+    <TH1F name="AcdChannelsHits" enabled="True" level="lat">
+	<title>Number of ACD PMT hit per event</title>
+	<xbins>195</xbins>
+	<xmin>-0.5</xmin>
+	<xmax>194.5</xmax>
+	<xlabel>N</xlabel>
+	<ylabel>Number of ACD hits</ylabel>
+        <expression>acd_tile_count</expression>
+	<cut><![CDATA[ ]]></cut>
+	<caption>This is the number of PHA values per event</caption>
+    </TH1F>
 
     </outputList>
 		
@@ -311,6 +973,19 @@
 	    <xlabel>Crate number (EPU0, EPU1, EPU2, SIU0, SIU1, AUX)</xlabel>
 	    <ylabel>Number of events</ylabel>
             <expression>meta_context_open_crate</expression>
+	    <cut><![CDATA[ ]]></cut>
+	    <caption>All triggers.</caption>
+        </TH1F>
+        <TH1F name="MetaContext_OpenMode_TH1" enabled="True">
+	    <title>LAT Mode</title>
+	    <xbins>8</xbins>
+	    <xmin>0</xmin>
+	    <xmax>8</xmax>
+	    <xlabel>Mode (NORMAL, TOO, GRB0, GRB1, GRB2, SOLAR, CALIBRATION, DIAGNOSTIC)</xlabel>
+	    <ylabel>Number of events</ylabel>
+            <expression>meta_context_open_mode</expression>
+	    <cut><![CDATA[ ]]></cut>
+	    <caption>Expectedto CALIBRATION or DIAGNOSTIC. All triggers.</caption>
         </TH1F>
     </outputList>    
 
