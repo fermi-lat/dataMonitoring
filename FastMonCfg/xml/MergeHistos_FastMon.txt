@@ -54,7 +54,7 @@ CondArrCNO_TKROpensWindow_TH1   Sum
 CondArrROI_CalLoOpensWindow_TH1   Sum
 CondArrTKR_CalLoOpensWindow_TH1   Sum
 CondArrCalHi_CalLoOpensWindow_TH1   Sum
-CondArrCalCNO_CalLoOpensWindow_TH1   Sum
+CondArrCNO_CalLoOpensWindow_TH1   Sum
 CondArrROI_CalHiOpensWindow_TH1   Sum
 CondArrTKR_CalHiOpensWindow_TH1   Sum
 CondArrCalLo_CalHiOpensWindow_TH1   Sum
