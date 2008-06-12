@@ -1,3 +1,8 @@
+*** v1r1p12 ***
+  - Renamed CondArrCalCNO_CalLoOpensWindow_TH1 to CondArrCNO_CalLoOpensWindow_TH1 in xml/config.xml
+* Relevant jira(s): GDQMQ-139
+
+
 *** v1r1p11 ***
  - Fix variable type for meta_LATC_master and evt_data_transfer_id to uint32 in baseConfig
 * Relevant jira(s): GDQMQ-115
