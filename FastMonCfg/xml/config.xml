@@ -140,7 +140,7 @@
     <outputList group="GEM" name="GEM base">
         <TH1F name="CondSummaryWord_TH1">
 	    <expression><![CDATA[ condsummary ]]></expression>
-	    <cut><![CDATA[ ]]></cut>
+	    <cut><![CDATA[ !(condsummary&64) ]]></cut>
 	    <xbins>65</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>64.5</xmax>
@@ -299,9 +299,9 @@
         <TH1F name="CondSummaryWord_WithSolicited_TH1">
 	    <expression><![CDATA[ condsummary ]]></expression>
 	    <cut><![CDATA[ condsummary&64 ]]></cut>
-	    <xbins>65</xbins>
+	    <xbins>129</xbins>
 	    <xmin>-0.5</xmin>
-	    <xmax>64.5</xmax>
+	    <xmax>128.5</xmax>
 	    <title>Distribution of CondSummary Word values when there is a Solicited trigger</title>
 	    <xlabel>consummary value</xlabel>
 	    <ylabel>N</ylabel>
@@ -724,7 +724,8 @@
     
     <outputList group="CAL" name="CAL base" enabled="True">
         <CUSTOM type="CalXHit_NHit_Counter_TowerCalLayer" name="CalXHit_NHit_Counter_TowerCalLayer_TH2" enabled="True">
-	    <title>Number of hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account</title>
+	    <title>Number of hits in a calorimeter layer defined by the coordinates tower,callayer.
+	           Periodic triggers are NOT taken into account</title>
 	    <xlabel>Tower number</xlabel>
 	    <ylabel>Cal-Layer</ylabel>
 	    <drawoptions>colz</drawoptions>
@@ -734,7 +735,8 @@
         </CUSTOM>
 
         <CUSTOM type="ZeroCalXHit_NHit_Counter_TowerCalLayer" name="ZeroCalXHit_NHit_Counter_TowerCalLayer_TH2" enabled="True">
-	    <title>Number of times there is ZERO hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account</title>
+	    <title>Number of times there is ZERO hits in a calorimeter layer defined by the coordinates tower,callayer.
+	           Periodic triggers are NOT taken into account</title>
 	    <xlabel>Tower number</xlabel>
 	    <ylabel>Cal-Layer</ylabel>
 	    <drawoptions>colz</drawoptions>
