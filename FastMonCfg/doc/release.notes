@@ -1,3 +1,19 @@
+*** v1r1p12 ***
+  - Renamed CondArrCalCNO_CalLoOpensWindow_TH1 to CondArrCNO_CalLoOpensWindow_TH1 in xml/config.xml
+* Relevant jira(s): GDQMQ-139
+
+
+*** v1r1p11 ***
+ - Fix variable type for meta_LATC_master and evt_data_transfer_id to uint32 in baseConfig
+* Relevant jira(s): GDQMQ-115
+
+
+*** v1r1p10 ***
+ - New quantity : evt_data_transfer_id that contains the data transfer id,
+   retrieved from the evt header, via LSEReader.runId()
+* Relevant jira(s): GDQMQ-115
+
+
 *** v1r1p9 ***
  - Bug fix : histograms added in the previous tag are also now in the
    MergeHisto text file.

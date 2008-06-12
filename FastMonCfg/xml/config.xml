@@ -473,7 +473,7 @@
 	        Periodic and sollicited triggers have been taken out.
 	    </caption>
         </TH1F>
-        <TH1F name="CondArrCalCNO_CalLoOpensWindow_TH1">
+        <TH1F name="CondArrCNO_CalLoOpensWindow_TH1">
 	    <expression><![CDATA[ condarrcno ]]></expression>
 	    <cut><![CDATA[ (condsummary&16) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32) && !(condsummary&64) ]]></cut>
 	    <xbins>41</xbins>
