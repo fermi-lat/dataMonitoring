@@ -57,14 +57,14 @@
       <name> FastMon_Evt_DataTransferId </name>
       <formula><![CDATA[ FastMon_evt_data_transfer_id ]]></formula>
       <cut><![CDATA[ ]]></cut>
-      <type>outputnumber</type>
+      <type>valuechange[0]</type>
       <description> Last data transfer id, within the time bin </description>
     </object>
     <object>
       <name> FastMon_MetaContext_LATC_Master</name>
       <formula><![CDATA[ FastMon_meta_LATC_master ]]></formula>
       <cut><![CDATA[ ]]></cut>
-      <type>outputnumber</type>
+      <type>valuechange[0]</type>
       <description> Last value of the LATC Master key, within the time bin </description>
     </object>
     <object>
