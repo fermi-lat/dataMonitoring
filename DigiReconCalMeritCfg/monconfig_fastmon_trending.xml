@@ -58,21 +58,21 @@
       <formula><![CDATA[ FastMon_evt_data_transfer_id ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <type>valuechange[0]</type>
-      <description> Last data transfer id, within the time bin </description>
+      <description> Changes in data transfer id, within the time bin </description>
     </object>
     <object>
       <name> FastMon_MetaContext_LATC_Master</name>
       <formula><![CDATA[ FastMon_meta_LATC_master ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <type>valuechange[0]</type>
-      <description> Last value of the LATC Master key, within the time bin </description>
+      <description> Changes in the LATC Master key, within the time bin </description>
     </object>
     <object>
       <name> FastMon_MetaContext_OpenMode </name>
       <formula><![CDATA[ FastMon_meta_context_open_mode ]]></formula>
       <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the LAT mode as read from the datagram open mode </description>
+      <type> valuechange[0] </type>
+      <description> Changes of the LAT mode as read from the datagram open mode </description>
     </object>
     <object>
       <name> FastMon_MetaContext_OpenMode_Changes </name>
