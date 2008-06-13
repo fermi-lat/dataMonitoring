@@ -1,4 +1,10 @@
-v1r1p24  2008/06/10   (DEV)
+
+v1r1p25  2008/06/12  (DEV)
+---------------------------
+Change also (Fast mon) quantities FastMon_Evt_DataTransferId and 
+FastMon_MetaContext_LATC_Master froim outputnumber to valuechange[0]
+
+v1r1p24  2008/06/12   (DEV)
 ---------------------------
 Change quantity LastDataTransferId from type outputnumber to valuechange[0].
 This addresses jira GDQMQ-146.
