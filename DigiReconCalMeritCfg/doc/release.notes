@@ -1,3 +1,8 @@
+v1r1p24  2008/06/10   (DEV)
+---------------------------
+Change quantity LastDataTransferId from type outputnumber to valuechange[0].
+This addresses jira GDQMQ-146.
+
 v1r1p23  2008/06/10   (DEV)
 ---------------------------
 Added Normalized rates for FastMon GPS_OUTofLock.
