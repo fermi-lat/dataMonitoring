@@ -94,8 +94,8 @@
       <name> LastDataTransferId </name>
       <formula><![CDATA[ DataTransferId ]]></formula>
       <cut><![CDATA[ ]]></cut>
-      <type> outputnumber </type>
-      <description> Last data transfer id (within the time bin).   </description>
+      <type> valuechange[0] </type>
+      <description> Data transfer id within the time bin. The first, last and the number of chnages are stored for each time bin.   </description>
     </object>
 
      <object>
