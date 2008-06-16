@@ -765,6 +765,15 @@ TransientEvtsBelowZenithTheta60
       <description> Mean value (per evt) of AcdActDistTileEnergy</description>
     </object>
 
+
+    <object>
+      <name> AcdTkr1ActDistTileEnergy </name>
+      <formula><![CDATA[ AcdTkr1ActDistTileEnergy ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value (per evt) of AcdTkr1ActDistTileEnergy </description>
+    </object>
+
 <!-- Distances will not be trended
              <object>
       <name> AcdVtxActiveDist </name>
@@ -791,13 +800,7 @@ TransientEvtsBelowZenithTheta60
       <description> Mean value (per evt) of AcdTkr1ActiveDist</description>
     </object>
 
-    <object>
-      <name> AcdTkr1ActDistTileEnergy </name>
-      <formula><![CDATA[ AcdTkr1ActDistTileEnergy ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type> mean </type>
-      <description> Mean value (per evt) of AcdTkr1ActDistTileEnergy </description>
-    </object>
+    
 
     <object>
       <name> AcdRibbonActDist </name>
