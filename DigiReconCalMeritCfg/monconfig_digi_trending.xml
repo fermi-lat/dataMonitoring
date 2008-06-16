@@ -711,6 +711,160 @@
     </object>
 
    
+     <object>
+      <name> UnPrescaled_CornerTower_TkrTrigger </name>
+      <formula><![CDATA[ (TkrTriggerTower[0] || TkrTriggerTower[3] || TkrTriggerTower[12] || TkrTriggerTower[15])*DGNGemPrescale ]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of TKR Triggers occurring in the CORNER towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> UnPrescaled_CenterTower_TkrTrigger </name>
+      <formula><![CDATA[ (TkrTriggerTower[5] || TkrTriggerTower[6] || TkrTriggerTower[9] || TkrTriggerTower[10])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of TKR Triggers occurring in the CENTER towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> UnPrescaled_PlusXTower_TkrTrigger </name>
+      <formula><![CDATA[ (TkrTriggerTower[3] || TkrTriggerTower[7] || TkrTriggerTower[11] || TkrTriggerTower[15])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of TKR Triggers occurring in the PlusX towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> UnPrescaled_MinusXTower_TkrTrigger </name>
+      <formula><![CDATA[ (TkrTriggerTower[0] || TkrTriggerTower[4] || TkrTriggerTower[8] || TkrTriggerTower[12])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of TKR Triggers occurring in the MinusX towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> UnPrescaled_PlusYTower_TkrTrigger </name>
+      <formula><![CDATA[ (TkrTriggerTower[12] || TkrTriggerTower[13] || TkrTriggerTower[14] || TkrTriggerTower[15])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of TKR Triggers occurring in the PlusY towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> UnPrescaled_MinusYTower_TkrTrigger </name>
+      <formula><![CDATA[ (TkrTriggerTower[0] || TkrTriggerTower[1] || TkrTriggerTower[2] || TkrTriggerTower[3])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of TKR Triggers occurring in the MinusY towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> UnPrescaled_CornerTower_CalLoTrigger </name>
+      <formula><![CDATA[ (CalLoTriggerTower[0] || CalLoTriggerTower[3] || CalLoTriggerTower[12] || CalLoTriggerTower[15])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of CAL Lo Triggers occurring in the CORNER towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> UnPrescaled_CenterTower_CalLoTrigger </name>
+      <formula><![CDATA[ (CalLoTriggerTower[5] || CalLoTriggerTower[6] || CalLoTriggerTower[9] || CalLoTriggerTower[10])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of CAL Lo Triggers occurring in the CENTER towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> UnPrescaled_PlusXTower_CalLoTrigger </name>
+      <formula><![CDATA[ (CalLoTriggerTower[3] || CalLoTriggerTower[7] || CalLoTriggerTower[11] || CalLoTriggerTower[15])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of CAL Lo Triggers occurring in the PlusX towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> UnPrescaled_MinusXTower_CalLoTrigger </name>
+      <formula><![CDATA[ (CalLoTriggerTower[0] || CalLoTriggerTower[4] || CalLoTriggerTower[8] || CalLoTriggerTower[12])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of CAL Lo Triggers occurring in the MinusX towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> UnPrescaled_PlusYTower_CalLoTrigger </name>
+      <formula><![CDATA[ (CalLoTriggerTower[12] || CalLoTriggerTower[13] || CalLoTriggerTower[14] || CalLoTriggerTower[15])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of CAL Lo Triggers occurring in the PlusY towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> UnPrescaled_MinusYTower_CalLoTrigger </name>
+      <formula><![CDATA[ (CalLoTriggerTower[0] || CalLoTriggerTower[1] || CalLoTriggerTower[2] || CalLoTriggerTower[3])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of CAL Lo Triggers occurring in the MinusY towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+
+    <object>
+      <name> UnPrescaled_CornerTower_CalHiTrigger </name>
+      <formula><![CDATA[ (CalHiTriggerTower[0] || CalHiTriggerTower[3] || CalHiTriggerTower[12] || CalHiTriggerTower[15])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of CAL Hi Triggers occurring in the CORNER towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> UnPrescaled_CenterTower_CalHiTrigger </name>
+      <formula><![CDATA[ (CalHiTriggerTower[5] || CalHiTriggerTower[6] || CalHiTriggerTower[9] || CalHiTriggerTower[10])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of CAL Hi Triggers occurring in the CENTER towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> UnPrescaled_PlusXTower_CalHiTrigger </name>
+      <formula><![CDATA[ (CalHiTriggerTower[3] || CalHiTriggerTower[7] || CalHiTriggerTower[11] || CalHiTriggerTower[15])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of CAL Hi Triggers occurring in the PlusX towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> UnPrescaled_MinusXTower_CalHiTrigger </name>
+      <formula><![CDATA[ (CalHiTriggerTower[0] || CalHiTriggerTower[4] || CalHiTriggerTower[8] || CalHiTriggerTower[12])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of CAL Hi Triggers occurring in the MinusX towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+
+    <object>
+      <name> UnPrescaled_PlusYTower_CalHiTrigger </name>
+      <formula><![CDATA[ (CalHiTriggerTower[12] || CalHiTriggerTower[13] || CalHiTriggerTower[14] || CalHiTriggerTower[15])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of CAL Hi Triggers occurring in the PlusY towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+    <object>
+      <name> UnPrescaled_MinusYTower_CalHiTrigger </name>
+      <formula><![CDATA[ (CalHiTriggerTower[0] || CalHiTriggerTower[1] || CalHiTriggerTower[2] || CalHiTriggerTower[3])*DGNGemPrescale]]></formula>
+      <cut><![CDATA[ !(condsummary&32) && FswFilters[3]>0]]></cut>
+      <type> rate </type>
+      <description> Unprescaled and unbiased (DGN filter set) rate of CAL Hi Triggers occurring in the MinusY towers. Periodic triggers are not taken into account. </description>
+    </object>
+
+   
     <!-- Rate of triggers using the Real Flight Sowftware Onboard trigger bits -->
 
      <object>
@@ -828,6 +982,49 @@
       <type> rate </type>
       <description> Rate of Trigger Engines (DigiEvent->getL1T().getGemEngine()) passing the DGN Flight Software onboard filter</description>
     </object>
+
+     <object>
+      <name> UnPrescaled_FswDGN_AND_Trigger_CALLO </name>
+      <formula><![CDATA[ DGNGemPrescale ]]></formula>
+      <cut><![CDATA[FswFilters[3]>0 && condsummary&4  ]]></cut>
+      <type> rate </type>
+      <description> UnPrescaled CAL-LO trigger rate passing the DGN Flight Software onboard filter</description>
+    </object>
+
+
+     <object>
+      <name> UnPrescaled_FswDGN_AND_Trigger_CALHI </name>
+      <formula><![CDATA[ DGNGemPrescale ]]></formula>
+      <cut><![CDATA[FswFilters[3]>0 && condsummary&8  ]]></cut>
+      <type> rate </type>
+      <description> UnPrescaled CAL-HI trigger rate passing the DGN Flight Software onboard filter</description>
+    </object>
+
+      <object>
+      <name> UnPrescaled_FswDGN_AND_Trigger_CNO </name>
+      <formula><![CDATA[ DGNGemPrescale ]]></formula>
+      <cut><![CDATA[FswFilters[3]>0 && condsummary&16  ]]></cut>
+      <type> rate </type>
+      <description> UnPrescaled CNO trigger rate passing the DGN Flight Software onboard filter</description>
+    </object>
+
+       <object>
+      <name> UnPrescaled_FswDGN_AND_Trigger_TKR </name>
+      <formula><![CDATA[ DGNGemPrescale ]]></formula>
+      <cut><![CDATA[FswFilters[3]>0 && condsummary&2]]></cut>
+      <type> rate </type>
+      <description> UnPrescaled TKR trigger rate passing the DGN Flight Software onboard filter</description>
+    </object>
+
+       <object>
+      <name> UnPrescaled_FswDGN_AND_Trigger_ROI </name>
+      <formula><![CDATA[ DGNGemPrescale ]]></formula>
+      <cut><![CDATA[FswFilters[3]>0 && condsummary&1]]></cut>
+      <type> rate </type>
+      <description> UnPrescaled ROI trigger rate passing the DGN Flight Software onboard filter</description>
+    </object>
+
+	
 
 
 	
