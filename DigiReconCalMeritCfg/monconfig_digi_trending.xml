@@ -1,5 +1,4 @@
 <monitoring>
-
   <inputList name="top"> 
 
     <!-- TEST variables -->
@@ -472,9 +471,9 @@
        <object>
       <name> UnPrescaled_TriggerEngine[16] </name>
       <formula><![CDATA[ foreachengine: TriggerEngine[engine]*DGNGemPrescale ]]></formula>
-      <cut><![CDATA[ ]]></cut>
+      <cut><![CDATA[FswFilters[3]>0 ]]></cut>
       <type> rate </type>
-      <description> UnPrescaled Rate of Trigger Engines; that is the rate of trigger engine (DigiEvent->getL1T().getGemEngine()) corrected for the prescaled (DGNxGEM) factor </description>
+      <description> UnPrescaled Rate of Trigger Engines surviving the DGN filter; that is the rate of trigger engine (DigiEvent->getL1T().getGemEngine()) surviving the Fsw DGN filter and corrected for the prescaled (DGNxGEM) factor </description>
     </object>
       
        <object>
