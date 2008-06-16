@@ -1,3 +1,8 @@
+v1r1p28  2008/06/16   (DEV)
+-----------------------------
+added quantity AcdTkr1ActDistTileEnergy to monconfig_merit_trending.xml. 
+This addresses Jira GDQMQ-154.
+
 v1r1p27  2008/06/15   (DEV)
 -----------------------------
 Add the cut Fsw DGN filter to the calculation of the UnPrescaled Trigger Engines. 
