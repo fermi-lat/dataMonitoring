@@ -1,3 +1,8 @@
+v1r1p29  2008/06/16   (DEV)
+-----------------------------
+Add some unprescaled qunatities: jira GDQMQ-155.
+
+
 v1r1p28  2008/06/16   (DEV)
 -----------------------------
 added quantity AcdTkr1ActDistTileEnergy to monconfig_merit_trending.xml. 
