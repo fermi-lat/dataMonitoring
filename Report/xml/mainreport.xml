@@ -58,14 +58,19 @@
     <panel name="CALHI_Twr_Unbiased_rate" enabled="True"/>
   </page>
 
-  <page enabled="False">
+  <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
-    <panel name="TKR_and_CAL_Temperatures" enabled="True"/>
+    <panel name="tkr-calTemp" enabled="True"/>
   </page>
 
-  <page enabled="False">
+  <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
-    <panel name="ACD_Temperatures" enabled="True"/>
+    <panel name="acdTemp" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="e410evtRatePanel" enabled="True"/>
   </page>
 
 </report>
