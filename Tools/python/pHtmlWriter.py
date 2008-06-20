@@ -73,6 +73,9 @@ class pHtmlWriter(pAsciiWriter):
         self.openBody(False)
         self.newline()
         self.openDiv({'class': 'pageBody'})
+        self.openTag('p')
+        self.openTag('h1', {'class': 'header'}, title, True)
+        self.closeTag()
 
     def closePage(self):
         self.closeTags()
@@ -123,4 +126,10 @@ class pHtmlWriter(pAsciiWriter):
         self.switchLineType()
 
     def addParagraph(self, text):
-        pass
+        self.newline()
+        self.openTag('p')
+        text = text.strip('\n')
+        for line in text.split('\n'):
+            self.writeIndented('%s\n' % line)
+        self.closeTag()
+        self.newline()

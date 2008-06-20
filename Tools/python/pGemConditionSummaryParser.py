@@ -3,6 +3,12 @@ from pHtmlWriter import *
 
 
 BITS_LIST = ['ROI', 'TKR', 'CAL_LO', 'CAL_HI', 'CNO', 'PERIODIC']
+MAIN_TEXT =\
+"""
+The following table maps the (decimal) values of the GEMcondition
+summary register to the actual physical content in terms of trigger
+primitives.
+"""
 
 
 class pGemConditionSummaryParser(pHtmlWriter):
@@ -18,6 +24,7 @@ class pGemConditionSummaryParser(pHtmlWriter):
 
     def writeTable(self, outputFilePath):
         self.openPage(outputFilePath, 'GEM Condition Summary')
+        self.addParagraph(MAIN_TEXT)
         self.openTable(['Condition summary', 'Mapping to primitives'])
         for i in range(128):
             self.writeTableLine([i, self.getMapping(i)])
