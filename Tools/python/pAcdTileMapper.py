@@ -9,11 +9,11 @@ from pHtmlWriter import *
 MAIN_TEXT =\
 """
 The following table maps the tile/ribbon numbers (0--127, as encoded in all the
-data monitoring application plots) to the actual type and active area.</br>
+data monitoring application plots) to the actual type and active area.<br/>
 
 The numbers 89--95, 104--127, though appearing in the data monitoring plots,
 are not mapped to any actual tile or ribbon and are there essentially for
-convenience and/or historical reasons.</br>
+convenience and/or historical reasons.<br/>
 
 Disclaimer: the numbers are indicative and come with absolutely no warranty.
 We do not assume any responsibility if they screw up your analisys. 
