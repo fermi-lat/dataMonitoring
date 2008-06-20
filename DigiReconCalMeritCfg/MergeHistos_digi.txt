@@ -62,6 +62,8 @@
        Delta_CCSDSTime_EvtTime_Epu1_TH1  Sum
        DeltaEvtID_Epu0_TH1  Sum
        DeltaEvtID_Epu1_TH1  Sum
+       AcdPmt_OverThreshold_Asymmetry_AcdTile_TH1  Sum
+       AcdPmt_Veto_Asymmetry_AcdTile_TH1  Sum
        Acd_GemVeto_AcdTile_TH1  Sum
        AcdGemROI_Tower_TH1  Sum
        AcdGemCNO_GARC_TH1  Sum

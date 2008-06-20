@@ -1632,6 +1632,25 @@
 	<description>Vector[AcdTile] reporting the rate of at least one PMT being above threshold. </description>
       </object>
 
+
+       <object>
+	 <name> AcdPmt_OverThreshold_Asymmetry_AcdTile[128] </name>
+	<formula><![CDATA[foreachacdtile: Rate_AnyAcdPmt_OverThreshold_AcdTile[acdtile] > 0 ? (Rate_AcdPmtA_OverThreshold_AcdTile[acdtile]-Rate_AcdPmtB_OverThreshold_AcdTile[acdtile])/Rate_AnyAcdPmt_OverThreshold_AcdTile[acdtile] : 0.0]]></formula>
+	<cut><![CDATA[ ]]></cut>
+	<source>output</source>
+	<type> outputfloat </type>
+	<description>Vector[AcdTile] reporting the A-B PMT over threshold asymmetry. The asymmetry is defined as A-B/(A OR B). </description>
+      </object>
+
+       <object>
+	 <name> AcdPmt_OverThreshold_Asymmetry_AcdTile_err[128] </name>
+	<formula><![CDATA[foreachacdtile: Rate_AnyAcdPmt_OverThreshold_AcdTile[acdtile] > 0 && (Rate_AcdPmtA_OverThreshold_AcdTile[acdtile]-Rate_AcdPmtB_OverThreshold_AcdTile[acdtile])!=0 ? TMath::Abs((Rate_AcdPmtA_OverThreshold_AcdTile[acdtile]-Rate_AcdPmtB_OverThreshold_AcdTile[acdtile])/Rate_AnyAcdPmt_OverThreshold_AcdTile[acdtile])*TMath::Sqrt(pow(TMath::Sqrt(pow(Rate_AcdPmtA_OverThreshold_AcdTile_err[acdtile],2)+pow(Rate_AcdPmtB_OverThreshold_AcdTile_err[acdtile],2))/(Rate_AcdPmtA_OverThreshold_AcdTile[acdtile]-Rate_AcdPmtB_OverThreshold_AcdTile[acdtile]),2)+pow(Rate_AnyAcdPmt_OverThreshold_AcdTile_err[acdtile]/Rate_AnyAcdPmt_OverThreshold_AcdTile[acdtile],2)) : 0.0 ]]></formula>
+	<cut><![CDATA[ ]]></cut>
+	<source>output</source>
+	<type> outputfloat </type>
+	<description>Vector[AcdTile] reporting the error in quantity A-B PMT over threshold asymmetry (AcdPmt_OverThreshold_Asymmetry_AcdTile).  </description>
+      </object>
+
         
         <object>
 	<name> AcdVetoA_AcdTile[128]  </name>
@@ -1667,6 +1686,26 @@
 	<description> Vector[AcdTile] reporting the rate of ACD Vetos (produced by one or by the two PMTs).  </description>
       </object>
    
+	<object>
+	 <name> AcdPmt_Veto_Asymmetry_AcdTile[128] </name>
+	<formula><![CDATA[foreachacdtile: Rate_AnyAcdVeto_AcdTile[acdtile] > 0 ? (Rate_AcdVetoA_AcdTile[acdtile]-Rate_AcdVetoB_AcdTile[acdtile])/Rate_AnyAcdVeto_AcdTile[acdtile] : 0.0]]></formula>
+	<cut><![CDATA[ ]]></cut>
+	<source>output</source>
+	<type> outputfloat </type>
+	<description>Vector[AcdTile] reporting the A-B PMT VETO asymmetry. The asymmetry is defined as A-B/(A OR B). </description>
+      </object>
+
+       <object>
+	 <name> AcdPmt_Veto_Asymmetry_AcdTile_err[128] </name>
+	<formula><![CDATA[foreachacdtile: Rate_AnyAcdVeto_AcdTile[acdtile] > 0 && (Rate_AcdVetoA_AcdTile[acdtile]-Rate_AcdVetoB_AcdTile[acdtile])!=0 ? TMath::Abs((Rate_AcdVetoA_AcdTile[acdtile]-Rate_AcdVetoB_AcdTile[acdtile])/Rate_AnyAcdVeto_AcdTile[acdtile])*TMath::Sqrt(pow(TMath::Sqrt(pow(Rate_AcdVetoA_AcdTile_err[acdtile],2)+pow(Rate_AcdVetoB_AcdTile_err[acdtile],2))/(Rate_AcdVetoA_AcdTile[acdtile]-Rate_AcdVetoB_AcdTile[acdtile]),2)+pow(Rate_AnyAcdVeto_AcdTile_err[acdtile]/Rate_AnyAcdVeto_AcdTile[acdtile],2)) : 0.0 ]]></formula>
+	<cut><![CDATA[ ]]></cut>
+	<source>output</source>
+	<type> outputfloat </type>
+	<description>Vector[AcdTile] reporting the error in quantity A-B PMT VETO asymmetry (AcdPmt_OverThreshold_Asymmetry_AcdTile).  </description>
+      </object>
+
+
+
 	<object>
 	<name>  AcdPha_PmtA_AcdTile[128] </name>
 	<formula><![CDATA[AcdPha_PmtIdPmtRangeAcdTile[0][0] ]]></formula>
