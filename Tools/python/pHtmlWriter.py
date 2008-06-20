@@ -133,3 +133,20 @@ class pHtmlWriter(pAsciiWriter):
             self.writeIndented('%s\n' % line)
         self.closeTag()
         self.newline()
+
+    def getEntries(self, line, separator):
+        entries = line.strip('\n').split(separator)
+        for entry in entries:
+            if entry in ['\t'] or entry.replace('\t', ' ').isspace():
+                entries.remove(entry)
+        for (i, entry) in enumerate(entries):
+            entries[i] = entry.strip()
+        while '' in entries:
+            entries.remove('')
+        return entries
+        
+    def writeTableFromFile(self, inputFilePath, separator = '\t'):
+        lines = file(inputFilePath).readlines()
+        self.openTable(self.getEntries(lines[0], separator))
+        for line in lines[1:]:
+            self.writeTableLine(self.getEntries(line, separator))
