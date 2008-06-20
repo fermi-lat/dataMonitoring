@@ -104,23 +104,23 @@
 
       <object>
       <name> ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile[128] </name>
-      <formula><![CDATA[foreachacdtile: (AcdVetoA_AcdTile[acdtile] >0 && AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0][acdtile]<1.1)? AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0][acdtile] : -1 ]]></formula>
+      <formula><![CDATA[foreachacdtile: (AcdVetoA_AcdTile[acdtile] >0 && AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0][acdtile]<2.5)? AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0][acdtile] : -1 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
       <type> histogram-1d[330,0.0,3.30,-1] </type>
       <titledesc>  Angle corrected Mip values for PMT A for extrapolated acd tile (zoom) </titledesc>
       <axisdesc> [Mip value (angle corrected), N] </axisdesc>
-      <description> Distribution of Mip values corrected for incoming angle for PMT A from the extrapolated acd tile index in the name suffix (range [0,127]). Distribution is truncated at 3.3 Mip. The peak should be located at about 1 Mip. Only events with Veto from PMT A from this tile are considered.  </description>
+      <description> Distribution of Mip values corrected for incoming angle for PMT A from the extrapolated acd tile index in the name suffix (range [0,127]). Distribution is truncated at 2.5 Mip. The peak should be located at about 1 Mip. Only events with Veto from PMT A from this tile are considered.  </description>
     </object>
 
 
        <object>
       <name> ReconAcdPhaMipsCorrectedAngle_PMTB_Zoom_TH1_AcdTile[128] </name>
-      <formula><![CDATA[foreachacdtile: (AcdVetoB_AcdTile[acdtile] >0 && AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1][acdtile]<1.1)? AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1][acdtile] : -1 ]]></formula>
+      <formula><![CDATA[foreachacdtile: (AcdVetoB_AcdTile[acdtile] >0 && AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1][acdtile]<2.5)? AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1][acdtile] : -1 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
       <type> histogram-1d[330,0.0,3.30,-1] </type>
       <titledesc>  Angle corrected Mip values for PMT B for extrapolated acd tile (zoom) </titledesc>
       <axisdesc> [Mip value (angle corrected), N] </axisdesc>
-      <description> Distribution of Mip values corrected for incoming angle for PMT B from the extrapolated acd tile index in the name suffix (range [0,127]). Distribution is truncated at 3.3 Mip. The peak should be located at about 1 Mip. Only events with Veto from PMT B from this tile are considered.  </description>
+      <description> Distribution of Mip values corrected for incoming angle for PMT B from the extrapolated acd tile index in the name suffix (range [0,127]). Distribution is truncated at 2.5 Mip. The peak should be located at about 1 Mip. Only events with Veto from PMT B from this tile are considered.  </description>
     </object>
 
 
