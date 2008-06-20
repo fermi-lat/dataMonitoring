@@ -38,24 +38,24 @@
     <panel name="e815evtRatePanel" enabled="True"/>
   </page>
 
-  <page enabled="False">
+  <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
-    <panel name="Unbiased_trigger_rate" enabled="True"/>
+    <panel name="UnbTrPanel" enabled="True"/>
   </page>
 
-  <page enabled="False">
+  <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
-    <panel name="TKR_Twr_Unbiased_rate" enabled="True"/>
+    <panel name="TkrUnbPanel" enabled="True"/>
   </page>
 
-  <page enabled="False">
+  <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
-    <panel name="CALLO_Twr_Unbiased_rate" enabled="True"/>
+    <panel name="CalLoUnbPanel" enabled="True"/>
   </page>
 
-  <page enabled="False">
+  <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
-    <panel name="CALHI_Twr_Unbiased_rate" enabled="True"/>
+    <panel name="CalHiUnbPanel" enabled="True"/>
   </page>
 
   <page enabled="True">
