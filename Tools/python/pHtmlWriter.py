@@ -135,7 +135,7 @@ class pHtmlWriter(pAsciiWriter):
         self.newline()
 
     def getEntries(self, line, separator):
-        entries = line.strip('\n').split(separator)
+        entries = line.strip('\n').replace('  ', '\t').split(separator)
         for entry in entries:
             if entry in ['\t'] or entry.replace('\t', ' ').isspace():
                 entries.remove(entry)
@@ -147,6 +147,11 @@ class pHtmlWriter(pAsciiWriter):
         
     def writeTableFromFile(self, inputFilePath, separator = '\t'):
         lines = file(inputFilePath).readlines()
-        self.openTable(self.getEntries(lines[0], separator))
+        headerEntries = self.getEntries(lines[0], separator)
+        numColumns = len(headerEntries)
+        self.openTable(headerEntries)
         for line in lines[1:]:
-            self.writeTableLine(self.getEntries(line, separator))
+            entries = self.getEntries(line, separator)
+            if len(entries) != numColumns:
+                logging.warning('Something wrong with line:\n%s.' % entries)
+            self.writeTableLine(entries)
