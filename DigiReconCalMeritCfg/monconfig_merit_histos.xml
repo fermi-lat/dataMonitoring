@@ -31,9 +31,7 @@
     <object>AcdTotalEnergy </object>
     <object>AcdActDistTileEnergy </object>
 
-    <object>AcdVtxActiveDist</object>
-
-    
+        
     <!-- Tracker -->
 
      <object>TkrTwrEdge </object>
@@ -714,15 +712,7 @@
       <description> Distribution of AcdRibbonActDist  values. </description>
     </object>
 
-     <object>
-      <name> AcdVtxActiveDist_TH1 </name>
-      <formula><![CDATA[ AcdVtxActiveDist ]]></formula>
-      <cut><![CDATA[ AcdVtxActiveDist != (-2000) ]]></cut>
-      <type> histogram-1d[401,-2005,2005] </type>
-      <titledesc> AcdVtxActiveDist </titledesc>
-      <axisdesc> [AcdVtxActiveDist(mm), N] </axisdesc>
-      <description> Distribution of AcdVtxActiveDist  values. </description>
-    </object>
+  
 
     
  

@@ -31,9 +31,7 @@ TransientEvtsBelowZenithTheta60
     <object>AcdTotalEnergy </object>
     <object>AcdActDistTileEnergy </object>
 
-    <object>AcdVtxActiveDist</object>
-
-
+    
     
     <!-- Tracker -->
 
