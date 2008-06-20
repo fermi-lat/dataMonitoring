@@ -1,3 +1,22 @@
+v1r1p32  2008/06/20   (DEV)
+-----------------------------
+Definition of quantities:
+
+trending:monconfig_digi_trending.xml
+
+OutF_AcdPmt_OverThreshold_Asymmetry_AcdTile[128]
+OutF_AcdPmt_OverThreshold_Asymmetry_AcdTile_err[128]
+OutF_AcdPmt_Veto_Asymmetry_AcdTile[128]
+OutF_AcdPmt_Veto_Asymmetry_AcdTile_err[128]
+
+histos: monconfig_digi_histos.xml
+
+AcdPmt_OverThreshold_Asymetry_AcdTile_TH1 
+AcdPmt_Veto_Asymetry_AcdTile_TH1
+
+This addresses Jira GDQMQ-163.
+
+
 
 v1r1p31  2008/06/19   (DEV)
 -----------------------------
