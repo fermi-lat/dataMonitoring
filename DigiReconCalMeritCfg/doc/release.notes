@@ -1,4 +1,9 @@
 
+v1r1p31  2008/06/19   (DEV)
+-----------------------------
+Remove quantity AcdVtxActiveDist. This addresses Jira GDQMQ-161.
+
+
 v1r1p30  2008/06/19   (DEV)
 -----------------------------
 
