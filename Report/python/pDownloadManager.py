@@ -28,7 +28,7 @@ class pDownloadManager:
         command += '--keep-session-cookies -P%s "%s%s"' %\
                    (self.DownloadFolder, url, options)
         logging.info('Executing "%s"' % command)
-        logging.debug(commands.getoutput(command))
+        logging.info(commands.getoutput(command))
 
     def downloadPanel(self, name, startTime, endTime, imageFormat = 'png'):
         url = '%sreport.jsp?reportId=%s' % (BASE_REPORT_URL, name)
