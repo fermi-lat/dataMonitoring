@@ -90,11 +90,14 @@ if __name__ == '__main__':
     parser.add_option('-o', '--output-file', dest = 'o',
                       default = './tex/report.tex', type = str,
                       help = 'path to the output TeX file')
+    parser.add_option('-e', '--end-time', dest = 'e',
+                      default = 1208649599000, type = int,
+                      help = 'the report end time (MET, ms)')
+    parser.add_option('-s', '--time-span', dest = 's',
+                      default = 86400000, type = int,
+                      help = 'the time interval spanned by the report (ms)')    
     (opts, args) = parser.parse_args()
-    
-    startTime = 1208649599000 - 3600*1000*24
-    endTime  = 1208649599000
-    reportGenerator = pReportGenerator(startTime, endTime, opts.c, opts.o)
+    reportGenerator = pReportGenerator(opts.e-opts.s, opts.e, opts.c, opts.o)
     reportGenerator.writeReport()
     reportGenerator.compile()
 
