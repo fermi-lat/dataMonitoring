@@ -1,3 +1,10 @@
+
+v1r1p30  2008/06/19   (DEV)
+-----------------------------
+
+Change truncation from 1.1 mip to 2.5 mip in plots Recon_ReconAcdPhaMipsCorrectedAngle_PMTX_Zoom_TH1_AcdTile. This addresses Jira GDQMQ-162.
+
+
 v1r1p29  2008/06/16   (DEV)
 -----------------------------
 Add some unprescaled qunatities: jira GDQMQ-155.
