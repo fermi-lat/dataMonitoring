@@ -46,7 +46,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
                         panelName = panelTag.getAttribute('name')
                         if panelName not in self.PanelsDict.keys():
                             panel = pReportPanel(panelName, self.StartTime,\
-                                                 self.EndTime)
+                             self.EndTime, reportFolder = self.LaTexFolderPath)
                             self.PanelsDict[panelName] = panel
                         else:
                             logging.info('Panel %s already downloaded.' %\
