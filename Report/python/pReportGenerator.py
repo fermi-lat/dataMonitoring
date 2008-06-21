@@ -12,7 +12,6 @@ from pReportPanel     import pReportPanel
 from pReportPage      import pReportPage
 from pDownloadManager import pDownloadManager
 from pXmlElement      import pXmlElement
-from pTimeSpan        import pTimeSpan
 from xml.dom          import minidom
 from pTimeConverter   import *
 
@@ -68,6 +67,8 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
  
 
 if __name__ == '__main__':
+    import time
+    utcmsec = int(1000*time.time())
     from optparse import OptionParser
     parser = OptionParser(usage = 'usage: %prog [options]')
     parser.add_option('-c', '--config-file', dest = 'c',
@@ -77,13 +78,16 @@ if __name__ == '__main__':
                       default = './tex/report.tex', type = str,
                       help = 'path to the output TeX file')
     parser.add_option('-e', '--end-time', dest = 'e',
-                      default = 1208649599000, type = int,
-                      help = 'the report end time (MET, ms)')
+                      default = utcmsec, type = int,
+                      help =\
+                          'the report end time (seconds since the epoch, UTC)')
     parser.add_option('-s', '--time-span', dest = 's',
-                      default = 86400000, type = int,
-                      help = 'the time interval spanned by the report (ms)')    
+                      default = 24, type = int,
+                      help = 'the time interval spanned (hours)')    
     (opts, args) = parser.parse_args()
-    reportGenerator = pReportGenerator(opts.e-opts.s, opts.e, opts.c, opts.o)
+    spannedms = int(opts.s*3600000)
+    reportGenerator = pReportGenerator(opts.e - spannedms, opts.e,\
+                                           opts.c, opts.o)
     reportGenerator.writeReport()
     reportGenerator.compile()
 
