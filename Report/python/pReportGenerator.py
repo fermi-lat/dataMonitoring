@@ -14,6 +14,7 @@ from pDownloadManager import pDownloadManager
 from pXmlElement      import pXmlElement
 from pTimeSpan        import pTimeSpan
 from xml.dom          import minidom
+from pTimeConverter   import *
 
 
 LOGO_IMAGE_NAME = 'glastLogo.png'
@@ -27,11 +28,11 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         pLaTeXWriter.__init__(self, outputFilePath)
         self.StartTime = startTime
         self.EndTime = endTime
-        self.TimeSpan = 'N/A'
+        self.TimeSpan = '%s -- %s' %\
+            (msec2string(self.StartTime), msec2string(self.EndTime))
         self.XmlBaseElement = pXmlElement(minidom.parse(file(cfgFilePath)))
         self.PagesList = []
         self.PanelsDict = {}
-        self.processIndex()
         self.parseConfiguration()
         self.invalidateSession()
 
@@ -62,23 +63,8 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         logging.info('Copying the TeX preamble into the report folder...')
         os.system('cp %s %s' % (PREAMBLE_NAME, self.LaTexFolderPath))
         for page in self.PagesList:
-            self.addPage(page, self.TimeSpan.getEricGroveTimeSpan())
+            self.addPage(page, self.TimeSpan)
         self.writeTrailer()
-
-    def processIndex(self):
-        self.downloadBaseReportUrl()
-        indexPath = '%s/index.html' % self.DownloadFolder
-        if not os.path.exists(indexPath):
-            sys.exit('Could not download main (index) report page.')
-        for line in file(indexPath).readlines():
-            #if 'Panel' in line and 'href' in line:
-            #    panelName = re.search('(?<=reportId=).*(?=">)', line).group()
-            #    self.PanelsList.append(panelName)
-            if 'UTC' in line:
-                timeStr = line.strip().replace('<b>', '').replace('</b>', '')
-                self.TimeSpan = pTimeSpan(timeStr)
-        pDownloadManager.cleanup(self)
-
  
 
 if __name__ == '__main__':
