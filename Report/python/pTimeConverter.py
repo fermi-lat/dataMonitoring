@@ -1,6 +1,8 @@
 
 import time
 import calendar
+import types
+import sys
 
 # Notes about the time module.
 #
@@ -30,6 +32,22 @@ def msec2string(msec, formatString = EG_FORMAT_STRING):
 def string2sec(timestring, formatString = STD_FORMAT_STRING):
     return calendar.timegm(time.strptime(timestring, formatString))
 
+def string2msec(timestring, formatString = STD_FORMAT_STRING):
+    return 1000*string2sec(timestring, formatString)
+
+def convert2msec(t):
+    if type(t) == types.FloatType:
+        t = int(t)
+    if type(t) == types.IntType:
+        return 1000*t
+    elif type(t) == types.StringType:
+        try:
+            return string2msec(t, EG_FORMAT_STRING)
+        except:
+            try:
+                return string2msec(t, STD_FORMAT_STRING)
+            except:
+                sys.exit('Could not convert input time string.')
 
 
 
@@ -38,4 +56,5 @@ if __name__ == '__main__':
     print string2sec('21 Jun 2008 00:50:40') # 1214009440
     print sec2string(1208563199)             # 18 Apr 2008 23:59:59
     print string2sec('18 Apr 2008 23:59:59') # 1208563199
-
+    print convert2msec(1208563199)
+    print convert2msec('2008-173 02:18:39')

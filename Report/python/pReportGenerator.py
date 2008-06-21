@@ -68,7 +68,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
 
 if __name__ == '__main__':
     import time
-    utcmsec = int(1000*time.time())
+    utcmsec = time.time()
     from optparse import OptionParser
     parser = OptionParser(usage = 'usage: %prog [options]')
     parser.add_option('-c', '--config-file', dest = 'c',
@@ -78,16 +78,19 @@ if __name__ == '__main__':
                       default = './tex/report.tex', type = str,
                       help = 'path to the output TeX file')
     parser.add_option('-e', '--end-time', dest = 'e',
-                      default = utcmsec, type = int,
+                      default = utcmsec,
                       help =\
-                          'the report end time (seconds since the epoch, UTC)')
+                          'the report UTC end time as ' +\
+                          'seconds since the epoch *or*' +\
+                          'a string like "2008-173 02:18:39" *or*' +\
+                          'a string like "21 Jun 2008 00:50:40"')
     parser.add_option('-s', '--time-span', dest = 's',
                       default = 24, type = int,
-                      help = 'the time interval spanned (hours)')    
+                      help = 'the time interval spanned (in hours)')    
     (opts, args) = parser.parse_args()
+    endms = convert2msec(opts.e)
     spannedms = int(opts.s*3600000)
-    reportGenerator = pReportGenerator(opts.e - spannedms, opts.e,\
-                                           opts.c, opts.o)
+    reportGenerator = pReportGenerator(endms-spannedms, endms, opts.c, opts.o)
     reportGenerator.writeReport()
     reportGenerator.compile()
 
