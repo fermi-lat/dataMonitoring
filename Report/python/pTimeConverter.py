@@ -19,8 +19,8 @@ import sys
 #   Parse a string representing a time according to a format. The return value
 #   is a struct_time.
 
-EG_FORMAT_STRING  = '%Y-%j %H:%M:%S'
-STD_FORMAT_STRING = '%d %b %Y %H:%M:%S'
+EG_FORMAT_STRING  = '%Y-%j %H:%M:%S'    #2008-173 02:18:39
+MAX_FORMAT_STRING = '%d-%b-%Y %H:%M:%S' #21-Jun-2008 00:50:40
 
 
 def sec2string(sec, formatString = EG_FORMAT_STRING):
@@ -29,10 +29,10 @@ def sec2string(sec, formatString = EG_FORMAT_STRING):
 def msec2string(msec, formatString = EG_FORMAT_STRING):
     return sec2string(msec/1000, formatString)
 
-def string2sec(timestring, formatString = STD_FORMAT_STRING):
+def string2sec(timestring, formatString = MAX_FORMAT_STRING):
     return calendar.timegm(time.strptime(timestring, formatString))
 
-def string2msec(timestring, formatString = STD_FORMAT_STRING):
+def string2msec(timestring, formatString = MAX_FORMAT_STRING):
     return 1000*string2sec(timestring, formatString)
 
 def convert2msec(t):
@@ -45,7 +45,7 @@ def convert2msec(t):
             return string2msec(t, EG_FORMAT_STRING)
         except:
             try:
-                return string2msec(t, STD_FORMAT_STRING)
+                return string2msec(t, MAX_FORMAT_STRING)
             except:
                 sys.exit('Could not convert input time string.')
 

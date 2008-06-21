@@ -83,7 +83,7 @@ if __name__ == '__main__':
                           'the report UTC end time as ' +\
                           'seconds since the epoch *or*' +\
                           'a string like "2008-173 02:18:39" *or*' +\
-                          'a string like "21 Jun 2008 00:50:40"')
+                          'a string like "21-Jun-2008 00:50:40"')
     parser.add_option('-s', '--time-span', dest = 's',
                       default = 24, type = int,
                       help = 'the time interval spanned (in hours)')    
