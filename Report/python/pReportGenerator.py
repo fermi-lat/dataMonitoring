@@ -79,15 +79,18 @@ if __name__ == '__main__':
                       help = 'path to the output TeX file')
     parser.add_option('-e', '--end-time', dest = 'e',
                       default = utcmsec,
-                      help =\
-                          'the report UTC end time as ' +\
-                          'seconds since the epoch *or*' +\
-                          'a string like "2008-173 02:18:39" *or*' +\
-                          'a string like "21-Jun-2008 00:50:40"')
+                      help = 'the report UTC end time (in s or as a string)')
     parser.add_option('-s', '--time-span', dest = 's',
                       default = 24, type = int,
-                      help = 'the time interval spanned (in hours)')    
+                      help = 'the time interval spanned (in hours)')
+    parser.add_option('-t', '--time-fromats',
+                      action='store_true', dest='t', default=False,
+                      help='print the list of avilable time formats and exit')
     (opts, args) = parser.parse_args()
+    if opts.t:
+        print 'Available format strings for specifying end time:\n%s' %\
+            availableTimeFormats()
+        sys.exit()
     endms = convert2msec(opts.e)
     spannedms = int(opts.s*3600000)
     reportGenerator = pReportGenerator(endms-spannedms, endms, opts.c, opts.o)

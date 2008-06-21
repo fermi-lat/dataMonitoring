@@ -5,7 +5,7 @@ import logging
 
 PDFLATX_BIN = '/opt/TWWfsw/bin/pdflatex'
 if not os.path.exists(PDFLATX_BIN):
-    logging.info('Could not find %s, falling back to the default.' %\
+    logging.debug('Could not find %s, falling back to the default.' %\
                  PDFLATX_BIN)
     PDFLATX_BIN = 'pdflatex'
     
