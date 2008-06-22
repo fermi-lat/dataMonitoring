@@ -16,9 +16,9 @@ from xml.dom          import minidom
 from pTimeConverter   import *
 
 
-LOGO_IMAGE_NAME = 'glastLogo.png'
 BASE_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 PREAMBLE_PATH = os.path.join(BASE_DIR_PATH, 'preamble.tex')
+LOGO_IMAGE_PATH = os.path.join(BASE_DIR_PATH, 'glastLogo.png')
 DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/mainreport.xml')
 
 class pReportGenerator(pLaTeXWriter, pDownloadManager):
@@ -59,7 +59,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
     def writeReport(self):
         self.writeHeader()
         logging.info('Copying the GLAST logo into the report folder...')
-        os.system('cp %s %s' % (LOGO_IMAGE_NAME, self.LaTexFolderPath))
+        os.system('cp %s %s' % (LOGO_IMAGE_PATH, self.LaTexFolderPath))
         logging.info('Copying the TeX preamble into the report folder...')
         os.system('cp %s %s' % (PREAMBLE_PATH, self.LaTexFolderPath))
         for page in self.PagesList:
