@@ -17,8 +17,9 @@ from pTimeConverter   import *
 
 
 LOGO_IMAGE_NAME = 'glastLogo.png'
-PREAMBLE_NAME = 'preamble.tex'
-    
+BASE_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
+PREAMBLE_PATH = os.path.join(BASE_DIR_PATH, 'preamble.tex')
+DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/mainreport.xml')
 
 class pReportGenerator(pLaTeXWriter, pDownloadManager):
     
@@ -60,7 +61,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         logging.info('Copying the GLAST logo into the report folder...')
         os.system('cp %s %s' % (LOGO_IMAGE_NAME, self.LaTexFolderPath))
         logging.info('Copying the TeX preamble into the report folder...')
-        os.system('cp %s %s' % (PREAMBLE_NAME, self.LaTexFolderPath))
+        os.system('cp %s %s' % (PREAMBLE_PATH, self.LaTexFolderPath))
         for page in self.PagesList:
             self.addPage(page, self.TimeSpan)
         self.writeTrailer()
@@ -72,7 +73,7 @@ if __name__ == '__main__':
     from optparse import OptionParser
     parser = OptionParser(usage = 'usage: %prog [options]')
     parser.add_option('-c', '--config-file', dest = 'c',
-                      default = '../xml/mainreport.xml', type = str,
+                      default = DEFAULT_CFG_FILE_PATH, type = str,
                       help = 'path to the input xml config file')
     parser.add_option('-o', '--output-file', dest = 'o',
                       default = './tex/report.tex', type = str,
