@@ -21,7 +21,7 @@ from pTimeConverter   import *
 BASE_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 PREAMBLE_PATH = os.path.join(BASE_DIR_PATH, 'preamble.tex')
 LOGO_IMAGE_PATH = os.path.join(BASE_DIR_PATH, 'glastLogo.png')
-DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/mainreport.xml')
+DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/summaryreport.xml')
 LATEX_TMP_DIR_NAME = '_report_latex_temp_'
 DOWNLOAD_TMP_DIR_NAME = '_report_download_temp_'
 
@@ -41,11 +41,14 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         latexFilePath = os.path.join(pdfFolderPath, LATEX_TMP_DIR_NAME,\
                                          pdfFileName.replace('.pdf','.tex'))
         self.PdfFilePath = os.path.join(pdfFolderPath, pdfFileName)
-        logging.info('Path to output pdf file: %s' % self.PdfFilePath)
+        logging.info('Output folder : %s' % pdfFolderPath)
+        logging.info('pdf file name : %s' % pdfFileName)
         logging.info('Download folder: %s' % self.DownloadFolderPath)
         logging.info('LaTeX file path: %s' % latexFilePath)
         pLaTeXWriter.__init__(self, latexFilePath)
+        logging.info('Parsing xml configuration file %s...' % cfgFilePath)
         self.XmlBaseElement = pXmlElement(minidom.parse(file(cfgFilePath)))
+        logging.info('Done.')
         self.PagesList = []
         self.PanelsDict = {}
         self.parseConfiguration()
