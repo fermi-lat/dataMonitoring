@@ -1,31 +1,51 @@
 #!/bin/env python
 
+import sys
+
 from pReportGenerator import *
+from pTimeConverter   import *
+
+logging.basicConfig(level = logging.INFO)
+
+
+DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/grbReport.xml')
 
 
 class pGRBReportGenerator(pReportGenerator):
 
-    def __init__(self, burstTime, halfWindow, cfgFilePath, outputFilePath):
-        startTime = burstTime - halfWindow
-        endTime = burstTime + halfWindow
-        pReportGenerator.__init__(self, startTime, endTime, cfgFilePath,\
-                                  outputFilePath )
+    def __init__(self, burstTime, halfWindow, pdfFolderPath, cfgFilePath):
+        endTime = burstTime + int(halfWindow*3600)
+        pReportGenerator.__init__(self, endTime, 2*halfWindow, pdfFolderPath,\
+                                      cfgFilePath)
 
 
 if __name__ == '__main__':
     from optparse import OptionParser
     parser = OptionParser(usage = 'usage: %prog [options]')
     parser.add_option('-c', '--config-file', dest = 'c',
-                      default = '../xml/grbreport.xml', type = str,
+                      default = DEFAULT_CFG_FILE_PATH, type = str,
                       help = 'path to the input xml config file')
-    parser.add_option('-o', '--output-file', dest = 'o',
-                      default = './tex/report.tex', type = str,
-                      help = 'path to the output TeX file')
-    (opts, args) = parser.parse_args()    
-    burstTime = 1208649599000 - 3600*1000*12
-    halfWindow = 3600*1000*2
-    reportGenerator = pGRBReportGenerator(burstTime, halfWindow, opts.c,\
-                                          opts.o)
+    parser.add_option('-d', '--dir-path', dest = 'd',
+                      default = './report', type = str,
+                      help = 'path to the folder for the output pdf file')
+    parser.add_option('-b', '--burst-time', dest = 'b',
+                      default = None,
+                      help = 'the burts time (in s or as a string)')
+    parser.add_option('-s', '--half-window', dest = 's',
+                      default = 2, type = int,
+                      help = 'the report half time span (in hours)')
+    parser.add_option('-t', '--time-formats',
+                      action='store_true', dest='t', default=False,
+                      help='print the list of avilable time formats and exit')
+    (opts, args) = parser.parse_args()
+    if opts.t:
+        print 'Available format strings for specifying end time:\n%s' %\
+            availableTimeFormats()
+        sys.exit()
+    if opts.b is None:
+        sys.exit('Please provide the burst time.')
+    burstTime = convert2sec(opts.b)
+    reportGenerator = pGRBReportGenerator(burstTime, opts.s, opts.d, opts.c)
     reportGenerator.writeReport()
     reportGenerator.compile()    
-    
+    reportGenerator.copyPdfAndCleanUp()    

@@ -60,6 +60,9 @@ def convert2msec(t):
                 pass
         sys.exit('Could not convert input time string.')
 
+def convert2sec(t):
+    return convert2msec(t)/1000
+
 def availableTimeFormats(sec = 1208563199):
     formats = ''
     for (key, value) in FORMAT_STRINGS_DICT.items():
