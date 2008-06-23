@@ -23,6 +23,7 @@ LOGO_IMAGE_PATH = os.path.join(BASE_DIR_PATH, 'glastLogo.png')
 DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/summaryReport.xml')
 LATEX_TMP_DIR_NAME = '_report_latex_temp_'
 DOWNLOAD_TMP_DIR_NAME = '_report_download_temp_'
+COOKIE_TMP_DIR_NAME = '_report_cookie_temp_'
 
 
 class pReportGenerator(pLaTeXWriter, pDownloadManager):
@@ -30,7 +31,9 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
     def __init__(self, endTime, spannedTime, pdfFolderPath, cfgFilePath):
         self.DownloadFolderPath =\
             os.path.join(pdfFolderPath, DOWNLOAD_TMP_DIR_NAME)
-        pDownloadManager.__init__(self, self.DownloadFolderPath)
+        self.CookieFolderPath = os.path.join(pdfFolderPath, COOKIE_TMP_DIR_NAME)
+        pDownloadManager.__init__(self, self.DownloadFolderPath,\
+                                      self.CookieFolderPath)
         self.EndTime = endTime
         self.StartTime = endTime - int(spannedTime*3600000)
         self.TimeSpan = '%s -- %s' %\
@@ -74,7 +77,8 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
                             panel = pReportPanel(panelName, self.StartTime,\
                                                      self.EndTime,\
                                                      self.LaTeXFolderPath,\
-                                                     self.DownloadFolderPath)
+                                                     self.DownloadFolderPath,\
+                                                     self.CookieFolderPath)
                             self.PanelsDict[panelName] = panel
                         else:
                             logging.info('Panel %s already downloaded.' %\
