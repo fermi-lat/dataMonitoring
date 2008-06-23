@@ -24,8 +24,14 @@ import sys
 
 FORMAT_STRINGS_DICT = {'Eric Grove': '%Y-%j %H:%M:%S',
                        'Max Turri' : '%d-%b-%Y %H:%M:%S'}
-DEFAULT_FORMAT_STRING = FORMAT_STRINGS_DICT['Eric Grove']
 
+def getStringFormat(flavour):
+    try:
+        return FORMAT_STRINGS_DICT[flavour]
+    except:
+        sys.exit('Unknown string format flavour "%s".' % flavour)
+
+DEFAULT_FORMAT_STRING = getStringFormat('Eric Grove')
 
 def sec2string(sec, formatString = DEFAULT_FORMAT_STRING):
     return time.strftime(formatString, time.gmtime(sec))

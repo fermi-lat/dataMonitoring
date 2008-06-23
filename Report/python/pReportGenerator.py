@@ -15,21 +15,36 @@ from pXmlElement      import pXmlElement
 from xml.dom          import minidom
 from pTimeConverter   import *
 
+# TBD.
+# Use environmental variables here!
 
 BASE_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 PREAMBLE_PATH = os.path.join(BASE_DIR_PATH, 'preamble.tex')
 LOGO_IMAGE_PATH = os.path.join(BASE_DIR_PATH, 'glastLogo.png')
 DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/mainreport.xml')
+LATEX_TMP_DIR_NAME = '_report_latex_temp_'
+DOWNLOAD_TMP_DIR_NAME = '_report_download_temp_'
 
 class pReportGenerator(pLaTeXWriter, pDownloadManager):
     
-    def __init__(self, startTime, endTime, cfgFilePath, outputFilePath):
-        pDownloadManager.__init__(self)
-        pLaTeXWriter.__init__(self, outputFilePath)
-        self.StartTime = startTime
+    def __init__(self, endTime, spannedTime, pdfFolderPath, cfgFilePath):
+        self.DownloadFolderPath =\
+            os.path.join(pdfFolderPath, DOWNLOAD_TMP_DIR_NAME)
+        pDownloadManager.__init__(self, self.DownloadFolderPath)
         self.EndTime = endTime
+        self.StartTime = endTime - int(spannedTime*3600000)
         self.TimeSpan = '%s -- %s' %\
             (msec2string(self.StartTime), msec2string(self.EndTime))
+        pdfFileName = '%s--' % msec2string(self.EndTime, '%Y-%j-%H-%M-%S')
+        pdfFileName += ('%.2f-hours--' % spannedTime).replace('.', '-')
+        pdfFileName += '%s.pdf' % sec2string(time.time(), '%y%j%H%M%S')
+        latexFilePath = os.path.join(pdfFolderPath, LATEX_TMP_DIR_NAME,\
+                                         pdfFileName.replace('.pdf','.tex'))
+        self.PdfFilePath = os.path.join(pdfFolderPath, pdfFileName)
+        logging.info('Path to output pdf file: %s' % self.PdfFilePath)
+        logging.info('Download folder: %s' % self.DownloadFolderPath)
+        logging.info('LaTeX file path: %s' % latexFilePath)
+        pLaTeXWriter.__init__(self, latexFilePath)
         self.XmlBaseElement = pXmlElement(minidom.parse(file(cfgFilePath)))
         self.PagesList = []
         self.PanelsDict = {}
@@ -47,7 +62,9 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
                         panelName = panelTag.getAttribute('name')
                         if panelName not in self.PanelsDict.keys():
                             panel = pReportPanel(panelName, self.StartTime,\
-                             self.EndTime, reportFolder = self.LaTexFolderPath)
+                                                     self.EndTime,\
+                                                     self.LaTeXFolderPath,\
+                                                     self.DownloadFolderPath)
                             self.PanelsDict[panelName] = panel
                         else:
                             logging.info('Panel %s already downloaded.' %\
@@ -59,12 +76,16 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
     def writeReport(self):
         self.writeHeader()
         logging.info('Copying the GLAST logo into the report folder...')
-        os.system('cp %s %s' % (LOGO_IMAGE_PATH, self.LaTexFolderPath))
+        os.system('cp %s %s' % (LOGO_IMAGE_PATH, self.LaTeXFolderPath))
         logging.info('Copying the TeX preamble into the report folder...')
-        os.system('cp %s %s' % (PREAMBLE_PATH, self.LaTexFolderPath))
+        os.system('cp %s %s' % (PREAMBLE_PATH, self.LaTeXFolderPath))
         for page in self.PagesList:
             self.addPage(page, self.TimeSpan)
         self.writeTrailer()
+
+    def copyPdfAndCleanUp(self):
+        os.system('cd %s; cp *.pdf ..' % self.LaTeXFolderPath)
+        os.system('rm -rf %s' % self.LaTeXFolderPath)
  
 
 if __name__ == '__main__':
@@ -75,9 +96,9 @@ if __name__ == '__main__':
     parser.add_option('-c', '--config-file', dest = 'c',
                       default = DEFAULT_CFG_FILE_PATH, type = str,
                       help = 'path to the input xml config file')
-    parser.add_option('-o', '--output-file', dest = 'o',
-                      default = './tex/report.tex', type = str,
-                      help = 'path to the output TeX file')
+    parser.add_option('-d', '--dir-path', dest = 'd',
+                      default = './report', type = str,
+                      help = 'path to the folder for the output pdf file')
     parser.add_option('-e', '--end-time', dest = 'e',
                       default = utcmsec,
                       help = 'the report UTC end time (in s or as a string)')
@@ -93,8 +114,7 @@ if __name__ == '__main__':
             availableTimeFormats()
         sys.exit()
     endms = convert2msec(opts.e)
-    spannedms = int(opts.s*3600000)
-    reportGenerator = pReportGenerator(endms-spannedms, endms, opts.c, opts.o)
+    reportGenerator = pReportGenerator(endms, opts.s, opts.d, opts.c)
     reportGenerator.writeReport()
     reportGenerator.compile()
-
+    reportGenerator.copyPdfAndCleanUp()

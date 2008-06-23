@@ -18,8 +18,8 @@ class pLaTeXWriter:
 
     def open(self, filePath):
         self.LaTeXFilePath = filePath
-        self.LaTexFolderPath = os.path.dirname(self.LaTeXFilePath)
-        if self.LaTexFolderPath == '':
+        self.LaTeXFolderPath = os.path.dirname(self.LaTeXFilePath)
+        if self.LaTeXFolderPath == '':
             sys.exit('Please do not choose the current folder for the report.')
         self.__cleanup()
         try:
@@ -29,12 +29,12 @@ class pLaTeXWriter:
                      self.LaTeXFilePath)
 
     def __cleanup(self):
-        if not os.path.exists(self.LaTexFolderPath):
-            logging.info('Creating folder %s...' % self.LaTexFolderPath)
-            os.makedirs(self.LaTexFolderPath)
+        if not os.path.exists(self.LaTeXFolderPath):
+            logging.info('Creating folder %s...' % self.LaTeXFolderPath)
+            os.makedirs(self.LaTeXFolderPath)
         else:
-            logging.info('Cleaning up %s...' % self.LaTexFolderPath)
-            os.system('rm -f %s/*' % self.LaTexFolderPath)
+            logging.info('Cleaning up %s...' % self.LaTeXFolderPath)
+            os.system('rm -f %s/*' % self.LaTeXFolderPath)
 
     def close(self):
         self.LaTeXFile.close()
@@ -129,7 +129,7 @@ class pLaTeXWriter:
 
     def compile(self):
         logging.info('Compiling the report...')
-        command = 'cd %s; %s %s' % (self.LaTexFolderPath, PDFLATX_BIN,
+        command = 'cd %s; %s %s' % (self.LaTeXFolderPath, PDFLATX_BIN,
                                     os.path.basename(self.LaTeXFilePath))
         os.system(command)
  

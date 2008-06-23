@@ -8,13 +8,12 @@ logging.basicConfig(level = logging.DEBUG)
 
 BASE_REPORT_URL  = 'http://glast-ground.slac.stanford.edu/Reports/'
 INVALIDATE_URL   = '%s%s' % (BASE_REPORT_URL, 'invalidateSession')
-DOWNLOAD_FOLDER  = 'download'
 COOKIE_FILE_PATH = 'cookies.txt'
 
 
 class pDownloadManager:
 
-    def __init__(self, downloadFolder = DOWNLOAD_FOLDER):
+    def __init__(self, downloadFolder):
         self.DownloadFolder = downloadFolder
 
     def downloadUrl(self, url, options = '', saveCookies = False):
@@ -57,6 +56,6 @@ class pDownloadManager:
 if __name__ == '__main__':
     startTime = 1208649599000 - 3600*1000*24
     endTime  = 1208649599000
-    downloadManager = pDownloadManager()
+    downloadManager = pDownloadManager('download')
     downloadManager.downloadBaseReportUrl()
     downloadManager.downloadPanel('EnvPanel1', startTime, endTime)

@@ -14,9 +14,9 @@ class pReportPanel(pDownloadManager):
 
     ## @brief Basic constructor.
 
-    def __init__(self, name, startTime, endTime, imageFormat = 'png',\
-                 reportFolder = 'tex'):
-        pDownloadManager.__init__(self)
+    def __init__(self, name, startTime, endTime, reportFolder,\
+                     downloadFolder, imageFormat = 'png'):
+        pDownloadManager.__init__(self, downloadFolder)
         self.Name = name
         self.Title = name
         self.ImageFormat = imageFormat
