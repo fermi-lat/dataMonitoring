@@ -15,15 +15,15 @@ from pXmlElement      import pXmlElement
 from xml.dom          import minidom
 from pTimeConverter   import *
 
-# TBD.
-# Use environmental variables here!
-
+# TBD. Use environmental variables here!
 BASE_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
+
 PREAMBLE_PATH = os.path.join(BASE_DIR_PATH, 'preamble.tex')
 LOGO_IMAGE_PATH = os.path.join(BASE_DIR_PATH, 'glastLogo.png')
 DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/summaryReport.xml')
 LATEX_TMP_DIR_NAME = '_report_latex_temp_'
 DOWNLOAD_TMP_DIR_NAME = '_report_download_temp_'
+
 
 class pReportGenerator(pLaTeXWriter, pDownloadManager):
     
