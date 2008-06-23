@@ -114,7 +114,7 @@ if __name__ == '__main__':
     parser.add_option('-s', '--time-span', dest = 's',
                       default = 24, type = int,
                       help = 'the time interval spanned (in hours)')
-    parser.add_option('-t', '--time-fromats',
+    parser.add_option('-t', '--time-formats',
                       action='store_true', dest='t', default=False,
                       help='print the list of avilable time formats and exit')
     (opts, args) = parser.parse_args()
