@@ -112,7 +112,7 @@
      <object>
       <name>  PtMcIlwainL </name>
       <formula><![CDATA[ PtMcIlwainL  ]]></formula>
-      <cut><![CDATA[]]></cut>
+      <cut><![CDATA[PtMcIlwainL>0.1]]></cut>
       <type> mean </type>
       <description> Mean value  of PtMcIlwainL</description>
     </object>
@@ -120,7 +120,7 @@
         <object>
       <name>  RigidityCutoff </name>
       <formula><![CDATA[ 14.56/(PtMcIlwainL*PtMcIlwainL)  ]]></formula>
-      <cut><![CDATA[]]></cut>
+      <cut><![CDATA[PtMcIlwainL>0.1]]></cut>
       <type> mean </type>
       <description> Mean value of Rigidity cutoff (GeV) </description>
     </object>
@@ -305,7 +305,7 @@
     <object>
       <name>  PtMcIlwainL_TH1 </name>
       <formula><![CDATA[ PtMcIlwainL  ]]></formula>
-      <cut><![CDATA[]]></cut>
+      <cut><![CDATA[PtMcIlwainL>0.1]]></cut>
       <type> histogram-1d[200,0.9,1.9] </type>
       <titledesc> PtMcIlwainL </titledesc>
       <axisdesc> [PtMcIlwainL, N] </axisdesc>
@@ -315,7 +315,7 @@
         <object>
       <name>  RigidityCutoff_TH1 </name>
       <formula><![CDATA[ 14.56/(PtMcIlwainL*PtMcIlwainL)  ]]></formula>
-      <cut><![CDATA[]]></cut>
+      <cut><![CDATA[PtMcIlwainL>0.1]]></cut>
       <type> histogram-1d[160,0,16] </type>
       <titledesc> RigidityCutoff </titledesc>
       <axisdesc> [RigidityCutoff  (GeV), N] </axisdesc>
@@ -379,7 +379,7 @@
       <formula><![CDATA[ RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRateErr")>0 ? (1.0-RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRate"))/RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
-      <type> histogram-1d[200,-10,10] </type>
+      <type> histogram-1d[200,-10,10,-100] </type>
       <titledesc> Deviation From 1.0 (in Sigmas): NormRateEvtsBeforeFilters </titledesc>
       <axisdesc> [Deviation (in sigmas), N] </axisdesc>
       <description> Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of EvtsBeforeFilters. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates. </description>
@@ -390,7 +390,7 @@
       <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRateErr") >0 ? (1.0-RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRate"))/RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
-      <type> histogram-1d[200,-10,10] </type>
+      <type> histogram-1d[200,-10,10,-100] </type>
       <titledesc> Deviation From 1.0 (in Sigmas): NormRateEvtsBeforeCuts </titledesc>
       <axisdesc> [Deviation (in sigmas), N] </axisdesc>
       <description> Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of EvtsBeforeCuts. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates. </description>
@@ -401,7 +401,7 @@
       <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, "NormRateErr") >0 ? (1.0-RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, "NormRate"))/RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
-      <type> histogram-1d[200,-10,10] </type>
+      <type> histogram-1d[200,-10,10,-100] </type>
       <titledesc> Deviation From 1.0 (in Sigmas): NormRateEvtsBeforeCutsWithGAMMAFilter </titledesc>
       <axisdesc> [Deviation (in sigmas), N] </axisdesc>
       <description> Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of EvtsBeforeCuts that survive the Gleam GAMMA filter. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates. </description>
@@ -414,7 +414,7 @@
       <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, "NormRateErr") >0 ? (1.0-RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, "NormRate"))/RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
-      <type> histogram-1d[200,-10,10] </type>
+      <type> histogram-1d[200,-10,10,-100] </type>
       <titledesc> Deviation From 1.0 (in Sigmas): NormRateEvtsBeforeCutsWithFswGAMMAFilter </titledesc>
       <axisdesc> [Deviation (in sigmas), N] </axisdesc>
       <description> Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of EvtsBeforeCuts that survive the Flight Software GAMMA filter. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates. </description>
@@ -426,7 +426,7 @@
       <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL,Rate_TransientEvts, Rate_TransientEvts_err, "NormRateErr") >0 ? (1.0-RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL,Rate_TransientEvts, Rate_TransientEvts_err, "NormRate"))/RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL,Rate_TransientEvts, Rate_TransientEvts_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
-      <type> histogram-1d[200,-10,10] </type>
+      <type> histogram-1d[200,-10,10,-100] </type>
       <titledesc> Deviation From 1.0 (in Sigmas): NormRateTransientEvts </titledesc>
       <axisdesc> [Deviation (in sigmas), N] </axisdesc>
       <description> Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of TransientEvts. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates. </description>
@@ -437,7 +437,7 @@
       <formula><![CDATA[ RFun::NormalizeRate("Rate_DiffuseEvts",Mean_PtMcIlwainL,Rate_DiffuseEvts, Rate_DiffuseEvts_err, "NormRateErr")>0 ? (1.0-RFun::NormalizeRate("Rate_DiffuseEvts",Mean_PtMcIlwainL,Rate_DiffuseEvts, Rate_DiffuseEvts_err, "NormRate"))/RFun::NormalizeRate("Rate_DiffuseEvts",Mean_PtMcIlwainL,Rate_DiffuseEvts, Rate_DiffuseEvts_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
-      <type> histogram-1d[200,-10,10] </type>
+      <type> histogram-1d[200,-10,10,-100] </type>
       <titledesc> Deviation From 1.0 (in Sigmas): NormRateDiffuseEvts </titledesc>
       <axisdesc> [Deviation (in sigmas), N] </axisdesc>
       <description> Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of DiffuseEvts. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates. </description>
@@ -448,7 +448,7 @@
       <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL,Rate_SourceEvts, Rate_SourceEvts_err, "NormRateErr") >0 ? (1.0-RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL,Rate_SourceEvts, Rate_SourceEvts_err, "NormRate"))/RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL,Rate_SourceEvts, Rate_SourceEvts_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
-      <type> histogram-1d[200,-10,10] </type>
+      <type> histogram-1d[200,-10,10,-100] </type>
       <titledesc> Deviation From 1.0 (in Sigmas): NormRateSourceEvts </titledesc>
       <axisdesc> [Deviation (in sigmas), N] </axisdesc>
       <description> Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of SourceEvts. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates. </description>
@@ -460,7 +460,7 @@
       <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_MeritTriggerEngine",Mean_PtMcIlwainL,Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], "NormRateErr",engine) >0 ? (1.0-RFun::NormalizeRateVector("Rate_MeritTriggerEngine",Mean_PtMcIlwainL,Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], "NormRate", engine))/RFun::NormalizeRateVector("Rate_MeritTriggerEngine",Mean_PtMcIlwainL,Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], "NormRateErr", engine) : -100]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
-      <type> histogram-1d[200,-10,10] </type>
+      <type> histogram-1d[200,-10,10,-100] </type>
       <titledesc> Deviation From 1.0 (in Sigmas): NormRateTriggerEngine </titledesc>
       <axisdesc> [Deviation (in sigmas), N] </axisdesc>
       <description> Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of the different trigger engines. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates. </description>
@@ -473,7 +473,7 @@
       <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], "NormRateErr",engine) >0 ? (1.0-RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], "NormRate", engine))/RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], "NormRateErr", engine) : -100]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
-      <type> histogram-1d[200,-10,10] </type>
+      <type> histogram-1d[200,-10,10,-100] </type>
       <titledesc> Deviation From 1.0 (in Sigmas): NormRateGAMMAFilterAndTriggerEngine </titledesc>
       <axisdesc> [Deviation (in sigmas), N] </axisdesc>
       <description> Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of the different trigger engines (DigiEvent->getL1T().getGemEngine()) that survive the Gleam GAMMA filter. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates. </description>
@@ -485,7 +485,7 @@
       <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], "NormRateErr",engine) >0 ? (1.0-RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], "NormRate", engine))/RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], "NormRateErr", engine) : -100]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
-      <type> histogram-1d[200,-10,10] </type>
+      <type> histogram-1d[200,-10,10,-100] </type>
       <titledesc> Deviation From 1.0 (in Sigmas): NormRateFswGAMMAFilterAndTriggerEngine </titledesc>
       <axisdesc> [Deviation (in sigmas), N] </axisdesc>
       <description> Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of the different trigger engines (DigiEvent->getL1T().getGemEngine()) that survive the Flight Software GAMMA filter. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates. </description>

@@ -2,7 +2,6 @@
 
   <inputList name="top"> 
 
-TransientEvtsBelowZenithTheta60
     <!-- Time stamp -->
     <object> timestampdouble </object>
     
@@ -145,7 +144,7 @@ TransientEvtsBelowZenithTheta60
       <object>
       <name>  PtMcIlwainL </name>
       <formula><![CDATA[ PtMcIlwainL  ]]></formula>
-      <cut><![CDATA[]]></cut>
+      <cut><![CDATA[PtMcIlwainL>0.1]]></cut>
       <type> mean </type>
       <description> Mean value  of PtMcIlwainL</description>
     </object>
@@ -153,7 +152,7 @@ TransientEvtsBelowZenithTheta60
        <object>
       <name>  RigidityCutoff </name>
       <formula><![CDATA[ 14.56/(PtMcIlwainL*PtMcIlwainL)  ]]></formula>
-      <cut><![CDATA[]]></cut>
+      <cut><![CDATA[PtMcIlwainL>0.1]]></cut>
       <type> mean </type>
       <description> Mean value of Rigidity cutoff (GeV) </description>
     </object>
@@ -551,7 +550,7 @@ TransientEvtsBelowZenithTheta60
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Vector [16] with the normalized rates for the 16 TriggerEngines. The Normalization is done according to the value of PtMcIlwainL. </description>
+      <description> Vector [16] with the normalized evt rates surviving the Gleam GAMMA filter for the 16 TriggerEngines. The Normalization is done according to the value of PtMcIlwainL. </description>
     </object>
 
 
