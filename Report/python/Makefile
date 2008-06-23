@@ -3,7 +3,5 @@ clean:
 
 cleanall:
 	make clean
-	rm -rf download
-	rm -rf tex
-	rm -rf test
+	rm -rf report
 	rm -f cookies.txt
