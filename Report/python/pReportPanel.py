@@ -68,7 +68,8 @@ class pReportPanel(pDownloadManager):
         try:
             titleFound = False
             pageContent = ''
-            for line in file(glob('./download/report*')[0]).readlines():
+            for line in file(glob('./%s/report*' %\
+                                      self.DownloadFolder)[0]).readlines():
                 if '<h2' in line:
                     titleFound = True
                 if titleFound and not line.isspace():
