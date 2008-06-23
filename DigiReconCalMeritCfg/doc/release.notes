@@ -1,3 +1,10 @@
+v1r1p34  2008/06/23   (DEV)
+------------------------------
+Added cut PtMcIlwainL>0.1 to all magnetic field derived or magnetic field normalized quantities, 
+in config files monconfic_merit_trending.xml and monconfig_merit_histos.xml. 
+This prevents the crash of the job when the magnetic field quantity PtMcIlwainL is not available.
+
+
 v1r1p33  2008/06/22   (DEV)
 -----------------------------
 Fill histogram TimeToneMissingCurrentORPrevious_TH1  only once per time tone.
