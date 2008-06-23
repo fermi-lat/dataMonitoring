@@ -744,7 +744,7 @@
      <object>
       <name> TimeToneMissingCurrentORPrevious_TH1 </name>
       <formula><![CDATA[ CurrentORPreviousTimeToneMissing]]></formula>
-      <cut><![CDATA[ ]]></cut>
+      <cut><![CDATA[ NewSecond&1 ]]></cut>
       <type> histogram-1d[3,-0.5,2.5] </type>
       <titledesc> TimeTone is incomplete for Previous or Current event</titledesc>
       <axisdesc> [Incomplete Time Tone, N] </axisdesc>
