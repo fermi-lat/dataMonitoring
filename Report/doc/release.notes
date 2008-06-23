@@ -1,4 +1,10 @@
 
+*** v2r0p1 ***
+- Bug fix in the way the cookies were handled. Now the cookie file is 
+stored in its own subfolder, which is cleaned up at the end.
+- Minor change in the report name.
+
+
 *** v2r0p0 ***
 - Deep restructuring for running it into the pipeline.
 - Command line arguments changed---now the folder for the report is specified
