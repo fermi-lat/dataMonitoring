@@ -35,8 +35,8 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         self.StartTime = endTime - int(spannedTime*3600000)
         self.TimeSpan = '%s -- %s' %\
             (msec2string(self.StartTime), msec2string(self.EndTime))
-        pdfFileName = '%s--' % msec2string(self.EndTime, '%Y-%j-%H-%M-%S')
-        pdfFileName += ('%.2f-hours--' % spannedTime).replace('.', '-')
+        pdfFileName = '%s_' % msec2string(self.EndTime, '%Y-%j-%Hh%Mm%Ss')
+        pdfFileName += ('%.2f_' % spannedTime).replace('.', 'h')
         pdfFileName += '%s.pdf' % sec2string(time.time(), '%y%j%H%M%S')
         latexFilePath = os.path.join(pdfFolderPath, LATEX_TMP_DIR_NAME,\
                                          pdfFileName.replace('.pdf','.tex'))
@@ -44,6 +44,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         logging.info('Path to output pdf file: %s' % self.PdfFilePath)
         logging.info('Download folder: %s' % self.DownloadFolderPath)
         logging.info('LaTeX file path: %s' % latexFilePath)
+        sys.exit()
         pLaTeXWriter.__init__(self, latexFilePath)
         self.XmlBaseElement = pXmlElement(minidom.parse(file(cfgFilePath)))
         self.PagesList = []
