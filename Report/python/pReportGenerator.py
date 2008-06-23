@@ -35,10 +35,11 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         self.StartTime = endTime - int(spannedTime*3600000)
         self.TimeSpan = '%s -- %s' %\
             (msec2string(self.StartTime), msec2string(self.EndTime))
-        pdfFileName = '%s_' % os.path.basename(cfgFilePath).replace('.xml', '')
-        pdfFileName += '%s_' % msec2string(self.EndTime, '%Y-%j-%Hh%Mm%Ss')
-        pdfFileName += ('%.2f_' % spannedTime).replace('.', 'h')
-        pdfFileName += '%s.pdf' % sec2string(time.time(), '%y%j%H%M%S')
+        pdfFileName = '%s' % os.path.basename(cfgFilePath).replace('.xml', '')
+        pdfFileName += '_%s' % msec2string(self.EndTime, '%Y-%j-%Hh%Mm%Ss')
+        pdfFileName += ('_%.2f' % spannedTime).replace('.', 'h')
+        #pdfFileName += '_%s' % sec2string(time.time(), '%y%j%H%M%S')
+        pdfFileName += '.pdf'
         latexFilePath = os.path.join(pdfFolderPath, LATEX_TMP_DIR_NAME,\
                                          pdfFileName.replace('.pdf','.tex'))
         self.PdfFilePath = os.path.join(pdfFolderPath, pdfFileName)
