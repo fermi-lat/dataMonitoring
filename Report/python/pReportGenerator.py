@@ -44,7 +44,6 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         logging.info('Path to output pdf file: %s' % self.PdfFilePath)
         logging.info('Download folder: %s' % self.DownloadFolderPath)
         logging.info('LaTeX file path: %s' % latexFilePath)
-        sys.exit()
         pLaTeXWriter.__init__(self, latexFilePath)
         self.XmlBaseElement = pXmlElement(minidom.parse(file(cfgFilePath)))
         self.PagesList = []
