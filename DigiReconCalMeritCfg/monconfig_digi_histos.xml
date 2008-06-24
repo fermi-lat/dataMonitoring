@@ -41,6 +41,7 @@
     <object> Delta_CCSDSTime_EvtTime </object>
     <object> NewSecond </object>
     <object> CurrentORPreviousTimeToneMissing </object>
+    <object> CurrentTimeToneMissing </object>
     <object> sourceGps </object>
 
 
@@ -750,6 +751,18 @@
       <axisdesc> [Incomplete Time Tone, N] </axisdesc>
       <description> Incomplete time tone for previous or current event. ONE means that the time tone was incomplete, ZERO means that it was complete.</description>
     </object>
+
+
+     <object>
+      <name> TimeTone_IncompleteCurrent_TH1 </name>
+      <formula><![CDATA[ CurrentTimeToneMissing]]></formula>
+      <cut><![CDATA[ NewSecond&1 ]]></cut>
+      <type> histogram-1d[3,-0.5,2.5] </type>
+      <titledesc> TimeTone is incomplete for Current event</titledesc>
+      <axisdesc> [Incomplete Time Tone, N] </axisdesc>
+      <description> Incomplete time tone for current event. ONE means that the time tone was incomplete, ZERO means that it was complete.</description>
+    </object>
+
 
 	 <object>
       <name> Tick20MHzDeviation_TH1 </name>
