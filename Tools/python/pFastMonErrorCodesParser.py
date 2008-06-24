@@ -11,7 +11,7 @@ The following table contains some explanations about the FastMon error
 codes.</br>
 """
 
-class pFastMonErrorCodeParser(pHtmlWriter):
+class pFastMonErrorCodesParser(pHtmlWriter):
     
     def writeTable(self, outputFilePath):
         self.openPage(outputFilePath, 'FastMon error codes')
@@ -21,5 +21,5 @@ class pFastMonErrorCodeParser(pHtmlWriter):
 
 
 if __name__ == '__main__':
-    parser = pFastMonErrorCodeParser()
+    parser = pFastMonErrorCodesParser()
     parser.writeTable('fast_mon_error_codes.html')
