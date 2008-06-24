@@ -31,4 +31,4 @@ class pVerifyErrorCodesParser(pHtmlWriter):
 if __name__ == '__main__':
     inputFilePath = '/data/work/isoc/svac/TestReport/src/RunVerify.cxx'
     parser = pVerifyErrorCodesParser()
-    parser.writeTable(inputFilePath, 'verify_error_codes.html')
+    parser.writeTable(inputFilePath, 'run_verify_error_codes.html')
