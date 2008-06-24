@@ -901,6 +901,17 @@
       <description> Rate of evts passing the REAL flight software onboard DGN filter, calculated during the specified time bin. </description>
     </object>
 
+
+     <object>
+      <name> UnPrescaled_FswFilters_DGN </name>
+      <formula><![CDATA[ DGNGemPrescale ]]></formula>
+      <cut><![CDATA[ FswFilters[3]>0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts passing the REAL flight software onboard DGN filter UnPrescaled according to the engine number, calculated during the specified time bin. </description>
+    </object>
+
+     
+
       <object>
       <name> FswFilters_PassThru </name>
       <formula><![CDATA[ FswFilters[4] ]]></formula>
