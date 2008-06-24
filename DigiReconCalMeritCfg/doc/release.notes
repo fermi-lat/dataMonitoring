@@ -1,3 +1,7 @@
+v1r1p35  2008/06/23   (DEV)
+------------------------------
+New quantities addressing Jiras GDQMQ-164 and GDQMQ-165.
+
 v1r1p34  2008/06/23   (DEV)
 ------------------------------
 Added cut PtMcIlwainL>0.1 to all magnetic field derived or magnetic field normalized quantities, 
