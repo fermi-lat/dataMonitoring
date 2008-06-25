@@ -30,10 +30,15 @@
 
   <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
+    <panel name="e410evtRatePanel" enabled="True"/>
+  </page>
+
+  <page enabled="False">
+    <panel name="EnvPanel1" enabled="True"/>
     <panel name="e07evtRatePanel" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="EnvPanel1" enabled="True"/>
     <panel name="e815evtRatePanel" enabled="True"/>
   </page>
@@ -66,11 +71,6 @@
   <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
     <panel name="acdTemp" enabled="True"/>
-  </page>
-
-  <page enabled="True">
-    <panel name="EnvPanel1" enabled="True"/>
-    <panel name="e410evtRatePanel" enabled="True"/>
   </page>
 
 </report>
