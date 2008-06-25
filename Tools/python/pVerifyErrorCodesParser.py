@@ -22,7 +22,8 @@ class pVerifyErrorCodesParser(pHtmlWriter):
                     (errorCode, explanation) = content.split(';')
                     errorCode = errorCode.strip().replace('"', '')
                     explanation = explanation.strip().replace('//', '')
-                    self.writeTableLine([errorCode, explanation])
+                    explanation = eval(explanation)
+                    self.writeTableLine([errorCode] + explanation)
             except:
                 pass
         self.closePage()
@@ -31,4 +32,4 @@ class pVerifyErrorCodesParser(pHtmlWriter):
 if __name__ == '__main__':
     inputFilePath = '/data/work/isoc/svac/TestReport/src/RunVerify.cxx'
     parser = pVerifyErrorCodesParser()
-    parser.writeTable(inputFilePath, 'run_verify_error_codes.html')
+    parser.writeTable(inputFilePath, 'verifylog_error_codes.html')
