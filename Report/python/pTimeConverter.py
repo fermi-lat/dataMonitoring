@@ -22,8 +22,9 @@ import sys
 #   Parse a string representing a time according to a format. The return value
 #   is a struct_time.
 
-FORMAT_STRINGS_DICT = {'Eric Grove': '%Y-%j %H:%M:%S',
-                       'Max Turri' : '%d-%b-%Y %H:%M:%S'}
+FORMAT_STRINGS_DICT = {'Eric Grove'   : '%Y-%j %H:%M:%S',
+                       'Max Turri'    : '%d-%b-%Y %H:%M:%S',
+                       'M. E. Monzani': '%a %b %H:%M:%S UTC %Y'}
 
 def getStringFormat(flavour):
     try:
