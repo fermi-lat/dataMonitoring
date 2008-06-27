@@ -81,20 +81,27 @@ class pLaTeXWriter:
         self.write('\\end{figure}')
         self.newline()
 
-    def addPageHeader(self, timeSpan, logoName = 'glastLogo',\
-                      logoWidth = '2cm'):
+    def addPageHeader(self, title, timeSpan, logoName = 'glastLogo',\
+                      logoWidth = '2.3cm'):
         self.write('\\begin{figure}[htp!]')
-        self.write('\\includegraphics[width=%s]{glastLogo}' % logoWidth,\
-                   percent = True)
-        self.write('\\hfill %s \hfill' % timeSpan)
-        self.write('\\includegraphics[width=%s]{glastLogo}' % logoWidth,\
-                   percent = True)
+        self.write('\\parbox[c]{0.99\\textwidth}{', percent=True)
+        self.write('\\parbox[c]{0.12\\textwidth}{', percent=True)
+        self.write('\\includegraphics[width=%s]{glastLogo}}' % logoWidth,\
+                       percent = True)
+        self.write('\\hfill\\parbox{0.7\\textwidth}{\\begin{center}',\
+                       percent = True)
+        self.write('%s\\\\%s' % (title, timeSpan), percent=True)
+        self.write('\\end{center}}\\hfill', percent = True)
+        self.write('\\parbox[c]{0.12\\textwidth}{', percent=True)
+        self.write('\\includegraphics[width=%s]{glastLogo}}' % logoWidth,\
+                       percent = True)
+        self.write('}')
         self.write('\\end{figure}')
         self.newline()
 
-    def addPage(self, page, timeSpan):
+    def addPage(self, page, title, timeSpan):
         logging.info('Adding new page...')
-        self.addPageHeader(timeSpan)
+        self.addPageHeader(title, timeSpan)
         for panel in page.PanelsList:
             self.addPanel(panel)
         self.write('\\clearpage')

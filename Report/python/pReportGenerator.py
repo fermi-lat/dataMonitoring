@@ -94,7 +94,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         logging.info('Copying the TeX preamble into the report folder...')
         os.system('cp %s %s' % (PREAMBLE_PATH, self.LaTeXFolderPath))
         for page in self.PagesList:
-            self.addPage(page, self.TimeSpan)
+            self.addPage(page, self.Title, self.TimeSpan)
         self.writeTrailer()
 
     def copyPdfAndCleanUp(self):
