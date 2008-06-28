@@ -10,7 +10,8 @@ from lrsTreeWriter import lrsTreeWriter
 
 
 MET_OFFSET = 978307200
-TIME_FORMAT = '%d-%b-%Y %H:%M:%S'
+DEFAULT_TIME_FORMAT = '%d-%b-%Y %H:%M:%S'
+BRYSON_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 class lrsConverter(lrsTreeWriter):
 
@@ -27,9 +28,24 @@ class lrsConverter(lrsTreeWriter):
         self.LineNumber = 0
         self.FirstTimestamp = self.getFirstTimestamp()
         self.LastTimestamp = self.getLastTimestamp()
+        self.BeginDate = self.utc2string(self.FirstTimestamp)
+        self.EndDate = self.utc2string(self.LastTimestamp)
         logging.info('Data found between %s and %s.' %\
-                         (self.utc2string(self.FirstTimestamp),\
-                              self.utc2string(self.LastTimestamp)))
+                         (self.BeginDate, self.EndDate))
+
+    def getNavigationInformation(self):
+        navFilePath = self.InputCvsFilePat.replace('.cvs', '_nav.txt')
+        command = 'source /u/gl/glastops/flightops.csh;'
+        command += 'DiagRet.py --nav -b "%s" -e "%s" >> %s' %\
+            (self.BeginDate, self.EndDate, navFilePath)
+        logging.info('About to execute command "%s".' % command)
+
+    def getSAAInformation(self):
+        saaFilePath = self.InputCvsFilePat.replace('.cvs', '_saa.txt')
+        command = 'source /u/gl/glastops/flightops.csh;'
+        command += 'MnemRet.py --csv %s -b -b "%s" -e "%s" SACFLAGLATINSAA'%\
+            (saaFilePath, self.BeginDate, self.EndDate)
+        logging.info('About to execute command "%s".' % command)
 
     def close(self):
         logging.info('Closing files...')
@@ -39,8 +55,8 @@ class lrsConverter(lrsTreeWriter):
     def met2utc(self, met):
         return met + MET_OFFSET
 
-    def utc2string(self, utc):
-        return time.strftime(TIME_FORMAT, time.gmtime(utc))
+    def utc2string(self, utc, stringFormat = BRYSON_TIME_FORMAT):
+        return time.strftime(stringFormat, time.gmtime(utc))
 
     def getFirstTimestamp(self):
         timestamp = self.timestamp()
