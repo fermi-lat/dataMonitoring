@@ -1,19 +1,20 @@
 
 import os
+import logging
 
-from lrsUtils import *
+import lrsUtils
 
 
 class telemetryTrendingInterface:
 
-    def __init__(self, inputCsvFilePath, outputDirPath):
+    def __init__(self, inputCsvFilePath, outputDirPath, dataBlockSize):
         if not os.path.exists(inputCsvFilePath):
             sys.exit('Could not find %s. Abort.' % inputCsvFilePath)
         self.InputCsvFileName = os.path.basename(inputCsvFilePath)
         self.OutputDirPath = outputDirPath
         self.FirstTimestamp = lrsUtils.getFirstTimestamp(inputCsvFilePath)
         self.LastTimestamp = lrsUtils.getLastTimestamp(inputCsvFilePath,\
-                                                           self.DATA_BLOCK_SIZE)
+                                                       dataBlockSize)
         self.BeginDate = lrsUtils.utc2string(self.FirstTimestamp)
         self.EndDate = lrsUtils.utc2string(self.LastTimestamp)
         logging.info('Data found between %s and %s.' %\
@@ -22,20 +23,20 @@ class telemetryTrendingInterface:
         self.retrieveSAAInformation()
     
     def retrieveNavigationInformation(self):
-        navFileName = self.InputCvsFileName.replace('.cvs', '_nav.txt')
+        navFileName = self.InputCsvFileName.replace('.csv', '_nav.txt')
         navFilePath = os.path.join(self.OutputDirPath, navFileName)
-        command = 'source /u/gl/glastops/flightops.csh;'
-        command += 'DiagRet.py --nav -b "%s" -e "%s" >> %s' %\
+        command = 'DiagRet.py --nav -b "%s" -e "%s" >> %s' %\
             (self.BeginDate, self.EndDate, navFilePath)
         logging.info('About to execute command "%s".' % command)
+        os.system(command)
 
     def retrieveSAAInformation(self):
-        saaFileName = self.InputCvsFileName.replace('.cvs', '_saa.txt')
+        saaFileName = self.InputCsvFileName.replace('.csv', '_saa.txt')
         saaFilePath = os.path.join(self.OutputDirPath, saaFileName)
-        command = 'source /u/gl/glastops/flightops.csh;'
-        command += 'MnemRet.py --csv %s -b -b "%s" -e "%s" SACFLAGLATINSAA'%\
+        command = 'MnemRet.py --csv %s -b "%s" -e "%s" SACFLAGLATINSAA'%\
             (saaFilePath, self.BeginDate, self.EndDate)
         logging.info('About to execute command "%s".' % command)
+        os.system(command)
 
 
 if __name__ == '__main__':
@@ -44,6 +45,9 @@ if __name__ == '__main__':
     parser.add_option('-o', '--output-dir', dest = 'o',
                       default = '.', type = str,
                       help = 'path to the output dir')
+    parser.add_option('-d', '--data-block-size', dest = 'd',
+                      type = int,
+                      help = 'path to the output dir')
     (opts, args) = parser.parse_args()
-    interface = telemetryTrendingInterface(args[0], opts.o)
+    interface = telemetryTrendingInterface(args[0], opts.o, opts.d)
 
