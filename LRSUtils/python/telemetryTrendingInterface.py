@@ -25,6 +25,8 @@ class telemetryTrendingInterface:
     def retrieveNavigationInformation(self):
         navFileName = self.InputCsvFileName.replace('.csv', '_nav.txt')
         navFilePath = os.path.join(self.OutputDirPath, navFileName)
+        if os.path.exists(navFilePath):
+            logging.info('%s already exists. Skipping...' % navFilePath)
         command = 'DiagRet.py --nav -b "%s" -e "%s" >> %s' %\
             (self.BeginDate, self.EndDate, navFilePath)
         logging.info('About to execute command "%s".' % command)
@@ -33,6 +35,8 @@ class telemetryTrendingInterface:
     def retrieveSAAInformation(self):
         saaFileName = self.InputCsvFileName.replace('.csv', '_saa.txt')
         saaFilePath = os.path.join(self.OutputDirPath, saaFileName)
+        if os.path.exists(saaFilePath):
+            logging.info('%s already exists. Skipping...' % saaFilePath)
         command = 'MnemRet.py --csv %s -b "%s" -e "%s" SACFLAGLATINSAA'%\
             (saaFilePath, self.BeginDate, self.EndDate)
         logging.info('About to execute command "%s".' % command)
