@@ -27,6 +27,7 @@ class telemetryTrendingInterface:
         navFilePath = os.path.join(self.OutputDirPath, navFileName)
         if os.path.exists(navFilePath):
             logging.info('%s already exists. Skipping...' % navFilePath)
+            return 
         command = 'DiagRet.py --nav -b "%s" -e "%s" >> %s' %\
             (self.BeginDate, self.EndDate, navFilePath)
         logging.info('About to execute command "%s".' % command)
@@ -37,6 +38,7 @@ class telemetryTrendingInterface:
         saaFilePath = os.path.join(self.OutputDirPath, saaFileName)
         if os.path.exists(saaFilePath):
             logging.info('%s already exists. Skipping...' % saaFilePath)
+            return
         command = 'MnemRet.py --csv %s -b "%s" -e "%s" SACFLAGLATINSAA'%\
             (saaFilePath, self.BeginDate, self.EndDate)
         logging.info('About to execute command "%s".' % command)
