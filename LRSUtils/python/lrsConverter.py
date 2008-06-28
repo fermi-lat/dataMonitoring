@@ -5,13 +5,10 @@ logging.basicConfig(level = logging.DEBUG)
 import os
 import sys
 import time
+import lrsUtils
 
 from lrsTreeWriter import lrsTreeWriter
 
-
-MET_OFFSET = 978307200
-DEFAULT_TIME_FORMAT = '%d-%b-%Y %H:%M:%S'
-BRYSON_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 class lrsConverter(lrsTreeWriter):
 
@@ -23,13 +20,13 @@ class lrsConverter(lrsTreeWriter):
         outputRootFilePath = inputCsvFilePath.replace('.csv', '.root')
         lrsTreeWriter.__init__(self, outputRootFilePath, self.TREE_NAME,\
                                    self.BRANCHES_LIST)
-        self.InputCvsFilePath = inputCsvFilePath
-        self.InputCsvFile = file(self.InputCvsFilePath)
+        self.InputCsvFile = file(inputCsvFilePath)
         self.LineNumber = 0
-        self.FirstTimestamp = self.getFirstTimestamp()
-        self.LastTimestamp = self.getLastTimestamp()
-        self.BeginDate = self.utc2string(self.FirstTimestamp)
-        self.EndDate = self.utc2string(self.LastTimestamp)
+        self.FirstTimestamp = lrsUtils.getFirstTimestamp(inputCsvFilePath)
+        self.LastTimestamp = lrsUtils.getLastTimestamp(inputCsvFilePath,\
+                                                           self.DATA_BLOCK_SIZE)
+        self.BeginDate = lrsUtils.utc2string(self.FirstTimestamp)
+        self.EndDate = lrsUtils.utc2string(self.LastTimestamp)
         logging.info('Data found between %s and %s.' %\
                          (self.BeginDate, self.EndDate))
 
@@ -52,31 +49,6 @@ class lrsConverter(lrsTreeWriter):
         self.closeTree()
         self.InputCsvFile.close()
 
-    def met2utc(self, met):
-        return met + MET_OFFSET
-
-    def utc2string(self, utc, stringFormat = BRYSON_TIME_FORMAT):
-        return time.strftime(stringFormat, time.gmtime(utc))
-
-    def getFirstTimestamp(self):
-        timestamp = self.timestamp()
-        self.InputCsvFile.seek(0)
-        return timestamp
-
-    def getLastTimestamp(self):
-        fileSize = os.stat(self.InputCvsFilePath)[6]
-        numLinesFound = 0
-        filePosition = fileSize
-        while numLinesFound <= self.DATA_BLOCK_SIZE:
-            self.InputCsvFile.seek(filePosition)
-            item = self.InputCsvFile.read(1)
-            if item == '\n':
-                numLinesFound += 1
-            filePosition -= 1
-        timestamp = self.timestamp()
-        self.InputCsvFile.seek(0)
-        return timestamp
-
     def line(self):
         self.LineNumber += 1
         if self.LineNumber%100000 == 0:
@@ -93,4 +65,4 @@ class lrsConverter(lrsTreeWriter):
         if timestamp == '':
             return None
         timestamp = float(timestamp)
-        return self.met2utc(timestamp)
+        return lrsUtils.met2utc(timestamp)
