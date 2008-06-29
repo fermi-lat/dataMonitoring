@@ -59,7 +59,13 @@ class lrsTkrConverter(lrsConverter):
 if __name__ == '__main__':
     from optparse import OptionParser
     parser = OptionParser(usage = 'usage: %prog [options]')
+    parser.add_option('-r', '--root-dir', dest = 'r',
+                      default = None, type = str,
+                      help = 'path to output ROOT folder')
+    parser.add_option('-t', '--telemetry-dir', dest = 't',
+                      default = None, type = str,
+                      help = 'path to output telemetry folder')
     (opts, args) = parser.parse_args()
-    converter = lrsTkrConverter(args[0])
+    converter = lrsTkrConverter(args[0], opts.r, opts.t)
     converter.convert()
     converter.close()

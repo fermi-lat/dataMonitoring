@@ -33,15 +33,22 @@ class lrsConverter(lrsTreeWriter):
                       'SACFLAGLATINSAA'
                       ]
 
-    def __init__(self, inputCsvFilePath):
+    def __init__(self, inputCsvFilePath, outputRootFolder, telemetryFolder):
         if not os.path.exists(inputCsvFilePath):
             sys.exit('Could not find %s. Abort.' % inputCsvFilePath)
-        outputRootFilePath = inputCsvFilePath.replace('.csv', '.root')
+        self.TelemetryFolder = telemetryFolder
+        if outputRootFolder is None:
+            outputRootFilePath = inputCsvFilePath.replace('.csv', '.root')
+        else:
+            outputRootFileName = os.path.basename(inputCsvFilePath)
+            outputRootFileName = outputRootFileName.replace('.csv', '.root')
+            outputRootFilePath = os.path.join(outputRootFolder,\
+                                                  outputRootFileName)
         for mnemonic in self.MNEMONICS_LIST:
             self.BRANCHES_LIST.append('%s:d:(1)' % mnemonic)
         lrsTreeWriter.__init__(self, outputRootFilePath, self.TREE_NAME,\
                                    self.BRANCHES_LIST)
-        self.InputCvsFilePath = inputCsvFilePath
+        self.InputCsvFilePath = inputCsvFilePath
         self.InputCsvFile = file(inputCsvFilePath)
         self.LineNumber = 0
         self.FirstTimestamp = getFirstTimestamp(inputCsvFilePath)
@@ -55,7 +62,14 @@ class lrsConverter(lrsTreeWriter):
         self.retrieveSAAInformation()
 
     def retrieveNavigationInformation(self):
-        navFilePath = self.InputCvsFilePath.replace('.csv', '_nav.txt')
+        if self.TelemetryFolder is None:
+            navFilePath = self.InputCsvFilePath.replace('.csv', '_nav.txt')
+        else:
+            navFileName = os.path.basename(self.InputCsvFilePath)
+            navFileName = navFileName.replace('.csv', '_nav.txt')
+            navFilePath = os.path.join(self.TelemetryFolder, navFileName)
+        logging.info('Retrieving navigation information from %s...' %\
+                         navFileName)
         if not os.path.exists(navFilePath):
             sys.exit('Could not find %s. Abort.' % navFilePath)
         self.NavigationGraphList = []
@@ -77,13 +91,20 @@ class lrsConverter(lrsTreeWriter):
             for i in range(len(self.NavigationMnemonics)):
                 self.NavigationGraphList[i].SetPoint(lineNumber,\
                                                          time, data[i + 2])
+        logging.info('Done.')
 
     def getNavigationData(self, timestamp, mnemonic):
         i = self.NavigationMnemonicsDict[mnemonic]
         return self.NavigationGraphList[i].Eval(timestamp)
 
     def retrieveSAAInformation(self):
-        saaFilePath = self.InputCvsFilePath.replace('.csv', '_saa.txt')
+        if self.TelemetryFolder is None:
+            saaFilePath = self.InputCsvFilePath.replace('.csv', '_saa.txt')
+        else:
+            saaFileName = os.path.basename(self.InputCsvFilePath)
+            saaFileName = saaFileName.replace('.csv', '_saa.txt')
+            saaFilePath = os.path.join(self.TelemetryFolder, saaFileName)
+        logging.info('Retrieving SAA information from %s...' % saaFileName)
         if not os.path.exists(saaFilePath):
             sys.exit('Could not find %s. Abort.' % saaFilePath)
         self.SAAGraph = ROOT.TGraph()
@@ -94,7 +115,7 @@ class lrsConverter(lrsTreeWriter):
             data = line.strip('\n').split(',')
             data[1:] = [float(x) for x in data[1:]]
             self.SAAGraph.SetPoint(lineNumber, data[1], data[2])
-        sys.exit()
+        logging.info('Done.')
 
     def getSAAFlag(self, timestamp):
         return self.SAAGraph.Eval(timestamp)
