@@ -19,6 +19,12 @@ NUM_LAT_BINS = 200
 ROOT_TREE_NAME = 'LrsTree'
 
 
+SAA_LAT = [-30.0, -16.5, -11.1, -7.1, -4.4, 2.7, 6.5, 8.5, 8.4, -17.4,
+            -22.3, -30.0]
+SAA_LON = [-92.0, -99.5, -98.3, -95.4, -90.9, -66.1, -48.7, -37.3, -28.4,
+            33.2, 42.1, 47.5] 
+
+
 class lrsPlotter:
 
     def __init__(self, rootFilePath, counterName):
@@ -27,7 +33,18 @@ class lrsPlotter:
         self.CounterName = counterName
         self.createArrays()
         self.createHistograms()
+        self.createSAAContour()
         self.loop()
+
+    def createSAAContour(self):
+        SAA_LAT.append(SAA_LAT[0])
+        SAA_LON.append(SAA_LON[0])
+        self.SAAContour = []
+        for i in range(12):
+            line = ROOT.TLine(SAA_LON[i], SAA_LAT[i], SAA_LON[i + 1],
+                              SAA_LAT[i + 1])
+            line.SetLineWidth(2)
+            self.SAAContour.append(line)
 
     def createArrays(self):
         logging.info('Creating arrays...')
@@ -67,11 +84,16 @@ class lrsPlotter:
         self.Canvas = ROOT.TCanvas('canvas_%s' % self.CounterName,
                                    self.CounterName, 800, 500)
         self.RateHistogram.Draw('colz')
+        for line in self.SAAContour:
+            line.Draw('same')
         self.Canvas.SetLogz(True)
         self.Canvas.Update()
 
 
 if __name__ == '__main__':
+    calHiplotter = lrsPlotter('/data/work/leo/saa/calLrsChain.root',\
+                                  'LrsHiAverageRate')
+    calHiplotter.draw()
     calLoplotter = lrsPlotter('/data/work/leo/saa/calLrsChain.root',\
                                   'LrsLoAverageRate')
     calLoplotter.draw()
