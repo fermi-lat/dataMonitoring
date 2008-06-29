@@ -29,7 +29,9 @@ class lrsConverter(lrsTreeWriter):
                       'LSPORBRAD',
                       'LSPPCUTOFF',
                       'LSPROCKANGLE',
-                      'LSPSUNANGLE']
+                      'LSPSUNANGLE',
+                      'SACFLAGLATINSAA'
+                      ]
 
     def __init__(self, inputCsvFilePath):
         if not os.path.exists(inputCsvFilePath):
@@ -72,34 +74,47 @@ class lrsConverter(lrsTreeWriter):
             data = line.strip('\n').split(',')
             time = string2utc(data[0], NAVIGATION_TIME_FORMAT)
             data[1:] = [float(x) for x in data[1:]]
-            #print time, met2utc(data[1])
             for i in range(len(self.NavigationMnemonics)):
                 self.NavigationGraphList[i].SetPoint(lineNumber,\
                                                          time, data[i + 2])
-        #self.drawNavigationGraphs()
+
+    def getNavigationData(self, timestamp, mnemonic):
+        i = self.NavigationMnemonicsDict[mnemonic]
+        return self.NavigationGraphList[i].Eval(timestamp)
+
+    def retrieveSAAInformation(self):
+        saaFilePath = self.InputCvsFilePath.replace('.csv', '_saa.txt')
+        if not os.path.exists(saaFilePath):
+            sys.exit('Could not find %s. Abort.' % saaFilePath)
+        self.SAAGraph = ROOT.TGraph()
+        self.SAAGraph.SetNameTitle('SACFLAGLATINSAA', 'SACFLAGLATINSAA')
+        saaFile = file(saaFilePath)
+        saaFile.readline()
+        for (lineNumber, line) in enumerate(saaFile.readlines()):
+            data = line.strip('\n').split(',')
+            data[1:] = [float(x) for x in data[1:]]
+            self.SAAGraph.SetPoint(lineNumber, data[1], data[2])
+        sys.exit()
+
+    def getSAAFlag(self, timestamp):
+        return self.SAAGraph.Eval(timestamp)
 
     def drawNavigationGraphs(self):
         for (i, label) in enumerate(self.NavigationMnemonics):
             self.NavigationGraphList[i].Draw('ALP')
             ROOT.gPad.Update()
             raw_input()
+            
+    def drawSAAGraph(self):
+        self.SAAGraph.Draw('ALP')
+        ROOT.gPad.Update()
+        raw_input()
 
-    def getNavigationData(self, timestamp, mnemonic):
-        i = self.NavigationMnemonicsDict[mnemonic]
-        return self.NavigationGraphList[i].Eval(timestamp)
-
-    def fillNavigationInformation(self, timestamp):
+    def fillTelemetryInformation(self, timestamp):
         for mnemonic in self.NavigationMnemonics:
             self.getArray(mnemonic)[0] =\
                 self.getNavigationData(timestamp, mnemonic)
-
-    def retrieveSAAInformation(self):
-        saaFilePath = self.InputCvsFilePath.replace('.csv', '_saa.txt')
-        if not os.path.exists(saaFilePath):
-            sys.exit('Could not find %s. Abort.' % saaFilePath)
-
-    def getSAAFlag(self, timestamp):
-        pass
+        self.getArray('SACFLAGLATINSAA')[0] = self.getSAAFlag(timestamp)
 
     def close(self):
         logging.info('Closing files...')

@@ -52,7 +52,7 @@ class lrsTkrConverter(lrsConverter):
                 self.getArray('LrsRate')[i] = rates
                 averageRate += sum(rates)
             self.getArray('LrsAverageRate')[0] = averageRate/64
-            self.fillNavigationInformation(timestamp)
+            self.fillTelemetryInformation(timestamp)
             self.fillTree()
 
 

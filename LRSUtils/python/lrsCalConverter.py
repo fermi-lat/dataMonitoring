@@ -49,7 +49,7 @@ class lrsCalConverter(lrsConverter):
                 averageHiRate += rates[1]
             self.getArray('LrsLoAverageRate')[0] = averageLoRate/16    
             self.getArray('LrsHiAverageRate')[0] = averageHiRate/16
-            self.fillNavigationInformation(timestamp)
+            self.fillTelemetryInformation(timestamp)
             self.fillTree()
 
 
