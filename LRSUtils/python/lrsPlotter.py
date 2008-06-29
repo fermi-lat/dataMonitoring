@@ -1,39 +1,81 @@
 
+import logging
+logging.basicConfig(level = logging.DEBUG)
+
 import sys
 import ROOT
+import numpy
+
+ROOT.gStyle.SetPalette(1)
+ROOT.gStyle.SetCanvasColor(10)
+ROOT.gStyle.SetOptStat(0)
+
+MIN_LON = -180
+MAX_LON = 180
+MIN_LAT = -30
+MAX_LAT = 30
+NUM_LON_BINS = 300
+NUM_LAT_BINS = 200
+ROOT_TREE_NAME = 'LrsTree'
 
 
-CAL_ROOT_FILE_PATH = '/data/work/leo/saa/f1001_2360728414034220.root'
-CAL_ROOT_TREE_NAME = 'CalLrsTree'
-TKR_ROOT_FILE_PATH = '/data/work/leo/saa/f1002_2361209078065470.root'
-TKR_ROOT_TREE_NAME = 'TkrLrsTree'
+class lrsPlotter:
 
-rootFile = ROOT.TFile(TKR_ROOT_FILE_PATH)
-rootTree = rootFile.Get(TKR_ROOT_TREE_NAME)
-rootCanvas = ROOT.TCanvas()
-rootCanvas.Divide(4, 4)
+    def __init__(self, rootFilePath, counterName):
+        self.RootFile = ROOT.TFile(rootFilePath)
+        self.RootTree = self.RootFile.Get(ROOT_TREE_NAME)
+        self.CounterName = counterName
+        self.createArrays()
+        self.createHistograms()
+        self.loop()
+
+    def createArrays(self):
+        logging.info('Creating arrays...')
+        self.Longitude = numpy.zeros((1), 'd')
+        self.Latitude = numpy.zeros((1), 'd')
+        self.Rate = numpy.zeros((1), 'd')
+        self.RootTree.SetBranchAddress('LSPGEOLON', self.Longitude)
+        self.RootTree.SetBranchAddress('LSPGEOLAT', self.Latitude)
+        self.RootTree.SetBranchAddress(self.CounterName, self.Rate)
+
+    def createHistograms(self):
+        logging.info('Creating histograms...')
+        self.ExposureHistogram = ROOT.TH2F('exposure_%s' % self.CounterName,
+                                           'LRS exposure',
+                                           NUM_LON_BINS, MIN_LON, MAX_LON,
+                                           NUM_LAT_BINS, MIN_LAT, MAX_LAT)
+        self.ExposureHistogram.GetXaxis().SetTitle('Latitude')
+        self.ExposureHistogram.GetYaxis().SetTitle('Longitude')
+        self.RateHistogram = ROOT.TH2F('rate_%s' % self.CounterName,
+                                       'LRS average rate (Hz)',
+                                       NUM_LON_BINS, MIN_LON, MAX_LON,
+                                       NUM_LAT_BINS, MIN_LAT, MAX_LAT)
+        self.RateHistogram.GetXaxis().SetTitle('Latitude')
+        self.RateHistogram.GetYaxis().SetTitle('Longitude')
+
+    def loop(self):
+        logging.info('Starting event loop...')
+        for i in range(self.RootTree.GetEntries()):
+            if (i%100000) == 0:
+                logging.debug('%d events scanned.' % i)
+            self.RootTree.GetEntry(i)
+            self.RateHistogram.Fill(self.Longitude, self.Latitude, self.Rate)
+            self.ExposureHistogram.Fill(self.Longitude, self.Latitude, 1)
+        self.RateHistogram.Divide(self.ExposureHistogram)
+
+    def draw(self):
+        self.Canvas = ROOT.TCanvas('canvas_%s' % self.CounterName,
+                                   self.CounterName, 800, 500)
+        self.RateHistogram.Draw('colz')
+        self.Canvas.SetLogz(True)
+        self.Canvas.Update()
 
 
-#import time
-#t1 = time.time()
-#t2 = t1 + 100000
-#print time.strftime('%d-%b-%Y %H:%M:%S', time.gmtime(t1))
-#print time.strftime('%d-%b-%Y %H:%M:%S', time.gmtime(t2))
-#h = ROOT.TH2F('h', 'h', 100, t1, t2, 100, 0, 1)
-#h.GetXaxis().SetTimeDisplay(1)
-#h.GetXaxis().SetTimeFormat('%y %b %d %H:%M:%S%F1970-01-01 00:00:00')
-#h.GetXaxis().SetNdivisions(5)
-#h.GetXaxis().SetLabelSize(0.02)
-#h.Draw()
-
-for tower in range(16):
-    plotName = 'tower%d' % tower
-    rootCanvas.cd(tower + 1)
-    rootTree.Draw('LrsRate[%d][0]:Time>>%s' % (tower, plotName))
-    plot = ROOT.gDirectory.Get(plotName)
-    plot.GetXaxis().SetTimeDisplay(1)
-    plot.GetXaxis().SetTimeFormat('%y %b %d %H:%M:%S%F1970-01-01 00:00:00')
-    plot.GetXaxis().SetNdivisions(5)
-    plot.GetXaxis().SetLabelSize(0.02)
-    plot.Draw()
-    rootCanvas.Update()
+if __name__ == '__main__':
+    calLoplotter = lrsPlotter('/data/work/leo/saa/calLrsChain.root',\
+                                  'LrsLoAverageRate')
+    calLoplotter.draw()
+    tkrPlotter = lrsPlotter('/data/work/leo/saa/tkrLrsChain.root',\
+                                'LrsAverageRate')
+    tkrPlotter.draw()
+    
