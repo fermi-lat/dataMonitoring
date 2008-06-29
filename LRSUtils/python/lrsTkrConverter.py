@@ -14,14 +14,14 @@ from lrsConverter import lrsConverter
 
 class lrsTkrConverter(lrsConverter):
 
-    BRANCHES_LIST = ['Time:d:(1)',
-                     'TowerMask:i:(1)',
-                     'CounterMask:i:(1)',
-                     'CountDuration:d:(4)',
-                     'LrsCounts:i:(16, 4)',
-                     'LrsRate:d:(16, 4)',
-                     'LrsAverageRate:d:(1)'
-                     ]
+    _BRANCHES_LIST = ['Time:d:(1)',
+                      'TowerMask:i:(1)',
+                      'CounterMask:i:(1)',
+                      'CountDuration:d:(4)',
+                      'LrsCounts:i:(16, 4)',
+                      'LrsRate:d:(16, 4)',
+                      'LrsAverageRate:d:(1)'
+                      ]
     DATA_BLOCK_SIZE = 35
 
     def convert(self):

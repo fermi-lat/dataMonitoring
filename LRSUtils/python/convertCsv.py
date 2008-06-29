@@ -18,9 +18,11 @@ for fileName in os.listdir(LRS_DATA_PATH):
                                     TELEMETRY_DIR_PATH)
         converter.convert()
         converter.close()
+        del converter
     elif 'f1002' in fileName:
         filePath = os.path.join(LRS_DATA_PATH, fileName)
         converter = lrsTkrConverter(filePath, OUTPUT_DIR_PATH,\
                                     TELEMETRY_DIR_PATH)
         converter.convert()
         converter.close()
+        del converter

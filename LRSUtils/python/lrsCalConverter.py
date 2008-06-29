@@ -13,15 +13,15 @@ from lrsConverter import lrsConverter
 
 class lrsCalConverter(lrsConverter):
 
-    BRANCHES_LIST = ['Time:d:(1)',
-                     'TowerMask:i:(1)',
-                     'CounterMask:i:(1)',
-                     'CountDuration:d:(2)',
-                     'LrsCounts:i:(16, 2)',
-                     'LrsRate:d:(16, 2)',
-                     'LrsLoAverageRate:d:(1)',
-                     'LrsHiAverageRate:d:(1)'
-                     ]
+    _BRANCHES_LIST = ['Time:d:(1)',
+                      'TowerMask:i:(1)',
+                      'CounterMask:i:(1)',
+                      'CountDuration:d:(2)',
+                      'LrsCounts:i:(16, 2)',
+                      'LrsRate:d:(16, 2)',
+                      'LrsLoAverageRate:d:(1)',
+                      'LrsHiAverageRate:d:(1)'
+                      ]
     DATA_BLOCK_SIZE = 19
 
     def convert(self):
