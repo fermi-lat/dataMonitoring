@@ -78,7 +78,7 @@ class lrsConverter(lrsTreeWriter):
         for i in range(2):
             navigationFile.readline()
         self.NavigationMnemonics =\
-            navigationFile.readline().strip('\n').split(',')[2:]
+            navigationFile.readline().strip('\n').strip('\r').split(',')[2:]
         for (i, label) in enumerate(self.NavigationMnemonics):
             graph = ROOT.TGraph()
             graph.SetNameTitle(label, label)
