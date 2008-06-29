@@ -8,7 +8,6 @@ import numpy
 import os
 import sys
 
-
 from lrsConverter import lrsConverter
 
 
@@ -27,10 +26,10 @@ class lrsCalConverter(lrsConverter):
 
     def convert(self):
         while 1:
-            line = self.line()
-            if line == '':
+            timestamp = self.timestamp()
+            if timestamp is None:
                 break
-            self.getArray('Time')[0] = float(line)
+            self.getArray('Time')[0] = timestamp
             self.getArray('TowerMask')[0] = int(self.line())
             self.getArray('CounterMask')[0] = int(self.line())
             averageLoRate = 0
@@ -49,7 +48,8 @@ class lrsCalConverter(lrsConverter):
                 averageLoRate += rates[0]
                 averageHiRate += rates[1]
             self.getArray('LrsLoAverageRate')[0] = averageLoRate/16    
-            self.getArray('LrsHiAverageRate')[0] = averageHiRate/16    
+            self.getArray('LrsHiAverageRate')[0] = averageHiRate/16
+            self.fillNavigationInformation(timestamp)
             self.fillTree()
 
 

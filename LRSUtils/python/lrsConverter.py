@@ -5,7 +5,8 @@ logging.basicConfig(level = logging.DEBUG)
 import os
 import sys
 import time
-import lrsUtils
+import ROOT
+from lrsUtils import *
 
 from lrsTreeWriter import lrsTreeWriter
 
@@ -13,36 +14,92 @@ from lrsTreeWriter import lrsTreeWriter
 class lrsConverter(lrsTreeWriter):
 
     TREE_NAME     = 'LrsTree'
+    MNEMONICS_LIST = ['LSPECIDECZ',
+                      'LSPECIRAZ',
+                      'LSPGALDECZ',
+                      'LSPGALRAZ',
+                      'LSPGEOALT',
+                      'LSPGEOLAT',
+                      'LSPGEOLON',
+                      'LSPMAGLAT',
+                      'LSPMAGLON',
+                      'LSPMAGRAD',
+                      'LSPMCILWAINB',
+                      'LSPMCILWAINL',
+                      'LSPORBRAD',
+                      'LSPPCUTOFF',
+                      'LSPROCKANGLE',
+                      'LSPSUNANGLE']
 
     def __init__(self, inputCsvFilePath):
         if not os.path.exists(inputCsvFilePath):
             sys.exit('Could not find %s. Abort.' % inputCsvFilePath)
         outputRootFilePath = inputCsvFilePath.replace('.csv', '.root')
+        for mnemonic in self.MNEMONICS_LIST:
+            self.BRANCHES_LIST.append('%s:d:(1)' % mnemonic)
         lrsTreeWriter.__init__(self, outputRootFilePath, self.TREE_NAME,\
                                    self.BRANCHES_LIST)
+        self.InputCvsFilePath = inputCsvFilePath
         self.InputCsvFile = file(inputCsvFilePath)
         self.LineNumber = 0
-        self.FirstTimestamp = lrsUtils.getFirstTimestamp(inputCsvFilePath)
-        self.LastTimestamp = lrsUtils.getLastTimestamp(inputCsvFilePath,\
+        self.FirstTimestamp = getFirstTimestamp(inputCsvFilePath)
+        self.LastTimestamp = getLastTimestamp(inputCsvFilePath,\
                                                            self.DATA_BLOCK_SIZE)
-        self.BeginDate = lrsUtils.utc2string(self.FirstTimestamp)
-        self.EndDate = lrsUtils.utc2string(self.LastTimestamp)
+        self.BeginDate = utc2string(self.FirstTimestamp)
+        self.EndDate = utc2string(self.LastTimestamp)
         logging.info('Data found between %s and %s.' %\
                          (self.BeginDate, self.EndDate))
+        self.retrieveNavigationInformation()
+        self.retrieveSAAInformation()
 
-    def getNavigationInformation(self):
-        navFilePath = self.InputCvsFilePat.replace('.cvs', '_nav.txt')
-        command = 'source /u/gl/glastops/flightops.csh;'
-        command += 'DiagRet.py --nav -b "%s" -e "%s" >> %s' %\
-            (self.BeginDate, self.EndDate, navFilePath)
-        logging.info('About to execute command "%s".' % command)
+    def retrieveNavigationInformation(self):
+        navFilePath = self.InputCvsFilePath.replace('.csv', '_nav.txt')
+        if not os.path.exists(navFilePath):
+            sys.exit('Could not find %s. Abort.' % navFilePath)
+        self.NavigationGraphList = []
+        self.NavigationMnemonicsDict = {}
+        navigationFile = file(navFilePath)
+        for i in range(2):
+            navigationFile.readline()
+        self.NavigationMnemonics =\
+            navigationFile.readline().strip('\n').split(',')[2:]
+        for (i, label) in enumerate(self.NavigationMnemonics):
+            graph = ROOT.TGraph()
+            graph.SetNameTitle(label, label)
+            self.NavigationGraphList.append(graph)
+            self.NavigationMnemonicsDict[label] = i
+        for (lineNumber, line) in enumerate(navigationFile.readlines()):
+            data = line.strip('\n').split(',')
+            time = string2utc(data[0], NAVIGATION_TIME_FORMAT)
+            data[1:] = [float(x) for x in data[1:]]
+            #print time, met2utc(data[1])
+            for i in range(len(self.NavigationMnemonics)):
+                self.NavigationGraphList[i].SetPoint(lineNumber,\
+                                                         time, data[i + 2])
+        #self.drawNavigationGraphs()
 
-    def getSAAInformation(self):
-        saaFilePath = self.InputCvsFilePat.replace('.cvs', '_saa.txt')
-        command = 'source /u/gl/glastops/flightops.csh;'
-        command += 'MnemRet.py --csv %s -b -b "%s" -e "%s" SACFLAGLATINSAA'%\
-            (saaFilePath, self.BeginDate, self.EndDate)
-        logging.info('About to execute command "%s".' % command)
+    def drawNavigationGraphs(self):
+        for (i, label) in enumerate(self.NavigationMnemonics):
+            self.NavigationGraphList[i].Draw('ALP')
+            ROOT.gPad.Update()
+            raw_input()
+
+    def getNavigationData(self, timestamp, mnemonic):
+        i = self.NavigationMnemonicsDict[mnemonic]
+        return self.NavigationGraphList[i].Eval(timestamp)
+
+    def fillNavigationInformation(self, timestamp):
+        for mnemonic in self.NavigationMnemonics:
+            self.getArray(mnemonic)[0] =\
+                self.getNavigationData(timestamp, mnemonic)
+
+    def retrieveSAAInformation(self):
+        saaFilePath = self.InputCvsFilePath.replace('.csv', '_saa.txt')
+        if not os.path.exists(saaFilePath):
+            sys.exit('Could not find %s. Abort.' % saaFilePath)
+
+    def getSAAFlag(self, timestamp):
+        pass
 
     def close(self):
         logging.info('Closing files...')
@@ -65,4 +122,4 @@ class lrsConverter(lrsTreeWriter):
         if timestamp == '':
             return None
         timestamp = float(timestamp)
-        return lrsUtils.met2utc(timestamp)
+        return met2utc(timestamp)

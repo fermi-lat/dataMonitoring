@@ -5,16 +5,26 @@ logging.basicConfig(level = logging.DEBUG)
 import os
 import sys
 import time
+import calendar
 
 MET_OFFSET = 978307200
 DEFAULT_TIME_FORMAT = '%d-%b-%Y %H:%M:%S'
 BRYSON_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
+NAVIGATION_TIME_FORMAT = '%Y-%m-%d %H:%M:%S' # 2008-06-25 07:47:21.200000
 
 def met2utc(met):
     return met + MET_OFFSET
 
 def utc2string(utc, stringFormat = BRYSON_TIME_FORMAT):
     return time.strftime(stringFormat, time.gmtime(utc))
+
+def string2utc(timestring, formatString):
+    try:
+        (sec, msec) = timestring.split('.')
+        sec = calendar.timegm(time.strptime(sec, formatString))
+        return sec + float('.%s' % msec)
+    except:
+        return calendar.timegm(time.strptime(timestring, formatString))
 
 def getFirstTimestamp(filePath):
     fileObject = file(filePath)
