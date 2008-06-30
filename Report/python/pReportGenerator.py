@@ -4,6 +4,7 @@ import os
 import logging
 import re
 import sys
+import time
 
 logging.basicConfig(level = logging.INFO)
 
@@ -29,6 +30,9 @@ COOKIE_TMP_DIR_NAME = '_report_cookie_temp_'
 class pReportGenerator(pLaTeXWriter, pDownloadManager):
     
     def __init__(self, endTime, spannedTime, pdfFolderPath, cfgFilePath):
+        self.TimeStatList = []
+        startTime = time.time()
+        self.ProcessingStartTime = startTime
         self.DownloadFolderPath =\
             os.path.join(pdfFolderPath, DOWNLOAD_TMP_DIR_NAME)
         self.CookieFolderPath = os.path.join(pdfFolderPath, COOKIE_TMP_DIR_NAME)
@@ -52,6 +56,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
                          os.path.abspath(self.DownloadFolderPath))
         logging.info('LaTeX file path: %s' % os.path.abspath(latexFilePath))
         pLaTeXWriter.__init__(self, latexFilePath)
+        self.fillTimeStat('Inizialitation', time.time() - startTime)
         logging.info('Parsing xml configuration file %s...' %\
                          os.path.abspath(cfgFilePath))
         try:
@@ -64,6 +69,9 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         self.parseConfiguration()
         self.invalidateSession()
 
+    def fillTimeStat(self, operation, elapsedTime):
+        self.TimeStatList.append('%40s: %.2f s' % (operation, elapsedTime))
+
     def parseConfiguration(self):
         reportTag = self.XmlBaseElement.getElementByTagName('report')
         self.Title = reportTag.getAttribute('title', '')
@@ -74,12 +82,16 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
                     if panelTag.evalAttribute('enabled'):
                         panelName = panelTag.getAttribute('name')
                         if panelName not in self.PanelsDict.keys():
+                            startTime = time.time()
                             panel = pReportPanel(panelName, self.StartTime,\
                                                      self.EndTime,\
                                                      self.LaTeXFolderPath,\
                                                      self.DownloadFolderPath,\
                                                      self.CookieFolderPath)
                             self.PanelsDict[panelName] = panel
+                            self.fillTimeStat(('Download panel "%s"' %\
+                                                   panelName),\
+                                                  time.time() - startTime)
                         else:
                             logging.info('Panel %s already downloaded.' %\
                                          panelName)
@@ -88,6 +100,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
                 self.PagesList.append(page)
 
     def writeReport(self):
+        startTime = time.time()
         self.writeHeader()
         logging.info('Copying the GLAST logo into the report folder...')
         os.system('cp %s %s' % (LOGO_IMAGE_PATH, self.LaTeXFolderPath))
@@ -96,10 +109,25 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         for page in self.PagesList:
             self.addPage(page, self.Title, self.TimeSpan)
         self.writeTrailer()
+        self.fillTimeStat('Write LaTeX report', time.time() - startTime)
+        startTime = time.time()
+        self.compile()
+        self.fillTimeStat('Compile LaTeX report', time.time() - startTime)
 
     def copyPdfAndCleanUp(self):
+        startTime = time.time()
         os.system('cd %s; cp *.pdf ..' % self.LaTeXFolderPath)
         os.system('rm -rf %s' % self.LaTeXFolderPath)
+        self.fillTimeStat('Cleanup', time.time() - startTime)
+        self.ProcessingStopTime = time.time()
+        print '\n**************** Statistiscs *****************'
+        for label in self.TimeStatList:
+            print label 
+        print
+        print '%40s: %.2f s' % ('Total elapsed time',
+                                self.ProcessingStopTime -\
+                                    self.ProcessingStartTime)
+        print '************************************************\n'
  
 
 if __name__ == '__main__':
@@ -130,5 +158,4 @@ if __name__ == '__main__':
     endms = convert2msec(opts.e)
     reportGenerator = pReportGenerator(endms, opts.s, opts.d, opts.c)
     reportGenerator.writeReport()
-    reportGenerator.compile()
     reportGenerator.copyPdfAndCleanUp()
