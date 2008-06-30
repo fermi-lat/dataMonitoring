@@ -120,14 +120,14 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         os.system('rm -rf %s' % self.LaTeXFolderPath)
         self.fillTimeStat('Cleanup', time.time() - startTime)
         self.ProcessingStopTime = time.time()
-        print '\n**************** Statistiscs *****************'
+        print '\n**************** Statistiscs ********************'
         for label in self.TimeStatList:
             print label 
         print
         print '%40s: %.2f s' % ('Total elapsed time',
                                 self.ProcessingStopTime -\
                                     self.ProcessingStartTime)
-        print '************************************************\n'
+        print '***************************************************\n'
  
 
 if __name__ == '__main__':
