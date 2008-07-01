@@ -24,7 +24,7 @@ import sys
 
 FORMAT_STRINGS_DICT = {'Eric Grove'   : '%Y-%j %H:%M:%S',
                        'Max Turri'    : '%d-%b-%Y %H:%M:%S',
-                       'M. E. Monzani': '%a %b %H:%M:%S UTC %Y'}
+                       'M. E. Monzani': '%a %b %d %H:%M:%S UTC %Y'}
 
 def getStringFormat(flavour):
     try:
