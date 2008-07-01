@@ -29,6 +29,14 @@ DOWNLOAD_TMP_DIR_NAME = 'report_download_temp_%s' %\
 COOKIE_TMP_DIR_NAME = 'report_cookie_temp_%s' %\
     sec2string(time.time(), FORMAT_STRINGS_DICT['Luca Baldini'])
 
+def getPdfFileName(endTime, spannedTime, cfgFilePath):
+    pdfFileName = '%s' % os.path.basename(cfgFilePath).replace('.xml', '')
+    pdfFileName += '_%s' % msec2string(endTime,\
+                                           FORMAT_STRINGS_DICT['Johan Bregeon'])
+    pdfFileName += ('_%.2f' % spannedTime).replace('.', 'h')
+    pdfFileName += '.pdf'
+    return pdfFileName
+
 
 class pReportGenerator(pLaTeXWriter, pDownloadManager):
     
@@ -45,10 +53,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         self.StartTime = endTime - int(spannedTime*3600000)
         self.TimeSpan = '%s -- %s' %\
             (msec2string(self.StartTime), msec2string(self.EndTime))
-        pdfFileName = '%s' % os.path.basename(cfgFilePath).replace('.xml', '')
-        pdfFileName += '_%s' % msec2string(self.EndTime, '%Y-%j-%Hh%Mm%Ss')
-        pdfFileName += ('_%.2f' % spannedTime).replace('.', 'h')
-        pdfFileName += '.pdf'
+        pdfFileName = getPdfFileName(self.EndTime, spannedTime, cfgFilePath)
         latexFilePath = os.path.join(pdfFolderPath, LATEX_TMP_DIR_NAME,\
                                          pdfFileName.replace('.pdf','.tex'))
         self.PdfFilePath = os.path.join(pdfFolderPath, pdfFileName)
