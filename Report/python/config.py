@@ -16,11 +16,13 @@ doCleanup = True
 
 reportDuration = {
     'daily' : '24',
-    'weekly' : '168',
+    #'weekly' : '168',
+    'weekly' : '72',
 }
 
 reportOutType = {
     'daily' : 'Report-24h',
+    #'weekly' : 'Report-168h',
     'weekly' : 'Report-72h',
 }
 
