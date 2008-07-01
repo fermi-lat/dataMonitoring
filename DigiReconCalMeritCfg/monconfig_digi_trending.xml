@@ -46,7 +46,7 @@
     <object>GemPrescale</object>
     <object>DGNGemPrescale</object>
     <object>FswFilters_GammaBits</object>
-
+    <object>EventSizeInBytes</object>
 
     <!-- Acd Variables -->
     
@@ -553,6 +553,22 @@
       <type> outputfloat </type>
       <description> Error in the normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones. </description>
     </object>	    
+
+     <object>
+      <name> EventSizeInBytes </name>
+      <formula><![CDATA[ EventSizeInBytes ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> truncatedmean[0.5,100000000] </type>
+      <description> Mean Size of the Event (bytes) during the specified time interval. </description>
+    </object>
+
+       <object>
+      <name> EventSizeInBytes_TriggerEngine[16] </name>
+      <formula><![CDATA[ foreachengine: TriggerEngine[engine]*double(EventSizeInBytes) ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> truncatedmean[0.5,100000000] </type>
+      <description> Mean Size of the Event (bytes) for each GEM Trigger Engine, calculated during the specified time interval. </description>
+    </object>
 
 
 	      <!-- Trigger Rates per tower geometry -->
@@ -1222,7 +1238,7 @@
       <formula><![CDATA[ DGNGemPrescale ]]></formula>
       <cut><![CDATA[(condsummary&1) && (condsummary&2) && (FswFilters[3]>0)]]></cut>
       <type> rate </type>
-      <description> Rate of TKR trigger and ROI (mostly charge particles) AND Flight Sowftware DGN Filter, unprescaled with the DGN (engine dependent) prescale factor. </description>
+      <description> Rate of TKR trigger and ROI (mostly charge particles) surviving the  Flight Sowftware DGN Filter, unprescaled with the DGN (engine dependent) prescale factor. </description>
     </object>
 
      <object>
@@ -1230,7 +1246,7 @@
       <formula><![CDATA[ DGNGemPrescale ]]></formula>
       <cut><![CDATA[!(condsummary&1) && (condsummary&2) && (FswFilters[3]>0)]]></cut>
       <type> rate </type>
-      <description> Rate of TKR trigger and not ROI (mostly non charge particles) AND Flight Sowftware DGN Filter,unprescaled with the DGN (engine dependent) prescale factor. </description>
+      <description> Rate of TKR trigger and not ROI (mostly non charge particles) surviving Flight Sowftware DGN Filter,unprescaled with the DGN (engine dependent) prescale factor. </description>
     </object>
 
 

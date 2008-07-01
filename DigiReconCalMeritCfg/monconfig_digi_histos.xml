@@ -43,7 +43,7 @@
     <object> CurrentORPreviousTimeToneMissing </object>
     <object> CurrentTimeToneMissing </object>
     <object> sourceGps </object>
-
+    <object>EventSizeInBytes</object>
 
     <!-- Acd Variables -->
     
@@ -145,6 +145,7 @@
 
      <!-- ********************  Event classification information   *********************** -->
           
+   
      <object>
       <name> CondSummaryWord_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
@@ -667,7 +668,7 @@
      <object>
       <name> DeltaEventTime_Zoom_TH1 </name>
       <formula><![CDATA[ DeltaEventTime ]]></formula>
-      <cut><![CDATA[ (condsummary&30) && (DeltaWindowOpen<1500)]]></cut>
+      <cut><![CDATA[ (condsummary&30) && (DeltaEventTime<1500)]]></cut>
       <type> histogram-1d[160,0.,1600] </type>
       <titledesc>  GEM Delta Event time in 50 ns ticks </titledesc>
       <axisdesc> [DeltaEvent time (50 ns ticks), N] </axisdesc>
@@ -778,11 +779,11 @@
      <object>
       <name> Tick20MHzDeviation_Zoom_TH1 </name>
       <formula><![CDATA[ Tick20MHzDeviation ]]></formula>
-      <cut><![CDATA[ (NewSecond&1) && !CurrentORPreviousTimeToneMissing && (Tick20MHzDeviation<200) && (Tick20MHzDeviation> -200)]]></cut>
-      <type> histogram-1d[400,-200,200] </type>
+      <cut><![CDATA[ (NewSecond&1) && !CurrentORPreviousTimeToneMissing && (Tick20MHzDeviation<250) && (Tick20MHzDeviation> -250)]]></cut>
+      <type> histogram-1d[500,-250,250] </type>
       <titledesc> Number of ticks between successive 1-PPS (ZOOM)</titledesc>
       <axisdesc> [Clock ticks (nominal 50 ns), N] </axisdesc>
-      <description>  Number of ticks between successive 1-PPS - Deviation from 20 MHz. Only deviations smaller than 200 ticks are being displayed.</description>
+      <description>  Number of ticks between successive 1-PPS - Deviation from 20 MHz. Only deviations smaller than 250 ticks are being displayed.</description>
     </object>
 
       <object>
@@ -851,7 +852,35 @@
       <description>Delta Evt ID (digi->getMetaEvent().scalers().sequence()) between consecutive events for EPU1.  </description>
     </object>
 
+        <object>
+      <name> EventSizeInBytes_TH1 </name>
+      <formula><![CDATA[ foronetime: TMath::Log10(double(EventSizeInBytes)) ]]></formula>
+      <cut><![CDATA[EventSizeInBytes>1 ]]></cut>
+      <type> histogram-1d[350,-0.5,6.5] </type>
+      <titledesc> Distribution of Event Size (before compression) </titledesc>
+      <axisdesc> [log10(EventSize[Byte]), N] </axisdesc>
+      <description> Distribution of the size of the events (bytes) before compression. </description>
+    </object>
 
+       <object>
+      <name> EventSizeInBytes_TH1_TriggerEngine[16] </name>
+      <formula><![CDATA[ foreachengine: TriggerEngine[engine]>0 ? TMath::Log10(TriggerEngine[engine]*double(EventSizeInBytes)):0.0 ]]></formula>
+      <cut><![CDATA[ EventSizeInBytes>1 ]]></cut>
+      <type> histogram-1d[350,-0.5,6.5,0.0] </type>
+      <titledesc> Distribution of Event Size (before compression) for GEM Trigger Engines </titledesc>
+      <axisdesc> [log10(EventSize[Byte]), N] </axisdesc>
+      <description> Distribution of the size of the events (before compression) for the GEM Trigger Engines.  </description>
+    </object>
+
+        <object>
+      <name> EventSizeInBytes_vs_TriggerEngine_TH2 </name>
+      <formula><![CDATA[ foreachengine: TriggerEngine[engine]>0 ? TMath::Log10(TriggerEngine[engine]*double(EventSizeInBytes)):0.0 ]]></formula>
+      <cut><![CDATA[ EventSizeInBytes>1 ]]></cut>
+      <type> histogram-index-2d[16,-0.5,15.5, 70,-0.5,6.5,0.0] </type>
+      <titledesc>  Event Size vs GEM Trigger Engine</titledesc>
+      <axisdesc> [Trigger Engine, log10(EventSize[Byte])] </axisdesc>
+      <description> Distribution of the size of the events (before compression) versus the GEM Trigger Engine.</description>
+    </object>
 
       <!-- ********************  Detector information   *********************** -->
 
