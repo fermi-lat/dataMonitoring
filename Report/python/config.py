@@ -10,7 +10,7 @@ import sys
 taskName = "launchReport"
 taskVersion = "1.0"
 fullTaskName = '-'.join([taskName, taskVersion])
-ReportMainDir = '/nfs/farm/g/glast/u33/monzani/svac/L1Pipeline/Report/'
+ReportMainDir = '/afs/slac.stanford.edu/g/glast/ground/releases/volume03/Report'
 
 doCleanup = True
 
