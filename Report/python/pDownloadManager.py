@@ -39,7 +39,7 @@ class pDownloadManager:
         options = '&timeInterval=%d-%d&maxBins=-1&imageFormat=%s' %\
                   (startTime, endTime, imageFormat)
         self.downloadUrl(url, options)
-        self.PanelUrl = url
+        self.PanelUrl = '%s%s' % (url, options)
 
     def downloadBaseReportUrl(self):
         self.downloadUrl(BASE_REPORT_URL, '')
