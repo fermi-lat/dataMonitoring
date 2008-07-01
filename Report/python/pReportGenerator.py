@@ -48,7 +48,6 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         pdfFileName = '%s' % os.path.basename(cfgFilePath).replace('.xml', '')
         pdfFileName += '_%s' % msec2string(self.EndTime, '%Y-%j-%Hh%Mm%Ss')
         pdfFileName += ('_%.2f' % spannedTime).replace('.', 'h')
-        #pdfFileName += '_%s' % sec2string(time.time(), '%y%j%H%M%S')
         pdfFileName += '.pdf'
         latexFilePath = os.path.join(pdfFolderPath, LATEX_TMP_DIR_NAME,\
                                          pdfFileName.replace('.pdf','.tex'))
