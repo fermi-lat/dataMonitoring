@@ -7,7 +7,8 @@ import time
 import config
 import runner
 #import registerPrep
-import pTimeConverter
+from pTimeConverter import convert2msec
+from pReportGenerator import getPdfFileName
 
 InstallDir = config.ReportInstallDir
  
@@ -24,6 +25,7 @@ app = os.path.join(InstallDir,'pReportGenerator.py')
 duration = config.reportDuration[reportType] 
 endHour = config.shiftHours[shiftType]
 endTime = '%s-%s %s:00:00' %(shiftYear,shiftDoy,endHour)
+endTimeMs = convert2msec(endTime)
 dirDate = '%s-%s' %(shiftYear,shiftDoy)
 
 configFile = config.reportConfig
@@ -42,7 +44,7 @@ cd %(workDir)s
 status = runner.run(cmd)
 
 if not status:
-    fname = os.listdir(tempDir)[0] 
+    fname = getPdfFileName(endTimeMs,float(duration),configFile)
     fpath = os.path.join(tempDir,fname)
     cpCmd = '''
     cp %(fpath)s %(outDir)s 

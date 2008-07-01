@@ -94,6 +94,7 @@ class pReportPanel(pDownloadManager):
         htmlTableRows = re.search('(?<=<tr).*(?=</tr>)', pageContent,\
                                       re.DOTALL).group().split('</tr>')
         for plot in self.PlotsList:
+            plot.Url = self.PanelUrl
             for htmlTableRow in htmlTableRows:
                 if plot.PlotName in htmlTableRow:
                     caption = re.search('leftCaption.*?</td>',\
