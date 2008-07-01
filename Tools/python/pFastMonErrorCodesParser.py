@@ -22,4 +22,4 @@ class pFastMonErrorCodesParser(pHtmlWriter):
 
 if __name__ == '__main__':
     parser = pFastMonErrorCodesParser()
-    parser.writeTable('fast_mon_error_codes.html')
+    parser.writeTable('fastmonerror_error_codes.html')
