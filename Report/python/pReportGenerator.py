@@ -22,9 +22,12 @@ BASE_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 PREAMBLE_PATH = os.path.join(BASE_DIR_PATH, 'preamble.tex')
 LOGO_IMAGE_PATH = os.path.join(BASE_DIR_PATH, 'glastLogo.png')
 DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/summaryReport.xml')
-LATEX_TMP_DIR_NAME = '_report_latex_temp_'
-DOWNLOAD_TMP_DIR_NAME = '_report_download_temp_'
-COOKIE_TMP_DIR_NAME = '_report_cookie_temp_'
+LATEX_TMP_DIR_NAME = 'report_latex_temp_%s' %\
+    sec2string(time.time(), FORMAT_STRINGS_DICT['Luca Baldini'])
+DOWNLOAD_TMP_DIR_NAME = 'report_download_temp_%s' %\
+    sec2string(time.time(), FORMAT_STRINGS_DICT['Luca Baldini'])
+COOKIE_TMP_DIR_NAME = 'report_cookie_temp_%s' %\
+    sec2string(time.time(), FORMAT_STRINGS_DICT['Luca Baldini'])
 
 
 class pReportGenerator(pLaTeXWriter, pDownloadManager):
