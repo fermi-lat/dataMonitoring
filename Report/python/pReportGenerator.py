@@ -22,12 +22,15 @@ BASE_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 PREAMBLE_PATH = os.path.join(BASE_DIR_PATH, 'preamble.tex')
 LOGO_IMAGE_PATH = os.path.join(BASE_DIR_PATH, 'glastLogo.png')
 DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/summaryReport.xml')
-LATEX_TMP_DIR_NAME = 'report_latex_temp_%s' %\
-    sec2string(time.time(), FORMAT_STRINGS_DICT['Luca Baldini'])
-DOWNLOAD_TMP_DIR_NAME = 'report_download_temp_%s' %\
-    sec2string(time.time(), FORMAT_STRINGS_DICT['Luca Baldini'])
-COOKIE_TMP_DIR_NAME = 'report_cookie_temp_%s' %\
-    sec2string(time.time(), FORMAT_STRINGS_DICT['Luca Baldini'])
+REPORT_GEN_TIME = time.time()
+REPORT_GEN_NS = ('%.9f' % (REPORT_GEN_TIME%1))[2:]
+REPORT_GEN_DATE = sec2string(REPORT_GEN_TIME,\
+                                 FORMAT_STRINGS_DICT['Luca Baldini'])
+REPORT_GEN_DATE = '%s_%s' % (REPORT_GEN_DATE, REPORT_GEN_NS) 
+LATEX_TMP_DIR_NAME = 'latex_temp_%s' % REPORT_GEN_DATE
+DOWNLOAD_TMP_DIR_NAME = 'download_temp_%s' % REPORT_GEN_DATE
+COOKIE_TMP_DIR_NAME = 'cookie_temp_%s' % REPORT_GEN_DATE
+
 
 def getPdfFileName(endTime, spannedTime, cfgFilePath):
     pdfFileName = '%s' % os.path.basename(cfgFilePath).replace('.xml', '')
@@ -160,7 +163,7 @@ if __name__ == '__main__':
                       help='print the list of avilable time formats and exit')
     parser.add_option('-l', '--do-not-cleanup-LaTeX',
                       action='store_false', dest='l', default=True,
-                      help='do not clean up the temporary LaTeX folde')
+                      help='do not clean up the temporary LaTeX folder')
     (opts, args) = parser.parse_args()
     if opts.t:
         print 'Available format strings for specifying end time:\n%s' %\
