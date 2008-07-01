@@ -105,6 +105,7 @@
     <object> PtLat </object>
     <object> PtLon </object>
     <object> PtMagLat </object>
+    <object> PtSCzenith </object>
 
 
    
@@ -181,6 +182,14 @@
       <description> Mean value  of PtMagLat</description>
     </object>
 
+    <object>
+      <name> PtSCzenith </name>
+      <formula><![CDATA[ PtSCzenith  ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <type> mean </type>
+      <description> Mean value  of PtSCzenith</description>
+    </object>
+	
 
     <!-- RAtes -->
 
@@ -596,6 +605,25 @@
       <type> rate </type>
       <description> Rate of events after application of TRANSIENT gamma cuts from pass5, using the Gleam Gamma filter instead of the flight software gamma filter. </description>
     </object>
+     
+       <object>
+      <name> Ratio_TransientEvts_FswGamma_GleamGamma </name>
+      <formula><![CDATA[ foronetime: Rate_TransientEvtsUsingGleamGammaFilter >0 ? Rate_TransientEvts/Rate_TransientEvtsUsingGleamGammaFilter : -1.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>outputfloat</type>
+      <description> Ratio of Transient evt rates computed using the Flight Software GAMMA filter and the Offline Gleam GAMMA filter (N_Fsw/N_Gleam). </description>
+    </object>
+
+       <object>
+      <name> Ratio_TransientEvts_FswGamma_GleamGamma_err </name>
+      <formula><![CDATA[ foronetime: (Rate_TransientEvtsUsingGleamGammaFilter >0 && Rate_TransientEvts > 0 )? (Rate_TransientEvts/Rate_TransientEvtsUsingGleamGammaFilter)*TMath::Sqrt(pow(Rate_TransientEvtsUsingGleamGammaFilter_err/Rate_TransientEvtsUsingGleamGammaFilter,2)+pow(Rate_TransientEvts_err/Rate_TransientEvts,2)) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>outputfloat</type>
+      <description> Error in quantity Ratio_TransientEvts_FswGamma_GleamGamma. </description>
+    </object>
+
 
        <object>
       <name> SourceEvtsUsingGleamGammaFilter </name>
@@ -605,6 +633,25 @@
       <description> Rate of events after application of SOURCE gamma cuts from pass5, using the Gleam Gamma filter instead of the flight software gamma filter. </description>
     </object>
 
+        <object>
+      <name> Ratio_SourceEvts_FswGamma_GleamGamma </name>
+      <formula><![CDATA[ foronetime: Rate_SourceEvtsUsingGleamGammaFilter >0 ? Rate_SourceEvts/Rate_SourceEvtsUsingGleamGammaFilter : -1.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>outputfloat</type>
+      <description> Ratio of Transient evt rates computed using the Flight Software GAMMA filter and the Offline Gleam GAMMA filter (N_Fsw/N_Gleam). </description>
+    </object>
+
+       <object>
+      <name> Ratio_SourceEvts_FswGamma_GleamGamma_err </name>
+      <formula><![CDATA[ foronetime: (Rate_SourceEvtsUsingGleamGammaFilter >0 && Rate_SourceEvts > 0 )? (Rate_SourceEvts/Rate_SourceEvtsUsingGleamGammaFilter)*TMath::Sqrt(pow(Rate_SourceEvtsUsingGleamGammaFilter_err/Rate_SourceEvtsUsingGleamGammaFilter,2)+pow(Rate_SourceEvts_err/Rate_SourceEvts,2)) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>outputfloat</type>
+      <description> Error in quantity Ratio_SourceEvts_FswGamma_GleamGamma. </description>
+    </object>
+
+
        <object>
       <name> DiffuseEvtsUsingGleamGammaFilter </name>
       <formula><![CDATA[ 1 ]]></formula>
@@ -613,7 +660,23 @@
       <description> Rate of events after application of DIFFUSE gamma cuts from pass5, using the Gleam Gamma filter instead of the flight software gamma filter. </description>
     </object>
 
+          <object>
+      <name> Ratio_DiffuseEvts_FswGamma_GleamGamma </name>
+      <formula><![CDATA[ foronetime: Rate_DiffuseEvtsUsingGleamGammaFilter >0 ? Rate_DiffuseEvts/Rate_DiffuseEvtsUsingGleamGammaFilter : -1.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>outputfloat</type>
+      <description> Ratio of Transient evt rates computed using the Flight Software GAMMA filter and the Offline Gleam GAMMA filter (N_Fsw/N_Gleam). </description>
+    </object>
 
+       <object>
+      <name> Ratio_DiffuseEvts_FswGamma_GleamGamma_err </name>
+      <formula><![CDATA[ foronetime: (Rate_DiffuseEvtsUsingGleamGammaFilter >0 && Rate_DiffuseEvts > 0 )? (Rate_DiffuseEvts/Rate_DiffuseEvtsUsingGleamGammaFilter)*TMath::Sqrt(pow(Rate_DiffuseEvtsUsingGleamGammaFilter_err/Rate_DiffuseEvtsUsingGleamGammaFilter,2)+pow(Rate_DiffuseEvts_err/Rate_DiffuseEvts,2)) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>outputfloat</type>
+      <description> Error in quantity Ratio_DiffuseEvts_FswGamma_GleamGamma. </description>
+    </object>
 
        <object>
       <name> NormRateTransientEvtsUsingGleamGammaFilter </name>
