@@ -43,7 +43,7 @@ status = runner.run(cmd)
 
 if not status:
     fname = os.listdir(tempDir)[0] 
-    fpath = os.path.join(tempDir.fname)
+    fpath = os.path.join(tempDir,fname)
     cpCmd = '''
     cp %(fpath)s %(outDir)s 
     ''' % locals()

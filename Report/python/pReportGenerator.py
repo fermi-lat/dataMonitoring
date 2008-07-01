@@ -6,7 +6,7 @@ import re
 import sys
 import time
 
-logging.basicConfig(level = logging.INFO)
+logging.basicConfig(level = logging.DEBUG)
 
 from pLaTeXWriter     import pLaTeXWriter
 from pReportPanel     import pReportPanel
