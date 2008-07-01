@@ -114,10 +114,11 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         self.compile()
         self.fillTimeStat('Compile LaTeX report', time.time() - startTime)
 
-    def copyPdfAndCleanUp(self):
+    def copyPdfAndCleanUp(self, cleanupLaTeX):
         startTime = time.time()
         os.system('cd %s; cp *.pdf ..' % self.LaTeXFolderPath)
-        os.system('rm -rf %s' % self.LaTeXFolderPath)
+        if cleanupLaTeX:
+            os.system('rm -rf %s' % self.LaTeXFolderPath)
         self.fillTimeStat('Cleanup', time.time() - startTime)
         self.ProcessingStopTime = time.time()
         print '\n**************** Statistiscs ********************'
@@ -150,6 +151,9 @@ if __name__ == '__main__':
     parser.add_option('-t', '--time-formats',
                       action='store_true', dest='t', default=False,
                       help='print the list of avilable time formats and exit')
+    parser.add_option('-l', '--do-not-cleanup-LaTeX',
+                      action='store_false', dest='l', default=True,
+                      help='do not clean up the temporary LaTeX folde')
     (opts, args) = parser.parse_args()
     if opts.t:
         print 'Available format strings for specifying end time:\n%s' %\
@@ -158,4 +162,4 @@ if __name__ == '__main__':
     endms = convert2msec(opts.e)
     reportGenerator = pReportGenerator(endms, opts.s, opts.d, opts.c)
     reportGenerator.writeReport()
-    reportGenerator.copyPdfAndCleanUp()
+    reportGenerator.copyPdfAndCleanUp(opts.l)
