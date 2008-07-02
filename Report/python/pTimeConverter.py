@@ -22,6 +22,7 @@ import sys
 #   Parse a string representing a time according to a format. The return value
 #   is a struct_time.
 
+MET_OFFSET = 978307200
 FORMAT_STRINGS_DICT = {'Eric Grove'   : '%Y-%j %H:%M:%S',
                        'Max Turri'    : '%d-%b-%Y %H:%M:%S',
                        'M. E. Monzani': '%a %b %d %H:%M:%S UTC %Y',
@@ -72,6 +73,13 @@ def availableTimeFormats(sec = 1208563199):
         formats += '%12s: "%s" (e.g. %s)\n' %\
             (key, value, sec2string(sec, value)) 
     return formats
+
+def met2utc(met):
+    return met + MET_OFFSET
+
+def utc2met(utc):
+    return utc - MET_OFFSET
+
 
 
 if __name__ == '__main__':
