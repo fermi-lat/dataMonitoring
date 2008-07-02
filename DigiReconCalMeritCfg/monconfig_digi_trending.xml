@@ -557,9 +557,17 @@
      <object>
       <name> EventSizeInBytes </name>
       <formula><![CDATA[ EventSizeInBytes ]]></formula>
-      <cut><![CDATA[ ]]></cut>
+      <cut><![CDATA[ EventSizeInBytes>1]]></cut>
       <type> truncatedmean[0.5,100000000] </type>
       <description> Mean Size of the Event (bytes) during the specified time interval. </description>
+    </object>
+
+     <object>
+      <name> EvtSizeInBytes </name>
+      <formula><![CDATA[ EventSizeInBytes ]]></formula>
+      <cut><![CDATA[ EventSizeInBytes>1]]></cut>
+      <type> rate </type>
+      <description> Rate of  Bytes (Evt size before compression) during the specified time interval. </description>
     </object>
 
        <object>
