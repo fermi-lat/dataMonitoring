@@ -40,9 +40,6 @@
        TkrTrigger_Tower_TH1  Sum
        CalHiTrigger_Tower_TH1  Sum
        CalLoTrigger_Tower_TH1  Sum
-       TkrTrigger_Tower_TH1  Sum
-       CalHiTrigger_Tower_TH1  Sum
-       CalLoTrigger_Tower_TH1  Sum
        DeltaWindowOpen_TH1  Sum
        DeltaEventTime_TH1  Sum
        DeltaWindowOpen_Zoom_TH1  Sum

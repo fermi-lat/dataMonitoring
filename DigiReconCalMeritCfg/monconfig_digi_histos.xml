@@ -553,45 +553,7 @@
 
 
 
-     <object>
-      <name> TkrTrigger_Tower_TH1 </name>
-      <formula><![CDATA[ TkrTriggerTower ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
-      <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
-      <titledesc> Number of tracker triggers per tower </titledesc>
-      <axisdesc> [Tower number, N] </axisdesc>
-      <description> Number of tracker triggers per tower </description>
-    </object>
 
-
-   
-  
-
-         <object>
-      <name> CalHiTrigger_Tower_TH1 </name>
-      <formula><![CDATA[ CalHiTriggerTower ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
-      <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
-      <titledesc> Number of Cal HI triggers per tower </titledesc>
-      <axisdesc> [Tower number, N] </axisdesc>
-      <description> Number of Cal HI triggers  per tower </description>
-    </object>
-
-
-
-
-     <object>
-      <name> CalLoTrigger_Tower_TH1 </name>
-      <formula><![CDATA[ CalLoTriggerTower ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
-      <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
-      <titledesc> Number of Cal LOW triggers per tower </titledesc>
-      <axisdesc> [Tower number, N] </axisdesc>
-      <description> Number of Cal LOW triggers  per tower </description>
-    </object>
-
-
-     
         <object>
       <name> TkrTrigger_Tower_TH1 </name>
       <formula><![CDATA[ TkrTriggerTower ]]></formula>
