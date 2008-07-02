@@ -45,6 +45,9 @@ class lrsConverter(lrsTreeWriter):
             outputRootFileName = outputRootFileName.replace('.csv', '.root')
             outputRootFilePath = os.path.join(outputRootFolder,\
                                                   outputRootFileName)
+        if os.path.exists(outputRootFilePath):
+            logging.info('%s already exists. Skipping...' % outputRootFilePath)
+            return 
         self.BRANCHES_LIST = copy(self._BRANCHES_LIST)
         for mnemonic in self.MNEMONICS_LIST:
             self.BRANCHES_LIST.append('%s:d:(1)' % mnemonic)
