@@ -10,6 +10,7 @@ class telemetryTrendingInterface:
     def __init__(self, inputCsvFilePath, outputDirPath, dataBlockSize):
         if not os.path.exists(inputCsvFilePath):
             sys.exit('Could not find %s. Abort.' % inputCsvFilePath)
+        logging.info('Opening %s...' % inputCsvFilePath)
         self.InputCsvFileName = os.path.basename(inputCsvFilePath)
         self.OutputDirPath = outputDirPath
         self.FirstTimestamp = lrsUtils.getFirstTimestamp(inputCsvFilePath)
@@ -27,22 +28,22 @@ class telemetryTrendingInterface:
         navFilePath = os.path.join(self.OutputDirPath, navFileName)
         if os.path.exists(navFilePath):
             logging.info('%s already exists. Skipping...' % navFilePath)
-            return 
-        command = 'DiagRet.py --nav -b "%s" -e "%s" >> %s' %\
-            (self.BeginDate, self.EndDate, navFilePath)
-        logging.info('About to execute command "%s".' % command)
-        os.system(command)
+        else:
+            command = 'DiagRet.py --nav -b "%s" -e "%s" >> %s' %\
+                      (self.BeginDate, self.EndDate, navFilePath)
+            logging.info('About to execute command "%s".' % command)
+            os.system(command)
 
     def retrieveSAAInformation(self):
         saaFileName = self.InputCsvFileName.replace('.csv', '_saa.txt')
         saaFilePath = os.path.join(self.OutputDirPath, saaFileName)
         if os.path.exists(saaFilePath):
             logging.info('%s already exists. Skipping...' % saaFilePath)
-            return
-        command = 'MnemRet.py --csv %s -b "%s" -e "%s" SACFLAGLATINSAA'%\
-            (saaFilePath, self.BeginDate, self.EndDate)
-        logging.info('About to execute command "%s".' % command)
-        os.system(command)
+        else:
+            command = 'MnemRet.py --csv %s -b "%s" -e "%s" SACFLAGLATINSAA'%\
+                      (saaFilePath, self.BeginDate, self.EndDate)
+            logging.info('About to execute command "%s".' % command)
+            os.system(command)
 
 
 if __name__ == '__main__':
