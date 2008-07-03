@@ -25,7 +25,6 @@
   <process name="registerReport">
     <variables>
        <var name="parentProcess">createReport</var>
-       <var name="reportType">${REPORT_TYPE}</var>
     </variables>
     <script><![CDATA[
 %(registerBody)s

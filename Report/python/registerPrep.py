@@ -3,7 +3,7 @@ import os
 import sys
 
 import config
-import variables
+import pipeline
 
 def prep(fullName, shortName, tStart, tStop):
     """
@@ -11,23 +11,25 @@ def prep(fullName, shortName, tStart, tStop):
     Actual registration is done by a scriptlet (in registerStuff.py).
     This sets up some pipeline variables so the scriptlet knows what to do.
     """
+    reportType = os.environ['REPORT_TYPE']
+    fileType = config.reportFileTypes[reportType]
+    dcGroup = fileType.upper()
 
     taskName = config.taskName
     taskVersion =  config.taskVersion
     creator = '-'.join([taskName, taskVersion])
 
-    reportType = os.environ['REPORT_TYPE']
-    fileType = config.reportFileTypes[reportType]
+    attributes = ':'.join([
+        "nMetStart=%f" % tStart,
+        "nMetStop=%f" % tStop,
+        "sCreator=%s" % creator
+    ])
+    
+    logiPath = '%s/%s:%s' % (config.dataCatBase, dcGroup, shortName)
 
-    variables.setVar(reportType, 'format', 'pdf')
-    variables.setVar(reportType, 'fileType', fileType)
-    variables.setVar(reportType, 'path', config.dataCatBase)
-    variables.setVar(reportType, 'group', fileType.upper())
-    variables.setVar(reportType, 'site', 'SLAC')
-    variables.setVar(reportType, 'fullName', fullName)
-    variables.setVar(reportType, 'creator', creator)
-    variables.setVar(reportType, 'shortName', shortName)
-    variables.setVar(reportType, 'tStart', tStart)
-    variables.setVar(reportType, 'tStop', tStop)
-
+    pipeline.setVariable('REGISTER_LOGIPATH', logiPath)
+    pipeline.setVariable('REGISTER_FILETYPE', dcGroup)
+    pipeline.setVariable('REGISTER_FILEPATH', fullName)
+    pipeline.setVariable('REGISTER_ATTRIBUTES', attributes)
+ 
     return
