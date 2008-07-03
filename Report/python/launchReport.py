@@ -6,8 +6,9 @@ import time
 
 import config
 import runner
-#import registerPrep
+import registerPrep
 from pTimeConverter import convert2msec
+from pTimeConverter import utc2met
 from pReportGenerator import getPdfFileName
 
 InstallDir = config.ReportInstallDir
@@ -26,6 +27,8 @@ duration = config.reportDuration[reportType]
 endHour = config.shiftHours[shiftType]
 endTime = '%s-%s %s:00:00' %(shiftYear,shiftDoy,endHour)
 endTimeMs = convert2msec(endTime)
+tStop = utc2met(endTimeMs/1000.)
+tStart = tStop-float(duration)*3600
 dirDate = '%s-%s' %(shiftYear,shiftDoy)
 
 configFile = config.reportConfig
@@ -44,14 +47,18 @@ cd %(workDir)s
 status = runner.run(cmd)
 
 if not status:
-    fname = getPdfFileName(endTimeMs,float(duration),configFile)
-    fpath = os.path.join(tempDir,fname)
+    fileName = getPdfFileName(endTimeMs,float(duration),configFile)
+    fpath = os.path.join(tempDir,fileName)
+    fullName = os.path.join(outDir,fileName)
+    shortName = fileName.strip('.pdf').strip('summaryReport_')
+    if not os.path.exists(outDir):
+        os.makedirs(outDir)
     cpCmd = '''
-    cp %(fpath)s %(outDir)s 
+    cp %(fpath)s %(fullName)s 
     ''' % locals()
     cpStatus = runner.run(cpCmd)
     if not cpStatus:
-        #registerPrep.prep(reportType, realVerifyHistoFile)
+        registerPrep.prep(fullName, shortName, tStart, tStop)
         pass
     pass
     

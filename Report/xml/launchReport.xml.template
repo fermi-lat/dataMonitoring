@@ -9,6 +9,7 @@
   <variables>
     <var name="DATASOURCE">LPA</var>
     <var name="ReportInstallDir">%(ReportInstallDir)s</var>
+    <var name="nameManglingPrefix">%(nameManglingPrefix)s</var>
   </variables>
 
   <prerequisites>
@@ -19,6 +20,20 @@
 
   <process name="createReport">
     <job executable="${ReportInstallDir}/launchReport.py" batchOptions=" -q medium "/>
+  </process>
+
+  <process name="registerReport">
+    <variables>
+       <var name="parentProcess">createReport</var>
+       <var name="reportType">${REPORT_TYPE}</var>
+    </variables>
+    <script><![CDATA[
+%(registerBody)s
+]]>
+    </script>
+    <depends>
+       <after process="createReport" status="SUCCESS"/>
+    </depends>
   </process>
 
 </task>
