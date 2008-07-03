@@ -41,11 +41,35 @@
 	    <type>double</type>
             <shape>(1)</shape>
 	</variable>
+	<variable name="spacecraft_rock" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="spacecraft_xra" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="spacecraft_xdec" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="spacecraft_yra" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="spacecraft_ydec" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
 	<variable name="spacecraft_zra" enabled="True" reset="False">
 	    <type>double</type>
             <shape>(1)</shape>
 	</variable>
 	<variable name="spacecraft_zdec" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="spacecraft_earthlimb_fov" enabled="True" reset="False">
 	    <type>double</type>
             <shape>(1)</shape>
 	</variable>
