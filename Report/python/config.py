@@ -25,12 +25,6 @@ reportOutType = {
     'weekly' : 'Report-72h',
 }
 
-shiftHours = {
-    'A' : '00',
-    'B' : '08',
-    'C' : '16',
-}
-
 reportFileTypes = {
     'daily' : 'DailyReport',
     'weekly' : 'WeeklyReport',

@@ -14,7 +14,6 @@ from pReportGenerator import getPdfFileName
 InstallDir = config.ReportInstallDir
  
 reportType = os.environ['REPORT_TYPE']
-shiftType = os.environ['SHIFT_TYPE']
 timeStamp = os.environ['TIMESTAMP']
 
 dateStruct = time.strptime(timeStamp,'%a %b %d %H:%M:%S UTC %Y')
@@ -25,11 +24,10 @@ workDir = config.ReportMainDir
 app = os.path.join(InstallDir,'pReportGenerator.py')
 duration = config.reportDuration[reportType] 
 endHour = config.shiftHours[shiftType]
-endTime = '%s-%s %s:00:00' %(shiftYear,shiftDoy,endHour)
+endTime = '%s-%s 23:59:59' %(shiftYear,shiftDoy)
 endTimeMs = convert2msec(endTime)
 tStop = utc2met(endTimeMs/1000.)
 tStart = tStop-float(duration)*3600
-dirDate = '%s-%s' %(shiftYear,shiftDoy)
 
 configFile = config.reportConfig
 tempDir = os.path.join(config.reportTempBase,'Report')
@@ -37,7 +35,6 @@ tempDir = os.path.join(config.reportTempBase,'Report')
 outDir = os.path.join(config.reportOutBase,config.reportOutType[reportType])
 shiftYear = '%s' %(shiftYear)
 outDir = os.path.join(outDir,shiftYear)
-outDir = os.path.join(outDir,dirDate)
 
 cmd = '''
 cd %(workDir)s
