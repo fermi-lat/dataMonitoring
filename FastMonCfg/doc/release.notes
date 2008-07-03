@@ -1,3 +1,7 @@
+*** v1r2p1 ***
+  - Added quantities : x and y axis Ra and Dec, earth limb infov, rock angle in baseConfig.xml
+* Relevant jira(s):  GDQMQ-160, 167, 6
+
 *** v1r2p0 ***
   - Update MergedHisto File with CondArrCNO_CalLoOpensWindow_TH1 - GDQMQ-139
   - Updated xml/configLCI.xml with newest quantities for LCI runs - GDQMQ-141
