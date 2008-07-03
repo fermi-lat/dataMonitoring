@@ -14,21 +14,6 @@
       </alarm>
     </alarmSet>
     
-    <alarmSet name="AcdGemCNO_GARC_TH1" enabled="True">
-      <alarm function="x_average" enabled="True">
-	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
-	<warning_limits min="4.0" max="5.5"/>
-	<error_limits min="3.0" max="7.0"/>
-      </alarm> 
-      <alarm function="x_rms" enabled="True">
-	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
-	<warning_limits min="2.5" max="3.6"/>
-	<error_limits min="2.0" max="4.0"/>
-      </alarm> 				  			 
-    </alarmSet>
-
     <alarmSet name="CalHiTrigger_Tower_TH1" enabled="True">
       <alarm function="y_values" enabled="True">
 	<parameter name="normalize" value="True"/>
@@ -64,14 +49,14 @@
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="1.0" max="8.0"/>
-	<error_limits min="0.5" max="15.0"/>
+	<warning_limits min="3.0" max="15.0"/>
+	<error_limits min="2.0" max="20.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="4.0" max="12.0"/>
-	<error_limits min="2.0" max="15.0"/>
+	<warning_limits min="5.0" max="20.0"/>
+	<error_limits min="3.0" max="30.0"/>
       </alarm> 				  			 
     </alarmSet>
 
@@ -162,14 +147,14 @@
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="8.0" max="18.0"/>
+	<warning_limits min="9.0" max="17.0"/>
 	<error_limits min="6.0" max="20.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="15.0" max="25.0"/>
-	<error_limits min="10.0" max="28.0"/>
+	<warning_limits min="18.0" max="25.0"/>
+	<error_limits min="13.0" max="30.0"/>
       </alarm> 				  			 
     </alarmSet>
 
@@ -199,14 +184,14 @@
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="85.0" max="150.0"/>
-	<error_limits min="60.0" max="170.0"/>
+	<warning_limits min="100.0" max="200.0"/>
+	<error_limits min="50.0" max="300.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="150.0" max="250.0"/>
-	<error_limits min="100.0" max="300.0"/>
+	<warning_limits min="200.0" max="500.0"/>
+	<error_limits min="100.0" max="800.0"/>
       </alarm>
     </alarmSet>
     
@@ -214,14 +199,14 @@
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="5.0" max="12.0"/>
-	<error_limits min="3.0" max="20.0"/>
+	<warning_limits min="7.0" max="17.0"/>
+	<error_limits min="4.0" max="20.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="17.5" max="46.0"/>
-	<error_limits min="10.0" max="60.0"/>
+	<warning_limits min="35.0" max="65.0"/>
+	<error_limits min="25.0" max="80.0"/>
       </alarm>
     </alarmSet>
 
@@ -229,14 +214,14 @@
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="3.0" max="5.5"/>
-	<error_limits min="2.0" max="7.0"/>
+	<warning_limits min="4.0" max="11.0"/>
+	<error_limits min="3.0" max="15.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="3.2" max="6.0"/>
-	<error_limits min="2.5" max="7.0"/>
+	<warning_limits min="5.0" max="11.0"/>
+	<error_limits min="3.0" max="15.0"/>
       </alarm>
     </alarmSet>
 
@@ -259,14 +244,14 @@
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="52.0" max="62.0"/>
-	<error_limits min="45.0" max="70.0"/>
+	<warning_limits min="15.0" max="60.0"/>
+	<error_limits min="5.0" max="80.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="16.0" max="25.0"/>
-	<error_limits min="10.0" max="30.0"/>
+	<warning_limits min="15.0" max="60.0"/>
+	<error_limits min="5.0" max="80.0"/>
       </alarm>
     </alarmSet>
 
