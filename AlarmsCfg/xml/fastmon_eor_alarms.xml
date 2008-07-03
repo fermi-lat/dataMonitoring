@@ -44,10 +44,10 @@
   -->
   <alarmList group="ACD" name="ACD base" enabled="True">
     
-    <alarmSet name="AcdChannelsHits" enabled="True">
+    <alarmSet name="AcdChannelsHits_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
-	<warning_limits min="1.5" max="10.0"/>
-	<error_limits min="1.0" max="15.0"/>
+	<warning_limits min="5.0" max="20.0"/>
+	<error_limits min="3.0" max="30.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<warning_limits min="7.5" max="30.0"/>
@@ -66,27 +66,27 @@
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="8.0" max="16.0"/>
-	<error_limits min="6.0" max="18.0"/>
+	<warning_limits min="9.0" max="17.0"/>
+	<error_limits min="6.0" max="20.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="15.0" max="24.0"/>
-	<error_limits min="13.0" max="26.0"/>
+	<warning_limits min="18.0" max="25.0"/>
+	<error_limits min="13.0" max="30.0"/>
       </alarm> 				  			 
     </alarmSet>
     
     <alarmSet name="CalTower_NHit_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
-	<warning_limits min="1" max="2"/>
-	<error_limits min="0.5" max="2.5"/>
+	<warning_limits min="2.0" max="6.0"/>
+	<error_limits min="1.0" max="10.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="1.5" max="3.5"/>
-	<error_limits min="1.0" max="4.0"/>
+	<warning_limits min="2.0" max="6.0"/>
+	<error_limits min="1.0" max="8.0"/>
       </alarm>
     </alarmSet>
     
@@ -118,15 +118,15 @@
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="5.0" max="12.0"/>
-	<error_limits min="3.0" max="20.0"/>
+	<warning_limits min="7.0" max="17.0"/>
+	<error_limits min="4.0" max="20.0"/>
 	<severity>4</severity>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="9999"/>
-	<warning_limits min="17.5" max="46.0"/>
-	<error_limits min="10.0" max="60.0"/>
+	<warning_limits min="35.0" max="65.0"/>
+	<error_limits min="25.0" max="80.0"/>
 	<severity>4</severity>
       </alarm>
     </alarmSet>
@@ -137,21 +137,13 @@
 	<parameter name="num_neighbours" value="2"/>
 	<parameter name="out_low_cut" value="0.0"/>
 	<parameter name="out_high_cut" value="0.25"/>
-	<warning_limits min="-1" max="3"/>
-	<error_limits min="-1" max="6"/>
+	<warning_limits min="-1" max="1"/>
+	<error_limits min="-1" max="1"/>
 	<severity>10</severity>
       </alarm>
-      <alarm function="empty_bins_simple" enabled="False">
-	<warning_limits min="-1" max="1"/>
-	<error_limits min="-1" max="1"/>
-      </alarm>
-      <alarm function="num_empty_bins" enabled="False">
-	<warning_limits min="-1" max="1"/>
-	<error_limits min="-1" max="1"/>
-      </alarm>
       <alarm function="spikes_and_holes" enabled="True">
-	<warning_limits max="30"/>
-	<error_limits   max="60"/>
+	<warning_limits min="-1" max="200"/>
+	<error_limits   min="-1" max="500"/>
 	<severity>6</severity>
       </alarm>
     </alarmSet> 

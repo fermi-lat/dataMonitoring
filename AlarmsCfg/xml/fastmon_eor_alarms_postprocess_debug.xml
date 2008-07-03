@@ -20,10 +20,12 @@
     <xmax>50</xmax>
   </alarmSet>  
   <alarmSet name="TkrHits_TH1_Tower_*" algorithm="x_average" enabled="True">
+    <xbins>50</xbins>
     <xmin>0</xmin>
     <xmax>50</xmax>
   </alarmSet>
   <alarmSet name="TkrHits_TH1_Tower_*" algorithm="x_rms" enabled="True">
+    <xbins>100</xbins>
     <xmin>0</xmin>
     <xmax>100</xmax>
   </alarmSet>  
