@@ -1,0 +1,71 @@
+<?xml version="1.0" ?>
+
+<alarms>
+
+  <!--alarmSet name="" algorithm="" enabled="True">
+    <xbins></xbins>
+    <xmin></xmin>
+    <xmax></xmax>
+    <undefined_value></undefined_value>
+  </alarmSet-->
+
+  <alarmSet name="ReconAcdPhaMipsCorrectedAngle_PMTA_TH1_AcdTile_*" algorithm="gauss_mean" enabled="True">
+    <xbins>100</xbins>
+    <xmin>0</xmin>
+    <xmax>5</xmax>
+  </alarmSet>
+  <alarmSet name="ReconAcdPhaMipsCorrectedAngle_PMTB_TH1_AcdTile_*" algorithm="gauss_mean" enabled="True">
+    <xbins>100</xbins>
+    <xmin>0</xmin>
+    <xmax>5</xmax>
+  </alarmSet>
+  <alarmSet name="ReconAcdPhaMips_PMTA_TH1_AcdTile_*" algorithm="x_average" enabled="True">
+    <xbins>100</xbins>
+    <xmin>0</xmin>
+    <xmax>10</xmax>
+    <undefined_value></undefined_value>
+  </alarmSet>
+  <alarmSet name="ReconAcdPhaMips_PMTA_TH1_AcdTile_*" algorithm="x_rms" enabled="True">
+    <xbins>100</xbins>
+    <xmin>0</xmin>
+    <xmax>10</xmax>
+    <undefined_value></undefined_value>
+  </alarmSet>
+  <alarmSet name="ReconAcdPhaMips_PMTB_TH1_AcdTile_*" algorithm="x_average" enabled="True">
+    <xbins>100</xbins>
+    <xmin>0</xmin>
+    <xmax>10</xmax>
+    <undefined_value></undefined_value>
+  </alarmSet>
+  <alarmSet name="ReconAcdPhaMips_PMTB_TH1_AcdTile_*" algorithm="x_rms" enabled="True">
+    <xbins>100</xbins>
+    <xmin>0</xmin>
+    <xmax>10</xmax>
+    <undefined_value></undefined_value>
+  </alarmSet>
+  <alarmSet name="ReconAcdPhaMips_PMTA_Zoom_TH1_AcdTile_*" algorithm="leftmost_edge" enabled="True">
+    <xbins>100</xbins>
+    <xmin>0</xmin>
+    <xmax>2</xmax>
+    <undefined_value></undefined_value>
+  </alarmSet>
+  <alarmSet name="ReconAcdPhaMips_PMTB_Zoom_TH1_AcdTile_*" algorithm="leftmost_edge" enabled="True">
+    <xbins>100</xbins>
+    <xmin>0</xmin>
+    <xmax>2</xmax>
+    <undefined_value></undefined_value>
+  </alarmSet>
+  <alarmSet name="ReconEnergy_VeryLowEnergy_TH1_TowerCalLayer_*_*" algorithm="leftmost_edge" enabled="True">
+    <xbins>100</xbins>
+    <xmin>0</xmin>
+    <xmax>5</xmax>
+    <undefined_value></undefined_value>
+  </alarmSet>
+  <alarmSet name="ReconEnergy_VeryLowEnergy_TH1_TowerCalLayerCalColumn_*_*_*" algorithm="x_min_bin" enabled="True">
+    <xbins>100</xbins>
+    <xmin>0</xmin>
+    <xmax>5</xmax>
+    <undefined_value></undefined_value>
+  </alarmSet>
+
+</alarms>
