@@ -40,7 +40,7 @@ ReportInstallDir = os.path.join(ReportMainDir,'python')
 reportXml = os.path.join(ReportMainDir, 'xml')
 reportConfig = os.path.join(reportXml,'summaryReport.xml')
 
-dataCatBase = '/SummaryReports/'
+dataCatBase = '/SRep/'
 reportOutBase = '/nfs/slac/g/glast/ground/links/Documentation/SummaryReport' 
 reportTempBase = '/afs/slac.stanford.edu/g/glast/ground/PipelineStaging6'
 
