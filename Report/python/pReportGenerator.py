@@ -43,7 +43,8 @@ def getPdfFileName(endTime, spannedTime, cfgFilePath):
 
 class pReportGenerator(pLaTeXWriter, pDownloadManager):
     
-    def __init__(self, endTime, spannedTime, pdfFolderPath, cfgFilePath):
+    def __init__(self, endTime, spannedTime, pdfFolderPath, cfgFilePath,\
+                     padSeconds):
         self.TimeStatList = []
         startTime = time.time()
         self.ProcessingStartTime = startTime
@@ -53,7 +54,8 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         pDownloadManager.__init__(self, self.DownloadFolderPath,\
                                       self.CookieFolderPath)
         self.EndTime = endTime
-        self.StartTime = endTime - int(spannedTime*3600000)
+        spannedTime = int(spannedTime*3600000) - padSeconds*1000
+        self.StartTime = endTime - spannedTime
         self.TimeSpan = '%s -- %s' %\
             (msec2string(self.StartTime), msec2string(self.EndTime))
         pdfFileName = getPdfFileName(self.EndTime, spannedTime, cfgFilePath)
@@ -164,12 +166,15 @@ if __name__ == '__main__':
     parser.add_option('-l', '--do-not-cleanup-LaTeX',
                       action='store_false', dest='l', default=True,
                       help='do not clean up the temporary LaTeX folder')
+    parser.add_option('-p', '--pad-seconds', dest = 'p',
+                      default = 0, type = int,
+                      help='subtract one second from the time span')
     (opts, args) = parser.parse_args()
     if opts.t:
         print 'Available format strings for specifying end time:\n%s' %\
             availableTimeFormats()
         sys.exit()
     endms = convert2msec(opts.e)
-    reportGenerator = pReportGenerator(endms, opts.s, opts.d, opts.c)
+    reportGenerator = pReportGenerator(endms, opts.s, opts.d, opts.c, opts.p)
     reportGenerator.writeReport()
     reportGenerator.copyPdfAndCleanUp(opts.l)
