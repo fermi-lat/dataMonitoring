@@ -6,9 +6,9 @@
     <out_details identifiers="[(3, 7), (10, 8), (11, 8), (20, 2), (21, 2)]"/>
   </exception-->
 
-  <exception name="TkrHitsCounter_PlaneGTFE_TH2_Tower_0" algorithm="spikes_and_holes">
+  <!--exception name="TkrHitsCounter_PlaneGTFE_TH2_Tower_0" algorithm="spikes_and_holes">
     <out_details identifiers="[(3, 7), (10, 8), (11, 8), (20, 2), (21, 2)]"/>
-  </exception>
+  </exception-->
 
   <!--exception name="AcdChannelsHits" algorithm="x_rms">
     <out_status/>
