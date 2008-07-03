@@ -1,3 +1,9 @@
+v1r2p0  2008/07/03   (DEV)
+------------------------------
+Added quantities FastMon_SpaceCraft_EarthLimb_FOV FastMon_SpaceCraft_EarthLimb FastMon_SpaceCraft_XaxisDec
+FastMon_SpaceCraft_XaxisRA FastMon_SpaceCraft_RockAngle
+Jira GDQMQ-187 
+
 v1r1p38 2008/07/31   (DEV)
 ------------------------------
 New quantities (Jira GDQMQ-184)
@@ -9,7 +15,6 @@ New quantities (Jira GDQMQ-184) and bug fixes (Jira GDQMQ-168, GDQMQ-183)
 v1r1p36  2008/06/30   (DEV)
 ------------------------------
 New quantities related to jiras GDQMQ-181 and GDQMQ-186.
-
 
 v1r1p35  2008/06/23   (DEV)
 ------------------------------
