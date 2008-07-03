@@ -4,6 +4,7 @@ import ROOT
 import os
 import sys
 
+ROOT.gStyle.SetOptStat(111111)
 
 from pOptionParser import pOptionParser
 optparser = pOptionParser('', 1, 1, False)
