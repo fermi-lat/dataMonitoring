@@ -1,4 +1,4 @@
-*** v1r2p1 ***
+*** v1r3p0 ***
   - Added quantities : x and y axis Ra and Dec, earth limb infov, rock angle in baseConfig.xml
 * Relevant jira(s):  GDQMQ-160, 167, 6
 
