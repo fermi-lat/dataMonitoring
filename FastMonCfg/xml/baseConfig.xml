@@ -69,6 +69,10 @@
 	    <type>double</type>
             <shape>(1)</shape>
 	</variable>
+	<variable name="spacecraft_earthlimb" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
 	<variable name="spacecraft_earthlimb_fov" enabled="True" reset="False">
 	    <type>double</type>
             <shape>(1)</shape>
