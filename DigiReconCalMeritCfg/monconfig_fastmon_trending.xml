@@ -24,8 +24,13 @@
    <object> FastMon_spacecraft_pitch</object>
    <object> FastMon_spacecraft_roll</object>
    <object> FastMon_spacecraft_yaw</object>
+   <object> FastMon_spacecraft_rock</object>
+   <object> FastMon_spacecraft_xdec</object>
+   <object> FastMon_spacecraft_xra</object>
    <object> FastMon_spacecraft_zra</object>
    <object> FastMon_spacecraft_zdec</object>
+   <object> FastMon_spacecraft_earthlimb</object>
+   <object> FastMon_spacecraft_earthlimb_fov</object>
 
    <object> FastMon_geomagnetic_cutoff</object>
    <object> FastMon_geomagnetic_bb0</object>
@@ -164,6 +169,27 @@
       <description> Mean value of the spacecraft yaw angle</description>
     </object>
     <object>
+      <name> FastMon_SpaceCraft_RockAngle </name>
+      <formula><![CDATA[ FastMon_spacecraft_rock ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the spacecraft rock angle</description>
+    </object>
+    <object>
+      <name> FastMon_SpaceCraft_XaxisRA </name>
+      <formula><![CDATA[ FastMon_spacecraft_xra ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the spacecraft x axis right ascension</description>
+    </object>
+    <object>
+      <name> FastMon_SpaceCraft_XaxisDec </name>
+      <formula><![CDATA[ FastMon_spacecraft_xdec ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the spacecraft x axis declination</description>
+    </object>
+    <object>
       <name> FastMon_SpaceCraft_ZaxisRA </name>
       <formula><![CDATA[ FastMon_spacecraft_zra ]]></formula>
       <cut><![CDATA[ ]]></cut>
@@ -177,7 +203,21 @@
       <type> mean </type>
       <description> Mean value of the spacecraft z axis declination</description>
     </object>
-
+    <object>
+      <name> FastMon_SpaceCraft_EarthLimb </name>
+      <formula><![CDATA[ FastMon_spacecraft_earthlimb ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the angle between the LAT Z axis and the Earth limb</description>
+    </object>
+    <object>
+      <name> FastMon_SpaceCraft_EarthLimb_FOV </name>
+      <formula><![CDATA[ FastMon_spacecraft_earthlimb_fov ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the arc length of Earth limb in the LAT field of view</description>
+    </object>
+    
     <!-- Environment quantities -->
     <object>
       <name> FastMon_GeoMag_cutoff </name>
