@@ -43,7 +43,6 @@ class pReportPanel(pDownloadManager):
     def processImages(self):
         logging.info('Processing panel images...')
         imagesList = glob(os.path.join(self.DownloadFolder, 'aida_plot*'))
-        imagesList.sort()
         for string in imagesList:
             plotName = re.search('(?<=name=).*(?=&width)', string).group()
             imageName = '%s%s' % (plotName, self.Name)
