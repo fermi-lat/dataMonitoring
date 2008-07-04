@@ -29,6 +29,12 @@
 	<error_limits min="0.45" max="0.55"/>
       </alarm>
     </alarmSet>
+    <alarmSet name="GPSInLock_TH1" enabled="True">
+      <alarm function="x_average" enabled="True">
+	<warning_limits min="0.96" max="1.0"/>
+	<error_limits min="0.90" max="1.0"/>
+      </alarm>
+    </alarmSet>
 
   </alarmList>
 
