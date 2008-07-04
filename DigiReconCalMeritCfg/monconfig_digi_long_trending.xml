@@ -30,17 +30,17 @@
     	<object>
 	<name>  AcdPedestal_PmtA_LowPMTRange_AcdTile[128] </name>
 	<formula><![CDATA[AcdPha_PmtIdPmtRangeAcdTile[0][0] ]]></formula>
-	<cut><![CDATA[condsummary&32 && (!ZeroSuppress)]]></cut>
+	<cut><![CDATA[condsummary==32 && (!ZeroSuppress)]]></cut>
 	<type> truncatedmeanboundandfracbigdataequaln[0,100000,0.96] </type>
-	<description> Vector [AcdTile] reporting the mean (and rms by means of the quantity AcdPedestal_PmtA_LowPMTRAnge_AcdTile_err) pedestal for the LOW range of PMT A during the specified time bin. </description>
+	<description> Vector [AcdTile] reporting the mean (and rms by means of the quantity AcdPedestal_PmtA_LowPMTRAnge_AcdTile_err) pedestal for the LOW range of PMT A during the specified time bin. The mean (and rms) is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values.</description>
       </object>
 
 	<object>
 	<name>  AcdPedestal_PmtB_LowPMTRange_AcdTile[128] </name>
 	<formula><![CDATA[AcdPha_PmtIdPmtRangeAcdTile[1][0] ]]></formula>
-	<cut><![CDATA[condsummary&32 && (!ZeroSuppress)]]></cut>
+	<cut><![CDATA[condsummary==32 && (!ZeroSuppress)]]></cut>
 	<type> truncatedmeanboundandfracbigdataequaln[0,100000,0.96] </type>
-	<description> Vector [AcdTile] reporting the mean (and rms by means of the quantity AcdPedestal_PmtB_HighPMTRAnge_AcdTile_err) pedestal for the LOW range of PMT B during the specified time bin. </description>
+	<description> Vector [AcdTile] reporting the mean (and rms by means of the quantity AcdPedestal_PmtB_HighPMTRAnge_AcdTile_err) pedestal for the LOW range of PMT B during the specified time bin. The mean (and rms) is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values.</description>
       </object>
 
 
@@ -51,18 +51,18 @@
      <object>
       <name> CalXAdc_TowerCalLayerCalColumnFR[16][8][12][2][4] </name>
       <formula><![CDATA[CalXAdc_TowerCalLayerCalColumnFaceRange]]></formula>
-      <cut><![CDATA[condsummary&32 && Range4 && (!ZeroSuppress)]]></cut>
+      <cut><![CDATA[condsummary==32 && Range4 && (!ZeroSuppress)]]></cut>
       <type> truncatedmeanboundandfracbigdataequaln[0,100000,0.96] </type>
-      <description> Vector[tower][callayer][calcolumn][face][range] reporting the mean (and rms by means of the the CalXAdc_TowerCalLayerCalColumnFaceRange_err quantity) pedestal. The mean (and rms) is computed removing (truncating) 10 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 80 percent central values. The purpose of the truncation is to remove outliers. Only periodic triggers with 4 range readout and not zero-suppress events are being used. </description>
+      <description> Vector[tower][callayer][calcolumn][face][range] reporting the mean (and rms by means of the the CalXAdc_TowerCalLayerCalColumnFaceRange_err quantity) pedestal. The mean (and rms) is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. The purpose of the truncation is to remove outliers. Only periodic triggers with 4 range readout and not zero-suppress events are being used. </description>
     </object>
 
 
       <object>
       <name> CalXPedDev_TowerCalLayerCalColumnFR[16][8][12][2][4] </name>
       <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn:foreachcalxface: foreachcalxrange: CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][calxface][calxrange] - RFun::calped(timestamp,tower,callayer,calcolumn,calxface,calxrange)]]></formula>
-      <cut><![CDATA[condsummary&32 && Range4 && (!ZeroSuppress)]]></cut>
+      <cut><![CDATA[condsummary==32 && Range4 && (!ZeroSuppress)]]></cut>
       <type> truncatedmeanboundandfracbigdataequaln[-10000,10000,0.96] </type>
-      <description> Vector[tower][callayer][calcolumn][face][range] reporting the mean deviations between the measured pedestals and the ones retrieved from the data base (and rms by means of the the CalXPedDev_TowerCalLayerCalColumnFR_err quantity). The mean (and rms) is computed removing (truncating) 10 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 80 percent central values. The purpose of the truncation is to remove outliers. Only periodic triggers with 4 range readout and not zero-suppress events are being used.  </description>
+      <description> Vector[tower][callayer][calcolumn][face][range] reporting the mean deviations between the measured pedestals and the ones retrieved from the data base (and rms by means of the the CalXPedDev_TowerCalLayerCalColumnFR_err quantity). The mean (and rms) is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. The purpose of the truncation is to remove outliers. Only periodic triggers with 4 range readout and not zero-suppress events are being used.  </description>
     </object>
      
       <object>
@@ -70,7 +70,7 @@
       <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][1],RFun::calped(timestamp,tower,callayer,calcolumn,0,1), CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][1], RFun::calped(timestamp,tower,callayer,calcolumn,1,1), 50)]]></formula>
       <cut><![CDATA[!(condsummary&32) && Range4]]></cut>
       <type> truncatedmeanboundandfracbigdata[0,70000,0.96] </type>
-      <description> Vector[tower][callayer][calcolumn] reporting the mean ratio LEX1(plus face) / LEX1(minus face) = P/M. This ratio is expected to be close to 1. Pedestals (extracted from data base) are subtracted before computing the ratio. The mean is computed removing (truncating) 10 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 80 percent central values. The purpose of the truncation is to remove outliers.  Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
+      <description> Vector[tower][callayer][calcolumn] reporting the mean ratio LEX1(plus face) / LEX1(minus face) = P/M. This ratio is expected to be close to 1. Pedestals (extracted from data base) are subtracted before computing the ratio. The mean is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. The purpose of the truncation is to remove outliers.  Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
     </object>
 
 
@@ -79,7 +79,7 @@
       <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][1],RFun::calped(timestamp,tower,callayer,calcolumn,0,1), CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][2], RFun::calped(timestamp,tower,callayer,calcolumn,0,2), 50)]]></formula>
       <cut><![CDATA[!(condsummary&32) && Range4]]></cut>
       <type> truncatedmeanboundandfracbigdata[0,70000,0.96] </type>
-      <description> Vector[tower][callayer][calcolumn] reporting the mean ratio LEX1(plus face) / HEX8 (plus face) = P/p. This ratio is expected to be close to 6. Pedestals (extracted from data base) are subtracted before computing the ratio. The mean is computed removing (truncating) 10 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 80 percent central values. The purpose of the truncation is to remove outliers.  Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
+      <description> Vector[tower][callayer][calcolumn] reporting the mean ratio LEX1(plus face) / HEX8 (plus face) = P/p. This ratio is expected to be close to 6. Pedestals (extracted from data base) are subtracted before computing the ratio. The mean is computed removing (truncating) 4 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. The purpose of the truncation is to remove outliers.  Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
     </object>
 
        <object>
@@ -87,7 +87,7 @@
       <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][1],RFun::calped(timestamp,tower,callayer,calcolumn,1,1), CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][2], RFun::calped(timestamp,tower,callayer,calcolumn,1,2), 50)]]></formula>
       <cut><![CDATA[!(condsummary&32) && Range4]]></cut>
       <type>  truncatedmeanboundandfracbigdata[0,70000,0.96] </type>
-      <description> Vector[tower][callayer][calcolumn] reporting the mean ratio LEX1(minus face) / HEX8(minus face) = M/m. This ratio is expected to be close to 6. Pedestals (extracted from data base) are subtracted before computing the ratio. The mean is computed removing (truncating) 10 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 80 percent central values. The purpose of the truncation is to remove outliers.   Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
+      <description> Vector[tower][callayer][calcolumn] reporting the mean ratio LEX1(minus face) / HEX8(minus face) = M/m. This ratio is expected to be close to 6. Pedestals (extracted from data base) are subtracted before computing the ratio. The mean is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. The purpose of the truncation is to remove outliers.   Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
     </object>
       
       
