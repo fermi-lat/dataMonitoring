@@ -1,5 +1,13 @@
+
+*** v2r0p0 ***
+- Added config files for the merit eor and trending.
+- Added configuration files for the alarm postprocessing for all the quantity
+ types---makes the debugging easier.
+- First version with reasonable alarm limits.
+
+
 *** v1r1p1 ***
-Added config files (alarms) for trackermon quantities.
+- Added config files (alarms) for trackermon quantities.
 This addresses Jira GDQMQ-119.
 
 *** v1r1p0 ***
