@@ -1560,6 +1560,64 @@
       <description> Error in Fraction of events NOT passing the Flight Software HIP filter and passing the Gleam HIP filter. </description>
     </object>
 
+
+
+
+     <object>
+      <name> EvtsProcessed_EPU0 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ DatagramInfo[0]==0]]></cut>
+      <type> rate </type>
+      <description> Rate of evts processed by EPU0. </description>
+    </object>
+
+     <object>
+      <name> EvtsProcessed_EPU1 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ DatagramInfo[0]==1]]></cut>
+      <type> rate </type>
+      <description> Rate of evts processed by EPU1. </description>
+    </object>
+
+
+     <object>
+      <name> Datagram_EPU0 </name>
+      <formula><![CDATA[ DatagramInfo[1] ]]></formula>
+      <cut><![CDATA[ DatagramInfo[0]==0]]></cut>
+      <type> counterdiffrate[100000,1,MC] </type>
+      <description> Rate of datagrams from EPU0 (A datagram is about 64kbytes of compressed data). </description>
+    </object>
+
+     <object>
+      <name> Datagram_EPU1 </name>
+      <formula><![CDATA[ DatagramInfo[1] ]]></formula>
+      <cut><![CDATA[ DatagramInfo[0]==1]]></cut>
+      <type> counterdiffrate[100000,1,MC] </type>
+      <description> Rate of datagrams from EPU1 (A datagram is about 64kbytes of compressed data). </description>
+    </object>
+
+     <object>
+      <name> Datagram_EPU0_And_EPU1 </name>
+      <formula><![CDATA[ CounterDiffRate_Datagram_EPU0 + CounterDiffRate_Datagram_EPU1  ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source> output </source>
+      <type> outputfloat </type>
+      <description> Rate of datagrams from EPU0+EPU1 (A datagram is about 64kbytes of compressed data). This rate, multiplied by 64kbytes, is a rough etimate of the bandwidth needed to transfer the data to the ground. </description>
+    </object>
+
+      <object>
+      <name> Datagram_EPU0_And_EPU1_err </name>
+      <formula><![CDATA[ TMath::Sqrt(pow(CounterDiffRate_Datagram_EPU0_err,2) + pow(CounterDiffRate_Datagram_EPU1_err,2))  ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source> output </source>
+      <type> outputfloat </type>
+      <description> Error in quantity Datagram_EPU0_And_EPU1 </description>
+    </object>
+
+     
+     
+
+
       <!-- ********************  Detector information   *********************** -->
 
 
