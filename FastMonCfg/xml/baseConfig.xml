@@ -89,6 +89,10 @@
 	    <type>double</type>
             <shape>(1)</shape>
 	</variable>
+ 	<variable name="evt_data_transfer_id" enabled="True">
+	    <type>uint64</type>
+            <shape>(1)</shape>
+	</variable>
 
     </inputList>
 
