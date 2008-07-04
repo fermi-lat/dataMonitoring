@@ -1,3 +1,10 @@
+
+v1r2p2  2008/07/03   (DEV)
+------------------------------
+New normalization factors were added: NormFactors_Run34FromFirstLight.txt.
+Those factors are computed using the real data from the satellite. 
+This addresses Jira GDQMQ-189.
+
 v1r2p1  2008/07/03   (DEV)
 ------------------------------
 Added rates of datagrams sent for EPUx. This addressed Jira GDQMQ-186.
