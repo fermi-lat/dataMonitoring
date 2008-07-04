@@ -1,3 +1,7 @@
+v1r2p1  2008/07/03   (DEV)
+------------------------------
+Added rates of datagrams sent for EPUx. This addressed Jira GDQMQ-186.
+
 v1r2p0  2008/07/03   (DEV)
 ------------------------------
 Added quantities FastMon_SpaceCraft_EarthLimb_FOV FastMon_SpaceCraft_EarthLimb FastMon_SpaceCraft_XaxisDec
