@@ -16,7 +16,7 @@ class pGRBReportGenerator(pReportGenerator):
     def __init__(self, burstTime, halfWindow, pdfFolderPath, cfgFilePath):
         endTime = burstTime + int(halfWindow*3600000)
         pReportGenerator.__init__(self, endTime, 2*halfWindow, pdfFolderPath,\
-                                      cfgFilePath)
+                                      cfgFilePath, 0)
 
 
 if __name__ == '__main__':
