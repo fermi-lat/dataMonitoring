@@ -54,8 +54,8 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         pDownloadManager.__init__(self, self.DownloadFolderPath,\
                                       self.CookieFolderPath)
         self.EndTime = endTime
-        spannedTime = int(spannedTime*3600000) - padSeconds*1000
-        self.StartTime = endTime - spannedTime
+        spannedMs = int(spannedTime*3600000) - padSeconds*1000
+        self.StartTime = endTime - spannedMs
         self.TimeSpan = '%s -- %s' %\
             (msec2string(self.StartTime), msec2string(self.EndTime))
         pdfFileName = getPdfFileName(self.EndTime, spannedTime, cfgFilePath)

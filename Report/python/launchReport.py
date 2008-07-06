@@ -18,16 +18,16 @@ timeStamp = os.environ['TIMESTAMP']
 
 dateStruct = time.strptime(timeStamp,'%a %b %d %H:%M:%S UTC %Y')
 shiftYear = dateStruct.tm_year
-shiftDoy = dateStruct.tm_yday
+shiftDoy = dateStruct.tm_yday - 1
 workDir = config.ReportMainDir
+padSeconds = config.paddingSeconds
 
 app = os.path.join(InstallDir,'pReportGenerator.py')
 duration = config.reportDuration[reportType] 
-endHour = config.shiftHours[shiftType]
 endTime = '%s-%s 23:59:59' %(shiftYear,shiftDoy)
 endTimeMs = convert2msec(endTime)
 tStop = utc2met(endTimeMs/1000.)
-tStart = tStop-float(duration)*3600
+tStart = tStop-float(duration)*3600 + padSeconds
 
 configFile = config.reportConfig
 tempDir = os.path.join(config.reportTempBase,'Report')
@@ -38,7 +38,7 @@ outDir = os.path.join(outDir,shiftYear)
 
 cmd = '''
 cd %(workDir)s
-%(app)s -c %(configFile)s -d %(tempDir)s -e "%(endTime)s" -s %(duration)s
+%(app)s -c %(configFile)s -d %(tempDir)s -e "%(endTime)s" -s %(duration)s -p %(padSeconds)s
 ''' % locals()
 
 status = runner.run(cmd)

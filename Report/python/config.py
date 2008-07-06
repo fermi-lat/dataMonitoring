@@ -30,6 +30,7 @@ reportFileTypes = {
     'weekly' : 'WeeklyReport',
 }
 
+paddingSeconds = 1
 ReportInstallDir = os.path.join(ReportMainDir,'python')
 reportXml = os.path.join(ReportMainDir, 'xml')
 reportConfig = os.path.join(reportXml,'summaryReport.xml')
