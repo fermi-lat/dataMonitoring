@@ -1,3 +1,7 @@
+*** v1r3p2 ***
+- Added  Z axis pointing in galactic coordinates L,B in baseConfig.xml
+* Relevant jira(s): GDQMQ-193
+
 *** v1r3p1 ***
 - Added quantity for the earth limb angle in baseConfig.xml
 * Relevant jira(s): GDQMQ-6
