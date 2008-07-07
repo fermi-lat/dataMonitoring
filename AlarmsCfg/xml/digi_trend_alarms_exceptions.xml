@@ -2,4 +2,14 @@
 
 <alarm_exceptions>
 
+  <!--
+      Tower 10, plane 0 is completely read out from a side, due to a broken
+      GTRC. No hope to have a TOT from that controller.
+
+      Luca Baldini, Jul 06, 2008.
+    -->
+  <exception name="Mean_ToT_con0_Trunc_1_249_TowerPlane" algorithm="values">
+    <out_details identifiers="[(10, 0)]"/>
+  </exception>
+
 </alarm_exceptions>

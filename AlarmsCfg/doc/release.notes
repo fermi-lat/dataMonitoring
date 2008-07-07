@@ -1,3 +1,7 @@
+*** v2r0p1 ***
+- Updated the exception file for the alarms on the digi trending to take into
+account the broken GTRC in tower 10, plane 0.
+
 
 *** v2r0p0 ***
 - Added config files for the merit eor and trending.
