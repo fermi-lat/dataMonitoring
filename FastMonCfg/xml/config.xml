@@ -2,17 +2,6 @@
 
 <monitoring>
 
-    <inputList group="Meta Event" name="Meta advanced">
-	<variable name="new_second" enabled="True">
-	    <type>bool_</type>
-            <shape>(1)</shape>
-	</variable>	
-	<variable name="clocktics_dev_20MHz" enabled="True">
-	    <type>double</type>
-            <shape>(1)</shape>
-	</variable>
-    </inputList>
-
     <outputList group="Meta Event" name="Meta advanced">
         <TH1F name="Tick20MHzDeviation_TH1">
 	    <expression><![CDATA[ clocktics_dev_20MHz ]]></expression>
