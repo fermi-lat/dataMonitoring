@@ -1,3 +1,8 @@
+*** v1r3p3 ***
+- Move new_second and clocktics_dev_20MHz from all secondary xml
+  files to baseConfig 
+* Relevant jira(s): GDQMQ-196
+
 *** v1r3p2 ***
 - Added  Z axis pointing in galactic coordinates L,B in baseConfig.xml
 * Relevant jira(s): GDQMQ-193
