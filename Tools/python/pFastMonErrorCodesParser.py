@@ -2,7 +2,10 @@
 
 from pHtmlWriter import *
 
-ERROR_CODE_FILE_PATH = '../../FastMon/doc/ErrorCodes.txt'
+import sys
+sys.path.append('../../FastMon/python')
+
+from pError import *
 
 
 MAIN_TEXT =\
@@ -16,7 +19,12 @@ class pFastMonErrorCodesParser(pHtmlWriter):
     def writeTable(self, outputFilePath):
         self.openPage(outputFilePath, 'FastMon error codes')
         self.addParagraph(MAIN_TEXT)
-        self.writeTableFromFile(ERROR_CODE_FILE_PATH)
+        self.openTable(['Error code', 'Description'])
+        errorCodes = ERROR_DETAIL_LABELS_DICT.keys()
+        errorCodes.sort()
+        for errorCode in errorCodes:
+            explanation = getExplanation(errorCode)
+            self.writeTableLine([errorCode, explanation])
         self.closePage()
 
 
