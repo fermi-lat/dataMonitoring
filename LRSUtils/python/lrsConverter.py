@@ -65,6 +65,8 @@ class lrsConverter(lrsTreeWriter):
                          (self.BeginDate, self.EndDate))
         self.retrieveNavigationInformation()
         self.retrieveSAAInformation()
+        self.convert()
+        self.close()
 
     def retrieveNavigationInformation(self):
         if self.TelemetryFolder is None:

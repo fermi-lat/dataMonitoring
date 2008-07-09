@@ -67,5 +67,4 @@ if __name__ == '__main__':
                       help = 'path to output telemetry folder')
     (opts, args) = parser.parse_args()
     converter = lrsTkrConverter(args[0], opts.r, opts.t)
-    converter.convert()
-    converter.close()
+
