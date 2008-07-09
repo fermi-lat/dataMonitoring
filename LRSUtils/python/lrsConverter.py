@@ -37,6 +37,20 @@ class lrsConverter(lrsTreeWriter):
     def __init__(self, inputCsvFilePath, outputRootFolder, telemetryFolder):
         if not os.path.exists(inputCsvFilePath):
             sys.exit('Could not find %s. Abort.' % inputCsvFilePath)
+        self.InputCsvFilePath = inputCsvFilePath
+        self.InputCsvFile = file(inputCsvFilePath)
+        self.LineNumber = 0
+        try:
+            self.FirstTimestamp = getFirstTimestamp(inputCsvFilePath)
+            self.LastTimestamp = getLastTimestamp(inputCsvFilePath,\
+                                                  self.DATA_BLOCK_SIZE)
+            self.BeginDate = utc2string(self.FirstTimestamp)
+            self.EndDate = utc2string(self.LastTimestamp)
+            logging.info('Data found between %s and %s.' %\
+                         (self.BeginDate, self.EndDate))
+        except:
+            logging.warning('Could not extract dates from cvs file.')
+            return 
         self.TelemetryFolder = telemetryFolder
         if outputRootFolder is None:
             outputRootFilePath = inputCsvFilePath.replace('.csv', '.root')
@@ -53,16 +67,6 @@ class lrsConverter(lrsTreeWriter):
             self.BRANCHES_LIST.append('%s:d:(1)' % mnemonic)
         lrsTreeWriter.__init__(self, outputRootFilePath, self.TREE_NAME,\
                                    self.BRANCHES_LIST)
-        self.InputCsvFilePath = inputCsvFilePath
-        self.InputCsvFile = file(inputCsvFilePath)
-        self.LineNumber = 0
-        self.FirstTimestamp = getFirstTimestamp(inputCsvFilePath)
-        self.LastTimestamp = getLastTimestamp(inputCsvFilePath,\
-                                                           self.DATA_BLOCK_SIZE)
-        self.BeginDate = utc2string(self.FirstTimestamp)
-        self.EndDate = utc2string(self.LastTimestamp)
-        logging.info('Data found between %s and %s.' %\
-                         (self.BeginDate, self.EndDate))
         self.retrieveNavigationInformation()
         self.retrieveSAAInformation()
         self.convert()
