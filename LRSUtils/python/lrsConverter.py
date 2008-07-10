@@ -80,7 +80,7 @@ class lrsConverter(lrsTreeWriter):
             navFileName = navFileName.replace('.csv', '_nav.txt')
             navFilePath = os.path.join(self.TelemetryFolder, navFileName)
         logging.info('Retrieving navigation information from %s...' %\
-                         navFileName)
+                         navFilePath)
         if not os.path.exists(navFilePath):
             sys.exit('Could not find %s. Abort.' % navFilePath)
         self.NavigationGraphList = []
@@ -115,7 +115,7 @@ class lrsConverter(lrsTreeWriter):
             saaFileName = os.path.basename(self.InputCsvFilePath)
             saaFileName = saaFileName.replace('.csv', '_saa.txt')
             saaFilePath = os.path.join(self.TelemetryFolder, saaFileName)
-        logging.info('Retrieving SAA information from %s...' % saaFileName)
+        logging.info('Retrieving SAA information from %s...' % saaFilePath)
         if not os.path.exists(saaFilePath):
             sys.exit('Could not find %s. Abort.' % saaFilePath)
         self.SAAGraph = ROOT.TGraph()

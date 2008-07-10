@@ -29,9 +29,9 @@ class lrsAcdConverter(lrsConverter):
             timestamp = self.timestamp()
             if timestamp is None:
                 break
-            self.getArray('Time')[0] = timestamp
-            averageRate = 0
             for i in range(self.DATA_BLOCK_SIZE - 1):
+                self.getArray('Time')[0] = timestamp + i
+                averageRate = 0
                 (id, tile1, tile2, cnt1, cnt2, dur) = self.line().split(',')
                 (id, tile1, tile2, cnt1, cnt2) =\
                     [int(x) for x in (id, tile1, tile2, cnt1, cnt2)]
@@ -44,9 +44,9 @@ class lrsAcdConverter(lrsConverter):
                 self.getArray('LrsCounts')[tile2] = cnt2
                 self.getArray('LrsRate')[tile2] = rate2
                 self.getArray('CountDuration')[0] = dur
-            self.getArray('LrsAverageRate')[0] = averageRate/54.
-            self.fillTelemetryInformation(timestamp)
-            self.fillTree()
+                self.getArray('LrsAverageRate')[0] = averageRate/2.
+                self.fillTelemetryInformation(timestamp)
+                self.fillTree()
         logging.info('Done.')
 
 
