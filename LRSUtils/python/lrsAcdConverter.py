@@ -45,7 +45,7 @@ class lrsAcdConverter(lrsConverter):
                 self.getArray('LrsRate')[tile2] = rate2
                 self.getArray('CountDuration')[0] = dur
                 self.getArray('LrsAverageRate')[0] = averageRate/2.
-                self.fillTelemetryInformation(timestamp)
+                self.fillTelemetryInformation(timestamp + i)
                 self.fillTree()
         logging.info('Done.')
 
