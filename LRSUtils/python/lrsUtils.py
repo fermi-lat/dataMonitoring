@@ -26,6 +26,9 @@ def string2utc(timestring, formatString):
     except:
         return calendar.timegm(time.strptime(timestring, formatString))
 
+def getFileSize(filePath):
+    return os.stat(filePath)[6]
+
 def getFirstTimestamp(filePath):
     fileObject = file(filePath)
     timestamp = met2utc(float(fileObject.readline()))
@@ -34,7 +37,7 @@ def getFirstTimestamp(filePath):
 
 def getLastTimestamp(filePath, dataBlockSize):
     fileObject = file(filePath)
-    fileSize = os.stat(filePath)[6]
+    fileSize = getFileSize(filePath)
     numLinesFound = 0
     filePosition = fileSize
     while numLinesFound <= dataBlockSize:

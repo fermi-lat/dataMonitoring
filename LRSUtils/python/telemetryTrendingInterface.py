@@ -26,6 +26,10 @@ class telemetryTrendingInterface:
     def retrieveNavigationInformation(self):
         navFileName = self.InputCsvFileName.replace('.csv', '_nav.txt')
         navFilePath = os.path.join(self.OutputDirPath, navFileName)
+        if lrsUtils.getFileSize(navFilePath) == 0:
+            logging.info('%s exists but has zero size. Removing it...' %\
+                             navFilePath)
+            os.remove(navFilePath)
         if os.path.exists(navFilePath):
             logging.info('%s already exists. Skipping...' % navFilePath)
         else:
@@ -37,6 +41,10 @@ class telemetryTrendingInterface:
     def retrieveSAAInformation(self):
         saaFileName = self.InputCsvFileName.replace('.csv', '_saa.txt')
         saaFilePath = os.path.join(self.OutputDirPath, saaFileName)
+        if lrsUtils.getFileSize(saaFilePath) == 0:
+            logging.info('%s exists but has zero size. Removing it...' %\
+                             saaFilePath)
+            os.remove(saaFilePath)
         if os.path.exists(saaFilePath):
             logging.info('%s already exists. Skipping...' % saaFilePath)
         else:
