@@ -27,7 +27,10 @@ def string2utc(timestring, formatString):
         return calendar.timegm(time.strptime(timestring, formatString))
 
 def getFileSize(filePath):
-    return os.stat(filePath)[6]
+    try:
+        return os.stat(filePath)[6]
+    except OSError:
+        return -1
 
 def getFirstTimestamp(filePath):
     fileObject = file(filePath)
