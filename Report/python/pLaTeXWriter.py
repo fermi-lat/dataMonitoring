@@ -123,8 +123,10 @@ class pLaTeXWriter:
             self.write('\\gplotleftlabel{%s}{%s}' %\
                        (plotLineHeight,\
                         plot.getLeftLaTeXCaption()),  percent = True)
-            self.write('\href{%s}{\\includegraphics[width=%s]{%s}}' %\
-                       (plot.Url,plotLineWidth, plot.ImageName), percent=True)
+            #self.write('\href{%s}{\\includegraphics[width=%s]{%s}}' %\
+            #           (plot.Url,plotLineWidth, plot.ImageName), percent=True)
+            self.write('\\includegraphics[width=%s]{%s}' %\
+                       (plotLineWidth, plot.ImageName), percent=True)
             self.write('\\gplotrightlabel{%s}{%s}\\\\' %\
                        (plotLineHeight,\
                         plot.getRightLaTeXCaption()))
