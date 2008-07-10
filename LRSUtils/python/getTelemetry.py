@@ -10,10 +10,13 @@ LRS_DATA_PATH = '/nfs/farm/g/glast/u42/ISOC-flight/FswDumps/reports/nonEvent/'
 DATA_BLOCK_SIZE = {'f1001': 19, 'f1002': 35, 'f1003': 28}
 OUTPUT_DIR_PATH = '/nfs/slac/g/glast/users/glground/lbaldini/saa/telemetry/'
 
-filesList = commands.getoutput('ls %s*/f1003*' % LRS_DATA_PATH).split('\n')
+filesList = commands.getoutput('ls %s*/f100*' % LRS_DATA_PATH).split('\n')
 
 numFilesLeft = len(filesList)
 print '%d files found.' % numFilesLeft
+
+if raw_input('Press q to quit, anything else to continue') == 'q':
+    sys.exit('Done.')
 
 for filePath in filesList:
     numFilesLeft -= 1
