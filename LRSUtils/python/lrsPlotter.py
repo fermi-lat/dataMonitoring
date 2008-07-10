@@ -153,12 +153,12 @@ class lrsPlotter:
         for line in self.SAAContour:
             line.Draw('same')
         self.Canvas.Update()
-        raw_input('Press enter to draw the SAA transitions...')
-        print '%d transitions found.' % len(self.TransitionsList)
-        for transition in self.TransitionsList:
-            print transition
-            transition.draw()
-        self.Canvas.Update()
+        #raw_input('Press enter to draw the SAA transitions...')
+        #print '%d transitions found.' % len(self.TransitionsList)
+        #for transition in self.TransitionsList:
+        #    print transition
+        #    transition.draw()
+        #self.Canvas.Update()
 
 
 if __name__ == '__main__':
@@ -168,8 +168,11 @@ if __name__ == '__main__':
     #calLoplotter = lrsPlotter('/data/work/leo/saa/calLrsChain.root',\
     #                              'LrsLoAverageRate')
     #calLoplotter.draw()
-    tkrPlotter = lrsPlotter('/data/work/leo/saa/tkrLrsChain.root',\
+    #tkrPlotter = lrsPlotter('/data/work/leo/saa/tkrLrsChain.root',\
+    #                            'LrsAverageRate')
+    #tkrPlotter.draw()
+    acdPlotter = lrsPlotter('/data/work/leo/saa/acdLrsChain.root',\
                                 'LrsAverageRate')
-    tkrPlotter.draw()
+    acdPlotter.draw()
     
-    # -35, -45, 0, 5 @ 121439326...
+
