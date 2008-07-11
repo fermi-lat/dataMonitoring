@@ -19,7 +19,6 @@ class pDownloadManager:
         self.CookieFilePath = os.path.join(cookieFolder, COOKIE_FILE_NAME)
         if not os.path.exists(self.CookieFolderPath):
             os.makedirs(self.CookieFolderPath)
-        self.LastUrl = None
 
     def downloadUrl(self, url, options = ''):
         command  = 'wget -p -nv --convert-links -nH -nd '
@@ -39,7 +38,6 @@ class pDownloadManager:
         options = '&timeInterval=%d-%d&maxBins=-1&imageFormat=%s' %\
                   (startTime, endTime, imageFormat)
         self.downloadUrl(url, options)
-        self.PanelUrl = '%s%s' % (url, options)
 
     def downloadBaseReportUrl(self):
         self.downloadUrl(BASE_REPORT_URL, '')

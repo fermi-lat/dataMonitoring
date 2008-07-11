@@ -22,13 +22,9 @@ import sys
 #   Parse a string representing a time according to a format. The return value
 #   is a struct_time.
 
-MET_OFFSET = 978307200
 FORMAT_STRINGS_DICT = {'Eric Grove'   : '%Y-%j %H:%M:%S',
                        'Max Turri'    : '%d-%b-%Y %H:%M:%S',
-                       'M. E. Monzani': '%a %b %d %H:%M:%S UTC %Y',
-                       'Luca Baldini' : '%y%j%H%M%S',
-                       'Johan Bregeon': '%Y-%j-%Hh%Mm%Ss',
-                       'GCN notice'   : '%b/%d/%Y %H:%M:%S'}
+                       'M. E. Monzani': '%a %b %H:%M:%S UTC %Y'}
 
 def getStringFormat(flavour):
     try:
@@ -51,10 +47,11 @@ def string2msec(timestring, formatString = DEFAULT_FORMAT_STRING):
     return 1000*string2sec(timestring, formatString)
 
 def convert2msec(t):
-    try:
-        logging.info('Trying to convert seconds (UTC into ms)...')
-        return int(1000.*float(t))
-    except:
+    if type(t) == types.FloatType:
+        t = int(t)
+    if type(t) == types.IntType:
+        return 1000*t
+    elif type(t) == types.StringType:
         for (key, value) in FORMAT_STRINGS_DICT.items():
             try:
                 logging.info('Trying to convert to ms using "%s" format...' %\
@@ -73,13 +70,6 @@ def availableTimeFormats(sec = 1208563199):
         formats += '%12s: "%s" (e.g. %s)\n' %\
             (key, value, sec2string(sec, value)) 
     return formats
-
-def met2utc(met):
-    return met + MET_OFFSET
-
-def utc2met(utc):
-    return utc - MET_OFFSET
-
 
 
 if __name__ == '__main__':

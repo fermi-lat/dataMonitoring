@@ -1,7 +1,3 @@
-*** v4r4 ***
-- Bug fix correcting the order of plots within panels.
-- Guess we forgot to write release notes for a long time, here...
-
 
 *** v2r0p1 ***
 - Bug fix in the way the cookies were handled. Now the cookie file is 

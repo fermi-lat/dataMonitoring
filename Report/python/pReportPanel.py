@@ -24,10 +24,8 @@ class pReportPanel(pDownloadManager):
         if not os.path.exists(self.ReportFolder):
             logging.info('Creating directory %s...' % self.ReportFolder)
             os.makedirs(self.ReportFolder)
-        self.PlotNamesList = []
         self.PlotsList = []
         self.downloadInfo(startTime, endTime)
-        self.PageContent = self.__retrievePageContent()
         self.processInfo()
         self.cleanup()
 
@@ -45,20 +43,19 @@ class pReportPanel(pDownloadManager):
     def processImages(self):
         logging.info('Processing panel images...')
         imagesList = glob(os.path.join(self.DownloadFolder, 'aida_plot*'))
-        for plotName in self.PlotNamesList:
-            for string in imagesList:
-                if plotName in string:
-                    imageName = '%s%s' % (plotName, self.Name)
-                    imagePath = '%s/%s.%s' %\
+        imagesList.sort()
+        for string in imagesList:
+            plotName = re.search('(?<=name=).*(?=&width)', string).group()
+            imageName = '%s%s' % (plotName, self.Name)
+            imagePath = '%s/%s.%s' %\
                         (self.ReportFolder, imageName, self.ImageFormat)
-                    if not os.path.exists(string):
-                        logging.error('Could not find %s.' % string)
-                    else:
-                        command = 'mv "%s" %s' % (string, imagePath)
-                        logging.debug('Executing %s...' % command)
-                        os.system(command)
-                        self.PlotsList.append(pReportPlot(plotName, imageName))
-                    break
+            if not os.path.exists(string):
+                logging.error('Could not find %s.' % string)
+            else:
+                command = 'mv "%s" %s' % (string, imagePath)
+                logging.debug('Executing %s...' % command)
+                os.system(command)
+                self.PlotsList.append(pReportPlot(plotName, imageName))
 
     ## @brief Read the html panel page and return the relevant content
     #  as a single string.
@@ -67,20 +64,16 @@ class pReportPanel(pDownloadManager):
     #  the panel title (identified by means of the <h2/> html tag), excluding
     #  the blank lines.
 
-    def __retrievePageContent(self):
+    def getPageContent(self):
         try:
             titleFound = False
             pageContent = ''
-            for line in file(glob('%s/report*' %\
+            for line in file(glob('./%s/report*' %\
                                       self.DownloadFolder)[0]).readlines():
                 if '<h2' in line:
                     titleFound = True
                 if titleFound and not line.isspace():
                     pageContent += line
-                if '<img width="' in line:
-                    plotName = line.split('name=')[1]
-                    plotName = plotName.split('&amp')[0]
-                    self.PlotNamesList.append(plotName)
             return pageContent
         except:
             logging.error('Could not parse html content for panel %s.' %\
@@ -94,13 +87,13 @@ class pReportPanel(pDownloadManager):
 
     def processPage(self):
         logging.info('Processing panel page...')
-        if self.PageContent is None:
+        pageContent = self.getPageContent()
+        if pageContent is None:
             return
-        self.Title = re.search('(?<=>).*(?=</h2>)', self.PageContent).group()
-        htmlTableRows = re.search('(?<=<tr).*(?=</tr>)', self.PageContent,\
+        self.Title = re.search('(?<=>).*(?=</h2>)', pageContent).group()
+        htmlTableRows = re.search('(?<=<tr).*(?=</tr>)', pageContent,\
                                       re.DOTALL).group().split('</tr>')
         for plot in self.PlotsList:
-            plot.Url = self.PanelUrl
             for htmlTableRow in htmlTableRows:
                 if plot.PlotName in htmlTableRow:
                     caption = re.search('leftCaption.*?</td>',\
