@@ -27,7 +27,8 @@ FORMAT_STRINGS_DICT = {'Eric Grove'   : '%Y-%j %H:%M:%S',
                        'Max Turri'    : '%d-%b-%Y %H:%M:%S',
                        'M. E. Monzani': '%a %b %d %H:%M:%S UTC %Y',
                        'Luca Baldini' : '%y%j%H%M%S',
-                       'Johan Bregeon': '%Y-%j-%Hh%Mm%Ss'}
+                       'Johan Bregeon': '%Y-%j-%Hh%Mm%Ss',
+                       'GCN notice'   : '%b/%d/%Y %H:%M:%S'}
 
 def getStringFormat(flavour):
     try:
