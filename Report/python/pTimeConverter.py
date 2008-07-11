@@ -51,11 +51,10 @@ def string2msec(timestring, formatString = DEFAULT_FORMAT_STRING):
     return 1000*string2sec(timestring, formatString)
 
 def convert2msec(t):
-    if type(t) == types.FloatType:
-        t = int(t)
-    if type(t) == types.IntType:
-        return 1000*t
-    elif type(t) == types.StringType:
+    try:
+        logging.info('Trying to convert seconds (UTC into ms)...')
+        return int(1000.*float(t))
+    except:
         for (key, value) in FORMAT_STRINGS_DICT.items():
             try:
                 logging.info('Trying to convert to ms using "%s" format...' %\
