@@ -1,3 +1,7 @@
+*** v2r0p2 ***
+- Wrong sign in the digi eor limits changed.
+
+
 *** v2r0p1 ***
 - Updated the exception file for the alarms on the digi trending to take into
 account the broken GTRC in tower 10, plane 0.
