@@ -15,6 +15,14 @@
 	</variable>
 	
     </inputList>
+
+    <inputList group="Errors" name="Errors" enabled="True">
+	<variable name="error_summary" enabled="True">
+	    <type>uint32</type>
+            <shape>(1)</shape>
+	</variable>
+	
+    </inputList>
     
     <inputList group="GEOMAG" name="GEOMAG" enabled="True">
 	<variable name="spacecraft_latitude" enabled="True" reset="False">
