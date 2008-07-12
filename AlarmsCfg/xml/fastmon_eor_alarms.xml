@@ -32,8 +32,8 @@
     <alarmSet name="CalLoTrigger_Tower_TH1" enabled="True">
       <alarm function="y_values" enabled="True">
 	<parameter name="normalize" value="True"/>
-	<warning_limits min="0.0475" max="0.078"/>
-	<error_limits min="0.0425" max="0.0825"/>
+	<warning_limits min="0.045" max="0.080"/>
+	<error_limits min="0.040" max="0.085"/>
       </alarm>
     </alarmSet>
     
