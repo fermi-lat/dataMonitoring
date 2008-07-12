@@ -1,3 +1,8 @@
+*** v2r0p4 ***
+- Digi eor and trend limits and settings reviewed after the change in the
+default configuration.
+- Minor change to the recon eor configuration file.
+
 
 *** v2r0p3 ***
 - Recon eor limits and settings reviewed after the change in the default
