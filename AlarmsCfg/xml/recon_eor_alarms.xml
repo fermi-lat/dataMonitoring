@@ -122,16 +122,18 @@
 
     <alarmSet name="SuspCalLo_Highest0_EnergyDistribution_TH1" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
-	<parameter name="threshold" value="50"/>
-	<warning_limits min="80.0" max="120.0"/>
+	<parameter name="window_half_width" value="5"/>
+	<parameter name="threshold" value="25"/>
+	<warning_limits min="85.0" max="115.0"/>
 	<error_limits min="50.0"   max="150.0"/>
       </alarm>
     </alarmSet>
 
     <alarmSet name="SuspCalHi_Highest0_EnergyDistribution_TH1" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
-	<parameter name="threshold" value="50"/>
-	<warning_limits min="800.0" max="1200.0"/>
+	<parameter name="window_half_width" value="9"/>
+	<parameter name="threshold" value="25"/>
+	<warning_limits min="850.0" max="1150.0"/>
 	<error_limits min="500.0" max="1500.0"/>
       </alarm>
     </alarmSet>
