@@ -1,3 +1,7 @@
+*** v2r0p5 ***
+- Alarms back on the 2D cal trigger plots (leftmost_edge_slices).
+
+
 *** v2r0p4 ***
 - Digi eor and trend limits and settings reviewed after the change in the
 default configuration.
