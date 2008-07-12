@@ -17,28 +17,6 @@
       </alarm> 				  			 
     </alarmSet>
 
-    <alarmSet name="ReconVertex_XPos_TH1" enabled="True">
-      <alarm function="x_average" enabled="True">
-	<warning_limits min="-20.0" max="20.0"/>
-	<error_limits min="-40.0" max="40.0"/>
-      </alarm> 
-      <alarm function="x_rms" enabled="True">
-	<warning_limits min="400" max="500"/>
-	<error_limits min="300" max="600"/>
-      </alarm> 				  			 
-    </alarmSet>
-    
-    <alarmSet name="ReconVertex_YPos_TH1" enabled="True">
-      <alarm function="x_average" enabled="True">
-	<warning_limits min="-20.0" max="20.0"/>
-	<error_limits min="-40.0" max="40.0"/>
-      </alarm> 
-      <alarm function="x_rms" enabled="True">
-	<warning_limits min="400" max="500"/>
-	<error_limits min="300" max="600"/>
-      </alarm> 				  			 
-    </alarmSet>
-
     <alarmSet name="ReconVertex_ZPos_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<warning_limits min="250.0" max="450.0"/>
