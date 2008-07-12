@@ -205,7 +205,6 @@
       </alarm> 				  			 
     </alarmSet>
 
-
     <alarmSet name="ReconAcdPhaMips_PMTA_Zoom_TH1_AcdTile_*" exclude="range(89, 128)" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
         <parameter name="window_half_width" value="10"/>
