@@ -1,3 +1,8 @@
+*** v2r1p0 ***
+- New alarm on the CAL lac threshold, and a couple of obsolete ones removed.
+* Relevant jira(s): GDQMQ-205
+
+
 *** v2r0p5 ***
 - Alarms back on the 2D cal trigger plots (leftmost_edge_slices).
 
