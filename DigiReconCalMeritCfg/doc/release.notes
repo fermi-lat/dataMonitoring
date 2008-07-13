@@ -1,9 +1,13 @@
+v1r2p4  2008/07/12   (DEV)
+------------------------------
+FastMon trending of Z axis pointing in galactic coordinates
+GDQMQ-198
+
 
 v1r2p3  2008/07/03   (DEV)
 ------------------------------
 Selection condsummary&32 changed to condsummary==32 for calcualtion of 
 pedestals for ACD and CAL. This adressess jira XXX.
-
 
 
 v1r2p2  2008/07/03   (DEV)
