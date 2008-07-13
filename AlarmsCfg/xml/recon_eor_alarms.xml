@@ -83,18 +83,21 @@
       </alarm> 				  			 
     </alarmSet>
 
-    <alarmSet name="ReconEnergy_VeryLowEnergy_TH1_TowerCalLayer_*_*" enabled="True">
+    <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_*_*_*" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
-	<warning_limits min="1.0" max="2.0"/>
-	<error_limits min="0.7" max="3.0"/>
+	<parameter name="window_half_width" value="12"/>
+	<parameter name="threshold" value="60"/>
+	<warning_limits min="1.5" max="2.5"/>
+	<error_limits min="1.0" max="3.0"/>
       </alarm>
     </alarmSet>
 
-    <alarmSet name="ReconEnergy_VeryLowEnergy_TH1_TowerCalLayerCalColumn_*_*_*" enabled="True">
-      <alarm function="x_min_bin" enabled="True">
- 	<parameter name="num_adjacent_bins" value="2"/>     
-	<warning_limits min="1.0" max="2.0"/>
-	<error_limits min="0.7" max="3.0"/>
+    <alarmSet name="Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_*_*_*" enabled="True">
+      <alarm function="leftmost_edge" enabled="True">
+	<parameter name="window_half_width" value="12"/>
+	<parameter name="threshold" value="60"/>
+	<warning_limits min="1.5" max="2.5"/>
+	<error_limits min="1.0" max="3.0"/>
       </alarm>
     </alarmSet>
 
