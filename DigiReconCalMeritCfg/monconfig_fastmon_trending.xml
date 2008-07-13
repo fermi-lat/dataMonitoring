@@ -29,6 +29,8 @@
    <object> FastMon_spacecraft_xra</object>
    <object> FastMon_spacecraft_zra</object>
    <object> FastMon_spacecraft_zdec</object>
+   <object> FastMon_spacecraft_zgalL</object>
+   <object> FastMon_spacecraft_zgalB</object>
    <object> FastMon_spacecraft_earthlimb</object>
    <object> FastMon_spacecraft_earthlimb_fov</object>
 
@@ -216,6 +218,20 @@
       <cut><![CDATA[ ]]></cut>
       <type> mean </type>
       <description> Mean value of the arc length of Earth limb in the LAT field of view</description>
+    </object>
+    <object>
+      <name> FastMon_SpaceCraft_ZGalL </name>
+      <formula><![CDATA[ FastMon_spacecraft_zgalL ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the spacecraft z axis galactic L coordinate</description>
+    </object>
+    <object>
+      <name> FastMon_SpaceCraft_ZGalB </name>
+      <formula><![CDATA[ FastMon_spacecraft_zgalB ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the spacecraft z axis galactic B coordinate</description>
     </object>
     
     <!-- Environment quantities -->
