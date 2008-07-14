@@ -1,3 +1,7 @@
+*** v2r2p1 ***
+- Updated tkr monitoring alarms as per Hiro's e-mail.
+
+
 *** v2r2p0 ***
 - Alarm limits on trackermon_trend quantities changed from percentages to
 fractions, following Hiro's convention.
