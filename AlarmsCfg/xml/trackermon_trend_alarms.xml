@@ -12,29 +12,29 @@ Number_LATAverage_stripOcc: < 5.e-5
   <alarmList group="TKRMON" name="TKR Monitoring from Tajima etal" enabled="True">
     <alarmSet name="Time::Mean_towerEff_Tower" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="98.0" max="100.0"/>
-	<error_limits   min="98.0"  max="100.0"/>
+	<warning_limits min="0.98" max="1.0"/>
+	<error_limits   min="0.98" max="1.0"/>
       </alarm> 
     </alarmSet>
 
     <alarmSet name="Time::Mean_trigEff_Tower" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="90.0" max="100.0"/>
-	<error_limits   min="90.0"  max="100.0"/>
+	<warning_limits min="0.9" max="1.0"/>
+	<error_limits   min="0.9" max="1.0"/>
       </alarm> 
     </alarmSet>
    
     <alarmSet name="Time::Number_layerOcc_TowerPlane" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.0" max="8.0"/>
-	<error_limits   min="0.0"  max="8.0"/>
+	<warning_limits min="0.0" max="0.08"/>
+	<error_limits   min="0.0" max="0.08"/>
       </alarm> 
     </alarmSet>
    
     <alarmSet name="Time::Number_LATAverage_stripOcc" enabled="True">
       <alarm function="values" enabled="True">
 	<warning_limits min="0.0" max="0.00005"/>
-	<error_limits   min="0.0"  max="0.00005"/>
+	<error_limits   min="0.0" max="0.00005"/>
       </alarm> 
     </alarmSet>
 
