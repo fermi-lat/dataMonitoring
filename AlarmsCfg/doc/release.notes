@@ -1,3 +1,8 @@
+*** v2r2p0 ***
+- Alarm limits on trackermon_trend quantities changed from percentages to
+fractions, following Hiro's convention.
+
+
 *** v2r1p1 ***
 - New variables added for the distributions of the alarms output.
 * Relevant jira(s): GDM-27
