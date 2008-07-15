@@ -836,7 +836,7 @@
     </outputList>
 		
     <outputList group="TKR" name="TKR in electronics space" enabled="True">
-      <CUSTOM type="TkrHitsCounter_TowerPlane" name="TkrHitsCounter_TowerPlane_TH2" enabled="True">
+        <CUSTOM type="TkrHitsCounter_TowerPlane" name="TkrHitsCounter_TowerPlane_TH2" enabled="True">
 	    <title>Overall number of hits vs. TKR tower and plane</title>
 	    <caption>Test</caption>
 	    <xlabel>Tower</xlabel>
@@ -922,14 +922,14 @@
 	    <type>int</type>
             <shape>(1)</shape>
 	</variable>
-	<variable name="acd_cable_tile_count" enabled="False">
+	<variable name="AcdHitChannel" enabled="True">
 	    <type>int</type>
-            <shape>(NUM_ACD_CABLES)</shape>
+            <shape>(NUM_ACD_CABLES, NUM_ACD_CHANNELS_PER_CABLE)</shape>
 	</variable>
     </inputList>		
 		
     <outputList group="ACD" name="ACD base" enabled="True">
-
+    
         <TH1F name="AcdChannelsHits_TH1" enabled="True" level="lat">
 	    <title>Number of ACD PMT hit per event</title>
 	    <xbins>195</xbins>
@@ -941,7 +941,14 @@
 	    <caption>This is the number of PHA values per event</caption>
 	    <cut><![CDATA[ (condsummary&30)>0  && !(condsummary&64)]]></cut>
         </TH1F>
-
+        <CUSTOM type="AcdHitsCounter_CableChannel" name="AcdHitsCounter_CableChannel_TH2" level="lat" enabled="True">
+	    <title>Number hit for each ACD channel</title>
+	    <xlabel>Cable Id</xlabel>
+	    <ylabel>Channel Id</ylabel>
+	    <drawoptions>colz</drawoptions>
+	    <cut><![CDATA[!(condsummary&64)]]></cut>
+        </CUSTOM>
+	
     </outputList>
 		
     <!--
