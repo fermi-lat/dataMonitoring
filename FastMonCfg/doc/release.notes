@@ -1,3 +1,10 @@
+*** v1r4p1 ***
+- Added AcdHitChannel to monitor the ACD occupancy per cable, channel
+  in config.xml and configLCI.xml
+- Corresponding plot name is AcdHitsCounter_CableChannel_TH2
+* Relevant jira(s): GDQMQ-1
+
+
 *** v1r4p0 ***
 - New error_summary variable added.
 * Relevant jira(s): GDQMQ-173
