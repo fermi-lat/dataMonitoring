@@ -11,49 +11,9 @@ ROOT.gStyle.SetPalette(1)
 ROOT.gStyle.SetCanvasColor(10)
 ROOT.gStyle.SetOptStat(0)
 
-MIN_LON = -180
-MAX_LON = 180
-MIN_LAT = -30
-MAX_LAT = 30
-NUM_LON_BINS = 300
-NUM_LAT_BINS = 200
+from __polygons__ import *
+
 ROOT_TREE_NAME = 'LrsTree'
-
-SAA_LON = [-92.0, -99.5, -98.3, -95.4, -90.9, -66.1, -48.7, -37.3, -28.4,
-            33.2, 42.1, 47.5]
-SAA_LAT = [-30.0, -16.5, -11.1, -7.1, -4.4, 2.7, 6.5, 8.5, 8.4, -17.4,
-            -22.3, -30.0]
-SAA_CENTER = (-40, -20)
-
-RATE_THRESHOLD = 1000.
-TIME_BIN_WIDTH = 20.
-
-
-class lrsTransition:
-    
-    def __init__(self, timestamp, polarity, longitude, latitude):
-        self.Timestamp = timestamp
-        self.Polarity = polarity
-        self.Longitude = longitude
-        self.Latitude = latitude
-        self.DistanceFromSAACenter =\
-            math.sqrt((self.Longitude - SAA_CENTER[0])**2 +\
-                          (self.Latitude - SAA_CENTER[1])**2)  
-        self.AngleToSAACenter = 0
-        self.Marker = ROOT.TMarker(self.Longitude, self.Latitude, 8)
-
-    def draw(self):
-        self.Marker.Draw('same')
-
-    def __cmp__(self):
-        return 0
-
-    def __str__(self):
-        str = 'Transition at %f s, (%.2f, %.2f), polarity = %d\n' %\
-            (self.Timestamp, self.Longitude, self.Latitude, self.Polarity)
-        str += 'Distance to SAA center: %.2f' % self.DistanceFromSAACenter
-        return str
-        
 
 
 class lrsPlotter:
@@ -64,18 +24,9 @@ class lrsPlotter:
         self.CounterName = counterName
         self.createArrays()
         self.createHistograms()
-        self.createSAAContour()
+        self.OriginalPolygon = polygon(ORIGINAL_POLYGON)
+        self.NewPolygon = polygon(ROB_POLYGON)
         self.loop()
-
-    def createSAAContour(self):
-        SAA_LAT.append(SAA_LAT[0])
-        SAA_LON.append(SAA_LON[0])
-        self.SAAContour = []
-        for i in range(12):
-            line = ROOT.TLine(SAA_LON[i], SAA_LAT[i], SAA_LON[i + 1],
-                              SAA_LAT[i + 1])
-            line.SetLineWidth(2)
-            self.SAAContour.append(line)
 
     def createArrays(self):
         logging.info('Creating arrays...')
@@ -83,10 +34,12 @@ class lrsPlotter:
         self.Longitude = numpy.zeros((1), 'd')
         self.Latitude = numpy.zeros((1), 'd')
         self.Rate = numpy.zeros((1), 'd')
+        self.SAAFlag = numpy.zeros((1), 'd')
         self.RootTree.SetBranchAddress('Time', self.Time)
         self.RootTree.SetBranchAddress('LSPGEOLON', self.Longitude)
         self.RootTree.SetBranchAddress('LSPGEOLAT', self.Latitude)
         self.RootTree.SetBranchAddress(self.CounterName, self.Rate)
+        self.RootTree.SetBranchAddress('SACFLAGLATINSAA', self.SAAFlag)
 
     def createHistograms(self):
         logging.info('Creating histograms...')
@@ -104,61 +57,50 @@ class lrsPlotter:
         self.RateHistogram.GetYaxis().SetTitle('Longitude')
 
     def loop(self):
-        self.TransitionsList = []
+        numEntries = self.RootTree.GetEntries()
+        totalTime = 0
+        timeInSaaOriginal = 0
+        timeInSaaNew = 0
+        timeInBetween = 0
         self.RootTree.GetEntry(0)
-        startTime = self.Time[0]
-        timeWindow = [startTime, startTime + TIME_BIN_WIDTH]
-        averageRate = 0
-        numCounts = 0
-        previousAverageRate = self.Rate[0]
         previousTime = self.Time[0]
-        previousLongitude = self.Longitude[0]
-        previousLatitude = self.Latitude[0]
         logging.info('Starting event loop...')
-        for i in range(self.RootTree.GetEntries()):
+        for i in xrange(numEntries):
             if (i%100000) == 0:
                 logging.debug('%d events scanned.' % i)
             self.RootTree.GetEntry(i)
-            self.RateHistogram.Fill(self.Longitude, self.Latitude, self.Rate)
-            self.ExposureHistogram.Fill(self.Longitude, self.Latitude, 1)
-            averageRate += self.Rate[0]
-            numCounts += 1
-            if self.Time > timeWindow[1]:
-                averageRate /= numCounts
-                if averageRate >= RATE_THRESHOLD and\
-                        previousAverageRate < RATE_THRESHOLD:
-                    t = lrsTransition(previousTime, 1, previousLongitude,
-                                      previousLatitude)
-                    self.TransitionsList.append(t)
-                elif averageRate <= RATE_THRESHOLD and\
-                        previousAverageRate > RATE_THRESHOLD:
-                    t = lrsTransition(previousTime, -1, previousLongitude,
-                                      previousLatitude)
-                    self.TransitionsList.append(t)
-                t = int((self.Time[0] - startTime)/TIME_BIN_WIDTH)
-                timeWindow = (t, t + TIME_BIN_WIDTH)
-                previousAverageRate = averageRate
-                previousTime = self.Time[0]
-                previousLongitude = self.Longitude[0]
-                previousLatitude = self.Latitude[0]
-                averageRate = 0
-                numCounts = 0
+            (x, y) = (self.Longitude, self.Latitude)
+            dt = self.Time[0] - previousTime
+            if dt < 0:
+                print 'Error: dt = %f' % dt
+            else:
+                totalTime += dt
+                if self.SAAFlag > 0:
+                    timeInSaaOriginal += dt
+                    if self.NewPolygon.isInside(x, y):
+                        timeInSaaNew += dt
+                    else:
+                        timeInBetween += dt
+            self.RateHistogram.Fill(x, y, self.Rate)
+            self.ExposureHistogram.Fill(x, y, 1)
+            previousTime = self.Time[0]
         self.RateHistogram.Divide(self.ExposureHistogram)
+        print 'Total time: %f s' % totalTime
+        print 'Time in original SAA: %f s (%f)' % (timeInSaaOriginal,
+                                                   timeInSaaOriginal/totalTime)
+        print 'Time in new SAA: %f s (%f)' % (timeInSaaNew,
+                                              timeInSaaNew/totalTime)
+        print 'Time in new between: %f s (%f)' % (timeInBetween,
+                                                  timeInBetween/totalTime)
 
     def draw(self):
         self.Canvas = ROOT.TCanvas('canvas_%s' % self.CounterName,
                                    self.CounterName, 800, 500)
         self.Canvas.SetLogz(True)
         self.RateHistogram.Draw('colz')
-        for line in self.SAAContour:
-            line.Draw('same')
+        self.OriginalPolygon.draw(True)
+        self.NewPolygon.draw(True, 2, ROOT.kRed)
         self.Canvas.Update()
-        #raw_input('Press enter to draw the SAA transitions...')
-        #print '%d transitions found.' % len(self.TransitionsList)
-        #for transition in self.TransitionsList:
-        #    print transition
-        #    transition.draw()
-        #self.Canvas.Update()
 
 
 if __name__ == '__main__':
@@ -168,11 +110,11 @@ if __name__ == '__main__':
     #calLoplotter = lrsPlotter('/data/work/leo/saa/calLrsChain.root',\
     #                              'LrsLoAverageRate')
     #calLoplotter.draw()
-    #tkrPlotter = lrsPlotter('/data/work/leo/saa/tkrLrsChain.root',\
-    #                            'LrsAverageRate')
-    #tkrPlotter.draw()
-    acdPlotter = lrsPlotter('/data/work/leo/saa/acdLrsChain.root',\
+    tkrPlotter = lrsPlotter('/data/work/leo/saa/tkrLrsChain.root',\
                                 'LrsAverageRate')
-    acdPlotter.draw()
+    tkrPlotter.draw()
+    #acdPlotter = lrsPlotter('/data/work/leo/saa/acdLrsChain.root',\
+    #                            'LrsAverageRate')
+    #acdPlotter.draw()
     
 
