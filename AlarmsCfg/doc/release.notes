@@ -1,3 +1,7 @@
+*** v2r3p0 ***
+- Got rid of the alarm on the rms of TkrHits_TH1_Tower (FastMon)
+
+
 *** v2r2p1 ***
 - Updated tkr monitoring alarms as per Hiro's e-mail.
 
