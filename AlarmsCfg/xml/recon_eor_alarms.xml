@@ -17,50 +17,6 @@
       </alarm> 				  			 
     </alarmSet>
 
-    <alarmSet name="ReconVertex_ZPos_TH1" enabled="True">
-      <alarm function="x_average" enabled="True">
-	<warning_limits min="250.0" max="450.0"/>
-	<error_limits min="100.0" max="600.0"/>
-      </alarm> 
-      <alarm function="x_rms" enabled="True">
-	<warning_limits min="130" max="200"/>
-	<error_limits min="100" max="250"/>
-      </alarm> 				  			 
-    </alarmSet>
-
-    <alarmSet name="ReconVertex_XDir_TH1" enabled="True">
-      <alarm function="x_average" enabled="True">
-	<warning_limits min="-0.1" max="0.1"/>
-	<error_limits min="-0.2" max="0.2"/>
-      </alarm>
-      <alarm function="x_rms" enabled="True">
-	<warning_limits min="0.25" max="0.75"/>
-	<error_limits min="0.1" max="1.0"/>
-      </alarm> 				  			 
-    </alarmSet>
-
-    <alarmSet name="ReconVertex_YDir_TH1" enabled="True">
-      <alarm function="x_average" enabled="True">
-	<warning_limits min="-0.1" max="0.1"/>
-	<error_limits min="-0.2" max="0.2"/>
-      </alarm> 
-      <alarm function="x_rms" enabled="True">
-	<warning_limits min="0.25" max="0.75"/>
-	<error_limits min="0.1" max="1.0"/>
-      </alarm> 				  			 
-    </alarmSet>
-
-    <alarmSet name="ReconVertex_ZDir_TH1" enabled="True">
-      <alarm function="x_average" enabled="True">
-	<warning_limits min="-0.8" max="-0.5"/>
-	<error_limits min="-0.9" max="-0.4"/>
-      </alarm> 
-      <alarm function="x_rms" enabled="True">
-	<warning_limits min="0.20" max="0.30"/>
-	<error_limits min="0.10" max="0.4"/>
-      </alarm> 				  			 
-    </alarmSet>
-
   </alarmList>
 
 
