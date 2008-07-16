@@ -946,7 +946,7 @@
 	    <xlabel>Cable Id</xlabel>
 	    <ylabel>Channel Id</ylabel>
 	    <drawoptions>colz</drawoptions>
-	    <cut><![CDATA[!(condsummary&64)]]></cut>
+	    <cut><![CDATA[(condsummary&30)>0 && (condsummary&32)==0 && !(condsummary&64)]]></cut>
         </CUSTOM>
 	
     </outputList>
