@@ -36,7 +36,8 @@ class lrsConverter(lrsTreeWriter):
 
     def __init__(self, inputCsvFilePath, outputRootFolder, telemetryFolder):
         if not os.path.exists(inputCsvFilePath):
-            sys.exit('Could not find %s. Abort.' % inputCsvFilePath)
+            logging.warning('Could not find %s. Abort.' % inputCsvFilePath)
+            return
         self.InputCsvFilePath = inputCsvFilePath
         self.InputCsvFile = file(inputCsvFilePath)
         self.LineNumber = 0
@@ -61,14 +62,16 @@ class lrsConverter(lrsTreeWriter):
                                                   outputRootFileName)
         if os.path.exists(outputRootFilePath):
             logging.info('%s already exists. Skipping...' % outputRootFilePath)
+            return
+        if self.retrieveNavigationInformation():
             return 
+        if self.retrieveSAAInformation():
+            return
         self.BRANCHES_LIST = copy(self._BRANCHES_LIST)
         for mnemonic in self.MNEMONICS_LIST:
             self.BRANCHES_LIST.append('%s:d:(1)' % mnemonic)
         lrsTreeWriter.__init__(self, outputRootFilePath, self.TREE_NAME,\
                                    self.BRANCHES_LIST)
-        self.retrieveNavigationInformation()
-        self.retrieveSAAInformation()
         self.convert()
         self.close()
 
@@ -82,7 +85,8 @@ class lrsConverter(lrsTreeWriter):
         logging.info('Retrieving navigation information from %s...' %\
                          navFilePath)
         if not os.path.exists(navFilePath):
-            sys.exit('Could not find %s. Abort.' % navFilePath)
+            logging.warning('Could not find %s. Abort.' % navFilePath)
+            return 1
         self.NavigationGraphList = []
         self.NavigationMnemonicsDict = {}
         navigationFile = file(navFilePath)
@@ -117,7 +121,8 @@ class lrsConverter(lrsTreeWriter):
             saaFilePath = os.path.join(self.TelemetryFolder, saaFileName)
         logging.info('Retrieving SAA information from %s...' % saaFilePath)
         if not os.path.exists(saaFilePath):
-            sys.exit('Could not find %s. Abort.' % saaFilePath)
+            logging.warning('Could not find %s. Abort.' % saaFilePath)
+            return 1
         self.SAAGraph = ROOT.TGraph()
         self.SAAGraph.SetNameTitle('SACFLAGLATINSAA', 'SACFLAGLATINSAA')
         saaFile = file(saaFilePath)
