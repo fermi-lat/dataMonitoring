@@ -166,11 +166,11 @@
 
     <alarmSet name="ReconAcdPhaMips_PMTA_TH1_AcdTile_*" exclude="range(89, 128)" enabled="True">
       <alarm function="x_average" enabled="True">
-	<warning_limits min="1.2" max="3.0"/>
+	<warning_limits min="1.0" max="3.4"/>
 	<error_limits min="0.5" max="5.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
-	<warning_limits min="0.6" max="3.0"/>
+	<warning_limits min="0.5" max="3.0"/>
 	<error_limits min="0.3" max="5.0"/>
       </alarm> 				  			 
     </alarmSet>
@@ -385,26 +385,26 @@
       <alarm function="gauss_rms" enabled="True">
 	<parameter name="min" value="-1000"/>
 	<parameter name="max" value="-250"/>
-	<warning_limits min="8.0" max="14.0"/>
-	<error_limits min="4.0" max="18.0"/>
+	<warning_limits min="5.0" max="14.0"/>
+	<error_limits min="3.0" max="18.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="100"/>
-	<warning_limits min="8.0" max="14.0"/>
-	<error_limits min="4.0" max="18.0"/>
+	<warning_limits min="5.0" max="14.0"/>
+	<error_limits min="3.0" max="18.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<parameter name="min" value="-100"/>
 	<parameter name="max" value="400"/>
-	<warning_limits min="8.0" max="14.0"/>
-	<error_limits min="4.0" max="18.0"/>
+	<warning_limits min="5.0" max="14.0"/>
+	<error_limits min="3.0" max="18.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<parameter name="min" value="250"/>
 	<parameter name="max" value="1000"/>
-	<warning_limits min="8.0" max="14.0"/>
-	<error_limits min="4.0" max="18.0"/>
+	<warning_limits min="5.0" max="14.0"/>
+	<error_limits min="3.0" max="18.0"/>
       </alarm>
     </alarmSet>
 
