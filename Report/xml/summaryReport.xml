@@ -5,7 +5,7 @@
   <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
     <panel name="EnvPanel2" enabled="True"/>
-    <panel name="Earth_limb" enabled="False"/>
+    <panel name="eLimbPanel" enabled="True"/>
   </page>
 
   <page enabled="True">
