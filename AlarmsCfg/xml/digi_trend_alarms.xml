@@ -33,7 +33,7 @@
     </alarmSet>
     <alarmSet name="Time::OutF_Normalized_TkrHits_TowerPlane" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.05" max="1.0"/>
+	<warning_limits min="0.05" max="1.1"/>
 	<error_limits   min="0.02" max="2.0"/>
       </alarm> 
     </alarmSet>
