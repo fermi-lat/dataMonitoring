@@ -229,12 +229,6 @@
 	<warning_limits min="7.0" max="17.0"/>
 	<error_limits min="4.0" max="20.0"/>
       </alarm> 
-      <alarm function="x_rms" enabled="True">
-	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
-	<warning_limits min="35.0" max="65.0"/>
-	<error_limits min="25.0" max="80.0"/>
-      </alarm>
     </alarmSet>
     <alarmSet name="TkrPlanesHit_TH1_Tower_*" enabled="True">
       <alarm function="x_average" enabled="True">
