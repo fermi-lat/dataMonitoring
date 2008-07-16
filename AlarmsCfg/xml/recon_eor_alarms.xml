@@ -127,7 +127,7 @@
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<warning_limits min="0.5" max="3.0"/>
-	<error_limits min="0.3" max="5.0"/>
+	<error_limits min="0.3" max="6.0"/>
       </alarm> 				  			 
     </alarmSet>
 
@@ -138,7 +138,7 @@
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<warning_limits min="0.6" max="3.0"/>
-	<error_limits min="0.3" max="5.0"/>
+	<error_limits min="0.3" max="6.0"/>
       </alarm> 				  			 
     </alarmSet>
 
