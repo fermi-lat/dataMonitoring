@@ -65,12 +65,7 @@
 
   <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
-    <panel name="tkr-calTemp" enabled="True"/>
-  </page>
-
-  <page enabled="True">
-    <panel name="EnvPanel1" enabled="True"/>
-    <panel name="acdTemp" enabled="True"/>
+    <panel name="tempPanel" enabled="True"/>
   </page>
 
 </report>
