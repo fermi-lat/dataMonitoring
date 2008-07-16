@@ -32,7 +32,7 @@ if __name__ == '__main__':
                       default = None,
                       help = 'the burts time (in s or as a string)')
     parser.add_option('-s', '--half-window', dest = 's',
-                      default = 2, type = int,
+                      default = 2, type = float,
                       help = 'the report half time span (in hours)')
     parser.add_option('-t', '--time-formats',
                       action='store_true', dest='t', default=False,
