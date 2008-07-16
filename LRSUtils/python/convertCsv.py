@@ -20,24 +20,24 @@ print '%d tracker files found.' % len(tkrFilesList)
 print '%d calorimeter files found.' % len(calFilesList)
 print '%d acd files found.' % len(acdFilesList)
 
-numFilesLeft = len(calFilesList)
-for filePath in calFilesList:
-    numFilesList -= 1
-    converter = lrsCalConverter(filePath, OUTPUT_DIR_PATH, TELEMETRY_DIR_PATH)
-    del converter
-    print '%d CAL files left to look at.' % numFilesLeft
+#numFilesLeft = len(calFilesList)
+#for filePath in calFilesList:
+#    numFilesLeft -= 1
+#    converter = lrsCalConverter(filePath, OUTPUT_DIR_PATH, TELEMETRY_DIR_PATH)
+#    del converter
+#    print '%d CAL files left to look at.' % numFilesLeft
     
 numFilesLeft = len(tkrFilesList)
-for filePath in calFilesList:
-    numFilesList -= 1
+for filePath in tkrFilesList:
+    numFilesLeft -= 1
     converter = lrsTkrConverter(filePath, OUTPUT_DIR_PATH, TELEMETRY_DIR_PATH)
     del converter
     print '%d TKR files left to look at.' % numFilesLeft
 
-numFilesLeft = len(acdFilesList)
-for filePath in acdFilesList:
-    numFilesList -= 1
-    converter = lrsAcdConverter(filePath, OUTPUT_DIR_PATH, TELEMETRY_DIR_PATH)
-    del converter
-    print '%d ACD files left to look at.' % numFilesLeft
+#numFilesLeft = len(acdFilesList)
+#for filePath in acdFilesList:
+#    numFilesLeft -= 1
+#    converter = lrsAcdConverter(filePath, OUTPUT_DIR_PATH, TELEMETRY_DIR_PATH)
+#    del converter
+#    print '%d ACD files left to look at.' % numFilesLeft
 
