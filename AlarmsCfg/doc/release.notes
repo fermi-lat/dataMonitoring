@@ -1,3 +1,7 @@
+*** v2r3p1 ***
+- Got rid of the alarm on the rms of TkrHits_TH1_Tower (Digi).
+
+
 *** v2r3p0 ***
 - Got rid of the alarm on the rms of TkrHits_TH1_Tower (FastMon).
 - Added an exception for the hot strip in tower 3.
