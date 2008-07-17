@@ -56,13 +56,13 @@ class pLaTeXWriter:
         self.newline()
         self.write('\\pagestyle{empty}')
         self.newline()
-        self.startCentering()
+        #self.startCentering()
 
     def writeColorText(self, text, color):
         self.write('\\textcolor{%s}{%s}' % (color, text))
 
     def writeTrailer(self):
-        self.stopCentering()
+        #self.stopCentering()
         self.write('\\end{document}')
         self.newline()
         self.close()
@@ -101,9 +101,11 @@ class pLaTeXWriter:
 
     def addPage(self, page, title, timeSpan):
         logging.info('Adding new page...')
+        self.startCentering()
         self.addPageHeader(title, timeSpan)
         for panel in page.PanelsList:
             self.addPanel(panel)
+        self.stopCentering()
         self.write('\\clearpage')
         self.newline()
         
