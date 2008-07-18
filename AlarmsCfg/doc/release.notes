@@ -1,7 +1,8 @@
 *** v2r4p0 ***
 - Recon eor improved taking advantage of the new start_x parameter of the
 alg__leftmost_edge algorithm (used for the alarms on the CAL LAC thresholds
-and the ACD veto thresholds).
+and the ACD veto thresholds, for which th threshold on the significance has
+also been changed from 60 to 20).
 
 
 *** v2r3p4 ***
