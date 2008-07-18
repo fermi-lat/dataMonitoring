@@ -18,7 +18,9 @@
        Rate_EvtsBeforeCuts_TH1  Sum
        Rate_EvtsBeforeCuts_E100MeV_TH1  Sum
        Rate_EvtsBeforeCutsAbove60ZenithTheta_TH1  Sum
+       Rate_EvtsBeforeCutsAbove100ZenithTheta_TH1  Sum
        Rate_EvtsBeforeCutsAbove60ZenithTheta_E100MeV_TH1  Sum
+       Rate_EvtsBeforeCutsBelow100ZenithTheta_E100MeV_TH1  Sum
        Rate_TransientEvts_TH1  Sum
        Rate_DiffuseEvts_TH1  Sum
        Rate_SourceEvts_TH1  Sum
@@ -26,15 +28,17 @@
        Rate_DiffuseEvts_E100MeV_TH1  Sum
        Rate_SourceEvts_E100MeV_TH1  Sum
        Rate_TransientEvtsBelowZenithTheta60_E100MeV_TH1  Sum
+       Rate_TransientEvtsBelowZenithTheta100_E100MeV_TH1  Sum
        Rate_DiffuseEvtsBelowZenithTheta60_E100MeV_TH1  Sum
+       Rate_DiffuseEvtsBelowZenithTheta100_E100MeV_TH1  Sum
        Rate_SourceEvtsBelowZenithTheta60_E100MeV_TH1  Sum
+       Rate_SourceEvtsBelowZenithTheta100_E100MeV_TH1  Sum
        AcdCornerDoca_TH1  Sum
        AcdTileCount_TH1  Sum
        AcdRibbonCount_TH1  Sum
        AcdActiveDist3D_TH1  Sum
        AcdTkr1ActiveDist_TH1  Sum
        AcdRibbonActDist_TH1  Sum
-       AcdVtxActiveDist_TH1  Sum
        AcdRibbonEnergy_Log10_TH1  Sum
        AcdTotalEnergy_Log10_TH1  Sum
        AcdActDistTileEnergy_Log10_TH1  Sum
