@@ -47,6 +47,7 @@
     <object>DGNGemPrescale</object>
     <object>FswFilters_GammaBits</object>
     <object>EventSizeInBytes</object>
+    <object>MootKey</object>
 
     <!-- Acd Variables -->
     
@@ -95,6 +96,14 @@
       <cut><![CDATA[ ]]></cut>
       <type> valuechange[0] </type>
       <description> Data transfer id within the time bin. The first, last and the number of chnages are stored for each time bin.   </description>
+    </object>
+
+     <object>
+      <name> MootKey </name>
+      <formula><![CDATA[ MootKey ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> valuechange[0] </type>
+      <description> Moot Key within the time bin. The first, last and the number of chnages are stored for each time bin.   </description>
     </object>
 
      <object>
@@ -553,6 +562,19 @@
       <type> outputfloat </type>
       <description> Error in the normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones. </description>
     </object>	    
+
+    <object><!-- Error in number of events is Sqrt(N*fraction*(1-fraction), which is expected from binomial distribution -->
+      <!-- Then the error needs to be normalized with the number of new seconds; pow(Rate_NewSecond/Rate_NewSecond_err,2) -->
+      <name> NormalizedRateNew_GPS_OUTofLock_err </name> 
+      <formula><![CDATA[ foronetime: (Rate_NewSecond>0 && Rate_NewSecond_err>0) ? TMath::Sqrt(pow(Rate_NewSecond/Rate_NewSecond_err,2)*(Rate_GPS_OUTofLock/Rate_NewSecond)*(1-(Rate_GPS_OUTofLock/Rate_NewSecond)))/pow(Rate_NewSecond/Rate_NewSecond_err,2) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source> output </source>
+      <type> outputfloat </type>
+      <description> Error in the normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones. </description>
+    </object>	    
+
+
+    
 
      <object>
       <name> EventSizeInBytes </name>
@@ -1585,7 +1607,7 @@
       <formula><![CDATA[ DatagramInfo[1] ]]></formula>
       <cut><![CDATA[ DatagramInfo[0]==0]]></cut>
       <type> counterdiffrate[100000,1,MC] </type>
-      <description> Rate of datagrams from EPU0 (A datagram is about 64kbytes of compressed data). </description>
+      <description> Rate of datagrams from EPU0 (A datagram is about 64 kbytes of compressed data). </description>
     </object>
 
      <object>

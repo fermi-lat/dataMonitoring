@@ -12,7 +12,9 @@
     <object>TriggerEngine </object>
     <object>OBFStatus </object> 
     <object>FswFilters</object>
+    <object>FswGamState</object>
 
+    
     <!-- Filter variables -->
 <!--    <object>FilterStatus_HI</object> obsolete-->
     <object>MeritObfGamStatus</object>
@@ -48,6 +50,9 @@
 
       <object> Tkr1KalEne </object> 
       <object> Tkr1KalThetaMS </object>
+      <object> GrbXDir </object>
+      <object> GrbYDir </object>
+      <object> GrbZDir </object>
 
       <!-- Calorimeter -->
 
@@ -639,7 +644,7 @@
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type>outputfloat</type>
-      <description> Ratio of Transient evt rates computed using the Flight Software GAMMA filter and the Offline Gleam GAMMA filter (N_Fsw/N_Gleam). </description>
+      <description> Ratio of source evt rates computed using the Flight Software GAMMA filter and the Offline Gleam GAMMA filter (N_Fsw/N_Gleam). </description>
     </object>
 
        <object>
@@ -766,6 +771,14 @@
       <cut><![CDATA[ CTBClassLevel>2 ]]></cut>
       <type> rate </type>
       <description> Rate of Diffuse events according to CTBClassLevel variable (that is CTBClassLevel>2). </description>
+    </object>
+
+     <object>
+      <name> GRB_Evt_Candidates </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[ (FswGamState==0||FswGamState==3) && (GrbXDir!=0||GrbYDir!=0||GrbZDir!=0)  ]]></cut>
+      <type> rate </type>
+      <description> Rate of GRB Evt Candidates. These are events being passed to the onboard GRB search algorithm. These are events which pass the gamma filter and have successfully reconstructed 3D onboard tracks. </description>
     </object>
 
 
