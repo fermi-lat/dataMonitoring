@@ -63,8 +63,6 @@
        EventSizeInBytes_TH1  Sum
        EventSizeInBytes_TH1_TriggerEngine_TowerLoop  Sum
        EventSizeInBytes_vs_TriggerEngine_TH2  Sum
-       AcdPmt_OverThreshold_Asymmetry_AcdTile_TH1  Sum
-       AcdPmt_Veto_Asymmetry_AcdTile_TH1  Sum
        Acd_GemVeto_AcdTile_TH1  Sum
        AcdGemROI_Tower_TH1  Sum
        AcdGemCNO_GARC_TH1  Sum

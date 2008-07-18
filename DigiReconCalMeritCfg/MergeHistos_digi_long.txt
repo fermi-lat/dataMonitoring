@@ -7,7 +7,9 @@
         ACD_PedRMS_PMTA_LowRange_TH1 Average
         ACD_PedMean_PMTB_LowRange_TH1 Average
         ACD_PedRMS_PMTB_LowRange_TH1 Average
-	  CalXAdcPed_TH1_TowerCalLayerCalColumnFR_TowerLoop_CalLayerLoop_CalColumnLoop_FaceLoop_RangeLoop Sum
+       AcdPmt_OverThreshold_Asymmetry_AcdTile_TH1  Average
+       AcdPmt_Veto_Asymmetry_AcdTile_TH1  Average
+        CalXAdcPed_TH1_TowerCalLayerCalColumnFR_TowerLoop_CalLayerLoop_CalColumnLoop_FaceLoop_RangeLoop Sum
         CalXAdcPedMean_LEX8_TH1 Average
         CalXAdcPedRMS_LEX8_TH1 Average
         CalXAdcPedMean_LEX1_TH1 Average
@@ -27,4 +29,3 @@
        RPM_TH1_TowerCalLayerCalColumn_TowerLoop_CalLayerLoop_CalColumnLoop  Sum
        RPp_TH1_TowerCalLayerCalColumn_TowerLoop_CalLayerLoop_CalColumnLoop  Sum
        RMm_TH1_TowerCalLayerCalColumn_TowerLoop_CalLayerLoop_CalColumnLoop  Sum
-

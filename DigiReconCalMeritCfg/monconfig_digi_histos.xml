@@ -82,66 +82,7 @@
   <outputList name="top">
   
 
-    <!-- Trending quantities that are needed to compute some histograms -->
-
-     <object>
-	<name> AcdVetoA_AcdTile[128]  </name>
-	<formula><![CDATA[ foreachacdtile: AcdVetoA_AcdTile[acdtile] ]]></formula>
-	<cut><![CDATA[condsummary&30]]></cut>
-	<type> counter </type>
-	<description> Vector[AcdTile] reporting the number of vetos from PMT A.</description>
-      </object>
-
-	<object>
-	<name> AcdVetoB_AcdTile[128]  </name>
-	<formula><![CDATA[ foreachacdtile: AcdVetoB_AcdTile[acdtile] ]]></formula>
-	<cut><![CDATA[condsummary&30]]></cut>
-	<type> counter </type>
-	<description> Vector[AcdTile] reporting the number of vetos from PMT B. </description>
-      </object>
-    
-
-	<object>
-	<name> AnyAcdVeto_AcdTile[128]  </name>
-	<formula><![CDATA[ foreachacdtile:  AcdVetoA_AcdTile[acdtile] || AcdVetoB_AcdTile[acdtile]   ]]></formula>
-	<cut><![CDATA[condsummary&30]]></cut>
-	<type> counter </type>
-	<description> Vector[AcdTile] reporting the number of ACD Vetos (produced by one or by the two PMTs).  </description>
-      </object>
-
-
-
-      <object>
-	<name> AcdPmtA_OverThreshold_AcdTile[128] </name>
-	<formula><![CDATA[ foreachacdtile: AcdPmtA_OverThreshold_AcdTile[acdtile]]]></formula>
-	<cut><![CDATA[condsummary&30]]></cut>
-	<type> counter </type>
-	<description> Vector[AcdTile] reporting the number of PMT A being above threshold. </description>
-      </object>
-
-
-
       
-       <object>
-	<name> AcdPmtB_OverThreshold_AcdTile[128] </name>
-	<formula><![CDATA[foreachacdtile: AcdPmtB_OverThreshold_AcdTile[acdtile] ]]></formula>
-	<cut><![CDATA[condsummary&30]]></cut>
-	<type> counter </type>
-	<description>Vector[AcdTile] reporting the number of PMT B being above threshold.</description>
-      </object>
-
-
-       <object>
-	<name> AnyAcdPmt_OverThreshold_AcdTile[128] </name>
-	<formula><![CDATA[foreachacdtile: AcdPmtA_OverThreshold_AcdTile[acdtile] || AcdPmtB_OverThreshold_AcdTile[acdtile]]]></formula>
-	<cut><![CDATA[condsummary&30]]></cut>
-	<type> counter </type>
-	<description>Vector[AcdTile] reporting the number of at least one PMT being above threshold. </description>
-      </object>
-
-   
-
-<!-- End of trending quantities -->    
 
      <!-- ********************  Event classification information   *********************** -->
           
@@ -771,6 +712,7 @@
     </object>
 
 
+    
 
      <object>
       <name> Delta_CCSDSTime_EvtTime_Epu0_TH1 </name>
@@ -851,30 +793,7 @@
 
 
 
-       <object>
-      <name> AcdPmt_OverThreshold_Asymmetry_AcdTile_TH1 </name>
-      <formula><![CDATA[ foreachacdtile: Counter_AnyAcdPmt_OverThreshold_AcdTile[acdtile] > 0 ? (double(Counter_AcdPmtA_OverThreshold_AcdTile[acdtile])-double(Counter_AcdPmtB_OverThreshold_AcdTile[acdtile]))/double(Counter_AnyAcdPmt_OverThreshold_AcdTile[acdtile]) : 0.0 ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <source>output</source>
-      <type> histogram-vecdim-1d[128,-0.5,127.5,1] </type>
-      <titledesc> A-B PMT over threshold asymmetry   </titledesc>
-      <axisdesc> [Tile number, A-B asymmetry] </axisdesc>
-      <description> A-B PMT over threshold asymmetry. The asymmetry is defined as A-B/(A OR B). </description>
-    </object>
-
-
-         <object>
-      <name> AcdPmt_Veto_Asymmetry_AcdTile_TH1 </name>
-      <formula><![CDATA[ foreachacdtile: Counter_AnyAcdVeto_AcdTile[acdtile] > 0 ? (double(Counter_AcdVetoA_AcdTile[acdtile])-double(Counter_AcdVetoB_AcdTile[acdtile]))/double(Counter_AnyAcdVeto_AcdTile[acdtile]) : 0.0 ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <source>output</source>
-      <type> histogram-vecdim-1d[128,-0.5,127.5,1] </type>
-      <titledesc> A-B PMT Veto asymmetry   </titledesc>
-      <axisdesc> [Tile number, A-B asymmetry] </axisdesc>
-      <description> A-B PMT veto asymmetry. The asymmetry is defined as A-B/(A OR B). </description>
-    </object>
-
-
+   
 
       <object>
       <name> Acd_GemVeto_AcdTile_TH1 </name>
