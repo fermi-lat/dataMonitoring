@@ -1,3 +1,10 @@
+*** v2r4p2 ***
+- Limits adjusted for digi trending. Relevant variables: Rate_AcdGemCNO_GARC,
+Mean_TkrTotalHitsPerEvt, OutF_NormalizedTkrTriggerWithLessThan6Layers_Tower,
+Rate_NTkrHits_TowerPlane, Mean_ConsecutivePlanesHit_Tower,
+DoubleDiffRate_LiveTimeFraction.
+
+
 *** v2r4p1 ***
 - New start_x parameter also used for the CAL LO trigger threshold plot.
 
