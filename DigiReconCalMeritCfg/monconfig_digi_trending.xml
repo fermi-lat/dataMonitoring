@@ -48,6 +48,8 @@
     <object>FswFilters_GammaBits</object>
     <object>EventSizeInBytes</object>
     <object>MootKey</object>
+    <object>CondSummary5bits</object>
+    <object>L1TTriggerWord5bits</object>
 
     <!-- Acd Variables -->
     
@@ -114,6 +116,8 @@
       <description> CAL-LO trigger rate </description>
     </object>
 
+ 
+    
 
      <object>
       <name> Trigger_CALHI </name>
@@ -139,6 +143,7 @@
       <description> TKR trigger rate </description>
     </object>
 
+     
        <object>
       <name> Trigger_ROI </name>
       <formula><![CDATA[ 1 ]]></formula>
@@ -554,18 +559,11 @@
       <description> Normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones. </description>
     </object>	      
 
-    <object>
-      <name> NormalizedRate_GPS_OUTofLock_err </name> <!-- Rate_NewSecond does not have error !! -->
-      <formula><![CDATA[ foronetime: (Rate_NewSecond>0) ? Rate_GPS_OUTofLock_err/Rate_NewSecond : 0.0 ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <source> output </source>
-      <type> outputfloat </type>
-      <description> Error in the normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones. </description>
-    </object>	    
+ 
 
     <object><!-- Error in number of events is Sqrt(N*fraction*(1-fraction), which is expected from binomial distribution -->
       <!-- Then the error needs to be normalized with the number of new seconds; pow(Rate_NewSecond/Rate_NewSecond_err,2) -->
-      <name> NormalizedRateNew_GPS_OUTofLock_err </name> 
+      <name> NormalizedRate_GPS_OUTofLock_err </name> 
       <formula><![CDATA[ foronetime: (Rate_NewSecond>0 && Rate_NewSecond_err>0) ? TMath::Sqrt(pow(Rate_NewSecond/Rate_NewSecond_err,2)*(Rate_GPS_OUTofLock/Rate_NewSecond)*(1-(Rate_GPS_OUTofLock/Rate_NewSecond)))/pow(Rate_NewSecond/Rate_NewSecond_err,2) : 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source> output </source>
@@ -1637,7 +1635,183 @@
     </object>
 
      
-     
+     <!-- fraction of events with agreement in first 5 bits in Gem/L1T words (Normalization is GemCondSummaryWord-->
+
+  
+     <object>
+      <name> CondSummaryBit_1 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[CondSummary5bits[0]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts with the condsummary word bit 1 (ROI) set. This quantity is not meaningful by itself; it will be used to normalize other quantities. </description>
+    </object>
+
+     <object>
+      <name> CondSummaryBit_1_And_L1TTriggerWordBit_1 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[CondSummary5bits[0]>0 && L1TTriggerWord5bits[0]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts with the condsummary word bit 1 AND the l1t trigger word bit 1 (ROI) set. This quantity is not meaningful by itself; it will be meaningul when being normalized with CondSummaryBit_1.  </description>
+    </object>
+
+      <object>
+      <name> Normalized_CondSummaryBit_1_And_L1TTriggerWordBit_1 </name>
+      <formula><![CDATA[ foronetime: (Counter_CondSummaryBit_1>0) ?  double(Counter_CondSummaryBit_1_And_L1TTriggerWordBit_1)/double(Counter_CondSummaryBit_1) : -1.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events with both condsummary word bit 1 AND the l1t trigger word bit 1 (ROI) set. The normalization factor is the number of events with condsummary word bit 1 set. </description>
+    </object>
+
+     <object>
+      <name> Normalized_CondSummaryBit_1_And_L1TTriggerWordBit_1_err </name>
+      <formula><![CDATA[ foronetime: Counter_CondSummaryBit_1>0  ?  sqrt((1./double(Counter_CondSummaryBit_1))*double(Counter_CondSummaryBit_1_And_L1TTriggerWordBit_1)/double(Counter_CondSummaryBit_1)*(1.-(double(Counter_CondSummaryBit_1_And_L1TTriggerWordBit_1)/double(Counter_CondSummaryBit_1)))) : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Normalized_CondSummaryBit_1_And_L1TTriggerWordBit_1 </description>
+    </object>
+
+
+     <object>
+      <name> CondSummaryBit_2 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[CondSummary5bits[1]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts with the condsummary word bit 2 (TKR) set. This quantity is not meaningful by itself; it will be used to normalize other quantities. </description>
+    </object>
+
+     <object>
+      <name> CondSummaryBit_2_And_L1TTriggerWordBit_2 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[CondSummary5bits[1]>0 && L1TTriggerWord5bits[1]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts with the condsummary word bit 2 AND the l1t trigger word bit 2 (TKR) set. This quantity is not meaningful by itself; it will be meaningul when being normalized with CondSummaryBit_2.  </description>
+    </object>
+
+      <object>
+      <name> Normalized_CondSummaryBit_2_And_L1TTriggerWordBit_2 </name>
+      <formula><![CDATA[ foronetime: (Counter_CondSummaryBit_2>0) ?  double(Counter_CondSummaryBit_2_And_L1TTriggerWordBit_2)/double(Counter_CondSummaryBit_2) : -1.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events with both condsummary word bit 2 AND the l1t trigger word bit 2 (TKR) set. The normalization factor is the number of events with condsummary word bit 2 set. </description>
+    </object>
+
+     <object>
+      <name> Normalized_CondSummaryBit_2_And_L1TTriggerWordBit_2_err </name>
+      <formula><![CDATA[ foronetime: Counter_CondSummaryBit_2>0  ?  sqrt((1./double(Counter_CondSummaryBit_2))*double(Counter_CondSummaryBit_2_And_L1TTriggerWordBit_2)/double(Counter_CondSummaryBit_2)*(1.-(double(Counter_CondSummaryBit_2_And_L1TTriggerWordBit_2)/double(Counter_CondSummaryBit_2))))   : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Normalized_CondSummaryBit_2_And_L1TTriggerWordBit_2 </description>
+    </object>
+
+
+     <object>
+      <name> CondSummaryBit_3 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[CondSummary5bits[2]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts with the condsummary word bit 2 (Cal-Lo) set. This quantity is not meaningful by itself; it will be used to normalize other quantities. </description>
+    </object>
+
+     <object>
+      <name> CondSummaryBit_3_And_L1TTriggerWordBit_3 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[CondSummary5bits[2]>0 && L1TTriggerWord5bits[2]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts with the condsummary word bit 3 AND the l1t trigger word bit 3 (Cal-Lo) set. This quantity is not meaningful by itself; it will be meaningul when being normalized with CondSummaryBit_3.  </description>
+    </object>
+
+      <object>
+      <name> Normalized_CondSummaryBit_3_And_L1TTriggerWordBit_3 </name>
+      <formula><![CDATA[ foronetime: (Counter_CondSummaryBit_3>0) ?  double(Counter_CondSummaryBit_3_And_L1TTriggerWordBit_3)/double(Counter_CondSummaryBit_3) : -1.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events with both condsummary word bit 3 AND the l1t trigger word bit 3 (Cal-Lo) set. The normalization factor is the number of events with condsummary word bit 3 set. </description>
+    </object>
+
+     <object>
+      <name> Normalized_CondSummaryBit_3_And_L1TTriggerWordBit_3_err </name>
+      <formula><![CDATA[ foronetime: Counter_CondSummaryBit_3>0  ?  sqrt((1./double(Counter_CondSummaryBit_3))*double(Counter_CondSummaryBit_3_And_L1TTriggerWordBit_3)/double(Counter_CondSummaryBit_3)*(1.-(double(Counter_CondSummaryBit_3_And_L1TTriggerWordBit_3)/double(Counter_CondSummaryBit_3))))  : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Normalized_CondSummaryBit_3_And_L1TTriggerWordBit_3 </description>
+    </object>
+
+
+     <object>
+      <name> CondSummaryBit_4 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[CondSummary5bits[3]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts with the condsummary word bit 4 (Cal-Hi) set. This quantity is not meaningful by itself; it will be used to normalize other quantities. </description>
+    </object>
+
+     <object>
+      <name> CondSummaryBit_4_And_L1TTriggerWordBit_4 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[CondSummary5bits[3]>0 && L1TTriggerWord5bits[3]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts with the condsummary word bit 4 AND the l1t trigger word bit 4 (Cal-Hi) set. This quantity is not meaningful by itself; it will be meaningul when being normalized with CondSummaryBit_4.  </description>
+    </object>
+
+      <object>
+      <name> Normalized_CondSummaryBit_4_And_L1TTriggerWordBit_4 </name>
+      <formula><![CDATA[ foronetime: (Counter_CondSummaryBit_4>0) ?  double(Counter_CondSummaryBit_4_And_L1TTriggerWordBit_4)/double(Counter_CondSummaryBit_4) : -1.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events with both condsummary word bit 4 AND the l1t trigger word bit 4 (Cal-Hi) set. The normalization factor is the number of events with condsummary word bit 4 set. </description>
+    </object>
+
+     <object>
+      <name> Normalized_CondSummaryBit_4_And_L1TTriggerWordBit_4_err </name>
+      <formula><![CDATA[ foronetime: Counter_CondSummaryBit_4>0  ?  sqrt((1./double(Counter_CondSummaryBit_4))*double(Counter_CondSummaryBit_4_And_L1TTriggerWordBit_4)/double(Counter_CondSummaryBit_4)*(1.-(double(Counter_CondSummaryBit_4_And_L1TTriggerWordBit_4)/double(Counter_CondSummaryBit_4))))  : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Normalized_CondSummaryBit_4_And_L1TTriggerWordBit_4 </description>
+    </object>
+
+
+     <object>
+      <name> CondSummaryBit_5 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[CondSummary5bits[4]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts with the condsummary word bit 1 (ROI) set. This quantity is not meaningful by itself; it will be used to normalize other quantities. </description>
+    </object>
+
+     <object>
+      <name> CondSummaryBit_5_And_L1TTriggerWordBit_5 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[CondSummary5bits[4]>0 && L1TTriggerWord5bits[4]>0]]></cut>
+      <type> counter </type>
+      <description> Counter of evts with the condsummary word bit 5 AND the l1t trigger word bit 5 (CNO) set. This quantity is not meaningful by itself; it will be meaningul when being normalized with CondSummaryBit_5.  </description>
+    </object>
+
+      <object>
+      <name> Normalized_CondSummaryBit_5_And_L1TTriggerWordBit_5 </name>
+      <formula><![CDATA[ foronetime: (Counter_CondSummaryBit_5>0) ?  double(Counter_CondSummaryBit_5_And_L1TTriggerWordBit_5)/double(Counter_CondSummaryBit_5) : -1.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Fraction of events with both condsummary word bit 5 AND the l1t trigger word bit 5 (CNO) set. The normalization factor is the number of events with condsummary word bit 5 set. </description>
+    </object>
+
+     <object>
+      <name> Normalized_CondSummaryBit_5_And_L1TTriggerWordBit_5_err </name> <!-- Binomial error, normalized to number of events -->
+      <formula><![CDATA[ foronetime: Counter_CondSummaryBit_5>0  ?  sqrt((1./double(Counter_CondSummaryBit_5))*double(Counter_CondSummaryBit_5_And_L1TTriggerWordBit_5)/double(Counter_CondSummaryBit_5)*(1.-(double(Counter_CondSummaryBit_5_And_L1TTriggerWordBit_5)/double(Counter_CondSummaryBit_5))))  : 0.0 ]]></formula>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Normalized_CondSummaryBit_5_And_L1TTriggerWordBit_5 </description>
+    </object>
+
 
 
       <!-- ********************  Detector information   *********************** -->
