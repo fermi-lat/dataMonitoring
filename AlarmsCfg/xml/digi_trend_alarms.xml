@@ -9,8 +9,8 @@
 
     <alarmSet name="Time::Mean_TkrTotalHitsPerEvt" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="100.0" max="300.0"/>
-	<error_limits   min="50.0"  max="400.0"/>
+	<warning_limits min="130.0" max="280.0"/>
+	<error_limits   min="80.0"  max="350.0"/>
       </alarm> 
     </alarmSet>
     <alarmSet name="Time::Mean_TkrHitsPerEvt_Tower" enabled="True">
@@ -27,7 +27,7 @@
     </alarmSet>
     <alarmSet name="Time::Rate_NTkrHits_TowerPlane" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.0" max="2.0"/>
+	<warning_limits min="0.0" max="2.2"/>
 	<error_limits   min="0.0" max="5.0"/>
       </alarm> 
     </alarmSet>
@@ -39,7 +39,7 @@
     </alarmSet>
     <alarmSet name="Time::OutF_NormalizedTkrTriggerWithLessThan6Layers_Tower" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.0" max="0.05"/>
+	<warning_limits min="0.0" max="0.04"/>
 	<error_limits   min="0.0" max="0.1"/>
       </alarm> 
     </alarmSet>
@@ -91,7 +91,7 @@
 
    <alarmSet name="Time::Mean_ConsecutivePlanesHit_Tower" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="8.0" max="18.0"/>
+	<warning_limits min="8.0" max="20.0"/>
 	<error_limits   min="5.0" max="25.0"/>
       </alarm> 
    </alarmSet>
@@ -105,7 +105,7 @@
 
    <alarmSet name="Time::DoubleDiffRate_LiveTimeFraction" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="70.0" max="100.0"/>
+	<warning_limits min="75.0" max="100.0"/>
 	<error_limits   min="60.0" max="100.0"/>
       </alarm> 
     </alarmSet>
@@ -140,8 +140,8 @@
 
     <alarmSet name="Time::Rate_AcdGemCNO_GARC" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.8" max="8.0"/>
-	<error_limits   min="0.3" max="15.0"/>
+	<warning_limits min="0.8" max="10.0"/>
+	<error_limits   min="0.5" max="15.0"/>
       </alarm> 
     </alarmSet>
     <alarmSet name="Time::OutF_AcdPmt_OverThreshold_Asymmetry_AcdTile" enabled="False">
