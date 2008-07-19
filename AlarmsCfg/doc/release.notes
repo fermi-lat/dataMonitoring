@@ -1,3 +1,7 @@
+*** v2r4p1 ***
+- New start_x parameter also used for the CAL LO trigger threshold plot.
+
+
 *** v2r4p0 ***
 - Recon eor improved taking advantage of the new start_x parameter of the
 alg__leftmost_edge algorithm (used for the alarms on the CAL LAC thresholds
