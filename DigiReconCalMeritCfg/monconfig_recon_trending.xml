@@ -132,7 +132,7 @@
 
       <object>
       <name> ReconZeroEnergy_Fraction_TowerCalLayer[16][8] </name>
-      <formula><![CDATA[foreachtower: foreachcallayer: Counter_CondsummaryBitAnd30_NOTPeriodic_Rec > 0 ? Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer]/double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec) : 0.0]]></formula>
+      <formula><![CDATA[foreachtower: foreachcallayer: Counter_CondsummaryBitAnd30_NOTPeriodic_Rec > 0 ? double(Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec) : 0.0]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -141,12 +141,14 @@
 
         <object>
       <name> ReconZeroEnergy_Fraction_TowerCalLayer_err[16][8] </name>
-      <formula><![CDATA[foreachtower: foreachcallayer: (Counter_CondsummaryBitAnd30_NOTPeriodic_Rec>0 && Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer]>0) ? ((Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer]/double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec))*TMath::Sqrt(1./double(Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer]) + 1./double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec)) ) : 0.0]]></formula>
+      <formula><![CDATA[foreachtower: foreachcallayer: Counter_CondsummaryBitAnd30_NOTPeriodic_Rec>0 ? sqrt((1./double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec))*(double(Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec))*(1-(double(Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec)))): 0.0]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
       <description> Error in quantity ReconZeroEnergy_Fraction_TowerCalLayer.</description>
     </object>
+
+
 
 
   </outputList>

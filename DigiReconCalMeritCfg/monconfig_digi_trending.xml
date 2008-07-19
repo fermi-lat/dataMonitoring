@@ -1315,7 +1315,7 @@
 
      <object>
       <name> Normalized_Evts_FswGAMMA_And_GleamGAMMA_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswGAMMA>0 && Counter_Evts_FswGAMMA_And_GleamGAMMA>0) ?  double(Counter_Evts_FswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts_FswGAMMA)*sqrt((1.0/double(Counter_Evts_FswGAMMA_And_GleamGAMMA)) +(1.0/double(Counter_AllEvts_FswGAMMA))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: Counter_AllEvts_FswGAMMA> 0 ? sqrt((1./double(Counter_AllEvts_FswGAMMA))*(double(Counter_Evts_FswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts_FswGAMMA))*(1-(double(Counter_Evts_FswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts_FswGAMMA)))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1344,7 +1344,7 @@
      
      <object>
       <name> Normalized_Evts_FswGAMMA_And_NOTGleamGAMMA_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswGAMMA>0 && Counter_Evts_FswGAMMA_And_NOTGleamGAMMA>0) ?  double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)/double(Counter_AllEvts_FswGAMMA)*sqrt((1.0/double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)) +(1.0/double(Counter_AllEvts_FswGAMMA))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: Counter_AllEvts_FswGAMMA > 0 ? sqrt((1./double(Counter_AllEvts_FswGAMMA))*(double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)/double(Counter_AllEvts_FswGAMMA))*(1-(double(Counter_Evts_FswGAMMA_And_NOTGleamGAMMA)/double(Counter_AllEvts_FswGAMMA)))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1371,7 +1371,7 @@
 
      <object>
       <name> Normalized_Evts_NOTFswGAMMA_And_GleamGAMMA_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts_GleamGAMMA>0 && Counter_Evts_NOTFswGAMMA_And_GleamGAMMA>0) ?  double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts_GleamGAMMA)*sqrt((1.0/double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)) +(1.0/double(Counter_AllEvts_GleamGAMMA))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: Counter_AllEvts_GleamGAMMA> 0 ? sqrt((1./double(Counter_AllEvts_GleamGAMMA))*(double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts_GleamGAMMA))*(1-(double(Counter_Evts_NOTFswGAMMA_And_GleamGAMMA)/double(Counter_AllEvts_GleamGAMMA)))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1415,7 +1415,7 @@
 
      <object>
       <name> Normalized_Evts_FswMIP_And_GleamMIP_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswMIP>0 && Counter_Evts_FswMIP_And_GleamMIP>0) ?  double(Counter_Evts_FswMIP_And_GleamMIP)/double(Counter_AllEvts_FswMIP)*sqrt((1.0/double(Counter_Evts_FswMIP_And_GleamMIP)) +(1.0/double(Counter_AllEvts_FswMIP))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: Counter_AllEvts_FswMIP > 0 ? sqrt((1./double(Counter_AllEvts_FswMIP))*(double(Counter_Evts_FswMIP_And_GleamMIP)/double(Counter_AllEvts_FswMIP))*(1-(double(Counter_Evts_FswMIP_And_GleamMIP)/double(Counter_AllEvts_FswMIP)))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1444,7 +1444,7 @@
      
      <object>
       <name> Normalized_Evts_FswMIP_And_NOTGleamMIP_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswMIP>0 && Counter_Evts_FswMIP_And_NOTGleamMIP>0) ?  double(Counter_Evts_FswMIP_And_NOTGleamMIP)/double(Counter_AllEvts_FswMIP)*sqrt((1.0/double(Counter_Evts_FswMIP_And_NOTGleamMIP)) +(1.0/double(Counter_AllEvts_FswMIP))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: Counter_AllEvts_FswMIP> 0 ? sqrt((1./double(Counter_AllEvts_FswMIP))*(double(Counter_Evts_FswMIP_And_NOTGleamMIP)/double(Counter_AllEvts_FswMIP))*(1-(double(Counter_Evts_FswMIP_And_NOTGleamMIP)/double(Counter_AllEvts_FswMIP)))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1471,7 +1471,7 @@
 
      <object>
       <name> Normalized_Evts_NOTFswMIP_And_GleamMIP_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts_GleamMIP>0 && Counter_Evts_NOTFswMIP_And_GleamMIP>0) ?  double(Counter_Evts_NOTFswMIP_And_GleamMIP)/double(Counter_AllEvts_GleamMIP)*sqrt((1.0/double(Counter_Evts_NOTFswMIP_And_GleamMIP)) +(1.0/double(Counter_AllEvts_GleamMIP))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: Counter_AllEvts_GleamMIP> 0 ? sqrt((1./double(Counter_AllEvts_GleamMIP))*(double(Counter_Evts_NOTFswMIP_And_GleamMIP)/double(Counter_AllEvts_GleamMIP))*(1-(double(Counter_Evts_NOTFswMIP_And_GleamMIP)/double(Counter_AllEvts_GleamMIP)))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1517,7 +1517,7 @@
 
      <object>
       <name> Normalized_Evts_FswHIP_And_GleamHIP_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswHIP>0 && Counter_Evts_FswHIP_And_GleamHIP>0) ?  double(Counter_Evts_FswHIP_And_GleamHIP)/double(Counter_AllEvts_FswHIP)*sqrt((1.0/double(Counter_Evts_FswHIP_And_GleamHIP)) +(1.0/double(Counter_AllEvts_FswHIP))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: Counter_AllEvts_FswHIP> 0 ? sqrt((1./double(Counter_AllEvts_FswHIP))*(double(Counter_Evts_FswHIP_And_GleamHIP)/double(Counter_AllEvts_FswHIP))*(1-(double(Counter_Evts_FswHIP_And_GleamHIP)/double(Counter_AllEvts_FswHIP)))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1546,7 +1546,7 @@
      
      <object>
       <name> Normalized_Evts_FswHIP_And_NOTGleamHIP_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts_FswHIP>0 && Counter_Evts_FswHIP_And_NOTGleamHIP>0) ?  double(Counter_Evts_FswHIP_And_NOTGleamHIP)/double(Counter_AllEvts_FswHIP)*sqrt((1.0/double(Counter_Evts_FswHIP_And_NOTGleamHIP)) +(1.0/double(Counter_AllEvts_FswHIP))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: Counter_AllEvts_FswHIP> 0 ? sqrt((1./double(Counter_AllEvts_FswHIP))*(double(Counter_Evts_FswHIP_And_NOTGleamHIP)/double(Counter_AllEvts_FswHIP))*(1-(double(Counter_Evts_FswHIP_And_NOTGleamHIP)/double(Counter_AllEvts_FswHIP))))  : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -1573,14 +1573,14 @@
 
      <object>
       <name> Normalized_Evts_NOTFswHIP_And_GleamHIP_err </name>
-      <formula><![CDATA[ foronetime: (Counter_AllEvts_GleamHIP>0 && Counter_Evts_NOTFswHIP_And_GleamHIP>0) ?  double(Counter_Evts_NOTFswHIP_And_GleamHIP)/double(Counter_AllEvts_GleamHIP)*sqrt((1.0/double(Counter_Evts_NOTFswHIP_And_GleamHIP)) +(1.0/double(Counter_AllEvts_GleamHIP))) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: Counter_AllEvts_GleamHIP > 0 ? sqrt((1./double(Counter_AllEvts_GleamHIP))*(double(Counter_Evts_NOTFswHIP_And_GleamHIP)/double(Counter_AllEvts_GleamHIP))*(1-(double(Counter_Evts_NOTFswHIP_And_GleamHIP)/double(Counter_AllEvts_GleamHIP)))): 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type> outputfloat </type>
       <description> Error in Fraction of events NOT passing the Flight Software HIP filter and passing the Gleam HIP filter. </description>
     </object>
 
-
+ 
 
 
      <object>
@@ -2149,13 +2149,15 @@
 
      <object>
       <name> NormalizedTkrTriggerWithLessThan6Layers_Tower_err[16] </name>
-      <formula><![CDATA[foreachtower: (Rate_TkrTrigger_Tower[tower] >0 && Rate_TkrTriggerWithLessThan6Layers_Tower[tower] >0 ) ? ((Rate_TkrTriggerWithLessThan6Layers_Tower[tower]/Rate_TkrTrigger_Tower[tower])*TMath::Sqrt(pow(Rate_TkrTrigger_Tower_err[tower]/Rate_TkrTrigger_Tower[tower],2)+pow(Rate_TkrTriggerWithLessThan6Layers_Tower_err[tower]/Rate_TkrTriggerWithLessThan6Layers_Tower[tower],2))) : 0.0 ]]></formula>
+      <formula><![CDATA[foreachtower: (Rate_TkrTrigger_Tower[tower] >0.0 && Rate_TkrTrigger_Tower_err[tower] > 0.0) ? sqrt((1./double(pow(Rate_TkrTrigger_Tower[tower]/Rate_TkrTrigger_Tower_err[tower],2)))*(Rate_TkrTriggerWithLessThan6Layers_Tower[tower]/Rate_TkrTrigger_Tower[tower])*(1-(Rate_TkrTriggerWithLessThan6Layers_Tower[tower]/Rate_TkrTrigger_Tower[tower]))): 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
       <description> Vector [tower] reporting the error in quantity OutF_NormalizedTkrTriggerWithLessThan6Layers_Tower.  </description>
     </object>
      
+
+    
 
 
      <object>
@@ -2270,13 +2272,12 @@
 
       <object>
       <name> Normalized_ToT_250_TowerPlane_err[16][36] </name>
-      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_ToT_250_TowerPlane[tower][tkrplane] >0 ) ? ((Rate_ToT_250_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*TMath::Sqrt(pow(Rate_TkrDigi_TowerPlane_err[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane],2)+pow(Rate_ToT_250_TowerPlane_err[tower][tkrplane]/Rate_ToT_250_TowerPlane[tower][tkrplane],2))) : 0.0 ]]></formula>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_TkrDigi_TowerPlane_err[tower][tkrplane] >0 ) ? sqrt((1./double(pow(Rate_TkrDigi_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane_err[tower][tkrplane],2)))*(Rate_ToT_250_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*(1-(Rate_ToT_250_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane]))) : 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
       <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_ToT_250_TowerPlane. </description>
     </object>
-
 
 
 
@@ -2319,14 +2320,14 @@
 
       <object>
       <name> Normalized_ToT_0_TowerPlane_err[16][36] </name>
-      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_ToT_0_TowerPlane[tower][tkrplane] >0 ) ? ((Rate_ToT_0_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*TMath::Sqrt(pow(Rate_TkrDigi_TowerPlane_err[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane],2)+pow(Rate_ToT_0_TowerPlane_err[tower][tkrplane]/Rate_ToT_0_TowerPlane[tower][tkrplane],2))) : 0.0 ]]></formula>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 &&  Rate_TkrDigi_TowerPlane_err[tower][tkrplane]>0 ) ? sqrt((1./double(pow(Rate_TkrDigi_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane_err[tower][tkrplane],2)))*(Rate_ToT_0_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*(1-(Rate_ToT_0_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane]))) : 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
       <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_ToT_0_TowerPlane. </description>
     </object>
 
-
+     
      
 
 <object>
@@ -2366,14 +2367,14 @@
 
       <object>
       <name> Normalized_ToT_255_TowerPlane_err[16][36] </name>
-      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_ToT_255_TowerPlane[tower][tkrplane] >0 ) ? ((Rate_ToT_255_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*TMath::Sqrt(pow(Rate_TkrDigi_TowerPlane_err[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane],2)+pow(Rate_ToT_255_TowerPlane_err[tower][tkrplane]/Rate_ToT_255_TowerPlane[tower][tkrplane],2))) : 0.0 ]]></formula>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_TkrDigi_TowerPlane_err[tower][tkrplane]>0 ) ? sqrt((1./double(pow(Rate_TkrDigi_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane_err[tower][tkrplane],2)))*(Rate_ToT_255_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*(1-(Rate_ToT_255_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane]))) : 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
       <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_ToT_255_TowerPlane. </description>
     </object>
 
-
+     
 
     <object>
       <name> ToT_con0_Trunc_1_249_TowerPlane[16][36] </name>
@@ -2413,14 +2414,14 @@
 
       <object>
       <name> Normalized_ToT_0_WhenTkrHitsExist_TowerPlane_err[16][36] </name>
-      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_ToT_0_WhenTkrHitsExist_TowerPlane[tower][tkrplane] >0 ) ? ((Rate_ToT_0_WhenTkrHitsExist_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*TMath::Sqrt(pow(Rate_TkrDigi_TowerPlane_err[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane],2)+pow(Rate_ToT_0_WhenTkrHitsExist_TowerPlane_err[tower][tkrplane]/Rate_ToT_0_WhenTkrHitsExist_TowerPlane[tower][tkrplane],2))) : 0.0 ]]></formula>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 && Rate_TkrDigi_TowerPlane_err[tower][tkrplane]>0 ) ?  sqrt((1./double(pow(Rate_TkrDigi_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane_err[tower][tkrplane],2)))*(Rate_ToT_0_WhenTkrHitsExist_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*(1-(Rate_ToT_0_WhenTkrHitsExist_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane]))) : 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
       <description> Vector [tower][tkrplane] reporting the error in quantity  OutF_Normalized_ToT_0_WhenTkrHitsExist_TowerPlane. </description>
     </object>
 
-
+ 
       
 
      <!-- Calorimeter -->
@@ -2510,13 +2511,16 @@
      
       <object>
       <name> CalXHit_ZEROHit_Fraction_TowerCalLayer_err[16][8] </name>
-      <formula><![CDATA[ foreachtower: foreachcallayer: Counter_CondsummaryBitAnd30_NOTPeriodic>0 && Counter_CalXHit_ZEROHit_TowerCalLayer[tower][callayer]>0 ? (double(Counter_CalXHit_ZEROHit_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic)*TMath::Sqrt(1./Counter_CondsummaryBitAnd30_NOTPeriodic + 1./Counter_CalXHit_ZEROHit_TowerCalLayer[tower][callayer])) : 0.0 ]]></formula>
+      <formula><![CDATA[ foreachtower: foreachcallayer: Counter_CondsummaryBitAnd30_NOTPeriodic>0 ? sqrt((1./double(Counter_CondsummaryBitAnd30_NOTPeriodic))*(double(Counter_CalXHit_ZEROHit_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic))*(1-(double(Counter_CalXHit_ZEROHit_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic)))): 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
      
       <description> Error in quantity CalXHit_ZEROHit_Fraction_TowerCalLayer. </description>
      </object>
+
+
+      
 
 
       <object>
@@ -2531,7 +2535,7 @@
      
       <object>
       <name> CalXHit_ZEROHit_Frac_TowerCalLayerCalColumn_err[16][8][12] </name>
-      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: Counter_CondsummaryBitAnd30_NOTPeriodic>0 && Counter_CalXHit_ZEROHit_TowerCalLayerCalColumn[tower][callayer][calcolumn]>0 ? (double(Counter_CalXHit_ZEROHit_TowerCalLayerCalColumn[tower][callayer][calcolumn])/double(Counter_CondsummaryBitAnd30_NOTPeriodic)*TMath::Sqrt(1./Counter_CondsummaryBitAnd30_NOTPeriodic + 1./Counter_CalXHit_ZEROHit_TowerCalLayerCalColumn[tower][callayer][calcolumn])) : 0.0 ]]></formula>
+      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: Counter_CondsummaryBitAnd30_NOTPeriodic>0 ? sqrt((1./double(Counter_CondsummaryBitAnd30_NOTPeriodic))*(double(Counter_CalXHit_ZEROHit_TowerCalLayerCalColumn[tower][callayer][calcolumn])/double(Counter_CondsummaryBitAnd30_NOTPeriodic))*(1-(double(Counter_CalXHit_ZEROHit_TowerCalLayerCalColumn[tower][callayer][calcolumn])/double(Counter_CondsummaryBitAnd30_NOTPeriodic)))): 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -2539,7 +2543,7 @@
       <description> Error in quantity CalXHit_ZEROHit_Fraction_TowerCalLayerCalColumn. </description>
      </object>
 
-     
+      
      
     
 
