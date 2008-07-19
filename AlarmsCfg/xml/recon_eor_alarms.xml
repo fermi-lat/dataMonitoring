@@ -62,7 +62,8 @@
     <alarmSet name="SuspCalLo_Highest0_EnergyDistribution_TH1" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
 	<parameter name="window_half_width" value="5"/>
-	<parameter name="threshold" value="40"/>
+	<parameter name="threshold" value="30"/>
+	<parameter name="start_x" value="50"/>
 	<warning_limits min="85.0" max="115.0"/>
 	<error_limits min="50.0"   max="150.0"/>
       </alarm>
