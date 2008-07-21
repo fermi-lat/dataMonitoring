@@ -178,6 +178,14 @@
     </object>
 
      <object>
+      <name> Trigger_PeriodicEqual32 </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[condsummary==32]]></cut>
+      <type> rate </type>
+      <description> Periodic trigger rate in which condsummary is equal to 32</description>
+    </object>
+
+     <object>
       <name> Trigger_NOTPeriodic </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[!(condsummary&32)]]></cut>
@@ -2079,7 +2087,7 @@
       <object>
       <name> NTkrHits_TowerPlane[16][36] </name>
       <formula><![CDATA[ foreachtower: foreachtkrplane: TkrHitsTowerPlane[tower][tkrplane] ]]></formula>
-      <cut><![CDATA[ condsummary&32]]></cut>
+      <cut><![CDATA[ condsummary==32]]></cut>
       <type> rate </type>
       <description> Rate of tracker hits in [tower][tkrplane] during periodic triggers. This is an indicator of the noise in the tracker. </description>
     </object>
