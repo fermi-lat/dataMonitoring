@@ -1,5 +1,8 @@
+v1r2p10  2008/07/20   (DEV)                                                      ------------------------------
+But corrected for quantity Rate_NTkrHits_TowerPlane. 
+This addresses Jira GDQMQ-221
 
-v1r2p9  2008/07/19   (DEV)                                                                                                 ------------------------------
+v1r2p9  2008/07/19   (DEV)                                                      ------------------------------
 Correct errors of some quantities: Jira GDQMQ-218.
 
 
