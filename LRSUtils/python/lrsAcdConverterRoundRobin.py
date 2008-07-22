@@ -12,14 +12,20 @@ from lrsConverter import lrsConverter
 
 
 NUM_ACD_TILES  = 108
-TILE_ID_DICT   = {'Top' : [7, 11, 12, 13, 17],
-                  'Long': [42, 60, 70, 96]
+TILE_ID_DICT   = {'Top'  : [7, 11, 12, 13, 17],
+                  'Crown': [29, 47, 65, 83],
+                  'Row1' : [34, 52, 70, 88],
+                  'Row2' : [39, 57, 75, 93],
+                  'Long' : [42, 60, 70, 96]
                   }
 TILE_NUM_DICT  = {}
 for (key, value) in TILE_ID_DICT.items():
     TILE_NUM_DICT[key] = len(value)
-TILE_AREA_DICT = {'Top' : 1122.0,
-                  'Long': 2650.0}
+TILE_AREA_DICT = {'Top'  : 1122.0,
+                  'Crown': 1205.0,
+                  'Row1' : 726.0 ,
+                  'Row2' : 561.0 ,
+                  'Long' : 2650.0}
 
 
 class lrsAcdConverter(lrsConverter):
@@ -65,7 +71,7 @@ class lrsAcdConverter(lrsConverter):
                                 logging.info('SAA exit found at %f.' %\
                                                  timestamp)
                         lastSaaFlag = saaFlag
-                        if not firstSaaExitFound:
+                        if not firstSaaExitFound or saaFlag > 0.5:
                             self.getArray('TimeSinceSaa')[0] = -1
                         else:
                             self.getArray('TimeSinceSaa')[0] = timestamp -\
