@@ -100,18 +100,6 @@ class lrsAcdConverter(lrsConverter):
                     normRate += self.getArray('LrsRate')[tile]
                 normRate /= (TILE_NUM_DICT[key]*TILE_AREA_DICT[key])
                 self.getArray(varName)[0] = normRate
-
-            #normRateTop = 0
-            #for tile in TOP_TILES:
-            #    normRateTop += self.getArray('LrsRate')[tile]
-            #normRateTop /= (NUM_TOP_TILES*TOP_TILES_AREA)
-            #self.getArray('LrsNormRateTop')[0] = normRateTop
-            #normRateLong = 0
-            #for tile in LONG_TILES:
-            #    normRateLong += self.getArray('LrsRate')[tile]
-            #normRateLong /= (NUM_LONG_TILES*LONG_TILES_AREA)
-            #self.getArray('LrsNormRateLong')[0] = normRateLong
-            
             self.fillTree()
         logging.info('Done.')
 
