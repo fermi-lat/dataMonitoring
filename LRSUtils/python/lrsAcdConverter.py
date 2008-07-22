@@ -10,7 +10,7 @@ import sys
 
 from lrsConverter import lrsConverter
 
-NUM_ACD_TILES = 100
+NUM_ACD_TILES = 108
 
 
 class lrsAcdConverter(lrsConverter):
@@ -30,7 +30,6 @@ class lrsAcdConverter(lrsConverter):
             if timestamp is None:
                 break
             for i in range(self.DATA_BLOCK_SIZE - 1):
-                self.getArray('Time')[0] = timestamp + i
                 averageRate = 0
                 (id, tile1, tile2, cnt1, cnt2, dur) = self.line().split(',')
                 (id, tile1, tile2, cnt1, cnt2) =\
@@ -39,6 +38,7 @@ class lrsAcdConverter(lrsConverter):
                 (rate1, rate2) = (cnt1/dur, cnt2/dur)
                 averageRate += rate1
                 averageRate += rate2
+                self.getArray('Time')[0] = timestamp + i*dur
                 self.getArray('LrsCounts')[tile1] = cnt1
                 self.getArray('LrsRate')[tile1] = rate1
                 self.getArray('LrsCounts')[tile2] = cnt2
