@@ -1,3 +1,10 @@
+*** v1r4p3 ***
+- Fixed all cuts to get rid of events with an error (error_summary<64)
+  in config.xml. I choose not to propagate this cut to the configLCI
+  since there should NOT be error in LCI runs, and if there is we want
+  to spot them by any means.
+* Relevant jira(s): GDQMQ-203
+
 *** v1r4p2 ***
 - Fixed all cuts to be explicitly booleans in config.xml and configLCI.xml
 * Relevant jira(s): GDQMQ-208
