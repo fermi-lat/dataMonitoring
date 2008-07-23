@@ -129,7 +129,7 @@
     <outputList group="GEM" name="GEM base">
         <TH1F name="CondSummaryWord_TH1">
 	    <expression><![CDATA[ condsummary ]]></expression>
-	    <cut><![CDATA[ (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>65</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>64.5</xmax>
@@ -140,7 +140,7 @@
         </TH1F>
         <TH1F name="DiscardedDelta_TH1">
 	    <expression><![CDATA[ DiscardedDelta[0] ]]></expression>
-	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>31</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>30.5</xmax>
@@ -151,7 +151,7 @@
         </TH1F>
         <TH1F name="DeadZoneDelta_TH1">
 	    <expression><![CDATA[ DeadZoneDelta[0] ]]></expression>
-	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>31</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>30.5</xmax>
@@ -162,7 +162,7 @@
         </TH1F>
         <TH1F name="DeltaEventTime_TH1">
 	    <expression><![CDATA[ gem_delta_event_time*0.00005 ]]> </expression>
-	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0 && error_summary<64]]></cut>
 	    <xbins>100</xbins>
 	    <xmin>0</xmin>
 	    <xmax>4</xmax>
@@ -173,7 +173,7 @@
         </TH1F>
         <TH1F name="DeltaEventTime_Zoom_TH1">
 	    <expression><![CDATA[ gem_delta_event_time ]]> </expression>
-	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0 && error_summary<64]]></cut>
 	    <xbins>160</xbins>
 	    <xmin>0</xmin>
 	    <xmax>1600</xmax>
@@ -184,7 +184,7 @@
         </TH1F>
         <TH1F name="DeltaWindowOpen_TH1">
 	    <expression><![CDATA[ gem_delta_window_open_time*0.00005 ]]> </expression>
-	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0 && error_summary<64]]></cut>
 	    <xbins>100</xbins>
 	    <xmin>0</xmin>
 	    <xmax>4</xmax>
@@ -195,7 +195,7 @@
         </TH1F>
         <TH1F name="DeltaWindowOpen_Zoom_TH1">
 	    <expression><![CDATA[ gem_delta_window_open_time ]]> </expression>
-	    <cut><![CDATA[ (condsummary&30) && (gem_delta_window_open_time<1500)]]></cut>
+	    <cut><![CDATA[ (condsummary&30) && (gem_delta_window_open_time<1500) && error_summary<64]]></cut>
 	    <xbins>160</xbins>
 	    <xmin>0</xmin>
 	    <xmax>1600</xmax>
@@ -206,7 +206,7 @@
         </TH1F>
         <TH1F name="PrescaledDelta_TH1">
 	    <expression><![CDATA[ PrescaledLast ]]> </expression>
-	    <cut><![CDATA[ (condsummary&32)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&32)==0 && error_summary<64]]></cut>
 	    <xbins>31</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>30.5</xmax>
@@ -221,7 +221,7 @@
 
         <TH1F name="CondSummaryWord_WithROI_TH1">
 	    <expression><![CDATA[ condsummary ]]></expression>
-	    <cut><![CDATA[ (condsummary&1)>0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&1)>0 && error_summary<64]]></cut>
 	    <xbins>65</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>64.5</xmax>
@@ -232,7 +232,7 @@
         </TH1F>
         <TH1F name="CondSummaryWord_WithTKR_TH1">
 	    <expression><![CDATA[ condsummary ]]></expression>
-	    <cut><![CDATA[ (condsummary&2)>0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&2)>0 && error_summary<64]]></cut>
 	    <xbins>65</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>64.5</xmax>
@@ -243,7 +243,7 @@
         </TH1F>
         <TH1F name="CondSummaryWord_WithCalLo_TH1">
 	    <expression><![CDATA[ condsummary ]]></expression>
-	    <cut><![CDATA[ (condsummary&4)>0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&4)>0 && error_summary<64]]></cut>
 	    <xbins>65</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>64.5</xmax>
@@ -254,7 +254,7 @@
         </TH1F>
         <TH1F name="CondSummaryWord_WithCalHi_TH1">
 	    <expression><![CDATA[ condsummary ]]></expression>
-	    <cut><![CDATA[ (condsummary&8)>0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&8)>0 && error_summary<64]]></cut>
 	    <xbins>65</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>64.5</xmax>
@@ -265,7 +265,7 @@
         </TH1F>
         <TH1F name="CondSummaryWord_WithCNO_TH1">
 	    <expression><![CDATA[ condsummary ]]></expression>
-	    <cut><![CDATA[ (condsummary&16)>0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&16)>0 && error_summary<64]]></cut>
 	    <xbins>65</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>64.5</xmax>
@@ -276,7 +276,7 @@
         </TH1F>
         <TH1F name="CondSummaryWord_WithPeriodic_TH1">
 	    <expression><![CDATA[ condsummary ]]></expression>
-	    <cut><![CDATA[ (condsummary&32)>0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&32)>0 && error_summary<64]]></cut>
 	    <xbins>65</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>64.5</xmax>
@@ -287,7 +287,7 @@
         </TH1F>
         <TH1F name="CondSummaryWord_WithSolicited_TH1">
 	    <expression><![CDATA[ condsummary ]]></expression>
-	    <cut><![CDATA[ (condsummary&64)>0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&64)>0 && error_summary<64]]></cut>
 	    <xbins>129</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>128.5</xmax>
@@ -303,7 +303,7 @@
     <outputList group="GEM" name="GEM arrival times" enabled="True">				
         <TH1F name="CondArrTKRTrigger_TH1">
 	    <expression><![CDATA[ condarrtkr ]]></expression>
-	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&2)>0 && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&2)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -314,7 +314,7 @@
         </TH1F>
         <TH1F name="CondArrCalLoTrigger_TH1">
 	    <expression><![CDATA[ condarrcallo ]]></expression>
-	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&4)>0 && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&4)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -325,7 +325,7 @@
         </TH1F>
         <TH1F name="CondArrCalHiTrigger_TH1">
 	    <expression><![CDATA[ condarrcalhi ]]></expression>
-	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&8)>0 && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&8)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -336,7 +336,7 @@
         </TH1F>
         <TH1F name="CondArrCNOTrigger_TH1">
 	    <expression><![CDATA[ condarrcno ]]></expression>
-	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&16)>0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&16)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -347,7 +347,7 @@
         </TH1F>
         <TH1F name="CondArrROITrigger_TH1">
 	    <expression><![CDATA[ condarrroi ]]></expression>
-	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&1)>0 && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&32)==0 && (condsummary&1)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -362,7 +362,7 @@
 
         <TH1F name="CondArrROI_TKROpensWindow_TH1">
 	    <expression><![CDATA[ condarrroi ]]></expression>
-	    <cut><![CDATA[ (condsummary&1)>0 && (condsummary&2)>0 && (condarrtkr==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&1)>0 && (condsummary&2)>0 && (condarrtkr==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -376,7 +376,7 @@
         </TH1F>
         <TH1F name="CondArrCalLo_TKROpensWindow_TH1">
 	    <expression><![CDATA[ condarrcallo ]]></expression>
-	    <cut><![CDATA[ (condsummary&4)>0 && (condsummary&2)>0 && (condarrtkr==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&4)>0 && (condsummary&2)>0 && (condarrtkr==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -390,7 +390,7 @@
         </TH1F>
         <TH1F name="CondArrCalHi_TKROpensWindow_TH1">
 	    <expression><![CDATA[ condarrcalhi ]]></expression>
-	    <cut><![CDATA[ (condsummary&8)>0 && (condsummary&2)>0 && (condarrtkr==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&8)>0 && (condsummary&2)>0 && (condarrtkr==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -404,7 +404,7 @@
         </TH1F>
         <TH1F name="CondArrCNO_TKROpensWindow_TH1">
 	    <expression><![CDATA[ condarrcno ]]></expression>
-	    <cut><![CDATA[ (condsummary&16)>0 && (condsummary&2)>0 && (condarrtkr==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&16)>0 && (condsummary&2)>0 && (condarrtkr==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -422,7 +422,7 @@
 
         <TH1F name="CondArrROI_CalLoOpensWindow_TH1">
 	    <expression><![CDATA[ condarrroi ]]></expression>
-	    <cut><![CDATA[ (condsummary&1)>0 && (condsummary&4)>0 && (condarrcallo==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&1)>0 && (condsummary&4)>0 && (condarrcallo==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -436,7 +436,7 @@
         </TH1F>
         <TH1F name="CondArrTKR_CalLoOpensWindow_TH1">
 	    <expression><![CDATA[ condarrtkr ]]></expression>
-	    <cut><![CDATA[ (condsummary&2)>0 && (condsummary&4)>0 && (condarrcallo==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&2)>0 && (condsummary&4)>0 && (condarrcallo==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -450,7 +450,7 @@
         </TH1F>
         <TH1F name="CondArrCalHi_CalLoOpensWindow_TH1">
 	    <expression><![CDATA[ condarrcalhi ]]></expression>
-	    <cut><![CDATA[ (condsummary&8)>0 && (condsummary&4)>0 && (condarrcallo==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&8)>0 && (condsummary&4)>0 && (condarrcallo==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -464,7 +464,7 @@
         </TH1F>
         <TH1F name="CondArrCNO_CalLoOpensWindow_TH1">
 	    <expression><![CDATA[ condarrcno ]]></expression>
-	    <cut><![CDATA[ (condsummary&16)>0 && (condsummary&4)>0 && (condarrcallo==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&16)>0 && (condsummary&4)>0 && (condarrcallo==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -482,7 +482,7 @@
 
         <TH1F name="CondArrROI_CalHiOpensWindow_TH1">
 	    <expression><![CDATA[ condarrroi ]]></expression>
-	    <cut><![CDATA[ (condsummary&1)>0 && (condsummary&8)>0 && (condarrcalhi==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&1)>0 && (condsummary&8)>0 && (condarrcalhi==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -496,7 +496,7 @@
         </TH1F>
         <TH1F name="CondArrTKR_CalHiOpensWindow_TH1">
 	    <expression><![CDATA[ condarrtkr ]]></expression>
-	    <cut><![CDATA[ (condsummary&2)>0 && (condsummary&8)>0 && (condarrcalhi==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&2)>0 && (condsummary&8)>0 && (condarrcalhi==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -510,7 +510,7 @@
         </TH1F>
         <TH1F name="CondArrCalLo_CalHiOpensWindow_TH1">
 	    <expression><![CDATA[ condarrcallo ]]></expression>
-	    <cut><![CDATA[ (condsummary&4)>0 && (condsummary&8)>0 && (condarrcalhi==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&4)>0 && (condsummary&8)>0 && (condarrcalhi==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -524,7 +524,7 @@
         </TH1F>
         <TH1F name="CondArrCNO_CalHiOpensWindow_TH1">
 	    <expression><![CDATA[ condarrcno ]]></expression>
-	    <cut><![CDATA[ (condsummary&16)>0 && (condsummary&8)>0 && (condarrcalhi==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&16)>0 && (condsummary&8)>0 && (condarrcalhi==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -542,7 +542,7 @@
 
         <TH1F name="CondArrROI_CNOOpensWindow_TH1">
 	    <expression><![CDATA[ condarrroi ]]></expression>
-	    <cut><![CDATA[ (condsummary&1)>0 && (condsummary&16)>0 && (condarrcno==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&1)>0 && (condsummary&16)>0 && (condarrcno==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -556,7 +556,7 @@
         </TH1F>
         <TH1F name="CondArrTKR_CNOOpensWindow_TH1">
 	    <expression><![CDATA[ condarrtkr ]]></expression>
-	    <cut><![CDATA[ (condsummary&2)>0 && (condsummary&16)>0 && (condarrcno==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&2)>0 && (condsummary&16)>0 && (condarrcno==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -570,7 +570,7 @@
         </TH1F>
         <TH1F name="CondArrCalLo_CNOOpensWindow_TH1">
 	    <expression><![CDATA[ condarrcallo ]]></expression>
-	    <cut><![CDATA[ (condsummary&4)>0 && (condsummary&16)>0 && (condarrcno==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&4)>0 && (condsummary&16)>0 && (condarrcno==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -584,7 +584,7 @@
         </TH1F>
         <TH1F name="CondArrCalHi_CNOOpensWindow_TH1">
 	    <expression><![CDATA[ condarrcalhi ]]></expression>
-	    <cut><![CDATA[ (condsummary&8)>0 && (condsummary&16)>0 && (condarrcno==0) && (condsummary&32)==0 && (condsummary&64)==0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&8)>0 && (condsummary&16)>0 && (condarrcno==0) && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <xbins>41</xbins>
 	    <xmin>-0.5</xmin>
 	    <xmax>40.5</xmax>
@@ -605,34 +605,34 @@
 	    <title>Number of tracker triggers per tower</title>
 	    <xlabel>Tower number</xlabel>
 	    <ylabel>N</ylabel>
-			<cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0]]></cut>	
+	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>	
 	    <expression>TkrTriggerTower</expression>
         </CUSTOM>
         <CUSTOM type="gem_vector_map" name="CalHiTrigger_Tower_TH1" enabled="True">
 	    <title>Number of Cal HI triggers per tower</title>
 	    <xlabel>Tower number</xlabel>
 	    <ylabel>N</ylabel>
-			<cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0]]></cut>	
+	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>	
 	    <expression>CalHiTriggerTower</expression>
         </CUSTOM>
         <CUSTOM type="gem_vector_map" name="CalLoTrigger_Tower_TH1" enabled="True">
 	    <title>Number of Cal LO triggers per tower</title>
 	    <xlabel>Tower number</xlabel>
 	    <ylabel>N</ylabel>
-			<cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0]]></cut>	
+	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>	
 	    <expression>CalLoTriggerTower</expression>
         </CUSTOM>	
         <CUSTOM type="gem_vector_map" name="AcdGemROI_Tower_TH1" enabled="True">
 	    <title>Number of ACD ROI per tower</title>
-			<caption>This bit is set if any of the tile in the ROI fired a veto. This bit is independent of if the Tower bit is set.</caption>
+	    <caption>This bit is set if any of the tile in the ROI fired a veto. This bit is independent of if the Tower bit is set.</caption>
 	    <xlabel>Tower number</xlabel>
 	    <ylabel>N</ylabel>
-			<cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0]]></cut>	
+	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>	
 	    <expression>AcdGemROI_Tower</expression>
         </CUSTOM>
         <CUSTOM type="AcdGemVeto_AcdTile" name="Acd_GemVeto_AcdTile_TH1" enabled="True">
 	    <!--expression><![CDATA[ AcdGemVeto_AcdTile ]]></expression-->
-	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0 && error_summary<64]]></cut>
 	    <title>Number of Acd Gem vetoes by tile</title>
 	    <xlabel>Acd Tile Number (coded in 128 entries)</xlabel>
 	    <ylabel>N</ylabel>
@@ -640,7 +640,7 @@
         </CUSTOM>
         <CUSTOM type="gem_acd_cable_map" name="AcdGemCNO_GARC_TH1" enabled="True">
 	    <expression><![CDATA[ AcdGemCNO_GARC ]]></expression>
-	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>
 	    <title>Number of Acd CNO by board</title>
 	    <xlabel>Acd GARC Number</xlabel>
 	    <ylabel>N</ylabel>
@@ -683,7 +683,7 @@
 	    <xlabel>CAL column/side</xlabel>
 	    <ylabel>CAL layer</ylabel>
 	    <drawoptions>colz</drawoptions>	    
-	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0]]></cut>	    
+	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>	    
         </CUSTOM>
         <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range1_TH2" enabled="True" level="tower">
 	    <expression>Range1</expression>
@@ -691,7 +691,7 @@
 	    <xlabel>CAL column/side</xlabel>
 	    <ylabel>CAL layer</ylabel>
 	    <drawoptions>colz</drawoptions>	    
-	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0]]></cut>	    
+	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>	    
         </CUSTOM>
         <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range2_TH2" enabled="True" level="tower">
 	    <expression>Range2</expression>
@@ -699,7 +699,7 @@
 	    <xlabel>CAL column/side</xlabel>
 	    <ylabel>CAL layer</ylabel>
 	    <drawoptions>colz</drawoptions>	    
-	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0]]></cut>	    
+	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>	    
         </CUSTOM>
         <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range3_TH2" enabled="True" level="tower">
 	    <expression>Range3</expression>
@@ -707,7 +707,7 @@
 	    <xlabel>CAL column/side</xlabel>
 	    <ylabel>CAL layer</ylabel>
 	    <drawoptions>colz</drawoptions>	    
-	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0]]></cut>	    
+	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>	    
         </CUSTOM>
     </outputList>
     
@@ -720,7 +720,7 @@
 	    <drawoptions>colz</drawoptions>
 	    <!--expression>CalXHit_TowerCalLayerCalColumn</expression-->
 	    <!--exclude>[0]</exclude-->
-	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0]]></cut>	    
+	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>	    
         </CUSTOM>
 
         <CUSTOM type="ZeroCalXHit_NHit_Counter_TowerCalLayer" name="ZeroCalXHit_NHit_Counter_TowerCalLayer_TH2" enabled="True">
@@ -731,7 +731,7 @@
 	    <drawoptions>colz</drawoptions>
 	    <!--expression>CalXHit_TowerCalLayerCalColumn</expression-->
 	    <!--exclude>[0]</exclude-->
-	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0]]></cut>	    
+	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>	    
         </CUSTOM>
 
         <TH1F name="CalX_Total_NHit_TH1" enabled="True" level="lat">
@@ -741,7 +741,7 @@
 	    <xmax>200.5</xmax>
 	    <xlabel>Number of CalX_Hits</xlabel>
             <expression>CalXHit</expression>
-	    <cut><![CDATA[ (condsummary&30)>0 && CalXHit>0  && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0 && CalXHit>0  && (condsummary&64)==0 && error_summary<64]]></cut>
         </TH1F>
 	
         <TH1F name="CalX_NHit_TH1" enabled="True" level="tower">
@@ -752,7 +752,7 @@
 	    <ylog>True</ylog>
 	    <xlabel>Number of Cal crystals in this tower</xlabel>
             <expression>CalXHit_Tower</expression>
-	    <cut><![CDATA[ (condsummary&30)>0  && CalXHit_Tower>0 && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0  && CalXHit_Tower>0 && (condsummary&64)==0 && error_summary<64]]></cut>
         </TH1F>
 	
         <TH1F name="CalTower_NHit_TH1" enabled="True" level="lat">
@@ -762,7 +762,7 @@
 	    <xmax>16.5</xmax>
 	    <xlabel>Number of Cal Towers Hit</xlabel>
             <expression>CalTowerCount</expression>
- 	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0]]></cut>
+ 	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
        </TH1F>
 	
         <!--CUSTOM type="cal_2d_map" name="cal_hitmap" enabled="True">
@@ -822,7 +822,7 @@
 	    <xmax>3000</xmax>
 	    <xlabel>Number of strip hits</xlabel>
 	    <ylabel>N</ylabel>
-	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
             <expression>TkrHits</expression>
         </TH1F>		
         <CUSTOM type="ZeroTkrHitsCounter_TowerPlane" name="ZeroTkrHitsCounter_TowerPlane_TH2" enabled="True">
@@ -831,7 +831,7 @@
 	    <xlabel>Tower</xlabel>
 	    <ylabel>Tracker plane</ylabel>
 	    <drawoptions>colz</drawoptions>
-            <cut><![CDATA[(condsummary&30)>0 && (condsummary&64)==0]]></cut>
+            <cut><![CDATA[(condsummary&30)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
         </CUSTOM>							
     </outputList>
 		
@@ -842,14 +842,14 @@
 	    <xlabel>Tower</xlabel>
 	    <ylabel>Tracker plane</ylabel>
 	    <drawoptions>colz</drawoptions>
-            <cut><![CDATA[(condsummary&30)>0 && (condsummary&64)==0]]></cut>
+            <cut><![CDATA[(condsummary&30)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
         </CUSTOM>
         <CUSTOM type="TkrHitsCounter_Plane" name="TkrHitsCounter_Plane_TH1" level="tower" enabled="True">
 	    <title>Overall number of hits vs. TKR plane (one per tower)</title>
 	    <caption>Watch out for spikes (but don't get too excited, most likely it's just a noisy strip) and dips</caption>
 	    <xlabel>Tracker plane</xlabel>
 	    <ylabel>N</ylabel>
-	    <cut><![CDATA[(condsummary&64)==0]]></cut>
+	    <cut><![CDATA[(condsummary&64)==0 && error_summary<64]]></cut>
         </CUSTOM>    
         <CUSTOM type="TkrHitsCounter_PlaneGTFE" name="TkrHitsCounter_PlaneGTFE_TH2" level="tower" enabled="True">
 	    <title>Overall number of hits vs. TKR plane and front-end chip (one per tower)</title>
@@ -857,7 +857,7 @@
 	    <xlabel>GTFE</xlabel>
 	    <ylabel>Tracker plane</ylabel>
 	    <drawoptions>colz</drawoptions>
-	    <cut><![CDATA[(condsummary&64)==0]]></cut>
+	    <cut><![CDATA[(condsummary&64)==0 && error_summary<64]]></cut>
         </CUSTOM>
     </outputList>
 
@@ -869,7 +869,7 @@
 	    <xmax>1000</xmax>
 	    <xlabel>Number of strip hits</xlabel>
 	    <ylabel>N</ylabel>
-	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>
             <expression>TkrHitsTower</expression>
         </TH1F>				
     </outputList>
@@ -880,7 +880,7 @@
 	    <xlabel>Layer number</xlabel>
 	    <caption></caption>
 	    <!-- this tag is useless for this CUSTOM plot since it is dedicated to a specific task<expression></expression> -->
-	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
         </CUSTOM>			
     </outputList>				
 
@@ -892,7 +892,7 @@
             <drawoptions>colz</drawoptions>
 	    <!--caption>Number of times that the TOT is 0 while there are 1 or more strips hit in the same controller</caption-->
 	    <!-- this tag is useless for this CUSTOM plot since it is dedicated to a specific task expression></expression> -->
-	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
         </CUSTOM>		
     </outputList>
 		
@@ -904,7 +904,7 @@
 	    <xmax>3000</xmax>
 	    <xlabel>Number of strip hits</xlabel>
 	    <ylabel>N</ylabel>
-	    <cut><![CDATA[ (condsummary&32)>0 && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&32)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
             <expression>TkrHits</expression>
       </TH1F>		
     </outputList>		
@@ -939,14 +939,14 @@
 	    <ylabel>Number of ACD hits</ylabel>
             <expression>acd_tile_count</expression>
 	    <caption>This is the number of PHA values per event</caption>
-	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>
         </TH1F>
         <CUSTOM type="AcdHitsCounter_CableChannel" name="AcdHitsCounter_CableChannel_TH2" level="lat" enabled="True">
 	    <title>Number hit for each ACD channel</title>
 	    <xlabel>Cable Id</xlabel>
 	    <ylabel>Channel Id</ylabel>
 	    <drawoptions>colz</drawoptions>
-	    <cut><![CDATA[(condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0]]></cut>
+	    <cut><![CDATA[(condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
         </CUSTOM>
 	
     </outputList>
