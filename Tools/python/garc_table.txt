@@ -1,0 +1,13 @@
+Number    FREE board
+ 0    1LA
+ 1    1RB
+ 2    2LA
+ 3    2LB
+ 4    2RA
+ 5    2RB
+ 6    3LA
+ 7    3RB
+ 8    4LA
+ 9    4LB
+10    4RA
+11    4RB
