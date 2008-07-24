@@ -7,3 +7,4 @@ cleanlog:
 cleanall:
 	make clean
 	make cleanlog
+	rm -f *.html
