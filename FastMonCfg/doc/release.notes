@@ -1,3 +1,8 @@
+*** v1r4p4 ***
+- Add ToT plots per tkr tower layer controller
+* Relevant jira(s): GDQMQ-148
+
+
 *** v1r4p3 ***
 - Fixed all cuts to get rid of events with an error (error_summary<64)
   in config.xml. I choose not to propagate this cut to the configLCI
@@ -11,7 +16,7 @@
 
 *** v1r4p1 ***
 - Added AcdHitChannel to monitor the ACD occupancy per cable, channel
-  in config.xml and configLCI.xml
+  in config.xml and configLCI.xml (and MergeHisto !)
 - Corresponding plot name is AcdHitsCounter_CableChannel_TH2
 * Relevant jira(s): GDQMQ-1
 
