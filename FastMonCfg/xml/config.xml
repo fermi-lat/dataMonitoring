@@ -879,21 +879,42 @@
 	    <title>Distribution of the number of planes hit in a tower</title>
 	    <xlabel>Layer number</xlabel>
 	    <caption></caption>
-	    <!-- this tag is useless for this CUSTOM plot since it is dedicated to a specific task<expression></expression> -->
 	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
         </CUSTOM>			
     </outputList>				
 
     <outputList group="TKR" name="TKR Details - ToT" enabled="True">		
+
         <CUSTOM type="ToT_0_WhenTkrHitsExist_TowerPlane" name="ToT_0_WhenTkrHitsExist_TowerPlane_TH2" enabled="True">
 	    <title>Number of times that, existing at least one hit, ToT==0 in both controllers</title>
 	    <xlabel>Tower Number</xlabel>
 	    <ylabel>Tracker plane</ylabel>
             <drawoptions>colz</drawoptions>
-	    <!--caption>Number of times that the TOT is 0 while there are 1 or more strips hit in the same controller</caption-->
-	    <!-- this tag is useless for this CUSTOM plot since it is dedicated to a specific task expression></expression> -->
 	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
         </CUSTOM>		
+
+       <TH1F name="ToT_con0_TH1_TowerPlane" enabled="True" level="tkr_layer">
+	    <title>Distribution of ToTs per tower and plane</title>
+	    <xbins>256</xbins>
+	    <xmin>0</xmin>
+	    <xmax>256</xmax>
+	    <xlabel>Tics</xlabel>
+	    <ylabel>N</ylabel>
+	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>
+            <expression>ToT_con0_TowerPlane</expression>
+        </TH1F>				
+
+       <TH1F name="ToT_con1_TH1_TowerPlane" enabled="True" level="tkr_layer">
+	    <title>Distribution of ToTs per tower and plane</title>
+	    <xbins>256</xbins>
+	    <xmin>0</xmin>
+	    <xmax>256</xmax>
+	    <xlabel>Tics</xlabel>
+	    <ylabel>N</ylabel>
+	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>
+            <expression>ToT_con1_TowerPlane</expression>
+        </TH1F>				
+
     </outputList>
 		
     <outputList group="TKR" name="TKR Noise occupancy" enabled="False">		

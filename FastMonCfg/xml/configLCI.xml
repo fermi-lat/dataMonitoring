@@ -878,6 +878,27 @@
 	    <cut><![CDATA[ ]]></cut>
 	    <!-- this tag is useless for this CUSTOM plot since it is dedicated to a specific task<expression></expression> -->
         </CUSTOM>			
+       <TH1F name="ToT_con0_TH1_TowerPlane" enabled="True" level="tkr_layer">
+	    <title>Distribution of ToTs per tower and plane</title>
+	    <xbins>256</xbins>
+	    <xmin>0</xmin>
+	    <xmax>256</xmax>
+	    <xlabel>Tics</xlabel>
+	    <ylabel>N</ylabel>
+	    <cut><![CDATA[ ]]></cut>
+            <expression>ToT_con0_TowerPlane</expression>
+        </TH1F>				
+
+       <TH1F name="ToT_con1_TH1_TowerPlane" enabled="True" level="tkr_layer">
+	    <title>Distribution of ToTs per tower and plane</title>
+	    <xbins>256</xbins>
+	    <xmin>0</xmin>
+	    <xmax>256</xmax>
+	    <xlabel>Tics</xlabel>
+	    <ylabel>N</ylabel>
+	    <cut><![CDATA[ ]]></cut>
+            <expression>ToT_con1_TowerPlane</expression>
+        </TH1F>				
     </outputList>				
 
     <outputList group="TKR" name="TKR Details - ToT" enabled="True">		
