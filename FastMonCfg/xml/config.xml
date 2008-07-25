@@ -894,24 +894,24 @@
         </CUSTOM>		
 
        <TH1F name="ToT_con0_TH1_TowerPlane" enabled="True" level="tkr_layer">
-	    <title>Distribution of ToTs per tower and plane</title>
+	    <title>Distribution of raw ToTs per tower and plane - controller 0</title>
 	    <xbins>256</xbins>
-	    <xmin>0</xmin>
-	    <xmax>256</xmax>
+	    <xmin>-0.5</xmin>
+	    <xmax>255.5</xmax>
 	    <xlabel>Tics</xlabel>
 	    <ylabel>N</ylabel>
-	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>
+	    <cut><![CDATA[ ToT_con0_TowerPlane>0 && (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>
             <expression>ToT_con0_TowerPlane</expression>
         </TH1F>				
 
        <TH1F name="ToT_con1_TH1_TowerPlane" enabled="True" level="tkr_layer">
-	    <title>Distribution of ToTs per tower and plane</title>
+	    <title>Distribution of raw ToTs per tower and plane - controller 1</title>
 	    <xbins>256</xbins>
-	    <xmin>0</xmin>
-	    <xmax>256</xmax>
+	    <xmin>-0.5</xmin>
+	    <xmax>255.5</xmax>
 	    <xlabel>Tics</xlabel>
 	    <ylabel>N</ylabel>
-	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>
+	    <cut><![CDATA[ ToT_con1_TowerPlane>0 && (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>
             <expression>ToT_con1_TowerPlane</expression>
         </TH1F>				
 
