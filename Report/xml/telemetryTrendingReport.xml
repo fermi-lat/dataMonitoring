@@ -42,71 +42,71 @@
     <panel name="TelemThermalPage2" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemThermalPage3" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemThermalPage4" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemThermalPage5" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemThermalPage6" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemThermalPage7" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemThermalPage8" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemThermalPage9" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemThermalPage10" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemTrDFPage1" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemTrDFPage2" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemVCPage1" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemVCPage2" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemVCPage3" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemVCPage4" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemVCPage5" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemVCPage6" enabled="True"/>
   </page>
 
-  <page enabled="True">
+  <page enabled="False">
     <panel name="TelemVCPage7" enabled="True"/>
   </page>
 
