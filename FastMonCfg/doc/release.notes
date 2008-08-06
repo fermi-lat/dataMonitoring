@@ -1,3 +1,8 @@
+*** v1r4p5 ***
+- Add ToT plots per plane in merging list file : MergeHistos_FastMon.txt
+* Relevant jira(s): GDQMQ-148
+
+
 *** v1r4p4 ***
 - Add ToT plots per tkr tower layer controller
 * Relevant jira(s): GDQMQ-148
