@@ -1,3 +1,10 @@
+*** v2r5p1 ***
+- Alarms on the quantity ReconAcdPhaMips_PMT*_TH1_AcdTile_* in recon eor
+removed as the corresponding plots are undergoing a revision and redefinition
+process after some changes in GR.
+* Relevat jira(s): GDQMQ-228
+
+
 *** v2r5p0 ***
 - Exception in fastmon eor on the noisy strip of tower 3 (which has been
 masked) removed.
