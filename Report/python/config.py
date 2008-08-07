@@ -24,7 +24,7 @@ reportOutType = {
     'daily' : 'Report-24h',
     #'weekly' : 'Report-168h',
     'weekly' : 'Report-72h',
-    'telemetry' : 'Report-Telemetry',
+    'telemetry' : 'Telemetry-Report',
 }
 
 reportFileTypes = {
