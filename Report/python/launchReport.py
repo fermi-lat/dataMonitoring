@@ -47,7 +47,7 @@ if not status:
     fileName = getPdfFileName(endTimeMs,float(duration),configFile)
     fpath = os.path.join(tempDir,fileName)
     fullName = os.path.join(outDir,fileName)
-    stripString = '%s' % os.path.basename(configFile).replace('.xml', '')
+    stripString = '%s_' % os.path.basename(configFile).replace('.xml', '')
     shortName = fileName.strip('.pdf').strip(stripString)
     if not os.path.exists(outDir):
         os.makedirs(outDir)
