@@ -123,28 +123,6 @@
       </alarm> 
     </alarmSet>
 
-    <alarmSet name="ReconAcdPhaMips_PMTA_TH1_AcdTile_*" exclude="range(89, 128)" enabled="True">
-      <alarm function="x_average" enabled="True">
-	<warning_limits min="1.0" max="3.4"/>
-	<error_limits min="0.5" max="5.0"/>
-      </alarm> 
-      <alarm function="x_rms" enabled="True">
-	<warning_limits min="0.5" max="3.0"/>
-	<error_limits min="0.3" max="6.0"/>
-      </alarm> 				  			 
-    </alarmSet>
-
-    <alarmSet name="ReconAcdPhaMips_PMTB_TH1_AcdTile_*" exclude="range(89, 128)" enabled="True">
-      <alarm function="x_average" enabled="True">
-	<warning_limits min="1.2" max="3.0"/>
-	<error_limits min="0.5" max="5.0"/>
-      </alarm> 
-      <alarm function="x_rms" enabled="True">
-	<warning_limits min="0.6" max="3.0"/>
-	<error_limits min="0.3" max="6.0"/>
-      </alarm> 				  			 
-    </alarmSet>
-
     <alarmSet name="ReconAcdPhaMips_PMTA_Zoom_TH1_AcdTile_*" exclude="range(89, 128)" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
         <parameter name="window_half_width" value="10"/>
