@@ -5,6 +5,7 @@
 	+ Alarms on tower hit and trigger efficiency re-enabled. Lower limits
 	are 0.98 and 0.90 respectively. An error is issued upon limit
 	violations.
+* Relevnt jira(s): GDQMQ-227
 
 
 *** v2r5p2 ***
