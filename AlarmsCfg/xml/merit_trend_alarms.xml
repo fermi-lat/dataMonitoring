@@ -12,8 +12,8 @@
     </alarmSet>
     <alarmSet name="Time::Rate_SourceEvts" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.2" max="50.0"/>
-	<error_limits   min="0.1" max="100.0"/>
+	<warning_limits min="0.0" max="50.0"/>
+	<error_limits   min="0.0" max="100.0"/>
       </alarm> 
     </alarmSet>
     <alarmSet name="Time::Rate_DiffuseEvts" enabled="True">
