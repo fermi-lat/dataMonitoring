@@ -10,17 +10,17 @@ TkrMon_Trend_Number_fracSat_TowerPlane: 1E-4 max (just warning)
 
   <alarmList group="TKRMON" name="TKR Monitoring" enabled="True">
 
-    <alarmSet name="Time::Mean_towerEff_Tower" enabled="False">
+    <alarmSet name="Time::Mean_towerEff_Tower" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.98" max="1.0"/>
-	<error_limits   min="0.98" max="1.0"/>
+	<warning_limits min="0.98" max="10.0"/>
+	<error_limits   min="0.98" max="10.0"/>
       </alarm> 
     </alarmSet>
 
-    <alarmSet name="Time::Mean_trigEff_Tower" enabled="False">
+    <alarmSet name="Time::Mean_trigEff_Tower" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.9" max="1.0"/>
-	<error_limits   min="0.9" max="1.0"/>
+	<warning_limits min="0.9" max="10.0"/>
+	<error_limits   min="0.9" max="10.0"/>
       </alarm> 
     </alarmSet>
    
