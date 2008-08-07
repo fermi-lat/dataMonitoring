@@ -1,7 +1,10 @@
 *** v2r5p3 ***
 - Alarm limits on the Tracker (and in particular on Hiro's quantities) updated.
-	+ The spikes_and_holes algorithm on the GTFE occupancy is not allowed
-	to produce errors anymore (only warnings).
+	+ The spikes_and_holes algorithm on the GTFE occupancy in fastmon eor
+	is not allowed to produce errors anymore (only warnings).
+	+ Alarms on tower hit and trigger efficiency re-enabled. Lower limits
+	are 0.98 and 0.90 respectively. An error is issued upon limit
+	violations.
 
 
 *** v2r5p2 ***
