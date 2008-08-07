@@ -19,7 +19,7 @@ from pTimeConverter   import *
 # TBD. Use environmental variables here!
 BASE_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 
-PREAMBLE_PATH = os.path.join(BASE_DIR_PATH, 'preambleSummary.tex')
+PREAMBLE_PATH = os.path.join(BASE_DIR_PATH, 'preambleReport.tex')
 LOGO_IMAGE_PATH = os.path.join(BASE_DIR_PATH, 'glastLogo.png')
 DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/summaryReport.xml')
 REPORT_GEN_TIME = time.time()

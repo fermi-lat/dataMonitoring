@@ -40,9 +40,9 @@ reportConfigFile = {
 }
 
 applicationName = {
-    'daily' : 'pReportGenerator',
-    'weekly' : 'pReportGenerator',
-    'telemetry' : 'pTelemetryGenerator',
+    'daily' : 'pReportGenerator.py',
+    'weekly' : 'pReportGenerator.py',
+    'telemetry' : 'pTelemetryGenerator.py',
 }
 
 paddingSeconds = 1
