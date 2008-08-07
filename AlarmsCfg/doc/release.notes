@@ -1,3 +1,9 @@
+*** v2r5p2 ***
+- Lower limits on the source event rate (merit eor) set to zero, as we were
+having alarms occasionally firing.
+* Relevat jira(s): GDQMQ-235
+
+
 *** v2r5p1 ***
 - Alarms on the quantity ReconAcdPhaMips_PMT*_TH1_AcdTile_* in recon eor
 removed as the corresponding plots are undergoing a revision and redefinition
