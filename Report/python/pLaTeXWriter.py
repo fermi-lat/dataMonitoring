@@ -3,11 +3,12 @@ import sys
 import logging
 
 
-PDFLATX_BIN = '/opt/TWWfsw/bin/pdflatex'
-if not os.path.exists(PDFLATX_BIN):
-    logging.debug('Could not find %s, falling back to the default.' %\
-                 PDFLATX_BIN)
-    PDFLATX_BIN = 'pdflatex'
+#PDFLATX_BIN = '/opt/TWWfsw/bin/pdflatex'
+#if not os.path.exists(PDFLATX_BIN):
+#    logging.debug('Could not find %s, falling back to the default.' %\
+#                 PDFLATX_BIN)
+#    PDFLATX_BIN = 'pdflatex'
+PDFLATX_BIN = 'pdflatex -interaction="nonstopmode"'
     
 
 class pLaTeXWriter:
@@ -108,6 +109,16 @@ class pLaTeXWriter:
         self.stopCentering()
         self.write('\\clearpage')
         self.newline()
+
+    def addTelemetryPage(self, page, title, timeSpan):
+        logging.info('Adding new page...')
+        self.startCentering()
+        self.addPageHeader(title, timeSpan)
+        for panel in page.PanelsList:
+            self.addTelemetryPanel(panel)
+        self.stopCentering()
+        self.write('\\clearpage')
+        self.newline()
         
     def addPanel(self, panel, boxWidth = 0.93, plotWidth = 0.91,\
                  topMargin = '0.0 cm'):
@@ -116,6 +127,35 @@ class pLaTeXWriter:
         self.write('\\vspace*{-10pt}')
         self.write('\\begin{figure}[htp!]')
         self.write('\\gpanellabel{0.03\\linewidth}{%s}' % panel.Title)
+        self.write('\\gpanelplot{%.2f\\linewidth}{%s}{\\\\' %\
+                   (boxWidth, topMargin))
+        for plot in panel.PlotsList:
+            plotLineHeight = '%.3f\\linewidth' %\
+                             (plotWidth*(plot.Height/plot.Width)/2)
+            self.write('\\vspace*{-15pt}\\\\')
+            self.write('\\gplotleftlabel{%s}{%s}' %\
+                       (plotLineHeight,\
+                        plot.getLeftLaTeXCaption()),  percent = True)
+            #self.write('\href{%s}{\\includegraphics[width=%s]{%s}}' %\
+            #           (plot.Url,plotLineWidth, plot.ImageName), percent=True)
+            self.write('\\includegraphics[width=%s]{%s}' %\
+                       (plotLineWidth, plot.ImageName), percent=True)
+            self.write('\\gplotrightlabel{%s}{%s}\\\\' %\
+                       (plotLineHeight,\
+                        plot.getRightLaTeXCaption()))
+        self.write('\\vspace*{-12pt}')
+        self.write('}')
+        self.write('\\end{figure}')
+        self.newline()
+        self.write('\\vspace*{-10pt}')
+
+    def addTelemetryPanel(self, panel, boxWidth = 1.00, plotWidth = 0.86,\
+                 topMargin = '0.0 cm'):
+        labelLineWidth = '%.2f\\linewidth' % ((1 - plotWidth)/2.0)
+        plotLineWidth = '%.2f\\linewidth' % plotWidth
+        self.write('\hspace*{-15pt}')
+        self.write('\\vspace*{-10pt}')
+        self.write('\\begin{figure}[htp!]')
         self.write('\\gpanelplot{%.2f\\linewidth}{%s}{\\\\' %\
                    (boxWidth, topMargin))
         for plot in panel.PlotsList:

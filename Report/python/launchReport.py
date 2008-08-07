@@ -22,14 +22,14 @@ shiftDoy = dateStruct.tm_yday - 1
 workDir = config.ReportMainDir
 padSeconds = config.paddingSeconds
 
-app = os.path.join(InstallDir,'pReportGenerator.py')
+app = os.path.join(InstallDir,config.applicationName[reportType])
 duration = config.reportDuration[reportType] 
 endTime = '%s-%s 23:59:59' %(shiftYear,shiftDoy)
 endTimeMs = convert2msec(endTime)
 tStop = utc2met(endTimeMs/1000.)
 tStart = tStop-float(duration)*3600 + padSeconds
 
-configFile = config.reportConfig
+configFile = os.path.join(config.reportXml,config.reportConfigFile[reportType])
 tempDir = os.path.join(config.reportTempBase,'Report')
 
 outDir = os.path.join(config.reportOutBase,config.reportOutType[reportType])
@@ -47,7 +47,8 @@ if not status:
     fileName = getPdfFileName(endTimeMs,float(duration),configFile)
     fpath = os.path.join(tempDir,fileName)
     fullName = os.path.join(outDir,fileName)
-    shortName = fileName.strip('.pdf').strip('summaryReport_')
+    stripString = '%s' % os.path.basename(configFile).replace('.xml', '')
+    shortName = fileName.strip('.pdf').strip(stripString)
     if not os.path.exists(outDir):
         os.makedirs(outDir)
     cpCmd = '''

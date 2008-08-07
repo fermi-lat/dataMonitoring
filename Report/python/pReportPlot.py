@@ -56,6 +56,8 @@ class pReportPlot:
             if piece != '':
                 tag = re.search('<font.*?>', piece).group()
                 color = re.search('(?<=color=").*(?=">)', piece).group()
+                if re.search('_',piece): 
+                    piece = piece.replace('_','\\_')
                 latexCaption += piece.replace(tag, '\\textcolor{%s}{' % color)
                 latexCaption += '}'
         return latexCaption
