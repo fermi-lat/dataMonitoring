@@ -1,3 +1,9 @@
+*** v2r5p3 ***
+- Alarm limits on the Tracker (and in particular on Hiro's quantities) updated.
+	+ The spikes_and_holes algorithm on the GTFE occupancy is not allowed
+	to produce errors anymore (only warnings).
+
+
 *** v2r5p2 ***
 - Lower limits on the source event rate (merit eor) set to zero, as we were
 having alarms occasionally firing.
