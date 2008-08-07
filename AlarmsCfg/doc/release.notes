@@ -5,26 +5,26 @@
 	+ Alarms on tower hit and trigger efficiency re-enabled. Lower limits
 	are 0.98 and 0.90 respectively. An error is issued upon limit
 	violations.
-* Relevnt jira(s): GDQMQ-227
+* Relevant jira(s): GDQMQ-227
 
 
 *** v2r5p2 ***
 - Lower limits on the source event rate (merit eor) set to zero, as we were
 having alarms occasionally firing.
-* Relevat jira(s): GDQMQ-235
+* Relevant jira(s): GDQMQ-235
 
 
 *** v2r5p1 ***
 - Alarms on the quantity ReconAcdPhaMips_PMT*_TH1_AcdTile_* in recon eor
 removed as the corresponding plots are undergoing a revision and redefinition
 process after some changes in GR.
-* Relevat jira(s): GDQMQ-228
+* Relevant jira(s): GDQMQ-228
 
 
 *** v2r5p0 ***
 - Exception in fastmon eor on the noisy strip of tower 3 (which has been
 masked) removed.
-* Relevat jira(s): GDQMQ-225
+* Relevant jira(s): GDQMQ-225
 
 
 *** v2r4p2 ***
