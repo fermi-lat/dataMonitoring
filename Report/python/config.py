@@ -21,10 +21,10 @@ reportDuration = {
 }
 
 reportOutType = {
-    'daily' : 'Report-24h',
+    'daily' : 'SummaryReport/Report-24h',
     #'weekly' : 'Report-168h',
-    'weekly' : 'Report-72h',
-    'telemetry' : 'Telemetry-Report',
+    'weekly' : 'SummaryReport/Report-72h',
+    'telemetry' : 'TelemetryReport/Report-24h',
 }
 
 reportFileTypes = {
@@ -50,7 +50,7 @@ ReportInstallDir = os.path.join(ReportMainDir,'python')
 reportXml = os.path.join(ReportMainDir, 'xml')
 
 dataCatBase = '/SRep/'
-reportOutBase = '/nfs/slac/g/glast/ground/links/Documentation/SummaryReport' 
+reportOutBase = '/nfs/slac/g/glast/ground/links/Documentation' 
 reportTempBase = '/afs/slac.stanford.edu/g/glast/ground/PipelineStaging6'
 
 # Used to distinguish our variable names from the hoi polloi
