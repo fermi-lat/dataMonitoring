@@ -1,3 +1,9 @@
+*** v2r5p0 ***
+- Exception in fastmon eor on the noisy strip of tower 3 (which has been
+masked) removed.
+* Relevat jira(s): GDQMQ-225
+
+
 *** v2r4p2 ***
 - Limits adjusted for digi trending. Relevant variables: Rate_AcdGemCNO_GARC,
 Mean_TkrTotalHitsPerEvt, OutF_NormalizedTkrTriggerWithLessThan6Layers_Tower,
