@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <report title="GLAST-LAT Summary Report">
-  
+<!--  
   <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
     <panel name="EnvPanel2" enabled="True"/>
@@ -57,15 +57,15 @@
     <panel name="EnvPanel1" enabled="True"/>
     <panel name="CalLoUnbPanel" enabled="True"/>
   </page>
-
+-->
   <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
     <panel name="CalHiUnbPanel" enabled="True"/>
   </page>
-
+<!--
   <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
     <panel name="tempPanel" enabled="True"/>
   </page>
-
+-->
 </report>

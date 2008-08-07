@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 
 <report title="GLAST-LAT Telemetry Trending report">
-  
+
   <page enabled="True">
     <panel name="TelemCPUPage1" enabled="True"/>
   </page>
