@@ -1,5 +1,10 @@
+*** v3r0p1 ***
+- Changed the upper limits on the significances of the empty bins in the
+FastMon eor.
+
+
 *** v3r0p0 ***
-- Configuration files for the alarms on teh CAL and ACD calibration quantities
+- Configuration files for the alarms on the CAL and ACD calibration quantities
 added.
 * Relevant jira(s): GDQMQ-216
 
