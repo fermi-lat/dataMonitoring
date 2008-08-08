@@ -58,7 +58,11 @@ class pReportPlot:
                 color = re.search('(?<=color=").*(?=">)', piece).group()
                 if re.search('_',piece): 
                     piece = piece.replace('_','\\_')
-                latexCaption += piece.replace(tag, '\\textcolor{%s}{' % color)
+                if re.search('#',color):
+                    color = self.getLaTeXColor(color)
+                    latexCaption += piece.replace(tag, '\\textcolor[rgb]{%s}{' % color)
+                else:
+                    latexCaption += piece.replace(tag, '\\textcolor{%s}{' % color)
                 latexCaption += '}'
         return latexCaption
  
@@ -67,6 +71,16 @@ class pReportPlot:
     
     def getRightLaTeXCaption(self):
         return self.getLaTeXCaption(self.RightCaption)
+    
+    def getLaTeXColor(self,color):
+        color = color.strip('#')
+        cList = list(color) 
+        r = (16*int(cList[0],16)+int(cList[1],16))/255.
+        g = (16*int(cList[2],16)+int(cList[3],16))/255.
+        b = (16*int(cList[4],16)+int(cList[5],16))/255.
+        laTeX = '%s,%s,%s' % (r,g,b)
+        return laTeX
+
     
     def getTextSummary(self):
         summary = 'Plot summary\n'
