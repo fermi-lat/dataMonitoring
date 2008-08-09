@@ -1,3 +1,10 @@
+*** v3r0p3 ***
+- Lower error limits on Mean_ToT_con0_Trunc_1_249_TowerPlane (digi trend)
+changed from 15 to 1 in such a way that an error is reported only if a
+controller is dead (and not in case of noisy strips).
+High error limits moved to 150.
+
+
 *** v3r0p2 ***
 - Upper warning limit on Rate_NTkrHits_TowerPlane moved from 2.2 to 2.5 in
 digi trend.
