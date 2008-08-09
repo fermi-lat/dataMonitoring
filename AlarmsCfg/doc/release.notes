@@ -1,3 +1,8 @@
+*** v3r4p0 ***
+- num_sigma set to zero for all the alarms on calhist; This takes care, for the
+moment, of the wrong error bars on the plots.
+
+
 *** v3r0p3 ***
 - Lower error limits on Mean_ToT_con0_Trunc_1_249_TowerPlane (digi trend)
 changed from 15 to 1 in such a way that an error is reported only if a
