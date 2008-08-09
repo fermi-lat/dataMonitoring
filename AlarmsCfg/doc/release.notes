@@ -1,3 +1,7 @@
+*** v3r4p1 ***
+- Added a few alarms on the ACD pedestals.
+
+
 *** v3r4p0 ***
 - num_sigma set to zero for all the alarms on calhist; This takes care, for the
 moment, of the wrong error bars on the plots.
