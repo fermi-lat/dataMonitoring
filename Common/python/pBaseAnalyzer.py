@@ -12,11 +12,12 @@ from pAlarmBaseAlgorithm import pAlarmBaseAlgorithm
 
 
 HISTOGRAM_GROUPS = ['Mean', 'RMS', 'ChiSquare', 'DOF', 'ReducedChiSquare',
-                    'FitProb', 'MeanDist', 'RMSDist', 'ReducedChiSquareDist']
+                    'FitProb']
 GAUSSIAN = ROOT.TF1('gaussian', 'gaus')
 HYPER_GAUSSIAN_FORMULA = '%s*[0]*exp(-(abs( (x-[1])/[2] )**[3])/2)' %\
                          (1.0/math.sqrt(2*math.pi))
 HYPER_GAUSSIAN = ROOT.TF1('hyper_gaussian', HYPER_GAUSSIAN_FORMULA)
+
 
 
 class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
@@ -31,7 +32,6 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
         self.HistogramsDict = {}
         if self.__class__.__name__ != 'pBaseAnalyzer':
             self.createHistograms()
-        self.ExcludeMaximum = False
 
     def getAnalysisType(self):
         return self.__class__.__name__.replace('Analyzer', '')[1:]
@@ -55,9 +55,8 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
         else:
             return 1.0
 
-    def getNewHistogram(self, name, numBins, xmin, xmax,\
-                            xlabel = None, ylabel = None):
-        histogram = ROOT.TH1F(name, name, numBins, xmin - 0.5, xmax - 0.5)
+    def getNewHistogram(self, name, numBins, xlabel = None, ylabel = None):
+        histogram = ROOT.TH1F(name, name, numBins, -0.5, numBins - 0.5)
         if xlabel is not None:
             histogram.GetXaxis().SetTitle(xlabel)
         if ylabel is not None:
@@ -70,22 +69,14 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
     def getHistogram(self, group, subgroup):
         return self.HistogramsDict[self.getHistogramName(group, subgroup)]
 
-    def fillHistogram(self, name, channel, value = None, error = 0.0):
-        if value is not None:
-            self.HistogramsDict[name].Fill(channel, value)
-            self.HistogramsDict[name].SetBinError(channel, error)
-        else:
-            self.HistogramsDict[name].Fill(channel)
+    def fillHistogram(self, name, channel, value):
+        self.HistogramsDict[name].Fill(channel, value)
 
     def fillHistograms(self, subgroup, channel):
         self.fillHistogram(self.getHistogramName('Mean', subgroup),\
-                           channel, self.Mean, self.MeanError)
-        self.fillHistogram(self.getHistogramName('MeanDist', subgroup),\
-                           self.Mean)
+                           channel, self.Mean)
         self.fillHistogram(self.getHistogramName('RMS', subgroup),\
-                           channel, self.RMS, self.RMSError)
-        self.fillHistogram(self.getHistogramName('RMSDist', subgroup),\
-                           self.RMS)
+                           channel, self.RMS)
         self.fillHistogram(self.getHistogramName('ChiSquare', subgroup),\
                            channel, self.ChiSquare)
         self.fillHistogram(self.getHistogramName('DOF', subgroup),\
@@ -93,9 +84,6 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
         self.fillHistogram(self.getHistogramName('ReducedChiSquare',\
                                                  subgroup),\
                            channel, self.ReducedChiSquare)
-        self.fillHistogram(self.getHistogramName('ReducedChiSquareDist',\
-                                                     subgroup),\
-                               self.ReducedChiSquare)
         self.fillHistogram(self.getHistogramName('FitProb', subgroup),\
                            channel, self.FitProb)
 
@@ -105,9 +93,7 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
             sys.exit('Could not find %s. Abort.' % channelName)
         if self.RootObject.GetEntries() == 0:
             self.Mean = -1
-            self.MeanError = 0
             self.RMS = -1
-            self.RMSError = 0
             self.ChiSquare = -1
             self.DOF = -1
             self.ReducedChiSquare = -1
@@ -116,10 +102,6 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
             return
         if self.RebinningFactor > 1:
             self.RootObject.Rebin(self.RebinningFactor)
-        if self.ExcludeMaximum:
-            maxBin = self.RootObject.GetMaximumBin()
-            maxValue = self.RootObject.GetBinContent(maxBin)
-            self.RootObject.SetBinError(maxBin, maxValue)
         self.Mean = self.RootObject.GetMean()
         self.RMS = self.RootObject.GetRMS()
         self.RootObject.GetXaxis().SetRangeUser(self.Mean - 10*self.RMS,
@@ -144,15 +126,13 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
             print 'Inititial par values: [%.4e, %.4e, %.4e]' %\
                   (normalization, self.Mean, self.RMS)
         for i in range(self.NumFitIterations):
-            self.ParamsDict['min'] = self.Mean - self.FitRangeLeft*self.RMS
-            self.ParamsDict['max'] = self.Mean + self.FitRangeRight*self.RMS
+            self.ParamsDict['min'] = self.Mean - self.FitRangeWidth*self.RMS
+            self.ParamsDict['max'] = self.Mean + self.FitRangeWidth*self.RMS
             if self.Debug:
                 print 'Fitting in [%.4f, %.4f]' %\
                       (self.ParamsDict['min'], self.ParamsDict['max'])
             fitParameters = self.getFitParameters(self.FitFunction, 'QN')
             (self.Mean, self.RMS) = fitParameters[1:3]
-            self.MeanError = self.FitFunction.GetParError(1)
-            self.RMSError = self.FitFunction.GetParError(2)
         self.RMS *= self.getRmsCorrectionFactor()
         self.ChiSquare = self.FitFunction.GetChisquare()
         self.DOF = self.FitFunction.GetNDF()
@@ -168,8 +148,8 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
             self.FitFunction.Draw('same')
             ROOT.gPad.Update()
             print 'Fit parameters    : %s' % ['%.4e'%p for p in fitParameters]
-            print 'Mean              : %s +- %s' % (self.Mean, self.MeanError)
-            print 'RMS               : %s +- %s' % (self.RMS, self.RMSError)
+            print 'Mean              : %s' % self.Mean
+            print 'RMS               : %s' % self.RMS
             print 'Reduced Chi Square: %s/%s = %s' %\
                   (self.ChiSquare, self.DOF, self.ReducedChiSquare)
             print '*************************************************'
@@ -188,15 +168,10 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
         logger.info('Done.')
 
     def drawHistograms(self):
-        ROOT.gStyle.SetOptStat(111111)
         self.CanvasesDict = {}
         for group in HISTOGRAM_GROUPS:
-            if len(self.HISTOGRAM_SUB_GROUPS) == 2:
-                canvas = ROOT.TCanvas(group, group, 1000, 350)
-                canvas.Divide(2, 1)
-            else:
-                canvas = ROOT.TCanvas(group, group, 1000, 700)
-                canvas.Divide(2, 2)
+            canvas = ROOT.TCanvas(group, group)
+            canvas.Divide(2, 2)
             self.CanvasesDict[group] = canvas
             i = 1
             for subgroup in self.HISTOGRAM_SUB_GROUPS:
