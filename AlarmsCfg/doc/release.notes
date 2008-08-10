@@ -1,3 +1,9 @@
+*** v3r4p3 ***
+- Alarm limits on the calhist monitoring products made wider so that they do
+not cause spurious alarms in the tuning phase.
+- Alarms on the ACD asymmetries added.
+
+
 *** v3r4p2 ***
 - Bins not corresponding to unphysical ACD tiles removed from the alarms (uses
 a new ad-hoc feature of the y_values alarm algorithm).
