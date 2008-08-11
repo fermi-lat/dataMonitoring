@@ -55,6 +55,15 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       </object>
 
 
+<!--  TO BE COMPLETED
+        <object>
+      <name> AcdPedestalDev_PmtA_LowPMTRange_AcdTile[128] </name>
+      <formula><![CDATA[foreachacdtile: AcdPha_PmtIdPmtRangeAcdTile[0][0][acdtile] - RFun::acdped(NUMBERS)]]></formula>
+      <cut><![CDATA[condsummary==32 && (!ZeroSuppress) ]]></cut>
+      <type> truncatedmeanboundandfracbigdataequaln[-10000,10000,0.96]  </type>
+      <description> TO BEDONE </description>
+    </object>
+-->
 
      <object>
 	<name> AcdVetoA_AcdTile[128]  </name>
@@ -257,7 +266,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[Mean_AcdPedestal_PmtA_LowPMTRange_AcdTile]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
+	<type> histogram-vecdim-1d[128,-0.5,127.5,0,1] </type>
 	<titledesc> Pedestal mean vs GEM tile number for PMTA range LOW </titledesc>
 	<axisdesc> [Gem tile number, Ped Mean (ADC counts)] </axisdesc>
 	<description> Pedestal mean (ADC counts) vs GEM tile number for PMTA range LOW. Only Periodic triggers with non-zerosuppress are considered.  </description>
@@ -269,7 +278,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[foreachacdtile: Mean_AcdPedestal_PmtA_LowPMTRange_AcdTile_err[acdtile]*TMath::Sqrt(Mean_AcdPedestal_PmtA_LowPMTRange_AcdTile_n[acdtile])]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
+	<type> histogram-vecdim-1d[128,-0.5,127.5,0,1] </type>
 	<titledesc> Pedestal RMS vs GEM tile number for PMTA range LOW </titledesc>
 	<axisdesc> [Gem tile number, Ped RMS (ADC counts)] </axisdesc>
 	<description> Pedestal RMS (ADC counts) vs GEM tile number for PMTA range LOW. Only Periodic triggers with non-zerosuppress are considered.  </description>
@@ -281,7 +290,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[Mean_AcdPedestal_PmtB_LowPMTRange_AcdTile]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
+	<type> histogram-vecdim-1d[128,-0.5,127.5,0,1] </type>
 	<titledesc> Pedestal mean vs GEM tile number for PMTB range LOW </titledesc>
 	<axisdesc> [Gem tile number, Ped Mean (ADC counts)] </axisdesc>
 	<description> Pedestal mean (ADC counts) vs GEM tile number for PMTB range LOW. Only Periodic triggers with non-zerosuppress are considered.  </description>
@@ -292,7 +301,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[foreachacdtile: Mean_AcdPedestal_PmtB_LowPMTRange_AcdTile_err[acdtile]*TMath::Sqrt(Mean_AcdPedestal_PmtB_LowPMTRange_AcdTile_n[acdtile])]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
+	<type> histogram-vecdim-1d[128,-0.5,127.5,0,1] </type>
 	<titledesc> Pedestal RMS vs GEM tile number for PMTB range LOW </titledesc>
 	<axisdesc> [Gem tile number, Ped RMS (ADC counts)] </axisdesc>
 	<description> Pedestal RMS (ADC counts) vs GEM tile number for PMTB range LOW. Only Periodic triggers with non-zerosuppress are considered.  </description>
@@ -304,7 +313,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       <formula><![CDATA[ foreachacdtile: Counter_AnyAcdPmt_OverThreshold_AcdTile[acdtile] > 0 ? (double(Counter_AcdPmtA_OverThreshold_AcdTile[acdtile])-double(Counter_AcdPmtB_OverThreshold_AcdTile[acdtile]))/double(Counter_AnyAcdPmt_OverThreshold_AcdTile[acdtile]) : 2.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
-      <type> histogram-vecdim-1d[128,-0.5,127.5,2] </type>
+      <type> histogram-vecdim-1d[128,-0.5,127.5,2,1] </type>
       <titledesc> A-B PMT over threshold asymmetry   </titledesc>
       <axisdesc> [Tile number, A-B asymmetry] </axisdesc>
       <description> A-B PMT over threshold asymmetry. The asymmetry is defined as A-B/(A OR B). </description>
@@ -317,7 +326,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       <formula><![CDATA[ foreachacdtile: Counter_AnyAcdVeto_AcdTile[acdtile] > 0 ? (double(Counter_AcdVetoA_AcdTile[acdtile])-double(Counter_AcdVetoB_AcdTile[acdtile]))/double(Counter_AnyAcdVeto_AcdTile[acdtile]) : 2.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
-      <type> histogram-vecdim-1d[128,-0.5,127.5,2] </type>
+      <type> histogram-vecdim-1d[128,-0.5,127.5,2,1] </type>
       <titledesc> A-B PMT Veto asymmetry   </titledesc>
       <axisdesc> [Tile number, A-B asymmetry] </axisdesc>
       <description> A-B PMT veto asymmetry. The asymmetry is defined as A-B/(A OR B). </description>
@@ -346,7 +355,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[Mean_CalXAdc_LEX8_TowerCalLayerCalColumnF]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1] </type>
+	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1, 1] </type>
 	<titledesc> Pedestal mean vs channel number for range LEX8 </titledesc>
 	<axisdesc> [Channel number, Ped Mean (ADC counts)] </axisdesc>
 	<description> Pedestal mean (ADC counts) vs channel number (=tower*8*12*2+layer*12*2+column*2+face) for range LEX8. Only Periodic triggers with 4 range readout and non-zerosuppress are considered.  </description>
@@ -357,7 +366,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: Mean_CalXAdc_LEX8_TowerCalLayerCalColumnF_err[tower][callayer][calcolumn][calxface]*TMath::Sqrt(Mean_CalXAdc_LEX8_TowerCalLayerCalColumnF_n[tower][callayer][calcolumn][calxface])]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1] </type>
+	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1, 1] </type>
 	<titledesc> Pedestal RMS vs channel number for range LEX8 </titledesc>
 	<axisdesc> [Channel number, Ped RMS (ADC counts)] </axisdesc>
 	<description> Pedestal RMS (ADC counts) vs channel number (=tower*8*12*2+layer*12*2+column*2+face) for range LEX8. Only Periodic triggers with 4 range readout and non-zerosuppress are considered. </description>
@@ -368,7 +377,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[Mean_CalXAdc_LEX1_TowerCalLayerCalColumnF]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1] </type>
+	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1, 1] </type>
 	<titledesc> Pedestal mean vs channel number for range LEX1 </titledesc>
 	<axisdesc> [Channel number, Ped Mean (ADC counts)] </axisdesc>
 	<description> Pedestal mean (ADC counts) vs channel number (=tower*8*12*2+layer*12*2+column*2+face) for range LEX1. Only Periodic triggers with 4 range readout and non-zerosuppress are considered.  </description>
@@ -379,7 +388,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: Mean_CalXAdc_LEX1_TowerCalLayerCalColumnF_err[tower][callayer][calcolumn][calxface]*TMath::Sqrt(Mean_CalXAdc_LEX1_TowerCalLayerCalColumnF_n[tower][callayer][calcolumn][calxface])]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1] </type>
+	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1, 1] </type>
 	<titledesc> Pedestal RMS vs channel number for range LEX1 </titledesc>
 	<axisdesc> [Channel number, Ped RMS (ADC counts)] </axisdesc>
 	<description> Pedestal RMS (ADC counts) vs channel number (=tower*8*12*2+layer*12*2+column*2+face) for range LEX1. Only Periodic triggers with 4 range readout and non-zerosuppress are considered. </description>
@@ -391,7 +400,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[Mean_CalXAdc_HEX8_TowerCalLayerCalColumnF]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1] </type>
+	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1, 1] </type>
 	<titledesc> Pedestal mean vs channel number for range HEX8 </titledesc>
 	<axisdesc> [Channel number, Ped Mean (ADC counts)] </axisdesc>
 	<description> Pedestal mean (ADC counts) vs channel number (=tower*8*12*2+layer*12*2+column*2+face) for range HEX8. Only Periodic triggers with 4 range readout and non-zerosuppress are considered.  </description>
@@ -402,7 +411,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: Mean_CalXAdc_HEX8_TowerCalLayerCalColumnF_err[tower][callayer][calcolumn][calxface]*TMath::Sqrt(Mean_CalXAdc_HEX8_TowerCalLayerCalColumnF_n[tower][callayer][calcolumn][calxface])]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1] </type>
+	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1, 1] </type>
 	<titledesc> Pedestal RMS vs channel number for range HEX8 </titledesc>
 	<axisdesc> [Channel number, Ped RMS (ADC counts)] </axisdesc>
 	<description> Pedestal RMS (ADC counts) vs channel number (=tower*8*12*2+layer*12*2+column*2+face) for range HEX8. Only Periodic triggers with 4 range readout and non-zerosuppress are considered. </description>
@@ -413,7 +422,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[Mean_CalXAdc_HEX1_TowerCalLayerCalColumnF]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1] </type>
+	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1, 1] </type>
 	<titledesc> Pedestal mean vs channel number for range HEX1 </titledesc>
 	<axisdesc> [Channel number, Ped Mean (ADC counts)] </axisdesc>
 	<description> Pedestal mean (ADC counts) vs channel number (=tower*8*12*2+layer*12*2+column*2+face) for range HEX1. Only Periodic triggers with 4 range readout and non-zerosuppress are considered.  </description>
@@ -424,7 +433,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: Mean_CalXAdc_HEX1_TowerCalLayerCalColumnF_err[tower][callayer][calcolumn][calxface]*TMath::Sqrt(Mean_CalXAdc_HEX1_TowerCalLayerCalColumnF_n[tower][callayer][calcolumn][calxface])]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1] </type>
+	<type> histogram-vecdim-1d[3072,-0.5,3071.5,-1, 1] </type>
 	<titledesc> Pedestal RMS vs channel number for range HEX1 </titledesc>
 	<axisdesc> [Channel number, Ped RMS (ADC counts)] </axisdesc>
 	<description> Pedestal RMS (ADC counts) vs channel number (=tower*8*12*2+layer*12*2+column*2+face) for range HEX1. Only Periodic triggers with 4 range readout and non-zerosuppress are considered. </description>
@@ -439,7 +448,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ Mean_CalXPedDev_TowerCalLayerCalColumnFR ]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[12288,-0.5,12287.5,-1] </type>
+	<type> histogram-vecdim-1d[12288,-0.5,12287.5,-1, 1] </type>
 	<titledesc> Pedestal Deviations Mean vs channel number </titledesc>
 	<axisdesc> [Channel number, Ped Deviation Mean (ADC counts)] </axisdesc>
 	<description> Mean pedestal deviations, versus channel number (=tower*8*12*2*4+layer*12*2*4+column*2*4+face*4+range), between the measured pedestals and the ones retrieved from the data base. The mean is computed removing (truncating) 10 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 80 percent central values. Only periodic triggers with 4 range readout and non-zerosuppress events are being used. </description>
@@ -450,7 +459,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: foreachcalxrange: Mean_CalXPedDev_TowerCalLayerCalColumnFR_err[tower][callayer][calcolumn][calxface][calxrange]*TMath::Sqrt(Mean_CalXPedDev_TowerCalLayerCalColumnFR_n[tower][callayer][calcolumn][calxface][calxrange])]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[12288,-0.5,12287.5,-1] </type>
+	<type> histogram-vecdim-1d[12288,-0.5,12287.5,-1, 1] </type>
 	<titledesc> Pedestal Deviations RMS vs channel number </titledesc>
 	<axisdesc> [Channel number, Ped Deviation RMS (ADC counts)] </axisdesc>
 	<description> RMS in the distribution of the pedestal deviations, versus channel number (=tower*8*12*2*4+layer*12*2*4+column*2*4+face*4+range), between the measured pedestals and the ones retrieved from the data base. The RMS is computed removing (truncating) 10 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 80 percent central values. Only periodic triggers with 4 range readout and non-zerosuppress events are being used. </description>
@@ -462,7 +471,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ Mean_RPM_TowerCalLayerCalColumn ]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[1536,-0.5,1535.5,-1] </type>
+	<type> histogram-vecdim-1d[1536,-0.5,1535.5,-1, 1] </type>
 	<titledesc> Mean of relative gain LEX1(plus face) / LEX1(minus face)  vs channel number </titledesc>
 	<axisdesc> [Channel number, Mean of PM ratio] </axisdesc>
 	<description> Mean of ratio LEX1(plus face) / LEX1(minus face) = P/M versus channel number (=tower*8*12+layer*12+column). This ratio is expected to be close to 1. Pedestals (extracted from data base) are subtracted before computing the ratio. For each channel, the mean is computed excluding the tails up to a fraction of 0.1 on each side in order to remove outliers; that is with the 80 percent of central values. Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required.  </description>
@@ -473,7 +482,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: Mean_RPM_TowerCalLayerCalColumn_err[tower][callayer][calcolumn]*TMath::Sqrt(Mean_RPM_TowerCalLayerCalColumn_n[tower][callayer][calcolumn])]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[1536,-0.5,1535.5,-1]  </type>
+	<type> histogram-vecdim-1d[1536,-0.5,1535.5,-1, 1]  </type>
 	<titledesc> RMS of relative gain LEX1(plus face) / LEX1(minus face)  vs channel number </titledesc>
 	<axisdesc> [Channel number, RMS of PM ratio] </axisdesc>
 	<description> RMS of ratio LEX1(plus face) / LEX1(minus face) = P/M versus channel number (=tower*8*12+layer*12+column). Pedestals (extracted from data base) are subtracted before computing the ratio. For each channel, the RMS is computed excluding the tails up to a fraction of 0.1 on each side in order to remove outliers; that is with the 80 percent of central values. Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required.  </description>
@@ -488,7 +497,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ Mean_RPp_TowerCalLayerCalColumn ]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[1536,-0.5,1535.5,-1] </type>
+	<type> histogram-vecdim-1d[1536,-0.5,1535.5,-1, 1] </type>
 	<titledesc> Mean of relative gain LEX1(plus face) / HEX8(plus face)  vs channel number </titledesc>
 	<axisdesc> [Channel number, Mean of Pp ratio] </axisdesc>
 	<description> Mean of ratio LEX1(plus face) / HEX8(plus face) = P/p versus channel number (=tower*8*12+layer*12+column). This ratio is expected to be close to 6 (for flight gains). Pedestals (extracted from data base) are subtracted before computing the ratio. For each channel, the mean is computed excluding the tails up to a fraction of 0.1 on each side in order to remove outliers; that is with the 80 percent of central values. Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required.  </description>
@@ -499,7 +508,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: Mean_RPp_TowerCalLayerCalColumn_err[tower][callayer][calcolumn]*TMath::Sqrt(Mean_RPp_TowerCalLayerCalColumn_n[tower][callayer][calcolumn])]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[1536,-0.5,1535.5,-1]  </type>
+	<type> histogram-vecdim-1d[1536,-0.5,1535.5,-1, 1]  </type>
 	<titledesc> RMS of relative gain LEX1(plus face) / HEX8(plus face)   vs channel number </titledesc>
 	<axisdesc> [Channel number, RMS of Pp ratio] </axisdesc>
 	<description> RMS of ratio LEX1(plus face) / HEX8(plus face)  = P/p versus channel number (=tower*8*12+layer*12+column). Pedestals (extracted from data base) are subtracted before computing the ratio. For each channel, the RMS is computed excluding the tails up to a fraction of 0.1 on each side in order to remove outliers; that is with the 80 percent of central values. Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required.  </description>
@@ -512,7 +521,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ Mean_RMm_TowerCalLayerCalColumn ]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[1536,-0.5,1535.5,-1] </type>
+	<type> histogram-vecdim-1d[1536,-0.5,1535.5,-1, 1] </type>
 	<titledesc> Mean of relative gain LEX1(minus face) / HEX8(minus face)  vs channel number </titledesc>
 	<axisdesc> [Channel number, Mean of Mm ratio] </axisdesc>
 	<description> Mean of ratio LEX1(minus face) / HEX8(minus face) = M/m versus channel number (=tower*8*12+layer*12+column). This ratio is expected to be close to 6 (for flight gains). Pedestals (extracted from data base) are subtracted before computing the ratio. For each channel, the mean is computed excluding the tails up to a fraction of 0.1 on each side in order to remove outliers; that is with the 80 percent of central values. Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required.  </description>
@@ -523,7 +532,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: Mean_RMm_TowerCalLayerCalColumn_err[tower][callayer][calcolumn]*TMath::Sqrt(Mean_RMm_TowerCalLayerCalColumn_n[tower][callayer][calcolumn])]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[1536,-0.5,1535.5,-1]  </type>
+	<type> histogram-vecdim-1d[1536,-0.5,1535.5,-1, 1]  </type>
 	<titledesc> RMS of relative gain LEX1(minus face) / HEX8(minus face)   vs channel number </titledesc>
 	<axisdesc> [Channel number, RMS of Mm ratio] </axisdesc>
 	<description> RMS of ratio LEX1(minus face) / HEX8(minus face)  = M/m versus channel number (=tower*8*12+layer*12+column). Pedestals (extracted from data base) are subtracted before computing the ratio. For each channel, the RMS is computed excluding the tails up to a fraction of 0.1 on each side in order to remove outliers; that is with the 80 percent of central values. Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required.  </description>
