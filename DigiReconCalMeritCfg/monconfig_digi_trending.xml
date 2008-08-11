@@ -1492,7 +1492,7 @@
       <object>
       <name> AllEvts_FswHIP </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FswFilters[1]>0]]></cut>
+      <cut><![CDATA[ FswFilters[2]>0]]></cut>
       <type> counter </type>
       <description> Counter for evts passing the Flight Software HIP filter (in the specified time bin). It will be used to normalize quantities. </description>
     </object>
@@ -1500,7 +1500,7 @@
       <object>
       <name> AllEvts_GleamHIP </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ OBFStatus[1]>0]]></cut>
+      <cut><![CDATA[ OBFStatus[2]>0]]></cut>
       <type> counter </type>
       <description> Counter for evts passing the Gleam HIP filter (in the specified time bin). It will be used to normalize quantities. </description>
     </object>
