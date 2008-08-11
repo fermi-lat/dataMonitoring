@@ -40,9 +40,9 @@
     
        <object>
       <name> ReconAcdPhaMips_PMTA_TH1_AcdTile[128] </name>
-      <formula><![CDATA[foreachacdtile: (AcdVetoA_AcdTile[acdtile] >0) ? TMath::Log10(AcdPhaMips_PmtA_AcdTile[acdtile]) : -1 ]]></formula>
+      <formula><![CDATA[foreachacdtile: (AcdVetoA_AcdTile[acdtile] >0) ? TMath::Log10(AcdPhaMips_PmtA_AcdTile[acdtile]) : -3 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
-      <type> histogram-1d[502,-2.01,3.01,-1] </type>
+      <type> histogram-1d[502,-2.01,3.01,-3] </type>
       <titledesc>  Mip values for PMT A for acd tile </titledesc>
       <axisdesc> [log10(Mip value), N] </axisdesc>
       <description> Distribution of log10(Mip values) for PMT A from the acd tile index in the name suffix (range [0,127]). Only events with Veto from PMT A from this tile are considered.  </description>
@@ -51,9 +51,9 @@
 
       <object>
       <name> ReconAcdPhaMips_PMTB_TH1_AcdTile[128] </name>
-      <formula><![CDATA[foreachacdtile: (AcdVetoB_AcdTile[acdtile] >0) ? TMath::Log10(AcdPhaMips_PmtB_AcdTile[acdtile]) : -1 ]]></formula>
+      <formula><![CDATA[foreachacdtile: (AcdVetoB_AcdTile[acdtile] >0) ? TMath::Log10(AcdPhaMips_PmtB_AcdTile[acdtile]) : -3 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
-      <type> histogram-1d[502,-2.01,3.01,-1] </type>
+      <type> histogram-1d[502,-2.01,3.01,-3] </type>
       <titledesc>  Mip values for PMT B for acd tile </titledesc>
       <axisdesc> [log10(Mip value), N] </axisdesc>
       <description> Distribution of log10(Mip values) for PMT B from the acd tile index in the name suffix. Only events with Veto from PMT B from this tile are considered.  </description>
@@ -62,9 +62,9 @@
 
       <object>
       <name> ReconAcdPhaMipsCorrectedAngle_PMTA_TH1_AcdTile[128] </name>
-      <formula><![CDATA[foreachacdtile: (AcdVetoA_AcdTile[acdtile] >0)? TMath::Log10(AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0][acdtile]) : -1 ]]></formula>
+      <formula><![CDATA[foreachacdtile: (AcdVetoA_AcdTile[acdtile] >0)? TMath::Log10(AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0][acdtile]) : -3 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
-      <type> histogram-1d[502,-2.01,3.01,-1] </type>
+      <type> histogram-1d[502,-2.01,3.01,-3] </type>
       <titledesc>  Angle corrected Mip values for PMT A for extrapolated acd tile </titledesc>
       <axisdesc> [log10(Mip value), N] </axisdesc>
       <description> Distribution of log10(Mip values) corrected for incoming angle for PMT A from the extrapolated acd tile index in the name suffix (range [0,127]). Only events with Veto from PMT A from this tile are considered.  </description>
@@ -73,9 +73,9 @@
 
        <object>
       <name> ReconAcdPhaMipsCorrectedAngle_PMTB_TH1_AcdTile[128] </name>
-      <formula><![CDATA[foreachacdtile: (AcdVetoB_AcdTile[acdtile] >0)? TMath::Log10(AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1][acdtile]) : -1 ]]></formula>
+      <formula><![CDATA[foreachacdtile: (AcdVetoB_AcdTile[acdtile] >0)? TMath::Log10(AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1][acdtile]) : -3 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
-      <type> histogram-1d[502,-2.01,3.01,-1] </type>
+      <type> histogram-1d[502,-2.01,3.01,-3] </type>
       <titledesc>  Angle corrected Mip values for PMT B for extrapolated acd tile </titledesc>
       <axisdesc> [log10(Mip value), N] </axisdesc>
       <description> Distribution of log10(Mip values) corrected for incoming angle for PMT B from the extrapolated acd tile index in the name suffix (range [0,127]).  Only events with Veto from PMT B from this tile are considered.  </description>
