@@ -1,3 +1,8 @@
+*** v3r4p4 ***
+- Number of sigma for issuing warnings/errors moved from 1 to 2 on all the
+tktTrend alarms, as per Hiro's request.
+
+
 *** v3r4p3 ***
 - Alarm limits on the calhist monitoring products made wider so that they do
 not cause spurious alarms in the tuning phase.
