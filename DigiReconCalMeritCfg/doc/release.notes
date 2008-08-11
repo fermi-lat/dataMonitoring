@@ -1,3 +1,6 @@
+v1r2p11  2008/08/10   (DEV)                                                      ------------------------------
+Add quantities addressed by Jira GDQMQ-241.
+
 v1r2p10  2008/07/20   (DEV)                                                      ------------------------------
 But corrected for quantity Rate_NTkrHits_TowerPlane. 
 This addresses Jira GDQMQ-221
