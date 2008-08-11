@@ -32,14 +32,7 @@ class pAlarmXmlSummaryGenerator(pXmlWriter):
         self.openTag('alarmStatistics', self.AlarmHandler.AlarmStats,\
                      close = True)
         for alarm in self.AlarmHandler.XmlParser.getEnabledAlarms():
-            tagDict = {'name': alarm.getPlotName()}
-            if alarm.FunctionName == 'values':
-                try:
-                    linkArguments = alarm.Algorithm.LinkArguments
-                except:
-                    linkArguments = ''
-                tagDict['link_arguments'] = linkArguments
-            self.openTag('plot', tagDict)
+            self.openTag('plot', {'name': alarm.getPlotName()})
             self.indent()
             self.openTag('alarm', {'function': alarm.FunctionName})
             self.indent()

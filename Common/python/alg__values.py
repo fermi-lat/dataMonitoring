@@ -16,53 +16,29 @@ from pAlarmBaseAlgorithm import MET_OFFSET
 from pGlobals            import MINUS_INFINITY
 
 
-VAR_LABELS_DICT = {
-    'Tower': ['tower'],
-    'TowerPlane': ['tower', 'plane'],
-    'TowerPlaneGTFE': ['tower', 'plane', 'gtfe'],
-    'TowerCalLayer': ['tower', 'layer'],
-    'TowerCalLayerCalColumn': ['tower', 'layer', 'column'],
-    'TowerCalLayerCalColumnR': ['tower', 'layer', 'column', 'face'],
-    'TowerCalLayerCalColumnFR': ['tower', 'layer', 'column', 'face', 'range'],
-    'GARC': ['garc'],
-    'AcdTile': ['tile'],
-    'XYZ': ['xyz'],
-    'ReconNumTracks': ['num. tracks'],
-    'GammaFilterBit': ['filter bit'],
-    'TriggerEngine': ['trg. engine']
-    }
+VAR_LABELS_DICT = {'Tower': ['tower'],
+                   'TowerPlane': ['tower', 'plane'],
+                   'TowerPlaneGTFE': ['tower', 'plane', 'gtfe'],
+                   'TowerCalLayer': ['tower', 'layer'],
+                   'TowerCalLayerCalColumn': ['tower', 'layer', 'column'],
+                   'TowerCalLayerCalColumnR': ['tower', 'layer', 'column',
+                                               'face'],
+                   'TowerCalLayerCalColumnFR': ['tower', 'layer', 'column',
+                                                'face', 'range'],
+                   'GARC': ['garc'],
+                   'AcdTile': ['tile'],
+                   'XYZ': ['xyz'],
+                   'ReconNumTracks': ['num. tracks'],
+                   'GammaFilterBit': ['filter bit'],
+                   'TriggerEngine': ['trg. engine']
+                   }
 
-LINK_LABELS_DICT = {
-    'Tower': ['tower'],
-    'TowerPlane': ['tower', 'plane'],
-    'TowerPlaneGTFE': ['tower', 'plane', 'gtfe'],
-    'TowerCalLayer': ['tower', 'callayer'],
-    'TowerCalLayerCalColumn': ['tower', 'callayer', 'calcolumn'],
-    'TowerCalLayerCalColumnR': ['tower', 'callayer', 'calcolumn', 'calxface'],
-    'TowerCalLayerCalColumnFR': ['tower', 'callayer', 'calcolumn', 'calxface',\
-                                 'range'],
-    'GARC': ['garc'],
-    'AcdTile': ['acdtile'],
-    'XYZ': ['xyz'],
-    'ReconNumTracks': ['reconnumtracks'],
-    'GammaFilterBit': ['gammafilterbit'],
-    'TriggerEngine': ['triggerengine']
-    }
-
-MIN_TRUE_TIME_INTERVAL = 10.0
+MIN_TRUE_TIME_INTERVAL = 5.0
 
 ## @brief Make sure all the entries of a branch are within limits.
 #
 #  The algorithm loops over the entries of the branch and makes sure that
 #  all the values are within the limits.
-#
-#  <b>Valid parameters</b>:
-#
-#  @li <tt>exclude</tt>: a list of indexes of the branch array to be excluded.
-#  <br>
-#  @li <tt>only</tt>: the list of indexes the alarm has to run on.
-#  <br>
-#  @li <tt>num_sigma</tt>: multiplicative factor for the error bars.
 #
 #  <b>Output value</b>:
 #
@@ -83,7 +59,7 @@ MIN_TRUE_TIME_INTERVAL = 10.0
 class alg__values(pAlarmBaseAlgorithm):
 
     SUPPORTED_TYPES      = ['TBranch']
-    SUPPORTED_PARAMETERS = ['exclude', 'only', 'num_sigma']
+    SUPPORTED_PARAMETERS = ['exclude', 'only']
     OUTPUT_LABEL          = 'The worst entry of the branch'
 
     ## @brief Create all the necessary arrays for the loop over the
@@ -121,9 +97,9 @@ class alg__values(pAlarmBaseAlgorithm):
             shape = eval(shape)
             if type(shape) == types.IntType:
                 shape = eval('(%d,)' % shape)
-            self.VariableType = branchName.split('_')[-1].split('[')[0]
+            variableType = branchName.split('_')[-1].split('[')[0]
             try:
-                self.IndexLabels = VAR_LABELS_DICT[self.VariableType]
+                self.IndexLabels = VAR_LABELS_DICT[variableType]
             except KeyError:
                 self.IndexLabels =\
                     ['index %d' % i for (i, dim) in enumerate(shape)]
@@ -186,8 +162,6 @@ class alg__values(pAlarmBaseAlgorithm):
                 self.tuple2Index(detail, self.BranchArray.shape)
 
     def run(self):
-        self.LinkArguments = ''
-        self.NumSigma = self.getParameter('num_sigma', 1.0)
         maxBadness = MINUS_INFINITY
         self.__createArrays()
         self.__setupIndexList()
@@ -201,7 +175,7 @@ class alg__values(pAlarmBaseAlgorithm):
                 for j in self.IndexList:
                     value = valueFlatArray[j]
                     if self.__HasErrors:
-                        error = errorFlatArray[j]*self.NumSigma
+                        error = errorFlatArray[j]
                     else:
                         error = None
                     badness = self.checkStatus(j, value, 'value', error)
@@ -212,20 +186,14 @@ class alg__values(pAlarmBaseAlgorithm):
             else:
                 logger.info('Skipping entry %d (TrueTimeInterval = %f)...' %\
                                 (i, self.TimeIntervalArray[0]))
+        self.Output.setValue(outputValue, outputError, maxBadness)
+        self.getEntry(outputEntry)
         try:
-            self.Output.setValue(outputValue, outputError, maxBadness)
-            self.getEntry(outputEntry)
             label = self.getDetailedLabel(outputIndex, outputValue, 'value',\
                                               outputError)
             label = '%s, badness = %s' % (label,\
                                               pUtils.formatNumber(maxBadness)) 
             self.Output.setDictValue('output_point', label)
-            if self.BranchArray.shape != (1, ):
-                values = self.index2Tuple(outputIndex, self.BranchArray.shape)
-                labels = LINK_LABELS_DICT[self.VariableType]
-                for (i, val) in enumerate(values):
-                    self.LinkArguments += '%s=%s&' % (labels[i], val)
-                self.LinkArguments = self.LinkArguments.strip('&')
         except:
             pass
         self.RootTree.SetBranchStatus('*', 1)
@@ -233,4 +201,32 @@ class alg__values(pAlarmBaseAlgorithm):
             
 
 if __name__ == '__main__':
-    print 'Too difficult to implement a test function, run on a file instead.'
+    from pAlarmLimits import pAlarmLimits
+    limits = pAlarmLimits(-2, 2, -2.5, 2.5)   
+    import array
+    import numpy
+    import random
+    testFilePath = './test.root'
+    testTreeName = 'testTree'
+    timeBranchName = 'TimeStampFirstEvt'
+    testBranchName = 'testBranch'
+    testFile = ROOT.TFile(testFilePath, 'RECREATE')
+    testTree = ROOT.TTree(testTreeName, testTreeName)
+    timeArray = array.array('d', [0.0])
+    testArray = array.array('d', [0.0])
+    testTree.Branch(timeBranchName, timeArray, '%s/D' % timeBranchName)
+    testTree.Branch(testBranchName, testArray, '%s/D' % testBranchName)
+    for i in range(100):
+        timeArray[0] = i
+        testArray[0] = random.gauss(0, 1)
+        testTree.Fill()
+    testFile.Write()
+    testTree.Draw('testBranch:TimeStampFirstEvt', '', '*')
+    testBranch = testTree.GetBranch(testBranchName)
+    pardict = {}
+    algorithm = alg__values(limits, testBranch, pardict)
+    algorithm.apply()
+    print algorithm.Output
+    testFile.Close()
+    import os
+    os.system('rm -f %s' % testFilePath)

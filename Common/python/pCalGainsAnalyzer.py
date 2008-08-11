@@ -7,35 +7,23 @@ from pBaseAnalyzer import *
 class pCalGainsAnalyzer(pBaseAnalyzer):
 
     HISTOGRAM_SUB_GROUPS = ['RPM', 'RPp', 'RMm']
-    REBIN_FACTORS_DICT   = {'RPM': 2  , 'RPp': 10 , 'RMm': 10 }
-    FIT_RANGE_LEFT_DICT  = {'RPM': 3.0, 'RPp': 2.0, 'RMm': 2.0}
-    FIT_RANGE_RIGHT_DICT = {'RPM': 3.0, 'RPp': 1.0, 'RMm': 1.0}
-    FIT_EXPONENT_DICT    = {'RPM': 8.0, 'RPp': 2.0, 'RMm': 2.0}
-    HISTOGRAM_SETTINGS = {
-        'MeanDist'            : (100, 0, 10, 'Ratio mean'),
-        'RMSDist'             : (100, 0, 10  , 'Ratio RMS'),
-        'ReducedChiSquareDist': (100, 0, 15  , 'Reduced chi square'),
-        'Default'             : (1536, 0, 1536, 'Channel number')
-        }
+    REBIN_FACTORS_DICT   = {'RPM': 2  , 'RPp': 1  , 'RMm': 1  }
+    FIT_RANGE_WIDTH_DICT = {'RPM': 3.0, 'RPp': 2.0, 'RMm': 2.0}
+    FIT_EXPONENT_DICT    = {'RPM': 8.0, 'RPp': 3.0, 'RMm': 3.0}
 
     def __init__(self, inputFilePath, outputFilePath, debug):
         pBaseAnalyzer.__init__(self, inputFilePath, outputFilePath, debug)
         self.FitFunction = HYPER_GAUSSIAN
-        self.NumFitIterations = 2
+        self.NumFitIterations = 1
         
     def createHistograms(self):
         for group in HISTOGRAM_GROUPS:
             for subgroup in self.HISTOGRAM_SUB_GROUPS:
-                if group in self.HISTOGRAM_SETTINGS.keys():
-                    key = group
-                else:
-                    key = 'Default'
-                (nBins, xmin, xmax, xlabel) = self.HISTOGRAM_SETTINGS[key]
-                ylabel = '%s (%s)' % (group, subgroup)
                 name = self.getHistogramName(group, subgroup)
-                self.HistogramsDict[name] = self.getNewHistogram(name, nBins,
-                                                                 xmin, xmax,
-                                                                 xlabel, ylabel)
+                xlabel = 'channel number'
+                ylabel = '%s (%s)' % (group, subgroup)
+                self.HistogramsDict[name] =\
+                     self.getNewHistogram(name, 1536, xlabel, ylabel)
 
     def getBaseName(self, subgroup):
         return '%s_TH1_TowerCalLayerCalColumn' % subgroup
@@ -45,13 +33,8 @@ class pCalGainsAnalyzer(pBaseAnalyzer):
 
     def setupFitParameters(self, subgroup):
         self.RebinningFactor = self.REBIN_FACTORS_DICT[subgroup]
-        self.FitRangeRight = self.FIT_RANGE_RIGHT_DICT[subgroup]
-        self.FitRangeLeft = self.FIT_RANGE_LEFT_DICT[subgroup]
+        self.FitRangeWidth = self.FIT_RANGE_WIDTH_DICT[subgroup]
         self.fixFitExponent(self.FIT_EXPONENT_DICT[subgroup])
-        if subgroup == 'RPM':
-            self.ExcludeMaximum = True
-        else:
-            self.ExcludeMaximum = False
 
     def getChannelNumber(self, tower, layer, column):
         return tower*8*12 + layer*12 + column 
