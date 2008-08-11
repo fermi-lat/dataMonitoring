@@ -44,6 +44,8 @@
     <object> CurrentTimeToneMissing </object>
     <object> sourceGps </object>
     <object>EventSizeInBytes</object>
+     <object>FswGAMMAEnergyInLeus</object>
+    
 
     <!-- Acd Variables -->
     
@@ -785,6 +787,28 @@
       <axisdesc> [Trigger Engine, log10(EventSize[Byte])] </axisdesc>
       <description> Distribution of the size of the events (before compression) versus the GEM Trigger Engine.</description>
     </object>
+
+     <object>
+      <name> FswGAMMAEnergyInLeus_TH1 </name>
+      <formula><![CDATA[ TMath::Log10(FswGAMMAEnergyInLeus[0]) ]]></formula>
+      <cut><![CDATA[ FswGAMMAEnergyInLeus[1]>0.5]]></cut>
+      <type>  histogram-1d[800,-2.0,6.0,0.0] </type>
+      <titledesc> Distribution of FswGAMMAEnergyInLeus </titledesc>
+      <axisdesc> [log10(FswGAMMAEnergyInLeus), N] </axisdesc>
+      <description> Log10 of FswGAMMA energy in Leus. Only events with valid energy (getEnergyValid()>0) are used. </description>
+    </object>
+
+
+    <object>
+      <name> FswGAMMAEnergyInLeusValid_TH1 </name>
+      <formula><![CDATA[ FswGAMMAEnergyInLeus[1] ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type>  histogram-1d[4,-1.0,3.0,0.0] </type>
+      <titledesc> Distribution of Validity of FswGAMMAEnergyInLeus </titledesc>
+      <axisdesc> [Validity, N] </axisdesc>
+      <description> Validity FswGAMMA energy in Leus. 0 means not valid, 1 means valid. </description>
+    </object>
+
 
       <!-- ********************  Detector information   *********************** -->
 

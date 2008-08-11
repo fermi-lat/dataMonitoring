@@ -13,6 +13,7 @@
      <object>TriggerEngine </object>
     <object>OBFStatus </object>
     <object>FswFilters</object>
+    <object>FswGamState</object>
 
     <!-- Filter variables -->
     <object>MeritObfGamStatus</object>
@@ -154,7 +155,7 @@
     <object>
       <name> EvtsBeforeCutsWithFswGAMMAFilter </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FswFilters[0]>0 ]]></cut>
+      <cut><![CDATA[ FswGamState==0 ]]></cut>
       <type> rate </type>
       <description> Rate of events before applicaltion of cuts that survive the Flight Software GAMMA filter</description>
     </object>
@@ -219,7 +220,7 @@
      <object>
       <name> TransientEvts </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ (FswFilters[0]>0) && CTBBestEnergyProb>0. && CTBCORE>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) ]]></cut>
+      <cut><![CDATA[ (FswGamState==0) && CTBBestEnergyProb>0. && CTBCORE>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) ]]></cut>
       <type> rate </type>
       <description> Rate of events after application of TRANSIENT gamma cuts from pass5. </description>
     </object>
@@ -227,7 +228,7 @@
       <object>
       <name> TransientEvts_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ (FswFilters[0]>0) && CTBBestEnergyProb>0. && CTBCORE>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1Energy>100 ]]></cut>
+      <cut><![CDATA[ (FswGamState==0) && CTBBestEnergyProb>0. && CTBCORE>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1Energy>100 ]]></cut>
       <type> rate </type>
       <description> Rate of events with FT1Energy above 100 MeV, after application of TRANSIENT gamma cuts from pass5. </description>
     </object>
@@ -235,7 +236,7 @@
       <object>
       <name> DiffuseEvts </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  (FswFilters[0]>0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) ]]></cut>
+      <cut><![CDATA[  (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) ]]></cut>
       <type> rate </type>
       <description> Rate of events after application of DIFFUSE gamma cuts from pass5. </description>
     </object>
@@ -243,7 +244,7 @@
          <object>
       <name> DiffuseEvts_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  (FswFilters[0]>0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1Energy>100]]></cut>
+      <cut><![CDATA[  (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1Energy>100]]></cut>
       <type> rate </type>
       <description> Rate of events with FT1Energy above 100 MeV, after application of DIFFUSE gamma cuts from pass5. </description>
     </object>
@@ -252,7 +253,7 @@
        <object>
       <name> SourceEvts </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  (FswFilters[0]>0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) ]]></cut>
+      <cut><![CDATA[  (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) ]]></cut>
       <type> rate </type>
       <description> Rate of events after application of SOURCE gamma cuts from pass5. </description>
     </object>
@@ -261,7 +262,7 @@
        <object>
       <name> SourceEvts_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  (FswFilters[0]>0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1Energy>100]]></cut>
+      <cut><![CDATA[  (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1Energy>100]]></cut>
       <type> rate </type>
       <description> Rate of events with FT1Energy above 100 MeV, after application of SOURCE gamma cuts from pass5. </description>
     </object>
@@ -271,7 +272,7 @@
        <object>
       <name> TransientEvtsBelowZenithTheta60_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ (FswFilters[0]>0) && CTBBestEnergyProb>0. && CTBCORE>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ (FswGamState==0) && CTBBestEnergyProb>0. && CTBCORE>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
       <type> rate </type>
       <description> Rate of events after application of TRANSIENT gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
     </object>
@@ -279,7 +280,7 @@
        <object>
       <name> DiffuseEvtsBelowZenithTheta60_E100MeV  </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  (FswFilters[0]>0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
+      <cut><![CDATA[  (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
       <type> rate </type>
       <description> Rate of events after application of DIFFUSE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
     </object>
@@ -287,7 +288,7 @@
        <object>
       <name> SourceEvtsBelowZenithTheta60_E100MeV  </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ (FswFilters[0]>0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
       <type> rate </type>
       <description> Rate of events after application of SOURCE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
     </object>
@@ -296,7 +297,7 @@
         <object>
       <name> TransientEvtsBelowZenithTheta100_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ (FswFilters[0]>0) && CTBBestEnergyProb>0. && CTBCORE>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ (FswGamState==0) && CTBBestEnergyProb>0. && CTBCORE>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type> rate </type>
       <description> Rate of events after application of TRANSIENT gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV. </description>
     </object>
@@ -304,7 +305,7 @@
        <object>
       <name> DiffuseEvtsBelowZenithTheta100_E100MeV  </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  (FswFilters[0]>0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[  (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type> rate </type>
       <description> Rate of events after application of DIFFUSE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV. </description>
     </object>
@@ -312,7 +313,7 @@
        <object>
       <name> SourceEvtsBelowZenithTheta100_E100MeV  </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ (FswFilters[0]>0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type> rate </type>
       <description> Rate of events after application of SOURCE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV. </description>
     </object>
@@ -338,7 +339,7 @@
      <object>
       <name> FswGAMMAFilterAndTriggerEngine[16]  </name>
       <formula><![CDATA[ TriggerEngine ]]></formula>
-      <cut><![CDATA[ FswFilters[0]>0]]></cut>
+      <cut><![CDATA[ FswGamState==0]]></cut>
       <type> rate </type>
       <description> Rate of Trigger Engines (DigiEvent->getL1T().getGemEngine()) passing the Gleam GAMMA filter </description>
     </object>

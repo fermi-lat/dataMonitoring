@@ -43,6 +43,7 @@
     <object> NewSecond </object>
     <object>sourceGps </object>
     <object>FswFilters</object>
+    <object>FswFiltersLeaked</object>
     <object>GemPrescale</object>
     <object>DGNGemPrescale</object>
     <object>FswFilters_GammaBits</object>
@@ -50,6 +51,7 @@
     <object>MootKey</object>
     <object>CondSummary5bits</object>
     <object>L1TTriggerWord5bits</object>
+    <object>FswGAMMAEnergyInLeus</object>
 
     <!-- Acd Variables -->
     
@@ -580,7 +582,14 @@
     </object>	    
 
 
-    
+  
+     <object>
+      <name> FswGAMMAEnergyInLeus </name>
+      <formula><![CDATA[ FswGAMMAEnergyInLeus[0] ]]></formula>
+      <cut><![CDATA[ FswGAMMAEnergyInLeus[1]>0.5]]></cut>
+      <type> mean </type>
+      <description> Mean FswGAMMA energy in Leus. Only events with valid energy (getEnergyValid()>0) are used. </description>
+    </object>
 
      <object>
       <name> EventSizeInBytes </name>
@@ -925,6 +934,14 @@
       <cut><![CDATA[ FswFilters[0]>0 ]]></cut>
       <type> rate </type>
       <description> Rate of evts passing the REAL flight software onboard GAMMA filter, calculated during the specified time bin. </description>
+    </object>
+
+    <object>
+      <name> FswFilters_GAMMA_Leaked </name>
+      <formula><![CDATA[ FswFiltersLeaked[0] ]]></formula>
+      <cut><![CDATA[ FswFiltersLeaked[0]>0 ]]></cut>
+      <type> rate </type>
+      <description> Rate of evts that LEAKED the REAL flight software onboard GAMMA filter, calculated during the specified time bin. </description>
     </object>
 
 

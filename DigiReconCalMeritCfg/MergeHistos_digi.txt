@@ -102,3 +102,6 @@
        CalX_NHit_TH1_Tower_TowerLoop  Sum
        CalX_Total_NHit_TH1  Sum
        CalXReadoutRange_TH2  Sum
+       FswGAMMAEnergyInLeus_TH1 Sum
+       FswGAMMAEnergyInLeusValid_TH1 Sum
+
