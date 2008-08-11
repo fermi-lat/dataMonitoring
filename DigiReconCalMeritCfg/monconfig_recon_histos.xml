@@ -24,6 +24,8 @@
      <!-- Cal Variables -->
      <object> ReconEnergy_TowerCalLayerCalColumn </object>
      <object> CalXtalFaceSignal </object>
+     <object> CalXtalAdcPed </object>
+     <object> CalXtalAdcRng </object>
   </inputList>
 
      
@@ -532,6 +534,29 @@ Remove comments and XXXX (this is needed for producing merging files) in names t
       <titledesc> Low energy tail of the distribution of measured energy (MeV) in the crystal log for NEG face (from CalTuple).  </titledesc>
       <axisdesc> [Measured crystal log energy (MeV), N] </axisdesc>
       <description> Low energy tail of the distribution of measured energy (MeV) in the crystal log for NEG face (from CalTuple). Energies up to 5 MeV are shown in the histogram. The distribution corresponds to the NEG face of crystal log defined by the coordinates (suffix in the histogram name) tower,callayer,calcolum.  Those events whose energy could not be reconstructed for this crystal log are not shown in the histogram.</description>
+    </object>
+
+
+
+
+     <object>
+      <name> Lac_Thresholds_ADC_FacePos_TH1_TowerCalLayerCalColumn[16][8][12] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: (CalXtalAdcRng[tower][callayer][calcolumn][0]==0 && CalXtalAdcPed[tower][callayer][calcolumn][0]>0.0 && CalXtalAdcPed[tower][callayer][calcolumn][0] <=150.0 && CalXtalAdcPed[tower][callayer][calcolumn][0] > 1.1*CalXtalAdcPed[tower][callayer][calcolumn][1]) ? CalXtalAdcPed[tower][callayer][calcolumn][0] : -1.0 ]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[152,-1.0,151.,-1] </type>
+      <titledesc> Low energy tail of the distribution of measured signal (ADC) in the crystal log for POS face (from CalTuple).  </titledesc>
+      <axisdesc> [Measured crystal log signal (ADC), N] </axisdesc>
+      <description> Low energy tail of the distribution of measured signal (ADC) in the crystal log for POS face (from CalTuple). Signals up to 150 ADC counts are shown in the histogram. The distribution corresponds to the POS face of crystal log defined by the coordinates (suffix in the histogram name) tower,callayer,calcolum.  Those events whose energy could not be reconstructed for this crystal log are not shown in the histogram.</description>
+    </object>
+
+    <object>
+      <name> Lac_Thresholds_ADC_FaceNeg_TH1_TowerCalLayerCalColumn[16][8][12] </name>
+      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: (CalXtalAdcRng[tower][callayer][calcolumn][1]==0 && CalXtalAdcPed[tower][callayer][calcolumn][1]>0.0 && CalXtalAdcPed[tower][callayer][calcolumn][1] <=150.0 && CalXtalAdcPed[tower][callayer][calcolumn][1] > 1.1*CalXtalAdcPed[tower][callayer][calcolumn][0]) ? CalXtalAdcPed[tower][callayer][calcolumn][1] : -1.0 ]]></formula>
+      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <type> histogram-1d[152,-1.0,151.,-1] </type>
+      <titledesc> Low energy tail of the distribution of measured signal (ADC) in the crystal log for NEG face (from CalTuple).  </titledesc>
+      <axisdesc> [Measured crystal log signal (ADC), N] </axisdesc>
+      <description> Low energy tail of the distribution of measured signal (ADC) in the crystal log for NEG face (from CalTuple). Signals up to 150 ADC counts are shown in the histogram. The distribution corresponds to the POS face of crystal log defined by the coordinates (suffix in the histogram name) tower,callayer,calcolum.  Those events whose energy could not be reconstructed for this crystal log are not shown in the histogram.</description>
     </object>
 
 

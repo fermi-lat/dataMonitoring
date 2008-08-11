@@ -11,6 +11,7 @@
     <object> condsummary </object>
     <object> Range4 </object>
     <object> ZeroSuppress </object>
+    <object> DeltaEventTime </object>
 
     <!-- Acd Variables -->
     <object>AcdPha_PmtIdPmtRangeAcdTile</object>
@@ -117,7 +118,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
      <object>
       <name> CalXAdc_LEX8_TowerCalLayerCalColumnF[16][8][12][2] </name>
       <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][calxface][0]]]></formula>
-      <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress)]]></cut>
+      <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress) && (DeltaEventTime>2000)]]></cut>
       <type> truncatedmeanboundandfracbigdataequaln[0,100000,0.96]  </type>     
       <description> Vector[tower][callayer][calcolumn][face] reporting the mean (and rms by means of the the CalXAdc_TowerCalLayerCalColumnF_err quantity) pedestal for LEX8. The mean (and rms) is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. This is done to remove outliers. Only periodic triggers with 4 range readout events are being used. </description>
      </object>
@@ -126,7 +127,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
         <object>
       <name> CalXAdc_LEX1_TowerCalLayerCalColumnF[16][8][12][2] </name>
       <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][calxface][1]]]></formula>
-      <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress)]]></cut>
+      <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress)  && (DeltaEventTime>2000)]]></cut>
       <type> truncatedmeanboundandfracbigdataequaln[0,100000,0.96]  </type>     
       <description> Vector[tower][callayer][calcolumn][face] reporting the mean (and rms by means of the the CalXAdc_TowerCalLayerCalColumnF_err quantity) pedestal for LEX1. The mean (and rms) is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. This is done to remove outliers. Only periodic triggers with 4 range readout events are being used. </description>
      </object>
@@ -135,7 +136,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	    <object>
       <name> CalXAdc_HEX8_TowerCalLayerCalColumnF[16][8][12][2] </name>
       <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][calxface][2]]]></formula>
-      <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress)]]></cut>
+      <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress)  && (DeltaEventTime>2000)]]></cut>
       <type>truncatedmeanboundandfracbigdataequaln[0,100000,0.96]  </type>     
       <description> Vector[tower][callayer][calcolumn][face] reporting the mean (and rms by means of the the CalXAdc_TowerCalLayerCalColumnF_err quantity) pedestal for HEX8. The mean (and rms) is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. This is done to remove outliers. Only periodic triggers with 4 range readout events are being used. </description>
      </object>
@@ -144,7 +145,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
         <object>
       <name> CalXAdc_HEX1_TowerCalLayerCalColumnF[16][8][12][2] </name>
       <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][calxface][3]]]></formula>
-      <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress) ]]></cut>
+      <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress)  && (DeltaEventTime>2000) ]]></cut>
       <type> truncatedmeanboundandfracbigdataequaln[0,100000,0.96]  </type>     
       <description> Vector[tower][callayer][calcolumn][face] reporting the mean (and rms by means of the the CalXAdc_TowerCalLayerCalColumnF_err quantity) pedestal for HEX1. The mean (and rms) is computed removing (truncating) 4 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. This is done to remove outliers. Only periodic triggers with 4 range readout events are being used. </description>
      </object>
@@ -153,7 +154,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       <object>
       <name> CalXPedDev_TowerCalLayerCalColumnFR[16][8][12][2][4] </name>
       <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn:foreachcalxface: foreachcalxrange: CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][calxface][calxrange] - RFun::calped(timestamp,tower,callayer,calcolumn,calxface,calxrange)]]></formula>
-      <cut><![CDATA[condsummary==32 && Range4 && (!ZeroSuppress) ]]></cut>
+      <cut><![CDATA[condsummary==32 && Range4 && (!ZeroSuppress)  && (DeltaEventTime>2000) ]]></cut>
       <type> truncatedmeanboundandfracbigdataequaln[-10000,10000,0.96]  </type>
       <description> Vector[tower][callayer][calcolumn][face][range] reporting the mean deviations between the measured pedestals and the ones retrieved from the data base (and rms by means of the the CalXPedDev_TowerCalLayerCalColumnFR_err quantity). The mean (and rms) is computed removing (truncating) 4 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. Only periodic triggers with 4 range readout events are being used. </description>
     </object>
@@ -171,7 +172,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 
       <object>
       <name> RPp_TowerCalLayerCalColumn[16][8][12] </name>
-      <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][1],RFun::calped(timestamp,tower,callayer,calcolumn,0,1), CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][2], RFun::calped(timestamp,tower,callayer,calcolumn,0,2), 50)]]></formula>
+      <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio_v2(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][1],RFun::calped(timestamp,tower,callayer,calcolumn,0,1), 500, CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][2], RFun::calped(timestamp,tower,callayer,calcolumn,0,2), 50)]]></formula>
       <cut><![CDATA[!(condsummary&32) && Range4]]></cut>
       <type> truncatedmeanboundandfracbigdata[0,70000,0.96] </type>
       <description> Vector[tower][callayer][calcolumn] reporting the mean ratio LEX1(plus face) / HEX8 (plus face) = P/p. This ratio is expected to be close to 6. Pedestals (extracted from data base) are subtracted before computing the ratio. The mean is computed excluding the tails up to a fraction of 0.02 on each side in order to remove outliers; that is with the 96 percent of central values.  Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
@@ -179,7 +180,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 
        <object>
       <name> RMm_TowerCalLayerCalColumn[16][8][12] </name>
-      <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][1],RFun::calped(timestamp,tower,callayer,calcolumn,1,1), CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][2], RFun::calped(timestamp,tower,callayer,calcolumn,1,2), 50)]]></formula>
+      <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio_v2(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][1],RFun::calped(timestamp,tower,callayer,calcolumn,1,1), 500, CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][2], RFun::calped(timestamp,tower,callayer,calcolumn,1,2), 50)]]></formula>
       <cut><![CDATA[!(condsummary&32) && Range4]]></cut>
       <type>  truncatedmeanboundandfracbigdata[0,70000,0.96] </type>
       <description> Vector[tower][callayer][calcolumn] reporting the mean ratio LEX1(minus face) / HEX8(minus face) = M/m. This ratio is expected to be close to 6. Pedestals (extracted from data base) are subtracted before computing the ratio. The mean is computed excluding the tails up to a fraction of 0.02 on each side in order to remove outliers; that is with the 96 percent of central values.  Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
@@ -331,7 +332,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
         <object>
 	 <name> CalXAdcPed_TH1_TowerCalLayerCalColumnFR[16][8][12][2][4]</name>
 	 <formula><![CDATA[CalXAdc_TowerCalLayerCalColumnFaceRange]]></formula>
-	 <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress)]]></cut>
+	 <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress)  && (DeltaEventTime>2000)]]></cut>
 	 <type> histogram-1d[1002,-1,1001] </type>
 	 <titledesc> Pedestal distribution</titledesc>
 	 <axisdesc> [Pedestal (ADC counts), N] </axisdesc>
@@ -540,7 +541,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 
       <object>
       <name> RPp_TH1_TowerCalLayerCalColumn[16][8][12] </name>
-      <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][1],RFun::calped(timestamp,tower,callayer,calcolumn,0,1), CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][2], RFun::calped(timestamp,tower,callayer,calcolumn,0,2), 50)]]></formula>
+      <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio_v2(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][1],RFun::calped(timestamp,tower,callayer,calcolumn,0,1), 500, CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][0][2], RFun::calped(timestamp,tower,callayer,calcolumn,0,2), 50)]]></formula>
       <cut><![CDATA[!(condsummary&32) && Range4]]></cut>
       <type> histogram-1d[5000,0,25,-1] </type>
       <description> Distribution of the ratio LEX1(plus face) / HEX8 (plus face) = P/p. This ratio is expected to be close to 6. Pedestals (extracted from data base) are subtracted before computing the ratio.  Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
@@ -548,7 +549,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 
        <object>
       <name> RMm_TH1_TowerCalLayerCalColumn[16][8][12] </name>
-      <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][1],RFun::calped(timestamp,tower,callayer,calcolumn,1,1), CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][2], RFun::calped(timestamp,tower,callayer,calcolumn,1,2), 50)]]></formula>
+      <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn: RFun::computeratio_v2(CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][1],RFun::calped(timestamp,tower,callayer,calcolumn,1,1), 500, CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][1][2], RFun::calped(timestamp,tower,callayer,calcolumn,1,2), 50)]]></formula>
       <cut><![CDATA[!(condsummary&32) && Range4]]></cut>
       <type> histogram-1d[5000,0,25,-1]  </type>
       <description> Distribution of the ratio LEX1(minus face) / HEX8(minus face) = M/m. This ratio is expected to be close to 6. Pedestals (extracted from data base) are subtracted before computing the ratio. Only 4 range readout events which are NOT periodic triggers are being used. A minimum signal (after pedestal subtraction) of 50 ADC counts is required. </description>
