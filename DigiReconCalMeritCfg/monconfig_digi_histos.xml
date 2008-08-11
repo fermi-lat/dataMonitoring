@@ -748,6 +748,9 @@
       <description> Delta Evt ID (digi->getMetaEvent().scalers().sequence()) between consecutive events for EPU0.</description>
     </object>
 
+
+    
+
       <object>
       <name> DeltaEvtID_Epu1_TH1 </name>
       <formula><![CDATA[ DeltaEvtID ]]></formula>
@@ -791,13 +794,15 @@
      <object>
       <name> FswGAMMAEnergyInLeus_TH1 </name>
       <formula><![CDATA[ TMath::Log10(FswGAMMAEnergyInLeus[0]) ]]></formula>
-      <cut><![CDATA[ FswGAMMAEnergyInLeus[1]>0.5]]></cut>
-      <type>  histogram-1d[800,-2.0,6.0,0.0] </type>
+      <cut><![CDATA[ FswGAMMAEnergyInLeus[0] > 0.0 && FswGAMMAEnergyInLeus[1]>0.5]]></cut>
+      <type>  histogram-1d[900,-2.0,7.0,0.0] </type>
       <titledesc> Distribution of FswGAMMAEnergyInLeus </titledesc>
       <axisdesc> [log10(FswGAMMAEnergyInLeus), N] </axisdesc>
       <description> Log10 of FswGAMMA energy in Leus. Only events with valid energy (getEnergyValid()>0) are used. </description>
     </object>
 
+
+   
 
     <object>
       <name> FswGAMMAEnergyInLeusValid_TH1 </name>
