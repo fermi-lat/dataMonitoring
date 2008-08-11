@@ -1,3 +1,20 @@
+v1r2p16  2008/08/11  (DEV)
+----------------------------------
+Remove quantities:
+Rate_CompressedEvtSizeInMegaBits
+Rate_CompressedEvtSizeInMegaBits_FswGAMMA
+Rate_CompressedEvtSizeInMegaBits_FswMIP
+Rate_CompressedEvtSizeInMegaBits_FswHIP
+Rate_CompressedEvtSizeInMegaBits_FswDGN 
+
+Added quantities
+
+Rate_CompressedEvtSizeInBytes_FswGAMMA
+Rate_CompressedEvtSizeInBytes_FswMIP
+Rate_CompressedEvtSizeInBytes_FswHIP
+Rate_CompressedEvtSizeInBytes_FswDGN 
+
+
 v1r2p15  2008/08/11   (DEV)                                                      ------------------------------
 Add  to address Jira GDQMQ-232.
 
