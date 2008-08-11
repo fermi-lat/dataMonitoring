@@ -1,3 +1,8 @@
+v1r2p14  2008/08/10   (DEV)                                                      ------------------------------
+Add quantities to address jiras GDQMQ-224 and GDQMQ-239.
+Change cut FswFilters[0]>0 for FswGammaStatus ==0 in merit configs. 
+
+
 v1r2p13  2008/08/10   (DEV)                                                      ------------------------------
 Corrected bug i monconfig_recon_histos.xml (related to jira GDQMQ-229)
 
