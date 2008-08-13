@@ -1,3 +1,9 @@
+*** v3r5p0 ***
+- Upper warning limit for spikes_and_holes on
+TkrHitsCounter_PlaneGTFE_TH2_Tower_ moved from 400 to 1000 (we were having
+quite a few of not significant warnings).
+
+
 *** v3r4p4 ***
 - Number of sigma for issuing warnings/errors moved from 1 to 2 on all the
 tktTrend alarms, as per Hiro's request.
