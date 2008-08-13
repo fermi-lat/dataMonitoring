@@ -133,7 +133,7 @@
 	<severity>10</severity>
       </alarm>
       <alarm function="spikes_and_holes" enabled="True">
-	<warning_limits min="0" max="400"/>
+	<warning_limits min="0" max="1000"/>
 	<error_limits   min="0" max="100000"/>
 	<severity>6</severity>
       </alarm>
