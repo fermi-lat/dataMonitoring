@@ -1,3 +1,10 @@
+*** v4r0p0 ***
+- Format of the exceptions donfig file modified as to make the mechanism more
+flexible.
+NOTE: the chahnge is not backward compatible. Need dataMonitoring/Common
+v4r1p0.
+
+
 *** v3r5p0 ***
 - Upper warning limit for spikes_and_holes on
 TkrHitsCounter_PlaneGTFE_TH2_Tower_ moved from 400 to 1000 (we were having
