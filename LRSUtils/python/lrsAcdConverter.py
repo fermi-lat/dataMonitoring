@@ -31,7 +31,13 @@ class lrsAcdConverter(lrsConverter):
                 break
             for i in range(self.DATA_BLOCK_SIZE - 1):
                 averageRate = 0
-                (id, tile1, tile2, cnt1, cnt2, dur) = self.line().split(',')
+                line = self.line()
+                try:
+                    (id, tile1, tile2, cnt1, cnt2, dur) = line.split(',')
+                except ValueError:
+                    logging.error('Could not parse line %d.' % self.LineNumber)
+                    logging.error('Line looks like: "%s".' % line)
+                    sys.exit('Abort.')
                 (id, tile1, tile2, cnt1, cnt2) =\
                     [int(x) for x in (id, tile1, tile2, cnt1, cnt2)]
                 dur = float(dur)
