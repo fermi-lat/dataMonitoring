@@ -4,8 +4,8 @@ MAIN_TEXT =\
 """
 The following table contains the correspondence between </br>
 TileId</br>
-CableA	FREENAMEA	ChannelA </br>
-CableB	FREENAMEB	ChannelB </br>
+FREENAMEA	CableA	ChannelA </br>
+FREENAMEB	CableB	ChannelB </br>
 Tile/ribbon number	Type	Active area (cm^2))</br>
 """
 
