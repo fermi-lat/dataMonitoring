@@ -20,6 +20,9 @@
          CalXAdcPedRMS_HEX1_TH1 Average
          CalXPedDev_Mean_TH1 Average
          CalXPedDev_RMS_TH1 Average
+	 CalXPedDB_FirstVal_TH1 Average
+	 CalXPedDB_LastVal_TH1 Average
+	 CalXPedDB_Nchanges_TH1 Sum
          RPM_Mean_TH1 Average
          RPM_RMS_TH1 Average
          RPp_Mean_TH1 Average

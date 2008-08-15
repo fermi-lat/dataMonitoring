@@ -169,6 +169,15 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
     </object>
 
 
+     <object>
+      <name> PTowerCalLayerCalColumnFR[16][8][12][2][4] </name>
+      <formula><![CDATA[foreachtower:foreachcallayer:foreachcalcolumn:foreachcalxface: foreachcalxrange: RFun::calped(timestamp,tower,callayer,calcolumn,calxface,calxrange)]]></formula>
+      <cut><![CDATA[condsummary==32 && Range4 && (!ZeroSuppress)  && (DeltaEventTime>2000) ]]></cut>
+      <type> valuechange[0]  </type> 
+      <description> Vector[tower][callayer][calcolumn][face][range] reporting the pedestals from the data base.  </description>
+    </object>
+
+
 
       <object>
       <name> RPM_TowerCalLayerCalColumn[16][8][12] </name>
@@ -453,6 +462,41 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<axisdesc> [Channel number, Ped Deviation Mean (ADC counts)] </axisdesc>
 	<description> Mean pedestal deviations, versus channel number (=tower*8*12*2*4+layer*12*2*4+column*2*4+face*4+range), between the measured pedestals and the ones retrieved from the data base. The mean is computed removing (truncating) 10 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 80 percent central values. Only periodic triggers with 4 range readout and non-zerosuppress events are being used. </description>
       </object>
+
+
+       <object>
+      <name> CalXPedDB_FirstVal_TH1</name>
+      <formula><![CDATA[ValChange_PTowerCalLayerCalColumnFRxxxfirstval]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>  histogram-vecdim-1d[12288,-0.5,12287.5,-1, 1]  </type>
+      <titledesc> Pedestal from Data Base vs channel number </titledesc>
+      <axisdesc> [Channel number, Pedestal (ADC counts)] </axisdesc>
+	<description> Data base pedestal versus channel number (=tower*8*12*2*4+layer*12*2*4+column*2*4+face*4+range).  </description>
+      </object>
+
+       <object>
+      <name> CalXPedDB_LastVal_TH1</name>
+      <formula><![CDATA[ValChange_PTowerCalLayerCalColumnFRxxxlastval]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>  histogram-vecdim-1d[12288,-0.5,12287.5,-1, 1]  </type>
+      <titledesc> Pedestal from Data Base vs channel number </titledesc>
+      <axisdesc> [Channel number, Pedestal (ADC counts)] </axisdesc>
+	<description> Data base pedestal versus channel number (=tower*8*12*2*4+layer*12*2*4+column*2*4+face*4+range).  </description>
+      </object>
+
+      <object>
+      <name> CalXPedDB_Nchanges_TH1</name>
+      <formula><![CDATA[ValChange_PTowerCalLayerCalColumnFRxxxnchanges]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>  histogram-vecdim-1d[12288,-0.5,12287.5,-1, 1]  </type>
+      <titledesc> Number of changes in pedestal from Data Base vs channel number </titledesc>
+      <axisdesc> [Channel number, Number of changes)] </axisdesc>
+	<description> Number of changes in pedestal from data base versus channel number (=tower*8*12*2*4+layer*12*2*4+column*2*4+face*4+range).  </description>
+      </object>
+      
 
      <object>
         <name> CalXPedDev_RMS_TH1</name>
