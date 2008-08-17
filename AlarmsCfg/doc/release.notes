@@ -1,3 +1,8 @@
+*** v4r1p0 ***
+- Added conditions on the number of entries in recon_eor to prevent the
+alarms from being evaluated when there's not enough statistics.
+
+
 *** v4r0p0 ***
 - Format of the exceptions donfig file modified as to make the mechanism more
 flexible.
