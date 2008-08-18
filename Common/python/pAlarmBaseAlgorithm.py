@@ -7,10 +7,13 @@ logger = pSafeLogger.getLogger('pAlarmBaseAlgorithm')
 import pUtils
 import types
 import numpy
+import time
 
 from pAlarmOutput import pAlarmOutput
 from pAlarmOutput import STATUS_CLEAN, STATUS_WARNING, STATUS_ERROR
 from copy         import copy, deepcopy
+
+MET_OFFSET = 978307200
 
 ROOT2NUMPYDICT = {'C' : 'c',      #a character string terminated by the 0 char
                   'B' : 'int8',   #an 8 bit signed integer (Char_t)
@@ -336,6 +339,8 @@ class pAlarmBaseAlgorithm:
             return self.getX(index)
         elif 'TH2' in objectType:
             return (self.getX(index[0]), self.getY(index[1]))
+        #elif objectType == 'TBranch':
+        #    return self.index2Tuple(index, self.BranchArray.shape)
         else:
             return index
 
@@ -390,15 +395,12 @@ class pAlarmBaseAlgorithm:
         value = pUtils.formatNumber(value)
         position = self.getFormattedPosition(index)
         if objectType == 'TBranch':
-            label = 'time = %f, ' % self.TimestampArray[0]
+            timestamp = time.gmtime(self.TimeStamp + MET_OFFSET)
+            label = '%s, ' % time.strftime('%d-%b-%Y %H:%M:%S', timestamp)
             if self.BranchArray.size > 1:
                 index = self.index2Tuple(index, self.BranchArray.shape)
-                if len(index) == 1:
-                    index = '[%d]' % index[0]
-                else:
-                    index = str(index)
-                    index = index.replace('(', '[').replace(')', ']')
-                label += 'array index = %s, ' % index
+                for (i, dim) in enumerate(index):
+                    label += '%s = %d, ' % (self.IndexLabels[i], index[i])
             label += '%s = %s' % (valueLabel, value)
         elif 'TH1' in objectType:
             label = '%s = %s, %s = %s' % (self.getAxisLabel('x'), position,\
@@ -461,11 +463,13 @@ class pAlarmBaseAlgorithm:
     #  a comparison between numbers. We stick to this first implementation,
     #  for the moment.
     #
-    #  Also note that the function returns a boolean telling whether the
-    #  particular index is in the list of exceptions (meaning whether the logic
-    #  has been flipped or not). This value may be used in the calling function
-    #  to differenciate its behaviour.
-    #  
+    #  A boolean flag is returned that can be used by the particular
+    #  implementation of the algorithm to append the badness of a given
+    #  point to the dictionary for the output value (True) or not (False).
+    #  In particular False is returned upon detection of known issues, as
+    #  in that case the output status of the alarms should not be set to
+    #  FAILED.
+    #
     ## @param self
     #  The class instance
 
@@ -479,21 +483,27 @@ class pAlarmBaseAlgorithm:
             label = self.getDetailedLabel(index, value, valueLabel)
             if flip:
                 self.Output.appendDictValue('known_issues', label)
+                return False
             else:
                 self.Output.incrementDictValue('num_error_entries')
                 self.Output.appendDictValue('error_entries', label)
+                return True
         elif value < self.Limits.WarningMin or value > self.Limits.WarningMax:
             label = self.getDetailedLabel(index, value, valueLabel)
             if flip:
+
                 self.Output.appendDictValue('known_issues', label)
+                return False
             else:
                 self.Output.incrementDictValue('num_warning_entries')
                 self.Output.appendDictValue('warning_entries', label)
+                return True
         else:
             if flip:
                 label = self.getDetailedLabel(index, value, valueLabel)
                 self.Output.appendDictValue('exception violations', label)
-        return flip
+                return True
+            return True
 
     ## @brief Convert a flat index to a multi-dimensional array position.
     ## @param self
