@@ -962,10 +962,10 @@
 	    <caption>This is the number of PHA values per event</caption>
 	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0 && error_summary<64]]></cut>
         </TH1F>
-        <CUSTOM type="AcdHitsCounter_CableChannel" name="AcdHitsCounter_CableChannel_TH2" level="lat" enabled="True">
-	    <title>Number hit for each ACD channel</title>
-	    <xlabel>Cable Id</xlabel>
-	    <ylabel>Channel Id</ylabel>
+        <CUSTOM type="AcdHitMap_GafeGarc" name="AcdHitMap_GafeGarc_TH2" level="lat" enabled="True">
+	    <title>ACD Hit Map Garc:Gafe</title>
+	    <xlabel>GAFE</xlabel>
+	    <ylabel>GARC</ylabel>
 	    <drawoptions>colz</drawoptions>
 	    <cut><![CDATA[(condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>
         </CUSTOM>

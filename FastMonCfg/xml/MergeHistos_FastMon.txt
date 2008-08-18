@@ -63,7 +63,7 @@ CondArrROI_CNOOpensWindow_TH1   Sum
 CondArrTKR_CNOOpensWindow_TH1   Sum
 CondArrCalLo_CNOOpensWindow_TH1   Sum
 CondArrCalHi_CNOOpensWindow_TH1   Sum
-AcdHitsCounter_CableChannel_TH2   Sum
+AcdHitMap_GafeGarc_TH2   Sum
 ToT_con0_TH1_TowerPlane_TowerLoop_PlaneLoop  Sum
 ToT_con1_TH1_TowerPlane_TowerLoop_PlaneLoop  Sum
 
