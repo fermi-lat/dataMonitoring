@@ -63,13 +63,11 @@
     <alarmSet name="CalX_NHit_TH1_Tower_*" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="9.0" max="17.0"/>
 	<error_limits min="6.0" max="20.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="18.0" max="25.0"/>
 	<error_limits min="13.0" max="30.0"/>
       </alarm> 				  			 
@@ -82,7 +80,6 @@
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="2.0" max="6.0"/>
 	<error_limits min="1.0" max="8.0"/>
       </alarm>
@@ -98,14 +95,12 @@
     <alarmSet name="TkrTotalHits_TH1" enabled="False">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="21" max="30"/>
 	<error_limits min="5.0" max="40.0"/>
 	<severity>4</severity>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="5.5" max="6.5"/>
 	<error_limits min="5.0" max="7.0"/>
 	<severity>4</severity>
@@ -115,7 +110,6 @@
     <alarmSet name="TkrHits_TH1_Tower_*" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="7.0" max="20.0"/>
 	<error_limits min="4.0" max="25.0"/>
 	<severity>4</severity>

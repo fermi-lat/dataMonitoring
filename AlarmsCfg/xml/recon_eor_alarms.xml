@@ -27,13 +27,11 @@
     <alarmSet name="ReconEnergy_LowEnergy_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="100.0" max="150.0"/>
 	<error_limits min="75.0" max="200.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="160" max="250.0"/>
 	<error_limits min="100" max="300.0"/>
       </alarm> 				  			 
