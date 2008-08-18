@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<alarms>
+
+  <alarmList group="Acd" name="CAL pedestals" enabled="True">
+
+    <alarmSet name="AcdPedRMS_PMTA_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="2.0" max="6.0"/>
+	<error_limits   min="1.0" max="10.0"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+    <alarmSet name="AcdPedRMS_PMTB_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="2.0" max="6.0"/>
+	<error_limits   min="1.0" max="10.0"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+  </alarmList>
+
+</alarms>
