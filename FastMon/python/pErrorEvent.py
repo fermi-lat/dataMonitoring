@@ -28,7 +28,7 @@ class pErrorEvent:
 if __name__ == '__main__':
     from pError import pError
     badEvent = pErrorEvent(313)
-    badEvent.addError(pError('TEST'))
-    badEvent.addError(pError('TEST', [1, 2, 3]))
+    badEvent.addError(pError('UNPHYSICAL_STRIP_ID', [12, 34, 1753]))
+    badEvent.addError(pError('UNPHYSICAL_STRIP_ID', [12, 34, 1754]))
     print badEvent
        
