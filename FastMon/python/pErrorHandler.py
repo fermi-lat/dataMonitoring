@@ -54,13 +54,12 @@ class pErrorHandler:
         # using the correct event ID
         # to be called at the end of event processing
         if self.ErrorsBuffer != []:
-            errorEvent = pErrorEvent(eventNumber)
+            self.ErrorEventsDict[eventNumber] =\
+                                 pErrorEvent(eventNumber)
             for error in self.ErrorsBuffer:
-                errorEvent.addError(error)
-            self.ErrorEventsDict[eventNumber] = errorEvent
+                self.ErrorEventsDict[eventNumber].addError(error)
+
             self.ErrorsBuffer = []
-            return errorEvent.ErrorSummary
-        return 0x0
 
     def getNumErrors(self):
         return sum(self.ErrorCountsDict.values())
@@ -116,7 +115,7 @@ class pErrorHandler:
             xmlWriter.openTag('errorEvent', {'eventNumber': eventNumber})
             xmlWriter.indent()
             for error in errorEvent.ErrorsList:
-                xmlWriter.writeLine(error.getXmlLine())
+                xmlWriter.writeTag('error', error.getXmlDict())
             xmlWriter.backup()
             xmlWriter.closeTag('errorEvent')
         xmlWriter.backup()

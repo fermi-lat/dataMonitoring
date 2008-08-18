@@ -8,7 +8,18 @@
     <xmax></xmax>
     <undefined_value></undefined_value>
   </alarmSet-->
-
+  <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_*_*_*" algorithm="leftmost_edge" enabled="True">
+    <xbins>100</xbins>
+    <xmin>0</xmin>
+    <xmax>5</xmax>
+    <undefined_value></undefined_value>
+  </alarmSet>
+  <alarmSet name="Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_*_*_*" algorithm="leftmost_edge" enabled="True">
+    <xbins>100</xbins>
+    <xmin>0</xmin>
+    <xmax>5</xmax>
+    <undefined_value></undefined_value>
+  </alarmSet>
   <alarmSet name="ReconAcdPhaMipsCorrectedAngle_PMTA_TH1_AcdTile_*" algorithm="gauss_mean" enabled="True">
     <xbins>100</xbins>
     <xmin>0</xmin>
@@ -53,18 +64,6 @@
     <xbins>100</xbins>
     <xmin>0</xmin>
     <xmax>2</xmax>
-    <undefined_value></undefined_value>
-  </alarmSet>
-  <alarmSet name="ReconEnergy_VeryLowEnergy_TH1_TowerCalLayer_*_*" algorithm="leftmost_edge" enabled="True">
-    <xbins>100</xbins>
-    <xmin>0</xmin>
-    <xmax>5</xmax>
-    <undefined_value></undefined_value>
-  </alarmSet>
-  <alarmSet name="ReconEnergy_VeryLowEnergy_TH1_TowerCalLayerCalColumn_*_*_*" algorithm="x_min_bin" enabled="True">
-    <xbins>100</xbins>
-    <xmin>0</xmin>
-    <xmax>5</xmax>
     <undefined_value></undefined_value>
   </alarmSet>
 
