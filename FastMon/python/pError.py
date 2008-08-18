@@ -5,7 +5,7 @@
 ERROR_DETAIL_LABELS_DICT = {
     'GCCC_ERROR'                  : ['Tower', 'GCCC', 'Err'],
     'GTCC_ERROR'                  : ['Tower', 'GTCC', 'Err'],
-    'PHASE_ERROR'                 : ['Tower', 'Tags'],
+    'PHASE_ERROR'                 : ['Tower', 'Err'],
     'TIMEOUT_ERROR'               : ['Tower', 'Err'],
     'GTRC_PHASE_ERROR'            : ['Tower', 'GTCC', 'GTRC', 'Err'],
     'GTFE_PHASE_ERROR'            : ['Tower', 'GTCC', 'GTRC', 'Err1', 'Err2',\
@@ -18,52 +18,14 @@ ERROR_DETAIL_LABELS_DICT = {
     'GTCC_DATA_PARITY_ERROR'      : ['Tower', 'GTCC', 'Err'],
     'ACD_HEADER_PARITY_ERROR'     : ['Cable'],
     'ACD_PHA_PARITY_ERROR'        : ['Cable', 'Channel'],
-    'ACD_PHA_INCONSISTENCY'       : ['Cable', 'Channel', 'AcceptList'],
-    'TEM_BUG_INSTANCE'            : ['Type'],
-    'TIMETONE_INCOMPLETE'         : ['timeSecs'],
-    'TIMETONE_EARLY_EVENT'        : [],
-    'TIMETONE_FLYWHEELING'        : [],
-    'TIMETONE_MISSING_CPUPPS'     : [],
-    'TIMETONE_MISSING_LATPPS'     : [],
-    'TIMETONE_MISSING_TIMETONE'   : [],
-    'TIMETONE_NULL_SOURCE_GPS'    : []
+    'ACD_PHA_INCONSISTENCY'       : ['Cable', 'Channel', 'Accept list'],
+    'TEM_BUG_INSTANCE'            : [],
+    'TIMETONE_INCOMPLETE'         : ['timeSecs']
     }
 
-ERROR_DOC_DICT = {
-    'ACD_PHA_INCONSISTENCY'    :\
-        'There is a signal from a channel for which the accept bit is not set.',
-    'TIMETONE_EARLY_EVENT'     :\
-        'The event arrived close (a few hundred microseconds) to the TimeTone.',
-    'TIMETONE_FLYWHEELING'     :\
-        'CPU failed to construct its TimeTone message.',
-    'TIMETONE_INCOMPLETE'      :\
-        'The TimeTone is incomplete.',
-    'TIMETONE_MISSING_CPUPPS'  :\
-        'The arrival of the 1-PPS signal at the CPU timed out.',
-    'TIMETONE_MISSING_LATPPS'  :\
-        'The arrival of the 1-PPS signal at the LAT timed out.',
-    'TIMETONE_MISSING_TIMETONE':\
-	'The 1-PPS signal timed out.',
-    'TIMETONE_NULL_SOURCE_GPS' :\
-	'The source of the 1-PPS signal is the spacecraft clock, not the GPS.'
+ERROR_DOCUMENTATION_DICT = {
+    
     }
-
-ERROR_REMARKS_DICT = {
-
-    }
-
-def getExplanation(errorCode):
-    try:
-        return ERROR_DOC_DICT[errorCode]
-    except:
-        return '-'
-
-def getRemerks(errorCode):
-    try:
-        return ERROR_REMARKS_DICT[errorCode]
-    except:
-        return '-'
-
 
 
 ## @brief Class describing a generic error.
@@ -91,29 +53,19 @@ class pError:
         self.ErrorCode   = errorCode
         self.Details     = details
 
-    def hasDetails(self):
-        return self.Details != []
+    ## @brief Return a dict formatted for writing the xml output
+    #  for the error summary event by event.
 
-    def getXmlLine(self):
-        return '<error code="%s" %s/>' %\
-            (self.ErrorCode, self.getDetailsAsText())
-
-    ## @brief Return the label corresponding to a certain item in the
-    #  list of details.
-    #
-    #  If the label is not defined in ERROR_DETAIL_LABELS_DICT, then a generic
-    #  one is built in place. If the index exceeds the number of elements
-    #  in the predefined list, then it is assumed that the value is
-    #  effectively the error summary.
-
-    def getDetailLabel(self, index):
-        try:
-            if index == len(ERROR_DETAIL_LABELS_DICT[self.ErrorCode]):
-                return 'Summary'
-            else:
-                return ERROR_DETAIL_LABELS_DICT[self.ErrorCode][index]
-        except:
-            return 'Parameter%d' % index
+    def getXmlDict(self):
+        XmlDict = {}
+        XmlDict['code'] = self.ErrorCode
+        for i in range(len(self.Details)):
+            try:
+                label = ERROR_DETAIL_LABELS_DICT[self.ErrorCode][i]
+            except KeyError:
+                label = 'Parameter %d' % i
+            XmlDict[label] = self.Details[i]        
+        return XmlDict
         
     ## @brief Return the error details formatted in such a way that they can be
     #  printed on the screen or put into the report.
@@ -122,15 +74,16 @@ class pError:
 
     def getDetailsAsText(self):
         details = ''
-        for (i, detail) in enumerate(self.Details):
-            details += ' %s="%s"' % (self.getDetailLabel(i), self.Details[i])
-        return details
+        for i in range(len(self.Details)):
+            try:
+                label = ERROR_DETAIL_LABELS_DICT[self.ErrorCode][i]
+            except KeyError:
+                label = 'Parameter %d' % i
+            details += '%s=%s, ' % (label, self.Details[i])
+        return details[:-2]
 
     def getAsText(self):
-        text = self.ErrorCode
-        if self.hasDetails():
-            text += ' (%s)' % self.getDetailsAsText().strip().replace(' ', ', ')
-        return text
+        return '%s (%s)' % (self.ErrorCode, self.getDetailsAsText())
 
     def __str__(self):
         return self.getAsText()

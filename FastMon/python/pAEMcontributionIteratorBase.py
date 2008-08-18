@@ -85,7 +85,7 @@ class pAEMcontributionIteratorBase(LDF.AEMcontributionIterator):
     def acd_tile_hitmap__header__(self, cable, header):
 	self.TreeMaker.getVariable('acd_tile_hitmap')[0] = header.hitMap()
 
-    ## @brief Fill AcdHitChannel tree branch [12,18].
+    ## @brief Fill acd_cable_tile_count tree branch.
     ## @param self
     #  The class instance.
     ## @param cable
@@ -95,6 +95,6 @@ class pAEMcontributionIteratorBase(LDF.AEMcontributionIterator):
     ## @param pha
     #  The tile pulse height.
 
-    def AcdHitChannel__pha__(self, cable, channel, pha):
-	self.TreeMaker.getVariable('AcdHitChannel')[cable][channel] += 1
+    def acd_cable_tile_count__pha__(self, cable, channel, pha):
+	self.TreeMaker.getVariable('acd_cable_tile_count')[cable] += 1
 

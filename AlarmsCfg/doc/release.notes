@@ -1,3 +1,118 @@
+*** v3r5p0 ***
+- Upper warning limit for spikes_and_holes on
+TkrHitsCounter_PlaneGTFE_TH2_Tower_ moved from 400 to 1000 (we were having
+quite a few of not significant warnings).
+
+
+*** v3r4p4 ***
+- Number of sigma for issuing warnings/errors moved from 1 to 2 on all the
+tktTrend alarms, as per Hiro's request.
+
+
+*** v3r4p3 ***
+- Alarm limits on the calhist monitoring products made wider so that they do
+not cause spurious alarms in the tuning phase.
+- Alarms on the ACD asymmetries added.
+
+
+*** v3r4p2 ***
+- Bins not corresponding to unphysical ACD tiles removed from the alarms (uses
+a new ad-hoc feature of the y_values alarm algorithm).
+
+
+*** v3r4p1 ***
+- Added a few alarms on the ACD pedestals.
+
+
+*** v3r4p0 ***
+- num_sigma set to zero for all the alarms on calhist; This takes care, for the
+moment, of the wrong error bars on the plots.
+
+
+*** v3r0p3 ***
+- Lower error limits on Mean_ToT_con0_Trunc_1_249_TowerPlane (digi trend)
+changed from 15 to 1 in such a way that an error is reported only if a
+controller is dead (and not in case of noisy strips).
+High error limits moved to 150.
+
+
+*** v3r0p2 ***
+- Upper warning limit on Rate_NTkrHits_TowerPlane moved from 2.2 to 2.5 in
+digi trend.
+* Relevant jira(s): GDQMQ-237
+
+
+*** v3r0p1 ***
+- Changed the upper limits on the significances of the empty bins in the
+FastMon eor.
+
+
+*** v3r0p0 ***
+- Configuration files for the alarms on the CAL and ACD calibration quantities
+added.
+* Relevant jira(s): GDQMQ-216
+
+
+*** v2r5p3 ***
+- Alarm limits on the Tracker (and in particular on Hiro's quantities) updated.
+	+ The spikes_and_holes algorithm on the GTFE occupancy in fastmon eor
+	is not allowed to produce errors anymore (only warnings).
+	+ Alarms on tower hit and trigger efficiency re-enabled. Lower limits
+	are 0.98 and 0.90 respectively. An error is issued upon limit
+	violations.
+* Relevant jira(s): GDQMQ-227
+
+
+*** v2r5p2 ***
+- Lower limits on the source event rate (merit eor) set to zero, as we were
+having alarms occasionally firing.
+* Relevant jira(s): GDQMQ-235
+
+
+*** v2r5p1 ***
+- Alarms on the quantity ReconAcdPhaMips_PMT*_TH1_AcdTile_* in recon eor
+removed as the corresponding plots are undergoing a revision and redefinition
+process after some changes in GR.
+* Relevant jira(s): GDQMQ-228
+
+
+*** v2r5p0 ***
+- Exception in fastmon eor on the noisy strip of tower 3 (which has been
+masked) removed.
+* Relevant jira(s): GDQMQ-225
+
+
+*** v2r4p2 ***
+- Limits adjusted for digi trending. Relevant variables: Rate_AcdGemCNO_GARC,
+Mean_TkrTotalHitsPerEvt, OutF_NormalizedTkrTriggerWithLessThan6Layers_Tower,
+Rate_NTkrHits_TowerPlane, Mean_ConsecutivePlanesHit_Tower,
+DoubleDiffRate_LiveTimeFraction.
+
+
+*** v2r4p1 ***
+- New start_x parameter also used for the CAL LO trigger threshold plot.
+
+
+*** v2r4p0 ***
+- Recon eor improved taking advantage of the new start_x parameter of the
+alg__leftmost_edge algorithm (used for the alarms on the CAL LAC thresholds
+and the ACD veto thresholds, for which th threshold on the significance has
+also been changed from 60 to 20).
+
+
+*** v2r3p4 ***
+- Got rid of a couple of alarms on unstable recon quantities.
+- Limits on the merit trending and recon eor updated.
+
+
+*** v2r3p3 ***
+- A few limits updated based on the new runs.
+
+
+*** v2r3p2 ***
+- A few limits updated based on the new runs.
+
+
 *** v2r3p1 ***
 - Got rid of the alarm on the rms of TkrHits_TH1_Tower (Digi).
 - A few limits updated based on the new runs.

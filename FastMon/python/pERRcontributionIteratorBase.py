@@ -36,15 +36,9 @@ class pERRcontributionIteratorBase(LDF.ERRcontributionIterator):
         self.offset(offset)
         self.ErrorHandler = errorHandler
 
-    def getSummary(self):
-        return '%1d-%1d-0x%02x-0x%01x' % (long(self.theError().tmo()),
-                                          long(self.theError().phs()),
-                                          long(self.theError().tkr()),
-                                          long(self.theError().cal()))
-
     def handleError(self, event, code, p1, p2):
         if code == LDF.ERRcontributionIterator.ERR_TEMbug:
-            self.ErrorHandler.fill('TEM_BUG_INSTANCE', ['generic'])
+            self.ErrorHandler.fill('TEM_BUG_INSTANCE', [])
             return LDF.ERRcontributionIterator.ERR_TEMbug
         return 0
 
@@ -63,10 +57,7 @@ class pERRcontributionIteratorBase(LDF.ERRcontributionIterator):
     ## @brief Dispatch function for "cable phase error" errors.
 
     def phaseError(self, tower, err):
-        tags = []
-        for i in range(8):
-            tags.append(int((err >> (i << 1)) & 0x0003))
-        self.ErrorHandler.fill('PHASE_ERROR', [tower, tags, self.getSummary()])
+        self.ErrorHandler.fill('PHASE_ERROR', [tower])
         return 0
 
     ## @brief Dispatch function for "cable timeout" errors.
