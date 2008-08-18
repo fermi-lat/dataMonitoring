@@ -2,7 +2,9 @@
 - All the useless <parameter name="max" value="9999"/> removed from the
 digi_eor_alarms.xml file.
 - All the useless <parameter name="max" value="9999"/> removed from the
-fastmon_eor_alarms.xml file
+fastmon_eor_alarms.xml file.
+- All the useless <parameter name="max" value="9999"/> removed from the
+recon_eor_alarms.xml file.
 
 
 *** v4r1p0 ***
