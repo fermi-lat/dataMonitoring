@@ -19,8 +19,8 @@
   <alarmList group="TKR" name="TKR base" enabled="True">
     <alarmSet name="Time::Mean_FastMon_TkrHits" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="100" max="200"/>
-	<error_limits   min="50"  max="300"/>
+	<warning_limits min="100" max="300"/>
+	<error_limits   min="50"  max="400"/>
       </alarm> 
     </alarmSet>
    
@@ -33,17 +33,21 @@
 
     <alarmSet name="Time::Mean_FastMon_CalTowerCount" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.5" max="2.0"/>
-	<error_limits   min="0.1"  max="3.0"/>
+	<warning_limits min="2.5" max="4.0"/>
+	<error_limits   min="2.0" max="5.0"/>
       </alarm> 
     </alarmSet>
 
-    <alarmSet name="Time::Mean_FastMon_CalLogEndRangeHit" enabled="True">
+    <!-- If we really want this, we'll have to optimize the algorithm, cause it's a lot of points.
+
+    <alarmSet name="Time::Mean_FM_CalLogRHit_TowerCalLayerCalColumnFR" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits max="0.02"/>
-	<error_limits   max="0.03"/>
+	<warning_limits min="0.0" max="0.02"/>
+	<error_limits   min="0.0" max="0.03"/>
       </alarm> 
     </alarmSet>
+
+    -->
         
   </alarmList>  
 
