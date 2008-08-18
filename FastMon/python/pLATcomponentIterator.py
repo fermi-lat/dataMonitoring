@@ -20,22 +20,22 @@ class pLATcomponentIterator(LDF.LATcomponentIterator):
     ## @param treeMaker
     #  The pRootTreeMaker object responsible for the creation and filling
     #  of the output ROOT tree.
-    ## @param errorHandler
-    #  The pErrorHandler responsible for keeping track of the errors.
+    ## @param errorCounter
+    #  The pEventErrorCounter responsible for keeping track of the errors.
   
-    def __init__(self, treeMaker, errorHandler):
+    def __init__(self, treeMaker, errorCounter):
 
-        ## @var TreeMaker
+        ## @var __TreeMaker
         ## @brief The pRootTreeMaker object responsible for the creation
         #  and filling of the output ROOT tree.
 
-        ## @var ErrorHandler
-        ## @brief The pErrorHandler responsible for keeping track of
+        ## @var __ErrorCounter
+        ## @brief The pEventErrorCounter responsible for keeping track of
         #  the errors.
         
         LDF.LATcomponentIterator.__init__(self)
-        self.TreeMaker    = treeMaker
-        self.ErrorHandler = errorHandler
+        self.__TreeMaker    = treeMaker
+        self.__ErrorCounter = errorCounter
 
     ## @brief Implementation of the GEM component.
     ## @param self
@@ -47,8 +47,8 @@ class pLATcomponentIterator(LDF.LATcomponentIterator):
 
     def GEMcomponent(self, event, contribution):
         gemContribution = pGEMcontribution(event, contribution,\
-                                           self.TreeMaker     ,\
-                                           self.ErrorHandler)
+                                           self.__TreeMaker,   \
+                                           self.__ErrorCounter)
         gemContribution.fillEventContribution()
         return 0 
 
@@ -62,8 +62,8 @@ class pLATcomponentIterator(LDF.LATcomponentIterator):
         
     def TKRcomponent(self, event, contribution):
         tkrIterator = pTKRcontributionIterator(event, contribution,\
-                                               self.TreeMaker     ,\
-                                               self.ErrorHandler)
+                                               self.__TreeMaker,   \
+                                               self.__ErrorCounter)
         tkrIterator.iterate()
         tkrIterator.fillEventContribution()
         if tkrIterator.diagnostic() is not None:
@@ -80,8 +80,8 @@ class pLATcomponentIterator(LDF.LATcomponentIterator):
     
     def CALcomponent(self, event, contribution):
         calIterator = pCALcontributionIterator(event, contribution,\
-                                               self.TreeMaker     ,\
-                                               self.ErrorHandler)
+                                               self.__TreeMaker,   \
+                                               self.__ErrorCounter)
         calIterator.iterate()
         calIterator.fillEventContribution()
         self.CALend(calIterator.CALend())
@@ -97,8 +97,8 @@ class pLATcomponentIterator(LDF.LATcomponentIterator):
 
     def ACDcomponent(self, event, contribution):
         aemIterator = pAEMcontributionIterator(event, contribution,\
-                                               self.TreeMaker     ,\
-                                               self.ErrorHandler)
+                                               self.__TreeMaker,   \
+                                               self.__ErrorCounter)
         aemIterator.iterate()        
 	aemIterator.fillEventContribution()
         return 0
@@ -119,7 +119,7 @@ class pLATcomponentIterator(LDF.LATcomponentIterator):
         else:
             offset = TKRend()
         errIterator = pERRcontributionIteratorBase(event, contribution,\
-                                                   offset, self.ErrorHandler)
+                                                   offset, self.__ErrorCounter)
 	errIterator.iterate()
         return 0
 
@@ -138,5 +138,5 @@ class pLATcomponentIterator(LDF.LATcomponentIterator):
     def handleError(self, contribution, code, p1, p2):
         if type(contribution) == LDF.EBFevent:
             if code == LDF.EBFcontributionIterator.ERR_PacketError:
-                self.ErrorHandler.fill('PACKET_ERROR')
+                self.__ErrorCounter.fill('PACKET_ERROR')
             return 0

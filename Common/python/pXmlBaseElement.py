@@ -2,12 +2,9 @@
 ## @package pXmlBaseElement
 ## @brief Description of a minimal xml element.
 
-import pSafeLogger
-logger = pSafeLogger.getLogger('pXmlBaseElement')
-
+import logging
 import sys
 
-from pGlobals import *
 
 ## @brief Class describing a minimal xml element.
 #
@@ -56,6 +53,9 @@ class pXmlBaseElement:
     def getAttribute(self, attributeName, default=None):
         attribute = str(self.DomElement.getAttribute(attributeName))
         if attribute == '':
+            logging.debug('Could not find attribute %s for node %s. ' %\
+                          (attributeName, self.NodeName)              +\
+                          'Returning "%s"...' % default)
             attribute = default
         return attribute
 
@@ -78,9 +78,9 @@ class pXmlBaseElement:
         try:
             return eval(attribute)
         except:
-            logger.error('Could not eval attribute "%s" for node "%s". ' %\
-                             (attributeName, self.NodeName)              +\
-                             'Returning %s...' % default)
+            logging.error('Could not eval attribute %s for node %s. ' %\
+                          (attributeName, self.NodeName)              +\
+                          'Returning %s...' % default)
             return default
 
     ## @brief Return a list of dom elements corrisponding to a given tag
@@ -110,18 +110,13 @@ class pXmlBaseElement:
     ## @param default
     #  The value to be returned in case there are no tags corresponding to a
     #  given tag name.
-    ## @param required
-    #  If true the xml elemnt is required and an error is raised if it's
-    #  missing in the xml file.
 
-    def getElementByTagName(self, tagName, default = None, required = False):
+    def getElementByTagName(self, tagName, default=None):
         elementsList = self.getElementsByTagName(tagName)
         if elementsList == []:
-            if required:
-                logger.error('Tag %s missing for %s.' % (tagName, self.Name))
             return default
         elif len(elementsList)> 1:
-            logger.error('Tag %s multiply defined for node %s. ' %\
+            logging.error('Tag %s multiply defined for node %s. ' %\
                           (tagName, self.NodeName)                +\
                           'Returning the first one...')
         return elementsList[0]
@@ -135,12 +130,9 @@ class pXmlBaseElement:
     ## @param default
     #  The value to be returned in case there are no tags corresponding to a
     #  given tag name or the tag has no value.
-    ## @param required
-    #  If true the xml elemnt is required and an error is raised if it's
-    #  missing in the xml file.
     
-    def getTagValue(self, tagName, default = None, required = False):
-        element = self.getElementByTagName(tagName, default, required)
+    def getTagValue(self, tagName, default=None):
+        element = self.getElementByTagName(tagName, default)
         if element == default:
             return default
         try:
@@ -158,22 +150,15 @@ class pXmlBaseElement:
     #  The value to be returned in case there are no tags corresponding to a
     #  given tag name or the tag has no value or the eval statement fails
     #  for some reason.
-    ## @param required
-    #  If true the xml elemnt is required and an error is raised if it's
-    #  missing in the xml file.
 
-    def evalTagValue(self, tagName, default = None, required = False):
-        value = self.getTagValue(tagName, default, required)
+    def evalTagValue(self, tagName, default=None):
+        value = self.getTagValue(tagName, default)
         if value == default:
             return default
         try:
             return eval(self.getTagValue(tagName))
         except:
             return default
-
-    ## @brief Return a formatted text representation of the class instances.
-    ## @param self
-    #  The class instance.
 
     def getTextSummary(self):
         return 'Node name: %s' % self.NodeName 
@@ -188,7 +173,8 @@ class pXmlBaseElement:
 
 if __name__ == '__main__':
     from xml.dom  import minidom
-    doc = minidom.parse(file('../xml/alarmconfig.xml'))
+    logging.basicConfig(level=logging.DEBUG)
+    doc = minidom.parse(file('../xml/config.xml'))
     for domElement in doc.getElementsByTagName('alarmList'):
         xmlElement = pXmlBaseElement(domElement)
         print 'Printing pXmlBaseElement object...'

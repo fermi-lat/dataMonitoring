@@ -1,23 +1,25 @@
 
-from pSafeROOT import ROOT
+import ROOT
 
 from pAlarmBaseAlgorithm import pAlarmBaseAlgorithm
 
 
-## @brief Number of entries in the overflow bin.
+## @brief Return the number of entries in the overflow bin
 #
-#  <b>Output value</b>:
+#  Valid parameters: None.
 #
-#  Content of the overflow bin.
-
-
+## @param plot
+#  The ROOT object.
+## @param paramsDict
+#  The (optional) dictionary of parameters.
 
 class alg__x_overflow(pAlarmBaseAlgorithm):
 
     SUPPORTED_TYPES      = ['TH1F']
     SUPPORTED_PARAMETERS = []
-    OUTPUT_DICTIONARY    = {}
-    OUTPUT_LABEL         = 'Number of overflows'
+
+    def __init__(self, limits, object, paramsDict = {}):
+        pAlarmBaseAlgorithm.__init__(self, limits, object, paramsDict)
 
     def run(self):
         lastBin = self.RootObject.GetNbinsX() + 1
@@ -26,15 +28,9 @@ class alg__x_overflow(pAlarmBaseAlgorithm):
 
 if __name__ == '__main__':
     from pAlarmLimits import pAlarmLimits
-    limits = pAlarmLimits(-1, 2, -1, 3)
-    canvas = ROOT.TCanvas('Test canvas', 'Test canvas', 400, 400)
-    
-    histogram = ROOT.TH1F('h', 'h', 100, -2, 2)
+    limits = pAlarmLimits(-2, 2, -3, 3)
+    histogram = ROOT.TH1F('h', 'h', 100, -5, 5)
     histogram.FillRandom('gaus', 1000)
-    for i in range(10):
-        histogram.Fill(3)
-    histogram.Draw()
-    canvas.Update()
-    algorithm = alg__x_overflow(limits, histogram, {})
+    algorithm = alg__x_overflow(limits, histogram)
     algorithm.apply()
     print algorithm.Output

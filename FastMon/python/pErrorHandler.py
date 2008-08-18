@@ -8,116 +8,203 @@ import sys
 import cPickle
 import pUtils
 
-from pError      import pError
-from pErrorEvent import pErrorEvent
+from pError import pError
 
-MAX_DETAILED_LIST_LENGTH  = 100
+
+MAX_DETAILED_LIST_LENGTH  = 10
+BASE_STRING_FORMAT_LENGTH = 40
 
 class pErrorHandler:
 
     def __init__(self, pickleFilePath=None):
-        self.ErrorCountsDict = {}
-        self.ErrorEventsDict = {}
-        self.ErrorsBuffer = []
+        self.__EventNumber = None
+        self.__ErrorsList  = []
         if pickleFilePath is not None:
             self.load(pickleFilePath)
             
     def load(self, inputFilePath):
         logger.info('Unpickling the error handler from %s...' % inputFilePath)
         startTime = time.time()
-        (self.ErrorCountsDict, self.ErrorEventsDict) =\
-                                cPickle.load(file(inputFilePath, 'r'))
+        self.__ErrorsList = cPickle.load(file(inputFilePath, 'r'))
         logger.info('Done in %.4f s.\n' % (time.time() - startTime))
         
     def dump(self, outputFilePath):
         logger.info('Pickling the error handler into %s...' % outputFilePath)
         startTime = time.time()
-        cPickle.dump((self.ErrorCountsDict, self.ErrorEventsDict),\
-                     file(outputFilePath, 'w'))
+        cPickle.dump(self.__ErrorsList, file(outputFilePath, 'w'))
         logger.info('Done in %.4f s.\n' % (time.time() - startTime))
 
+    def setEventNumber(self, eventNumber):
+        self.__EventNumber = eventNumber
 
     def fill(self, errorCode, parameters=[]):
-        error = pError(errorCode, parameters)
-        # fill the summary by error code
+        error = pError(self.__EventNumber, errorCode, parameters)
+        self.__ErrorsList.append(error)
+
+    def getError(self, index):
         try:
-            self.ErrorCountsDict[errorCode] += 1
-        except KeyError:
-            self.ErrorCountsDict[errorCode] = 1
-        # fill a buffer of errors for this event.
-        self.ErrorsBuffer.append(error)
-        
+            return self.__ErrorsList[index]
+        except IndexError:
+            logger.error('Error index (%d) out of range (0-%d)' %\
+                          (index, self.getTotalNumErrors()))
 
-    def flushErrorsBuffer(self, eventNumber):
-        # fill the ErrorEventsDict, in case the event has errors,
-        # using the correct event ID
-        # to be called at the end of event processing
-        if self.ErrorsBuffer != []:
-            self.ErrorEventsDict[eventNumber] =\
-                                 pErrorEvent(eventNumber)
-            for error in self.ErrorsBuffer:
-                self.ErrorEventsDict[eventNumber].addError(error)
+    def getErrorCodesList(self):
+        errorCodesList = []
+        for error in self.__ErrorsList:
+            errorCode = error.ErrorCode
+            if errorCode not in errorCodesList:
+                errorCodesList.append(errorCode)
+        return errorCodesList
 
-            self.ErrorsBuffer = []
+    def getTotalNumErrors(self):
+        return len(self.__ErrorsList)
 
-    def getNumErrors(self):
-        return sum(self.ErrorCountsDict.values())
+    def getNumErrors(self, errorCode):
+        numErrors = 0
+        for error in self.__ErrorsList:
+            if error.ErrorCode == errorCode:
+                numErrors += 1
+        return numErrors
 
-    def getNumErrorEvents(self):
-        return len(self.ErrorEventsDict)
-            
+    def getTotalNumBadEvents(self):
+        eventsList = []
+        for error in self.__ErrorsList:
+            eventNumber = error.EventNumber
+            if eventNumber not in eventsList:
+                eventsList.append(eventNumber)
+        return len(eventsList)
+
+    def getNumBadEvents(self, errorCode):
+        eventsList = []
+        for error in self.__ErrorsList:
+            eventNumber = error.EventNumber
+            if eventNumber not in eventsList and error.ErrorCode == errorCode:
+                eventsList.append(eventNumber)
+        return len(eventsList)
+
+    def __printEventHeader(self, eventNumber):
+        print '********   Event %d   ********' % eventNumber
+
     def browseErrors(self):
-        if self.getNumErrors() == 0:
-            logger.info('No errors found in this file.')
+        logger.info('Starting error browser...')
+        numErrors = self.getTotalNumErrors()
+        if numErrors  == 0:
+            logger.info('There are no errors.')
             sys.exit()
-        logger.info('%d events with errors (%d errors in total) found.' %\
-                    (self.getNumErrorEvents(), self.getNumErrors()))
-        logger.info('Starting error browser...\n')
-        errorEventsList = self.ErrorEventsDict.keys()
-        errorEventsList.sort()
-        for eventNumber in errorEventsList:
-            print self.ErrorEventsDict[eventNumber]
-            message = 'Press q to quit, any other key to continue\n'
-            if raw_input(message) == 'q':
-                sys.exit()
+        print
+        errorIndex  = 0
+        eventNumber = self.getError(0).EventNumber
+        self.__printEventHeader(eventNumber)
+        while(errorIndex < numErrors):
+            error = self.getError(errorIndex)
+            if error.EventNumber != eventNumber:
+                eventNumber = error.EventNumber
+                message = 'Press q to quit, any other key to continue\n'
+                if raw_input(message) == 'q':
+                    sys.exit()
+                self.__printEventHeader(eventNumber)
+            print error.getPlainRepresentation(False),
+            errorIndex += 1
+        print
         logger.info('There are no more errors.\n')
 
-    def writeXmlOutput(self, filename):
-        try:
-            from pXmlWriter import pXmlWriter
-        except:
-            logger.error("Can not find pXmlWriter module. Exit.")
-            return None
-        xmlWriter  = pXmlWriter(filename)
-        xmlWriter.openTag('errorContribution')
-        xmlWriter.indent()
-        
-        xmlWriter.writeComment('Summary by error code')
-        xmlWriter.openTag('errorSummary')
-        xmlWriter.indent()
-        for (code, number) in self.ErrorCountsDict.items():
-            xmlWriter.writeTag('errorType', {'code':code, 'quantity': number })
-        xmlWriter.backup()
-        xmlWriter.closeTag('errorSummary')
-        
-        xmlWriter.writeComment('Summary by event number')
-        xmlWriter.openTag('eventSummary')
-        xmlWriter.indent()
-        for (EvtId, errorEvent) in self.ErrorEventsDict.items():
-            xmlWriter.openTag('errorEvent', {'eventNumber':EvtId})
-            xmlWriter.indent()
-            
-            for error in errorEvent.ErrorsList:
-                xmlWriter.writeTag('error', error.getXmlDict())
-            xmlWriter.backup()
-            xmlWriter.closeTag('errorEvent')
-            xmlWriter.backup()
-        xmlWriter.closeTag('eventSummary')
-        
-        xmlWriter.backup()
-        xmlWriter.closeTag('errorContribution')
-        xmlWriter.closeFile()
+    def getPlainSummary(self):
+        errorCodesList = self.getErrorCodesList()
+        numErrors      = self.getTotalNumErrors()
+        numBadEvents   = self.getTotalNumBadEvents()
+        output = '** Error counter summary **\n\n'
+        if numErrors == 0:
+            output += 'No errors found in this run.\n'
+        else:
+            output += '-- Summary by event number\n\n'
+            output += '%s: %d\n' %\
+               (pUtils.expandString('Total number of events with errors',\
+                                    BASE_STRING_FORMAT_LENGTH), numBadEvents)
+            for errorCode in errorCodesList:
+                output += pUtils.expandString('Number of events with %s' %\
+                                              errorCode,\
+                                              BASE_STRING_FORMAT_LENGTH)
+                output += ': %d\n' % self.getNumBadEvents(errorCode)
+            output += '\n'
+            output += '-- Summary by error code\n\n'
+            output += '%s: %d\n' %\
+                      (pUtils.expandString('Total number of errors',\
+                                           BASE_STRING_FORMAT_LENGTH),\
+                       numErrors)
+            for errorCode in errorCodesList:
+                output += pUtils.expandString('Number of %s errors' %\
+                                              errorCode,\
+                                              BASE_STRING_FORMAT_LENGTH)
+                output += ': %d\n' % self.getNumErrors(errorCode)
+            output += '\n'
+            output += '-- Detailed list by event (max %d events)\n\n' %\
+                      MAX_DETAILED_LIST_LENGTH
+            errorIndex   = 0
+            maxNumEvents = min(numBadEvents, MAX_DETAILED_LIST_LENGTH)
+            eventNumber  = self.getError(0).EventNumber
+            output += '+ Event %d\n' % eventNumber
+            numEvents    = 1
+            while(numEvents < maxNumEvents):
+                error = self.getError(errorIndex)
+                if error.EventNumber != eventNumber:
+                    eventNumber = error.EventNumber
+                    numEvents += 1
+                    output    += '\n+ Event %d\n' % eventNumber
+                output     += error.getPlainRepresentation(False)
+                errorIndex += 1
+            #output += error.getPlainRepresentation(False)
+        return output
 
+    def getDoxygenSummary(self):
+        errorCodesList = self.getErrorCodesList()
+        numErrors      = self.getTotalNumErrors()
+        numBadEvents   = self.getTotalNumBadEvents()
+        output = '\n@section errors_summary Error statistics summary\n'
+        if numErrors == 0:
+            output += 'No errors have been found in this run.\n'
+        else:
+            output += '\n@subsection summary_by_evt ' +\
+                      'Summary by event number\n\n'
+            output += '@li Total number of events with errors: %d\n' %\
+                      numBadEvents
+            for errorCode in errorCodesList:
+                output += '@li Number of events with %s errors: %d\n' %\
+                          (pUtils.verbatim(errorCode),\
+                           self.getNumBadEvents(errorCode))
+            output += '\n@subsection summary_by_code Summary by error code\n\n'
+            output += '@li Total number of errors: %d\n' % numErrors
+            for errorCode in errorCodesList:
+                output += '@li Number of %s errors: %d\n' %\
+                          (pUtils.verbatim(errorCode),\
+                           self.getNumErrors(errorCode))
+            output += '\n@subsection detailed_summary ' +\
+                      'Detailed summary (max %d events)\n\n' %\
+                      MAX_DETAILED_LIST_LENGTH
+            errorIndex   = 0
+            maxNumEvents = min(numBadEvents, MAX_DETAILED_LIST_LENGTH)
+            eventNumber  = self.getError(0).EventNumber
+            output += '@li Event %d\\n\n' % eventNumber
+            numEvents    = 1
+            while(numEvents < maxNumEvents):
+                error = self.getError(errorIndex)
+                if error.EventNumber != eventNumber:
+                    eventNumber = error.EventNumber
+                    numEvents += 1
+                    output    += '\n@li Event %d\n' % eventNumber
+                output     += error.getDoxygenRepresentation()
+                errorIndex += 1
+            #output += error.getDoxygenRepresentation()
+        return '%s\n\n' % output
+
+    def writeDoxygenSummary(self, filePath):
+        logger.info('Writing the error file for the report...')
+        startTime   = time.time()
+        fileContent = self.getDoxygenSummary()
+        file(filePath, 'w').writelines(fileContent)
+        logger.info('Done in %.4f s.\n' % (time.time() - startTime))
+
+    def __str__(self):
+        return self.getPlainSummary()
 
         
 

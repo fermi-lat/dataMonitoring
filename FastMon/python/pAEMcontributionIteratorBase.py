@@ -19,36 +19,34 @@ class pAEMcontributionIteratorBase(LDF.AEMcontributionIterator):
     #  The contribution object.
     ## @param treeMaker
     #  The pRootTreeMaker object responsible for the creation of the ROOT tree.
-    ## @param errorHandler
-    #  The pErrorHandler object responsible for managing the errors.
+    ## @param errorCounter
+    #  The pEventErrorCounter object responsible for managing the errors.
     
-    def __init__(self, event, contribution, treeMaker, errorHandler):
+    def __init__(self, event, contribution, treeMaker, errorCounter):
 
         ## @var TreeMaker
         ## @brief The pRootTreeMaker object responsible for the creation
         #  of the ROOT tree.
 
-        ## @var ErrorHandler
-        ## @brief The pEventErrorHandler object responsible for
+        ## @var ErrorCounter
+        ## @brief The pEventErrorCounter object responsible for
         #  managing the errors.
         
         LDF.AEMcontributionIterator.__init__(self, event, contribution)
         self.TreeMaker    = treeMaker
-        self.ErrorHandler = errorHandler
+        self.ErrorCounter = errorCounter
 
     ## @brief Function included by default by the corresponding method
     #  of the derived iterator (the one which is actually run).
     
     def header(self, cable, header):
-        if header.parityError():
-            self.ErrorHandler.fill('ACD_HEADER_PARITY_ERROR', [cable])
+        pass
     
     ## @brief Function included by default by the corresponding method
     #  of the derived iterator (the one which is actually run).
     
     def pha(self, cable, channel, pha):
-        if pha.parityError():
-            self.ErrorHandler.fill('ACD_PHA_PARITY_ERROR', [cable, channel])
+        pass
 
     ## @brief Fill acd_tile_count tree branch.
     ## @param self

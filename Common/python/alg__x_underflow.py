@@ -1,24 +1,25 @@
 
-from pSafeROOT import ROOT
+import ROOT
 
 from pAlarmBaseAlgorithm import pAlarmBaseAlgorithm
 
 
-
-## @brief Number of entries in the underflow bin.
+## @brief Return the number of entries in the underflow bin
 #
-#  <b>Output value</b>:
+#  Valid parameters: None.
 #
-#  Content of the underflow bin.
-
-
+## @param plot
+#  The ROOT object.
+## @param paramsDict
+#  The (optional) dictionary of parameters.
 
 class alg__x_underflow(pAlarmBaseAlgorithm):
 
     SUPPORTED_TYPES      = ['TH1F']
     SUPPORTED_PARAMETERS = []
-    OUTPUT_DICTIONARY    = {}
-    OUTPUT_LABEL         = 'Number of underflows'
+
+    def __init__(self, limits, object, paramsDict = {}):
+        pAlarmBaseAlgorithm.__init__(self, limits, object, paramsDict)
 
     def run(self):
         self.Output.setValue(self.RootObject.GetBinContent(0))
@@ -26,15 +27,9 @@ class alg__x_underflow(pAlarmBaseAlgorithm):
 
 if __name__ == '__main__':
     from pAlarmLimits import pAlarmLimits
-    limits = pAlarmLimits(-1, 2, -1, 3)
-    canvas = ROOT.TCanvas('Test canvas', 'Test canvas', 400, 400)
-    
+    limits = pAlarmLimits(-2, 2, -3, 3)
     histogram = ROOT.TH1F('h', 'h', 100, -5, 5)
     histogram.FillRandom('gaus', 1000)
-    for i in range(25):
-        histogram.Fill(-10)
-    histogram.Draw()
-    canvas.Update()
-    algorithm = alg__x_underflow(limits, histogram, {})
+    algorithm = alg__x_underflow(limits, histogram)
     algorithm.apply()
     print algorithm.Output

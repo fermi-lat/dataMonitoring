@@ -5,14 +5,13 @@
 #  It contains the definition of the output list and all the plot
 #  representations.
 
-import pSafeLogger
-logger = pSafeLogger.getLogger('pXmlOutputList')
+from pXmlElement import pXmlElement
+from pXmlList    import pXmlList
+from pGlobals    import *
+from pSafeROOT   import ROOT
 
-from pXmlElement    import pXmlElement
-from pXmlList       import pXmlList
-from pGlobals       import *
-from pSafeROOT      import ROOT
-from pCustomPlotter import pCustomPlotter
+import pCUSTOMplots
+
 
 SUPPORTED_PLOT_TYPES = ['TH1F', 'TH2F', 'StripChart', 'RateStripChart',\
                         'CUSTOM']
@@ -99,13 +98,9 @@ class pPlotXmlRep(pXmlElement):
         self.YLabel       = self.getTagValue('ylabel', '')
         self.XLog         = self.evalTagValue('xlog', False)
         self.YLog         = self.evalTagValue('ylog', False)
-        self.ZLog         = self.evalTagValue('zlog', False)
         self.DrawOptions  = self.getTagValue('drawoptions', '')
         self.Caption      = self.getTagValue('caption', '')
         self.RootObjects  = {}
-
-    def draw(self, rootObject):
-        rootObject.Draw(self.DrawOptions)
 
     ## @brief Return the suffix to be attached to the plot name or
     #  title for a particular object (e.g. tower or tkr layer), in case
@@ -125,11 +120,11 @@ class pPlotXmlRep(pXmlElement):
     def getSuffix(self, tower=None, layer=None, end=None):
         suffix = ''
         if tower is not None:
-            suffix += '_Tower_%d' % tower
+            suffix += '_tower_%d' % tower
         if layer is not None:
-            suffix += '_Layer_%d' % layer
+            suffix += '_layer_%d' % layer
         if end is not None:
-            suffix += '_End_%d' % end
+            suffix += '_end_%d' % end
         return suffix
 
 
@@ -501,7 +496,7 @@ class pCUSTOMXmlRep(pPlotXmlRep):
         #
         #  The type is defined in the xml configuration file and a
         #  corresponding function, whose name must match the type exactly,
-        #  must be defined in the @ref pCustomPlotter package.
+        #  must be defined in the @ref pCUSTOMplots package.
 
         ## @var ExcludedValues
         ## @brief Relevant for the tkr_2d_map custom plot type.
@@ -511,10 +506,6 @@ class pCUSTOMXmlRep(pPlotXmlRep):
         pPlotXmlRep.__init__(self, element)
 	self.Type           = element.getAttribute('type')
         self.ExcludedValues = self.evalTagValue('exclude')
-        self.Plotter = None
-
-    def setPlotter(self, customPlotter):
-        self.Plotter = customPlotter
 
     ## @brief Return the custom ROOT histogram
     ## @param self
@@ -522,35 +513,11 @@ class pCUSTOMXmlRep(pPlotXmlRep):
     ## @param rootTree
     #  The ROOT tree.
 
-    def getRootObjects(self, rootTree, tower=None, layer=None):
-        try:
-            histograms = eval('self.Plotter.%s(self)' % self.Type)
-        except AttributeError:
-            logger.error('Type %s not defined in pCustomPlotter.' % self.Type)
-            logger.info('Returning an empty histogram list.')
-            return []
-        for histogram in histograms:
-            histogram.GetXaxis().SetTitle(self.XLabel)
-            histogram.GetYaxis().SetTitle(self.YLabel)
-        return histograms
-
-    ## @brief Overloaded method.
-    # 
-    #  The intention would be to get rid of the "level" concept for
-    #  the custom plots. In this case the code has to be written from
-    #  scratch anyway so that it is probably worth to code the loop over
-    #  towers, layers, front end etc. explicitely. Following this approach we
-    #  need to modify the pCustomPlotter methods in order to return lists
-    #  of histograms rather than single histograms; this method takes care of
-    #  appending the list properly to the global dictionary of ROOT objects.
-    #
-    #  Note that the level must be defined in the xml file anyway, in order
-    #  for the output lists to be properly populated.
-
-    def createRootObjects(self, rootTree):
-        objects = self.getRootObjects(rootTree)
-        for object in objects:
-            self.RootObjects[object.GetName()] = object
+    def getRootObject(self, rootTree):
+        histogram = eval('pCUSTOMplots.%s(rootTree, self)' % self.Type)
+        histogram.GetXaxis().SetTitle(self.XLabel)
+        histogram.GetYaxis().SetTitle(self.YLabel)
+        return histogram
 
 
 ## @brief Class describing an output list for the data monitor (i.e. a
