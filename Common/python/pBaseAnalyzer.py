@@ -41,19 +41,16 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
             exponent = self.FitFunction.GetParameter(3)
             return 0.573244 + 1.559419*(exponent**(-1.813875))
         else:
-            return 1.0
+            return 1
 
     def getNormCorrectionFactor(self):
         if self.FitFunction.GetName() == 'hyper_gaussian':
             sigma = self.FitFunction.GetParameter(2)
             exponent = self.FitFunction.GetParameter(3)
             factor = 0.801328 + 0.693462*(exponent**(-1.781011))
-            try:
-                return factor/(sigma*self.getRmsCorrectionFactor())
-            except ZeroDivisionError:
-                return None
+            return factor/(sigma*self.getRmsCorrectionFactor())
         else:
-            return 1.0
+            return 1
 
     def getNewHistogram(self, name, numBins, xlabel = None, ylabel = None):
         histogram = ROOT.TH1F(name, name, numBins, -0.5, numBins - 0.5)
@@ -89,19 +86,10 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
 
     def fit(self, channelName):
         self.RootObject = self.get(channelName)
-        if self.RootObject is None:
-            sys.exit('Could not find %s. Abort.' % channelName)
-        if self.RootObject.GetEntries() == 0:
-            self.Mean = -1
-            self.RMS = -1
-            self.ChiSquare = -1
-            self.DOF = -1
-            self.ReducedChiSquare = -1
-            self.FitProb = -1
-            self.RootObject.Delete()
-            return
         if self.RebinningFactor > 1:
             self.RootObject.Rebin(self.RebinningFactor)
+        if self.RootObject is None:
+            sys.exit('Could not find %s. Abort.' % channelName)
         self.Mean = self.RootObject.GetMean()
         self.RMS = self.RootObject.GetRMS()
         self.RootObject.GetXaxis().SetRangeUser(self.Mean - 10*self.RMS,
@@ -114,11 +102,7 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
                                       self.Mean + 0.5*self.RMS)
         binWidth = self.RootObject.GetBinWidth(1)
         numEntries = self.RootObject.GetEntries()
-        try:
-            normalization = binWidth*numEntries*self.getNormCorrectionFactor()
-        except TypeError:
-            logger.warn('Skipping zero division for channel %s.' % channelName)
-            normalization = binWidth*numEntries
+        normalization = binWidth*numEntries*self.getNormCorrectionFactor()
         self.FitFunction.SetParameter(0, normalization)
         self.FitFunction.SetParLimits(2, 0.8*self.RMS, 2.0*self.RMS)
         self.FitFunction.SetParLimits(2, 0, 10.0*self.RMS)

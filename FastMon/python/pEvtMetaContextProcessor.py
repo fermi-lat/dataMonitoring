@@ -91,8 +91,8 @@ class pEvtMetaContextProcessor:
     #  Information from the meta event timeHack are used.
     ## The value is initialized to -9999 as default and is overwritten only 
     #  when the second has changed. 
-    ## We also take advantage of the knowledge that second has changed to store
-    #  this piece of information and to check TimeTone errors.
+    ## We also take advantage of the knowledge taht second has changed to
+    #  check TimeTone errors.
     ## @param self
     #  The class instance.
     ## @param meta
@@ -101,8 +101,7 @@ class pEvtMetaContextProcessor:
     #  The event context information.
 
     def getClockTicsDev20MHz(self, meta, context):
-        newSecond = False
-	ticsDev = -9999
+        ticsDev = -9999
 
 	ppsCounter = meta.timeHack.hacks
 	clockTics  = meta.timeHack.tics
@@ -113,8 +112,7 @@ class pEvtMetaContextProcessor:
             self.PreviousTics  = context.previous.timeHack.tics
 	    
 	# Check if the second has changed
-        if ppsCounter != self.PreviousHacks :
-	    newSecond = True
+        if  ppsCounter != self.PreviousHacks :
 	    # If there is a problem check error code else check deviation to 20MHz clock
 	    if context.current.incomplete :
 	        # Check TimeTone errors
@@ -129,7 +127,7 @@ class pEvtMetaContextProcessor:
 
         self.PreviousHacks = ppsCounter
 	self.PreviousTics  = clockTics
-        return (newSecond, ticsDev)
+        return ticsDev
 
     ## @brief Calculate the absolute timestamp.
     #  The absolute timestamp is calculated here the same way as it is in
@@ -156,9 +154,9 @@ class pEvtMetaContextProcessor:
         elapsed = int( (float( elapsed ) / freq * 1000000.0) + 0.5 )
         metaPPS = (meta.timeHack.hacks << 25) | meta.timeHack.tics
         currPPS = (context.current.timeHack.hacks << 25) |\
-                   context.current.timeHack.tics
+                  context.current.timeHack.tics
         prevPPS = (context.previous.timeHack.hacks << 25) |\
-                   context.previous.timeHack.tics
+                  context.previous.timeHack.tics
         secs    = context.current.timeSecs 
 	tevt = ProductSpan.utcfromtimestamp( secs, elapsed )
         return secs + elapsed/1000000.
@@ -172,12 +170,9 @@ class pEvtMetaContextProcessor:
 
     def process(self, meta, context):	
         self.getVariable('event_timestamp')[0]                     =\
-                        self.calculateTimeStamp(meta, context)
-        self.getVariable('meta_softwareKey')[0] = meta.softwareKey
-        self.getVariable('meta_LATC_master')[0] = meta.hardwareKey
-		             
-        self.getVariable('evt_data_transfer_id')[0] = self.EvtReader.runid()
-        self.getVariable('meta_context_run_id')[0]  = context.run.startedAt
+                       self.calculateTimeStamp(meta, context)      
+        self.getVariable('meta_context_run_id')[0] = \
+                       self.EvtReader.runid()  
 		            
 	self.getVariable('meta_context_open_action')[0]            =\
                        context.open.action
@@ -221,39 +216,40 @@ class pEvtMetaContextProcessor:
                        context.current.timeSecs
 	self.getVariable('meta_context_current_flywheeling')[0]    =\
                        context.current.flywheeling
-	self.getVariable('meta_context_current_source_gps')[0]     =\
+	self.getVariable('meta_context_current_source_gps')[0]    =\
                        context.current.sourceGps
-	self.getVariable('meta_context_current_missing_cpupps')[0]   =\
+	self.getVariable('meta_context_current_missing_cpupps')[0] =\
                        context.current.missingCpuPps
-	self.getVariable('meta_context_current_missing_latpps')[0]   =\
+	self.getVariable('meta_context_current_missing_latpps')[0] =\
                        context.current.missingLatPps
-	self.getVariable('meta_context_current_missing_timetone')[0] =\
+	self.getVariable('meta_context_current_missing_timetone')[0]=\
                        context.current.missingTimeTone
-	self.getVariable('meta_context_current_gem_timehacks')[0]    =\
+	self.getVariable('meta_context_current_gem_timehacks')[0]  =\
                        context.current.timeHack.hacks
-	self.getVariable('meta_context_current_gem_timeticks')[0]    =\
+	self.getVariable('meta_context_current_gem_timeticks')[0]  =\
                        context.current.timeHack.tics
-	self.getVariable('meta_context_previous_earlyevent')[0]      =\
+	self.getVariable('meta_context_previous_earlyevent')[0]     =\
                        context.previous.earlyEvent
-	self.getVariable('meta_context_previous_incomplete')[0]      =\
+	self.getVariable('meta_context_previous_incomplete')[0]    =\
                        context.previous.incomplete
-	self.getVariable('meta_context_previous_timesecs')[0]        =\
+	self.getVariable('meta_context_previous_timesecs')[0]      =\
                        context.previous.timeSecs
-	self.getVariable('meta_context_previous_flywheeling')[0]     =\
+	self.getVariable('meta_context_previous_flywheeling')[0]   =\
                        context.previous.flywheeling
-	self.getVariable('meta_context_previous_source_gps')[0]      =\
+	self.getVariable('meta_context_previous_source_gps')[0]   =\
                        context.previous.sourceGps
-	self.getVariable('meta_context_previous_missing_cpupps')[0]  =\
+	self.getVariable('meta_context_previous_missing_cpupps')[0]=\
                        context.previous.missingCpuPps
-	self.getVariable('meta_context_previous_missing_latpps')[0]  =\
+	self.getVariable('meta_context_previous_missing_latpps')[0]=\
                        context.previous.missingLatPps
 	self.getVariable('meta_context_previous_missing_timetone')[0]=\
                        context.previous.missingTimeTone
-	self.getVariable('meta_context_previous_gem_timehacks')[0]   =\
+	self.getVariable('meta_context_previous_gem_timehacks')[0] =\
                        context.previous.timeHack.hacks
-	self.getVariable('meta_context_previous_gem_timeticks')[0]   =\
+	self.getVariable('meta_context_previous_gem_timeticks')[0] =\
                        context.previous.timeHack.tics
 
-	(newSecond, ticsDev) = self.getClockTicsDev20MHz(meta, context)
-        self.getVariable('new_second')[0]          = newSecond                         
-        self.getVariable('clocktics_dev_20MHz')[0] = ticsDev
+        self.getVariable('clocktics_dev_20MHz')[0]             =\
+                       self.getClockTicsDev20MHz(meta, context)      
+
+
