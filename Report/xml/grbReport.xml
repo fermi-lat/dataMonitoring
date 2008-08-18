@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+
+<report title="GLAST-LAT GRB report">
+  
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="Earth_limb" enabled="False"/>
+    <panel name="AttPanel" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="Earth_limb" enabled="False"/>
+    <panel name="LPARatePanel" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="Earth_limb" enabled="False"/>
+    <panel name="FilteredEvPanel" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="Earth_limb" enabled="False"/>
+    <panel name="TransClassPanel" enabled="True"/>
+  </page>
+
+</report>
