@@ -2,25 +2,25 @@
 
 <alarms>
 
-<!-- TKR
-towerEff: tower average hit efficiency, >98% [16]
-trigEff: tower average trigger efficiency, >90% [16]
-layerOcc: layer OR occupancy, <8% [16][36]
-Number_LATAverage_stripOcc: < 5.e-5
+<!-- TKR, as per Hiro's email on Jul 14, 2008
+TkrMon_Trend_Number_layerOcc_TowerPlane: 0.08 max (error)
+TkrMon_Trend_Number_LATAverage_stripOcc: 5E-5 max (error)
+TkrMon_Trend_Number_fracSat_TowerPlane: 1E-4 max (just warning) 
   -->
 
-  <alarmList group="TKRMON" name="TKR Monitoring from Tajima etal" enabled="True">
+  <alarmList group="TKRMON" name="TKR Monitoring" enabled="True">
+
     <alarmSet name="Time::Mean_towerEff_Tower" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.98" max="1.0"/>
-	<error_limits   min="0.98" max="1.0"/>
+	<warning_limits min="0.98" max="10.0"/>
+	<error_limits   min="0.98" max="10.0"/>
       </alarm> 
     </alarmSet>
 
     <alarmSet name="Time::Mean_trigEff_Tower" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.9" max="1.0"/>
-	<error_limits   min="0.9" max="1.0"/>
+	<warning_limits min="0.9" max="10.0"/>
+	<error_limits   min="0.9" max="10.0"/>
       </alarm> 
     </alarmSet>
    
@@ -33,8 +33,15 @@ Number_LATAverage_stripOcc: < 5.e-5
    
     <alarmSet name="Time::Number_LATAverage_stripOcc" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.0" max="0.00005"/>
-	<error_limits   min="0.0" max="0.00005"/>
+	<warning_limits min="0.0" max="5.0e-5"/>
+	<error_limits   min="0.0" max="5.0e-5"/>
+      </alarm> 
+    </alarmSet>
+
+    <alarmSet name="Time::Number_fracSat_TowerPlane" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="0.0" max="1.0e-4"/>
+	<error_limits   min="0.0" max="1"/>
       </alarm> 
     </alarmSet>
 

@@ -1,0 +1,125 @@
+<?xml version="1.0" ?>
+
+<alarms>
+
+  <alarmList group="Acd" name="CAL pedestals" enabled="True">
+
+    <alarmSet name="ACD_PedRMS_PMTA_LowRange_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="2.0" max="6.0"/>
+	<error_limits   min="1.0" max="10.0"/>
+        <parameter name="num_sigma" value="0.0"/>
+        <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
+      </alarm> 
+    </alarmSet>
+
+    <alarmSet name="ACD_PedRMS_PMTB_LowRange_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="2.0" max="6.0"/>
+	<error_limits   min="1.0" max="10.0"/>
+        <parameter name="num_sigma" value="0.0"/>
+        <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
+      </alarm> 
+    </alarmSet>
+
+  </alarmList>
+
+
+  <alarmList group="CalPedestals" name="CAL pedestals" enabled="True">
+
+    <alarmSet name="CalXAdcPedRMS_LEX8_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="4.5" max="7.0"/>
+	<error_limits   min="4.0" max="8.0"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+    <alarmSet name="CalXAdcPedRMS_LEX1_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="0.6" max="0.9"/>
+	<error_limits   min="0.5" max="1.1"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+    <alarmSet name="CalXAdcPedRMS_HEX8_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="2.5" max="3.8"/>
+	<error_limits   min="2.0" max="5.0"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+    <alarmSet name="CalXAdcPedRMS_HEX1_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="0.4" max="0.6"/>
+	<error_limits   min="0.3" max="0.8"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+    <alarmSet name="CalXPedDev_Mean_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="-10" max="10"/>
+	<error_limits   min="-20" max="20"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+  </alarmList>
+
+
+  <alarmList group="CalGains" name="CAL gains" enabled="True">
+
+    <alarmSet name="RPM_Mean_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="0.8" max="1.2"/>
+	<error_limits   min="0.6" max="1.6"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+    <alarmSet name="RPp_Mean_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="7.0" max="9.5"/>
+	<error_limits   min="6.0" max="12.0"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+    <alarmSet name="RMm_Mean_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="7.0" max="9.5"/>
+	<error_limits   min="6.0" max="12.0"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+    <alarmSet name="RPM_RMS_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="0.1" max="0.4"/>
+	<error_limits   min="0.01" max="0.6"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+    <alarmSet name="RPp_RMS_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="0.1" max="1.2"/>
+	<error_limits   min="0.01" max="2.0"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+    <alarmSet name="RMm_RMS_TH1" enabled="True">
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="0.1" max="1.2"/>
+	<error_limits   min="0.01" max="2.0"/>
+        <parameter name="num_sigma" value="0.0"/>
+      </alarm> 
+    </alarmSet>
+
+  </alarmList>
+
+</alarms>
