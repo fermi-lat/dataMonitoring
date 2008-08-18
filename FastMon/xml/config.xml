@@ -31,6 +31,10 @@
 	    <type>int</type>
             <shape>(1)</shape>
 	</variable>
+	<variable name="ElapsedLast">
+	    <type>int</type>
+            <shape>(1)</shape>
+	</variable>
 	<variable name="DeadZoneLast">
 	    <type>int</type>
             <shape>(1)</shape>
@@ -229,7 +233,7 @@
 	    <expression><![CDATA[ AcdGemCNO_GARC ]]></expression>
 	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>
 	    <title>Number of Acd CNO by board</title>
-	    <xlabel>Acd GARC Number</xlabel>
+	    <xlabel>Acd CARC Number</xlabel>
 	    <ylabel>N</ylabel>
 	    <caption>This bit is the OR of the CNO signal on a single board. 
 			Because of the tile to boad mapping, a factor two variation 
@@ -572,7 +576,7 @@
     -->
     <outputList group="Rates" name="Trigger Rates">
         <CUSTOM type="RatePlot" name="rate_TkrTrigger" enabled="True">
-	    <title>Tkr event rate on-ground</title>
+	    <title>Tkr triggers rate on-ground</title>
 			<caption>This is the rate of events (with Tkr trigger) passing the onboard filters</caption>
 	    <xlabel>Time (s)</xlabel>
 	    <ylabel>Rate (Hz)</ylabel>
@@ -581,7 +585,7 @@
 			<cut><![CDATA[ (condsummary&2)>0 ]]></cut>	
         </CUSTOM>
         <CUSTOM type="RatePlot" name="rate_CalLoTrigger" enabled="True">
-	    <title>Cal Lo event rate on-ground</title>
+	    <title>Cal Lo triggers rate on-ground</title>
 			<caption>This is the rate of events (with Cal Lo trigger) passing the onboard filters</caption>
 	    <xlabel>Time (s)</xlabel>
 	    <ylabel>Rate (Hz)</ylabel>
@@ -590,7 +594,7 @@
 			<cut><![CDATA[ (condsummary&4)>0 ]]></cut>	
         </CUSTOM>
         <CUSTOM type="RatePlot" name="rate_CalHiTrigger" enabled="True">
-	    <title>Cal Hi event rate on-ground</title>
+	    <title>Cal Hi triggers rate on-ground</title>
 			<caption>This is the rate of events (with Cal Hi trigger) passing the onboard filters</caption>
 	    <xlabel>Time (s)</xlabel>
 	    <ylabel>Rate (Hz)</ylabel>
@@ -599,7 +603,7 @@
 			<cut><![CDATA[ (condsummary&8)>0 ]]></cut>	
         </CUSTOM>				
         <CUSTOM type="RatePlot" name="rate_PeriodicTrigger" enabled="True">
-	    <title>Periodic event rate on-ground</title>
+	    <title>Periodic triggers rate on-ground</title>
 			<caption>This is the rate of events (with Periodic trigger) passing the onboard filters</caption>
 	    <xlabel>Time (s)</xlabel>
 	    <ylabel>Rate (Hz)</ylabel>

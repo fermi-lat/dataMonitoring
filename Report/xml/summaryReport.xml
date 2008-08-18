@@ -1,0 +1,76 @@
+<?xml version="1.0" ?>
+
+<report title="GLAST-LAT Summary Report">
+  
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="EnvPanel2" enabled="True"/>
+    <panel name="Earth_limb" enabled="False"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="AttPanel" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="LPARatePanel" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="CPULoadPanel" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="FilteredEvPanel" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="e410evtRatePanel" enabled="True"/>
+  </page>
+
+  <page enabled="False">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="e07evtRatePanel" enabled="True"/>
+  </page>
+
+  <page enabled="False">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="e815evtRatePanel" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="UnbTrPanel" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="TkrUnbPanel" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="CalLoUnbPanel" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="CalHiUnbPanel" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="tkr-calTemp" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="acdTemp" enabled="True"/>
+  </page>
+
+</report>
