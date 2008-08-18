@@ -1,0 +1,33 @@
+
+*** v1r1p0 ***
+
+- Added a configuration file for the alarm post-processing tool.
+* Relevant jira(s): GDM-27
+
+
+*** v1r0p4 ***
+
+- Typo fixed in the relese.notes.
+
+
+*** v1r0p3 ***
+
+- Release notes updated with references to the relevant jira. No change in any
+of the functionalities at all.
+
+
+*** v1r0p2 ***
+
+- doc/relese.notes moved to doc/release.notes.
+* Relevant jira(s): GDQMQ-64
+
+
+*** v1r0p1 ***
+
+- release.notes added.
+* Relevant jira(s): GDQMQ-64
+
+
+*** v1r0p0 ***
+
+- Baseline for the software freeze.
