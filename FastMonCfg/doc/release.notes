@@ -1,3 +1,9 @@
+*** v1r4p6 ***
+- Change histogram name AcdHitsCounter_CableChannel_TH2 to AcdHitMap_GafeGarc_TH2,
+  and swap axis to match the Digi definition in
+  config.xml configLCI.xml MergeHistos_FastMon.txt
+* Relevant jira(s): GDQMQ-244
+
 *** v1r4p5 ***
 - Add ToT plots per plane in merging list file : MergeHistos_FastMon.txt
 * Relevant jira(s): GDQMQ-148
