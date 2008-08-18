@@ -7,9 +7,7 @@ try:
     import pSafeLogger
 except ImportError:
     sys.path.append('../../Common/python')
-    XML_CONFIG_ROOT = '../../FastMonCfg/xml'
-    XML_OUTPUT_ROOT = XML_CONFIG_ROOT
-    os.environ['XML_CONFIG_DIR'] = XML_CONFIG_ROOT
+    os.environ['XML_CONFIG_DIR'] = '../xml'
     import pSafeLogger
 logger = pSafeLogger.getLogger('pMergeHistosMaker')
 
@@ -32,10 +30,10 @@ class pMergeHistosMaker:
         logger.info('Writing output file %s...' % outputFilePath)
         outputFile = file(outputFilePath, 'w')
         for plotName in self.PlotList:
+#            print self.XmlParser.EnabledPlotRepsDict[plotName].Level, TOWER_LEVEL
             if self.XmlParser.EnabledPlotRepsDict[plotName].Level == 'tower':
-                outputFile.writelines('%s_TowerLoop%s%s\n' %\
-                                      (plotName, SEPARATOR,\
-                                       DEFAULT_MERGE_MODE))
+                outputFile.writelines('%s_TowerLoop%s%s\n' % (plotName, SEPARATOR,\
+                                                    DEFAULT_MERGE_MODE))
             else:
                 outputFile.writelines('%s%s%s\n' % (plotName, SEPARATOR,\
                                                     DEFAULT_MERGE_MODE))
@@ -44,7 +42,6 @@ class pMergeHistosMaker:
 
 
 if __name__ == '__main__':
-    mergeHistosMaker = pMergeHistosMaker('%s/config.xml' % XML_CONFIG_ROOT)
-    mergeHistosMaker.writeOutputFile('%s/MergeHistos_FastMon.txt' %\
-                                     XML_OUTPUT_ROOT)
+    mergeHistosMaker = pMergeHistosMaker('../xml/config.xml')
+    mergeHistosMaker.writeOutputFile('../xml/MergeHistos_FastMon.txt')
     
