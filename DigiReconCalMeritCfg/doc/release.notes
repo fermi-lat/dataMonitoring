@@ -1,0 +1,461 @@
+v1r2p1  2008/07/03   (DEV)
+------------------------------
+Added rates of datagrams sent for EPUx. This addressed Jira GDQMQ-186.
+
+v1r2p0  2008/07/03   (DEV)
+------------------------------
+Added quantities FastMon_SpaceCraft_EarthLimb_FOV FastMon_SpaceCraft_EarthLimb FastMon_SpaceCraft_XaxisDec
+FastMon_SpaceCraft_XaxisRA FastMon_SpaceCraft_RockAngle
+Jira GDQMQ-187 
+
+v1r1p38 2008/07/31   (DEV)
+------------------------------
+New quantities (Jira GDQMQ-184)
+
+v1r1p37 2008/06/30   (DEV)
+------------------------------
+New quantities (Jira GDQMQ-184) and bug fixes (Jira GDQMQ-168, GDQMQ-183)
+
+v1r1p36  2008/06/30   (DEV)
+------------------------------
+New quantities related to jiras GDQMQ-181 and GDQMQ-186.
+
+v1r1p35  2008/06/23   (DEV)
+------------------------------
+New quantities addressing Jiras GDQMQ-164 and GDQMQ-165.
+
+v1r1p34  2008/06/23   (DEV)
+------------------------------
+Added cut PtMcIlwainL>0.1 to all magnetic field derived or magnetic field normalized quantities, 
+in config files monconfic_merit_trending.xml and monconfig_merit_histos.xml. 
+This prevents the crash of the job when the magnetic field quantity PtMcIlwainL is not available.
+
+
+v1r1p33  2008/06/22   (DEV)
+-----------------------------
+Fill histogram TimeToneMissingCurrentORPrevious_TH1  only once per time tone.
+This addresses Jira GDQMQ-164.
+
+
+v1r1p32  2008/06/20   (DEV)
+-----------------------------
+Definition of quantities:
+
+trending:monconfig_digi_trending.xml
+
+OutF_AcdPmt_OverThreshold_Asymmetry_AcdTile[128]
+OutF_AcdPmt_OverThreshold_Asymmetry_AcdTile_err[128]
+OutF_AcdPmt_Veto_Asymmetry_AcdTile[128]
+OutF_AcdPmt_Veto_Asymmetry_AcdTile_err[128]
+
+histos: monconfig_digi_histos.xml
+
+AcdPmt_OverThreshold_Asymetry_AcdTile_TH1 
+AcdPmt_Veto_Asymetry_AcdTile_TH1
+
+This addresses Jira GDQMQ-163.
+
+
+
+v1r1p31  2008/06/19   (DEV)
+-----------------------------
+Remove quantity AcdVtxActiveDist. This addresses Jira GDQMQ-161.
+
+
+v1r1p30  2008/06/19   (DEV)
+-----------------------------
+
+Change truncation from 1.1 mip to 2.5 mip in plots Recon_ReconAcdPhaMipsCorrectedAngle_PMTX_Zoom_TH1_AcdTile. This addresses Jira GDQMQ-162.
+
+
+v1r1p29  2008/06/16   (DEV)
+-----------------------------
+Add some unprescaled qunatities: jira GDQMQ-155.
+
+
+v1r1p28  2008/06/16   (DEV)
+-----------------------------
+added quantity AcdTkr1ActDistTileEnergy to monconfig_merit_trending.xml. 
+This addresses Jira GDQMQ-154.
+
+v1r1p27  2008/06/15   (DEV)
+-----------------------------
+Add the cut Fsw DGN filter to the calculation of the UnPrescaled Trigger Engines. 
+This addresses Jira GDQMQ-132.
+
+v1r1p26  2008/06/12  (DEV)
+---------------------------
+Change also (Fast mon) quantity FastMon_MetaContext_OpenMode
+from mean to valuechange[0]
+This addresses Jira GDQMQ-134.
+
+
+v1r1p25  2008/06/12  (DEV)
+---------------------------
+Change also (Fast mon) quantities FastMon_Evt_DataTransferId and 
+FastMon_MetaContext_LATC_Master froim outputnumber to valuechange[0]
+
+v1r1p24  2008/06/12   (DEV)
+---------------------------
+Change quantity LastDataTransferId from type outputnumber to valuechange[0].
+This addresses jira GDQMQ-146.
+
+v1r1p23  2008/06/10   (DEV)
+---------------------------
+Added Normalized rates for FastMon GPS_OUTofLock.
+This addresses Jira GDQMQ-138.
+
+
+v1r1p22  2008/06/09   (DEV)
+---------------------------
+Added normalized rates for GPS_OUTofLock. This addresses Jira GDQMQ-138.
+Added rates for CTBParticleType==0 and == -1. 
+Change range of histogram for CTBParticleType to accomodate the values 
+-1 and 0, which were not expected according to documentation provided.
+
+
+
+v1r1p21  2008/05/29   (DEV)
+---------------------------
+Corrected few typos in merit trending parameters.
+This addresses Jira GDQMQ-137.
+
+
+v1r1p20  2008/05/28   (DEV)
+---------------------------
+Added merit parameters. This addresses Jira GDQMQ-137.
+The quantities have not yet been tested because there is no 
+Merit file to be used... waiting for it... 
+
+v1r1p19  2008/05/27   (DEV)
+---------------------------
+Changed normalization in quantities that relate Flight Software 
+and Gleam filter bits (file monconfig_digi_trending.xml). 
+This addresses Jira GDQMQ-132.
+
+v1r1p18  2008/05/22   (DEV)
+---------------------------
+Added a bunch of new quantities related to the real flight software 
+filter bits. This addresses Jira GDQMQ-132.
+
+v1r1p17  2008/05/22   (DEV)
+---------------------------
+Added Log10 of measured energy (recon job; monconfig_recon_histos.xml). 
+This will show all features in the energy spectra. 
+This addresses Jira GDQMQ-128.
+
+
+v1r1p16  2008/05/17  (DEV)
+--------------------------
+Added new FastMon trending quantity FastMon_Evt_DataTransferId and FastMon_MetaContext_LATC_Master that have type outputnumber, the last value in the time bin is considered.
+That addresses Jiras GDQMQ-115 and 107.
+
+v1r1p15  2008/05/16  (DEV)
+--------------------------
+Change variable type object for quantity DataTransferId. 
+Prefix will be Number_ instead of OutF_. 
+The variable type will be UInt_t instead of Float_t. 
+That addresses Jira GDQMQ-115.
+
+v1r1p14  2008/05/16  (DEV)
+--------------------------
+Add DataTransferId. That addresses Jira GDQMQ-115.
+
+v1r1p13  2008/05/16  (DEV)
+--------------------------
+Additional monconfig file (monconfig_trackermon_trending.xml) 
+to handle high level tracker monitoring information 
+produced by Hiro Tajima etal. This addresses Jira GDQMQ-119.
+
+v1r1p12 2008/05/12  (DEV)
+---------------------------
+Added new histograms. This addresses Jira GDQMQ-113 and GDQMQ-114.
+
+v1r1p11 2008/05/12  (DEV)
+---------------------------
+Added trending and histograms for other normalized rates.
+This addresses the Jira GDQMQ-83.
+The additional normalized quantities are:
+NormRateEvtsBeforeCutsWithGAMMAFilter
+NormRateTriggerEngine[16]
+NormRateGAMMAFilterAndTriggerEngine[16]
+
+
+
+v1r1p10 2008/05/09  (DEV)
+---------------------------
+Added possibility of trending and histograming normalized rates (from merit). 
+This addresses the Jira GDQMQ-83.
+For the time being the normalized quantities trended and histogrammed are:
+NormRateEvtsBeforeFilters
+NormRateEvtsBeforeCuts
+NormRateTransientEvts
+NormRateDiffuseEvts
+NormRateSourceEvts
+
+
+
+v1r1p9 2008/05/02  (DEV)
+---------------------------
+Implemented quantity FastMon_MetaContext_GPS_OUTofLock that counts the rate of
+seconds in which the GPS is out of lock, GDQMQ-103.
+Added a cut to remove solicited triggers in FastMon trending
+and  FastMon trending histograms, GDQMQ-49.
+
+This is related to Jiras GDQMQ-49 and GDQMQ-103.
+
+
+v1r1p8 2008/04/30  (DEV)
+---------------------------
+Bunch of merit new rates and histograms of rates. 
+This is related to Jira GDQMQ-83.
+
+
+v1r1p7  2008/04/30 (DEV)
+---------------------------
+Change MCOktTest for MC in config files. 
+This addresses Jira GDQMQ-111
+
+v1r1p6  2008/04/30 (DEV)
+----------------------------
+Changes to address jiras GDQMQ-32 and GDQMQ-110.
+
+
+v1r1p5  2008/04/28 (DEV)
+--------------------------
+Added histograms to be used for calculation of LAC thresholds. 
+This addresses jira GDQMQ-109.
+
+v1r1p4  2008/04/25 (DEV)
+--------------------------
+Change FastMon_NTkrHits_TowerPlane[16][36] from counter to rate.
+This addresses Jira GDQMQ-77.
+
+
+v1r1p3 2008/04/24 (DEV)
+---------------------------
+Limitted range of histograms iwth distributions of ACD, CAL pedestals and optical gains. This addressess Jira GDQMQ-106.
+
+v1r1p2 2008/04/24 (DEV)
+---------------------------
+Added sourceGps info. 
+This addresses Jira GDQMQ-103
+
+
+v1r1p1 2008/04/24 (DEV)
+----------------------------------
+
+Added a check of completeness of time tone. 
+This addresses Jira GDQMQ-104
+
+
+v1r1p0  2008/04/24 (DEV)
+----------------------------
+
+Added the following quantities from FastMon trending :
+FastMon_SpaceCraft_Pitch, FastMon_SpaceCraft_Roll, FastMon_SpaceCraft_Yaw,
+FastMon_SpaceCraft_ZaxisRA, FastMon_SpaceCraft_ZaxisDec. GDQMQ-62
+
+
+v1r0p18  2008/04/21 (DEV)
+----------------------------
+
+Upgrade in merit quantities proposed in Jiras GDQMQ-81 and GDQMQ-101.
+
+
+v1r0p17 2008/04/16 (DEV)
+--------------------------
+
+Bug fix in Trigger Rates corrected with the LiveTimeFraction. 
+That is in a way related also to Jira GDQMQ-98.
+
+
+v1r0p16 2008/04/16 (DEV)
+--------------------------
+
+Bug fix addressed by Jira GDQMQ-98.
+
+
+v1r0p15 2008/04/16  (DEV)
+----------------------------------
+Corrected bug introduced when openning twice a comment.
+sshhhhhhhit...
+
+
+v1r0p14 2008/04/16  (DEV)
+----------------------------------
+
+Live time fraction related quatities removed from 
+monconfig_digi_trending.xml
+
+v1r0p13 2008/04/16  (DEV)
+----------------------------------
+Change in monconfig_recon_trending.xml to address 
+problem described in Jira GDQMQ-97.
+
+
+
+v1r0p12 2008/04/09 (DEV)
+----------------------------------------------
+Add FastMon trending quantity "meta_context_open_modechanges" 
+to trend the LAT mode changes as
+requested by GDQMQ-13.
+
+v1r0p11 2008/04/09  (DEV)
+----------------------------------------
+Change of names in config files to keep consistency. 
+This addresses Jira GDQMQ-76.
+
+Config filenames:
+
+monconfig_digi_CalLongTime_Trending.xml
+monconfig_digi_CalLongTime_histos.xml
+MergeHistos_digi_CalLongTime.txt
+
+are moved to:
+
+monconfig_digi_long_trending.xml
+monconfig_digi_long_histos.xml
+MergeHistos_digi_long.txt
+
+
+
+v1r0p10  2008/04/09 (DEV)
+-------------------------
+Changes in the config files to address the Jiras:
+GDQMQ-74, GDQMQ-75, GDQMQ-77. 
+
+
+v1r0p9 2008/04/09 (DEV)
+----------------------------------------------
+Add FastMon trending quantity "meta_context_open_mode" to trend the LAT mode as
+requested by GDQMQ-13.
+
+
+v1r0p8 2008/04/08  (DEV)
+----------------------------
+
+Change of NAMES in OBF variables in digi trending job 
+(config file monconfig_digi_trending.xml):
+This addresses Jira GDQMQ-67
+
+FROM: 
+OBF_GammaFilter  
+OBF_MipFilter  
+OBF_HFCFilter  
+OBF_DFCFilter  
+ComputationFailed_OBF_GammaFilter  
+ComputationFailed_OBF_MipFilter  
+ComputationFailed_OBF_HFCFilter  
+ComputationFailed_OBF_DFCFilter  
+
+TO: 
+OBF_GAMMAFilter  
+OBF_MIPFilter  
+OBF_HIPFilter  
+OBF_DGNFilter  
+ComputationFailed_OBF_GAMMAFilter  
+ComputationFailed_OBF_MIPFilter  
+ComputationFailed_OBF_HIPFilter  
+ComputationFailed_OBF_DGNFilter 
+
+
+v1r0p7 2008/04/07  (DEV)
+----------------------------
+
+Added new quantities in digi trending (monconfig_digi_trending.xml).
+This addresses Jira GDQMQ-90.
+
+CalXHit_ZEROHit_Frac_TowerCalLayerCalColumn[16][8][12]
+CalXHit_ZEROHit_Frac_TowerCalLayerCalColumn_err[16][8][12]
+NTkrHits_TowerPlane[16][36]
+Normalized_NTkrHits_TowerPlane[16][36]
+Normalized_NTkrHits_TowerPlane_err[16][36]
+
+Added ACD pedestals in digi CalLong trending/histos
+This addresses JIRA GDQMQ-59.
+
+trending:
+AcdPedestal_PmtA_LowPMTRange_AcdTile[128]
+AcdPedestal_PmtB_LowPMTRange_AcdTile[128]
+
+histos:
+ACD_PedMean_PMTA_LowRange_TH1
+ACD_PedMean_PMTB_LowRange_TH1
+ACD_PedRMS_PMTA_LowRange_TH1
+ACD_PedRMS_PMTB_LowRange_TH1
+
+
+
+Added actual distributions of pedestals for ACD and CAL and 
+the optical gains. Those distributions will be fitted later on, 
+extracting the meaningful quantities Mean/RMS; that should be 
+comparable to the truncated ones. 
+This addresses Jira GDQMQ-91.
+
+ACD_Ped_PMTA_LowRange_TH1_AcdTile[128]
+ACD_Ped_PMTB_LowRange_TH1_AcdTile[128]
+CalXAdcPed_TH1_TowerCalLayerCalColumnFR[16][8][12][2][4]
+RPM_TH1_TowerCalLayerCalColumn[16][8][12]
+RPp_TH1_TowerCalLayerCalColumn[16][8][12]
+RMm_TH1_TowerCalLayerCalColumn[16][8][12]
+
+Level of truncation is decreased from 10%, per side of distribution,
+down to 2%. In this way the RMS from the truncation will be 
+sensitive to outliers whose fraction is more than 2% of total number 
+of events. This addresses Jira GDQMQ-92
+
+
+
+
+*********************************************
+V1r0p6 Requested to BECOME PROD: 2008/04/04 
+*********************************************
+
+v1r0p6 2008/04/01 (DEV)
+-------------------------
+
+Added file to merge histograms from merit: MergeHistos_merit.txt
+
+
+v1r0p5 2008/03/21 (DEV)
+-------------------------
+
+Added 
+doc/release.notes  (this file !!)
+
+
+v1r0p4 2008/03/21 (DEV)
+-------------------------
+Corrected bug when merging ToT distributions. 
+File changed:
+MergeHistos_digi.txt
+
+
+v1r0p3 2008/03/20 (DEV)
+-------------------------
+Correct bugs introduced in the previous changes. 
+The files changed were:
+MergeHistos_digi_CalLongTime.txt monconfig_recon_trending.xml
+
+
+v1r0p2 2008/03/20 (DEV)
+-------------------------
+Changes in config files to address issues descrived in Jira:
+GDQMQ-38
+
+The config files changed were the following ones:
+monconfig_merit_trending.xml  monconfig_merit_histos.xml(added)
+
+
+v1r0p1  2008/03/20 (DEV)
+-------------------------
+Changes in config files to address issues descrived in Jiras:
+GDQMQ-21 GDQMQ-22 GDQMQ-35 GDQMQ-36 GDQMQ-39 GDQMQ-40
+
+The config files changed were the following ones:
+monconfig_digi_trending.xml monconfig_digi_histos.xml monconfig_recon_trending.xml monconfig_recon_histos.xml MergeHistos_digi.txt MergeHistos_recon.txt MergeHistos_digi_CalLongTime.txt
+
+
+v1r0p0  2008/03/12 (PROD)
+-------------------------
