@@ -1,21 +1,19 @@
 
 all:	
-	echo "Targets are: builddoc, clean, cleandoc, cleanall, viewdoc"
+	echo "Targets are: doc, clean, cleandoc, cleanall, view"
 
-builddoc:
+doc:
 	doxygen doxygen.cfg
-
-clean:
-	rm -f *~ .*~ *.pyc *.pyo
-	rm -rf testreport
-	rm -rf *_test.*
 
 cleandoc:
 	rm -rf doc
+
+clean:
+	rm -f *~ .*~ *.pyc *.pyo
 
 cleanall:
 	make clean
 	make cleandoc
 
-viewdoc:
+view:
 	htmlview ./doc/html/index.html &

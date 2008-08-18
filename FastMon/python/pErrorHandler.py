@@ -11,15 +11,14 @@ import pUtils
 from pError      import pError
 from pErrorEvent import pErrorEvent
 
-MAX_ERROR_EVENTS = 500
+MAX_DETAILED_LIST_LENGTH  = 100
 
 class pErrorHandler:
 
-    def __init__(self, pickleFilePath = None):
-        self.NumProcessedEvents = 'n/a'
+    def __init__(self, pickleFilePath=None):
+        self.EventNumber     = None
         self.ErrorCountsDict = {}
         self.ErrorEventsDict = {}
-        self.ErrorsBuffer = []
         if pickleFilePath is not None:
             self.load(pickleFilePath)
             
@@ -37,29 +36,21 @@ class pErrorHandler:
                      file(outputFilePath, 'w'))
         logger.info('Done in %.4f s.\n' % (time.time() - startTime))
 
+    def setEventNumber(self, eventNumber):
+        self.EventNumber = eventNumber
 
     def fill(self, errorCode, parameters=[]):
         error = pError(errorCode, parameters)
-        # fill the summary by error code
         try:
             self.ErrorCountsDict[errorCode] += 1
         except KeyError:
             self.ErrorCountsDict[errorCode] = 1
-        # fill a buffer of errors for this event.
-        self.ErrorsBuffer.append(error)
-        
-
-    def flushErrorsBuffer(self, eventNumber):
-        # fill the ErrorEventsDict, in case the event has errors,
-        # using the correct event ID
-        # to be called at the end of event processing
-        if self.ErrorsBuffer != []:
-            self.ErrorEventsDict[eventNumber] =\
-                                 pErrorEvent(eventNumber)
-            for error in self.ErrorsBuffer:
-                self.ErrorEventsDict[eventNumber].addError(error)
-
-            self.ErrorsBuffer = []
+        try:
+            self.ErrorEventsDict[self.EventNumber].addError(error)
+        except KeyError:
+            self.ErrorEventsDict[self.EventNumber] =\
+                                      pErrorEvent(self.EventNumber)
+            self.ErrorEventsDict[self.EventNumber].addError(error)
 
     def getNumErrors(self):
         return sum(self.ErrorCountsDict.values())
@@ -83,49 +74,7 @@ class pErrorHandler:
                 sys.exit()
         logger.info('There are no more errors.\n')
 
-    def writeXmlOutput(self, filename):
-        try:
-            from pXmlWriter import pXmlWriter
-        except:
-            logger.error("Can not find pXmlWriter module. Exit.")
-            return None
-        truncated = self.getNumErrorEvents() > MAX_ERROR_EVENTS
-        xmlWriter  = pXmlWriter(filename)
-        xmlWriter.openTag('errorContribution')
-        xmlWriter.indent()
-        xmlWriter.newLine()
-        xmlWriter.writeComment('Summary by error code')
-        xmlWriter.openTag('errorSummary')
-        xmlWriter.indent()
-        for (code, number) in self.ErrorCountsDict.items():
-            xmlWriter.writeTag('errorType', {'code':code, 'quantity': number })
-        xmlWriter.backup()
-        xmlWriter.closeTag('errorSummary')
-        xmlWriter.newLine()
-        xmlWriter.writeComment('Summary by event number')
-        xmlWriter.openTag('eventSummary',\
-                          {'num_error_events'      : self.getNumErrorEvents(),
-                           'num_processed_events'  : self.NumProcessedEvents,
-                           'truncated'             : truncated})
-        xmlWriter.indent()
-        errorEventNumbers = self.ErrorEventsDict.keys()
-        errorEventNumbers.sort()
-        for eventNumber in errorEventNumbers[:MAX_ERROR_EVENTS]:
-            errorEvent = self.ErrorEventsDict[eventNumber]
-            xmlWriter.openTag('errorEvent', {'eventNumber': eventNumber})
-            xmlWriter.indent()
-            for error in errorEvent.ErrorsList:
-                xmlWriter.writeTag('error', error.getXmlDict())
-            xmlWriter.backup()
-            xmlWriter.closeTag('errorEvent')
-        xmlWriter.backup()
-        xmlWriter.closeTag('eventSummary')
-        xmlWriter.backup()
-        xmlWriter.newLine()
-        xmlWriter.closeTag('errorContribution')
-        xmlWriter.closeFile()
-
-
+        
         
 
 if __name__ == '__main__':

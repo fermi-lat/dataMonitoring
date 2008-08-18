@@ -1,23 +1,34 @@
-## @package pAlarm
-## @brief Module describing an alarm.
 
-import pSafeLogger
-logger = pSafeLogger.getLogger('pAlarm')
+## @package pAlarm
+## @brief Description of an alarm.
 
 import sys
+import logging
 import re
 import pUtils
-
 from pXmlBaseElement import pXmlBaseElement
-from pAlarmLimits    import pAlarmLimits
-from pGlobals        import MINUS_INFINITY, PLUS_INFINITY, NAN
+from pAlarmLimits import pAlarmLimits
 
-MIN_SEVERITY = 0
-MAX_SEVERITY = 10
-DEF_SEVERITY = 5
+
+SUMMARY_COLUMNS_LIST = ['Plot name',
+                        'Function' ,
+                        'Status'   ,
+                        'Output'   ,
+                        'Limits'
+                        ]
+SUMMARY_COLUMNS_DICT = {'Plot name': 25,
+                        'Function' : 10,
+                        'Status'   : 7 ,
+                        'Output'   : 6 ,
+                        'Limits'   : 19
+                        }
 
 
 ## @brief Class describing an alarm to be activated on a plot.
+#
+#  The basic idea, here, is that the alarm must verify whether a simple
+#  plot parameter (average value or RMS of a histogram, etc., depending
+#  on the alarm Function) lies or not within a specified interval.
 
 class pAlarm(pXmlBaseElement):
 
@@ -26,186 +37,114 @@ class pAlarm(pXmlBaseElement):
     #  The class instance.
     ## @param domElement
     #  The xml element from which the alarm is constructed.
-    ## @param rootObject
+    ## @param plot
     #  The ROOT object the alarm is set on.
     
     def __init__(self, domElement, rootObject):
 
-        ## @var RootObject
-        ## @brief The ROOT object the alarm is set on.
+        ## @var __Function
+        ## @brief The type of the alarm (i.e. the specific algorithm).
 
-        ## @var Limits
-        ## @brief The alarm (both error and warning limits).
-        #
-        #  It's a pAlarmLimits object.
-
-        ## @var ParamsDict
+        ## @var __ParamsDict
         ## @brief Dictionary of optional parameters to be passed to the
         #  algorithm implementing the alarm.
-
-        ## @var ConditionsDict
-        ## @brief Dictionary of optional conditions the alarm is subjected to.
-
-        ## @var FunctionName
-        ## @brief The name of the specific algorithm that the alarm is
-        #  supposed to apply.
-
-        ## @var Algorithm
-        ## @brief The actual algorithm the alarm is applying. 
  
         pXmlBaseElement.__init__(self, domElement)
-	self.RootObject = rootObject
-        self.Limits = self.__extractLimits()
-	self.ParamsDict = self.__extractParametersDict()
-	self.ConditionsDict = self.__extractConditionsDict()
-        self.FunctionName = self.getAttribute('function')
-        self.Severity = self.__extractSeverity()
+	self.RootObject      = rootObject
+        self.Limits          = self.__getLimits()
+	self.ParamsDict      = self.__getParametersDict()
+        self.FunctionName    = self.getAttribute('function')
         try:
             exec('from alg__%s import alg__%s' % (self.FunctionName,\
                                                   self.FunctionName))
-            self.Algorithm = eval(('alg__%s' % self.FunctionName)       +\
-                                      '(self.Limits, self.RootObject, ' +\
-                                      'self.ParamsDict, self.ConditionsDict)')
+            self.Algorithm = eval('alg__%s(self.Limits, self.RootObject, ' %\
+                                  self.FunctionName + 'self.ParamsDict)' )
         except ImportError:
-            logger.error('Could not import alg__%s. ' % self.FunctionName +\
+            logging.error('Could not import alg__%s. ' % self.FunctionName +\
                           'The alarm will be ignored.')
             self.Algorithm = None
 
-    ## @brief Return the name of the ROOT object the alarm is set on.
-    ## @par self
-    #  The class instance.
-
-    def getPlotName(self):
-        return self.RootObject.GetName()
-
-    ## @brief Comparing method.
-    ## @par self
-    #  The class instance.
-    ## @par other
-    #  The other instance---the one to make the comparison against.
-
-    def __cmp__(self, other):
-        if self.getPlotName() > other.getPlotName():
-            return 1
-        return -1
         
-    ## @brief Extract the limits from the underlying dom element.
-    ## @param self
-    #  The class instance.
+    ## @brief
 
-    def __extractLimits(self):
+    def __getLimits(self):
         warnLims = pXmlBaseElement(self.getElementByTagName('warning_limits'))
-        warnMin  = warnLims.evalAttribute('min', MINUS_INFINITY)
-        warnMax  = warnLims.evalAttribute('max', PLUS_INFINITY)
+        warnMin  = warnLims.getAttribute('min')
+        warnMax  = warnLims.getAttribute('max')
         errLims  = pXmlBaseElement(self.getElementByTagName('error_limits'))
-        errMin   = errLims.evalAttribute('min', MINUS_INFINITY)
-        errMax   = errLims.evalAttribute('max', PLUS_INFINITY)
+        errMin   = errLims.getAttribute('min')
+        errMax   = errLims.getAttribute('max')
+        strLims  = '%s%s%s%s' % (warnMin, warnMax, errMin, errMax)
+        if 'MEAN' in strLims:
+            mean = str(self.RootObject.GetMean())
+        else:
+            mean = ''
+        if 'RMS' in strLims:
+            rms = str(self.RootObject.GetRMS())
+        else:
+            rms = ''
+        if 'ENTRIES' in strLims:
+            entries = str(self.RootObject.GetEntries())
+        else:
+            entries = ''
+        warnMin  = warnMin.upper().replace('MEAN', mean)
+        warnMin  = warnMin.upper().replace('RMS', rms)
+        warnMin  = warnMin.upper().replace('ENTRIES', entries)
+        warnMin  = eval(warnMin)
+        warnMax  = warnMax.upper().replace('MEAN', mean)
+        warnMax  = warnMax.upper().replace('RMS', rms)
+        warnMax  = warnMax.upper().replace('ENTRIES', entries)
+        warnMax  = eval(warnMax)
+        errMin   = errMin.upper().replace('MEAN', mean)
+        errMin   = errMin.upper().replace('RMS', rms)
+        errMin   = errMin.upper().replace('ENTRIES', entries)
+        errMin   = eval(errMin)
+        errMax   = errMax.upper().replace('MEAN', mean)
+        errMax   = errMax.upper().replace('RMS', rms)
+        errMax   = errMax.upper().replace('ENTRIES', entries)
+        errMax   = eval(errMax)
         try:
             return pAlarmLimits(warnMin, warnMax, errMin, errMax)
         except:
-            logger.error('Could not eval limits. Returning None...' )
+            logging.error('Could not eval limits. Returning None...' )
             return None
 
-    ## @brief Extract the dictionary of parameters from the underlying
-    #  dom element.
+    ## @brief Retrieve the function parameters from the xml
+    #  element.
     ## @param self
     #  The class instance.
 
-    def __extractParametersDict(self):
+    def __getParametersDict(self):
         parametersDict = {}
         for domElement in self.getElementsByTagName('parameter'):
             xmlElement = pXmlBaseElement(domElement)
-            paramName = xmlElement.getAttribute('name')
-            paramValue = xmlElement.evalAttribute('value')
-            parametersDict[paramName] = paramValue
+            parametersDict[xmlElement.getAttribute('name')] =\
+                           xmlElement.evalAttribute('value')
         return parametersDict
 
-    ## @brief Extract the alarm severity of parameters from the underlying
-    #  dom element.
-    #
-    #  The severity is intended to be used by the web interface for sorting
-    #  the alarms in the output table in a reasonable way. It's supposed
-    #  to be an integer between @ref MIN_SEVERITY and @ref MAX_SEVERITY,
-    #  by default @DEF_SEVERITY.
-    ## @param self
-    #  The class instance.
+    def getOutput(self):
+        return self.Algorithm.Output
 
-    def __extractSeverity(self):
-        severity = int(self.getTagValue('severity', DEF_SEVERITY))
-        if severity > MAX_SEVERITY:
-            logger.warn('Severity (%d) for alarm %s %s exceeds maximum.' %\
-                        (severity, self.getPlotName(), self.FunctionName))
-            logger.info('Setting it to %d...' % MAX_SEVERITY)
-            severity = MAX_SEVERITY
-        elif severity < MIN_SEVERITY:
-            logger.warn('Severity (%d) for alarm %s %s lower than minimum.' %\
-                        (severity, self.getPlotName(), self.FunctionName))
-            logger.info('Setting it to %d...' % MIN_SEVERITY)
-            severity = MIN_SEVERITY
-        return severity
+    def getStatus(self):
+        return self.getOutput().getStatus()
 
-    ## @brief Extract the dictionary of conditions from the underlying
-    #  dom element.
-    ## @param self
-    #  The class instance.
-
-    def __extractConditionsDict(self):
-        conditionsDict = {}
-        for domElement in self.getElementsByTagName('condition'):
-            xmlElement = pXmlBaseElement(domElement)
-            conditionsDict[xmlElement.getAttribute('name')] =\
-                xmlElement.evalAttribute('value')
-        return conditionsDict
-
-    ## @brief Return the status label (i.e. CLEAN, WARNING, ERROR, UNDEFINED)
-    #  of the algorithm output.
-    ## @param self
-    #  The class instance.
-
-    def getOutputStatus(self):
-        return self.Algorithm.Output.Status['label']
-
-    ## @brief Return whether the alarm output is clean or not.
-    ## @param self
-    #  The class instance.
+    def getStatusLevel(self):
+        return self.getOutput().getStatusLevel()
+    
+    def getStatusLabel(self):
+        return self.getOutput().getStatusLabel()
     
     def isClean(self):
-        return self.Algorithm.Output.isClean()
-
-    ## @brief Return the output value of the algorithm.
-    ## @param self
-    #  The class instance.
-
-    def getOutputValue(self):
-        return self.Algorithm.Output.Value
-
-    ## @brief Return the algorithm output value nicely formatted as a string.
-    ## @param self
-    #  The class instance.
-
-    def getFormattedOutputValue(self):
-        return self.Algorithm.Output.getFormattedValue()
-
-    ## @brief Return the algorithm output label.
-    ## @param self
-    #  The class instance.
-
-    def getOutputLabel(self):
-        return self.Algorithm.Output.Label
-
-    ## @brief Return the alarm algorithm detailed output dictionary.
-    ## @param self
-    #  The class instance.
-
-    def getOutputDetails(self):
-        return self.Algorithm.Output.DetailedDict
+        return self.getOutput().isClean()
     
-    ## @brief Return a formatted representation of the alarm limits.
-    ## @param self
-    #  The class instance.
-
-    def getLimits(self):
-        return self.Limits.getSummary()
+    def getOutputValue(self):
+        return self.getOutput().getValue()
+    
+    def getOutputDict(self):
+        return self.getOutput().getDict()
+    
+    def getOutputDictValue(self, key):
+        return self.getOutput().getDictValue(key)
     
     ## @brief Activate the alarm (i.e. actually verify the plot).
     ## @param self
@@ -213,3 +152,120 @@ class pAlarm(pXmlBaseElement):
 
     def activate(self):
         self.Algorithm.apply()
+
+    ## @brief Return the name of the plot the alarm is set on.
+    ## @param self
+    #  The class instance.            
+
+    def getRootObjectName(self):
+        return self.RootObject.GetName()
+
+    ## @brief Return the plot name, formatted to be printed on the terminal.
+    ## @param self
+    #  The class instance.      
+
+    def getTxtFormattedPlotName(self):
+        return pUtils.expandString(self.getRootObjectName(),\
+                                   SUMMARY_COLUMNS_DICT['Plot name'])
+
+    ## @brief Return the alarm function, formatted to be printed on the
+    #  terminal.
+    ## @param self
+    #  The class instance.
+
+    def getTxtFormattedFunction(self):
+        return pUtils.expandString(self.FunctionName,\
+                                   SUMMARY_COLUMNS_DICT['Function'])
+
+    ## @brief Return the alarm status, formatted to be printed on the
+    #  terminal.
+    ## @param self
+    #  The class instance.
+
+    def getTxtFormattedStatus(self):
+        return pUtils.expandString(self.getStatusLabel(),\
+                                   SUMMARY_COLUMNS_DICT['Status'])
+
+    ## @brief Return the output value of the alarm, formatted to be printed
+    #  on the terminal.
+    ## @param self
+    #  The class instance.
+
+    def getTxtFormattedOutputValue(self):
+        return pUtils.expandNumber(self.getOutputValue(),\
+                                   SUMMARY_COLUMNS_DICT['Output'])
+
+    def getFullTxtFormattedLimits(self):
+        return '[%s/%s, %s/%s]' % (self.Limits.ErrorMin,  \
+                                   self.Limits.WarningMin,\
+                                   self.Limits.WarningMax,\
+                                   self.Limits.ErrorMax)
+
+    ## @brief Return the alarm limits, formatted to be printed on the terminal.
+    ## @param self
+    #  The class instance.
+
+    def getTxtFormattedLimits(self):
+        return pUtils.expandString(self.getFullTxtFormattedLimits(),\
+                                   SUMMARY_COLUMNS_DICT['Limits'])
+
+    ## @brief Return all the relevant information on the alarm status,
+    #  nicely formatted.
+    ## @param self
+    #  The class instance.
+
+    def getTxtFormattedSummary(self):
+        return '%s | %s | %s | %s | %s\n' % (self.getTxtFormattedPlotName(),
+                                             self.getTxtFormattedFunction(),
+                                             self.getTxtFormattedStatus(),
+                                             self.getTxtFormattedOutputValue(),
+                                             self.getTxtFormattedLimits())
+
+    def getTableSummaryRow(self):
+        return [self.getRootObjectName(), self.FunctionName,\
+                self.getStatusLabel(), self.getOutputValue(),\
+                self.getFullTxtFormattedLimits(), 'N/A']
+
+    ## @brief Return all the relevant information on the alarm status,
+    #  formatted for the xml output summary.
+    ## @param self
+    #  The class instance.
+    
+    def getXmlFormattedSummary(self):
+        summary = '<plot name="%s">\n' % self.getRootObjectName() +\
+                  '    <alarm function="%s">\n' % self.FunctionName
+        for item in self.ParamsDict.items():
+            summary += '        <parameter name="%s" value="%s"/>\n' % item
+        summary += '        <warning_limits min="%s" max="%s"/>\n' %\
+                   (self.Limits.WarningMin, self.Limits.WarningMax) +\
+                   '        <error_limits min="%s" max="%s"/>\n' %\
+                   (self.Limits.ErrorMin, self.Limits.ErrorMax) +\
+                   '        <output>%s</output>\n' % self.getOutputValue() +\
+                   '        <status>%s</status>\n' % self.getStatusLabel() +\
+                   '    </alarm>\n' +\
+                   '</plot>\n'
+        return summary
+    
+    ## @brief Return all the relevant information on the alarm status,
+    #  formatted for the html report.
+    ## @param self
+    #  The class instance.
+    
+    def getHtmlFormattedStatus(self):
+        return '\t\t<td>%s</td>\n' % self.__Function    +\
+               '\t\t<td>%s</td>\n' % self.__Status      +\
+               '\t\t<td>%s</td>\n' % self.__OutputValue +\
+               '\t\t<td>%s</td>\n' % self.getFormattedLimits()
+
+    ## @brief Return all the relevant information on the alarm status,
+    #  formatted for the LaTeX report.
+    ## @param self
+    #  The class instance.
+
+    def getLatexFormattedStatus(self):
+        return '%s & %s & %s & %s \\\\\n' % (self.__Function, self.__Status,\
+                                             self.__OutputValue            ,\
+                                             self.getFormattedLimits())
+
+    def __str__(self):
+        return self.getTxtFormattedSummary()

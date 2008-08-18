@@ -18,12 +18,7 @@ DETAIL_LABELS = {
     'GTCC_WORD_COUNT_PARITY_ERROR': ['Tower', 'GTCC', 'Err'],
     'GTRC_SUMMARY_ERROR'          : ['Tower', 'GTCC', 'Err'],
     'GTCC_DATA_PARITY_ERROR'      : ['Tower', 'GTCC', 'Err'],
-    'ACD_HEADER_PARITY_ERROR'     : ['Cable'],
-    'ACD_PHA_PARITY_ERROR'        : ['Cable', 'Channel'],
-    'ACD_PHA_INCONSISTENCY'       : ['Cable', 'Channel', 'Accept list'],
-    'UNPHYSICAL_TKR_STRIP_ID'     : ['Tower', 'LayerEnd', 'Hit'],
-    'UNPHYSICAL_TKR_LYR_ID'       : ['Tower', 'LayerEnd', 'Hit'],
-    'UNPHYSICAL_CAL_COL_ID'       : ['Tower', 'Layer', 'Column']
+    'UNPHYSICAL_STRIP_ID'         : ['Tower', 'LayerEnd', 'hit']
     }
 
 
@@ -52,19 +47,6 @@ class pError:
         self.ErrorCode   = errorCode
         self.Details     = details
 
-    ## @brief Return a dict formatted for writing the xml output
-    #  for the error summary event by event.
-    def getXmlDict(self):
-        XmlDict = {}
-        XmlDict['code'] = self.ErrorCode
-        for i in range(len(self.Details)):
-            try:
-                label = DETAIL_LABELS[self.ErrorCode][i]
-            except KeyError:
-                label = 'Parameter %d' % i
-            XmlDict[label] = self.Details[i]        
-        return XmlDict
-        
     ## @brief Return the error details formatted in such a way that they can be
     #  printed on the screen or put into the report.
     ## @param self

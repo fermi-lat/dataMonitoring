@@ -1,6 +1,8 @@
+
 ## @package pXmAlarmlList
 ## @brief Description of a xml alarm list.
 
+import logging
 import sys
 
 from pXmlList  import pXmlList
@@ -19,7 +21,7 @@ class pXmlAlarmList(pXmlList):
 
     def __init__(self, element):
 
-        ## @var EnabledAlarmSetsDict
+        ## @var __EnabledAlarmSetsDict
         ## @brief Dictionary containing all the enabled alarm sets.
         
         pXmlList.__init__(self, element)
@@ -45,7 +47,7 @@ class pXmlAlarmList(pXmlList):
 
 if __name__ == '__main__':
     from xml.dom  import minidom
-    doc = minidom.parse(file('../xml/alarmconfig.xml'))
+    doc = minidom.parse(file('../xml/config.xml'))
     for element in doc.getElementsByTagName('alarmList'):
         alarmList =  pXmlAlarmList(element)
         print alarmList

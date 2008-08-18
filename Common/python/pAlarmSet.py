@@ -1,6 +1,8 @@
+
 ## @package pAlarmSet
 ## @brief Description of an alarm set.
 
+import logging
 import pUtils
 
 from pXmlElement import pXmlElement
@@ -23,21 +25,13 @@ class pAlarmSet(pXmlElement):
     
     def __init__(self, domElement):
         
-        ## @var PlotsList
+        ## @var __PlotsList
         ## @brief The list of plots the alarm is set on.
 
-        ## @var EnabledAlarmsList
+        ## @var __EnabledAlarmsList
         ## @brief The list of enabled alarms within the set.
         
         pXmlElement.__init__(self, domElement)
-        excludeList = self.evalAttribute('exclude')
-        selectList = self.evalAttribute('only')
-        if excludeList is not None:
-            self.Selection = ('exclude', excludeList)
-        elif selectList is not None:
-            self.Selection = ('only', selectList)
-        else:
-            self.Selection = None
 	self.PlotsList         = []
 	self.EnabledAlarmsList = []
 
