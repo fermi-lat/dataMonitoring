@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<alarms>
+
+  <alarmList group="EventRates" name="Event rates" enabled="True">
+
+    <alarmSet name="Time::Rate_TransientEvts" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="1.0" max="75.0"/>
+	<error_limits   min="0.5" max="150.0"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::Rate_SourceEvts" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="0.2" max="50.0"/>
+	<error_limits   min="0.1" max="100.0"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::Rate_DiffuseEvts" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="0.0" max="25.0"/>
+	<error_limits   min="0.0" max="50.0"/>
+      </alarm> 
+    </alarmSet>
+
+  </alarmList>
+
+</alarms>
