@@ -1,3 +1,9 @@
+*** v4r3p4 ***
+- fastmon_trend_alarms_exceptions.xml and
+trackermon_trend_alarms_exceptions.xml updated to include the exceptions on
+the known noisy strips.
+
+
 *** v4r3p3 ***
 - Lower wanring limits on Mean_ToT_con*_Trunc_1_249_TowerPlane in digi_trend
 chenged from 25.0 to 8.0. The idea is that a sigle noisy strip used to trigger
