@@ -53,13 +53,13 @@
 
    <alarmSet name="Time::Mean_ToT_con0_Trunc_1_249_TowerPlane" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="25.0" max="100.0"/>
+	<warning_limits min="8.0" max="100.0"/>
 	<error_limits   min="1.0" max="150.0"/>
       </alarm> 
     </alarmSet>
    <alarmSet name="Time::Mean_ToT_con1_Trunc_1_249_TowerPlane" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="25.0" max="100.0"/>
+	<warning_limits min="8.0" max="100.0"/>
 	<error_limits   min="1.0" max="150.0"/>
       </alarm> 
     </alarmSet>
