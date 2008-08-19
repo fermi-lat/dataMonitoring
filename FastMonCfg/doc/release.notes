@@ -1,3 +1,8 @@
+*** v1r4p8 ***
+- Remove cut at 0 for Cal plots CalX_NHit_TH1 and CalTower_NHit_TH1
+  in config.xml
+* Relevant jira(s): GDQMQ-230
+
 *** v1r4p7 ***
 - Remove Tick20MHzDeviation_SuperZoom_TH1 and
   tune Tick20MHzDeviation_Zoom_TH1 x-axis to (-300, -100)
