@@ -1,3 +1,7 @@
+v1r2p19  2008/08/19  (DEV)                                                                                                  ----------------------------------  
+Remove Tick20MHzDeviation_SuperZoom_TH1
+and tune Tick20MHzDeviation_Zoom_TH1 x-axis to (-300, -100)
+Changes to address GDQMQ-244
 
 v1r2p18  2008/08/11  (DEV)                                                                                                  ----------------------------------  
 Add histogram to hold pedestals from teh database.
