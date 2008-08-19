@@ -1,3 +1,18 @@
+*** v4r3p1 ***
+- Wrong plot name in recon_eor_alarms.xml fixed (an alarm was applied on
+ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_* twice and it was not
+applied on ReconAcdPhaMipsCorrectedAngle_PMTB_Zoom_TH1_AcdTile_*).
+- Fitting subrange for ReconAcdPhaMipsCorrectedAngle_PMT*_Zoom_TH1_AcdTile_*
+in recon_eor_alarms.xml changed from 0.0--1.5 to 0.2--1.4.
+- Upper warning limit on ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_*
+in recon_eor_alarms.xml changed from 1.5 to 1.2.
+- Upper warning limit on Lac_Thresholds_Face*_TH1_TowerCalLayerCalColumn_*_*_*
+in recon_eor_alarms.xml changed from 0.55 to 0.50.
+- recon_eor_alarms_postprocess.xml and recon_eor_alarms_postprocess_debug.xml
+updated according to the new set of alarms.
+* Relevant jira(s): GDQMQ-248
+
+
 *** v4r3p0 ***
 - Alarms on the MIP peak of the ACD tiles moved to the zoomed plot (the other
 one became log-log and is no more suitable for that.)
