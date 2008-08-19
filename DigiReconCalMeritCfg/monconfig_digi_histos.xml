@@ -1238,7 +1238,7 @@
       <name> CalX_NHit_TH1_Tower[16] </name>
       <formula><![CDATA[ foreachtower: RFun::loopovercallayers(CalXHit_TowerCalLayer[tower])]]></formula>
       <cut><![CDATA[ condsummary&30  ]]></cut>
-      <type> histogram-1d[151,-0.5,150.5,0] </type>
+      <type> histogram-1d[151,-0.5,150.5,-1] </type>
      <!-- <titledesc> Distribution of Cal crystals hits per event in this tower </titledesc>-->
       <axisdesc> [Number of CalX_Hits in this tower, N] </axisdesc>
       <description> Distribution of  Cal crystals hits per event in this tower.  </description>
@@ -1250,7 +1250,7 @@
       <object>
       <name> CalX_Total_NHit_TH1 </name>
       <formula><![CDATA[ RFun::loopovertowerANDcallayers(CalXHit_TowerCalLayer)]]></formula>
-      <cut><![CDATA[ condsummary&30 && RFun::loopovertowerANDcallayers(CalXHit_TowerCalLayer)>0 ]]></cut>
+      <cut><![CDATA[ condsummary&30]]></cut>
       <type> histogram-1d[201,-0.5,200.5] </type>
       <titledesc> Distribution of Cal crystals hits per event (all towers included). </titledesc>
       <axisdesc> [Number of CalX_Hits, N] </axisdesc>
