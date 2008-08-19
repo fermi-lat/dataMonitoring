@@ -3,6 +3,9 @@
 chenged from 25.0 to 8.0. The idea is that a sigle noisy strip used to trigger
 this alarm with the old limits, generating confusion. This alarm remains to
 notify *serious* issues with the TOT measurement.
+- High warning limit on AcdPedRMS_PMTA_TH1 in acdpeds_eor.xml changed from
+6.0 to 7.0. Not really important as this task is not running in the pipeline,
+yet.
 
 
 *** v4r3p2 ***
