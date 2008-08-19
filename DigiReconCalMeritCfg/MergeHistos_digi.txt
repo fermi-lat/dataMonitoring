@@ -54,7 +54,6 @@
        TimeTone_IncompleteCurrent_TH1  Sum
        Tick20MHzDeviation_TH1  Sum
        Tick20MHzDeviation_Zoom_TH1  Sum
-       Tick20MHzDeviation_SuperZoom_TH1  Sum
        CrateNumber_TH1  Sum
        Delta_CCSDSTime_EvtTime_Epu0_TH1  Sum
        Delta_CCSDSTime_EvtTime_Epu1_TH1  Sum
