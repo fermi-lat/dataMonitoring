@@ -1,3 +1,8 @@
+*** v4r4p0 ***
+- Added alarms on pedestal deviations and differences with respect to the
+truncated average in calpeds_eor_alarms.xml.
+
+
 *** v4r3p4 ***
 - fastmon_trend_alarms_exceptions.xml and
 trackermon_trend_alarms_exceptions.xml updated to include the exceptions on
