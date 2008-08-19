@@ -112,19 +112,19 @@
     <alarmSet name="ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_*" exclude="range(89, 128)" enabled="True">
       <alarm function="gauss_mean" enabled="True">
 	<condition name="min_entries" value="100"/>
-	<parameter name="min" value="0"/>
-	<parameter name="max" value="1.5"/>
-	<warning_limits min="0.9" max="1.5"/>
+	<parameter name="min" value="0.2"/>
+	<parameter name="max" value="1.4"/>
+	<warning_limits min="0.9" max="1.2"/>
 	<error_limits min="0.7" max="1.8"/>
       </alarm> 
     </alarmSet>
 
-    <alarmSet name="ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_*" exclude="range(89, 128)" enabled="True">
+    <alarmSet name="ReconAcdPhaMipsCorrectedAngle_PMTB_Zoom_TH1_AcdTile_*" exclude="range(89, 128)" enabled="True">
       <alarm function="gauss_mean" enabled="True">
 	<condition name="min_entries" value="100"/>
-	<parameter name="min" value="0"/>
-	<parameter name="max" value="1.5"/>
-	<warning_limits min="0.9" max="1.5"/>
+	<parameter name="min" value="0.2"/>
+	<parameter name="max" value="1.4"/>
+	<warning_limits min="0.9" max="1.2"/>
 	<error_limits min="0.7" max="1.8"/>
       </alarm> 
     </alarmSet>
@@ -135,7 +135,7 @@
         <parameter name="window_half_width" value="12"/>
         <parameter name="threshold" value="15"/>
 	<parameter name="start_x" value="0.2"/>
-	<warning_limits min="0.35" max="0.55"/>
+	<warning_limits min="0.35" max="0.50"/>
 	<error_limits min="0.35" max="0.75"/>
       </alarm>
     </alarmSet>
@@ -146,7 +146,7 @@
         <parameter name="window_half_width" value="12"/>
         <parameter name="threshold" value="15"/>
 	<parameter name="start_x" value="0.2"/>
-	<warning_limits min="0.35" max="0.55"/>
+	<warning_limits min="0.35" max="0.50"/>
 	<error_limits min="0.35" max="0.75"/>
       </alarm>
     </alarmSet>
