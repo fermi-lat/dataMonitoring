@@ -1,3 +1,9 @@
+*** v4r3p2 ***
+- Added alarms on ReconAcdPhaMipsCorrectedAngle_PMTB_TH1_AcdTile_* for the
+ribbons in the recon_eor.
+* Relevant jira(s): GDQMQ-219
+
+
 *** v4r3p1 ***
 - Wrong plot name in recon_eor_alarms.xml fixed (an alarm was applied on
 ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_* twice and it was not
