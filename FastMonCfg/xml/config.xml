@@ -17,15 +17,15 @@
         <TH1F name="Tick20MHzDeviation_Zoom_TH1">
 	    <expression><![CDATA[ clocktics_dev_20MHz ]]></expression>
 	    <cut><![CDATA[ clocktics_dev_20MHz!=-9999 ]]></cut>
-	    <xbins>400</xbins>
-	    <xmin>-200</xmin>
-	    <xmax>200</xmax>
+	    <xbins>200</xbins>
+	    <xmin>-300</xmin>
+	    <xmax>-100</xmax>
 	    <title>Number of ticks between successive 1-PPS - Deviation from 20 MHz - Zoom</title>
 	    <xlabel>Clock ticks (nominal 50 ns), N</xlabel>
 	    <ylabel>N</ylabel>
 	    <caption>Number of ticks between successive 1-PPS - Deviation from 20 MHz - Zoom </caption>
         </TH1F>
-        <TH1F name="Tick20MHzDeviation_SuperZoom_TH1">
+        <!--TH1F name="Tick20MHzDeviation_SuperZoom_TH1">
 	    <expression><![CDATA[ clocktics_dev_20MHz ]]></expression>
 	    <cut><![CDATA[ clocktics_dev_20MHz!=-9999 ]]></cut>
 	    <xbins>40</xbins>
@@ -35,7 +35,7 @@
 	    <xlabel>Clock ticks (nominal 50 ns), N</xlabel>
 	    <ylabel>N</ylabel>
 	    <caption>Number of ticks between successive 1-PPS - Deviation from 20 MHz - Super Zoom </caption>
-        </TH1F>
+        </TH1F-->
     </outputList>
 
     <inputList group="GEM" name="GEM base">
