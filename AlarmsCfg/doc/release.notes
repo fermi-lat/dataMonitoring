@@ -1,3 +1,8 @@
+*** v4r5p0 ***
+- Added configuration files for the alarms on the xml output files from
+the FastMon error handler and the verify module.
+
+
 *** v4r4p0 ***
 - Added alarms on pedestal deviations and differences with respect to the
 truncated average in calpeds_eor_alarms.xml.
