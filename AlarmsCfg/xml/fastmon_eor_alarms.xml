@@ -122,8 +122,8 @@
 	<parameter name="num_neighbours" value="2"/>
 	<parameter name="out_low_cut" value="0.0"/>
 	<parameter name="out_high_cut" value="0.25"/>
-	<warning_limits min="0" max="5"/>
-	<error_limits min="0" max="10"/>
+	<warning_limits min="0" max="10"/>
+	<error_limits min="0" max="30"/>
 	<severity>10</severity>
       </alarm>
       <alarm function="spikes_and_holes" enabled="True">
