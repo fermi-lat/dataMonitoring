@@ -1,3 +1,10 @@
+*** v4r6p0 ***
+- Added exceptions on the TkrHitsCounter_PlaneGTFE_TH2_Tower_0 (empty_bins) in
+fastmon_eor for the four almost completely disconnected GTFEs in tower 0.
+NOTE: needs dataMonitoring/Common v4r8p1 or later to work---the change will
+have no effect otherwise.
+
+
 *** v4r5p0 ***
 - Added configuration files for the alarms on the xml output files from
 the FastMon error handler and the verify module.
