@@ -1,3 +1,17 @@
+*** v4r3p0 ***
+- Alarms on the MIP peak of the ACD tiles moved to the zoomed plot (the other
+one became log-log and is no more suitable for that.)
+
+
+*** v4r2p0 ***
+- All the useless <parameter name="max" value="9999"/> removed from the
+digi_eor_alarms.xml file.
+- All the useless <parameter name="max" value="9999"/> removed from the
+fastmon_eor_alarms.xml file.
+- All the useless <parameter name="max" value="9999"/> removed from the
+recon_eor_alarms.xml file.
+
+
 *** v4r1p0 ***
 - Added conditions on the number of entries in recon_eor to prevent the
 alarms from being evaluated when there's not enough statistics.

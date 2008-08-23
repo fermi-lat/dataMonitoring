@@ -57,6 +57,8 @@ class pGeomagProcessor:
     #  A space craft position as an object of the @ref pSCPosition class
     def process(self, sc):
         yearfloat  = sc.getYearFloat()
+	orbmode    = sc.getOrbMode()
+	orbinsaa   = sc.getOrbInSAA()
         lat        = sc.getLatitude()
         lon        = sc.getLongitude()
         alt        = sc.getRelativeAltitude()/1000.
@@ -72,8 +74,14 @@ class pGeomagProcessor:
 	zdec       = sc.getZDec()
 	hor        = sc.getLimbAngle()	
 	limb       = sc.getArcAngleEarthLimb()	
+	zgalL      = sc.getZGalL()
+        zgalB      = sc.getZGalB()
 	
-	# Spacecraft attitude
+	# Spacecraft mode
+	self.getVariable('spacecraft_orbit_mode')[0]  = orbmode
+	self.getVariable('spacecraft_orbit_inSAA')[0] = orbinsaa
+	
+	# Spacecraft position
         self.getVariable('spacecraft_latitude')[0]  = lat
         self.getVariable('spacecraft_longitude')[0] = lon
         self.getVariable('spacecraft_altitude')[0]  = alt
@@ -91,7 +99,10 @@ class pGeomagProcessor:
         self.getVariable('spacecraft_ydec')[0]  = ydec
         self.getVariable('spacecraft_zra')[0]   = zra
         self.getVariable('spacecraft_zdec')[0]  = zdec
-        
+ 
+        self.getVariable('spacecraft_zgalL')[0]   = zgalL
+        self.getVariable('spacecraft_zgalB')[0]   = zgalB
+       
 	# Earth limb arc angle in LAT field of View
         self.getVariable('spacecraft_earthlimb')[0]     = hor
         self.getVariable('spacecraft_earthlimb_fov')[0] = limb

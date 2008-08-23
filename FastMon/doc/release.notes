@@ -1,3 +1,35 @@
+*** v4r3p0 ***
+- Add spacecraft_orbit_mode and spacecraft_orbit_inSAA, read them from magic7, pass them to the updated pSCPosition
+  constructor, add get methods, and fill quantities in the pGeomagProcessor in
+  pM7Parser.py pSCPosition.py pGeomagProcessor.py
+* Relevant jira(s): GDQMQ-195
+
+*** v4r2p2 ***
+- Add the seconds_elapsed to the error summary: pXmlErrorMerger
+* Relevant jira(s): GDQMQ-251
+
+*** v4r2p1 ***
+- Add the seconds_elapsed to the error summary: pErrorHandler.py
+- Give number of seconds elapsed to the ErrorHandler: pDataProcessor.py 
+- Add ERR_TrgParityError to the handleError(),
+  to synced with the last LDF developments, pLATcomponentIterator.py
+- Bug fix in gtrcPhaseError, pERRcontributionIteratorBase.py
+* Relevant jira(s): GDQMQ-251
+
+*** v4r2p0 ***
+- Update old files to v3r5p6 after the tags were lost
+  Hopefully, everything is OK now. I hate cvs even more than before.
+
+*** v4r1p5 ***
+- Bug fix, event number was not correctly reported in pErrorHandler
+* Relevant jira(s): GDQMQ-197
+
+*** v4r1p4 ***
+- Change histogram name AcdHitsCounter_CableChannel_TH2 to AcdHitMap_GafeGarc_TH2,
+  and swap axis to match the Digi definition, in pCustomPlotter
+- Log the LDF version in pDataProcessor
+* Relevant jira(s): GDQMQ-243 and GDQMQ-244
+
 *** v4r1p3 ***
 - Add back cmt requirements file
   It had disappeared from the latest tag

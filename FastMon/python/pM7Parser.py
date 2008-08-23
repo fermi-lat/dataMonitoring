@@ -63,9 +63,21 @@ class pM7Parser:
 	
         self.m7FilePath = inputFilePath
 	self.m7FileContent = file(self.m7FilePath ,'r').readlines()
+	self.tweakM7content()
 	self.SCPositionTable = []
         self.TimePoints = []
         self.parseIt()
+
+    ## @brief Check magic 7 file content
+    #  Use this function to check the magic 7 file quality
+    ## @param self
+    #  The class instance.
+    def tweakM7content(self):
+        # I need the M7 file to start with an ATT line, if it starts with an ORB line
+	# then I'll just skip it
+	if self.m7FileContent[0].strip('\n').split(' ')[2] == "ORB":
+	    self.m7FileContent = self.m7FileContent[1:]
+        return 0
 
     ## @brief Get the list of Space Craft Position
     #  
@@ -127,7 +139,7 @@ class pM7Parser:
 
 		# OrbPosition as just been read from the file, whereas we get the latest value of SCAttitudeQuaternion
 		# As magic7 file contains many more ATT message than ORB ones that should work
-		self.SCPositionTable.append(pSCPosition(SCTime, yearfloat, OrbPosition, SCAttitudeQuaternion))
+		self.SCPositionTable.append(pSCPosition(SCTime, yearfloat, OrbPosition, SCAttitudeQuaternion, OrbMode, OrbInSAA))
                 self.TimePoints.append(int(SCTime[0]))	    
 	    i+=1
 

@@ -17,6 +17,7 @@ class pErrorHandler:
 
     def __init__(self):
         self.NumProcessedEvents = 'n/a'
+        self.SecondsElapsed     = 'n/a'
         self.ErrorCountsDict = {}
         self.ErrorEventsList = []
         self.ErrorsBuffer = []
@@ -86,10 +87,12 @@ class pErrorHandler:
         xmlWriter.openTag('eventSummary',\
                           {'num_error_events'      : self.getNumErrorEvents(),
                            'num_processed_events'  : self.NumProcessedEvents,
+                           'seconds_elapsed'       : self.SecondsElapsed,
                            'truncated'             : truncated})
         xmlWriter.indent()
-        for (eventNumber, errorEvent) in enumerate(self.ErrorEventsList):
-            xmlWriter.openTag('errorEvent', {'eventNumber': eventNumber})
+        for errorEvent in self.ErrorEventsList:
+            xmlWriter.openTag('errorEvent',\
+                                  {'eventNumber': errorEvent.EventNumber})
             xmlWriter.indent()
             for error in errorEvent.ErrorsList:
                 xmlWriter.writeLine(error.getXmlLine())

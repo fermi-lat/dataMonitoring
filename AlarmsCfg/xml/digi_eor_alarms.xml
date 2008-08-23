@@ -83,13 +83,11 @@
     <alarmSet name="AcdDigis_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="3.0" max="15.0"/>
 	<error_limits min="2.0" max="20.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="5.0" max="20.0"/>
 	<error_limits min="3.0" max="30.0"/>
       </alarm> 				  			 
@@ -97,13 +95,11 @@
     <alarmSet name="AcdHitMap_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="40.0" max="60.0"/>
 	<error_limits min="30" max="70.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="25.0" max="32.0"/>
 	<error_limits min="20.0" max="40.0"/>
       </alarm> 				  			 
@@ -111,13 +107,11 @@
     <alarmSet name="AcdSingleHitMap_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="45.0" max="58.0"/>
 	<error_limits min="35" max="65.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="26.0" max="34.0"/>
 	<error_limits min="22.0" max="38.0"/>
       </alarm> 				  			 
@@ -125,13 +119,11 @@
     <alarmSet name="AcdSingleVetoMap_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="45.0" max="65.0"/>
 	<error_limits min="30" max="75.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="28.0" max="35.0"/>
 	<error_limits min="22.0" max="42.0"/>
       </alarm> 				  			 
@@ -139,13 +131,11 @@
     <alarmSet name="AcdVetoMap_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="40.0" max="60.0"/>
 	<error_limits min="30" max="70.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="25.0" max="32.0"/>
 	<error_limits min="20.0" max="40.0"/>
       </alarm>
@@ -153,13 +143,11 @@
     <alarmSet name="Acd_GemVeto_AcdTile_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="40.0" max="55.0"/>
 	<error_limits min="30" max="65.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="25.0" max="32.0"/>
 	<error_limits min="20.0" max="40.0"/>
       </alarm> 				  			 
@@ -175,13 +163,11 @@
     <alarmSet name="CalX_NHit_TH1_Tower_*" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="9.0" max="17.0"/>
 	<error_limits min="6.0" max="20.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="18.0" max="25.0"/>
 	<error_limits min="13.0" max="30.0"/>
       </alarm> 				  			 
@@ -197,13 +183,11 @@
     <alarmSet name="TkrTotalHits_TH1" enabled="False">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="21" max="30"/>
 	<error_limits min="5.0" max="40.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="5.5" max="6.5"/>
 	<error_limits min="5.0" max="7.0"/>
       </alarm> 
@@ -211,13 +195,11 @@
     <alarmSet name="TkrHits_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="100.0" max="200.0"/>
 	<error_limits min="50.0" max="300.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="200.0" max="500.0"/>
 	<error_limits min="100.0" max="800.0"/>
       </alarm>
@@ -225,7 +207,6 @@
     <alarmSet name="TkrHits_TH1_Tower_*" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="7.0" max="20.0"/>
 	<error_limits min="4.0" max="25.0"/>
       </alarm> 
@@ -233,13 +214,11 @@
     <alarmSet name="TkrPlanesHit_TH1_Tower_*" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="4.0" max="11.0"/>
 	<error_limits min="3.0" max="15.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="5.0" max="11.0"/>
 	<error_limits min="3.0" max="15.0"/>
       </alarm>
@@ -247,13 +226,11 @@
     <alarmSet name="TkrDigiCounter_Tower_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="6.5" max="8.5"/>
 	<error_limits min="5.0" max="9.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="4.0" max="5.0"/>
 	<error_limits min="3.0" max="6.0"/>
       </alarm>
@@ -261,13 +238,11 @@
     <alarmSet name="TkrDigis_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="15.0" max="60.0"/>
 	<error_limits min="5.0" max="80.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<parameter name="max" value="9999"/>
 	<warning_limits min="15.0" max="60.0"/>
 	<error_limits min="5.0" max="80.0"/>
       </alarm>

@@ -114,6 +114,9 @@ class pDataProcessor:
         ## @var PrevTimestamp
         ## @brief The time stamp of the previous event, initialized to 0.
 
+        logger.info('Starting Data Processor.')
+	logger.info('Using LDF Version : %s - %s - %s', LDF.LDF_VERSION_STR, LDF.LDF_VERSION, LDF.__file__)
+	
         self.InputFilePath = inputFilePath
         if outputFilePath is None:
             logger.info('Output file path not specified.')
@@ -350,13 +353,21 @@ class pDataProcessor:
     def finalize(self):
         self.StopTime = time.time()
         elapsedTime   = self.StopTime - self.StartTime
-        averageRate   = self.NumEvents/elapsedTime
-        self.TreeMaker.close()
-        print
+        averageRate   = self.NumEvents/elapsedTime        
+
+	#For the ErrorHandler get the number of seconds elapsed, assuming counters are fine... 
+	tmin = self.TreeMaker.RootTree.GetMinimum("event_timestamp")
+	tmax = self.TreeMaker.RootTree.GetMaximum("event_timestamp")
+	delta_time = int(tmax-tmin)
+	#Now closing the TTree
+	self.TreeMaker.close()
+
         logger.info('Processing stopped on %s.' % time.asctime())
         logger.info('%d events processed in %.2f s (%.2f Hz).\n' %\
                     (self.NumEvents, elapsedTime, averageRate))
+	
         self.ErrorHandler.NumProcessedEvents = self.NumEvents
+        self.ErrorHandler.SecondsElapsed     = delta_time
         self.ErrorHandler.writeXmlOutput(self.OutputErrorFilePath)
 
 
@@ -377,7 +388,7 @@ class pDataProcessor:
         writer.openTag('pDataProcessorSummary')
         writer.indent()
         writer.writeTag('num_events', {}, self.NumEvents)
-        writer.writeTag('elapsed_tile', {}, elapsedTime)
+        writer.writeTag('elapsed_time', {}, elapsedTime)
         writer.writeTag('average_rate', {}, averageRate)
         #writer.writeTag('current_time', {}, time.asctime())
         writer.backup()
