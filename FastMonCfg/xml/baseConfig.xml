@@ -25,6 +25,14 @@
     </inputList>
     
     <inputList group="GEOMAG" name="GEOMAG" enabled="True">
+	<variable name="spacecraft_orbit_mode" enabled="True" reset="False">
+	    <type>uint32</type>
+            <shape>(1)</shape>
+	</variable>
+	<variable name="spacecraft_orbit_inSAA" enabled="True" reset="False">
+	    <type>bool_</type>
+            <shape>(1)</shape>
+	</variable>
 	<variable name="spacecraft_latitude" enabled="True" reset="False">
 	    <type>double</type>
             <shape>(1)</shape>
