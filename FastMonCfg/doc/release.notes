@@ -1,3 +1,7 @@
+*** v1r5p0 ***
+- Add spacecraft_orbit_mode and spacecraft_orbit_inSAA
+* Relevant jira(s): GDQMQ-195
+
 *** v1r4p8 ***
 - Remove cut at 0 for Cal plots CalX_Total_NHit_TH1 and CalX_NHit_TH1
   in config.xml
