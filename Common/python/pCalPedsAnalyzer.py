@@ -12,7 +12,6 @@ class pCalPedsAnalyzer(pBaseAnalyzer):
                          'PedRMSDifference']
     HISTOGRAM_SUB_GROUPS = ['LEX8', 'LEX1', 'HEX8', 'HEX1']
     CAL_RANGE_DICT = {0: 'LEX8', 1: 'LEX1', 2: 'HEX8', 3: 'HEX1'}
-    CAL_RANGE_INVERSE_DICT = {'LEX8': 0, 'LEX1': 1, 'HEX8': 2, 'HEX1': 3}
     FIT_RANGE_LEFT_DICT  = {'LEX8': 2.5, 'LEX1': 3.0, 'HEX8': 2.5, 'HEX1': 3.0}
     FIT_RANGE_RIGHT_DICT = {'LEX8': 3.5, 'LEX1': 3.0, 'HEX8': 3.5, 'HEX1': 3.0}
     BASE_NAME = 'CalXAdcPed_TH1_TowerCalLayerCalColumnFR'
@@ -28,6 +27,9 @@ class pCalPedsAnalyzer(pBaseAnalyzer):
         self.FitFunction = GAUSSIAN
         self.RebinningFactor = 1
         self.NumFitIterations = 1
+        self.TruncPedMeanHistDict = {}
+        self.TruncPedRMSHistDict = {}
+        self.PedMeanRefHistDict = {}
 
     def createHistograms(self):
         for group in self.HISTOGRAM_GROUPS:
@@ -94,18 +96,8 @@ class pCalPedsAnalyzer(pBaseAnalyzer):
         return self.TruncPedRMSHistDict[subgroup].GetBinContent(channel + 1)
 
     def getPedMeanReference(self, subgroup, channel):
-        try:
-            bin = channel*4 + self.CAL_RANGE_INVERSE_DICT[subgroup] + 1
-            firstRef = self.PedMeanFirstRefHist.GetBinContent(bin)
-            lastRef = self.PedMeanLastRefHist.GetBinContent(bin)
-            if firstRef != lastRef:
-                logger.warn('Pedestals changed during the run, averaging...')
-                return (firstRef + lastRef)/2.0
-            else:
-                return firstRef
-        except:
-            logger.error('Could not get the ped. reference, returning 0.')
-            return 0
+        ## To be implemented.
+        return 0
 
     def fillHistograms(self, subgroup, channel):
         pBaseAnalyzer.fillHistograms(self, subgroup, channel)
@@ -125,16 +117,14 @@ class pCalPedsAnalyzer(pBaseAnalyzer):
     def run(self):
         logger.info('Starting CAL peds analysis...')
         startTime = time.time()
-        self.TruncPedMeanHistDict = {}
-        self.TruncPedRMSHistDict = {}
         self.openFile(self.InputFilePath)
         for subgroup in self.HISTOGRAM_SUB_GROUPS:
             self.TruncPedMeanHistDict[subgroup] =\
                  self.get('CalXAdcPedMean_%s_TH1' % subgroup)
             self.TruncPedRMSHistDict[subgroup] =\
                  self.get('CalXAdcPedRMS_%s_TH1' % subgroup)
-        self.PedMeanFirstRefHist = self.get('CalXPedDB_FirstVal_TH1')
-        self.PedMeanLastRefHist = self.get('CalXPedDB_FirstVal_TH1')
+            ## To be implemented.
+            self.PedMeanRefHistDict[subgroup] = None
         for tower in range(16):
             logger.debug('Fitting pedestals for tower %d...' % tower)
             for layer in range(8):
