@@ -1,3 +1,8 @@
+*** v4r6p1 ***
+- Added a new alarm on the rate of timetones incomplete errors from the
+FastMon.
+
+
 *** v4r6p0 ***
 - Added exceptions on the TkrHitsCounter_PlaneGTFE_TH2_Tower_0 (empty_bins) in
 fastmon_eor for the four almost completely disconnected GTFEs in tower 0.
