@@ -1,3 +1,9 @@
+*** to be tagged ***
+- Update lower limit on DeltaEventTime edge to 530, because it cannot go
+  under 529, in digi_eor_alarms.xml
+
+* Relevant jira(s): GDQMQ-255
+
 *** v4r6p1 ***
 - Added a new alarm on the rate of timetones incomplete errors from the
 FastMon.
