@@ -9,8 +9,8 @@
     
     <alarmSet name="DeltaEventTime_Zoom_TH1" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
-	<warning_limits min="520.0" max="550.0"/>
-	<error_limits min="500.0" max="570.0"/>
+	<warning_limits min="530.0" max="550.0"/>
+	<error_limits min="530.0" max="570.0"/>
       </alarm>
     </alarmSet>
     <alarmSet name="Tick20MHzDeviation_TH1" enabled="True">
