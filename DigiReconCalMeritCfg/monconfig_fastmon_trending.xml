@@ -18,28 +18,31 @@
    <object>FastMon_new_second</object> 
 
    <!-- Environment quantities -->
-   <object> FastMon_spacecraft_latitude</object>
-   <object> FastMon_spacecraft_longitude</object>
-   <object> FastMon_spacecraft_altitude</object>
-   <object> FastMon_spacecraft_pitch</object>
-   <object> FastMon_spacecraft_roll</object>
-   <object> FastMon_spacecraft_yaw</object>
-   <object> FastMon_spacecraft_rock</object>
-   <object> FastMon_spacecraft_xdec</object>
-   <object> FastMon_spacecraft_xra</object>
-   <object> FastMon_spacecraft_zra</object>
-   <object> FastMon_spacecraft_zdec</object>
-   <object> FastMon_spacecraft_zgalL</object>
-   <object> FastMon_spacecraft_zgalB</object>
-   <object> FastMon_spacecraft_earthlimb</object>
-   <object> FastMon_spacecraft_earthlimb_fov</object>
+   <object>FastMon_spacecraft_orbit_mode</object> 
+   <object>FastMon_spacecraft_orbit_inSAA</object> 
 
-   <object> FastMon_geomagnetic_cutoff</object>
-   <object> FastMon_geomagnetic_bb0</object>
-   <object> FastMon_geomagnetic_InvariantLambda</object>
-   <object> FastMon_geomagnetic_InvariantLatitude</object>
-   <object> FastMon_geomagnetic_InvariantRadius</object>
-   <object> FastMon_geomagnetic_McIlwainL</object>
+   <object>FastMon_spacecraft_latitude</object>
+   <object>FastMon_spacecraft_longitude</object>
+   <object>FastMon_spacecraft_altitude</object>
+   <object>FastMon_spacecraft_pitch</object>
+   <object>FastMon_spacecraft_roll</object>
+   <object>FastMon_spacecraft_yaw</object>
+   <object>FastMon_spacecraft_rock</object>
+   <object>FastMon_spacecraft_xdec</object>
+   <object>FastMon_spacecraft_xra</object>
+   <object>FastMon_spacecraft_zra</object>
+   <object>FastMon_spacecraft_zdec</object>
+   <object>FastMon_spacecraft_zgalL</object>
+   <object>FastMon_spacecraft_zgalB</object>
+   <object>FastMon_spacecraft_earthlimb</object>
+   <object>FastMon_spacecraft_earthlimb_fov</object>
+
+   <object>FastMon_geomagnetic_cutoff</object>
+   <object>FastMon_geomagnetic_bb0</object>
+   <object>FastMon_geomagnetic_InvariantLambda</object>
+   <object>FastMon_geomagnetic_InvariantLatitude</object>
+   <object>FastMon_geomagnetic_InvariantRadius</object>
+   <object>FastMon_geomagnetic_McIlwainL</object>
 
      <!-- Tkr Variables -->
        
@@ -128,6 +131,21 @@
 
   
     <!-- Spacecraft quantities -->
+    <object>
+      <name> FastMon_Spacecraft_OrbitMode </name>
+      <formula><![CDATA[ FastMon_spacecraft_orbit_mode ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type>valuechange[0]</type>
+      <description> Changes of the spacecraft orbit mode (3==inertially pointed, 5==sky survey) </description>
+    </object>
+    <object>
+      <name> FastMon_Spacecraft_OrbitInSAA </name>
+      <formula><![CDATA[ FastMon_spacecraft_orbit_inSAA ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type>valuechange[0]</type>
+      <description> Changes of the spacecraft orbit in SAA flag (1==IN, 0==OUT) </description>
+    </object>
+
     <object>
       <name> FastMon_SpaceCraft_Latitude </name>
       <formula><![CDATA[ FastMon_spacecraft_latitude ]]></formula>
