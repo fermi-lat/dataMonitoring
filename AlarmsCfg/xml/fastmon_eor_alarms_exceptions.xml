@@ -2,24 +2,9 @@
 
 <alarm_exceptions>
 
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_0" algorithm="spikes_and_holes">
-    <exception identifier="(12, 14)" status_on_violation="warning"/>
-  </alarm>
-
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_2" algorithm="spikes_and_holes">
-    <exception identifier="(19, 31)" status_on_violation="warning"/>
-  </alarm>
-
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_8" algorithm="spikes_and_holes">
-    <exception identifier="(10, 34)" status_on_violation="warning"/>
-  </alarm>
-
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_0" algorithm="empty_bins">
-    <exception identifier="(2, 7)" status_on_violation="clean"/>
-    <exception identifier="(3, 7)" status_on_violation="clean"/>
-    <exception identifier="(20, 2)" status_on_violation="clean"/>
-    <exception identifier="(21, 2)" status_on_violation="clean"/>
-  </alarm>
+  <!--alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_3" algorithm="spikes_and_holes">
+    <exception identifier="(12, 1)" status_on_violation="warning"/>
+  </alarm-->
 
   <!--alarm name="AcdChannelsHits_TH1" algorithm="x_rms">
     <exception/>

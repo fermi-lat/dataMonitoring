@@ -2,10 +2,4 @@
 
 <alarm_exceptions>
 
-  <alarm name="Number_layerOcc_TowerPlane" algorithm="values">
-    <exception identifier="(0, 14)" status_on_violation="warning"/>
-    <exception identifier="(2, 31)" status_on_violation="warning"/>
-    <exception identifier="(8, 34)" status_on_violation="warning"/>
-  </alarm>
-
 </alarm_exceptions>
