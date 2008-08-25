@@ -1,3 +1,18 @@
+v1r2p23  2008/08/25  (DEV)
+----------------------------
+Add FastMon trending quantities FastMon_spacecraft_orbit_mode
+and FastMon_spacecraft_orbit_inSAA as ValueChange.
+in monconfig_fastmon_trending.xml
+New quantities :
+ValChange_FastMon_Spacecraft_OrbitInSAAxxxnchanges
+ValChange_FastMon_Spacecraft_OrbitInSAAxxxfirstval
+ValChange_FastMon_Spacecraft_OrbitInSAAxxxlastval
+ValChange_FastMon_Spacecraft_OrbitModexxxnchanges
+ValChange_FastMon_Spacecraft_OrbitModexxxfirstval
+ValChange_FastMon_Spacecraft_OrbitModexxxlastval
+Changes to address GDQMQ-195
+
+
 v1r2p22  2008/08/24  (DEV)
 ----------------------------
 Check that signal > 0 in ACD PMT that vetoed before computing Log10() to fill histogram. 
