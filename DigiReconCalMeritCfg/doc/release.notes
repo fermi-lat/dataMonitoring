@@ -1,3 +1,9 @@
+v1r2p22  2008/08/24  (DEV)
+----------------------------
+Check that signal > 0 in ACD PMT that vetoed before computing Log10() to fill histogram. 
+This only affects recon histos job (monconfig_recon_histos.xml).
+
+
 v1r2p21  2008/08/19  (DEV)
 Remove cut at 0 for Cal plots CalX_Total_NHit_TH1 and CalX_NHit_TH1_Tower[16]
 Changes to address GDQMQ-230
