@@ -1,4 +1,4 @@
-v1r2p23  2008/08/25  (DEV)
+v1r2p25  2008/08/25  (DEV)
 ----------------------------
 Add FastMon trending quantities FastMon_spacecraft_orbit_mode
 and FastMon_spacecraft_orbit_inSAA as ValueChange.
