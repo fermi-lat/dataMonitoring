@@ -1,6 +1,9 @@
 *** to be tagged ***
 - Update lower limit on DeltaEventTime edge to 530, because it cannot go
   under 529, in digi_eor_alarms.xml
+- Exceptions for the FastMon eor modified after the new TKR masks have been
+uploaded on the instrument.
+
 
 * Relevant jira(s): GDQMQ-255
 
