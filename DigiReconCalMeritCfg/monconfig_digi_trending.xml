@@ -659,7 +659,7 @@
     <object>
       <name> CompressedEvtSizeInBytes_FswGAMMA </name>
       <formula><![CDATA[ CompressedEventSizeInBytes ]]></formula>
-      <cut><![CDATA[ CompressedEventSizeInBytes>1 && FswFilters[0]>0 && FswFiltersLeaked[0]>0]]></cut>
+      <cut><![CDATA[ CompressedEventSizeInBytes>1 && FswFilters[0]>0 || FswFiltersLeaked[0]>0]]></cut>
       <type> rate </type>
       <description> Rate of  bytes (size AFTER compression) during the specified time interval for evts surviving the Fsw GAMMA filter. This is the bandwidth that we need to download those evts. </description>
     </object>
@@ -667,7 +667,7 @@
      <object>
       <name> CompressedEvtSizeInBytes_FswMIP </name>
       <formula><![CDATA[ CompressedEventSizeInBytes ]]></formula>
-      <cut><![CDATA[ CompressedEventSizeInBytes>1 && FswFilters[1]>0 && FswFiltersLeaked[1]>0]]></cut>
+      <cut><![CDATA[ CompressedEventSizeInBytes>1 && FswFilters[1]>0 || FswFiltersLeaked[1]>0]]></cut>
       <type> rate </type>
       <description> Rate of  bytes (size AFTER compression) during the specified time interval for evts surviving the Fsw MIP filter. This is the bandwidth that we need to download those evts. </description>
     </object>
@@ -675,7 +675,7 @@
     <object>
       <name> CompressedEvtSizeInBytes_FswHIP </name>
       <formula><![CDATA[ CompressedEventSizeInBytes ]]></formula>
-      <cut><![CDATA[ CompressedEventSizeInBytes>1 && FswFilters[2]>0 && FswFiltersLeaked[2]>0]]></cut>
+      <cut><![CDATA[ CompressedEventSizeInBytes>1 && FswFilters[2]>0 || FswFiltersLeaked[2]>0]]></cut>
       <type> rate </type>
       <description> Rate of  bytes (size AFTER compression) during the specified time interval for evts surviving the Fsw HIP filter. This is the bandwidth that we need to download those evts. </description>
     </object>
@@ -683,7 +683,7 @@
      <object>
       <name> CompressedEvtSizeInBytes_FswDGN </name>
       <formula><![CDATA[ CompressedEventSizeInBytes ]]></formula>
-      <cut><![CDATA[ CompressedEventSizeInBytes>1 && FswFilters[3]>0 && FswFiltersLeaked[3]>0]]></cut>
+      <cut><![CDATA[ CompressedEventSizeInBytes>1 && FswFilters[3]>0 || FswFiltersLeaked[3]>0]]></cut>
       <type> rate </type>
       <description> Rate of  bytes (size AFTER compression) during the specified time interval for evts surviving the Fsw DGN filter. This is the bandwidth that we need to download those evts. </description>
     </object>
