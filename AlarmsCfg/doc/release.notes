@@ -1,4 +1,4 @@
-*** to be tagged ***
+*** v4r7p0 ***
 - Update lower limit on DeltaEventTime edge to 530, because it cannot go
   under 529, in digi_eor_alarms.xml.
 - Alarm on DeltaEventTime changed from leftmost_edge to x_min_bin.
