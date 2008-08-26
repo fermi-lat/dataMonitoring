@@ -8,7 +8,7 @@
   <alarmList group="Miscellanea" name="Miscellanea" enabled="True">
     
     <alarmSet name="DeltaEventTime_Zoom_TH1" enabled="True">
-      <alarm function="leftmost_edge" enabled="True">
+      <alarm function="x_min_bin" enabled="True">
 	<warning_limits min="530.0" max="550.0"/>
 	<error_limits min="530.0" max="570.0"/>
       </alarm>
