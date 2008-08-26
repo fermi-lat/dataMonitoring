@@ -1,4 +1,4 @@
-v1r2p26  2008/08/25  (DEV)
+v1r2p26  2008/08/26  (DEV)
 ----------------------------
 Corrected bug in filter for some of the compressed size rates (monconfig_digi_trending.xml).
 
