@@ -6,6 +6,8 @@
 been uploaded on the instrument.
 - Exceptions for the TkrMon trending alarms modified after the new TKR masks
 have been uploaded on the instrument.
+- Limits loosened on some of the calhist quantities, as the details of the
+algorithms are still under development.
 * Relevant jira(s): GDQMQ-255
 
 
