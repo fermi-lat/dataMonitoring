@@ -8,6 +8,8 @@ been uploaded on the instrument.
 have been uploaded on the instrument.
 - Limits loosened on some of the calhist quantities, as the details of the
 algorithms are still under development.
+- Limits loosened a tiny bit on CalX_NHit_TH1_Tower_* (x_average) for digi
+eor---we were seeing occasional spurious violations.
 * Relevant jira(s): GDQMQ-255
 
 
