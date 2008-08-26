@@ -163,8 +163,8 @@
     <alarmSet name="CalX_NHit_TH1_Tower_*" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<warning_limits min="9.0" max="17.0"/>
-	<error_limits min="6.0" max="20.0"/>
+	<warning_limits min="9.0" max="18.0"/>
+	<error_limits min="6.0" max="22.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
