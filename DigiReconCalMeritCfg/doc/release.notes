@@ -1,3 +1,7 @@
+v1r2p26  2008/08/25  (DEV)
+----------------------------
+Corrected bug in filter for some of the compressed size rates (monconfig_digi_trending.xml).
+
 v1r2p25  2008/08/25  (DEV)
 ----------------------------
 Add FastMon trending quantities FastMon_spacecraft_orbit_mode
