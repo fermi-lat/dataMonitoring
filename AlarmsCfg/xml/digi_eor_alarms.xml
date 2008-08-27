@@ -8,9 +8,9 @@
   <alarmList group="Miscellanea" name="Miscellanea" enabled="True">
     
     <alarmSet name="DeltaEventTime_Zoom_TH1" enabled="True">
-      <alarm function="x_min_bin" enabled="True">
-	<warning_limits min="530.0" max="550.0"/>
-	<error_limits min="530.0" max="570.0"/>
+      <alarm function="leftmost_edge" enabled="True">
+	<warning_limits min="520.0" max="550.0"/>
+	<error_limits min="500.0" max="570.0"/>
       </alarm>
     </alarmSet>
     <alarmSet name="Tick20MHzDeviation_TH1" enabled="True">
@@ -31,7 +31,6 @@
     </alarmSet>
     <alarmSet name="GPSInLock_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
-        <condition name="min_entries" value="500"/>
 	<warning_limits min="0.96" max="1.0"/>
 	<error_limits min="0.90" max="1.0"/>
       </alarm>
@@ -164,13 +163,13 @@
     <alarmSet name="CalX_NHit_TH1_Tower_*" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
-	<warning_limits min="9.0" max="18.0"/>
-	<error_limits min="6.0" max="22.0"/>
+	<warning_limits min="9.0" max="17.0"/>
+	<error_limits min="6.0" max="20.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<warning_limits min="18.0" max="26.0"/>
-	<error_limits min="13.0" max="32.0"/>
+	<warning_limits min="18.0" max="25.0"/>
+	<error_limits min="13.0" max="30.0"/>
       </alarm> 				  			 
     </alarmSet>
 

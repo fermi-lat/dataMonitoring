@@ -11,9 +11,8 @@ from pRootFileManager    import pRootFileManager
 from pAlarmBaseAlgorithm import pAlarmBaseAlgorithm
 
 
-BASE_HISTOGRAM_GROUPS = ['Mean', 'RMS', 'ChiSquare', 'DOF', 'ReducedChiSquare',
-                         'FitProb', 'MeanDist', 'RMSDist',
-                         'ReducedChiSquareDist']
+HISTOGRAM_GROUPS = ['Mean', 'RMS', 'ChiSquare', 'DOF', 'ReducedChiSquare',
+                    'FitProb', 'MeanDist', 'RMSDist', 'ReducedChiSquareDist']
 GAUSSIAN = ROOT.TF1('gaussian', 'gaus')
 HYPER_GAUSSIAN_FORMULA = '%s*[0]*exp(-(abs( (x-[1])/[2] )**[3])/2)' %\
                          (1.0/math.sqrt(2*math.pi))
@@ -179,7 +178,7 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
     def writeOutputFile(self):
         logger.info('Writing output file %s...' % self.OutputFilePath)
         outputFile = ROOT.TFile(self.OutputFilePath, 'RECREATE')
-        for group in self.HISTOGRAM_GROUPS:
+        for group in HISTOGRAM_GROUPS:
             for subgroup in self.HISTOGRAM_SUB_GROUPS:
                 self.getHistogram(group, subgroup).Write()
         outputFile.Close()
@@ -188,7 +187,7 @@ class pBaseAnalyzer(pRootFileManager, pAlarmBaseAlgorithm):
     def drawHistograms(self):
         ROOT.gStyle.SetOptStat(111111)
         self.CanvasesDict = {}
-        for group in self.HISTOGRAM_GROUPS:
+        for group in HISTOGRAM_GROUPS:
             if len(self.HISTOGRAM_SUB_GROUPS) == 2:
                 canvas = ROOT.TCanvas(group, group, 1000, 350)
                 canvas.Divide(2, 1)

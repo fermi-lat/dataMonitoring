@@ -1,7 +1,6 @@
 from pSafeROOT           import ROOT
 from pAlarmBaseAlgorithm import pAlarmBaseAlgorithm
 
-import pUtils
 
 
 ## @brief Base "virtual" class for implementing alarms which involve fitting
@@ -27,13 +26,4 @@ class pGenericFitAlgorithm(pAlarmBaseAlgorithm):
         ([value], [error]) = self.getFitOutput(fitFunction, [fitParameter])
         error *= numSigma
         self.Output.setValue(value, error)
-        chiSquare = fitFunction.GetChisquare()
-        dof = fitFunction.GetNDF()
-        try:
-            reducedChiSquare = chiSquare/dof
-        except ZeroDivisionError:
-            reducedChiSquare = 0
-        self.Output.setDictValue('Reduced chi square',
-                                 pUtils.formatNumber(reducedChiSquare))
-        self.Output.setDictValue('Degrees of freedom', dof)
         fitFunction.Delete()
