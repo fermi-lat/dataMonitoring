@@ -1,3 +1,7 @@
+*** v4r7p3 ***
+- Limits on CalX_NHit_TH1_Tower_* (x_rms) in digi eor changed a little bit.
+
+
 *** v4r7p2 ***
 - Condition on the minimum number of entries added for the alarm on digi
 eor GPSInLock_TH1.
