@@ -169,8 +169,8 @@
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<warning_limits min="18.0" max="25.0"/>
-	<error_limits min="13.0" max="30.0"/>
+	<warning_limits min="18.0" max="26.0"/>
+	<error_limits min="13.0" max="32.0"/>
       </alarm> 				  			 
     </alarmSet>
 
