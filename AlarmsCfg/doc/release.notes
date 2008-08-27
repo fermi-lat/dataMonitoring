@@ -1,6 +1,8 @@
 *** v4r7p1 ***
 - Limits loosened a tiny bit on CalX_NHit_TH1_Tower_* (x_average) for FastMon
 eor, for consistency with the corresponding digi eor plot.
+- Limits loosened on some of the calhist quantities, as the details of the
+algorithms are still under development.
 
 
 *** v4r7p0 ***
