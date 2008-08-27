@@ -1,3 +1,10 @@
+v1r2p27  2008/08/26  (DEV)
+----------------------------
+Trend the rate of TEM bugs using the FastMon_error_summary bit 23, type is rate
+in (monconfig_fastmon_trending.xml).
+Changes to address GDQMQ-254
+
+
 v1r2p26  2008/08/26  (DEV)
 ----------------------------
 Corrected bug in filter for some of the compressed size rates (monconfig_digi_trending.xml).
