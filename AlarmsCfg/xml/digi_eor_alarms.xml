@@ -31,6 +31,7 @@
     </alarmSet>
     <alarmSet name="GPSInLock_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
+        <condition name="min_entries" value="500"/>
 	<warning_limits min="0.96" max="1.0"/>
 	<error_limits min="0.90" max="1.0"/>
       </alarm>
