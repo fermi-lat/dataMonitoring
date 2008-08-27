@@ -677,7 +677,7 @@
     </inputList>
 	    
     <outputList group="CAL" name="CAL in electronics space" enabled="True">
-        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range0_TH2" enabled="True" level="tower">
+        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range0_TH2_Tower" enabled="True" level="tower">
 	    <expression>Range0</expression>
 	    <title>Number of hits in each Cal log end for range 0 (LEX8)</title>
 	    <xlabel>CAL column/side</xlabel>
@@ -685,7 +685,7 @@
 	    <drawoptions>colz</drawoptions>	    
 	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>	    
         </CUSTOM>
-        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range1_TH2" enabled="True" level="tower">
+        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range1_TH2_Tower" enabled="True" level="tower">
 	    <expression>Range1</expression>
 	    <title>Number of hits in each Cal log end for range 1 (LEX1)</title>
 	    <xlabel>CAL column/side</xlabel>
@@ -693,7 +693,7 @@
 	    <drawoptions>colz</drawoptions>	    
 	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>	    
         </CUSTOM>
-        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range2_TH2" enabled="True" level="tower">
+        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range2_TH2_Tower" enabled="True" level="tower">
 	    <expression>Range2</expression>
 	    <title>Number of hits in each Cal log end for range 2 (HEX8)</title>
 	    <xlabel>CAL column/side</xlabel>
@@ -701,7 +701,7 @@
 	    <drawoptions>colz</drawoptions>	    
 	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<64]]></cut>	    
         </CUSTOM>
-        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range3_TH2" enabled="True" level="tower">
+        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range3_TH2_Tower" enabled="True" level="tower">
 	    <expression>Range3</expression>
 	    <title>Number of hits in each Cal log end for range 3 (HEX1)</title>
 	    <xlabel>CAL column/side</xlabel>
@@ -744,7 +744,7 @@
 	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
         </TH1F>
 	
-        <TH1F name="CalX_NHit_TH1" enabled="True" level="tower">
+        <TH1F name="CalX_NHit_TH1_Tower" enabled="True" level="tower">
 	    <title>Distribution of  Cal crystals hits per event in this tower</title>
 	    <xbins>97</xbins>
 	    <xmin>-0.5</xmin>
@@ -844,14 +844,14 @@
 	    <drawoptions>colz</drawoptions>
             <cut><![CDATA[(condsummary&30)>0 && (condsummary&64)==0 && error_summary<64]]></cut>
         </CUSTOM>
-        <CUSTOM type="TkrHitsCounter_Plane" name="TkrHitsCounter_Plane_TH1" level="tower" enabled="True">
+        <CUSTOM type="TkrHitsCounter_Plane" name="TkrHitsCounter_Plane_TH1_Tower" level="tower" enabled="True">
 	    <title>Overall number of hits vs. TKR plane (one per tower)</title>
 	    <caption>Watch out for spikes (but don't get too excited, most likely it's just a noisy strip) and dips</caption>
 	    <xlabel>Tracker plane</xlabel>
 	    <ylabel>N</ylabel>
 	    <cut><![CDATA[(condsummary&64)==0 && error_summary<64]]></cut>
         </CUSTOM>    
-        <CUSTOM type="TkrHitsCounter_PlaneGTFE" name="TkrHitsCounter_PlaneGTFE_TH2" level="tower" enabled="True">
+        <CUSTOM type="TkrHitsCounter_PlaneGTFE" name="TkrHitsCounter_PlaneGTFE_TH2_Tower" level="tower" enabled="True">
 	    <title>Overall number of hits vs. TKR plane and front-end chip (one per tower)</title>
 	    <caption>Watch out for white spots---front end chips with no hits---if the statistics is enough</caption>
 	    <xlabel>GTFE</xlabel>
@@ -862,7 +862,7 @@
     </outputList>
 
     <outputList group="TKR" name="TKR Details - Strip hits per tower" enabled="True">						
-        <TH1F name="TkrHits_TH1" enabled="True" level="tower">
+        <TH1F name="TkrHits_TH1_Tower" enabled="True" level="tower">
 	    <title>Distribution of strip hits per tower</title>
 	    <xbins>200</xbins>
 	    <xmin>0</xmin>
@@ -875,7 +875,7 @@
     </outputList>
 
     <outputList group="TKR" name="TKR Details - Planes hit in a tower" enabled="True">		
-        <CUSTOM type="TkrPlanesHit" name="TkrPlanesHit_TH1" level="tower" enabled="True">
+        <CUSTOM type="TkrPlanesHit" name="TkrPlanesHit_TH1_Tower" level="tower" enabled="True">
 	    <title>Distribution of the number of planes hit in a tower</title>
 	    <xlabel>Layer number</xlabel>
 	    <caption></caption>
