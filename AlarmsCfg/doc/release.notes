@@ -1,3 +1,8 @@
+*** v4r7p1 ***
+- Limits loosened a tiny bit on CalX_NHit_TH1_Tower_* (x_average) for FastMon
+eor, for consistency with the corresponding digi eor plot.
+
+
 *** v4r7p0 ***
 - Update lower limit on DeltaEventTime edge to 530, because it cannot go
   under 529, in digi_eor_alarms.xml.
