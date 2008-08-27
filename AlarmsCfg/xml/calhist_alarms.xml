@@ -47,8 +47,8 @@
 
     <alarmSet name="CalXAdcPedRMS_LEX8_TH1" enabled="True">
       <alarm function="y_values" enabled="True">
-	<warning_limits min="4.5" max="15.0"/>
-	<error_limits   min="4.0" max="50.0"/>
+	<warning_limits min="2.0" max="15.0"/>
+	<error_limits   min="1.0" max="50.0"/>
         <parameter name="num_sigma" value="0.0"/>
       </alarm> 
     </alarmSet>
