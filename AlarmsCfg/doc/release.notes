@@ -1,3 +1,8 @@
+*** v4r7p4 ***
+- A few parameter changed in recon eor configuration file to make it
+more roboust in case of low statistics.
+
+
 *** v4r7p3 ***
 - Limits on CalX_NHit_TH1_Tower_* (x_rms) in digi eor changed a little bit.
 
