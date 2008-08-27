@@ -1,3 +1,7 @@
+*** v1r6p0 ***
+- All histograms at the tower level needs a _Tower added as a suffix
+* Relevant jira(s): GDQMQ-258
+
 *** v1r5p0 ***
 - Add spacecraft_orbit_mode and spacecraft_orbit_inSAA
 * Relevant jira(s): GDQMQ-195
