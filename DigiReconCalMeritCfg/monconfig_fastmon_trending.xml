@@ -10,6 +10,7 @@
    <object>FastMon_condsummary</object> 
    <object>FastMon_meta_LATC_master</object> 
    <object>FastMon_evt_data_transfer_id</object> 
+   <object>FastMon_error_summary</object> 
 
    <!-- Context information -->
    <object>FastMon_meta_context_open_mode</object> 
@@ -129,6 +130,13 @@
       <description> Error in the normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones. </description>
     </object>	    
 
+    <object>
+      <name> FastMon_TemBug_Event </name>
+      <formula><![CDATA[ foronetime: FastMon_error_summary>>23 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> Rate of events with a TEM bug. </description>
+    </object>
   
     <!-- Spacecraft quantities -->
     <object>
