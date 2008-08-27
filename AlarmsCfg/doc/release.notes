@@ -1,3 +1,8 @@
+*** v4r7p2 ***
+- Condition on the minimum number of entries added for the alarm on digi
+eor GPSInLock_TH1.
+
+
 *** v4r7p1 ***
 - Limits loosened a tiny bit on CalX_NHit_TH1_Tower_* (x_average) for FastMon
 eor, for consistency with the corresponding digi eor plot.
