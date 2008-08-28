@@ -4,6 +4,7 @@
 
   <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_0" algorithm="spikes_and_holes">
     <exception identifier="(12, 14)" status_on_violation="clean"/>
+    <exception identifier="(13, 14)" status_on_violation="clean"/>
   </alarm>
 
   <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_8" algorithm="spikes_and_holes">
