@@ -1,3 +1,8 @@
+v1r2p28  2008/09/08  (DEV)
+----------------------------
+Change default value when GPS out of lock fraction cannot be computed. This avoid having negative values. 
+This addresses jira GDQMQ-259.
+
 v1r2p27  2008/08/26  (DEV)
 ----------------------------
 Trend the rate of TEM bugs using the FastMon_error_summary bit 23, type is rate
