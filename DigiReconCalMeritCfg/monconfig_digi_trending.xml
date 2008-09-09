@@ -564,7 +564,7 @@
      
 	<object>
       <name> NormalizedRate_GPS_OUTofLock </name>
-      <formula><![CDATA[ foronetime: (Rate_NewSecond>0) ? Rate_GPS_OUTofLock/Rate_NewSecond: -1.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Rate_NewSecond>0) ? Rate_GPS_OUTofLock/Rate_NewSecond: 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source> output </source>
       <type> outputfloat </type>
