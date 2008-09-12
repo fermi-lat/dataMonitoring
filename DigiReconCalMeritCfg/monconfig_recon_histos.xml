@@ -614,6 +614,7 @@ Remove comments and XXXX (this is needed for producing merging files) in names t
       <description> 2D histogram showing the highest energy vs channel when CALHi was asserted. Periodic triggers are NOT taken into account.  </description>
     </object>
 
+<!--
      <object>
       <name> SuspCalHi_Highest1_TH2 </name>
       <formula><![CDATA[ RFun::getChannelEnergyHighest(CalXtalFaceSignal,1,0):RFun::getChannelEnergyHighest(CalXtalFaceSignal,1,1)]]></formula>
@@ -633,7 +634,7 @@ Remove comments and XXXX (this is needed for producing merging files) in names t
       <axisdesc> [channel number, Energy in MeV, N] </axisdesc>
       <description> 2D histogram showing the third highest energy vs channel when CALHi was asserted. Periodic triggers are NOT taken into account.  </description>
     </object>
-
+-->
 
      <object>
       <name> SuspCalLo_Highest0_TH2 </name>                   
@@ -644,7 +645,7 @@ Remove comments and XXXX (this is needed for producing merging files) in names t
       <axisdesc> [channel number, Energy in MeV, N] </axisdesc>
       <description> 2D histogram showing the highest energy vs channel when CAL-Lo (and not CAL-Hi) was asserted. Periodic triggers are NOT taken into account.  </description>
     </object>
-
+<!--
      <object>
       <name> SuspCalLo_Highest1_TH2 </name>
       <formula><![CDATA[ RFun::getChannelEnergyHighest(CalXtalFaceSignal,1,0):RFun::getChannelEnergyHighest(CalXtalFaceSignal,1,1)]]></formula>
@@ -665,7 +666,7 @@ Remove comments and XXXX (this is needed for producing merging files) in names t
       <description> 2D histogram showing the third highest energy vs channel when CAL-Lo (and not CAL-Hi) was asserted. Periodic triggers are NOT taken into account.  </description>
     </object>
    
-
+-->
          <object>
       <name> SuspCalLo_Highest0_EnergyDistribution_TH1 </name>
       <formula><![CDATA[ RFun::getChannelEnergyHighest(CalXtalFaceSignal,0,1) ]]></formula>

@@ -47,10 +47,6 @@
        ReconEnergy_HighEnergy_TH1  Sum
        Log10ReconEnergy_HighEnergy_TH1  Sum
        SuspCalHi_Highest0_TH2  Sum
-       SuspCalHi_Highest1_TH2  Sum
-       SuspCalHi_Highest2_TH2  Sum
        SuspCalLo_Highest0_TH2  Sum                   
-       SuspCalLo_Highest1_TH2  Sum
-       SuspCalLo_Highest2_TH2  Sum
        SuspCalLo_Highest0_EnergyDistribution_TH1  Sum
        SuspCalHi_Highest0_EnergyDistribution_TH1  Sum
