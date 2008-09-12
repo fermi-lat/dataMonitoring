@@ -49,6 +49,7 @@
 
       <object> Tkr1KalEne </object> 
       <object> Tkr1KalThetaMS </object>
+      <object> TkrNumTracks</object>
 
       <!-- Calorimeter -->
 
@@ -60,7 +61,7 @@
     <object> CalTrackAngle</object>
 
     <object> CalTransRms </object>
-
+    <object> CalMIPRatio </object>
 <!--    
     <object> </object>
     <object> </object>
@@ -980,7 +981,7 @@
        <object>
       <name> Tkr1KalThetaMS_TH1 </name>
       <formula><![CDATA[ Tkr1KalThetaMS ]]></formula>
-      <cut><![CDATA[  ]]></cut>
+      <cut><![CDATA[ Tkr1KalThetaMS>0.0 && Tkr1KalThetaMS<0.015 && TkrNumTracks==1 && TMath::Abs(CalMIPRatio-1)<0.5 && CTBParticleType==2 ]]></cut>
       <type> histogram-1d[501,-0.01,5.0] </type>
       <titledesc> Tkr1KalThetaMS </titledesc>
       <axisdesc> [Tkr1KalThetaMS (rad), N] </axisdesc>
@@ -990,7 +991,7 @@
      <object>
       <name> Tkr1KalThetaMS_Zoom_TH1 </name>
       <formula><![CDATA[ Tkr1KalThetaMS ]]></formula>
-      <cut><![CDATA[  ]]></cut>
+      <cut><![CDATA[ Tkr1KalThetaMS>0.0 && Tkr1KalThetaMS<0.015 && TkrNumTracks==1 && TMath::Abs(CalMIPRatio-1)<0.5 && CTBParticleType==2 ]]></cut>
       <type> histogram-1d[501,-0.0002,0.1] </type>
       <titledesc> Tkr1KalThetaMS </titledesc>
       <axisdesc> [Tkr1KalThetaMS (rad), N] </axisdesc>

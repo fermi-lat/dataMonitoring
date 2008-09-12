@@ -1,5 +1,4 @@
 <monitoring>
-
   <inputList name="top"> 
 
     <!-- Time stamp -->
@@ -45,6 +44,7 @@
     <object> TkrThinHits</object>
     <object> TkrThickHits</object>
     <object> TkrBlankHits</object>
+    <object> TkrNumTracks</object>
 
   <!--   <object> TkrSurplusHitsInside </object>-->
       <object> TkrSurplusHitRatio </object>
@@ -66,6 +66,7 @@
     <object> CalTrackAngle</object>
 
     <object> CalTransRms </object>
+    <object> CalMIPRatio </object>
 
 <!--    
     <object> </object>
@@ -1055,7 +1056,7 @@
      <object>
       <name> Tkr1KalThetaMS </name>
       <formula><![CDATA[  Tkr1KalThetaMS ]]></formula>
-      <cut><![CDATA[]]></cut>
+      <cut><![CDATA[Tkr1KalThetaMS>0.0 && Tkr1KalThetaMS<0.015 && TkrNumTracks==1 && abs(CalMIPRatio-1)<0.5 && CTBParticleType==2 ]]></cut>
       <type> mean </type>
       <description> Mean value (per evt) of Tkr1KalThetaMS.</description>
     </object>
