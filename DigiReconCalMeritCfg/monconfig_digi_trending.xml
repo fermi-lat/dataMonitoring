@@ -588,9 +588,9 @@
      <object>
       <name> FswGAMMAEnergyInLeus </name>
       <formula><![CDATA[ FswGAMMAEnergyInLeus[0] ]]></formula>
-      <cut><![CDATA[ FswGAMMAEnergyInLeus[1]>0.5]]></cut>
+      <cut><![CDATA[ FswGAMMAEnergyInLeus[1]>0.5 && FswFilters[0] >0.5]]></cut>
       <type> mean </type>
-      <description> Mean FswGAMMA energy in Leus. Only events with valid energy (getEnergyValid()>0) are used. </description>
+      <description> Mean FswGAMMA energy in Leus. Only events passing the gamma filter (LpaGammaFilter::passed() !=0) and with valid energy (getEnergyValid()>0) are used. </description>
     </object>
 
      <object>

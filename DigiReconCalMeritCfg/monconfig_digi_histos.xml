@@ -45,7 +45,7 @@
     <object> sourceGps </object>
     <object>EventSizeInBytes</object>
      <object>FswGAMMAEnergyInLeus</object>
-    
+    <object>FswFilters</object>
 
     <!-- Acd Variables -->
     
@@ -73,11 +73,12 @@
     <object> ToT_con0_TowerPlane  </object>
     <object> ToT_con1_TowerPlane  </object>
 
+
      <!-- Cal Variables -->
     <object> CalXHit_TowerCalLayerCalColumn </object>
     <object> CalXHit_TowerCalLayer </object>
     <object> CalXAdc_TowerCalLayerCalColumnFaceRange </object>
-
+ 
   </inputList>
 
 
@@ -794,11 +795,11 @@
      <object>
       <name> FswGAMMAEnergyInLeus_TH1 </name>
       <formula><![CDATA[ TMath::Log10(FswGAMMAEnergyInLeus[0]) ]]></formula>
-      <cut><![CDATA[ FswGAMMAEnergyInLeus[0] > 0.0 && FswGAMMAEnergyInLeus[1]>0.5]]></cut>
+      <cut><![CDATA[ FswGAMMAEnergyInLeus[0] > 0.0 && FswGAMMAEnergyInLeus[1]>0.5 && FswFilters[0] >0.5]]></cut>
       <type>  histogram-1d[900,-2.0,7.0,0.0] </type>
       <titledesc> Distribution of FswGAMMAEnergyInLeus </titledesc>
       <axisdesc> [log10(FswGAMMAEnergyInLeus), N] </axisdesc>
-      <description> Log10 of FswGAMMA energy in Leus. Only events with valid energy (getEnergyValid()>0) are used. </description>
+      <description> Log10 of FswGAMMA energy in Leus. Only events  passing the gamma filter (LpaGammaFilter::passed() !=0) and with valid energy (getEnergyValid()>0) are used. </description>
     </object>
 
 
