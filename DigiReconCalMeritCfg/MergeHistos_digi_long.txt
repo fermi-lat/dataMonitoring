@@ -29,6 +29,16 @@
          RPp_RMS_TH1 Average
 	 RMm_Mean_TH1 Average
 	 RMm_RMS_TH1 Average
+	 AcdPedestalDev_Mean_PmtA_LowPMTRange_TH1 Average
+        AcdPedestalDev_RMS_PmtA_LowPMTRange_TH1 Average
+        AcdPedestalDev_Mean_PmtB_LowPMTRange_TH1 Average
+        AcdPedestalDev_RMS_PmtB_LowPMTRange_TH1 Average
+       AcdPedDB_PMTA_FirstVal_TH1 Average
+       AcdPedDB_PMTA_LastVal_TH1 Average
+       AcdPedDB_PMTA_Nchanges_TH1 Sum
+       AcdPedDB_PMTB_FirstVal_TH1 Average
+       AcdPedDB_PMTB_LastVal_TH1 Average
+       AcdPedDB_PMTB_Nchanges_TH1 Sum
        RPM_TH1_TowerCalLayerCalColumn_TowerLoop_CalLayerLoop_CalColumnLoop  Sum
        RPp_TH1_TowerCalLayerCalColumn_TowerLoop_CalLayerLoop_CalColumnLoop  Sum
        RMm_TH1_TowerCalLayerCalColumn_TowerLoop_CalLayerLoop_CalColumnLoop  Sum

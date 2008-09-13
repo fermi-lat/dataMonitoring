@@ -55,15 +55,42 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       </object>
 
 
-<!--  TO BE COMPLETED
-        <object>
+
+     <object>
       <name> AcdPedestalDev_PmtA_LowPMTRange_AcdTile[128] </name>
-      <formula><![CDATA[foreachacdtile: AcdPha_PmtIdPmtRangeAcdTile[0][0][acdtile] - RFun::acdped(NUMBERS)]]></formula>
+      <formula><![CDATA[foreachacdtile: RFun::acdpedGemId(timestamp,acdtile, 0) >0 ? AcdPha_PmtIdPmtRangeAcdTile[0][0][acdtile] - RFun::acdpedGemId(timestamp,acdtile, 0) : -10000 ]]></formula>
       <cut><![CDATA[condsummary==32 && (!ZeroSuppress) ]]></cut>
       <type> truncatedmeanboundandfracbigdataequaln[-10000,10000,0.96]  </type>
-      <description> TO BEDONE </description>
+      <description> Vector [AcdTile] reporting the mean (and rms by means of the quantity AcdPedestalDev_PmtA_LowPMTRange_AcdTile_err) pedestal deviations from those ones in the data base for the LOW range of PMT A during the specified time bin. The mean (and rms) is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values.  </description>
     </object>
--->
+
+     <object>
+      <name> AcdPedestalDev_PmtB_LowPMTRange_AcdTile[128] </name>
+      <formula><![CDATA[foreachacdtile:  RFun::acdpedGemId(timestamp,acdtile, 1) >0 ? AcdPha_PmtIdPmtRangeAcdTile[1][0][acdtile] - RFun::acdpedGemId(timestamp,acdtile, 1) : -10000]]></formula>
+      <cut><![CDATA[condsummary==32 && (!ZeroSuppress) ]]></cut>
+      <type> truncatedmeanboundandfracbigdataequaln[-10000,10000,0.96]  </type>
+      <description> Vector [AcdTile] reporting the mean (and rms by means of the quantity AcdPedestalDev_PmtA_LowPMTRange_AcdTile_err) pedestal deviations from those ones in the data base for the LOW range of PMT B during the specified time bin. The mean (and rms) is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values.  </description>
+    </object>
+
+
+     <object>
+      <name> DataBasePed_PmtA_LowPMTRange_AcdTile[128] </name>
+      <formula><![CDATA[foreachacdtile:  RFun::acdpedGemId(timestamp,acdtile, 0) >0 ? RFun::acdpedGemId(timestamp,acdtile, 0) :0.0]]></formula>
+      <cut><![CDATA[condsummary==32 && (!ZeroSuppress) ]]></cut>
+      <type> valuechange[0] </type>
+      <description> Vector [AcdTile] reporting the ACD pedestals from PMT A from the data base </description>
+    </object>
+
+    <object>
+      <name> DataBasePed_PmtB_LowPMTRange_AcdTile[128] </name>
+      <formula><![CDATA[foreachacdtile: RFun::acdpedGemId(timestamp,acdtile, 1) >0 ? RFun::acdpedGemId(timestamp,acdtile, 1) :0.0]]></formula>
+      <cut><![CDATA[condsummary==32 && (!ZeroSuppress) ]]></cut>
+      <type> valuechange[0] </type>
+      <description> Vector [AcdTile] reporting the ACD pedestals from PMT B from the data base </description>
+    </object>
+
+    
+  
 
      <object>
 	<name> AcdVetoA_AcdTile[128]  </name>
@@ -317,6 +344,120 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
        </object>
 
 
+      <object>
+       <name> AcdPedestalDev_Mean_PmtA_LowPMTRange_TH1</name>
+	<formula><![CDATA[ foreachacdtile: Mean_AcdPedestalDev_PmtA_LowPMTRange_AcdTile[acdtile]>-9000 ?  Mean_AcdPedestalDev_PmtA_LowPMTRange_AcdTile[acdtile] : 10000 ]]></formula>
+	<cut><![CDATA[]]></cut>
+	<source>output</source>
+	<type> histogram-vecdim-1d[128,-0.5,127.5, 10000,1] </type>
+	<titledesc> ACD Pedestal deviations for PMT A, Mean vs channel number </titledesc>
+	<axisdesc> [Gem tile number, Ped deviations mean (ADC counts)] </axisdesc>
+	<description> Mean pedestal deviations for PMT A, versus Gem tile number, between the measured pedestals and the ones retrieved from the data base. The mean is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. Only periodic triggers with not zero suppressed are being used.  </description>
+       </object>
+
+       <object>
+       <name> AcdPedestalDev_RMS_PmtA_LowPMTRange_TH1</name>
+	<formula><![CDATA[ foreachacdtile: Mean_AcdPedestalDev_PmtA_LowPMTRange_AcdTile_err[acdtile]*TMath::Sqrt(Mean_AcdPedestalDev_PmtA_LowPMTRange_AcdTile_n[acdtile]) ]]></formula>
+	<cut><![CDATA[]]></cut>
+	<source>output</source>
+	<type> histogram-vecdim-1d[128,-0.5,127.5,0,1] </type>
+	<titledesc> ACD Pedestal deviations for PMT A, RMS vs channel number </titledesc>
+	<axisdesc> [Gem tile number, Ped deviations RMS (ADC counts)] </axisdesc>
+	<description>  RMS in the distribution of the pedestal deviations for PMT A, versus Gem tile number, between the measured pedestals and the ones retrieved from the data base. The rms is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. Only periodic triggers with not zero suppressed are being used.  </description>
+       </object>
+
+
+        <object>
+       <name> AcdPedestalDev_Mean_PmtB_LowPMTRange_TH1</name>
+	<formula><![CDATA[foreachacdtile: Mean_AcdPedestalDev_PmtB_LowPMTRange_AcdTile[acdtile]>-9000 ? Mean_AcdPedestalDev_PmtB_LowPMTRange_AcdTile[acdtile] : 10000 ]]></formula>
+	<cut><![CDATA[]]></cut>
+	<source>output</source>
+	<type> histogram-vecdim-1d[128,-0.5,127.5,10000,1] </type>
+	<titledesc> ACD Pedestal deviations for PMT B Mean vs channel number </titledesc>
+	<axisdesc> [Gem tile number, Ped deviations mean (ADC counts)] </axisdesc>
+	<description> Mean pedestal deviations for PMT B, versus Gem tile number, between the measured pedestals and the ones retrieved from the data base. The mean is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. Only periodic triggers with not zero suppressed are being used.  </description>
+       </object>
+
+       <object>
+       <name> AcdPedestalDev_RMS_PmtB_LowPMTRange_TH1</name>
+	<formula><![CDATA[ foreachacdtile: Mean_AcdPedestalDev_PmtB_LowPMTRange_AcdTile_err[acdtile]*TMath::Sqrt(Mean_AcdPedestalDev_PmtB_LowPMTRange_AcdTile_n[acdtile]) ]]></formula>
+	<cut><![CDATA[]]></cut>
+	<source>output</source>
+	<type> histogram-vecdim-1d[128,-0.5,127.5,0,1] </type>
+	<titledesc> ACD Pedestal deviations for PMT B, RMS vs channel number </titledesc>
+	<axisdesc> [Gem tile number, Ped deviations RMS (ADC counts)] </axisdesc>
+	<description>  RMS in the distribution of the pedestal deviations for PMT B, versus Gem tile number, between the measured pedestals and the ones retrieved from the data base. The rms is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. Only periodic triggers with not zero suppressed are being used.  </description>
+       </object>
+
+
+      <object>
+      <name> AcdPedDB_PMTA_FirstVal_TH1</name>
+      <formula><![CDATA[ValChange_DataBasePed_PmtA_LowPMTRange_AcdTilexxxfirstval]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>  histogram-vecdim-1d[128,-0.5,127.5,0, 1]  </type>
+      <titledesc> ACD Pedestal from Data Base vs channel number for PMT A</titledesc>
+      <axisdesc> [Gem tile number, Pedestal (ADC counts)] </axisdesc>
+	<description> Data base pedestal versus Gem tile number for PMT A. </description>
+      </object>
+
+       <object>
+      <name> AcdPedDB_PMTA_LastVal_TH1</name>
+      <formula><![CDATA[ValChange_DataBasePed_PmtA_LowPMTRange_AcdTilexxxlastval]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>  histogram-vecdim-1d[128,-0.5,127.5,0, 1]  </type>
+      <titledesc> ACD Pedestal from Data Base vs channel number for PMT A</titledesc>
+      <axisdesc> [Gem tile number, Pedestal (ADC counts)] </axisdesc>
+	<description> Data base pedestal versus Gem tile number for PMT A. </description>
+      </object>
+
+       <object>
+      <name> AcdPedDB_PMTA_Nchanges_TH1</name>
+      <formula><![CDATA[ValChange_DataBasePed_PmtA_LowPMTRange_AcdTilexxxnchanges]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>  histogram-vecdim-1d[128,-0.5,127.5,-1, 1]  </type>
+      <titledesc> Number of changes in ACD Pedestal from Data Base vs channel number for PMT A</titledesc>
+      <axisdesc> [Gem tile number, Pedestal (ADC counts)] </axisdesc>
+	<description> Number of changes in pedestal from data base versus Gem tile number for PMT A. </description>
+      </object>
+
+        <object>
+      <name> AcdPedDB_PMTB_FirstVal_TH1</name>
+      <formula><![CDATA[ValChange_DataBasePed_PmtB_LowPMTRange_AcdTilexxxfirstval]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>  histogram-vecdim-1d[128,-0.5,127.5,0, 1]  </type>
+      <titledesc> ACD Pedestal from Data Base vs channel number for PMT B</titledesc>
+      <axisdesc> [Gem tile number, Pedestal (ADC counts)] </axisdesc>
+	<description> Data base pedestal versus Gem tile number for PMT B. </description>
+      </object>
+
+       <object>
+      <name> AcdPedDB_PMTB_LastVal_TH1</name>
+      <formula><![CDATA[ValChange_DataBasePed_PmtB_LowPMTRange_AcdTilexxxlastval]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>  histogram-vecdim-1d[128,-0.5,127.5,0, 1]  </type>
+      <titledesc> ACD Pedestal from Data Base vs channel number for PMT B</titledesc>
+      <axisdesc> [Gem tile number, Pedestal (ADC counts)] </axisdesc>
+	<description> Data base pedestal versus Gem tile number for PMT B. </description>
+      </object>
+
+       <object>
+      <name> AcdPedDB_PMTB_Nchanges_TH1</name>
+      <formula><![CDATA[ValChange_DataBasePed_PmtB_LowPMTRange_AcdTilexxxnchanges]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>  histogram-vecdim-1d[128,-0.5,127.5,-1, 1]  </type>
+      <titledesc> Number of changes in ACD Pedestal from Data Base vs channel number for PMT B</titledesc>
+      <axisdesc> [Gem tile number, Pedestal (ADC counts)] </axisdesc>
+	<description> Number of changes in pedestal from data base versus Gem tile number for PMT B. </description>
+      </object>
+
+
+
 	 <object>
       <name> AcdPmt_OverThreshold_Asymmetry_AcdTile_TH1 </name>
       <formula><![CDATA[ foreachacdtile: Counter_AnyAcdPmt_OverThreshold_AcdTile[acdtile] > 0 ? (double(Counter_AcdPmtA_OverThreshold_AcdTile[acdtile])-double(Counter_AcdPmtB_OverThreshold_AcdTile[acdtile]))/double(Counter_AnyAcdPmt_OverThreshold_AcdTile[acdtile]) : 2.0 ]]></formula>
@@ -457,14 +598,26 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
 	<formula><![CDATA[ Mean_CalXPedDev_TowerCalLayerCalColumnFR ]]></formula>
 	<cut><![CDATA[]]></cut>
 	<source>output</source>
-	<type> histogram-vecdim-1d[12288,-0.5,12287.5,-1, 1] </type>
+	<type> histogram-vecdim-1d[12288,-0.5,12287.5,-10000, 1] </type>
 	<titledesc> Pedestal Deviations Mean vs channel number </titledesc>
 	<axisdesc> [Channel number, Ped Deviation Mean (ADC counts)] </axisdesc>
 	<description> Mean pedestal deviations, versus channel number (=tower*8*12*2*4+layer*12*2*4+column*2*4+face*4+range), between the measured pedestals and the ones retrieved from the data base. The mean is computed removing (truncating) 10 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 80 percent central values. Only periodic triggers with 4 range readout and non-zerosuppress events are being used. </description>
       </object>
 
 
-       <object>
+     <object>
+        <name> CalXPedDev_RMS_TH1</name>
+	<formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: foreachcalxrange: Mean_CalXPedDev_TowerCalLayerCalColumnFR_err[tower][callayer][calcolumn][calxface][calxrange]*TMath::Sqrt(Mean_CalXPedDev_TowerCalLayerCalColumnFR_n[tower][callayer][calcolumn][calxface][calxrange])]]></formula>
+	<cut><![CDATA[]]></cut>
+	<source>output</source>
+	<type> histogram-vecdim-1d[12288,-0.5,12287.5,0, 1] </type>
+	<titledesc> Pedestal Deviations RMS vs channel number </titledesc>
+	<axisdesc> [Channel number, Ped Deviation RMS (ADC counts)] </axisdesc>
+	<description> RMS in the distribution of the pedestal deviations, versus channel number (=tower*8*12*2*4+layer*12*2*4+column*2*4+face*4+range), between the measured pedestals and the ones retrieved from the data base. The RMS is computed removing (truncating) 10 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 80 percent central values. Only periodic triggers with 4 range readout and non-zerosuppress events are being used. </description>
+      </object>
+
+
+             <object>
       <name> CalXPedDB_FirstVal_TH1</name>
       <formula><![CDATA[ValChange_PTowerCalLayerCalColumnFRxxxfirstval]]></formula>
       <cut><![CDATA[ ]]></cut>
@@ -496,19 +649,6 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       <axisdesc> [Channel number, Number of changes)] </axisdesc>
 	<description> Number of changes in pedestal from data base versus channel number (=tower*8*12*2*4+layer*12*2*4+column*2*4+face*4+range).  </description>
       </object>
-      
-
-     <object>
-        <name> CalXPedDev_RMS_TH1</name>
-	<formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: foreachcalxrange: Mean_CalXPedDev_TowerCalLayerCalColumnFR_err[tower][callayer][calcolumn][calxface][calxrange]*TMath::Sqrt(Mean_CalXPedDev_TowerCalLayerCalColumnFR_n[tower][callayer][calcolumn][calxface][calxrange])]]></formula>
-	<cut><![CDATA[]]></cut>
-	<source>output</source>
-	<type> histogram-vecdim-1d[12288,-0.5,12287.5,-1, 1] </type>
-	<titledesc> Pedestal Deviations RMS vs channel number </titledesc>
-	<axisdesc> [Channel number, Ped Deviation RMS (ADC counts)] </axisdesc>
-	<description> RMS in the distribution of the pedestal deviations, versus channel number (=tower*8*12*2*4+layer*12*2*4+column*2*4+face*4+range), between the measured pedestals and the ones retrieved from the data base. The RMS is computed removing (truncating) 10 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 80 percent central values. Only periodic triggers with 4 range readout and non-zerosuppress events are being used. </description>
-      </object>
-
 
      <object>
         <name> RPM_Mean_TH1</name>
