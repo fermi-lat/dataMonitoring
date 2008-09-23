@@ -5,22 +5,13 @@
   <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
     <panel name="EnvPanel2" enabled="True"/>
-    <panel name="eLimbPanel" enabled="True"/>
-  </page>
-
-  <page enabled="True">
-    <panel name="EnvPanel1" enabled="True"/>
     <panel name="AttPanel" enabled="True"/>
   </page>
 
   <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
+    <panel name="eLimbPanel" enabled="True"/>
     <panel name="LPARatePanel" enabled="True"/>
-  </page>
-
-  <page enabled="True">
-    <panel name="EnvPanel1" enabled="True"/>
-    <panel name="CPULoadPanel" enabled="True"/>
   </page>
 
   <page enabled="True">
@@ -50,16 +41,13 @@
 
   <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
+    <panel name="CPULoadPanel" enabled="True"/>
     <panel name="TkrUnbPanel" enabled="True"/>
   </page>
 
   <page enabled="True">
     <panel name="EnvPanel1" enabled="True"/>
     <panel name="CalLoUnbPanel" enabled="True"/>
-  </page>
-
-  <page enabled="True">
-    <panel name="EnvPanel1" enabled="True"/>
     <panel name="CalHiUnbPanel" enabled="True"/>
   </page>
 
