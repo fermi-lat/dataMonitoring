@@ -26,4 +26,10 @@
     <panel name="TransClassPanel" enabled="True"/>
   </page>
 
+  <page enabled="True">
+    <panel name="EnvPanel1" enabled="True"/>
+    <panel name="eLimbPanel" enabled="True"/>
+    <panel name="TkrNAcdHitsPanel" enabled="True"/>
+  </page>
+
 </report>
