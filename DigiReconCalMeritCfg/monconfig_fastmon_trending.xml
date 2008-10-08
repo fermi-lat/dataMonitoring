@@ -132,10 +132,242 @@
 
     <object>
       <name> FastMon_TemBug_Event </name>
-      <formula><![CDATA[ foronetime: FastMon_error_summary>>23 ]]></formula>
+      <formula><![CDATA[ foronetime: (FastMon_error_summary>>23)&0x1 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <type> rate </type>
       <description> Rate of events with a TEM bug. </description>
+    </object>
+    <object>
+      <name> FastMon_Any_Error </name>
+      <formula><![CDATA[ foronetime: FastMon_error_summary>=256 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> Rate of events with any type of error. </description>
+    </object>
+    
+    <object>
+      <name> FastMon_GTCC_WORD_COUNT_PARITY_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>17)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a GTCC_WORD_COUNT_PARITY_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_TIMETONE_FLYWHEELING </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>2)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a TIMETONE_FLYWHEELING error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_AEM_CONTRIB_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>27)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a AEM_CONTRIB_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_GCCC_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>8)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a GCCC_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_ACD_PHA_INCONSISTENCY </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>22)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a ACD_PHA_INCONSISTENCY error bit. </description>
+    </object>
+    <!--object>
+      <name> FastMon_TEM_BUG </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>23)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a TEM_BUG error bit. </description>
+    </object-->
+    <object>
+      <name> FastMon_GTCC_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>9)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a GTCC_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_LAT_DATAGRAM_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>31)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a LAT_DATAGRAM_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_TKR_CONTRIB_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>25)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a TKR_CONTRIB_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_GTCC_DATA_PARITY_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>19)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a GTCC_DATA_PARITY_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_CAL_CONTRIB_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>26)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a CAL_CONTRIB_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_TIMETONE_INCOMPLETE </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>0)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a TIMETONE_INCOMPLETE error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_PHASE_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>10)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a PHASE_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_TIMETONE_MISSING_TIMETONE </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>5)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a TIMETONE_MISSING_TIMETONE error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_ACD_HEADER_PARITY_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>20)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a ACD_HEADER_PARITY_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_TIMETONE_NULL_SOURCE_GPS </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>6)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a TIMETONE_NULL_SOURCE_GPS error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_ERR_CONTRIB_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>24)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a ERR_CONTRIB_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_LAT_CONTRIB_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>30)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a LAT_CONTRIB_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_EBF_CONTRIB_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>29)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a EBF_CONTRIB_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_TIMETONE_MISSING_LATPPS </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>4)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a TIMETONE_MISSING_LATPPS error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_GTFE_PHASE_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>13)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a GTFE_PHASE_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_GTRC_SUMMARY_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>18)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a GTRC_SUMMARY_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_TIMETONE_MISSING_CPUPPS </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>3)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a TIMETONE_MISSING_CPUPPS error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_GTRC_PHASE_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>12)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a GTRC_PHASE_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_GTCC_HEADER_PARITY_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>16)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a GTCC_HEADER_PARITY_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_GTCC_TIMEOUT_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>15)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a GTCC_TIMEOUT_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_TIMEOUT_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>11)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a TIMEOUT_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_TIMETONE_EARLY_EVENT </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>1)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a TIMETONE_EARLY_EVENT error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_GTCC_FIFO_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>14)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a GTCC_FIFO_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_PACKET_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>28)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a PACKET_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_EBF_EVENT_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>31)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a EBF_EVENT_ERROR error bit. </description>
+    </object>
+    <object>
+      <name> FastMon_ACD_PHA_PARITY_ERROR </name>
+        <formula><![CDATA[ foronetime: (FastMon_error_summary>>21)&0x1 ]]></formula>
+        <cut><![CDATA[ ]]></cut>
+        <type> rate </type>
+        <description> Rate of events with a ACD_PHA_PARITY_ERROR error bit. </description>
     </object>
   
     <!-- Spacecraft quantities -->
