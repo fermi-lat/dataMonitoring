@@ -7,7 +7,7 @@ TkrPlanesHit_TH1_Tower_TowerLoop   Sum
 CalLogEndRangeHitCounter_Range3_TH2_Tower_TowerLoop   Sum
 CalXHit_NHit_Counter_TowerCalLayer_TH2   Sum
 TkrHitsCounter_PlaneGTFE_TH2_Tower_TowerLoop   Sum
-CondArrCalLoTrigger_TH1   Sum
+CondArrCalLowTrigger_TH1   Sum
 CalHiTrigger_Tower_TH1   Sum
 CalX_Total_NHit_TH1   Sum
 Acd_GemVeto_AcdTile_TH1   Sum

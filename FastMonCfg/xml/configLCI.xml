@@ -312,7 +312,7 @@
 	    <ylabel>N</ylabel>
 	    <caption>Distribution of Condition arrival times for TKR triggers. All triggers with TKR.</caption>
         </TH1F>
-        <TH1F name="CondArrCalLoTrigger_TH1">
+        <TH1F name="CondArrCalLowTrigger_TH1">
 	    <expression><![CDATA[ condarrcallo ]]></expression>
 	    <cut><![CDATA[ (condsummary&4)>0 ]]></cut>
 	    <xbins>41</xbins>
