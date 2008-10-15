@@ -1,3 +1,9 @@
+*** v1r6p1 ***
+- Change name CondArrCalLoTrigger_TH1 to CondArrCalLowTrigger_TH1
+  to match Digi EOR name
+* Relevant jira(s): GDQMQ-274
+
+
 *** v1r6p0 ***
 - All histograms at the tower level needs a _Tower added as a suffix
 * Relevant jira(s): GDQMQ-258
