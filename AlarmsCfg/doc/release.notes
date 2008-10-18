@@ -1,3 +1,7 @@
+*** v4r8p0 ***
+- Low limits on digi trend/Rate_AcdGemCNO_GARC lowered to 0.3/0.5. 
+
+
 *** v4r7p5 ***
 - Added exception in FastMon eor for spikes and holes on tower 0, gtfe 13,
 layer 14.
