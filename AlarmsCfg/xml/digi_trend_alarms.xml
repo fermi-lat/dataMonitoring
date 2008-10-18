@@ -140,8 +140,8 @@
 
     <alarmSet name="Time::Rate_AcdGemCNO_GARC" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.8" max="10.0"/>
-	<error_limits   min="0.5" max="15.0"/>
+	<warning_limits min="0.5" max="10.0"/>
+	<error_limits   min="0.3" max="15.0"/>
       </alarm> 
     </alarmSet>
     <alarmSet name="Time::OutF_AcdPmt_OverThreshold_Asymmetry_AcdTile" enabled="False">
