@@ -1,5 +1,7 @@
-*** v4r8p0 *** NOT TAGGED, YET!
-- Low limits on digi trend/Rate_AcdGemCNO_GARC lowered to 0.3/0.5. 
+*** v4r8p0 ***
+- Low limits on digi trend/Rate_AcdGemCNO_GARC lowered to 0.3/0.5.
+- Alarm added on digi trend OutF_Ratio_EvtSize_CompressedEvtSize quantity.
+* Relevant jira(s): GDQMQ-276
 
 
 *** v4r7p5 ***
