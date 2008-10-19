@@ -20,8 +20,7 @@ from pAlarmBaseAlgorithm       import pAlarmBaseAlgorithm
 
 LABEL_DICT = {
     'number'  : 'Total number of errors',
-    'fraction': 'Number of errors normalized to the number of events',
-    'rate'    : 'Number of errors normalized to the elapsed seconds'
+    'fraction': 'Number of errors normalized to the number of events'
     }
 
 
@@ -52,7 +51,6 @@ class pErrorLogger(pAlarmHandler):
         self.ErrorCountsDict  = {}
         self.EventSummaryDict = {'num_error_events'      : 0,
                                  'num_processed_events'  : 0,
-                                 'seconds_elapsed'       : 0,
                                  'truncated'             : 0
                                  }
         self.XmlParser = pXmlAlarmParser(xmlConfigFilePath)
@@ -85,21 +83,11 @@ class pErrorLogger(pAlarmHandler):
             except KeyError:
                 self.ErrorCountsDict[code] = quantity
         element = pXmlBaseElement(xmlDoc.getElementByTagName('eventSummary'))
-        logger.info('Parsing statistics...')
         for key in self.EventSummaryDict.keys():
-            value = element.evalAttribute(key)
-            if value is None:
-                logger.warn('Could not eval attribute "%s", leaving default.' %\
-                                key)
-                value = self.EventSummaryDict[key]
-            self.EventSummaryDict[key] = value
-            logger.info('Key = "%s", value = "%s"'% (key, value))
+            self.EventSummaryDict[key] += element.evalAttribute(key)
 
     def getNumProcessedEvents(self):
         return self.EventSummaryDict['num_processed_events']
-
-    def getElapsedSeconds(self):
-        return self.EventSummaryDict['seconds_elapsed']
         
     def getNumErrors(self, code):
         try:
@@ -110,12 +98,6 @@ class pErrorLogger(pAlarmHandler):
     def getErrorFraction(self, code):        
         try:
             return float(self.getNumErrors(code))/self.getNumProcessedEvents()
-        except ZeroDivisionError:
-            return 0
-
-    def getErrorRate(self, code):
-        try:
-            return float(self.getNumErrors(code))/self.getElapsedSeconds()
         except ZeroDivisionError:
             return 0
 
@@ -133,9 +115,6 @@ class pErrorLogger(pAlarmHandler):
 
     def __fraction(self, code):
         return self.getErrorFraction(code)
-
-    def __rate(self, code):
-        return self.getErrorRate(code)
 
     def activateAlarms(self):
         logger.info('Activating the alarms...')
