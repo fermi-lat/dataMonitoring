@@ -84,7 +84,7 @@ class pLongTermTrendPlotter:
             self.Graph.SetPoint(i, timestamp, mean)
             self.Graph.SetPointError(i, 0.0, rms/math.sqrt(numEntries))
         self.drawGraph('CAL LAC threshold (MeV)', ymin, ymax)
-        self.LastVarName = 'MIPpeak'
+        self.LastVarName = 'LACthreshold'
         return self.Graph
 
     def draw(self, varName, ylabel = None, ymin = None, ymax = None):
