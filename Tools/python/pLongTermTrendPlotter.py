@@ -5,8 +5,14 @@ import sys
 import math
 
 sys.path.append('../../Common/python')
+sys.path.append('../../Report/python')
 
+import pSafeLogger
+logger = pSafeLogger.getLogger('pLongTerm')
+
+from pTimeConverter import utc2met, convert2sec
 from pSafeROOT import ROOT
+
 ROOT.gStyle.SetOptStat(111111)
 ROOT.gStyle.SetMarkerStyle(26)
 ROOT.gStyle.SetMarkerSize(0.3)
@@ -95,6 +101,7 @@ if __name__ == '__main__':
     optparser = pOptionParser('', 1, 1, False)
     filePath = optparser.Argument
     plotter = pLongTermTrendPlotter(filePath)
+
     plotter.draw('PMTA', 'PMTA MIP peak (MIPs)', 0.8, 1.4)
     plotter.save()
     raw_input('Press enter to continue...')
@@ -107,4 +114,17 @@ if __name__ == '__main__':
     plotter.draw('LACN', 'Negative end LAC threshold (MeV)', 1.8, 2.2)
     plotter.save()
     raw_input('Press enter to continue...')
+
+    MIN_ZOOM = utc2met(convert2sec('Oct/01/2008 00:00:00'))
+    MAX_ZOOM = utc2met(convert2sec('Oct/05/2008 00:00:00'))
+    plot = plotter.draw('PMTA', 'PMTA MIP peak (MIPs)', 1.08, 1.14)
+    plot.GetXaxis().SetRangeUser(MIN_ZOOM, MAX_ZOOM)
+    plotter.Canvas.Update()
+    plotter.save('PMTA_zoom.png')
+    raw_input('Press enter to continue...')
+    plot = plotter.draw('LACP', 'Positive end LAC threshold (MeV)', 1.98, 2.02)
+    plot.GetXaxis().SetRangeUser(MIN_ZOOM, MAX_ZOOM)
+    plotter.Canvas.Update()
+    plotter.save('LACP_zoom.png')
+    raw_input('Press enter to continue...')    
     plotter.RootTree.Draw('PMTA_mean:LACP_mean')
