@@ -46,3 +46,52 @@ if __name__ == '__main__':
     GROUP = 'RECONHISTALARMDIST'
     query = pDataCatalogQuery(GROUP, MIN_START_TIME, MAX_START_TIME)
     query.dumpList('test.txt')
+
+    filesList = file('test.txt', 'r').readlines()
+    plotDict = {'PMTA':\
+        'ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_gauss_mean_TH1',
+                'PMTB':\
+        'ReconAcdPhaMipsCorrectedAngle_PMTB_Zoom_TH1_AcdTile_gauss_mean_TH1',
+                'LACP':\
+        'Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_leftmost_edge_TH1',
+                'LACN':\
+        'Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_leftmost_edge_TH1',
+                }
+    labels = plotDict.keys()
+    labels.sort()
+    outputFilePath = 'test.root'
+    outputFile = ROOT.TFile(outputFilePath, 'RECREATE')
+    outputTree = ROOT.TTree('Output', 'Output')
+    Arrays = {}
+    Arrays['RunId'] = array.array('i', [0])
+    outputTree.Branch('RunId', Arrays['RunId'], 'RunId/I')
+    for label in labels:
+        for quantity in ['mean', 'rms', 'entries']:
+            key = '%s_%s' % (label, quantity)
+            Arrays[key] = array.array('d', [0.0])
+            outputTree.Branch(key, Arrays[key], '%s/D' % key)
+
+    ## Loop over the files
+    for filePath in filesList:
+        filePath = filePath.strip('\n')
+        print 'Analyzing %s...' % filePath
+        fileName = os.path.basename(filePath)
+        Arrays['RunId'][0] = int(fileName.split('_')[0].strip('r'))
+        inputFile = ROOT.TXNetFile(filePath)
+        if inputFile.Get(plotDict[labels[0]]) is not None:
+            for label in labels:
+                plot = inputFile.Get(plotDict[label])
+                average = plot.GetMean()
+                rms = plot.GetRMS()
+                entries = plot.GetEntries()
+                Arrays['%s_mean' % label][0] = average
+                Arrays['%s_rms' % label][0] = rms
+                Arrays['%s_entries' % label][0] = entries
+            outputTree.Fill()
+        else:
+            print 'Skipping...'
+        inputFile.Close()
+
+    outputFile.cd()
+    outputTree.Write()
+    outputFile.Close()
