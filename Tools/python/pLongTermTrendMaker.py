@@ -26,7 +26,7 @@ class pDataCatalogQuery:
         self.Command += "'"
         self.Command += 'sIntent=="%s"' % intent
         self.Command += ' && nMetStart>%s' % minStartTime
-        if maxTime is not None:
+        if maxStartTime is not None:
             self.Command += ' && nMetStart<%s' % maxStartTime
         self.Command += ' && (nMetStop - nMetStart)>%s' % minDuration
         self.Command += "'"
