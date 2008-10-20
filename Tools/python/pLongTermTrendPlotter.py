@@ -8,6 +8,8 @@ sys.path.append('../../Common/python')
 
 from pSafeROOT import ROOT
 ROOT.gStyle.SetOptStat(111111)
+ROOT.gStyle.SetMarkerStyle(26)
+ROOT.gStyle.SetMarkerSize(0.3)
 
 
 LABEL_SIZE = 0.04
@@ -33,7 +35,7 @@ class pLongTermTrendPlotter:
         self.Canvas = ROOT.TCanvas('long_term_trend', 'Long-term trend',
                                    1000, 400)
 
-    def draw(self, varName, ylabel = None):
+    def draw(self, varName, ylabel = None, ymin = None, ymax = None):
         varMean = 0.0
         varRms = 0.0
         if self.Canvas is None:
@@ -60,6 +62,8 @@ class pLongTermTrendPlotter:
         self.Graph.GetXaxis().SetTimeFormat(TIME_FORMAT)
         self.Graph.GetYaxis().SetTitle(ylabel)
         self.Graph.GetYaxis().SetLabelSize(LABEL_SIZE)
+        if ymin is not None and ymax is not None:
+            self.Graph.GetYaxis().SetRangeUser(ymin, ymax)
         self.Canvas.Update()
         varMean /= float(self.NumEntries)
         varRms /= float(self.NumEntries)
@@ -75,9 +79,13 @@ class pLongTermTrendPlotter:
             mean = eval('self.RootTree.%s_%s' % (varName, 'mean'))
             if abs(mean - varMean) > OUTLIERS_NUM_SIGMAS*varRms:
                 print 'RunId %d, mean = %.3f' % (runId, mean)
+        self.LastVarName = varName
+        return self.Graph
 
-    def save(self, filePath):
-        pass
+    def save(self, filePath = None):
+        if filePath is None:
+            filePath = '%s.png' % self.LastVarName
+        self.Canvas.SaveAs(filePath)
     
 
 
@@ -87,11 +95,16 @@ if __name__ == '__main__':
     optparser = pOptionParser('', 1, 1, False)
     filePath = optparser.Argument
     plotter = pLongTermTrendPlotter(filePath)
-    plotter.draw('PMTA', 'PMTA MIP peak (MIPs)')
+    plotter.draw('PMTA', 'PMTA MIP peak (MIPs)', 0.8, 1.4)
+    plotter.save()
     raw_input('Press enter to continue...')
-    plotter.draw('PMTB', 'PMTB MIP peak (MIPs)')
+    plotter.draw('PMTB', 'PMTB MIP peak (MIPs)', 0.8, 1.4)
+    plotter.save()
     raw_input('Press enter to continue...')
-    plotter.draw('LACP', 'Positive end LAC threshold (MeV)')
+    plotter.draw('LACP', 'Positive end LAC threshold (MeV)', 1.8, 2.2)
+    plotter.save()
     raw_input('Press enter to continue...')
-    plotter.draw('LACN', 'Negative end LAC threshold (MeV)')
+    plotter.draw('LACN', 'Negative end LAC threshold (MeV)', 1.8, 2.2)
+    plotter.save()
     raw_input('Press enter to continue...')
+    plotter.RootTree.Draw('PMTA_mean:LACP_mean')
