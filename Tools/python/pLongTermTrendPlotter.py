@@ -41,6 +41,52 @@ class pLongTermTrendPlotter:
         self.Canvas = ROOT.TCanvas('long_term_trend', 'Long-term trend',
                                    1000, 400)
 
+    def drawMipPeak(self, ymin = None, ymax = None):
+        if self.Canvas is None:
+            self.createCanvas()
+        print 'Drawing ACD Mip peak...'
+        self.Graph = ROOT.TGraphErrors(self.NumEntries)
+        for i in xrange(self.NumEntries):
+            self.RootTree.GetEntry(i)
+            timestamp = float(self.RootTree.RunId)
+            meanA = eval('self.RootTree.PMTA_mean')
+            meanB = eval('self.RootTree.PMTB_mean')
+            rmsA = eval('self.RootTree.PMTA_rms')
+            rmsB = eval('self.RootTree.PMTB_rms')
+            numEntriesA = eval('self.RootTree.PMTA_entries')
+            numEntriesB = eval('self.RootTree.PMTB_entries')
+            mean = (meanA + meanB)/2.0
+            rms = (rmsA + rmsB)/2.0
+            numEntries = (numEntriesA + numEntriesB)/2.0
+            self.Graph.SetPoint(i, timestamp, mean)
+            self.Graph.SetPointError(i, 0.0, rms/math.sqrt(numEntries))
+        self.drawGraph('ACD MIP peak position (MIPs)', ymin, ymax)
+        self.LastVarName = 'MIPpeak'
+        return self.Graph
+
+    def drawLacThreshold(self, ymin = None, ymax = None):
+        if self.Canvas is None:
+            self.createCanvas()
+        print 'Drawing CAL LAC threshold...'
+        self.Graph = ROOT.TGraphErrors(self.NumEntries)
+        for i in xrange(self.NumEntries):
+            self.RootTree.GetEntry(i)
+            timestamp = float(self.RootTree.RunId)
+            meanA = eval('self.RootTree.LACP_mean')
+            meanB = eval('self.RootTree.LACN_mean')
+            rmsA = eval('self.RootTree.LACP_rms')
+            rmsB = eval('self.RootTree.LACN_rms')
+            numEntriesA = eval('self.RootTree.LACP_entries')
+            numEntriesB = eval('self.RootTree.LACN_entries')
+            mean = (meanA + meanB)/2.0
+            rms = (rmsA + rmsB)/2.0
+            numEntries = (numEntriesA + numEntriesB)/2.0
+            self.Graph.SetPoint(i, timestamp, mean)
+            self.Graph.SetPointError(i, 0.0, rms/math.sqrt(numEntries))
+        self.drawGraph('CAL LAC threshold (MeV)', ymin, ymax)
+        self.LastVarName = 'MIPpeak'
+        return self.Graph
+
     def draw(self, varName, ylabel = None, ymin = None, ymax = None):
         varMean = 0.0
         varRms = 0.0
@@ -60,17 +106,7 @@ class pLongTermTrendPlotter:
             self.Graph.SetPointError(i, 0.0, rms/math.sqrt(numEntries))
             varMean += mean
             varRms += mean*mean
-        self.Graph.Draw('AP')
-        self.Graph.GetXaxis().SetTitle('Time UTC')
-        self.Graph.GetXaxis().SetNdivisions(506)
-        self.Graph.GetXaxis().SetLabelSize(LABEL_SIZE)
-        self.Graph.GetXaxis().SetTimeDisplay(True)
-        self.Graph.GetXaxis().SetTimeFormat(TIME_FORMAT)
-        self.Graph.GetYaxis().SetTitle(ylabel)
-        self.Graph.GetYaxis().SetLabelSize(LABEL_SIZE)
-        if ymin is not None and ymax is not None:
-            self.Graph.GetYaxis().SetRangeUser(ymin, ymax)
-        self.Canvas.Update()
+        self.drawGraph(ylabel, ymin, ymax)
         varMean /= float(self.NumEntries)
         varRms /= float(self.NumEntries)
         varRms = math.sqrt(varRms - varMean*varMean)
@@ -88,6 +124,19 @@ class pLongTermTrendPlotter:
         self.LastVarName = varName
         return self.Graph
 
+    def drawGraph(self, ylabel, ymin, ymax):
+        self.Graph.Draw('AP')
+        self.Graph.GetXaxis().SetTitle('Time UTC')
+        self.Graph.GetXaxis().SetNdivisions(506)
+        self.Graph.GetXaxis().SetLabelSize(LABEL_SIZE)
+        self.Graph.GetXaxis().SetTimeDisplay(True)
+        self.Graph.GetXaxis().SetTimeFormat(TIME_FORMAT)
+        self.Graph.GetYaxis().SetTitle(ylabel)
+        self.Graph.GetYaxis().SetLabelSize(LABEL_SIZE)
+        if ymin is not None and ymax is not None:
+            self.Graph.GetYaxis().SetRangeUser(ymin, ymax)
+        self.Canvas.Update()        
+
     def save(self, filePath = None):
         if filePath is None:
             filePath = '%s.png' % self.LastVarName
@@ -101,6 +150,13 @@ if __name__ == '__main__':
     optparser = pOptionParser('', 1, 1, False)
     filePath = optparser.Argument
     plotter = pLongTermTrendPlotter(filePath)
+
+    plotter.drawMipPeak(0.8, 1.4)
+    plotter.save()
+    raw_input('Press enter to continue...')
+    plotter.drawLacThreshold(1.8, 2.2)
+    plotter.save()
+    raw_input('Press enter to continue...')
 
     plotter.draw('PMTA', 'PMTA MIP peak (MIPs)', 0.8, 1.4)
     plotter.save()
