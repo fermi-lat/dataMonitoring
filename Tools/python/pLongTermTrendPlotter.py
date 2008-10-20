@@ -41,50 +41,76 @@ class pLongTermTrendPlotter:
         self.Canvas = ROOT.TCanvas('long_term_trend', 'Long-term trend',
                                    1000, 400)
 
-    def drawMipPeak(self, ymin = None, ymax = None):
+    def drawMipPeak(self, ymin = None, ymax = None, rebin = 15):
         if self.Canvas is None:
             self.createCanvas()
         print 'Drawing ACD Mip peak...'
-        self.Graph = ROOT.TGraphErrors(self.NumEntries)
+        self.Graph = ROOT.TGraphErrors(self.NumEntries/rebin)
+        point = 0
         for i in xrange(self.NumEntries):
+            if i%rebin == 0:
+                mean = 0
+                rms = 0
+                numEntries = 0
+                timestamp = 0
             self.RootTree.GetEntry(i)
-            timestamp = float(self.RootTree.RunId)
+            timestamp += float(self.RootTree.RunId)
             meanA = eval('self.RootTree.PMTA_mean')
             meanB = eval('self.RootTree.PMTB_mean')
             rmsA = eval('self.RootTree.PMTA_rms')
             rmsB = eval('self.RootTree.PMTB_rms')
             numEntriesA = eval('self.RootTree.PMTA_entries')
             numEntriesB = eval('self.RootTree.PMTB_entries')
-            mean = (meanA + meanB)/2.0
-            rms = (rmsA + rmsB)/2.0
-            numEntries = (numEntriesA + numEntriesB)/2.0
-            self.Graph.SetPoint(i, timestamp, mean)
-            self.Graph.SetPointError(i, 0.0, rms/math.sqrt(numEntries))
+            mean += (meanA + meanB)/2.0
+            rms += (rmsA + rmsB)/2.0
+            numEntries += (numEntriesA + numEntriesB)
+            if i % rebin == (rebin - 1):
+                timestamp /= rebin
+                mean /= rebin
+                rms /= rebin
+                self.Graph.SetPoint(point, timestamp, mean)
+                self.Graph.SetPointError(point, 0.0, rms/math.sqrt(numEntries))
+                point += 1
+        if rebin > 1:
+            self.Graph.SetMarkerSize(0.8)
         self.drawGraph('ACD MIP peak position (MIPs)', ymin, ymax)
-        self.LastVarName = 'MIPpeak'
+        self.LastVarName = 'MIPpeak_rebin%d' % rebin
         return self.Graph
 
-    def drawLacThreshold(self, ymin = None, ymax = None):
+    def drawLacThreshold(self, ymin = None, ymax = None, rebin = 15):
         if self.Canvas is None:
             self.createCanvas()
         print 'Drawing CAL LAC threshold...'
-        self.Graph = ROOT.TGraphErrors(self.NumEntries)
+        self.Graph = ROOT.TGraphErrors(self.NumEntries/rebin)
+        point = 0
         for i in xrange(self.NumEntries):
+            if i%rebin == 0:
+                mean = 0
+                rms = 0
+                numEntries = 0
+                timestamp = 0
             self.RootTree.GetEntry(i)
-            timestamp = float(self.RootTree.RunId)
+            timestamp += float(self.RootTree.RunId)
             meanA = eval('self.RootTree.LACP_mean')
             meanB = eval('self.RootTree.LACN_mean')
             rmsA = eval('self.RootTree.LACP_rms')
             rmsB = eval('self.RootTree.LACN_rms')
             numEntriesA = eval('self.RootTree.LACP_entries')
             numEntriesB = eval('self.RootTree.LACN_entries')
-            mean = (meanA + meanB)/2.0
-            rms = (rmsA + rmsB)/2.0
-            numEntries = (numEntriesA + numEntriesB)/2.0
-            self.Graph.SetPoint(i, timestamp, mean)
-            self.Graph.SetPointError(i, 0.0, rms/math.sqrt(numEntries))
+            mean += (meanA + meanB)/2.0
+            rms += (rmsA + rmsB)/2.0
+            numEntries += (numEntriesA + numEntriesB)
+            if i % rebin == (rebin - 1):
+                timestamp /= rebin
+                mean /= rebin
+                rms /= rebin
+                self.Graph.SetPoint(point, timestamp, mean)
+                self.Graph.SetPointError(point, 0.0, rms/math.sqrt(numEntries))
+                point += 1
+        if rebin > 1:
+            self.Graph.SetMarkerSize(0.8)
         self.drawGraph('CAL LAC threshold (MeV)', ymin, ymax)
-        self.LastVarName = 'LACthreshold'
+        self.LastVarName = 'LACthreshold_rebin%d' % rebin
         return self.Graph
 
     def draw(self, varName, ylabel = None, ymin = None, ymax = None):
@@ -151,10 +177,10 @@ if __name__ == '__main__':
     filePath = optparser.Argument
     plotter = pLongTermTrendPlotter(filePath)
 
-    plotter.drawMipPeak(0.8, 1.4)
+    plotter.drawMipPeak(0.8, 1.4, 1)
     plotter.save()
     raw_input('Press enter to continue...')
-    plotter.drawLacThreshold(1.8, 2.2)
+    plotter.drawLacThreshold(1.8, 2.2, 1)
     plotter.save()
     raw_input('Press enter to continue...')
 
