@@ -87,6 +87,11 @@ if __name__ == '__main__':
     optparser = pOptionParser('', 1, 1, False)
     filePath = optparser.Argument
     plotter = pLongTermTrendPlotter(filePath)
-    plotter.draw('PMTA_average', 'PMTA MIP peak (MIPs)')
-
-
+    plotter.draw('PMTA', 'PMTA MIP peak (MIPs)')
+    raw_input('Press enter to continue...')
+    plotter.draw('PMTB', 'PMTB MIP peak (MIPs)')
+    raw_input('Press enter to continue...')
+    plotter.draw('LACP', 'Positive end LAC threshold (MeV)')
+    raw_input('Press enter to continue...')
+    plotter.draw('LACN', 'Negative end LAC threshold (MeV)')
+    raw_input('Press enter to continue...')
