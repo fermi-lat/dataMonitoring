@@ -3,6 +3,10 @@
 import os
 import sys
 
+sys.path.append('../../Report/python')
+
+from pTimeConverter import *
+
 BASE_PATH = '/afs/slac.stanford.edu/u/gl/glast/datacatalog/prod/datacat'
 BASE_COMMAND = 'find'
 DEFAULT_SITE = 'SLAC_XROOT /Data/Flight/Level1/LPA'
@@ -11,8 +15,8 @@ DEFAULT_SORT = 'nRun'
 
 class pDataCatalogQuery:
 
-    def __init__(self, group, minTime, maxTime = None, minDuration = 1000,
-                 intent = 'nomSciOps'):
+    def __init__(self, group, minStartTime, maxStartTime = None,
+                 minDuration = 1000, intent = 'nomSciOps'):
         self.Command = BASE_PATH
         self.Command += ' %s' % BASE_COMMAND
         self.Command += ' --group %s' % group
@@ -21,7 +25,9 @@ class pDataCatalogQuery:
         self.Command += ' --filter '
         self.Command += "'"
         self.Command += 'sIntent=="%s"' % intent
-        self.Command += ' && nMetStart>%s && nMetStart<%s' % (minTime, maxTime)
+        self.Command += ' && nMetStart>%s' % minTime
+        if maxTime is not None:
+            self.Command += ' && nMetStart<%s' % maxTime
         self.Command += ' && (nMetStop - nMetStart)>%s' % minDuration
         self.Command += "'"
 
@@ -35,5 +41,8 @@ class pDataCatalogQuery:
 
 
 if __name__ == '__main__':
-    query = pDataCatalogQuery('RECONHISTALARMDIST', 246100000, 246164127)
+    MIN_START_TIME = utc2met(convert2sec('Sep/04/2008 00:00:00'))
+    MAX_START_TIME = None
+    GROUP = 'RECONHISTALARMDIST'
+    query = pDataCatalogQuery(GROUP, MIN_START_TIME, MAX_START_TIME)
     query.dumpList('test.txt')
