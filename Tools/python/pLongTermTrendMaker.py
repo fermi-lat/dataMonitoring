@@ -2,6 +2,8 @@
 
 import os
 import sys
+import ROOT
+import array
 
 sys.path.append('../../Report/python')
 
@@ -40,67 +42,88 @@ class pDataCatalogQuery:
         print 'Done.'
 
 
+class pBaseFileAnalyzer:
+
+    def __init__(self, fileListPath, outputFilePath, group, minStartTime,
+                 maxStartTime = None):
+        if not os.path.exists(fileListPath):
+            print 'Creating the file list...'
+            query = pDataCatalogQuery(group, minStartTime, maxStartTime)
+            query.dumpList(fileListPath)
+        else:
+            print 'File list %s found.' % fileListPath
+            print 'Delete the file if you want to recreate it.'
+        self.FileList = file(fileListPath, 'r').readlines()
+        for (i, filePath) in enumerate(self.FileList):
+            self.FileList[i] = filePath.strip('\n')
+        self.OutputFile = ROOT.TFile(outputFilePath, 'RECREATE')
+        self.OutputTree = ROOT.TTree('Output', 'Output')
+        self.createArrays()
+
+    def createArrays(self):
+        print 'Creating the arrays...'
+        self.Arrays = {}
+        Arrays['RunId'] = array.array('i', [0])
+        self.OutputTree.Branch('RunId', Arrays['RunId'], 'RunId/I')
+        for label in self.LabelList:
+            for quantity in self.QuantityList:
+                key = '%s_%s' % (label, quantity)
+                self.Arrays[key] = array.array('d', [0.0])
+                self.OutputTree.Branch(key, Arrays[key], '%s/D' % key)
+
+    def run(self):
+        for filePath in self.FileList:
+            print 'Analyzing %s...' % filePath
+            fileName = os.path.basename(filePath)
+            self.Arrays['RunId'][0] = int(fileName.split('_')[0].strip('r'))
+            self.InputFile = ROOT.TXNetFile(filePath)
+            self.Analyze()
+            self.OutputTree.Fill()
+            self.InputFile.Close()
+        self.OutputFile.cd()
+        self.OutputTree.Write()
+        self.OutputFile.Close()
+
+
+
+class pRECONHISTALARMDISTAnalyzer(pBaseFileAnalyzer):
+
+    def __init__(self, fileListPath, outputFilePath, minStartTime,
+                 maxStartTime = None):
+        pBaseFileAnalyzer.__init__(self, fileListPath, outputFilePath,
+                                   'RECONHISTALARMDIST', minStartTime,
+                                   maxStartTime)
+        self.PlotDict = {'PMTA':\
+        'ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_gauss_mean_TH1',
+                         'PMTB':\
+        'ReconAcdPhaMipsCorrectedAngle_PMTB_Zoom_TH1_AcdTile_gauss_mean_TH1',
+                         'LACP':\
+        'Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_leftmost_edge_TH1',
+                         'LACN':\
+        'Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_leftmost_edge_TH1',
+                         }
+        self.LabelList = plotDict.keys()
+        self.LabelList.sort()
+        self.QuantityList = ['mean', 'rms', 'entries']
+
+    def analyze(self):
+        for label in self.LabelList:
+            plot = self.InputFile.Get(plotDict[label])
+            average = plot.GetMean()
+            rms = plot.GetRMS()
+            entries = plot.GetEntries()
+            self.Arrays['%s_mean' % label][0] = average
+            self.Arrays['%s_rms' % label][0] = rms
+            self.Arrays['%s_entries' % label][0] = entries
+
+
+
+
 if __name__ == '__main__':
     MIN_START_TIME = utc2met(convert2sec('Sep/04/2008 00:00:00'))
     MAX_START_TIME = None
-    GROUP = 'RECONHISTALARMDIST'
-    query = pDataCatalogQuery(GROUP, MIN_START_TIME, MAX_START_TIME)
-    query.dumpList('%s.txt' % GROUP)
-
-    import ROOT
-    import array
-    
-    filesList = file('test.txt', 'r').readlines()
-    plotDict = {'PMTA':\
-        'ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_gauss_mean_TH1',
-                'PMTB':\
-        'ReconAcdPhaMipsCorrectedAngle_PMTB_Zoom_TH1_AcdTile_gauss_mean_TH1',
-                'LACP':\
-        'Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_leftmost_edge_TH1',
-                'LACN':\
-        'Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_leftmost_edge_TH1',
-                }
-    labels = plotDict.keys()
-    labels.sort()
-    outputFilePath = 'test.root'
-    outputFile = ROOT.TFile(outputFilePath, 'RECREATE')
-    outputTree = ROOT.TTree('Output', 'Output')
-    Arrays = {}
-    Arrays['RunId'] = array.array('i', [0])
-    outputTree.Branch('RunId', Arrays['RunId'], 'RunId/I')
-    for label in labels:
-        for quantity in ['mean', 'rms', 'entries', 'gauss_mean',
-                         'gauss_mean_error']:
-            key = '%s_%s' % (label, quantity)
-            Arrays[key] = array.array('d', [0.0])
-            outputTree.Branch(key, Arrays[key], '%s/D' % key)
-    fitFunction = ROOT.TF1('fit_function', 'gaus')
-    ## Loop over the files
-    for filePath in filesList:
-        filePath = filePath.strip('\n')
-        print 'Analyzing %s...' % filePath
-        fileName = os.path.basename(filePath)
-        Arrays['RunId'][0] = int(fileName.split('_')[0].strip('r'))
-        inputFile = ROOT.TXNetFile(filePath)
-        if inputFile.Get(plotDict[labels[0]]) is not None:
-            for label in labels:
-                plot = inputFile.Get(plotDict[label])
-                average = plot.GetMean()
-                rms = plot.GetRMS()
-                entries = plot.GetEntries()
-                plot.Fit(fitFunction, 'QN')
-                gauss_mean = fitFunction.GetParameter(1)
-                gauss_mean_error = fitFunction.GetParError(1)
-                Arrays['%s_mean' % label][0] = average
-                Arrays['%s_rms' % label][0] = rms
-                Arrays['%s_entries' % label][0] = entries
-                Arrays['%s_gauss_mean' % label][0] = gauss_mean
-                Arrays['%s_gauss_mean_error' % label][0] = gauss_mean_error
-            outputTree.Fill()
-        else:
-            print 'Skipping...'
-        inputFile.Close()
-
-    outputFile.cd()
-    outputTree.Write()
-    outputFile.Close()
+    analyzer = pRECONHISTALARMDISTAnalyzer('RECONHISTALARMDIST.txt',
+                                           'RECONHISTALARMDIST.root',
+                                           MIN_START_TIME,
+                                           MAX_START_TIME)
+    analyzer.run()
