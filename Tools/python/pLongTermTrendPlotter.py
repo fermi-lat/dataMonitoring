@@ -72,7 +72,8 @@ class pLongTermTrendPlotter:
                 self.Graph.SetPointError(point, 0.0, rms/math.sqrt(numEntries))
                 point += 1
         if rebin > 1:
-            self.Graph.SetMarkerSize(0.8)
+            self.Graph.SetMarkerStyle(22)
+            self.Graph.SetMarkerSize(0.9)
         self.drawGraph('ACD MIP peak position (MIPs)', ymin, ymax)
         self.LastVarName = 'MIPpeak_rebin%d' % rebin
         return self.Graph
@@ -108,7 +109,8 @@ class pLongTermTrendPlotter:
                 self.Graph.SetPointError(point, 0.0, rms/math.sqrt(numEntries))
                 point += 1
         if rebin > 1:
-            self.Graph.SetMarkerSize(0.8)
+            self.Graph.SetMarkerStyle(22)
+            self.Graph.SetMarkerSize(0.9)
         self.drawGraph('CAL LAC threshold (MeV)', ymin, ymax)
         self.LastVarName = 'LACthreshold_rebin%d' % rebin
         return self.Graph
@@ -177,12 +179,14 @@ if __name__ == '__main__':
     filePath = optparser.Argument
     plotter = pLongTermTrendPlotter(filePath)
 
-    plotter.drawMipPeak(0.8, 1.4, 1)
+    plotter.drawMipPeak(0.8, 1.4, 15)
     plotter.save()
     raw_input('Press enter to continue...')
-    plotter.drawLacThreshold(1.8, 2.2, 1)
+    plotter.drawLacThreshold(1.8, 2.2, 15)
     plotter.save()
     raw_input('Press enter to continue...')
+
+    sys.exit()
 
     plotter.draw('PMTA', 'PMTA MIP peak (MIPs)', 0.8, 1.4)
     plotter.save()
