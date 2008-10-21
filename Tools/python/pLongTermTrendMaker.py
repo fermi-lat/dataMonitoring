@@ -63,13 +63,13 @@ class pBaseFileAnalyzer:
     def createArrays(self):
         print 'Creating the arrays...'
         self.Arrays = {}
-        Arrays['RunId'] = array.array('i', [0])
-        self.OutputTree.Branch('RunId', Arrays['RunId'], 'RunId/I')
+        self.Arrays['RunId'] = array.array('i', [0])
+        self.OutputTree.Branch('RunId', self.Arrays['RunId'], 'RunId/I')
         for label in self.LabelList:
             for quantity in self.QuantityList:
                 key = '%s_%s' % (label, quantity)
                 self.Arrays[key] = array.array('d', [0.0])
-                self.OutputTree.Branch(key, Arrays[key], '%s/D' % key)
+                self.OutputTree.Branch(key, self.Arrays[key], '%s/D' % key)
 
     def run(self):
         for filePath in self.FileList:
@@ -77,7 +77,7 @@ class pBaseFileAnalyzer:
             fileName = os.path.basename(filePath)
             self.Arrays['RunId'][0] = int(fileName.split('_')[0].strip('r'))
             self.InputFile = ROOT.TXNetFile(filePath)
-            self.Analyze()
+            self.analyze()
             self.OutputTree.Fill()
             self.InputFile.Close()
         self.OutputFile.cd()
@@ -90,9 +90,6 @@ class pRECONHISTALARMDISTAnalyzer(pBaseFileAnalyzer):
 
     def __init__(self, fileListPath, outputFilePath, minStartTime,
                  maxStartTime = None):
-        pBaseFileAnalyzer.__init__(self, fileListPath, outputFilePath,
-                                   'RECONHISTALARMDIST', minStartTime,
-                                   maxStartTime)
         self.PlotDict = {'PMTA':\
         'ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_gauss_mean_TH1',
                          'PMTB':\
@@ -102,13 +99,16 @@ class pRECONHISTALARMDISTAnalyzer(pBaseFileAnalyzer):
                          'LACN':\
         'Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_leftmost_edge_TH1',
                          }
-        self.LabelList = plotDict.keys()
+        self.LabelList = self.PlotDict.keys()
         self.LabelList.sort()
         self.QuantityList = ['mean', 'rms', 'entries']
+        pBaseFileAnalyzer.__init__(self, fileListPath, outputFilePath,
+                                   'RECONHISTALARMDIST', minStartTime,
+                                   maxStartTime)
 
     def analyze(self):
         for label in self.LabelList:
-            plot = self.InputFile.Get(plotDict[label])
+            plot = self.InputFile.Get(self.PlotDict[label])
             average = plot.GetMean()
             rms = plot.GetRMS()
             entries = plot.GetEntries()
