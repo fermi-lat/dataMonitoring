@@ -66,11 +66,12 @@ if __name__ == '__main__':
     Arrays['RunId'] = array.array('i', [0])
     outputTree.Branch('RunId', Arrays['RunId'], 'RunId/I')
     for label in labels:
-        for quantity in ['mean', 'rms', 'entries']:
+        for quantity in ['mean', 'rms', 'entries', 'gauss_mean',
+                         'gauss_mean_error']:
             key = '%s_%s' % (label, quantity)
             Arrays[key] = array.array('d', [0.0])
             outputTree.Branch(key, Arrays[key], '%s/D' % key)
-
+    fitFunction = ROOT.TF1('fit_function', 'gaus')
     ## Loop over the files
     for filePath in filesList:
         filePath = filePath.strip('\n')
@@ -84,9 +85,14 @@ if __name__ == '__main__':
                 average = plot.GetMean()
                 rms = plot.GetRMS()
                 entries = plot.GetEntries()
+                plot.Fit(fitFunction, 'QN')
+                gauss_mean = fitFunction.GetParameter(1)
+                gauss_mean_error = fitFunction.GetParError(1)
                 Arrays['%s_mean' % label][0] = average
                 Arrays['%s_rms' % label][0] = rms
                 Arrays['%s_entries' % label][0] = entries
+                Arrays['%s_gauss_mean' % label][0] = gauss_mean
+                Arrays['%s_gauss_mean_error' % label][0] = gauss_mean_error
             outputTree.Fill()
         else:
             print 'Skipping...'
