@@ -1,3 +1,8 @@
+*** v4r9p0 ***
+- Alarms tuned on AcdPedsAnalyzer.
+* Relevant jira(s): GDQMQ-279
+
+
 *** v4r8p1 ***
 - Put an alarm on digi eor Delta_CCSDSTime_EvtTime_Epu0_TH1 and
 Delta_CCSDSTime_EvtTime_Epu1_TH1.
