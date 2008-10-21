@@ -41,11 +41,11 @@ class pDataCatalogQuery:
 
 
 if __name__ == '__main__':
-    #MIN_START_TIME = utc2met(convert2sec('Sep/04/2008 00:00:00'))
-    #MAX_START_TIME = None
-    #GROUP = 'RECONHISTALARMDIST'
-    #query = pDataCatalogQuery(GROUP, MIN_START_TIME, MAX_START_TIME)
-    #query.dumpList('test.txt')
+    MIN_START_TIME = utc2met(convert2sec('Sep/04/2008 00:00:00'))
+    MAX_START_TIME = None
+    GROUP = 'RECONHISTALARMDIST'
+    query = pDataCatalogQuery(GROUP, MIN_START_TIME, MAX_START_TIME)
+    query.dumpList('%s.txt' % GROUP)
 
     import ROOT
     import array
