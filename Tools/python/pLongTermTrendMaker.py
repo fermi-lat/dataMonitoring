@@ -48,6 +48,8 @@ if __name__ == '__main__':
     #query.dumpList('test.txt')
 
     import ROOT
+    import array
+    
     filesList = file('test.txt', 'r').readlines()
     plotDict = {'PMTA':\
         'ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_gauss_mean_TH1',
