@@ -36,6 +36,18 @@
 	<error_limits min="0.90" max="1.0"/>
       </alarm>
     </alarmSet>
+    <alarmSet name="Delta_CCSDSTime_EvtTime_Epu0_TH1" enabled="True">
+      <alarm function="x_min_bin" enabled="True">
+	<warning_limits min="0.0" max="1.0"/>
+	<error_limits min="0.0" max="2.0"/>
+      </alarm>
+    </alarmSet>
+    <alarmSet name="Delta_CCSDSTime_EvtTime_Epu1_TH1" enabled="True">
+      <alarm function="x_min_bin" enabled="True">
+	<warning_limits min="0.0" max="1.0"/>
+	<error_limits min="0.0" max="2.0"/>
+      </alarm>
+    </alarmSet>
 
   </alarmList>
 
