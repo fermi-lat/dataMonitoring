@@ -41,12 +41,13 @@ class pDataCatalogQuery:
 
 
 if __name__ == '__main__':
-    MIN_START_TIME = utc2met(convert2sec('Sep/04/2008 00:00:00'))
-    MAX_START_TIME = None
-    GROUP = 'RECONHISTALARMDIST'
-    query = pDataCatalogQuery(GROUP, MIN_START_TIME, MAX_START_TIME)
-    query.dumpList('test.txt')
+    #MIN_START_TIME = utc2met(convert2sec('Sep/04/2008 00:00:00'))
+    #MAX_START_TIME = None
+    #GROUP = 'RECONHISTALARMDIST'
+    #query = pDataCatalogQuery(GROUP, MIN_START_TIME, MAX_START_TIME)
+    #query.dumpList('test.txt')
 
+    import ROOT
     filesList = file('test.txt', 'r').readlines()
     plotDict = {'PMTA':\
         'ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_gauss_mean_TH1',
