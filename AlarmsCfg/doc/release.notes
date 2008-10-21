@@ -1,3 +1,8 @@
+*** v4r9p1 ***
+- Alarms tuned on calHist.
+* Relevant jira(s): GDQMQ-279
+
+
 *** v4r9p0 ***
 - Alarms tuned on AcdPedsAnalyzer.
 * Relevant jira(s): GDQMQ-279
