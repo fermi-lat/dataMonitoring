@@ -12,7 +12,8 @@ class pAlarmUnitTest:
     def joinPath(self, p):
         return os.path.join(DATAMONROOT, p)
 
-    def run(self, inputFilePath, group = None, outputFilePath = None):
+    def run(self, inputFilePath, options = 'r', group = None,
+            outputFilePath = None):
         print
         print 'Running test on %s...' % inputFilePath
         if not os.path.exists(inputFilePath):
@@ -39,14 +40,14 @@ class pAlarmUnitTest:
         if not os.path.exists(outputFolderPath):
             print 'Creating the output folder %s...' % outputFolderPath
             os.makedirs(outputFolderPath)
-        cmd = 'pAlarmHandler.py -c %s -x %s -o %s -r %s' %\
+        cmd = 'pAlarmHandler.py -c %s -x %s -o %s -%s %s' %\
               (self.joinPath('AlarmsCfg/xml/%s_alarms.xml' % group),
                self.joinPath('AlarmsCfg/xml/%s_alarms_exceptions.xml' % group),
-               outputFilePath, inputFilePath)
+               outputFilePath, options, inputFilePath)
         print 'About to execute command "%s"...' % cmd
         os.system(cmd)
 
-    def runAll(self, inputFolderPath = None, wait = False):
+    def runAll(self, inputFolderPath = None, options = 'r', wait = False):
         if inputFolderPath is None:
             inputFolderPath = os.path.curdir
         for fileName in os.listdir(inputFolderPath):
@@ -54,7 +55,7 @@ class pAlarmUnitTest:
                                         'trend' in fileName or \
                                         'analyzer' in fileName):
                 filePath = os.path.join(inputFolderPath, fileName)
-                self.run(filePath)
+                self.run(filePath, options)
                 if wait:
                     raw_input('Press enter to continue.')
 
@@ -62,16 +63,19 @@ class pAlarmUnitTest:
 if __name__ == '__main__':
     from optparse import OptionParser
     parser = OptionParser(usage = 'usage: %prog [options] rootFilePath')
-    parser.add_option('-a', '--all', dest = 'a',
+    parser.add_option('-d', '--directory', dest = 'd',
                       default = False, action = 'store_true',
                       help = 'loop over the files in the folder')
+    parser.add_option('-o', '--options', dest = 'o',
+                      default = 'r', type = str,
+                      help = 'options to be passed to the alarm handler.')
     (opts, args) = parser.parse_args()
     if len(args) != 1:
         parser.print_help()
         parser.error('Exactly one argument required.')
     inputPath = args[0]
     test = pAlarmUnitTest()
-    if opts.a:
-        test.runAll(inputPath)
+    if opts.d:
+        test.runAll(inputPath, opts.o)
     else:
-        test.run(inputPath)
+        test.run(inputPath, opts.o)
