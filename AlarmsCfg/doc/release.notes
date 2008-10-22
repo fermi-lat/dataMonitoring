@@ -1,3 +1,40 @@
+*** v4r10p0 ***
+- New alarms on digi eor CalX_Total_NHit_TH1 and CalX_NHit_TH1_Tower_*.
+* Relevant jira(s): GDQMQ-230
+
+
+*** v4r9p3 ***
+- Alarms tuned on CalGainsAnalyzer.
+* Relevant jira(s): GDQMQ-279
+
+
+*** v4r9p2 ***
+- Alarms tuned on CalPedsAnalyzer.
+* Relevant jira(s): GDQMQ-279
+
+
+*** v4r9p1 ***
+- Alarms tuned on calHist.
+* Relevant jira(s): GDQMQ-279
+
+
+*** v4r9p0 ***
+- Alarms tuned on AcdPedsAnalyzer.
+* Relevant jira(s): GDQMQ-279
+
+
+*** v4r8p1 ***
+- Put an alarm on digi eor Delta_CCSDSTime_EvtTime_Epu0_TH1 and
+Delta_CCSDSTime_EvtTime_Epu1_TH1.
+* Relevant jira(s): GDQMQ-280
+
+
+*** v4r8p0 ***
+- Low limits on digi trend/Rate_AcdGemCNO_GARC lowered to 0.3/0.5.
+- Alarm added on digi trend OutF_Ratio_EvtSize_CompressedEvtSize quantity.
+* Relevant jira(s): GDQMQ-276
+
+
 *** v4r7p5 ***
 - Added exception in FastMon eor for spikes and holes on tower 0, gtfe 13,
 layer 14.
