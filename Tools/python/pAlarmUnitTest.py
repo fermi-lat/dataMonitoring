@@ -60,6 +60,18 @@ class pAlarmUnitTest:
 
                 
 if __name__ == '__main__':
+    from optparse import OptionParser
+    parser = OptionParser(usage = 'usage: %prog [options] rootFilePath')
+    parser.add_option('-a', '--all', dest = 'a',
+                      default = False, action = 'store_true',
+                      help = 'loop over the files in the folder')
+    (opts, args) = parser.parse_args()
+    if len(args) != 1:
+        parser.print_help()
+        parser.error('Exactly one argument required.')
+    inputPath = args[0]
     test = pAlarmUnitTest()
-    
-    test.runAll(None)
+    if opts.a:
+        test.runAll(inputPath)
+    else:
+        test.run(inputPath)
