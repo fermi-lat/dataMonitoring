@@ -1,4 +1,9 @@
 *** v4r10p0 ***
+- New alarms on fastMon eor CalX_Total_NHit_TH1 and CalX_NHit_TH1_Tower_*.
+* Relevant jira(s): GDQMQ-230
+
+
+*** v4r10p0 ***
 - New alarms on digi eor CalX_Total_NHit_TH1 and CalX_NHit_TH1_Tower_*.
 * Relevant jira(s): GDQMQ-230
 
