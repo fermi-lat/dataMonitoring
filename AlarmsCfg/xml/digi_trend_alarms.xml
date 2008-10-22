@@ -2,8 +2,8 @@
 
 <alarms>
 
-<!-- TKR
-  -->
+
+  <!-- TKR -->
 
   <alarmList group="TKR" name="TKR base" enabled="True">
 
@@ -46,8 +46,8 @@
     
   </alarmList>
 
-<!-- TKR TOT
-  -->
+
+  <!-- TKR TOT -->
   
   <alarmList group="TKRToT" name="TKR ToT" enabled="True">
 
@@ -84,8 +84,8 @@
     
   </alarmList>
 
-<!-- TKR Digi
-  -->
+
+  <!-- TKR Digi -->
   
   <alarmList group="TKRDigi" name="TKR Digis" enabled="True">
 
@@ -98,8 +98,8 @@
 
   </alarmList>  
 
-<!-- GEM 
-  -->
+
+  <!-- GEM  -->
   
   <alarmList group="GEM" name="GEM base" enabled="True">
 
@@ -112,8 +112,8 @@
 
   </alarmList>  
   
-<!-- CAL
-  -->
+  
+  <!-- CAL -->
   
   <alarmList group="CAL" name="CAL base" enabled="True">
 
@@ -133,15 +133,14 @@
   </alarmList>  
 
 
-<!-- ACD
-  -->
+  <!-- ACD -->
 
   <alarmList group="ACD" name="ACD" enabled="True">
 
     <alarmSet name="Time::Rate_AcdGemCNO_GARC" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.8" max="10.0"/>
-	<error_limits   min="0.5" max="15.0"/>
+	<warning_limits min="0.5" max="10.0"/>
+	<error_limits   min="0.3" max="15.0"/>
       </alarm> 
     </alarmSet>
     <alarmSet name="Time::OutF_AcdPmt_OverThreshold_Asymmetry_AcdTile" enabled="False">
@@ -176,8 +175,7 @@
   </alarmList>
     
 
-<!-- Event Rates
-  -->
+  <!-- Event Rates -->
 
   <alarmList group="EventRates" name="Event rates" enabled="True">
 
@@ -188,7 +186,21 @@
       </alarm> 
     </alarmSet>
 
-  </alarmList>  
+  </alarmList> 
+
+
+  <!-- Miscellanea -->
+  
+  <alarmList group="Miscellanea" name="Miscellanea" enabled="True">
+    
+    <alarmSet name="Time::OutF_Ratio_EvtSize_CompressedEvtSize" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="2.75" max="3.20"/>
+	<error_limits   min="2.50" max="3.50"/>
+      </alarm> 
+    </alarmSet>
+
+  </alarmList>
 
 </alarms>
   
