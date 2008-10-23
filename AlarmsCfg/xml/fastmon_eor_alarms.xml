@@ -100,7 +100,7 @@
     <alarmSet name="CalX_NHit_TH1_Tower_*" only="[0, 3, 12, 15]" enabled="True">
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="pivot" value="5"/>
-	<warning_limits min="12.0" max="13.0"/>
+	<warning_limits min="11.5" max="14.0"/>
 	<error_limits min="8.0" max="20.0"/>
       </alarm> 
     </alarmSet>
@@ -109,7 +109,7 @@
     <alarmSet name="CalX_NHit_TH1_Tower_*" only="[5, 6, 9, 10]" enabled="True">
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="pivot" value="5"/>
-	<warning_limits min="7.0" max="8.0"/>
+	<warning_limits min="6.5" max="9.0"/>
 	<error_limits min="5.0" max="15.0"/>
       </alarm> 
     </alarmSet>
@@ -118,7 +118,7 @@
     <alarmSet name="CalX_NHit_TH1_Tower_*" exclude="[0, 3, 12, 15, 5, 6, 9, 10]" enabled="True">
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="pivot" value="5"/>
-	<warning_limits min="9.5" max="10.5"/>
+	<warning_limits min="9.0" max="11.0"/>
 	<error_limits min="6.0" max="18.0"/>
       </alarm> 
     </alarmSet>
