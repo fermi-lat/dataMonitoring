@@ -11,17 +11,178 @@
       </alarm>
     </alarmSet>
 
-    <alarmSet name="PHASE_ERROR" enabled="True">
-      <alarm function="number" enabled="True">
-	<warning_limits min="0.0" max="0.5"/>
-	<error_limits   min="0.0" max="0.5"/>
-      </alarm>
-    </alarmSet>
-
     <alarmSet name="TIMETONE_INCOMPLETE" enabled="True">
       <alarm function="rate" enabled="True">
 	<warning_limits min="0.0" max="0.50"/>
 	<error_limits   min="0.0" max="2.00"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="PHASE_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="GCCC_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="GTCC_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="TIMEOUT_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="GTRC_PHASE_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="GTFE_PHASE_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="GTCC_FIFO_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="GTCC_TIMEOUT_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="GTCC_HEADER_PARITY_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="GTCC_WORD_COUNT_PARITY_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="GTRC_SUMMARY_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="GTCC_DATA_PARITY_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="ACD_HEADER_PARITY_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="ACD_PHA_PARITY_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="ACD_PHA_INCONSISTENCY" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="ERR_CONTRIB_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="TKR_CONTRIB_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="CAL_CONTRIB_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="AEM_CONTRIB_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="PACKET_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="EBF_CONTRIB_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="LAT_CONTRIB_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="LAT_DATAGRAM_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="EBF_EVENT_ERROR" enabled="True">
+      <alarm function="number" enabled="True">
+	<warning_limits min="0.0" max="0.0"/>
+	<error_limits   min="0.0" max="0.0"/>
       </alarm>
     </alarmSet>
 
