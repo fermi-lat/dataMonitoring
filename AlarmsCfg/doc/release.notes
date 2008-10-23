@@ -1,3 +1,23 @@
+*** v4r11p0 ***
+- Configuration file for the pErrorLogger on the FastMon fully implemented.
+* Relevant jira(s): GDQMQ-250
+
+
+*** v4r10p2 ***
+- Alarm limits for the alarms added in tags v4r10p0 and v4r10p1 relaxed a
+little bit.
+
+
+*** v4r10p1 ***
+- New alarms on fastMon eor CalX_Total_NHit_TH1 and CalX_NHit_TH1_Tower_*.
+* Relevant jira(s): GDQMQ-230
+
+
+*** v4r10p0 ***
+- New alarms on digi eor CalX_Total_NHit_TH1 and CalX_NHit_TH1_Tower_*.
+* Relevant jira(s): GDQMQ-230
+
+
 *** v4r9p3 ***
 - Alarms tuned on CalGainsAnalyzer.
 * Relevant jira(s): GDQMQ-279
