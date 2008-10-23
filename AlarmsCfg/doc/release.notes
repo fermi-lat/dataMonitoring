@@ -1,3 +1,8 @@
+*** v4r11p0 ***
+- Configuration file for the pErrorLogger on the FastMon fully implemented.
+* Relevant jira(s): GDQMQ-250
+
+
 *** v4r10p2 ***
 - Alarm limits for the alarms added in tags v4r10p0 and v4r10p1 relaxed a
 little bit.
