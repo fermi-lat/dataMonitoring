@@ -24,8 +24,10 @@ XML_CONFIG_DIR_VAR_NAME     = 'XML_CONFIG_DIR'
 # ROOT related variables.
 ROOT_BASKET_SIZE          = 1000000 
 
-PLUS_INFINITY = 1.e10
-MINUS_INFINITY = -1.e10
+#PLUS_INFINITY = float('infinity')
+#MINUS_INFINITY = float('-infinity')
+PLUS_INFINITY = 1.e24
+MINUS_INFINITY = -1.e24
 NAN = float('nan')
 
 
