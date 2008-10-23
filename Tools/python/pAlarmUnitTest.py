@@ -40,7 +40,7 @@ class pAlarmUnitTest:
         if not os.path.exists(outputFolderPath):
             print 'Creating the output folder %s...' % outputFolderPath
             os.makedirs(outputFolderPath)
-        cmd = 'pAlarmHandler.py -c %s -x %s -o %s -%s %s' %\
+        cmd = 'pAlarmHandler.py -c %s -x %s -o %s %s %s' %\
               (self.joinPath('AlarmsCfg/xml/%s_alarms.xml' % group),
                self.joinPath('AlarmsCfg/xml/%s_alarms_exceptions.xml' % group),
                outputFilePath, options, inputFilePath)
