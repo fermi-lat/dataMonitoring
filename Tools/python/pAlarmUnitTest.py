@@ -28,6 +28,8 @@ class pAlarmUnitTest:
                 group = 'calpeds_eor'
             elif 'calgainsanalyzer' in inputFilePath:
                 group = 'calgains_eor'
+            elif 'tkrtrend' in inputFilePath:
+                group = 'trackermon_trend'
             else:
                 group = os.path.basename(inputFilePath).split('_')[-1]
                 group = group.replace('.root', '')
