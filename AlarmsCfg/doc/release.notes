@@ -7,6 +7,8 @@ from 3.7 to 4.0 (the margin wasn't large enough).
 moved from 0.25 to 0.15.
 - Warning min for CalXAdcPedPedRMSDifference_LEX8_TH1 (y_values) in calpeds_eor
 moved from -1.0 to -1.5.
+- Warning min for RPM_RMS_TH1 (y_values) in calgains_eor moved from 0.15 to
+0.10.
 * Relevant jira(s): GDQMQ-279
 
 
