@@ -1,3 +1,9 @@
+*** v5r1p0 ***
+- Channel 1983 added as an exception on the the LEX1 and LEX8 pedestal rms
+values (CalPeds).
+* Relevant jira(s): GDQMQ-279
+
+
 *** v5r0p1 ***
 - Configuration file for the error logger on the verify module implemented.
 * Relevant jira(s): GDQMQ-250
