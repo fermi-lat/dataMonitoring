@@ -16,9 +16,9 @@ class pAsciiWriter:
         if filePath is not None:
             self.openFile(filePath)
 
-    def openFile(self, filePath):
+    def openFile(self, filePath, mode = 'w'):
         logging.debug('Opening file %s...' % filePath)
-        self.OutputFile = file(filePath, 'w')
+        self.OutputFile = file(filePath, mode)
         self.setIndentLevel(0)
 
     def closeFile(self):
@@ -48,8 +48,15 @@ class pAsciiWriter:
             logging.error('Output file not existing.')
             sys.exit('Abort.')
 
+    def writeLine(self, line):
+        spaces = self.IndentLevel*self.NUM_INDENT_SPACES*' '
+        self.write('%s%s\n' % (spaces, line))
+
     def newline(self):
         self.write('\n')
+
+    def newLine(self):
+        self.newline()
 
     def writeIndented(self, text):
         spaces = self.IndentLevel*self.NUM_INDENT_SPACES*' '
