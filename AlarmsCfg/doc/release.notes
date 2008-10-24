@@ -1,6 +1,8 @@
 *** v5r1p0 ***
 - Channel 1983 added as an exception on the the LEX1 and LEX8 pedestal rms
-values (CalPeds).
+values (cal_eor).
+- Warning max for CalXAdcPedRMS_HEX8_TH1 (y_values) in cal_eor moved from 3.7
+to 4.0 (the margin wasn't large enough).
 * Relevant jira(s): GDQMQ-279
 
 
