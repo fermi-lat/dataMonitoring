@@ -76,7 +76,7 @@
 
     <alarmSet name="CalXAdcPedRMS_HEX8_TH1" enabled="True">
       <alarm function="y_values" enabled="True">
-	<warning_limits min="3.0" max="3.7"/>
+	<warning_limits min="3.0" max="4.0"/>
 	<error_limits   min="2.0" max="5.0"/>
       </alarm> 
     </alarmSet>
