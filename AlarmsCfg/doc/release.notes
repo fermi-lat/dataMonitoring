@@ -1,3 +1,12 @@
+*** v5r0p0 ***
+- Implement alarms on timing quantities, mostly Condition Arrival Times,
+in both fastmon and digi. Settings will have to be tuned when the new timing
+configuration in uploaded.
+- First use of the reference histograms for alarms
+- Add an alarm on CondSummaryWord using the reference histogram, as a test
+* Relevant jira(s): GDQMQ-271
+
+
 *** v4r11p0 ***
 - Configuration file for the pErrorLogger on the FastMon fully implemented.
 * Relevant jira(s): GDQMQ-250
