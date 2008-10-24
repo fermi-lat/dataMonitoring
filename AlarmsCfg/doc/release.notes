@@ -1,3 +1,8 @@
+*** v5r0p1 ***
+- Configuration file for the error logger on the verify module implemented.
+* Relevant jira(s): GDQMQ-250
+
+
 *** v5r0p0 ***
 - Implement alarms on timing quantities, mostly Condition Arrival Times,
 in both fastmon and digi. Settings will have to be tuned when the new timing
