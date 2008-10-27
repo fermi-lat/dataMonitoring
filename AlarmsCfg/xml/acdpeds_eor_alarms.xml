@@ -22,7 +22,7 @@
 
     <alarmSet name="AcdPedPedMeanDifference_PMTA_TH1" enabled="True">
       <alarm function="y_values" enabled="True">
-	<warning_limits min="-1.0" max="2.0"/>
+	<warning_limits min="-1.0" max="3.0"/>
 	<error_limits   min="-2.0" max="5.0"/>
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
       </alarm> 
@@ -30,7 +30,7 @@
 
     <alarmSet name="AcdPedPedMeanDifference_PMTB_TH1" enabled="True">
       <alarm function="y_values" enabled="True">
-	<warning_limits min="-1.0" max="2.0"/>
+	<warning_limits min="-1.0" max="3.0"/>
 	<error_limits   min="-2.0" max="5.0"/>
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
       </alarm> 
@@ -54,16 +54,16 @@
 
     <alarmSet name="AcdPedPedRMSDifference_PMTA_TH1" enabled="True">
       <alarm function="y_values" enabled="True">
-	<warning_limits min="-5.0" max="1.0"/>
-	<error_limits   min="-10.0" max="3.0"/>
+	<warning_limits min="-8.0" max="1.0"/>
+	<error_limits   min="-15.0" max="3.0"/>
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
       </alarm> 
     </alarmSet>
 
     <alarmSet name="AcdPedPedRMSDifference_PMTB_TH1" enabled="True">
       <alarm function="y_values" enabled="True">
-	<warning_limits min="-5.0" max="1.0"/>
-	<error_limits   min="-10.0" max="3.0"/>
+	<warning_limits min="-8.0" max="1.0"/>
+	<error_limits   min="-15.0" max="3.0"/>
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
       </alarm> 
     </alarmSet>
