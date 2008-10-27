@@ -131,7 +131,7 @@
 	<error_limits min="700" max="4000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -165,7 +165,7 @@
 	<error_limits min="1.5" max="6"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -199,7 +199,7 @@
 	<error_limits min="700" max="3000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -233,7 +233,7 @@
 	<error_limits min="600" max="2000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -267,7 +267,7 @@
 	<error_limits min="50" max="500"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -342,7 +342,7 @@
 	<error_limits min="1.5" max="6"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -376,7 +376,7 @@
 	<error_limits min="700" max="3000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -410,7 +410,7 @@
 	<error_limits min="300" max="1500"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -486,7 +486,7 @@
 	<error_limits   min="1500" max="30000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -513,7 +513,7 @@
 	<error_limits min="0.20" max="1.50"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -547,7 +547,7 @@
 	<error_limits min="1500" max="15000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -623,7 +623,7 @@
 	<error_limits min="700" max="5000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -657,7 +657,7 @@
 	<error_limits min="2.0" max="9.0"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -691,7 +691,7 @@
 	<error_limits min="2500" max="15000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -755,7 +755,7 @@
 	<error_limits   min="0.1" max="4.0"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -784,7 +784,7 @@
 	<error_limits min="0.5" max="9.0"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
@@ -806,7 +806,7 @@
 	<error_limits   min="0.05" max="0.8"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<parameter name="only" value="range(13,32)"/>
+	<parameter name="only" value="range(15,32)"/>
 	<warning_limits min="-0.1" max="0.1"/>
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
