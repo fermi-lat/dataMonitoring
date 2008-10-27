@@ -1,3 +1,8 @@
+*** v5r2p1 ***
+- Some limits on the acd peds relaxed.
+* Relevant jira(s): GDQMQ-279
+
+
 *** v5r2p0 ***
 - All the y-values alarms on digi and fastmon eor updated to the new trigger
 window width (14 ticks instead of 12).
