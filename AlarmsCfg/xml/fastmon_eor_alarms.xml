@@ -123,12 +123,12 @@
     </alarmSet>
     <alarmSet name="CondArrCalHiTrigger_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
-	<warning_limits min="0.7" max="1.1"/>
-	<error_limits min="0.5" max="1.5"/>
+	<warning_limits min="0.7" max="1.5"/>
+	<error_limits min="0.5" max="2.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
-	<warning_limits min="1.6" max="2.0"/>
-	<error_limits min="1.0" max="2.5"/>
+	<warning_limits min="1.6" max="2.5"/>
+	<error_limits min="1.0" max="3.5"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -141,8 +141,8 @@
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="1300" max="2000"/>
-	<error_limits min="700" max="3000"/>
+	<warning_limits min="1300" max="3000"/>
+	<error_limits min="700" max="5000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -319,8 +319,8 @@
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="1200" max="2000"/>
-	<error_limits min="700" max="3000"/>
+	<warning_limits min="1200" max="3000"/>
+	<error_limits min="700" max="5000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -346,8 +346,8 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="14"/>
 	<parameter name="pivot" value="0"/>
-	<warning_limits min="0.003" max="0.005"/>
-	<error_limits min="0.002" max="0.007"/>
+	<warning_limits min="0.0025" max="0.005"/>
+	<error_limits min="0.0015" max="0.007"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="1"/>
@@ -720,8 +720,8 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="14"/>
 	<parameter name="pivot" value="0"/>
-	<warning_limits min="0.10" max="0.25"/>
-	<error_limits min="0.05" max="0.5"/>
+	<warning_limits min="0.05" max="0.25"/>
+	<error_limits min="0.02" max="0.5"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="1"/>
