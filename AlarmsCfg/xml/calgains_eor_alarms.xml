@@ -48,7 +48,7 @@
 
     <alarmSet name="RPM_GainMeanDifference_TH1" enabled="True">
       <alarm function="y_values" enabled="True">
-	<warning_limits min="-0.05" max="0.15"/>
+	<warning_limits min="-0.10" max="0.15"/>
 	<error_limits   min="-0.20" max="0.5"/>
       </alarm> 
     </alarmSet>
