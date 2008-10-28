@@ -23,5 +23,8 @@
   <alarm name="Mean_TkrHitsPerEvt_TowerPlane" algorithm="values">
     <exception identifier="(0, 14)" status_on_violation="clean"/>
   </alarm>
+  <alarm name="OutF_Normalized_TkrHits_TowerPlane" algorithm="values">
+    <exception identifier="(0, 14)" status_on_violation="clean"/>
+  </alarm>
 
 </alarm_exceptions>
