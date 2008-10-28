@@ -6,6 +6,7 @@ the new configuration (Moot key 2450).
 - One exception removed from the trackermon (hot strip masked).
 - Added exception for digi trend, Mean_TkrHitsPerEvt_TowerPlane, tower 0
 GTFE 14.
+- Limits on calpedsanalyzer CalXAdcPedPedRMSDifference_LEX1_TH1 relaxed.
 
 
 *** v5r2p1 ***
