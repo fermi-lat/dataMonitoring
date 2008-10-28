@@ -9,6 +9,8 @@ GTFE 14.
 - Limits on calpedsanalyzer CalXAdcPedPedRMSDifference_LEX1_TH1 relaxed.
 - Limits on CalX_Total_NHit_TH1 (low_high_ratio) in digi and fastmon eor
 relaxed a little bit.
+- Limits on digi eor TkrPlanesHit_TH1_Tower put separately on tower 0, for
+which we have a noisy strip deforming the distribution.
 
 
 *** v5r2p1 ***
