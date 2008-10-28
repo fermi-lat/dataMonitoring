@@ -97,7 +97,7 @@
 
     <alarmSet name="CalXAdcPedPedRMSDifference_LEX1_TH1" enabled="True">
       <alarm function="y_values" enabled="True">
-	<warning_limits min="-0.1" max="0.4"/>
+	<warning_limits min="-0.5" max="0.4"/>
 	<error_limits   min="-1.0" max="3.0"/>
       </alarm> 
     </alarmSet>
