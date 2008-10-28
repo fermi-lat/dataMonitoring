@@ -12,4 +12,16 @@
     <exception identifier="(10, 0)" status_on_violation="error"/>
   </alarm>
 
+  <!-- 
+      Added exception for a noisy strip in tower 0 which is right on the
+      warning limits (hence the status on violation is clean). Based on data
+      taken with Moot key 2450.
+
+      Luca Baldini, Oct. 28, 2008.
+    -->
+
+  <alarm name="Mean_TkrHitsPerEvt_TowerPlane" algorithm="values">
+    <exception identifier="(0, 14)" status_on_violation="clean"/>
+  </alarm>
+
 </alarm_exceptions>
