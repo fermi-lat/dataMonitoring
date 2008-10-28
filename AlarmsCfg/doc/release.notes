@@ -2,6 +2,7 @@
 - Some more fine tuning of the alarm limits based on the first data taken in
 the new configuration (Moot key 2450).
 - Limits on AcdPedPedRMSDifference* in acdpedsanalyzer relaxed.
+- Limits on RPM_GainMeanDifference_TH1 in calgainsanalyzer relaxed.
 
 
 *** v5r2p1 ***
