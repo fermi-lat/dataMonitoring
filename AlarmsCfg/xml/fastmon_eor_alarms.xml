@@ -6,7 +6,7 @@
 
   <alarmList group="GEM" name="GEM vectors" enabled="True">
 
-    <alarmSet name="CondSummaryWord_TH1" enabled="True">
+    <alarmSet name="CondSummaryWord_TH1" enabled="False">
       <alarm function="reference_histogram" enabled="True">
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
@@ -51,7 +51,7 @@
   <!--
       GEM Condition Arrival Time group.
   -->
-  <alarmList group="GEM" name="GEM arrival times" enabled="True">
+  <alarmList group="GEM" name="GEM arrival times" enabled="False">
 
     <alarmSet name="CondArrTKRTrigger_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
@@ -229,7 +229,7 @@
   <!--
       GEM Trigger alignment to TKR.
   -->
-  <alarmList group="GEM" name="GEM Trigger alignment to TKR" enabled="True">
+  <alarmList group="GEM" name="GEM Trigger alignment to TKR" enabled="False">
 
     <alarmSet name="CondArrROI_TKROpensWindow_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
@@ -373,7 +373,7 @@
   <!--
       GEM Trigger alignment to Cal-Low
   -->
-  <alarmList group="GEM" name="GEM Trigger alignment to Cal-low" enabled="True">
+  <alarmList group="GEM" name="GEM Trigger alignment to Cal-low" enabled="False">
 
     <alarmSet name="CondArrROI_CalLoOpensWindow_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
@@ -510,7 +510,7 @@
   <!--
       GEM Trigger alignment to Cal-Hi
   -->
-  <alarmList group="GEM" name="GEM Trigger alignment to Cal-Hi" enabled="True">
+  <alarmList group="GEM" name="GEM Trigger alignment to Cal-Hi" enabled="False">
 
     <alarmSet name="CondArrROI_CalHiOpensWindow_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
@@ -654,7 +654,7 @@
   <!--
       GEM Trigger alignment to CNO
   -->
-  <alarmList group="GEM" name="GEM Trigger alignment to CNO" enabled="True">
+  <alarmList group="GEM" name="GEM Trigger alignment to CNO" enabled="False">
 
     <alarmSet name="CondArrROI_CNOOpensWindow_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
