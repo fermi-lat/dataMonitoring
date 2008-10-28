@@ -920,7 +920,7 @@
     <alarmSet name="CalX_Total_NHit_TH1" enabled="True">
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="pivot" value="5"/>
-	<warning_limits min="1.0" max="1.5"/>
+	<warning_limits min="0.95" max="1.5"/>
 	<error_limits min="0.5" max="2.5"/>
       </alarm> 
     </alarmSet>
