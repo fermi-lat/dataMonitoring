@@ -1,3 +1,9 @@
+*** v5r3p0 ***
+- Some more fine tuning of the alarm limits based on the first data taken in
+the new configuration (Moot key 2450).
+- Limits on AcdPedPedRMSDifference* in acdpedsanalyzer relaxed.
+
+
 *** v5r2p1 ***
 - Some limits on the acd peds relaxed.
 * Relevant jira(s): GDQMQ-279.
