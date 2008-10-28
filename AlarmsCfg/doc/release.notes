@@ -3,6 +3,7 @@
 the new configuration (Moot key 2450).
 - Limits on AcdPedPedRMSDifference* in acdpedsanalyzer relaxed.
 - Limits on RPM_GainMeanDifference_TH1 in calgainsanalyzer relaxed.
+- One exception removed from the trackermon (hot strip masked.)
 
 
 *** v5r2p1 ***
