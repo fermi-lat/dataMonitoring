@@ -1,3 +1,8 @@
+*** v5r3p1 ***
+- Disabled all the new alarms on the timing in fastmon and digi eor, since
+they still need tuning and reference histograms.
+
+
 *** v5r3p0 ***
 - Some more fine tuning of the alarm limits based on the first data taken in
 the new configuration (Moot key 2450).
