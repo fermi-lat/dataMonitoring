@@ -3,6 +3,7 @@
 AcdPedPedRMSDifference_PMTB_TH1 in acdped_eor.
 - Limits relaxed on AcdPedPedMeanDifference_PMTA_TH1 and
 AcdPedPedMeanDifference_PMTB_TH1 in acdped_eor.
+- Updated exceptions on the tracker occupancy plots in the electronics space.
 
 
 *** v5r3p1 ***
