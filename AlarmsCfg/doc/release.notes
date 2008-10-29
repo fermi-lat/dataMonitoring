@@ -1,6 +1,8 @@
 *** v5r4p0 *** (NOT TAGGED, YET!)
 - Limits relaxed on AcdPedPedRMSDifference_PMTA_TH1 and
-AcdPedPedRMSDifference_PMTB_TH1 in the acdped_eor.
+AcdPedPedRMSDifference_PMTB_TH1 in acdped_eor.
+- Limits relaxed on AcdPedPedMeanDifference_PMTA_TH1 and
+AcdPedPedMeanDifference_PMTB_TH1 in acdped_eor.
 
 
 *** v5r3p1 ***
