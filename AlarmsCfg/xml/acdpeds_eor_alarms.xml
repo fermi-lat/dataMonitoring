@@ -9,6 +9,7 @@
 	<warning_limits min="-8.0" max="8.0"/>
 	<error_limits   min="-15.0" max="15.0"/>
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
+        <condition name="min_entries" value="750000"/>
       </alarm> 
     </alarmSet>
 
@@ -17,6 +18,7 @@
 	<warning_limits min="-8.0" max="8.0"/>
 	<error_limits   min="-15.0" max="15.0"/>
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
+        <condition name="min_entries" value="750000"/>
       </alarm> 
     </alarmSet>
 
@@ -25,6 +27,7 @@
 	<warning_limits min="-1.0" max="5.0"/>
 	<error_limits   min="-2.0" max="10.0"/>
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
+        <condition name="min_entries" value="750000"/>
       </alarm> 
     </alarmSet>
 
@@ -33,6 +36,7 @@
 	<warning_limits min="-1.0" max="5.0"/>
 	<error_limits   min="-2.0" max="10.0"/>
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
+        <condition name="min_entries" value="750000"/>
       </alarm> 
     </alarmSet>
 
@@ -41,6 +45,7 @@
 	<warning_limits min="2.0" max="7.0"/>
 	<error_limits   min="1.0" max="10.0"/>
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
+        <condition name="min_entries" value="750000"/>
       </alarm> 
     </alarmSet>
 
@@ -49,6 +54,7 @@
 	<warning_limits min="2.0" max="7.0"/>
 	<error_limits   min="1.0" max="10.0"/>
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
+        <condition name="min_entries" value="750000"/>
       </alarm> 
     </alarmSet>
 
@@ -57,6 +63,7 @@
 	<warning_limits min="-15.0" max="1.0"/>
 	<error_limits   min="-20.0" max="3.0"/>
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
+        <condition name="min_entries" value="750000"/>
       </alarm> 
     </alarmSet>
 
@@ -65,6 +72,7 @@
 	<warning_limits min="-15.0" max="1.0"/>
 	<error_limits   min="-20.0" max="3.0"/>
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
+        <condition name="min_entries" value="750000"/>
       </alarm> 
     </alarmSet>
 
