@@ -1,3 +1,8 @@
+*** v5r5p0 ***
+- Put condition on the minimum number of entries in all the acd/cal peds/gains
+analyzer alarms.
+
+
 *** v5r4p0 ***
 - Limits relaxed on AcdPedPedRMSDifference_PMTA_TH1 and
 AcdPedPedRMSDifference_PMTB_TH1 in acdped_eor.
