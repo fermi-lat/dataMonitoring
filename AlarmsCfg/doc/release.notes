@@ -1,3 +1,7 @@
+*** v5r5p3 ***
+- Couple of conditions on the number of entries added.
+
+
 *** v5r5p2  ***
 - Update and enable alarms on CondArrTime histograms for FastMon and Digi
 - First tag that uses reference histograms
