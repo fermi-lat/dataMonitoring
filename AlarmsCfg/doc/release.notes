@@ -1,6 +1,7 @@
 *** v5r5p1  ***
 - Added alarms on y_average and y_rms in acdpedsanalyzer.
 - Added alarms on y_average and y_rms in calpedsanalyzer.
+- Added alarms on y_average and y_rms in calgainsanalyzer.
 
 
 *** v5r5p0 ***
