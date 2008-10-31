@@ -9,7 +9,17 @@
 	<warning_limits min="-20.0" max="20.0"/>
 	<error_limits   min="-50.0" max="50.0"/>
         <condition name="min_entries" value="750000"/>
-      </alarm> 
+      </alarm>
+      <alarm function="y_average" enabled="True">
+	<warning_limits min="-1.5" max="1.5"/>
+	<error_limits   min="-3.0" max="3.0"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
+      <alarm function="y_rms" enabled="True">
+	<warning_limits min="0.0" max="4.0"/>
+	<error_limits   min="0.0" max="10.0"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
     </alarmSet>
 
     <alarmSet name="CalXAdcPedPedMeanDeviation_LEX1_TH1" enabled="True">
@@ -17,7 +27,17 @@
 	<warning_limits min="-1.5" max="2.5"/>
 	<error_limits   min="-3.0" max="5.0"/>
         <condition name="min_entries" value="750000"/>
-      </alarm> 
+      </alarm>
+      <alarm function="y_average" enabled="True">
+	<warning_limits min="-1.0" max="1.0"/>
+	<error_limits   min="-3.0" max="3.0"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
+      <alarm function="y_rms" enabled="True">
+	<warning_limits min="0.0" max="0.5"/>
+	<error_limits   min="0.0" max="2.0"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
     </alarmSet>
 
     <alarmSet name="CalXAdcPedPedMeanDeviation_HEX8_TH1" enabled="True">
@@ -25,7 +45,17 @@
 	<warning_limits min="-20.0" max="20.0"/>
 	<error_limits   min="-50.0" max="50.0"/>
         <condition name="min_entries" value="750000"/>
-      </alarm> 
+      </alarm>
+      <alarm function="y_average" enabled="True">
+	<warning_limits min="-1.5" max="1.5"/>
+	<error_limits   min="-3.0" max="3.0"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
+      <alarm function="y_rms" enabled="True">
+	<warning_limits min="0.0" max="4.0"/>
+	<error_limits   min="0.0" max="10.0"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
     </alarmSet>
 
     <alarmSet name="CalXAdcPedPedMeanDeviation_HEX1_TH1" enabled="True">
@@ -33,7 +63,17 @@
 	<warning_limits min="-1.5" max="2.5"/>
 	<error_limits   min="-3.0" max="5.0"/>
         <condition name="min_entries" value="750000"/>
-      </alarm> 
+      </alarm>
+      <alarm function="y_average" enabled="True">
+	<warning_limits min="-1.0" max="1.0"/>
+	<error_limits   min="-3.0" max="3.0"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
+      <alarm function="y_rms" enabled="True">
+	<warning_limits min="0.0" max="0.5"/>
+	<error_limits   min="0.0" max="2.0"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
     </alarmSet>
 
     <alarmSet name="CalXAdcPedPedMeanDifference_LEX8_TH1" enabled="True">
@@ -73,7 +113,12 @@
 	<warning_limits min="4.5" max="7.0"/>
 	<error_limits   min="4.0" max="8.0"/>
         <condition name="min_entries" value="750000"/>
-      </alarm> 
+      </alarm>
+      <alarm function="y_average" enabled="True">
+	<warning_limits min="5.0" max="5.5"/>
+	<error_limits   min="4.0" max="7.0"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
     </alarmSet>
 
     <alarmSet name="CalXAdcPedRMS_LEX1_TH1" enabled="True">
@@ -81,7 +126,12 @@
 	<warning_limits min="0.6" max="0.9"/>
 	<error_limits   min="0.5" max="1.1"/>
         <condition name="min_entries" value="750000"/>
-      </alarm> 
+      </alarm>
+      <alarm function="y_average" enabled="True">
+	<warning_limits min="0.65" max="0.75"/>
+	<error_limits   min="0.5"  max="1.0"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
     </alarmSet>
 
     <alarmSet name="CalXAdcPedRMS_HEX8_TH1" enabled="True">
@@ -89,7 +139,12 @@
 	<warning_limits min="3.0" max="4.0"/>
 	<error_limits   min="2.0" max="5.0"/>
         <condition name="min_entries" value="750000"/>
-      </alarm> 
+      </alarm>
+      <alarm function="y_average" enabled="True">
+	<warning_limits min="3.2" max="3.5"/>
+	<error_limits   min="2.5" max="5.0"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
     </alarmSet>
 
     <alarmSet name="CalXAdcPedRMS_HEX1_TH1" enabled="True">
@@ -97,7 +152,12 @@
 	<warning_limits min="0.45" max="0.6"/>
 	<error_limits   min="0.30" max="0.8"/>
         <condition name="min_entries" value="750000"/>
-      </alarm> 
+      </alarm>
+      <alarm function="y_average" enabled="True">
+	<warning_limits min="0.45" max="0.55"/>
+	<error_limits   min="0.3"  max="0.8"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
     </alarmSet>
 
     <alarmSet name="CalXAdcPedPedRMSDifference_LEX8_TH1" enabled="True">
