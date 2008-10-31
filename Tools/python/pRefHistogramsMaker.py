@@ -9,8 +9,9 @@ from pLongTermTrendMaker import *
 
 
 if __name__ == '__main__':
-    MIN_START_DATE = 'Oct/01/2008 00:00:00'
-    MAX_START_DATE = 'Oct/20/2008 00:00:00'
+    OUTPUT_DIR_PATH = '/nfs/slac/g/glast/users/glground/lbaldini/reference/' 
+    MIN_START_DATE = 'Oct/28/2008 12:10:00'
+    MAX_START_DATE = 'Oct/31/2008 23:59:00'
     MIN_START_TIME = utc2met(convert2sec(MIN_START_DATE))
     MAX_START_TIME = utc2met(convert2sec(MAX_START_DATE))
     MIN_RUN_DURATION = 1000
@@ -19,18 +20,21 @@ if __name__ == '__main__':
 
     for group in GROUPS:
         filePath = '%s_reference.txt' % group
+        filePath = os.path.join(OUTPUT_DIR_PATH, filePath)
         query = pDataCatalogQuery(group, MIN_START_TIME, MAX_START_TIME,
                                   MIN_RUN_DURATION, RUN_INTENT)
         query.dumpList(filePath)
         fileList = file(filePath, 'r').readlines()
         rootFilePath = '%s_reference.root' % group
+        rootFilePath = os.path.join(OUTPUT_DIR_PATH, rootFilePath)
         cmd = 'hadd  %s' % rootFilePath
         for filePath in fileList:
             cmd += ' %s' % filePath.strip('\n')
         print 'Executing command "%s"...' % cmd
         os.system(cmd)
 
-    logFile = file('reference.log', 'w')
+    logFilePath = os.path.join(OUTPUT_DIR_PATH, 'reference.log')
+    logFile = file(logFilePath, 'w')
     logFile.writelines('Log file created by pRefHistogramsMaker.py on %s.\n' %\
                        time.asctime())
     logFile.writelines('\n')
