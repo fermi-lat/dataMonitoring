@@ -658,10 +658,12 @@
 
     <alarmSet name="CondArrROI_CNOOpensWindow_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
+	<condition name="min_entries" value="100"/>
 	<warning_limits min="1.5" max="5.0"/>
 	<error_limits min="1.0" max="7.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
+	<condition name="min_entries" value="100"/>
 	<warning_limits min="5.0" max="12.0"/>
 	<error_limits min="2.0" max="14.0"/>
       </alarm> 
@@ -687,10 +689,12 @@
     </alarmSet>
     <alarmSet name="CondArrTKR_CNOOpensWindow_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
+	<condition name="min_entries" value="100"/>
 	<warning_limits min="0.01"  max="0.20"/>
 	<error_limits   min="0.005" max="0.5"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
+	<condition name="min_entries" value="100"/>
 	<warning_limits min="0.1" max="2.0"/>
 	<error_limits min="0.05" max="3.0"/>
       </alarm> 
