@@ -1,3 +1,8 @@
+*** v5r5p4 ***
+- One alarm (fastmon eor CondArrCalLowTrigger_TH1, reference histogram)
+disabled, since the name in the reference file is wrong.
+
+
 *** v5r5p3 ***
 - Couple of conditions on the number of entries added.
 
