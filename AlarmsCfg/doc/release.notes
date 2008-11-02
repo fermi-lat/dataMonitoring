@@ -1,3 +1,9 @@
+*** v5r5p6 ***
+- Alarm reference_histogram on CondArrCalLowTrigger in fastmon eor re-enabled
+(after the reference file has been modified).
+* Relevant jira(s): GDQMQ-290
+
+
 *** v5r5p5 ***
 - Alarm exception added on Tracker trend Number_layerOcc_TowerPlane, tower 3
 plane 35. The subsystem experts are aware of the new noisy strip.
