@@ -4,6 +4,8 @@
 
   <alarm name="Number_layerOcc_TowerPlane" algorithm="values">
     <exception identifier="(0, 14)" status_on_violation="warning"/>
+    <!-- Added on November 2, 2008 by Luca Baldini. -->
+    <exception identifier="(3, 35)" status_on_violation="warning"/>
   </alarm>
 
 </alarm_exceptions>
