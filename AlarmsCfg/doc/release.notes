@@ -1,3 +1,8 @@
+*** v5r5p5 ***
+- Alarm exception added on Tracker trend Number_layerOcc_TowerPlane, tower 3
+plane 35. The subsystem experts are aware of the new noisy strip.
+
+
 *** v5r5p4 ***
 - One alarm (fastmon eor CondArrCalLowTrigger_TH1, reference histogram)
 disabled, since the name in the reference file is wrong.
