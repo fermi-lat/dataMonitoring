@@ -54,6 +54,8 @@
     <object>FswGAMMAEnergyInLeus</object>
     <object>CompressedEventSizeInBytes </object>
     <object>CompressionLevel </object>
+    <object> Tick20MHzDeviation </object>
+    <object> CurrentORPreviousTimeToneMissing </object>
 
     <!-- Acd Variables -->
     
@@ -584,7 +586,33 @@
     </object>	    
 
 
-  
+    <object>
+      <name> Tick20MHzDeviation </name>
+      <formula><![CDATA[ Tick20MHzDeviation ]]></formula>
+      <cut><![CDATA[ NewSecond&1 && !CurrentORPreviousTimeToneMissing]]></cut>
+      <type> mean </type>
+      <description> Mean of the the deviation from the 20 MHz clock  </description>
+    </object>
+
+    <object>
+      <name> RMS_Tick20MHzDeviation </name>
+      <formula><![CDATA[ Mean_Tick20MHzDeviation_err*TMath::Sqrt(Mean_Tick20MHzDeviation_n) ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+       <source> output </source>
+      <type> outputfloat </type>
+      <description> RMS of the the deviation from the 20 MHz clock  </description>
+    </object>
+
+    <object>
+      <name> RMS_Tick20MHzDeviation_err </name>
+      <formula><![CDATA[ Mean_Tick20MHzDeviation_err/TMath::Sqrt(2) ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+       <source> output </source>
+      <type> outputfloat </type>
+      <description> Error in the RMS of the the deviation from the 20 MHz clock  </description>
+    </object>
+
+
      <object>
       <name> FswGAMMAEnergyInLeus </name>
       <formula><![CDATA[ FswGAMMAEnergyInLeus[0] ]]></formula>
