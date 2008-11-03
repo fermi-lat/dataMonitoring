@@ -1,13 +1,17 @@
+v1r3p1  2009/09/13  (DEV)                                                                               --------------------------                                                                               
+
+Changes to address Jira GDQMQ-267. 
+
 v1r3p0  2008/08/10 (DEV)
 --------------------------
 Add rate trending of each one of the error bits of the FastMon error_summary quantity.
 Addresses JIRA GDQMQ-249
 
-v1r2p30  2009/09/13  (DEV)
+v1r2p30  2008/09/13  (DEV)
 --------------------------
 Changes to address Jira GDQMQ-263.
 
-v1r2p29  2009/09/12  (DEV)
+v1r2p29  2008/09/12  (DEV)
 --------------------------
 Changes to address Jiras GDQMQ-234, GDQMQ-252 and GDQMQ-261
 
