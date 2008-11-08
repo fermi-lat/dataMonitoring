@@ -73,8 +73,8 @@
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="1000" max="3000"/>
-	<error_limits min="700" max="4000"/>
+	<warning_limits min="1000" max="4000"/>
+	<error_limits min="700" max="6000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -251,8 +251,8 @@
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="55" max="85"/>
-	<error_limits min="40" max="100"/>
+	<warning_limits min="55" max="100"/>
+	<error_limits min="40" max="150"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -532,8 +532,8 @@
 	<parameter name="min" value="1"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="3000" max="7000"/>
-	<error_limits min="2000" max="10000"/>
+	<warning_limits min="2000" max="7000"/>
+	<error_limits min="1000" max="10000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -627,8 +627,8 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="14"/>
 	<parameter name="pivot" value="0"/>
-	<warning_limits min="0.0001" max="0.0003"/>
-	<error_limits   min="0.00005" max="0.0006"/>
+	<warning_limits min="0.0001" max="0.0005"/>
+	<error_limits   min="0.00005" max="0.0008"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="1"/>
@@ -690,13 +690,13 @@
     <alarmSet name="CondArrTKR_CNOOpensWindow_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<condition name="min_entries" value="100"/>
-	<warning_limits min="0.01"  max="0.20"/>
-	<error_limits   min="0.005" max="0.5"/>
+	<warning_limits min="0.01"  max="0.50"/>
+	<error_limits   min="0.005" max="1.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<condition name="min_entries" value="100"/>
-	<warning_limits min="0.1" max="2.0"/>
-	<error_limits min="0.05" max="3.0"/>
+	<warning_limits min="0.1" max="4.0"/>
+	<error_limits min="0.05" max="8.0"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
