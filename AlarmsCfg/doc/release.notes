@@ -1,3 +1,12 @@
+*** v5r5p7 ***
+- Tuning alarms (fastmon and digi eor):
+-- CondArrCNO_CalHiOpensWindow_TH1 : extend low_high_ratio limits
+-- CondArrTKR_CNOOpensWindow_TH1 : extend average and rms limits
+-- CondArrROI_CalHiOpensWindow_TH1 : extend low_high_ratio limits
+-- CondArrTKRTrigger_TH1 : extend low_high_ratio limits
+-- CondArrROI_TKROpensWindow_TH1 : extend low_high_ratio limits
+* Relevant jira(s): GDQMQ-291
+
 *** v5r5p6 ***
 - Alarm reference_histogram on CondArrCalLowTrigger in fastmon eor re-enabled
 (after the reference file has been modified).
