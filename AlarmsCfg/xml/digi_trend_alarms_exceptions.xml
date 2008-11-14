@@ -27,4 +27,12 @@
     <exception identifier="(0, 14)" status_on_violation="clean"/>
   </alarm>
 
+  <!-- 
+      Added by Luca Baldini on Nov. 14, 2008.
+    -->
+
+  <alarm name="Rate_NTkrHits_TowerPlane" algorithm="values">
+    <exception identifier="(0, 14)" status_on_violation="clean"/>
+  </alarm>
+
 </alarm_exceptions>
