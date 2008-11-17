@@ -16,8 +16,8 @@
         <condition name="min_entries" value="750000"/>
       </alarm>
       <alarm function="y_rms" enabled="True">
-	<warning_limits min="0.0" max="4.0"/>
-	<error_limits   min="0.0" max="10.0"/>
+	<warning_limits min="0.0" max="2.0"/>
+	<error_limits   min="0.0" max="5.0"/>
         <condition name="min_entries" value="750000"/>
       </alarm>
     </alarmSet>
@@ -34,8 +34,8 @@
         <condition name="min_entries" value="750000"/>
       </alarm>
       <alarm function="y_rms" enabled="True">
-	<warning_limits min="0.0" max="0.5"/>
-	<error_limits   min="0.0" max="2.0"/>
+	<warning_limits min="0.0" max="0.25"/>
+	<error_limits   min="0.0" max="1.0"/>
         <condition name="min_entries" value="750000"/>
       </alarm>
     </alarmSet>
@@ -52,8 +52,8 @@
         <condition name="min_entries" value="750000"/>
       </alarm>
       <alarm function="y_rms" enabled="True">
-	<warning_limits min="0.0" max="4.0"/>
-	<error_limits   min="0.0" max="10.0"/>
+	<warning_limits min="0.0" max="2.0"/>
+	<error_limits   min="0.0" max="5.0"/>
         <condition name="min_entries" value="750000"/>
       </alarm>
     </alarmSet>
@@ -70,8 +70,8 @@
         <condition name="min_entries" value="750000"/>
       </alarm>
       <alarm function="y_rms" enabled="True">
-	<warning_limits min="0.0" max="0.5"/>
-	<error_limits   min="0.0" max="2.0"/>
+	<warning_limits min="0.0" max="0.25"/>
+	<error_limits   min="0.0" max="1.0"/>
         <condition name="min_entries" value="750000"/>
       </alarm>
     </alarmSet>
