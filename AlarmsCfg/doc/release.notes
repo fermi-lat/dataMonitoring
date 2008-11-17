@@ -1,3 +1,8 @@
+*** v5r6p1 ***
+- Temporarily removed the alarms on the LAC thresholds of a couple of crystals.
+* Relevant jira(s): GDQMQ-296
+
+
 *** v5r6p0 ***
 - Exception added on digi trend Rate_NTkrHits_TowerPlane (tower 0, plane 14).
 
