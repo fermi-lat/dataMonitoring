@@ -1,3 +1,8 @@
+*** v5r6p2 ***
+- Changed limits on the CAL pedestals.
+* Relevant jira(s): GDQMQ-279
+
+
 *** v5r6p1 ***
 - Temporarily removed the alarms on the LAC thresholds of a couple of crystals.
 * Relevant jira(s): GDQMQ-296
