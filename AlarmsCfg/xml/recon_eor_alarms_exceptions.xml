@@ -2,4 +2,12 @@
 
 <alarm_exceptions>
 
+  <!--alarm name="Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_13_4_10" algorithm="leftmost_edge">
+    <exception status_on_violation="clean"/>
+  </alarm>
+
+  <alarm name="Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_4_2_8" algorithm="leftmost_edge">
+    <exception status_on_violation="clean"/>
+  </alarm-->
+
 </alarm_exceptions>
