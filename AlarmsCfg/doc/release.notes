@@ -1,3 +1,8 @@
+*** v5r7p0 ***
+- Added two exceptions (in tkr trend and fastmon eor) for the new noisy strip
+in tower 0, plane 12, GTFE 14.
+
+
 *** v5r6p2 ***
 - Changed limits on the CAL pedestals.
 * Relevant jira(s): GDQMQ-279
