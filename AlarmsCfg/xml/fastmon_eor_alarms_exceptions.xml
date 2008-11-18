@@ -5,6 +5,7 @@
   <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_0" algorithm="spikes_and_holes">
     <exception identifier="(12, 14)" status_on_violation="clean"/>
     <exception identifier="(13, 14)" status_on_violation="clean"/>
+    <exception identifier="(14, 12)" status_on_violation="clean"/>
   </alarm>
 
   <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_2" algorithm="spikes_and_holes">
@@ -21,9 +22,5 @@
     <exception identifier="(20, 2)" status_on_violation="clean"/>
     <exception identifier="(21, 2)" status_on_violation="clean"/>
   </alarm>
-
-  <!--alarm name="AcdChannelsHits_TH1" algorithm="x_rms">
-    <exception/>
-  </alarm-->
 
 </alarm_exceptions>
