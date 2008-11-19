@@ -124,11 +124,11 @@
 	<error_limits min="0.55" max="1.15"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="1000" max="4000"/>
-	<error_limits min="700" max="6000"/>
+	<warning_limits min="7000" max="30000"/>
+	<error_limits min="3000" max="60000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -138,7 +138,7 @@
       <alarm function="reference_histogram" enabled="True">
 	<parameter name="ref_file_name" value="'DIGIHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
-	<error_limits min="" max="100"/>
+	<error_limits   min="" max="100"/>
       </alarm>
     </alarmSet>
     <alarmSet name="CondArrCalLowTrigger_TH1" enabled="True">
@@ -158,7 +158,7 @@
 	<error_limits min="0.05" max="0.3"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="3." max="6"/>
@@ -192,11 +192,11 @@
 	<error_limits min="0.20" max="1.0"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="2000" max="6000"/>
-	<error_limits min="1000" max="8000"/>
+	<warning_limits min="3000" max="15000"/>
+	<error_limits min="1500" max="30000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -226,7 +226,7 @@
 	<error_limits min="0.0005" max="0.0050"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="900" max="1600"/>
@@ -260,7 +260,7 @@
 	<error_limits min="0.005" max="0.050"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="100" max="200"/>
@@ -279,6 +279,7 @@
     </alarmSet>
         
   </alarmList>
+  
   <!--
       GEM Trigger alignment to TKR.
   -->
@@ -301,7 +302,7 @@
 	<error_limits min="0.010" max="0.60"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="55" max="100"/>
@@ -335,11 +336,11 @@
 	<error_limits min="0.05" max="0.3"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="3." max="4.5"/>
-	<error_limits min="1.5" max="6"/>
+	<warning_limits min="2." max="10.0"/>
+	<error_limits min="1." max="20"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -369,7 +370,7 @@
 	<error_limits min="0.005" max="0.40"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="2000" max="6000"/>
@@ -403,7 +404,7 @@
 	<error_limits min="0.0015" max="0.007"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="500" max="900"/>
@@ -422,7 +423,7 @@
     </alarmSet>
 
    </alarmList>
-  
+ 
   <!--
       GEM Trigger alignment to Cal-Low
   -->
@@ -445,11 +446,11 @@
 	<error_limits   min="0.001" max="0.015"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="700" max="1600"/>
-	<error_limits   min="300" max="3000"/>
+	<warning_limits min="500" max="4000"/>
+	<error_limits   min="200" max="8000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -479,7 +480,7 @@
 	<error_limits min="0.05" max="2.0"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="3000" max="18000"/>
@@ -540,11 +541,11 @@
 	<error_limits   min="0.0001" max="0.0010"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="3000" max="10000"/>
-	<error_limits min="1500" max="15000"/>
+	<error_limits min="2500" max="15000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -582,7 +583,7 @@
 	<error_limits   min="0.0005" max="0.005"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="2000" max="7000"/>
@@ -616,11 +617,11 @@
 	<error_limits min="0.02" max="0.30"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="1000" max="3500"/>
-	<error_limits min="700" max="5000"/>
+	<error_limits   min="700" max="5000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -650,11 +651,11 @@
 	<error_limits min="0.05" max="0.5"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="3.0" max="6.0"/>
-	<error_limits min="2.0" max="9.0"/>
+	<warning_limits min="3.0" max="13.0"/>
+	<error_limits min="1.0" max="30.0"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -684,7 +685,7 @@
 	<error_limits   min="0.00005" max="0.0008"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="3000" max="10000"/>
@@ -728,11 +729,11 @@
 	<error_limits   min="0.1" max="3.0"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="1.0" max="4.0"/>
-	<error_limits   min="0.3" max="8.0"/>
+	<warning_limits min="5.0" max="20.0"/>
+	<error_limits   min="2.0" max="40.0"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -781,7 +782,7 @@
 	<error_limits min="0.02" max="0.5"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
-	<parameter name="min" value="1"/>
+	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="1.0" max="6.0"/>
@@ -806,8 +807,8 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="14"/>
 	<parameter name="pivot" value="0"/>
-	<warning_limits min="0.1" max="0.3"/>
-	<error_limits   min="0.05" max="0.8"/>
+	<warning_limits min="0.1" max="0.5"/>
+	<error_limits   min="0.05" max="1.0"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
