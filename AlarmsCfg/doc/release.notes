@@ -1,3 +1,9 @@
+*** v5r7p2 ***
+- New tuning of the alarms on the condition arrival times in  fastmon and digi eor
+  to avoid spurious alarms
+* Relevant jira(s): GDQMQ-291
+
+
 *** v5r7p1 ***
 - Improve alarms on condition arrival times, explicitly check the content of bin 31
   against the sum over the other bins.
