@@ -465,7 +465,7 @@
     </alarmSet>
     <alarmSet name="CondArrTKR_CalLoOpensWindow_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
-	<warning_limits min="1.0" max="2.5"/>
+	<warning_limits min="0.9" max="2.5"/>
 	<error_limits min="0.5" max="4.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
@@ -537,15 +537,15 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="14"/>
 	<parameter name="pivot" value="0"/>
-	<warning_limits min="0.0002" max="0.0006"/>
-	<error_limits   min="0.0001" max="0.0010"/>
+	<warning_limits min="0.0" max="0.0006"/>
+	<error_limits   min="0.0" max="0.0010"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="3000" max="10000"/>
-	<error_limits min="2500" max="15000"/>
+	<warning_limits min="1500" max="10000"/>
+	<error_limits min="500" max="15000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -778,8 +778,8 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="14"/>
 	<parameter name="pivot" value="0"/>
-	<warning_limits min="0.05" max="0.25"/>
-	<error_limits min="0.02" max="0.5"/>
+	<warning_limits min="0.0" max="0.25"/>
+	<error_limits min="0.0" max="0.5"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
