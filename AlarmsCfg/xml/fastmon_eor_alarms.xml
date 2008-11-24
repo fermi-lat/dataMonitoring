@@ -566,8 +566,8 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="1000" max="3500"/>
-	<error_limits   min="700" max="5000"/>
+	<warning_limits min="1000" max="5000"/>
+	<error_limits   min="700" max="8000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -659,8 +659,8 @@
     <alarmSet name="CondArrROI_CNOOpensWindow_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<condition name="min_entries" value="100"/>
-	<warning_limits min="1.5" max="5.0"/>
-	<error_limits min="1.0" max="7.0"/>
+	<warning_limits min="1.0" max="5.0"/>
+	<error_limits min="0.5" max="7.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<condition name="min_entries" value="100"/>
@@ -742,7 +742,7 @@
     </alarmSet>
     <alarmSet name="CondArrCalHi_CNOOpensWindow_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
-	<warning_limits min="1.0" max="3.0"/>
+	<warning_limits min="0.8" max="3.0"/>
 	<error_limits min="0.5" max="5.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
