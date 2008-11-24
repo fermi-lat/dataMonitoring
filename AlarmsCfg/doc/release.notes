@@ -1,12 +1,17 @@
+*** v5r7p3 ***
+- Two exceptions added for the new TKR noisy strip in tower 3, layer 1,
+GTFE 12.
+
+
 *** v5r7p2 ***
-- New tuning of the alarms on the condition arrival times in  fastmon and digi eor
-  to avoid spurious alarms
+- New tuning of the alarms on the condition arrival times in  fastmon and digi
+eor to avoid spurious alarms
 * Relevant jira(s): GDQMQ-291
 
 
 *** v5r7p1 ***
-- Improve alarms on condition arrival times, explicitly check the content of bin 31
-  against the sum over the other bins.
+- Improve alarms on condition arrival times, explicitly check the content of
+bin 31 against the sum over the other bins.
 * Relevant jira(s): GDQMQ-299
 
 
