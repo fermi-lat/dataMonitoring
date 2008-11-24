@@ -1,6 +1,9 @@
 *** v5r7p3 ***
-- Two exceptions added for the new TKR noisy strip in tower 3, layer 1,
-GTFE 12.
+- Two exceptions added for the new TKR noisy strip in tower 3, layer 1,GTFE 12.
+- CondArrROITrigger_TH1 : low_high ratio
+- CondArrTKR_CalHiOpensWindow_TH1 : low_high ratio
+- CondArrCalHi_CNOOpensWindow_TH1 : x_average
+* Relevant jira(s): GDQMQ-291
 
 
 *** v5r7p2 ***
