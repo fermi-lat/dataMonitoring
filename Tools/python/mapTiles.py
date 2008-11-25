@@ -5,7 +5,7 @@ garcTableFile.next()
 garcDict = {}
 for line in garcTableFile:
     garc, board = line.strip('\n').split()
-    garcDict[board] = garc
+    garcDict[board] = int(garc)
 
 acdMapFile.next()
 tileDictA = {}
