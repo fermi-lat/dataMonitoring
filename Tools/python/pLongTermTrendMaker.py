@@ -135,7 +135,7 @@ class pACDPEDSANALYZERAnalyzer(pBaseFileAnalyzer):
         for label in self.LabelList:
             plot = self.InputFile.Get(self.PlotDict[label])
             for (tile, quantity) in enumerate(self.QuantityList):
-                self.Arrays[quantity] = plot.GetBinContent(tile + 1)
+                self.Arrays['%s_%s' % (label, quantity)][0] = plot.GetBinContent(tile + 1)
 
 
 if __name__ == '__main__':
@@ -145,7 +145,7 @@ if __name__ == '__main__':
 ##                                            'RECONHISTALARMDIST.root',
 ##                                            MIN_START_TIME,
 ##                                            MAX_START_TIME)
-    MIN_START_TIME = utc2met(convert2sec('Nov/24/2008 00:00:00'))
+    MIN_START_TIME = utc2met(convert2sec('Sep/01/2008 00:00:00'))
     MAX_START_TIME = None
     analyzer = pACDPEDSANALYZERAnalyzer('ACDPEDSANALYZER.txt',
                                         'ACDPEDSANALYZER.root',
