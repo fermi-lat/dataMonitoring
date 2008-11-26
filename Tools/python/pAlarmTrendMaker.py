@@ -15,8 +15,8 @@ from pTimeConverter      import *
 from pXmlBaseParser      import pXmlBaseParser
 from pXmlBaseElement     import pXmlBaseElement
 
+DEFAULT_SITE = '/Data/Flight/Level1/LPA'
 
-DEFAULT_SITE = 'SLAC_XROOT /Data/Flight/Level1/LPA'
 
 class pAlarmTrendMaker(pBaseFileAnalyzer):
 
