@@ -117,13 +117,38 @@ class pRECONHISTALARMDISTAnalyzer(pBaseFileAnalyzer):
             self.Arrays['%s_entries' % label][0] = entries
 
 
+class pACDPEDSANALYZERAnalyzer(pBaseFileAnalyzer):
+
+    def __init__(self, fileListPath, outputFilePath, minStartTime,
+                 maxStartTime = None):
+        self.PlotDict = {'PMTA': 'AcdPedPedMeanDeviation_PMTA_TH1',
+                         'PMTB': 'AcdPedPedMeanDeviation_PMTB_TH1'
+                         }
+        self.LabelList = self.PlotDict.keys()
+        self.LabelList.sort()
+        self.QuantityList = ['tile%d' % tile for tile in range(128)]
+        pBaseFileAnalyzer.__init__(self, fileListPath, outputFilePath,
+                                   'ACDPEDSANALYZER', minStartTime,
+                                   maxStartTime)
+
+    def analyze(self):
+        for label in self.LabelList:
+            plot = self.InputFile.Get(self.PlotDict[label])
+            for (tile, quantity) in enumerate(self.QuantityList):
+                self.Arrays[quantity] = plot.GetBinContent(tile + 1)
 
 
 if __name__ == '__main__':
-    MIN_START_TIME = utc2met(convert2sec('Sep/04/2008 00:00:00'))
+##     MIN_START_TIME = utc2met(convert2sec('Sep/04/2008 00:00:00'))
+##     MAX_START_TIME = None
+##     analyzer = pRECONHISTALARMDISTAnalyzer('RECONHISTALARMDIST.txt',
+##                                            'RECONHISTALARMDIST.root',
+##                                            MIN_START_TIME,
+##                                            MAX_START_TIME)
+    MIN_START_TIME = utc2met(convert2sec('Nov/24/2008 00:00:00'))
     MAX_START_TIME = None
-    analyzer = pRECONHISTALARMDISTAnalyzer('RECONHISTALARMDIST.txt',
-                                           'RECONHISTALARMDIST.root',
-                                           MIN_START_TIME,
-                                           MAX_START_TIME)
+    analyzer = pACDPEDSANALYZERAnalyzer('ACDPEDSANALYZER.txt',
+                                        'ACDPEDSANALYZER.root',
+                                        MIN_START_TIME,
+                                        MAX_START_TIME)
     analyzer.run()
