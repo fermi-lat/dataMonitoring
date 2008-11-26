@@ -41,6 +41,25 @@ class pLongTermTrendPlotter:
         self.Canvas = ROOT.TCanvas('long_term_trend', 'Long-term trend',
                                    1000, 400)
 
+    def drawAcdPedDeviation(self, PMT, tileNumber, ymin = None, ymax = None):
+        if self.Canvas is None:
+            self.createCanvas()
+        print 'Drawing ACD ped deviation...'
+        varName = 'PMT%s_tile%d' % (PMT, tileNumber)
+        self.Graph = ROOT.TGraphErrors(self.NumEntries)
+        point = 0
+        for i in xrange(self.NumEntries):
+            self.RootTree.GetEntry(i)
+            timestamp = float(self.RootTree.RunId)
+            deviation = eval('self.RootTree.%s' % varName)
+            self.Graph.SetPoint(point, timestamp, deviation)
+            self.Graph.SetPointError(point, 0.0, 0.0)
+            point += 1
+        self.drawGraph('Tile %d ped. mean deviation (ADC counts)' % tileNumber,
+                       ymin, ymax)
+        self.LastVarName = 'AcdPedDeviation'
+        return self.Graph    
+
     def drawMipPeak(self, ymin = None, ymax = None, rebin = 15):
         if self.Canvas is None:
             self.createCanvas()
@@ -178,39 +197,39 @@ if __name__ == '__main__':
     optparser = pOptionParser('', 1, 1, False)
     filePath = optparser.Argument
     plotter = pLongTermTrendPlotter(filePath)
+    plotter.drawAcdPedDeviation('A', 98)
+##     plotter.drawMipPeak(0.8, 1.4, 15)
+##     plotter.save()
+##     raw_input('Press enter to continue...')
+##     plotter.drawLacThreshold(1.8, 2.2, 15)
+##     plotter.save()
+##     raw_input('Press enter to continue...')
 
-    plotter.drawMipPeak(0.8, 1.4, 15)
-    plotter.save()
-    raw_input('Press enter to continue...')
-    plotter.drawLacThreshold(1.8, 2.2, 15)
-    plotter.save()
-    raw_input('Press enter to continue...')
+##     sys.exit()
 
-    sys.exit()
+##     plotter.draw('PMTA', 'PMTA MIP peak (MIPs)', 0.8, 1.4)
+##     plotter.save()
+##     raw_input('Press enter to continue...')
+##     plotter.draw('PMTB', 'PMTB MIP peak (MIPs)', 0.8, 1.4)
+##     plotter.save()
+##     raw_input('Press enter to continue...')
+##     plotter.draw('LACP', 'Positive end LAC threshold (MeV)', 1.8, 2.2)
+##     plotter.save()
+##     raw_input('Press enter to continue...')
+##     plotter.draw('LACN', 'Negative end LAC threshold (MeV)', 1.8, 2.2)
+##     plotter.save()
+##     raw_input('Press enter to continue...')
 
-    plotter.draw('PMTA', 'PMTA MIP peak (MIPs)', 0.8, 1.4)
-    plotter.save()
-    raw_input('Press enter to continue...')
-    plotter.draw('PMTB', 'PMTB MIP peak (MIPs)', 0.8, 1.4)
-    plotter.save()
-    raw_input('Press enter to continue...')
-    plotter.draw('LACP', 'Positive end LAC threshold (MeV)', 1.8, 2.2)
-    plotter.save()
-    raw_input('Press enter to continue...')
-    plotter.draw('LACN', 'Negative end LAC threshold (MeV)', 1.8, 2.2)
-    plotter.save()
-    raw_input('Press enter to continue...')
-
-    MIN_ZOOM = utc2met(convert2sec('Oct/01/2008 00:00:00'))
-    MAX_ZOOM = utc2met(convert2sec('Oct/05/2008 00:00:00'))
-    plot = plotter.draw('PMTA', 'PMTA MIP peak (MIPs)', 1.08, 1.14)
-    plot.GetXaxis().SetRangeUser(MIN_ZOOM, MAX_ZOOM)
-    plotter.Canvas.Update()
-    plotter.save('PMTA_zoom.png')
-    raw_input('Press enter to continue...')
-    plot = plotter.draw('LACP', 'Positive end LAC threshold (MeV)', 1.98, 2.02)
-    plot.GetXaxis().SetRangeUser(MIN_ZOOM, MAX_ZOOM)
-    plotter.Canvas.Update()
-    plotter.save('LACP_zoom.png')
-    raw_input('Press enter to continue...')    
-    plotter.RootTree.Draw('PMTA_mean:LACP_mean')
+##     MIN_ZOOM = utc2met(convert2sec('Oct/01/2008 00:00:00'))
+##     MAX_ZOOM = utc2met(convert2sec('Oct/05/2008 00:00:00'))
+##     plot = plotter.draw('PMTA', 'PMTA MIP peak (MIPs)', 1.08, 1.14)
+##     plot.GetXaxis().SetRangeUser(MIN_ZOOM, MAX_ZOOM)
+##     plotter.Canvas.Update()
+##     plotter.save('PMTA_zoom.png')
+##     raw_input('Press enter to continue...')
+##     plot = plotter.draw('LACP', 'Positive end LAC threshold (MeV)', 1.98, 2.02)
+##     plot.GetXaxis().SetRangeUser(MIN_ZOOM, MAX_ZOOM)
+##     plotter.Canvas.Update()
+##     plotter.save('LACP_zoom.png')
+##     raw_input('Press enter to continue...')    
+##     plotter.RootTree.Draw('PMTA_mean:LACP_mean')
