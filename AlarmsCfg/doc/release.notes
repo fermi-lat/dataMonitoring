@@ -1,8 +1,16 @@
-*** v5r8p0 *** (not yet tagged!)
+*** v5r8p0 ***
 - Added exception in tkr trend for tower 2, plane 31 (new noisy strip).
 - Got rid of the alarm on
 Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_8_4_6 (waiting for the new
 calibration constants).
+- CondArrTKR_CalHiOpensWindow_TH1 : low_high_ratio
+- CondArrCalLo_CNOOpensWindow_TH1 : min entries = 100
+- CondArrCalHi_CNOOpensWindow_TH1 : min entries = 100
+- CondArrCNO_TKROpensWindow_TH1   : low_high_ratio
+- CondArrCalHi_TKROpensWindow_TH1 : low_high_ratio
+- Add requirements on the number of entries for most alarms using
+  the reference histograms.
+* Relevant jira(s): GDQMQ-291
 
 
 *** v5r7p3 ***
