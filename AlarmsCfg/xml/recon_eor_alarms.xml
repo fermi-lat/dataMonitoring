@@ -37,7 +37,7 @@
       </alarm> 				  			 
     </alarmSet>
 
-    <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_*_*_*" enabled="True">
+    <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_*_*_*" exclude="[846]" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
 	<condition name="min_entries" value="200"/>
 	<parameter name="window_half_width" value="12"/>
