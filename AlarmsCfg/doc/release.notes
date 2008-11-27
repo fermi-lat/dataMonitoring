@@ -1,6 +1,8 @@
 *** v5r8p0 *** (not yet tagged!)
 - Added exception in tkr trend for tower 2, plane 31 (new noisy strip).
-- 
+- Got rid of the alarm on
+Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_8_4_6 (waiting for the new
+calibration constants).
 
 
 *** v5r7p3 ***
