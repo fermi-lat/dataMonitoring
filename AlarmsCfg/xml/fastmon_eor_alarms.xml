@@ -85,6 +85,7 @@
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits   min="" max="100"/>
+        <condition name="min_entries" value="100000"/>
       </alarm>
     </alarmSet>
     <alarmSet name="CondArrCalLowTrigger_TH1" enabled="True">
@@ -153,16 +154,19 @@
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
+        <condition name="min_entries" value="50000"/>
       </alarm>
     </alarmSet>
     <alarmSet name="CondArrCNOTrigger_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<warning_limits min="5.0" max="7.0"/>
 	<error_limits min="3.0" max="9.0"/>
+        <condition name="min_entries" value="10000"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<warning_limits min="2.0" max="3.0"/>
 	<error_limits min="1.0" max="5.0"/>
+        <condition name="min_entries" value="10000"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -170,13 +174,15 @@
 	<parameter name="pivot" value="0"/>
 	<warning_limits min="0.0010" max="0.0030"/>
 	<error_limits min="0.0005" max="0.0050"/>
+        <condition name="min_entries" value="10000"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="900" max="1600"/>
-	<error_limits min="600" max="2000"/>
+	<warning_limits min="700" max="1600"/>
+	<error_limits min="300" max="2000"/>
+        <condition name="min_entries" value="10000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -187,6 +193,7 @@
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
+        <condition name="min_entries" value="10000"/>
       </alarm>
     </alarmSet>
     <alarmSet name="CondArrROITrigger_TH1" enabled="True">
@@ -221,6 +228,7 @@
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
+        <condition name="min_entries" value="50000"/>	
       </alarm>
     </alarmSet>
         
@@ -246,6 +254,7 @@
 	<parameter name="pivot" value="0"/>
 	<warning_limits min="0.025" max="0.45"/>
 	<error_limits min="0.010" max="0.60"/>
+        <condition name="min_entries" value="50000"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -253,6 +262,7 @@
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="55" max="100"/>
 	<error_limits min="40" max="150"/>
+        <condition name="min_entries" value="50000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -263,6 +273,7 @@
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
+        <condition name="min_entries" value="50000"/>
       </alarm>
     </alarmSet>
     <alarmSet name="CondArrCalLo_TKROpensWindow_TH1" enabled="True">
@@ -314,13 +325,15 @@
 	<parameter name="pivot" value="0"/>
 	<warning_limits min="0.10" max="0.20"/>
 	<error_limits min="0.005" max="0.40"/>
+        <condition name="min_entries" value="20000"/>	
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="2000" max="6000"/>
-	<error_limits min="1000" max="8000"/>
+	<warning_limits min="2000" max="8000"/>
+	<error_limits min="1000" max="10000"/>
+        <condition name="min_entries" value="20000"/>	
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -331,6 +344,7 @@
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
+        <condition name="min_entries" value="50000"/>	
       </alarm>
     </alarmSet>
     <alarmSet name="CondArrCNO_TKROpensWindow_TH1" enabled="True">
@@ -346,8 +360,9 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="14"/>
 	<parameter name="pivot" value="0"/>
-	<warning_limits min="0.0025" max="0.005"/>
-	<error_limits min="0.0015" max="0.007"/>
+	<warning_limits min="0.0020" max="0.005"/>
+	<error_limits min="0.0010" max="0.007"/>
+        <condition name="min_entries" value="1000"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -355,6 +370,7 @@
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="500" max="900"/>
 	<error_limits min="300" max="1500"/>
+        <condition name="min_entries" value="1000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -365,6 +381,7 @@
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
+        <condition name="min_entries" value="10000"/>
       </alarm>
     </alarmSet>
 
@@ -390,6 +407,7 @@
 	<parameter name="pivot" value="0"/>
 	<warning_limits min="0.002" max="0.008"/>
 	<error_limits   min="0.001" max="0.015"/>
+        <condition name="min_entries" value="10000"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -397,6 +415,7 @@
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="500" max="4000"/>
 	<error_limits   min="200" max="8000"/>
+        <condition name="min_entries" value="10000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -407,6 +426,7 @@
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
+        <condition name="min_entries" value="10000"/>
       </alarm>
     </alarmSet>
     <alarmSet name="CondArrTKR_CalLoOpensWindow_TH1" enabled="True">
@@ -544,6 +564,7 @@
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
+        <condition name="min_entries" value="50000"/>
       </alarm>
     </alarmSet>
     <alarmSet name="CondArrTKR_CalHiOpensWindow_TH1" enabled="True">
@@ -566,8 +587,8 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="1000" max="5000"/>
-	<error_limits   min="700" max="8000"/>
+	<warning_limits min="500" max="5000"/>
+	<error_limits   min="250" max="8000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -578,6 +599,7 @@
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
+        <condition name="min_entries" value="50000"/>
       </alarm>
     </alarmSet>
     <alarmSet name="CondArrCalLo_CalHiOpensWindow_TH1" enabled="True">
@@ -629,13 +651,15 @@
 	<parameter name="pivot" value="0"/>
 	<warning_limits min="0.0001" max="0.0005"/>
 	<error_limits   min="0.00005" max="0.0008"/>
+        <condition name="min_entries" value="10000"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="3000" max="10000"/>
-	<error_limits min="2500" max="15000"/>
+	<warning_limits min="2000" max="10000"/>
+	<error_limits min="1000" max="15000"/>
+        <condition name="min_entries" value="10000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -646,6 +670,7 @@
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
+        <condition name="min_entries" value="10000"/>
       </alarm>
     </alarmSet>
 
@@ -661,11 +686,13 @@
 	<condition name="min_entries" value="100"/>
 	<warning_limits min="1.0" max="5.0"/>
 	<error_limits min="0.5" max="7.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<condition name="min_entries" value="100"/>
 	<warning_limits min="5.0" max="12.0"/>
 	<error_limits min="2.0" max="14.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -673,6 +700,7 @@
 	<parameter name="pivot" value="0"/>
 	<warning_limits min="0.4" max="1.5"/>
 	<error_limits   min="0.1" max="3.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -680,6 +708,7 @@
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="5.0" max="20.0"/>
 	<error_limits   min="2.0" max="40.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -692,11 +721,13 @@
 	<condition name="min_entries" value="100"/>
 	<warning_limits min="0.01"  max="0.50"/>
 	<error_limits   min="0.005" max="1.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<condition name="min_entries" value="100"/>
 	<warning_limits min="0.1" max="4.0"/>
 	<error_limits min="0.05" max="8.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -704,6 +735,7 @@
 	<parameter name="pivot" value="0"/>
 	<warning_limits min="0.3" max="2.0"/>
 	<error_limits   min="0.1" max="4.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -715,10 +747,12 @@
       <alarm function="x_average" enabled="True">
 	<warning_limits min="12.0" max="24.0"/>
 	<error_limits   min="8.0" max="28.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<warning_limits min="7.0" max="20.0"/>
 	<error_limits min="5.0" max="24.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -726,6 +760,7 @@
 	<parameter name="pivot" value="0"/>
 	<warning_limits min="0.0" max="0.25"/>
 	<error_limits min="0.0" max="0.5"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -733,6 +768,7 @@
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="1.0" max="6.0"/>
 	<error_limits min="0.5" max="9.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -744,10 +780,12 @@
       <alarm function="x_average" enabled="True">
 	<warning_limits min="0.8" max="3.0"/>
 	<error_limits min="0.5" max="5.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<warning_limits min="1.0" max="6.0"/>
 	<error_limits   min="0.5" max="8.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -755,6 +793,7 @@
 	<parameter name="pivot" value="0"/>
 	<warning_limits min="0.1" max="0.5"/>
 	<error_limits   min="0.05" max="1.0"/>
+        <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -796,8 +835,8 @@
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<parameter name="min" value="1"/>
-	<warning_limits min="18.0" max="25.0"/>
-	<error_limits min="13.0" max="30.0"/>
+	<warning_limits min="18.0" max="26.0"/>
+	<error_limits min="13.0" max="32.0"/>
       </alarm> 				  			 
     </alarmSet>
     
