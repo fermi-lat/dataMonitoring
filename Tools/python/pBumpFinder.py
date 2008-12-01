@@ -39,8 +39,11 @@ class pBumpFinder:
         self.HistogramDict[histogram.GetName()] = histogram
 
     def run(self, interactive = False):
+        remainingFiles = len(self.FileList)
         for filePath in self.FileList:
             self.analyzeRun(filePath, interactive)
+            remainingFiles -= 1
+            print '%d runs remaining.' % remainingFiles
         self.OutputRootFile.Write()
         self.OutputRootFile.Close()
         self.OutputLogFile.close()
