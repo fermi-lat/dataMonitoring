@@ -23,7 +23,7 @@ class pBumpFinder:
         self.LowThreshold = 1.10
         if not os.path.exists(fileListPath):
             print 'Creating the file list...'
-            query = pDataCatalogQuery(group, minStartTime, maxStartTime)
+            query = pDataCatalogQuery('MERIT', minStartTime, maxStartTime)
             query.dumpList(fileListPath)
         else:
             print 'File list %s found.' % fileListPath
@@ -54,7 +54,7 @@ class pBumpFinder:
         fileName = os.path.basename(filePath)       
         runId = int(fileName.split('_')[0].strip('r'))
         self.OutputLogFile.writelines('\nAnalyzing run %d...\n' % runId)
-        rootFile = ROOT.TFile(filePath)
+        rootFile = ROOT.TXNetFile(filePath)
         meritTuple = rootFile.Get('MeritTuple')
         numEntries = meritTuple.GetEntries()
         meritTuple.GetEntry(0)
@@ -238,7 +238,7 @@ if __name__ == '__main__':
         parser.error('Exactly one argument required.')
     inputPath = args[0]
 
-    MIN_START_TIME = utc2met(convert2sec('Sep/01/2008 00:00:00'))
-    MAX_START_TIME = None
-    finder = pBumpFinder(inputPath, 'out.root', MIN_START_TIME, MAX_START_TIME)
+    MIN_START_TIME = utc2met(convert2sec('Nov/01/2008 00:00:00'))
+    MAX_START_TIME = utc2met(convert2sec('Dec/01/2008 00:00:00'))
+    finder = pBumpFinder(inputPath, 'bump_november.root', MIN_START_TIME, MAX_START_TIME)
     finder.run(opts.i)
