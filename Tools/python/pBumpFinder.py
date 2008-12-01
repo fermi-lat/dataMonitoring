@@ -55,6 +55,9 @@ class pBumpFinder:
         runId = int(fileName.split('_')[0].strip('r'))
         self.OutputLogFile.writelines('\nAnalyzing run %d...\n' % runId)
         rootFile = ROOT.TXNetFile(filePath)
+        if rootFile.IsZombie():
+            print 'Switching to local mode.'
+            rootFile = ROOT.TFile(filePath)
         meritTuple = rootFile.Get('MeritTuple')
         numEntries = meritTuple.GetEntries()
         meritTuple.GetEntry(0)
@@ -212,14 +215,24 @@ class pBumpFinder:
                 hMapAround.Draw('colz')
                 mapCanvas.Update()
 
+            # Spacecraft position.
+            hName = '%d_ptpos' % (runId)
+            hPtPos = ROOT.TH2F(hName, hName, 100, -180, 180, 100, -35, 35)
+            meritTuple.Project(hName, 'PtLat:PtLon', bumpCut)
+            if interactive:
+                ptposCanvas = ROOT.TCanvas('PtPos')
+                ptposCanvas.cd()
+                hSpacePos.Draw('colz')
+                ptposCanvas.Update()
+
             # Write objects to the output ROOT file.
             self.OutputRootFile.cd()
             for object in [hRate, hMag, hNormRate, hMapBump, hMapBefore,
-                           hMapAfter, hMapAround]:
+                           hMapAfter, hMapAround, hPtPos]:
                 object.Write()
 
         if interactive:
-            raw_input()
+            raw_input('Press enter to continue.')
         
 
 
@@ -227,7 +240,7 @@ if __name__ == '__main__':
     from optparse import OptionParser
     parser = OptionParser(usage = 'usage: %prog [options] rootFilePath')
     parser.add_option('-o', '--output-file', dest = 'o',
-                      default = None, type = str,
+                      default = 'out.root', type = str,
                       help = 'path to the output file.')
     parser.add_option('-i', '--interactive', dest = 'i',
                       default = False, action = 'store_true',
@@ -240,5 +253,5 @@ if __name__ == '__main__':
 
     MIN_START_TIME = utc2met(convert2sec('Nov/01/2008 00:00:00'))
     MAX_START_TIME = utc2met(convert2sec('Dec/01/2008 00:00:00'))
-    finder = pBumpFinder(inputPath, 'bump_november.root', MIN_START_TIME, MAX_START_TIME)
+    finder = pBumpFinder(inputPath, opts.o, MIN_START_TIME, MAX_START_TIME)
     finder.run(opts.i)

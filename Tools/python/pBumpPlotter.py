@@ -25,8 +25,8 @@ class pBumpPlotter:
             self.parseLogFile(logFilePath)
         else:
             print 'Could not find log file.'
-        self.Canvas = ROOT.TCanvas('bumpHunting', 'bumpHunting', 1000, 600)
-        self.Canvas.Divide(3, 2)
+        self.Canvas = ROOT.TCanvas('bumpHunting', 'bumpHunting', 1100, 500)
+        self.Canvas.Divide(4, 2)
 
     def parseLogFile(self, logFilePath):
         print 'Parsing log file path...'
@@ -59,13 +59,16 @@ class pBumpPlotter:
                     lines.append(line)
             self.Canvas.cd(3)
             self.RootFile.Get('%s_normalized_rate' % runId).Draw()
-            self.Canvas.Update()
             self.Canvas.cd(4)
-            self.RootFile.Get('%s_map_before' % runId).Draw('colz')
+            self.RootFile.Get('%s_ptpos' % runId).Draw()
             self.Canvas.cd(5)
-            self.RootFile.Get('%s_map_bump' % runId).Draw('colz')
+            self.RootFile.Get('%s_map_before' % runId).Draw('colz')
             self.Canvas.cd(6)
+            self.RootFile.Get('%s_map_bump' % runId).Draw('colz')
+            self.Canvas.cd(7)
             self.RootFile.Get('%s_map_after' % runId).Draw('colz')
+            self.Canvas.cd(8)
+            self.RootFile.Get('%s_map_around' % runId).Draw('colz')
             self.Canvas.Update()
             self.Canvas.SaveAs(outputFilePath.replace('.png',\
                                                       '_%s.png' % runId))
