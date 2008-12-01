@@ -6,8 +6,7 @@ import sys
 from pLongTermTrendMaker import *
 
 sys.path.append('../../Report/python')
-from pTimeConverter import *
-                                      
+from pTimeConverter import *          
 
 ROOT.gStyle.SetCanvasColor(10)
 ROOT.gStyle.SetPalette(1)

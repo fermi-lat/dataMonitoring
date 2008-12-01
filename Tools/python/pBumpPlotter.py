@@ -4,6 +4,9 @@ import os
 import sys
 import ROOT
 
+sys.path.append('../../LRSUtils/python')
+from __polygons__ import *
+
 ROOT.gStyle.SetCanvasColor(10)
 ROOT.gStyle.SetPalette(1)
 
@@ -61,6 +64,9 @@ class pBumpPlotter:
             self.RootFile.Get('%s_normalized_rate' % runId).Draw()
             self.Canvas.cd(4)
             self.RootFile.Get('%s_ptpos' % runId).Draw()
+            p = polygon(ROB_POLYGON)
+            p.draw(True, 1, ROOT.kRed)
+            lines.append(p)
             self.Canvas.cd(5)
             self.RootFile.Get('%s_map_before' % runId).Draw('colz')
             self.Canvas.cd(6)
