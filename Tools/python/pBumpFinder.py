@@ -1,5 +1,13 @@
+#!/usr/bin/env python
+
+import os
+import sys
+
 from pLongTermTrendMaker import *
 
+sys.path.append('../../Report/python')
+from pTimeConverter import *
+                                      
 
 ROOT.gStyle.SetCanvasColor(10)
 ROOT.gStyle.SetPalette(1)
@@ -7,16 +15,33 @@ ROOT.gStyle.SetPalette(1)
 
 class pBumpFinder:
     
-    def __init__(self, fileListPath, outputFilePath):
+    def __init__(self, fileListPath, outputFilePath, minStartTime,
+                 maxStartTime = None):
         self.HistogramDict = {}
         self.FitFunction = ROOT.TF1('fitFunction', 'pol3')
         self.HighThreshold = 1.125
         self.LowThreshold = 1.10
+        if not os.path.exists(fileListPath):
+            print 'Creating the file list...'
+            query = pDataCatalogQuery(group, minStartTime, maxStartTime)
+            query.dumpList(fileListPath)
+        else:
+            print 'File list %s found.' % fileListPath
+            print 'Delete the file if you want to recreate it.'
+        self.FileList = file(fileListPath, 'r').readlines()
+        for (i, filePath) in enumerate(self.FileList):
+            self.FileList[i] = filePath.strip('\n')
+        print 'File list contains %s entries.' % len(self.FileList)
 
     def addHistogram(self, histogram):
         self.HistogramDict[histogram.GetName()] = histogram
 
-    def analyzeRun(self, filePath, debug = False, timeBinWidth = 25):
+    def run(self, interactive = False):
+        for filePath in self.FileList:
+            self.analyzeRun(filePath, interactive)
+            
+
+    def analyzeRun(self, filePath, interactive = False, timeBinWidth = 25):
         print 'Analyzing %s...' % filePath
 
         # Retrieve run information.
@@ -32,7 +57,7 @@ class pBumpFinder:
         runDuration = stopTime - startTime
         numTimeBins = int(runDuration/timeBinWidth)
 
-        if debug:
+        if interactive:
             rateCanvas = ROOT.TCanvas('Rate')
             rateCanvas.Divide(2, 2)
 
@@ -47,7 +72,7 @@ class pBumpFinder:
             counts = float(hRate.GetBinContent(i))
             timeInterval = hRate.GetBinWidth(i)
             hRate.SetBinContent(i, counts/timeInterval)
-        if debug:
+        if interactive:
             rateCanvas.cd(1)
             hRate.Draw()
             rateCanvas.Update()
@@ -66,7 +91,7 @@ class pBumpFinder:
             hMag.SetBinContent(i, mcIlwainL)
         hMag.GetXaxis().SetTitle('Elapsed time - run start time (s)')
         hMag.GetYaxis().SetTitle('McIlwain L')
-        if debug:
+        if interactive:
             rateCanvas.cd(2)
             hMag.Draw()
             rateCanvas.Update()
@@ -77,12 +102,12 @@ class pBumpFinder:
             fitGraph.SetPoint(i - 1, mcIlwainL, rate)
         fitGraph.GetXaxis().SetTitle('McIlwain L')
         fitGraph.GetYaxis().SetTitle('Average rate (Hz)')
-        if debug:
+        if interactive:
             fitOptions = ''
         else:
             fitOptions = 'QN'
         fitGraph.Fit('fitFunction', fitOptions)
-        if debug:
+        if interactive:
             rateCanvas.cd(3)
             fitGraph.Draw('AP*')
             rateCanvas.Update()
@@ -97,7 +122,7 @@ class pBumpFinder:
             mcIlwainL = hMag.GetBinContent(i)
             expRate = self.FitFunction.Eval(mcIlwainL)
             hNormRate.SetBinContent(i, rate/expRate)
-        if debug:
+        if interactive:
             rateCanvas.cd(4)
             hNormRate.Draw()
             rateCanvas.Update()
@@ -124,7 +149,7 @@ class pBumpFinder:
             bumpDuration = bumpStopTime - bumpStartTime
             print 'Peak edges: %f--%f' % (bumpStartTime, bumpStopTime)
             print 'Creating sky map...'
-            if debug:
+            if interactive:
                 mapCanvas = ROOT.TCanvas('Sky map')
                 mapCanvas.Divide(2, 2)
             bumpCut = 'EvtElapsedTime-%f>%f && EvtElapsedTime-%f<%f' %\
@@ -140,7 +165,7 @@ class pBumpFinder:
             hMapBump = ROOT.TH2F(hName, hName, 100, 0, 360, 100, -90, 90)
             meritTuple.Project(hName, 'FT1Dec:FT1Ra', bumpCut)
             zmax = hMapBump.GetMaximum()
-            if debug:
+            if interactive:
                 mapCanvas.cd(1)
                 hMapBump.Draw('colz')
                 mapCanvas.Update()
@@ -148,7 +173,7 @@ class pBumpFinder:
             hMapBefore = ROOT.TH2F(hName, hName, 100, 0, 360, 100, -90, 90)
             meritTuple.Project(hName, 'FT1Dec:FT1Ra', beforeCut)
             hMapBefore.SetMaximum(zmax)
-            if debug:
+            if interactive:
                 mapCanvas.cd(2)
                 hMapBefore.Draw('colz')
                 mapCanvas.Update()
@@ -156,7 +181,7 @@ class pBumpFinder:
             hMapAfter = ROOT.TH2F(hName, hName, 100, 0, 360, 100, -90, 90)
             hMapAfter.SetMaximum(zmax)
             meritTuple.Project(hName, 'FT1Dec:FT1Ra', afterCut)                
-            if debug:
+            if interactive:
                 mapCanvas.cd(3)
                 hMapAfter.Draw('colz')
                 mapCanvas.Update()
@@ -164,16 +189,32 @@ class pBumpFinder:
             hMapAround = ROOT.TH2F(hName, hName, 100, 0, 360, 100, -90, 90)
             meritTuple.Project(hName, 'FT1Dec:FT1Ra', aroundCut)
             hMapAround.SetMaximum(2*zmax)
-            if debug:
+            if interactive:
                 mapCanvas.cd(4)
                 hMapAround.Draw('colz')
                 mapCanvas.Update()
 
-        if debug:
+        if interactive:
             raw_input()
         
 
 
 if __name__ == '__main__':
-    finder = pBumpFinder([], '')
-    finder.analyzeRun('/data/work/darkmatter/r0249358020_v001_merit.root', True)
+    from optparse import OptionParser
+    parser = OptionParser(usage = 'usage: %prog [options] rootFilePath')
+    parser.add_option('-o', '--output-file', dest = 'o',
+                      default = None, type = str,
+                      help = 'path to the output file.')
+    parser.add_option('-i', '--interactive', dest = 'i',
+                      default = False, action = 'store_true',
+                      help = 'run in interactive mode.')
+    (opts, args) = parser.parse_args()
+    if len(args) != 1:
+        parser.print_help()
+        parser.error('Exactly one argument required.')
+    inputPath = args[0]
+
+    MIN_START_TIME = utc2met(convert2sec('Sep/01/2008 00:00:00'))
+    MAX_START_TIME = None
+    finder = pBumpFinder(inputPath, 'out.root', MIN_START_TIME, MAX_START_TIME)
+    finder.run(opts.i)
