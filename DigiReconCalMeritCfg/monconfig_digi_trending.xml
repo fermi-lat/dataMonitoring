@@ -662,6 +662,14 @@
       <description> Rate of  Bytes (Evt size AFTER compression) during the specified time interval. </description>
     </object>
 
+     <object>
+      <name> CompressedEvtSizeBytes </name>
+      <formula><![CDATA[ CompressedEventSizeInBytes ]]></formula>
+      <cut><![CDATA[ CompressedEventSizeInBytes>1]]></cut>
+      <type> mean </type>
+      <description> Average Evt size AFTER compression during the specified time interval. </description>
+    </object>
+
    
 
     <object>
