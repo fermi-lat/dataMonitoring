@@ -32,6 +32,8 @@ class pBumpFinder:
         for (i, filePath) in enumerate(self.FileList):
             self.FileList[i] = filePath.strip('\n')
         print 'File list contains %s entries.' % len(self.FileList)
+        self.OutputRootFile = ROOT.TFile(outputFilePath, 'RECREATE')
+        self.OutputLogFile = file(outputFilePath.replace('.root', '.log'), 'w')
 
     def addHistogram(self, histogram):
         self.HistogramDict[histogram.GetName()] = histogram
@@ -39,14 +41,19 @@ class pBumpFinder:
     def run(self, interactive = False):
         for filePath in self.FileList:
             self.analyzeRun(filePath, interactive)
+        self.OutputRootFile.Write()
+        self.OutputRootFile.Close()
+        self.OutputLogFile.close()
             
 
-    def analyzeRun(self, filePath, interactive = False, timeBinWidth = 25):
-        print 'Analyzing %s...' % filePath
+    def analyzeRun(self, filePath, interactive = False, timeBinWidth = 25,
+                   runPadding = 150):
+        print '\nAnalyzing %s...' % filePath
 
         # Retrieve run information.
         fileName = os.path.basename(filePath)       
         runId = int(fileName.split('_')[0].strip('r'))
+        self.OutputLogFile.writelines('\nAnalyzing run %d...\n' % runId)
         rootFile = ROOT.TFile(filePath)
         meritTuple = rootFile.Get('MeritTuple')
         numEntries = meritTuple.GetEntries()
@@ -132,8 +139,10 @@ class pBumpFinder:
         peakTime = hNormRate.GetBinCenter(maximumBin)
         peakValue = hNormRate.GetBinContent(maximumBin)
         if peakValue > self.HighThreshold:
-            print 'Found significant peak (%f) at %f s since the run start.' %\
-                (peakValue, peakTime)
+            msg = 'Found significant peak (%f) at %f s since the run start.' %\
+                  (peakValue, peakTime)
+            print msg
+            self.OutputLogFile.writelines('%s\n' % msg)
             value = peakValue
             bin = maximumBin
             while value > self.LowThreshold:
@@ -147,8 +156,17 @@ class pBumpFinder:
                 value = hNormRate.GetBinContent(bin)
             bumpStopTime = hNormRate.GetBinCenter(bin)
             bumpDuration = bumpStopTime - bumpStartTime
-            print 'Peak edges: %f--%f' % (bumpStartTime, bumpStopTime)
-            print 'Creating sky map...'
+            msg = 'Peak edges: %f--%f' % (bumpStartTime, bumpStopTime)
+            print msg
+            self.OutputLogFile.writelines('%s\n' % msg)
+            if bumpStartTime < runPadding:
+                msg = 'Bump is close to the beginning of the run.'
+                print msg
+                self.OutputLogFile.writelines('%s\n' % msg)
+            elif (stopTime - bumpStopTime) < runPadding:
+                msg = 'Bump is close to the end of the run.'
+                print msg
+                self.OutputLogFile.writelines('%s\n' % msg)
             if interactive:
                 mapCanvas = ROOT.TCanvas('Sky map')
                 mapCanvas.Divide(2, 2)
@@ -193,6 +211,12 @@ class pBumpFinder:
                 mapCanvas.cd(4)
                 hMapAround.Draw('colz')
                 mapCanvas.Update()
+
+            # Write objects to the output ROOT file.
+            self.OutputRootFile.cd()
+            for object in [hRate, hMag, hNormRate, hMapBump, hMapBefore,
+                           hMapAfter, hMapAround]:
+                object.Write()
 
         if interactive:
             raw_input()
