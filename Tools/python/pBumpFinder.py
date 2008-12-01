@@ -165,69 +165,71 @@ class pBumpFinder:
                 msg = 'Bump is close to the beginning of the run.'
                 print msg
                 self.OutputLogFile.writelines('%s\n' % msg)
-            elif (stopTime - bumpStopTime) < runPadding:
+            elif (stopTime - bumpStopTime) < runPadding or \
+                     bumpStopTime > stopTime:
                 msg = 'Bump is close to the end of the run.'
                 print msg
                 self.OutputLogFile.writelines('%s\n' % msg)
-            if interactive:
-                mapCanvas = ROOT.TCanvas('Sky map')
-                mapCanvas.Divide(2, 2)
-            bumpCut = 'EvtElapsedTime-%f>%f && EvtElapsedTime-%f<%f' %\
-                (startTime, bumpStartTime, startTime, bumpStopTime)
-            beforeCut = 'EvtElapsedTime-%f>%f && EvtElapsedTime-%f<%f' %\
-                (startTime, bumpStartTime - 2*bumpDuration,
-                 startTime, bumpStartTime - bumpDuration)
-            afterCut = 'EvtElapsedTime-%f>%f && EvtElapsedTime-%f<%f' %\
-                (startTime, bumpStopTime + bumpDuration,
-                 startTime, bumpStopTime + 2*bumpDuration)
-            aroundCut = '(%s) || (%s)' % (beforeCut, afterCut)
-            hName = '%d_map_%s' % (runId, 'bump')
-            hMapBump = ROOT.TH2F(hName, hName, 100, 0, 360, 100, -90, 90)
-            meritTuple.Project(hName, 'FT1Dec:FT1Ra', bumpCut)
-            zmax = hMapBump.GetMaximum()
-            if interactive:
-                mapCanvas.cd(1)
-                hMapBump.Draw('colz')
-                mapCanvas.Update()
-            hName = '%d_map_%s' % (runId, 'before')
-            hMapBefore = ROOT.TH2F(hName, hName, 100, 0, 360, 100, -90, 90)
-            meritTuple.Project(hName, 'FT1Dec:FT1Ra', beforeCut)
-            hMapBefore.SetMaximum(zmax)
-            if interactive:
-                mapCanvas.cd(2)
-                hMapBefore.Draw('colz')
-                mapCanvas.Update()
-            hName = '%d_map_%s' % (runId, 'after')
-            hMapAfter = ROOT.TH2F(hName, hName, 100, 0, 360, 100, -90, 90)
-            hMapAfter.SetMaximum(zmax)
-            meritTuple.Project(hName, 'FT1Dec:FT1Ra', afterCut)                
-            if interactive:
-                mapCanvas.cd(3)
-                hMapAfter.Draw('colz')
-                mapCanvas.Update()
-            hName = '%d_map_%s' % (runId, 'around')
-            hMapAround = ROOT.TH2F(hName, hName, 100, 0, 360, 100, -90, 90)
-            meritTuple.Project(hName, 'FT1Dec:FT1Ra', aroundCut)
-            hMapAround.SetMaximum(2*zmax)
-            if interactive:
-                mapCanvas.cd(4)
-                hMapAround.Draw('colz')
-                mapCanvas.Update()
+            else:
+                if interactive:
+                    mapCanvas = ROOT.TCanvas('Sky map')
+                    mapCanvas.Divide(2, 2)
+                bumpCut = 'EvtElapsedTime-%f>%f && EvtElapsedTime-%f<%f' %\
+                    (startTime, bumpStartTime, startTime, bumpStopTime)
+                beforeCut = 'EvtElapsedTime-%f>%f && EvtElapsedTime-%f<%f' %\
+                    (startTime, bumpStartTime - 2*bumpDuration,
+                     startTime, bumpStartTime - bumpDuration)
+                afterCut = 'EvtElapsedTime-%f>%f && EvtElapsedTime-%f<%f' %\
+                    (startTime, bumpStopTime + bumpDuration,
+                     startTime, bumpStopTime + 2*bumpDuration)
+                aroundCut = '(%s) || (%s)' % (beforeCut, afterCut)
+                hName = '%d_map_%s' % (runId, 'bump')
+                hMapBump = ROOT.TH2F(hName, hName, 100, 0, 360, 100, -90, 90)
+                meritTuple.Project(hName, 'FT1Dec:FT1Ra', bumpCut)
+                zmax = hMapBump.GetMaximum()
+                if interactive:
+                    mapCanvas.cd(1)
+                    hMapBump.Draw('colz')
+                    mapCanvas.Update()
+                hName = '%d_map_%s' % (runId, 'before')
+                hMapBefore = ROOT.TH2F(hName, hName, 100, 0, 360, 100, -90, 90)
+                meritTuple.Project(hName, 'FT1Dec:FT1Ra', beforeCut)
+                hMapBefore.SetMaximum(zmax)
+                if interactive:
+                    mapCanvas.cd(2)
+                    hMapBefore.Draw('colz')
+                    mapCanvas.Update()
+                hName = '%d_map_%s' % (runId, 'after')
+                hMapAfter = ROOT.TH2F(hName, hName, 100, 0, 360, 100, -90, 90)
+                hMapAfter.SetMaximum(zmax)
+                meritTuple.Project(hName, 'FT1Dec:FT1Ra', afterCut)
+                if interactive:
+                    mapCanvas.cd(3)
+                    hMapAfter.Draw('colz')
+                    mapCanvas.Update()
+                hName = '%d_map_%s' % (runId, 'around')
+                hMapAround = ROOT.TH2F(hName, hName, 100, 0, 360, 100, -90, 90)
+                meritTuple.Project(hName, 'FT1Dec:FT1Ra', aroundCut)
+                hMapAround.SetMaximum(2*zmax)
+                if interactive:
+                    mapCanvas.cd(4)
+                    hMapAround.Draw('colz')
+                    mapCanvas.Update()
 
-            # Spacecraft position.
-            hName = '%d_ptpos' % (runId)
-            hPtPos = ROOT.TH2F(hName, hName, 100, -180, 180, 100, -35, 35)
-            meritTuple.Project(hName, 'PtLat:PtLon', bumpCut)
-            if interactive:
-                ptposCanvas = ROOT.TCanvas('PtPos')
-                ptposCanvas.cd()
-                hSpacePos.Draw('colz')
-                ptposCanvas.Update()
+                # Spacecraft position.
+                hName = '%d_ptpos' % (runId)
+                hPtPos = ROOT.TH2F(hName, hName, 100, -180, 180, 100, -35, 35)
+                meritTuple.Project(hName, 'PtLat:PtLon', bumpCut)
+                if interactive:
+                    ptposCanvas = ROOT.TCanvas('PtPos')
+                    ptposCanvas.cd()
+                    hSpacePos.Draw('colz')
+                    ptposCanvas.Update()
 
-            # Write objects to the output ROOT file.
-            self.OutputRootFile.cd()
-            for object in [hRate, hMag, hNormRate, hMapBump, hMapBefore,
-                           hMapAfter, hMapAround, hPtPos]:
+                # Write objects to the output ROOT file.
+                self.OutputRootFile.cd()
+                for object in [hRate, hMag, hNormRate, hMapBump, hMapBefore,
+                               hMapAfter, hMapAround, hPtPos]:
                 object.Write()
 
         if interactive:
