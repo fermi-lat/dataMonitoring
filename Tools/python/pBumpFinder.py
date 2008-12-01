@@ -2,6 +2,7 @@
 
 import os
 import sys
+import time
 
 from pLongTermTrendMaker import *
 
@@ -48,6 +49,7 @@ class pBumpFinder:
     def analyzeRun(self, filePath, interactive = False, timeBinWidth = 25,
                    runPadding = 150):
         print '\nAnalyzing %s...' % filePath
+        t0 = time.time()
 
         # Retrieve run information.
         fileName = os.path.basename(filePath)       
@@ -231,6 +233,7 @@ class pBumpFinder:
                                hMapAfter, hMapAround, hPtPos]:
                     object.Write()
 
+        print 'Done in %f s.' % (time.time() - t0)
         if interactive:
             raw_input('Press enter to continue.')
         
