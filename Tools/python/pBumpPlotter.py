@@ -14,31 +14,61 @@ class pBumpPlotter:
         self.RootFile = ROOT.TFile(inputFilePath)
         print 'Populating run list...'
         self.RunList = []
+        self.EdgeDict = {}
         for object in self.RootFile.GetListOfKeys():
             runId = object.GetName().split('_')[0]
             if runId not in self.RunList:
                 self.RunList.append(runId)
         print 'Done. %s run(s) found.' % len(self.RunList)
+        logFilePath = inputFilePath.replace('.root', '.log')
+        if os.path.exists(logFilePath):
+            self.parseLogFile(logFilePath)
+        else:
+            print 'Could not find log file.'
         self.Canvas = ROOT.TCanvas('bumpHunting', 'bumpHunting', 1000, 600)
         self.Canvas.Divide(3, 2)
 
+    def parseLogFile(self, logFilePath):
+        print 'Parsing log file path...'
+        iterator = file(logFilePath)
+        for line in iterator:
+            if 'Analyzing run ' in line:
+                runId = line.strip('Analyzing run ').strip('...\n')
+                iterator.next()
+                edges = iterator.next().strip('Peak edges: ').strip('\n')
+                edges = edges.split('--')
+                edges = tuple([float(edge) for edge in edges])
+                self.EdgeDict[runId] = edges
+        print 'Done.'
+
     def plot(self, outputFilePath, interactive = False):
-        for run in self.RunList:
+        for runId in self.RunList:
             self.Canvas.cd(1)
-            self.RootFile.Get('%s_rate' % run).Draw()
+            self.RootFile.Get('%s_mcIlwainL' % runId).Draw()
             self.Canvas.cd(2)
-            self.RootFile.Get('%s_mcIlwainL' % run).Draw()
+            self.RootFile.Get('%s_rate' % runId).Draw()
+            if self.EdgeDict.has_key(runId):
+                lines = []
+                edges = self.EdgeDict[runId]
+                for edge in edges:
+                    ymin = self.RootFile.Get('%s_rate' % runId).GetMinimum()
+                    ymax = self.RootFile.Get('%s_rate' % runId).GetMaximum()
+                    line = ROOT.TLine(edge, ymin, edge, ymax)
+                    line.SetLineStyle(2)
+                    line.Draw('same')
+                    lines.append(line)
             self.Canvas.cd(3)
-            self.RootFile.Get('%s_normalized_rate' % run).Draw()
+            self.RootFile.Get('%s_normalized_rate' % runId).Draw()
             self.Canvas.Update()
             self.Canvas.cd(4)
-            self.RootFile.Get('%s_map_before' % run).Draw('colz')
+            self.RootFile.Get('%s_map_before' % runId).Draw('colz')
             self.Canvas.cd(5)
-            self.RootFile.Get('%s_map_bump' % run).Draw('colz')
+            self.RootFile.Get('%s_map_bump' % runId).Draw('colz')
             self.Canvas.cd(6)
-            self.RootFile.Get('%s_map_after' % run).Draw('colz')
+            self.RootFile.Get('%s_map_after' % runId).Draw('colz')
             self.Canvas.Update()
-            self.Canvas.SaveAs(outputFilePath.replace('.png', '_%s.png' % run))
+            self.Canvas.SaveAs(outputFilePath.replace('.png',\
+                                                      '_%s.png' % runId))
             if interactive:
                 raw_input()
 
