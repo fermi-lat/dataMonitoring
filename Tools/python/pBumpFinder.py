@@ -165,8 +165,7 @@ class pBumpFinder:
                 msg = 'Bump is close to the beginning of the run.'
                 print msg
                 self.OutputLogFile.writelines('%s\n' % msg)
-            elif (stopTime - bumpStopTime) < runPadding or \
-                     bumpStopTime > stopTime:
+            elif (stopTime - startTime - bumpStopTime) < runPadding:
                 msg = 'Bump is close to the end of the run.'
                 print msg
                 self.OutputLogFile.writelines('%s\n' % msg)
