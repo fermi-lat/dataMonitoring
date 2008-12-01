@@ -230,7 +230,7 @@ class pBumpFinder:
                 self.OutputRootFile.cd()
                 for object in [hRate, hMag, hNormRate, hMapBump, hMapBefore,
                                hMapAfter, hMapAround, hPtPos]:
-                object.Write()
+                    object.Write()
 
         if interactive:
             raw_input('Press enter to continue.')
