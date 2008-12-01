@@ -18,7 +18,7 @@ class pBumpFinder:
                  maxStartTime = None):
         self.HistogramDict = {}
         self.FitFunction = ROOT.TF1('fitFunction', 'pol3')
-        self.HighThreshold = 1.125
+        self.HighThreshold = 1.135
         self.LowThreshold = 1.10
         if not os.path.exists(fileListPath):
             print 'Creating the file list...'

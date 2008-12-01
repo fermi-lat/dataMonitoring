@@ -37,11 +37,15 @@ class pBumpPlotter:
         for line in iterator:
             if 'Analyzing run ' in line:
                 runId = line.strip('Analyzing run ').strip('...\n')
-                iterator.next()
-                edges = iterator.next().strip('Peak edges: ').strip('\n')
-                edges = edges.split('--')
-                edges = tuple([float(edge) for edge in edges])
-                self.EdgeDict[runId] = edges
+                try:
+                    line = iterator.next()
+                except:
+                    break
+                if line != '\n':
+                    edges = iterator.next().strip('Peak edges: ').strip('\n')
+                    edges = edges.split('--')
+                    edges = tuple([float(edge) for edge in edges])
+                    self.EdgeDict[runId] = edges
         print 'Done.'
 
     def plot(self, outputFilePath, interactive = False):
@@ -63,10 +67,13 @@ class pBumpPlotter:
             self.Canvas.cd(3)
             self.RootFile.Get('%s_normalized_rate' % runId).Draw()
             self.Canvas.cd(4)
-            self.RootFile.Get('%s_ptpos' % runId).Draw()
-            p = polygon(ROB_POLYGON)
-            p.draw(True, 1, ROOT.kRed)
-            lines.append(p)
+            try:
+                self.RootFile.Get('%s_ptpos' % runId).Draw()
+                p = polygon(ROB_POLYGON)
+                p.draw(True, 1, ROOT.kRed)
+                lines.append(p)
+            except:
+                pass
             self.Canvas.cd(5)
             self.RootFile.Get('%s_map_before' % runId).Draw('colz')
             self.Canvas.cd(6)
