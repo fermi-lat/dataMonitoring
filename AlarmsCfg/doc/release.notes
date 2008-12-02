@@ -1,3 +1,10 @@
+*** (To Be Tagged) *** 
+- CondArrCalLo_CNOOpensWindow_TH1 : min entries = 50
+- CondArrCalHi_CNOOpensWindow_TH1 : min entries = 25
+- CondArrTKR_CNOOpensWindow_TH1   : lower limits set to 0.
+
+* Relevant jira(s): GDQMQ-291
+
 *** v5r8p0 ***
 - Added exception in tkr trend for tower 2, plane 31 (new noisy strip).
 - Got rid of the alarm on
