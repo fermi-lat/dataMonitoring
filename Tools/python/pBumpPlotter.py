@@ -43,6 +43,7 @@ class pBumpPlotter:
                     break
                 if line != '\n':
                     edges = iterator.next().strip('Peak edges: ').strip('\n')
+                    edges = edges.split('(MET')[0].strip()
                     edges = edges.split('--')
                     edges = tuple([float(edge) for edge in edges])
                     self.EdgeDict[runId] = edges
