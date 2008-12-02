@@ -55,8 +55,12 @@ class pBumpFinder:
         t0 = time.time()
 
         # Retrieve run information.
-        fileName = os.path.basename(filePath)       
-        runId = int(fileName.split('_')[0].strip('r'))
+        fileName = os.path.basename(filePath)
+        runId = fileName.split('_')[0].strip('r')
+        try:
+            runId = int(runId)
+        except ValueError:
+            runId = int(runId.split('-')[0])
         self.OutputLogFile.writelines('\nAnalyzing run %d...\n' % runId)
         rootFile = ROOT.TXNetFile(filePath)
         if rootFile.IsZombie():
@@ -163,7 +167,9 @@ class pBumpFinder:
                 value = hNormRate.GetBinContent(bin)
             bumpStopTime = hNormRate.GetBinCenter(bin)
             bumpDuration = bumpStopTime - bumpStartTime
-            msg = 'Peak edges: %f--%f' % (bumpStartTime, bumpStopTime)
+            msg = 'Peak edges: %f--%f (MET %f--%f)' %\
+                  (bumpStartTime, bumpStopTime,
+                   bumpStartTime + startTime, bumpStopTime + startTime)
             print msg
             self.OutputLogFile.writelines('%s\n' % msg)
             if bumpStartTime < runPadding:
@@ -257,7 +263,7 @@ if __name__ == '__main__':
         parser.error('Exactly one argument required.')
     inputPath = args[0]
 
-    MIN_START_TIME = utc2met(convert2sec('Nov/01/2008 00:00:00'))
-    MAX_START_TIME = utc2met(convert2sec('Dec/01/2008 00:00:00'))
+    MIN_START_TIME = utc2met(convert2sec('Aug/01/2008 00:00:00'))
+    MAX_START_TIME = None
     finder = pBumpFinder(inputPath, opts.o, MIN_START_TIME, MAX_START_TIME)
     finder.run(opts.i)
