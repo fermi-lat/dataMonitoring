@@ -1,4 +1,4 @@
-*** v5r8p1, to be tagged *** 
+*** v5r8p1 *** 
 All of the following changes apply to fastmon and digi eor:
 - CondArrCalLo_CNOOpensWindow_TH1 : min entries = 50.
 - CondArrCalHi_CNOOpensWindow_TH1 : min entries = 25.
