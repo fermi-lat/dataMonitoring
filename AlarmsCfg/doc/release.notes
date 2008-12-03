@@ -1,9 +1,14 @@
-*** (To Be Tagged) *** 
-- CondArrCalLo_CNOOpensWindow_TH1 : min entries = 50
-- CondArrCalHi_CNOOpensWindow_TH1 : min entries = 25
+*** v5r8p1, to be tagged *** 
+All of the following changes apply to fastmon and digi eor:
+- CondArrCalLo_CNOOpensWindow_TH1 : min entries = 50.
+- CondArrCalHi_CNOOpensWindow_TH1 : min entries = 25.
 - CondArrTKR_CNOOpensWindow_TH1   : lower limits set to 0.
+- CondArrROITrigger_TH1           : lower warn limit on low_high_ratio moved
+frmo 100 to 90.
+- CalX_NHit_TH1_Tower: limits relaxed a bit.
 
 * Relevant jira(s): GDQMQ-291
+
 
 *** v5r8p0 ***
 - Added exception in tkr trend for tower 2, plane 31 (new noisy strip).
