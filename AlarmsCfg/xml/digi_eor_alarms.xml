@@ -973,7 +973,7 @@
     <alarmSet name="CalX_NHit_TH1_Tower_*" only="[0, 3, 12, 15]" enabled="True">
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="pivot" value="5"/>
-	<warning_limits min="11.5" max="15.0"/>
+	<warning_limits min="11.0" max="15.0"/>
 	<error_limits min="8.0" max="20.0"/>
       </alarm> 
     </alarmSet>
