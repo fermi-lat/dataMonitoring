@@ -1,3 +1,14 @@
+v1r3p3  2008/12/05  (DEV) 
+---------------------------
+New file to normalize rates. 
+This addresses jira GDQMQ-300.
+The normalization factors were obtained with data from 56 days. 
+2008-09-20 00:00:00: MET 243561600
+2008-11-16 00:00:00: MET 248486400.
+
+The data related tot he Earth Albedo observation was removed.
+
+
 v1r3p2  2009/09/13  (DEV) 
 ---------------------------
 
