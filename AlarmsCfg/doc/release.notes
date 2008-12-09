@@ -1,3 +1,12 @@
+*** v5r8p3 (to be tagged) *** 
+- Changes in both digi_eor and fastmon_eor
+- CondArrCalHi_CNOOpensWindow_TH1 : remove low_high_ratio, extend mean and rms,
+  require only 10 events per histogram
+- CondArrTKR_CNOOpensWindow_TH1 : extend x_average limit slightly
+- CondArrROI_CNOOpensWindow_TH1 : extend x_average limit slightly
+
+* Relevant jira(s): GDQMQ-291
+
 *** v5r8p2 *** 
 - CalX_NHit_TH1_Tower limits relaxed a bit more.
 
