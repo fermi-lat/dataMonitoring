@@ -1,4 +1,4 @@
-*** v5r8p3 (to be tagged) *** 
+*** v5r8p3 *** 
 - Changes in both digi_eor and fastmon_eor
 - CondArrCalHi_CNOOpensWindow_TH1 : remove low_high_ratio, extend mean and rms,
   require only 10 events per histogram
