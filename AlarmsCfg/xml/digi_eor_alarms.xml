@@ -503,8 +503,8 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="3000" max="18000"/>
-	<error_limits   min="1500" max="30000"/>
+	<warning_limits min="3000" max="100000"/>
+	<error_limits   min="1500" max="100000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
