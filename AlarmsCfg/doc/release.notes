@@ -1,3 +1,10 @@
+*** v5r8p4 *** 
+- Changes in both digi_eor and fastmon_eor
+- CondArrTKR_CalLoOpensWindow_TH1 : low_high_ratio limits
+  tuned so that max should not fire the alarm
+
+* Relevant jira(s): GDQMQ-291
+
 *** v5r8p3 *** 
 - Changes in both digi_eor and fastmon_eor
 - CondArrCalHi_CNOOpensWindow_TH1 : remove low_high_ratio, extend mean and rms,
