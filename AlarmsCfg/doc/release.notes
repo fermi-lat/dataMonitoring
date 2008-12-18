@@ -1,3 +1,9 @@
+*** v5r8p5 *** 
+- Changes in both digi_eor and fastmon_eor
+- CondArrCNO_TKROpensWindow_TH1 : low_high_ratio limits
+  tuned so that max should not fire the alarm
+
+
 *** v5r8p4 *** 
 - Changes in both digi_eor and fastmon_eor
 - CondArrTKR_CalLoOpensWindow_TH1 : low_high_ratio limits
