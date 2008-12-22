@@ -180,8 +180,8 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="700" max="1600"/>
-	<error_limits min="300" max="2000"/>
+	<warning_limits min="700" max="3000"/>
+	<error_limits min="300" max="6000"/>
         <condition name="min_entries" value="10000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
