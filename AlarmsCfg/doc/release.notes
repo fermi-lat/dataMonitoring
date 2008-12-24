@@ -1,3 +1,7 @@
+*** v5r8p7 ***
+- Exception added on LEX1 and LEX8 pedestal rms for channel 1160.
+
+
 *** v5r8p6 *** 
 - Changes in both digi_eor and fastmon_eor
 - CondArrCNOTrigger_TH1 : low_high_ratio limits
