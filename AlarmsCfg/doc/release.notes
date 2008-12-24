@@ -1,3 +1,7 @@
+*** v5r8p8 ***
+- Added alarms on normalized rates.
+
+
 *** v5r8p7 ***
 - Exception added on LEX1 and LEX8 pedestal rms for channel 1160.
 - Minor limit change in RPM_Mean_TH1 y_values.
