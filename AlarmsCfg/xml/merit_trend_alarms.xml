@@ -25,4 +25,94 @@
 
   </alarmList>
 
+  <alarmList group="NormRates" name="Normalized rates" enabled="True">
+
+    <alarmSet name="Time::OutF_NormRateEvtsBeforeCuts" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="0.80" max="1.15"/>
+	<error_limits   min="0.60" max="1.50"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::OutF_NormRateEvtsBeforeCutsWithFswGAMMAFilter" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="0.75" max="1.20"/>
+	<error_limits   min="0.50" max="1.50"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::OutF_NormRateEvtsBeforeFilters" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="0.75" max="1.20"/>
+	<error_limits   min="0.50" max="1.50"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::OutF_NormRateTransientEvts" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits max="2.00"/>
+	<error_limits   max="3.00"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::OutF_NormRateSourceEvts" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits max="3.5"/>
+	<error_limits   max="7.0"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::OutF_NormRateDiffuseEvts" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits max="5.0"/>
+	<error_limits   max="10.0"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::OutF_NormRateMeritTriggerEngine" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits max="1.25"/>
+	<error_limits   max="2.00"/>
+	<parameter name="only" value="[3]"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::OutF_NormRateMeritTriggerEngine" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits max="1.2"/>
+	<error_limits   max="2.0"/>
+	<parameter name="only" value="[4]"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::OutF_NormRateMeritTriggerEngine" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits max="1.5"/>
+	<error_limits   max="3.0"/>
+	<parameter name="only" value="[5]"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::OutF_NormRateMeritTriggerEngine" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="0.8" max="1.2"/>
+	<error_limits   min="0.5" max="2.0"/>
+	<parameter name="only" value="[6]"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::OutF_NormRateMeritTriggerEngine" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="0.75" max="1.25"/>
+	<error_limits   min="0.50" max="2.00"/>
+	<parameter name="only" value="[7]"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::OutF_NormRateMeritTriggerEngine" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits max="1.5"/>
+	<error_limits   max="3.0"/>
+	<parameter name="only" value="[9]"/>
+      </alarm> 
+    </alarmSet>
+    <alarmSet name="Time::OutF_NormRateMeritTriggerEngine" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits max="1.5"/>
+	<error_limits   max="3.0"/>
+	<parameter name="only" value="[10]"/>
+      </alarm> 
+    </alarmSet>
+
+  </alarmList>
+
 </alarms>
