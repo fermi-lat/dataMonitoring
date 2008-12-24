@@ -1,5 +1,6 @@
 *** v5r8p7 ***
 - Exception added on LEX1 and LEX8 pedestal rms for channel 1160.
+- Minor limit change in RPM_Mean_TH1 y_values.
 
 
 *** v5r8p6 *** 
@@ -7,10 +8,12 @@
 - CondArrCNOTrigger_TH1 : low_high_ratio limits
   tuned so that max should not fire the alarm
 
+
 *** v5r8p5 *** 
 - Changes in both digi_eor and fastmon_eor
 - CondArrCNO_TKROpensWindow_TH1 : low_high_ratio limits
   tuned so that max should not fire the alarm
+
 
 *** v5r8p4 *** 
 - Changes in both digi_eor and fastmon_eor
@@ -18,6 +21,7 @@
   tuned so that max should not fire the alarm
 
 * Relevant jira(s): GDQMQ-291
+
 
 *** v5r8p3 *** 
 - Changes in both digi_eor and fastmon_eor
@@ -27,6 +31,7 @@
 - CondArrROI_CNOOpensWindow_TH1 : extend x_average limit slightly
 
 * Relevant jira(s): GDQMQ-291
+
 
 *** v5r8p2 *** 
 - CalX_NHit_TH1_Tower limits relaxed a bit more.
