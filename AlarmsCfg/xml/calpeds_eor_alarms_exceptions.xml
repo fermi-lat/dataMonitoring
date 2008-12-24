@@ -7,6 +7,8 @@
     <exception identifier="1250" status_on_violation="warning"/>
     <exception identifier="1685" status_on_violation="warning"/>
     <exception identifier="1983" status_on_violation="clean"/>
+    <!-- Added by Luca Baldini on Dec 24, 2008 -->
+    <exception identifier="1160" status_on_violation="clean"/>
   </alarm>
 
   <alarm name="CalXAdcPedRMS_LEX1_TH1" algorithm="y_values">
@@ -14,6 +16,8 @@
     <exception identifier="1250" status_on_violation="warning"/>
     <exception identifier="1685" status_on_violation="warning"/>
     <exception identifier="1983" status_on_violation="clean"/>
+    <!-- Added by Luca Baldini on Dec 24, 2008 -->
+    <exception identifier="1160" status_on_violation="clean"/>
   </alarm>
 
 </alarm_exceptions>
