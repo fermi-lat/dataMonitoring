@@ -21,6 +21,11 @@ shiftYear = dateStruct.tm_year
 shiftDoy = dateStruct.tm_yday - 1
 workDir = config.ReportMainDir
 padSeconds = config.paddingSeconds
+if  dateStruct.tm_yday == 1:
+    shiftYear = shiftYear-1
+    newDateStr = 'Dec 31 %s' % shiftYear
+    newDate = time.strptime(newDateStr,'%b %d %Y')
+    shiftDoy = newDate.tm_yday
 
 app = os.path.join(InstallDir,config.applicationName[reportType])
 duration = config.reportDuration[reportType] 
