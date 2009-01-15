@@ -49,7 +49,7 @@ class pAlarmUnitTest:
         print 'About to execute command "%s"...' % cmd
         os.system(cmd)
 
-    def runAll(self, inputFolderPath = None, options = 'r', wait = False):
+    def runAll(self, inputFolderPath = None, options = '-r', wait = False):
         if inputFolderPath is None:
             inputFolderPath = os.path.curdir
         for fileName in os.listdir(inputFolderPath):
@@ -69,7 +69,7 @@ if __name__ == '__main__':
                       default = False, action = 'store_true',
                       help = 'loop over the files in the folder')
     parser.add_option('-o', '--options', dest = 'o',
-                      default = 'r', type = str,
+                      default = '-r', type = str,
                       help = 'options to be passed to the alarm handler.')
     (opts, args) = parser.parse_args()
     if len(args) != 1:
