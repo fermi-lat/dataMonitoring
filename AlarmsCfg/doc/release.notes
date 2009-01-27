@@ -4,6 +4,8 @@ Number_layerOcc_TowerPlane.
 - Limits chenged for alarm x_average TkrPlanesHit_TH1_Tower_3. Before
 tower 0 was handled separately with the low limits slightly lower than all
 the other towers, not tower 3 is treated exactly like 0.
+- Added exception in fastmon_eor, alarm spikes_and_holes on
+TkrHitsCounter_PlaneGTFE_TH2_Tower_5 for layer 32, GTFE 3.
 
 
 *** v5r9p0 ***
