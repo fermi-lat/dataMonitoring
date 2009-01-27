@@ -1029,7 +1029,7 @@
       </alarm> 
     </alarmSet>
 
-    <alarmSet name="TkrPlanesHit_TH1_Tower_0" enabled="True">
+    <alarmSet name="TkrPlanesHit_TH1_Tower_*"  only="[0, 3]" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
 	<warning_limits min="3.0" max="11.0"/>
@@ -1042,7 +1042,7 @@
       </alarm>
     </alarmSet>
 
-    <alarmSet name="TkrPlanesHit_TH1_Tower_*" exclude="[0]" enabled="True">
+    <alarmSet name="TkrPlanesHit_TH1_Tower_*" exclude="[0, 3]" enabled="True">
       <alarm function="x_average" enabled="True">
 	<parameter name="min" value="1"/>
 	<warning_limits min="4.0" max="11.0"/>
