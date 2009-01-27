@@ -144,6 +144,13 @@
       <type> rate </type>
       <description> Rate of events with any type of error. </description>
     </object>
+    <object>
+	<name> FastMon_AnyThingButTEM </name>
+	<formula><![CDATA[ foronetime: ( FastMon_error_summary>=256 && !((FastMon_error_summary>>23)&0x1) )]]></formula>
+	<cut><![CDATA[ ]]></cut>
+	<type> rate </type>
+	<description> Rate of events with any type of error but TEM bug. </description>
+    </object>
     
     <object>
       <name> FastMon_GTCC_WORD_COUNT_PARITY_ERROR </name>
