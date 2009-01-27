@@ -1,3 +1,9 @@
+*** v5r9p1 ***
+- Added an exception for tower5, layer 32 in tkrmontrend, alarm
+Number_layerOcc_TowerPlane.
+-
+
+
 *** v5r9p0 ***
 - Added a couple more exception on CAL ped rms values, channel 848.
 
