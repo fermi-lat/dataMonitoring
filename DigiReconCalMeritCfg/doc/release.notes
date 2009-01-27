@@ -1,3 +1,9 @@
+v1r3p4  2009/01/27  (DEV)
+---------------------------
+Add the quantity Rate_FastMon_AnyThingButTEM to the FastMon trending configuration file
+Changes to address jira GDQMQ-249
+
+
 v1r3p3  2008/12/05  (DEV) 
 ---------------------------
 New file to normalize rates. 
