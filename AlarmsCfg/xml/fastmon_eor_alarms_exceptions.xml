@@ -17,6 +17,10 @@
     <exception identifier="(12, 1)" status_on_violation="clean"/>
   </alarm>
 
+  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_5" algorithm="spikes_and_holes">
+    <exception identifier="(3, 32)" status_on_violation="clean"/>
+  </alarm>
+
   <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_0" algorithm="empty_bins">
     <exception identifier="(2, 7)" status_on_violation="clean"/>
     <exception identifier="(3, 7)" status_on_violation="clean"/>
