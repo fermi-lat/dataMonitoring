@@ -1,7 +1,9 @@
 *** v5r9p1 ***
 - Added an exception for tower5, layer 32 in tkrmontrend, alarm
 Number_layerOcc_TowerPlane.
--
+- Limits chenged for alarm x_average TkrPlanesHit_TH1_Tower_3. Before
+tower 0 was handled separately with the low limits slightly lower than all
+the other towers, not tower 3 is treated exactly like 0.
 
 
 *** v5r9p0 ***
