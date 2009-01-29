@@ -135,20 +135,20 @@ class pACDPEDSANALYZERAnalyzer(pBaseFileAnalyzer):
         for label in self.LabelList:
             plot = self.InputFile.Get(self.PlotDict[label])
             for (tile, quantity) in enumerate(self.QuantityList):
-                self.Arrays['%s_%s' % (label, quantity)][0] = plot.GetBinContent(tile + 1)
+                self.Arrays['%s_%s' % (label, quantity)][0] =\
+                                    plot.GetBinContent(tile + 1)
 
 
 if __name__ == '__main__':
-##     MIN_START_TIME = utc2met(convert2sec('Sep/04/2008 00:00:00'))
-##     MAX_START_TIME = None
-##     analyzer = pRECONHISTALARMDISTAnalyzer('RECONHISTALARMDIST.txt',
-##                                            'RECONHISTALARMDIST.root',
-##                                            MIN_START_TIME,
-##                                            MAX_START_TIME)
-    MIN_START_TIME = utc2met(convert2sec('Sep/01/2008 00:00:00'))
+    MIN_START_TIME = utc2met(convert2sec('Sep/05/2008 00:00:00'))
     MAX_START_TIME = None
-    analyzer = pACDPEDSANALYZERAnalyzer('ACDPEDSANALYZER.txt',
+    analyzer1 = pACDPEDSANALYZERAnalyzer('ACDPEDSANALYZER.txt',
                                         'ACDPEDSANALYZER.root',
                                         MIN_START_TIME,
                                         MAX_START_TIME)
-    analyzer.run()
+    analyzer1.run()
+    analyzer2 = pRECONHISTALARMDISTAnalyzer('RECONHISTALARMDIST.txt',
+                                           'RECONHISTALARMDIST.root',
+                                           MIN_START_TIME,
+                                           MAX_START_TIME)
+    analyzer2.run()
