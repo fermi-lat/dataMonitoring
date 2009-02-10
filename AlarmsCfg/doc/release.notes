@@ -1,3 +1,7 @@
+*** v5r9p3 ***
+- Add an exception for noisy strip in Tower 2 Plane 31 GTFE 19
+  TkrHitsCounter_PlaneGTFE_TH2_Tower_2 "spikes and holes"
+
 *** v5r9p2 ***
 - Add minimum number of events requirements to alarms on:
   CalX_NHit_TH1_Tower, CalX_Total_NHit_TH1, CondArrCalHi_CalLoOpensWindow_TH1
