@@ -1,3 +1,8 @@
+*** v5r9p4 ***
+- Add an exception for noisy strip in Tower 3 Plane 1 GTFE 35
+  TkrHitsCounter_PlaneGTFE_TH2_Tower_3 "spikes and holes"
+
+
 *** v5r9p3 ***
 - Add an exception for noisy strip in Tower 2 Plane 31 GTFE 19
   TkrHitsCounter_PlaneGTFE_TH2_Tower_2 "spikes and holes"
