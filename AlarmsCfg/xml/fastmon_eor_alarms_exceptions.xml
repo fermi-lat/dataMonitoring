@@ -22,4 +22,8 @@
     <exception identifier="(1, 35)" status_on_violation="clean"/>
   </alarm>
 
+  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_4" algorithm="spikes_and_holes">
+    <exception identifier="(0, 13)" status_on_violation="clean"/>
+  </alarm>
+
 </alarm_exceptions>
