@@ -5,19 +5,21 @@
   <alarm name="CalXAdcPedRMS_LEX8_TH1" algorithm="y_values">
     <exception identifier="848"  status_on_violation="warning"/>
     <exception identifier="1250" status_on_violation="warning"/>
-    <exception identifier="1685" status_on_violation="warning"/>
-    <exception identifier="1983" status_on_violation="clean"/>
+    <!-- Commented by Johan Bregeon on March 10th, 2009 -->
+    <!-- <exception identifier="1685" status_on_violation="warning"/> -->
+    <!-- <exception identifier="1983" status_on_violation="clean"/> -->
     <!-- Added by Luca Baldini on Dec 24, 2008 -->
-    <exception identifier="1160" status_on_violation="clean"/>
+    <!-- <exception identifier="1160" status_on_violation="clean"/> -->
   </alarm>
 
   <alarm name="CalXAdcPedRMS_LEX1_TH1" algorithm="y_values">
     <exception identifier="848"  status_on_violation="warning"/>
     <exception identifier="1250" status_on_violation="warning"/>
-    <exception identifier="1685" status_on_violation="warning"/>
-    <exception identifier="1983" status_on_violation="clean"/>
+    <!-- Commented by Johan Bregeon on March 10th, 2009 -->
+    <!-- <exception identifier="1685" status_on_violation="warning"/> -->
+    <!-- <exception identifier="1983" status_on_violation="clean"/>   -->
     <!-- Added by Luca Baldini on Dec 24, 2008 -->
-    <exception identifier="1160" status_on_violation="clean"/>
+    <!-- <exception identifier="1160" status_on_violation="clean"/>   -->
   </alarm>
 
   <alarm name="CalXAdcPedPedRMSDifference_LEX8_TH1" algorithm="y_values">
