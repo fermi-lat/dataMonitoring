@@ -3,7 +3,7 @@ import os
 import sys
 import time
 
-sys.path.append('../../Common/python')
+sys.path.append('../../Common/v5r7p0/python')
 
 import pSafeLogger
 logger = pSafeLogger.getLogger('pVerifyParser')
@@ -103,7 +103,15 @@ class pVerifyErrorCodesParser(pHtmlWriter, pXmlWriter):
 
 
 if __name__ == '__main__':
-    inputFilePath = '/data/work/isoc/svac/TestReport/src/RunVerify.cxx'
-    parser = pVerifyErrorCodesParser(inputFilePath)
-    parser.writeHtmlTable('verifylog_error_codes.html')
-    parser.writeXmlAlarmFile('verify_errors_alarms.xml')
+    runVerifyFilePath = '/a/sulky36/g.glast.u33/monzani/svac/L1Pipeline/TestReport/v6r9/src/RunVerify.cxx'
+    runParser = pVerifyErrorCodesParser(runVerifyFilePath)
+    runParser.writeXmlAlarmFile('verify_errors_alarms.xml')
+    runParser.writeHtmlTable('verifylog_error_codes.html')
+    ft2VerifyFilePath = '/a/sulky36/g.glast.u33/monzani/svac/L1Pipeline/TestReport/v6r9/src/ft2Verify.cxx'
+    ft2Parser = pVerifyErrorCodesParser(ft2VerifyFilePath)
+    ft2Parser.writeXmlAlarmFile('verify_ft2_errors_alarms.xml')
+    ft2Parser.writeHtmlTable('verify_ft2_error_codes.html')
+
+
+
+
