@@ -1,3 +1,6 @@
+*** v5r11p0 ***
+- Add an alarm file for the errors from ft2Verify (see LONE-137)
+
 *** v5r10p0 ***
 - Add an exception for noisy strip in Tower 4 Plane 13 GTFE 0
   TkrHitsCounter_PlaneGTFE_TH2_Tower_4 "spikes and holes"
