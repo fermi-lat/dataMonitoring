@@ -111,7 +111,7 @@
       <formula><![CDATA[ DGNGemPrescale ]]></formula>
       <cut><![CDATA[(TemBug>0) && (FswFilters[3]>0) ]]></cut>
       <type> rate </type>
-      <description> Rate of events with TemBugs </description>
+      <description> Unprescaled rate of events with TemBugs </description>
     </object>
 
 
