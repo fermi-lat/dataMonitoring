@@ -5,6 +5,12 @@
 CalXAdcPedPedRMSDifference_LEX1_TH1 removed in
 calpeds_eor_alarms_exceptions.xml---after the new hardware configuration has
 been loaded on the LAT.
+- Changed conditions on the min number of events in the following alarms:
+	- ReconAcdGlobalPosONLYMatchedTracks_RibbonXOriented_TH1_XYZ_1 -> 3000
+	- ReconAcdGlobalPosONLYMatchedTracks_RibbonYOriented_TH1_XYZ_0 -> 5000
+	- ReconAcdGlobalPosNotMatchedTracks_RibbonYOriented_TH1_XYZ_1  -> 10000
+	- ReconAcdGlobalPosNotMatchedTracks_RibbonXOriented_TH1_XYZ_0  -> 10000
+(after a bug fix in the Recon).
 
 
 *** v5r11p0 ***
