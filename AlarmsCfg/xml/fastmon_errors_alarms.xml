@@ -4,7 +4,7 @@
 
   <alarmList group="Main" name="Main" enabled="True">
     
-    <alarmSet name="TEM_BUG_INSTANCE" enabled="True">
+    <alarmSet name="TEM_BUG" enabled="True">
       <alarm function="fraction" enabled="True">
 	<warning_limits min="0.0" max="0.01"/>
 	<error_limits   min="0.0" max="0.10"/>
