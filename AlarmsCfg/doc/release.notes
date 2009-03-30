@@ -1,6 +1,10 @@
 *** v5r12p0 ***
 - Removed some commented lines in calpeds_eor_alarms_exceptions.xml.
 - A few obsolete exceptions removed from calhist_alarms_exceptions.xml.
+- Exceptions on channel 848 for CalXAdcPedPedRMSDifference_LEX8_TH1 and
+CalXAdcPedPedRMSDifference_LEX1_TH1 removed in
+calpeds_eor_alarms_exceptions.xml---after the new hardware configuration has
+been loaded on the LAT.
 
 
 *** v5r11p0 ***
