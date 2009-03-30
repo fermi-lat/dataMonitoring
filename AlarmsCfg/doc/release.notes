@@ -1,3 +1,7 @@
+*** v5r12p1 ***
+ - update TEM_BUG alarm name in fastmon_errors_alarms.xml
+ - See JIRA GDQMQ-304
+
 *** v5r12p0 ***
 - Removed some commented lines in calpeds_eor_alarms_exceptions.xml.
 - A few obsolete exceptions removed from calhist_alarms_exceptions.xml.
