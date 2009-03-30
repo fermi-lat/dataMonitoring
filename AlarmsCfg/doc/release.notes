@@ -1,5 +1,10 @@
+*** v5r12p0 ***
+- Removed some commented lines in calpeds_eor_alarms_exceptions.xml.
+
+
 *** v5r11p0 ***
 - Add an alarm file for the errors from ft2Verify (see LONE-137)
+
 
 *** v5r10p0 ***
 - Add an exception for noisy strip in Tower 4 Plane 13 GTFE 0
@@ -12,13 +17,16 @@
   - Remove (commented) exceptions on channels 1160, 1185, 1983
   - See JIRA - GDQMQ-306
 
+
 *** v5r9p4 ***
 - Add an exception for noisy strip in Tower 3 Plane 1 GTFE 35
   TkrHitsCounter_PlaneGTFE_TH2_Tower_3 "spikes and holes"
 
+
 *** v5r9p3 ***
 - Add an exception for noisy strip in Tower 2 Plane 31 GTFE 19
   TkrHitsCounter_PlaneGTFE_TH2_Tower_2 "spikes and holes"
+
 
 *** v5r9p2 ***
 - Add minimum number of events requirements to alarms on:
