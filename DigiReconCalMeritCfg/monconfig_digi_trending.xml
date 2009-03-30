@@ -56,7 +56,8 @@
     <object>CompressionLevel </object>
     <object> Tick20MHzDeviation </object>
     <object> CurrentORPreviousTimeToneMissing </object>
-
+    <object> TemBug </object>
+    
     <!-- Acd Variables -->
     
     <object>AcdGemVeto_AcdTile</object>
@@ -97,6 +98,22 @@
     <!-- ********************  Event classification information   *********************** -->
           
     
+    <object>
+      <name> TemBug </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[TemBug>0  ]]></cut>
+      <type> rate </type>
+      <description> Rate of events with TemBugs </description>
+    </object>
+
+   <object>
+      <name> UNPrescaledTemBug </name>
+      <formula><![CDATA[ DGNGemPrescale ]]></formula>
+      <cut><![CDATA[(TemBug>0) && (FswFilters[3]>0) ]]></cut>
+      <type> rate </type>
+      <description> Rate of events with TemBugs </description>
+    </object>
+
 
     <object>
       <name> LastDataTransferId </name>
