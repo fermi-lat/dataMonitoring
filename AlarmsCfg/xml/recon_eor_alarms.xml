@@ -169,56 +169,56 @@
 
     <alarmSet name="ReconAcdGlobalPosONLYMatchedTracks_RibbonXOriented_TH1_XYZ_*" only="(1,)" enabled="True">
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="3000"/>
 	<parameter name="min" value="-600"/>
 	<parameter name="max" value="-400"/>
 	<warning_limits min="-510" max="-490"/>
 	<error_limits min="-520" max="-480"/>
       </alarm>
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="3000"/>
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="-100"/>
 	<warning_limits min="-175" max="-155"/>
 	<error_limits min="-185" max="-145"/>
       </alarm>
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="3000"/>
 	<parameter name="min" value="100"/>
 	<parameter name="max" value="400"/>
 	<warning_limits min="155" max="175"/>
 	<error_limits min="145" max="185"/>
       </alarm>
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="3000"/>
 	<parameter name="min" value="400"/>
 	<parameter name="max" value="600"/>
 	<warning_limits min="490" max="510"/>
 	<error_limits min="480" max="520"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="3000"/>
 	<parameter name="min" value="-600"/>
 	<parameter name="max" value="-400"/>
 	<warning_limits min="4.0" max="8.0"/>
 	<error_limits min="2.0" max="12.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="3000"/>
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="-100"/>
 	<warning_limits min="4.0" max="8.0"/>
 	<error_limits min="2.0" max="12.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="3000"/>
 	<parameter name="min" value="100"/>
 	<parameter name="max" value="400"/>
 	<warning_limits min="4.0" max="8.0"/>
 	<error_limits min="2.0" max="12.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="3000"/>
 	<parameter name="min" value="400"/>
 	<parameter name="max" value="600"/>
 	<warning_limits min="4.0" max="8.0"/>
@@ -228,56 +228,56 @@
 
     <alarmSet name="ReconAcdGlobalPosONLYMatchedTracks_RibbonYOriented_TH1_XYZ_*" only="(0,)" enabled="True">
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="5000"/>
 	<parameter name="min" value="-600"/>
 	<parameter name="max" value="-400"/>
 	<warning_limits min="-510" max="-490"/>
 	<error_limits min="-520" max="-480"/>
       </alarm>
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="5000"/>
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="-100"/>
 	<warning_limits min="-175" max="-155"/>
 	<error_limits min="-185" max="-145"/>
       </alarm>
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="5000"/>
 	<parameter name="min" value="100"/>
 	<parameter name="max" value="400"/>
 	<warning_limits min="155" max="175"/>
 	<error_limits min="145" max="185"/>
       </alarm>
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="5000"/>
 	<parameter name="min" value="400"/>
 	<parameter name="max" value="600"/>
 	<warning_limits min="490" max="510"/>
 	<error_limits min="480" max="520"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="5000"/>
 	<parameter name="min" value="-600"/>
 	<parameter name="max" value="-400"/>
 	<warning_limits min="4.0" max="10.0"/>
 	<error_limits min="2.0" max="14.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="5000"/>
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="-100"/>
 	<warning_limits min="4.0" max="10.0"/>
 	<error_limits min="2.0" max="14.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="5000"/>
 	<parameter name="min" value="100"/>
 	<parameter name="max" value="400"/>
 	<warning_limits min="4.0" max="10.0"/>
 	<error_limits min="2.0" max="14.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="5000"/>
 	<parameter name="min" value="400"/>
 	<parameter name="max" value="600"/>
 	<warning_limits min="4.0" max="10.0"/>
@@ -287,56 +287,56 @@
 
     <alarmSet name="ReconAcdGlobalPosNotMatchedTracks_RibbonXOriented_TH1_XYZ_*" only="(1,)" enabled="True">
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="-600"/>
 	<parameter name="max" value="-400"/>
 	<warning_limits min="-510" max="-490"/>
 	<error_limits min="-520" max="-480"/>
       </alarm>
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="-100"/>
 	<warning_limits min="-175" max="-155"/>
 	<error_limits min="-185" max="-145"/>
       </alarm>
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="100"/>
 	<parameter name="max" value="400"/>
 	<warning_limits min="155" max="175"/>
 	<error_limits min="145" max="185"/>
       </alarm>
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="400"/>
 	<parameter name="max" value="600"/>
 	<warning_limits min="490" max="510"/>
 	<error_limits min="480" max="520"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="-600"/>
 	<parameter name="max" value="-400"/>
 	<warning_limits min="4.0" max="8.0"/>
 	<error_limits min="2.0" max="12.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="-100"/>
 	<warning_limits min="4.0" max="8.0"/>
 	<error_limits min="2.0" max="12.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="100"/>
 	<parameter name="max" value="400"/>
 	<warning_limits min="4.0" max="8.0"/>
 	<error_limits min="2.0" max="12.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="400"/>
 	<parameter name="max" value="600"/>
 	<warning_limits min="4.0" max="8.0"/>
@@ -346,56 +346,56 @@
 
     <alarmSet name="ReconAcdGlobalPosNotMatchedTracks_RibbonYOriented_TH1_XYZ_*" only="(0,)" enabled="True">
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="-600"/>
 	<parameter name="max" value="-400"/>
 	<warning_limits min="-510" max="-490"/>
 	<error_limits min="-520" max="-480"/>
       </alarm>
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="-100"/>
 	<warning_limits min="-175" max="-155"/>
 	<error_limits min="-185" max="-145"/>
       </alarm>
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="100"/>
 	<parameter name="max" value="400"/>
 	<warning_limits min="155" max="175"/>
 	<error_limits min="145" max="185"/>
       </alarm>
       <alarm function="gauss_mean" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="400"/>
 	<parameter name="max" value="600"/>
 	<warning_limits min="490" max="510"/>
 	<error_limits min="480" max="520"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="-600"/>
 	<parameter name="max" value="-400"/>
 	<warning_limits min="5.0" max="14.0"/>
 	<error_limits min="3.0" max="18.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="-100"/>
 	<warning_limits min="5.0" max="14.0"/>
 	<error_limits min="3.0" max="18.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="100"/>
 	<parameter name="max" value="400"/>
 	<warning_limits min="5.0" max="14.0"/>
 	<error_limits min="3.0" max="18.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
-	<condition name="min_entries" value="100000"/>
+	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="400"/>
 	<parameter name="max" value="600"/>
 	<warning_limits min="5.0" max="14.0"/>
