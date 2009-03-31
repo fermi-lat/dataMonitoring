@@ -1,6 +1,13 @@
+*** v5r12p2 ***
+- Exceptions on channel 848 for CalXAdcPedPedRMSDifference_LEX8_TH1 and
+CalXAdcPedPedRMSDifference_LEX1_TH1 put back in---they had been removed
+by mistake in version v5r12p0.
+
+
 *** v5r12p1 ***
  - update TEM_BUG alarm name in fastmon_errors_alarms.xml
  - See JIRA GDQMQ-304
+
 
 *** v5r12p0 ***
 - Removed some commented lines in calpeds_eor_alarms_exceptions.xml.
