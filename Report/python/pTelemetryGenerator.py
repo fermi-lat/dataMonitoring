@@ -21,7 +21,7 @@ BASE_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 
 PREAMBLE_PATH = os.path.join(BASE_DIR_PATH, 'preambleTelemetry.tex')
 LOGO_IMAGE_PATH = os.path.join(BASE_DIR_PATH, 'glastLogo.png')
-DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/trendingReport.xml')
+DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/weeklyTrending.xml')
 REPORT_GEN_TIME = time.time()
 REPORT_GEN_NS = ('%.9f' % (REPORT_GEN_TIME%1))[2:]
 REPORT_GEN_DATE = sec2string(REPORT_GEN_TIME,\
@@ -89,7 +89,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         self.Title = reportTag.getAttribute('title', '')
         for pageTag in reportTag.getElementsByTagName('page'):
             if pageTag.evalAttribute('enabled'):
-                page = pReportPage()
+                page = pReportPage(pageTag.getAttribute('style'))
                 for panelTag in pageTag.getElementsByTagName('panel'):
                     if panelTag.evalAttribute('enabled'):
                         panelName = panelTag.getAttribute('name')
@@ -119,7 +119,10 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         logging.info('Copying the TeX preamble into the report folder...')
         os.system('cp %s %s/preamble.tex' % (PREAMBLE_PATH, self.LaTeXFolderPath))
         for page in self.PagesList:
-            self.addTelemetryPage(page, self.Title, self.TimeSpan)
+            if page.Style == "Telemetry":
+                self.addTelemetryPage(page, self.Title, self.TimeSpan)
+            else:
+                self.addPage(page, self.Title, self.TimeSpan)
         self.writeTrailer()
         self.fillTimeStat('Write LaTeX report', time.time() - startTime)
         startTime = time.time()

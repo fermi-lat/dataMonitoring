@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<report title="GLAST-LAT Weekly Trending Report">
+
+  <page enabled="True" style="Telemetry">
+    <panel name="WeeklyLATCPULoad" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="WeeklyLATEvtRates" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="WeeklyGammaFilter" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="WeeklyHeavyIon" enabled="True"/>
+  </page>
+
+  <page enabled="True">
+    <panel name="WeeklyLATDataComp" enabled="True"/>
+  </page>
+
+</report>

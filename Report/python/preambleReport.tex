@@ -32,9 +32,18 @@
 \end{sideways}\end{minipage}%
 }
 
-% Panel plot.
+% Panel plot for summary report.
 % Usage:
-% \gpanelplot{width}{topmargin}{content}
-\newcommand{\gpanelplot}[3]{%
+% \gpanelstdplot{width}{topmargin}{content}
+\newcommand{\gpanelstdplot}[3]{%
 $\left\{ \begin{minipage}[c]{#1}\rule{0 pt}{#2} #3\end{minipage}\right.$%
 }
+
+% Panel plot for telemetry report.
+% Usage:
+% \gpaneltelplot{width}{topmargin}{content}
+\newcommand{\gpaneltelplot}[3]{%
+\hspace*{-15pt}
+\begin{minipage}[c]{#1}\rule{0pt}{#2} #3\end{minipage}%
+}
+

@@ -89,7 +89,7 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         self.Title = reportTag.getAttribute('title', '')
         for pageTag in reportTag.getElementsByTagName('page'):
             if pageTag.evalAttribute('enabled'):
-                page = pReportPage()
+                page = pReportPage(pageTag.getAttribute('style'))
                 for panelTag in pageTag.getElementsByTagName('panel'):
                     if panelTag.evalAttribute('enabled'):
                         panelName = panelTag.getAttribute('name')
@@ -119,7 +119,10 @@ class pReportGenerator(pLaTeXWriter, pDownloadManager):
         logging.info('Copying the TeX preamble into the report folder...')
         os.system('cp %s %s/preamble.tex' % (PREAMBLE_PATH, self.LaTeXFolderPath))
         for page in self.PagesList:
-            self.addPage(page, self.Title, self.TimeSpan)
+            if page.Style == "Telemetry":
+                self.addTelemetryPage(page, self.Title, self.TimeSpan)
+            else:
+                self.addPage(page, self.Title, self.TimeSpan)
         self.writeTrailer()
         self.fillTimeStat('Write LaTeX report', time.time() - startTime)
         startTime = time.time()

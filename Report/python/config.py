@@ -15,34 +15,37 @@ doCleanup = True
 
 reportDuration = {
     'daily' : '24',
-    #'weekly' : '168',
     'weekly' : '72',
     'telemetry' : '24',
+    'trending' : '168',
 }
 
 reportOutType = {
     'daily' : 'SummaryReport/Report-24h',
-    #'weekly' : 'Report-168h',
     'weekly' : 'SummaryReport/Report-72h',
     'telemetry' : 'TelemetryReport/Report-24h',
+    'trending' : 'WeeklyTrending/Report-168h',
 }
 
 reportFileTypes = {
     'daily' : 'DailyReport',
     'weekly' : 'WeeklyReport',
     'telemetry' : 'TelemetryReport',
+    'trending' : 'WeeklyTrending',
 }
 
 reportConfigFile = {
     'daily' : 'summaryReport.xml',
     'weekly' : 'summaryReport.xml',
     'telemetry' : 'telemetryReport.xml',
+    'trending' : 'weeklyTrending.xml',
 }
 
 applicationName = {
     'daily' : 'pReportGenerator.py',
     'weekly' : 'pReportGenerator.py',
     'telemetry' : 'pTelemetryGenerator.py',
+    'trending' : 'pTelemetryGenerator.py',
 }
 
 paddingSeconds = 1

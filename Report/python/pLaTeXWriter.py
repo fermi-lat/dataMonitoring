@@ -127,7 +127,7 @@ class pLaTeXWriter:
         self.write('\\vspace*{-10pt}')
         self.write('\\begin{figure}[htp!]')
         self.write('\\gpanellabel{0.03\\linewidth}{%s}' % panel.Title)
-        self.write('\\gpanelplot{%.2f\\linewidth}{%s}{\\\\' %\
+        self.write('\\gpanelstdplot{%.2f\\linewidth}{%s}{\\\\' %\
                    (boxWidth, topMargin))
         for plot in panel.PlotsList:
             plotLineHeight = '%.3f\\linewidth' %\
@@ -156,7 +156,7 @@ class pLaTeXWriter:
         self.write('\hspace*{-15pt}')
         self.write('\\vspace*{-10pt}')
         self.write('\\begin{figure}[htp!]')
-        self.write('\\gpanelplot{%.2f\\linewidth}{%s}{\\\\' %\
+        self.write('\\gpaneltelplot{%.2f\\linewidth}{%s}{\\\\' %\
                    (boxWidth, topMargin))
         for plot in panel.PlotsList:
             plotLineHeight = '%.3f\\linewidth' %\

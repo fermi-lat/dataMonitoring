@@ -24,10 +24,25 @@
 \raisebox{#1}{\parbox[c]{70pt}{\fontsize{4}{6} \selectfont #2}}
 }
 
-% Panel plot.
+% Vertical label to be put on the left of each panel.
 % Usage:
-% \gpanelplot{width}{topmargin}{content}
-\newcommand{\gpanelplot}[3]{%
+% \gpanellabel{width}{text}
+\newcommand{\gpanellabel}[2]{%
+\begin{minipage}[c]{#1}\begin{sideways}\fontsize{7}{15} \selectfont #2%
+\end{sideways}\end{minipage}%
+}
+
+% Panel plot for summary report.
+% Usage:
+% \gpanelstdplot{width}{topmargin}{content}
+\newcommand{\gpanelstdplot}[3]{%
+$\left\{ \begin{minipage}[c]{#1}\rule{0 pt}{#2} #3\end{minipage}\right.$%
+}
+
+% Panel plot for telemetry report.
+% Usage:
+% \gpaneltelplot{width}{topmargin}{content}
+\newcommand{\gpaneltelplot}[3]{%
 \hspace*{-15pt}
 \begin{minipage}[c]{#1}\rule{0pt}{#2} #3\end{minipage}%
 }
