@@ -18,7 +18,7 @@
   </prerequisites>
 
   <process name="createReport">
-    <job executable="${ReportInstallDir}/launchReport.py" batchOptions=" -q medium "/>
+    <job executable="${ReportInstallDir}/launchReport.py" batchOptions=" -q long "/>
   </process>
 
   <process name="registerReport">
