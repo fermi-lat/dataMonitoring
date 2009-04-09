@@ -1,3 +1,6 @@
+*** v5r12p3 ***
+- TkrHitsCounter_PlaneGTFE_TH2_Tower_5 Layer 32 GTFE 3: add exception in fastmon_eor (3, 32)
+
 *** v5r12p2 ***
 - Exceptions on channel 848 for CalXAdcPedPedRMSDifference_LEX8_TH1 and
 CalXAdcPedPedRMSDifference_LEX1_TH1 put back in---they had been removed
