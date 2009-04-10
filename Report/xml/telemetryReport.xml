@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 
-<report title="GLAST-LAT Telemetry Trending report">
+<report title="Fermi LAT Telemetry Trending report">
 
   <page enabled="True" style="Telemetry">
     <panel name="TelemCPUPage1" enabled="True"/>
