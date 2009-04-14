@@ -1,6 +1,9 @@
 *** v5r12p4 ***
 - Added exception for tower 5, plane 32 on Number_layerOcc_TowerPlane
 (trackermon_trend).
+- Removed and obsolete exception on Number_layerOcc_TowerPlane
+(trackermon_trend) for tower 0, plane 14. Verified that the alarm is clean
+for a considerable number of runs in a row.
 
 
 *** v5r12p3 ***
