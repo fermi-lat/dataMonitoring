@@ -3,7 +3,6 @@
 <alarm_exceptions>
 
   <alarm name="Number_layerOcc_TowerPlane" algorithm="values">
-    <exception identifier="(0, 14)" status_on_violation="clean"/>
     <!-- Added on February 5th, 2009 by Johan Bregeon. -->
     <exception identifier="(3, 35)" status_on_violation="clean"/>
     <!-- Added on March 10th, 2009 by Johan Bregeon. -->
