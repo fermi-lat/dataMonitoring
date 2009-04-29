@@ -1,3 +1,13 @@
+*** v5r13p0 ***
+- Minor modifications to accomodate a new cal noisy channel (1983):
+-- CalXAdcPedRMS_LEX1_TH1 has a separate high (warning and error) threshold
+of 3.6 ADC counts for channel 1983.
+-- CalXAdcPedRMS_LEX8_TH1 has a separate high (warning and error) threshold
+of 30 ADC counts for channel 1983.
+-- CalXAdcPedPedMeanDifference and CalXAdcPedPedRMSDifference for LEX1 and
+LEX8 have exceptions for channels 848, 1250, and 1983.
+
+
 *** v5r12p4 ***
 - Added exception for tower 5, plane 32 on Number_layerOcc_TowerPlane
 (trackermon_trend).
