@@ -1,3 +1,14 @@
+*** v5r13p1 ***
+- There's a nice feature of the y_values alarm algorithm: you pass the
+"only" and "exclude" parameters by addressing the *bin index* rather than the
+x values of the histogram. Phrased another way: if you want to se a separate
+threshold on channel 1983, you set the "only" parameter to [1984] to take into
+account the fact that the bin indexes in ROOT start from 1 (0 being the
+underflow) and therefore there's an overall shift of 1 unit.
+Johan suggested to change all the  [1984] to [1983+1] to stress this (the
+python code evals the expression at runtime).
+
+
 *** v5r13p0 ***
 - Minor modifications to accomodate a new cal noisy channel (1983):
 -- CalXAdcPedRMS_LEX1_TH1 has a separate high (warning and error) threshold
