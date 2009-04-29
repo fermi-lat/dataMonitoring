@@ -15,11 +15,31 @@
   <alarm name="CalXAdcPedPedRMSDifference_LEX8_TH1" algorithm="y_values">
     <!-- Added by Luca Baldini on Jan 15, 2009 -->
     <exception identifier="848" status_on_violation="clean"/>
+    <!-- Added by Luca Baldini on Apr 29, 2009 -->
+    <exception identifier="1250" status_on_violation="clean"/>
+    <exception identifier="1983" status_on_violation="clean"/>
   </alarm>
 
   <alarm name="CalXAdcPedPedRMSDifference_LEX1_TH1" algorithm="y_values">
     <!-- Added by Luca Baldini on Jan 15, 2009 -->
     <exception identifier="848" status_on_violation="clean"/>
+    <!-- Added by Luca Baldini on Apr 29, 2009 -->
+    <exception identifier="1250" status_on_violation="clean"/>
+    <exception identifier="1983" status_on_violation="clean"/>
+  </alarm>
+
+  <alarm name="CalXAdcPedPedMeanDifference_LEX8_TH1" algorithm="y_values">
+    <!-- Added by Luca Baldini on Apr 29, 2009 -->
+    <exception identifier="848" status_on_violation="clean"/>
+    <exception identifier="1250" status_on_violation="clean"/>
+    <exception identifier="1983" status_on_violation="clean"/>
+  </alarm>
+
+  <alarm name="CalXAdcPedPedMeanDifference_LEX1_TH1" algorithm="y_values">
+    <!-- Added by Luca Baldini on Apr 29, 2009 -->
+    <exception identifier="848" status_on_violation="clean"/>
+    <exception identifier="1250" status_on_violation="clean"/>
+    <exception identifier="1983" status_on_violation="clean"/>
   </alarm>
 
 </alarm_exceptions>
