@@ -20,7 +20,7 @@ from pTimeConverter   import *
 BASE_DIR_PATH = os.path.dirname(os.path.abspath(__file__))
 
 PREAMBLE_PATH = os.path.join(BASE_DIR_PATH, 'preambleTelemetry.tex')
-LOGO_IMAGE_PATH = os.path.join(BASE_DIR_PATH, 'glastLogo.png')
+LOGO_IMAGE_PATH = os.path.join(BASE_DIR_PATH, 'fermiLogo.png')
 DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/weeklyTrending.xml')
 REPORT_GEN_TIME = time.time()
 REPORT_GEN_NS = ('%.9f' % (REPORT_GEN_TIME%1))[2:]

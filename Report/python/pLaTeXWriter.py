@@ -76,25 +76,25 @@ class pLaTeXWriter:
         self.write('\\end{center}\n')
         self.newline()
 
-    def addLogo(self, imageName = 'glastLogo.png', width = '4 cm'):
+    def addLogo(self, imageName = 'fermiLogo.png', width = '5.5 cm'):
         self.write('\\begin{figure}[tbp!]')
         self.write('\\includegraphics[width=%s]{%s}' % (width, imageName))
         self.write('\\end{figure}')
         self.newline()
 
-    def addPageHeader(self, title, timeSpan, logoName = 'glastLogo',\
-                      logoWidth = '2.3cm'):
+    def addPageHeader(self, title, timeSpan, logoName = 'fermiLogo',\
+                      logoWidth = '3.1cm'):
         self.write('\\begin{figure}[htp!]')
         self.write('\\parbox[c]{0.99\\textwidth}{', percent=True)
-        self.write('\\parbox[c]{0.12\\textwidth}{', percent=True)
-        self.write('\\includegraphics[width=%s]{glastLogo}}' % logoWidth,\
+        self.write('\\parbox[c]{0.15\\textwidth}{', percent=True)
+        self.write('\\includegraphics[width=%s]{fermiLogo}}' % logoWidth,\
                        percent = True)
-        self.write('\\hfill\\parbox{0.7\\textwidth}{\\begin{center}',\
+        self.write('\\hfill\\parbox{0.69\\textwidth}{\\begin{center}',\
                        percent = True)
         self.write('%s\\\\%s' % (title, timeSpan), percent=True)
         self.write('\\end{center}}\\hfill', percent = True)
-        self.write('\\parbox[c]{0.12\\textwidth}{', percent=True)
-        self.write('\\includegraphics[width=%s]{glastLogo}}' % logoWidth,\
+        self.write('\\parbox[c]{0.15\\textwidth}{', percent=True)
+        self.write('\\includegraphics[width=%s]{fermiLogo}}' % logoWidth,\
                        percent = True)
         self.write('}')
         self.write('\\end{figure}')
