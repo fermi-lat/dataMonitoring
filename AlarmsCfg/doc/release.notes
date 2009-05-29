@@ -1,3 +1,10 @@
+*** v5r14p1 ***
+-- CalXAdcPedRMS_LEX8_TH1: warning and error limits moved down to 30/30
+for channel 2414.
+-- CalXAdcPedRMS_LEX1_TH1: warning and error limits moved down to 3.6/3.6
+for channel 2414.
+
+
 *** v5r14p0 ***
 - Minor changes to the alarm limits and exceptions to take care of the
 the cal channel 2414---see the e-mail thread on:
