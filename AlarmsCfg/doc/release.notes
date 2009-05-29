@@ -1,3 +1,17 @@
+*** v5r14p0 ***
+- Minor changes to the alarm limits and exceptions to take care of the
+the cal channel 2414---see the e-mail thread on:
+http://www-glast.stanford.edu/protected/mail/datamon/2605.html
+The detailed changes are:
+-- CalXAdcPedRMS_LEX8_TH1: warning and error limits moved from 10/15 to 40/40
+for channel 2414.
+-- CalXAdcPedRMS_LEX1_TH1: warning and error limits moved from 1.2/1.8 to 5/5
+for channel 2414.
+-- Added exceptions (status on violation will be clean) for channel 2414 on 
+CalXAdcPedPedRMSDifference_LEX8_TH1, CalXAdcPedPedRMSDifference_LEX1_TH1,
+CalXAdcPedPedMeanDifference_LEX8_TH1, CalXAdcPedPedMeanDifference_LEX1_TH1.
+
+
 *** v5r13p1 ***
 - There's a nice feature of the y_values alarm algorithm: you pass the
 "only" and "exclude" parameters by addressing the *bin index* rather than the
