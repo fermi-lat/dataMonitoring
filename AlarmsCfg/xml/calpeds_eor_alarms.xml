@@ -122,8 +122,8 @@
         <parameter name="only" value="[1983+1]"/>
       </alarm>
       <alarm function="y_values" enabled="True">
-	<warning_limits min="4.5" max="40.0"/>
-	<error_limits   min="4.0" max="40.0"/>
+	<warning_limits min="4.5" max="30.0"/>
+	<error_limits   min="4.0" max="30.0"/>
         <condition name="min_entries" value="750000"/>
         <parameter name="only" value="[2414+1]"/>
       </alarm>
@@ -148,8 +148,8 @@
         <parameter name="only" value="[1983+1]"/>
       </alarm>
       <alarm function="y_values" enabled="True">
-	<warning_limits min="0.6" max="5.0"/>
-	<error_limits   min="0.5" max="5.0"/>
+	<warning_limits min="0.6" max="3.6"/>
+	<error_limits   min="0.5" max="3.6"/>
         <condition name="min_entries" value="750000"/>
         <parameter name="only" value="[2414+1]"/>
       </alarm>
