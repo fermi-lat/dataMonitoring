@@ -17,15 +17,15 @@
         <TH1F name="Tick20MHzDeviation_Zoom_TH1">
 	    <expression><![CDATA[ clocktics_dev_20MHz ]]></expression>
 	    <cut><![CDATA[ clocktics_dev_20MHz!=-9999 ]]></cut>
-	    <xbins>200</xbins>
-	    <xmin>-300</xmin>
-	    <xmax>-100</xmax>
+	    <xbins>400</xbins>
+	    <xmin>-200</xmin>
+	    <xmax>200</xmax>
 	    <title>Number of ticks between successive 1-PPS - Deviation from 20 MHz - Zoom</title>
 	    <xlabel>Clock ticks (nominal 50 ns), N</xlabel>
 	    <ylabel>N</ylabel>
 	    <caption>Number of ticks between successive 1-PPS - Deviation from 20 MHz - Zoom </caption>
         </TH1F>
-        <!--TH1F name="Tick20MHzDeviation_SuperZoom_TH1">
+        <TH1F name="Tick20MHzDeviation_SuperZoom_TH1">
 	    <expression><![CDATA[ clocktics_dev_20MHz ]]></expression>
 	    <cut><![CDATA[ clocktics_dev_20MHz!=-9999 ]]></cut>
 	    <xbins>40</xbins>
@@ -35,7 +35,7 @@
 	    <xlabel>Clock ticks (nominal 50 ns), N</xlabel>
 	    <ylabel>N</ylabel>
 	    <caption>Number of ticks between successive 1-PPS - Deviation from 20 MHz - Super Zoom </caption>
-        </TH1F-->
+        </TH1F>
     </outputList>
 
     <inputList group="GEM" name="GEM base">
@@ -312,7 +312,7 @@
 	    <ylabel>N</ylabel>
 	    <caption>Distribution of Condition arrival times for TKR triggers. All triggers with TKR.</caption>
         </TH1F>
-        <TH1F name="CondArrCalLowTrigger_TH1">
+        <TH1F name="CondArrCalLoTrigger_TH1">
 	    <expression><![CDATA[ condarrcallo ]]></expression>
 	    <cut><![CDATA[ (condsummary&4)>0 ]]></cut>
 	    <xbins>41</xbins>
@@ -676,7 +676,7 @@
     </inputList>
 	    
     <outputList group="CAL" name="CAL in electronics space" enabled="True">
-        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range0_TH2_Tower" enabled="True" level="tower">
+        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range0_TH2" enabled="True" level="tower">
 	    <expression>Range0</expression>
 	    <title>Number of hits in each Cal log end for range 0 (LEX8)</title>
 	    <xlabel>CAL column/side</xlabel>
@@ -684,7 +684,7 @@
 	    <drawoptions>colz</drawoptions>	    
 	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>	    
         </CUSTOM>
-        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range1_TH2_Tower" enabled="True" level="tower">
+        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range1_TH2" enabled="True" level="tower">
 	    <expression>Range1</expression>
 	    <title>Number of hits in each Cal log end for range 1 (LEX1)</title>
 	    <xlabel>CAL column/side</xlabel>
@@ -692,7 +692,7 @@
 	    <drawoptions>colz</drawoptions>	    
 	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>	    
         </CUSTOM>
-        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range2_TH2_Tower" enabled="True" level="tower">
+        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range2_TH2" enabled="True" level="tower">
 	    <expression>Range2</expression>
 	    <title>Number of hits in each Cal log end for range 2 (HEX8)</title>
 	    <xlabel>CAL column/side</xlabel>
@@ -700,7 +700,7 @@
 	    <drawoptions>colz</drawoptions>	    
 	    <cut><![CDATA[ (condsummary&30)>0 ]]></cut>	    
         </CUSTOM>
-        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range3_TH2_Tower" enabled="True" level="tower">
+        <CUSTOM type="CalLogEndRangeHitCounter" name="CalLogEndRangeHitCounter_Range3_TH2" enabled="True" level="tower">
 	    <expression>Range3</expression>
 	    <title>Number of hits in each Cal log end for range 3 (HEX1)</title>
 	    <xlabel>CAL column/side</xlabel>
@@ -743,7 +743,7 @@
 	    <caption>All triggers included.</caption>
         </TH1F>
 	
-        <TH1F name="CalX_NHit_TH1_Tower" enabled="True" level="tower">
+        <TH1F name="CalX_NHit_TH1" enabled="True" level="tower">
 	    <title>Distribution of  Cal crystals hits per event in this tower</title>
 	    <xbins>97</xbins>
 	    <xmin>-0.5</xmin>
@@ -842,13 +842,13 @@
 	    <ylabel>Tracker plane</ylabel>
 	    <drawoptions>colz</drawoptions>
          </CUSTOM>
-        <CUSTOM type="TkrHitsCounter_Plane" name="TkrHitsCounter_Plane_TH1_Tower" level="tower" enabled="True">
+        <CUSTOM type="TkrHitsCounter_Plane" name="TkrHitsCounter_Plane_TH1" level="tower" enabled="True">
 	    <title>Overall number of hits vs. TKR plane (one per tower)</title>
 	    <caption>Watch out for spikes (but don't get too excited, most likely it's just a noisy strip) and dips</caption>
 	    <xlabel>Tracker plane</xlabel>
 	    <ylabel>N</ylabel>
         </CUSTOM>    
-        <CUSTOM type="TkrHitsCounter_PlaneGTFE" name="TkrHitsCounter_PlaneGTFE_TH2_Tower" level="tower" enabled="True">
+        <CUSTOM type="TkrHitsCounter_PlaneGTFE" name="TkrHitsCounter_PlaneGTFE_TH2" level="tower" enabled="True">
 	    <title>Overall number of hits vs. TKR plane and front-end chip (one per tower)</title>
 	    <caption>Watch out for white spots---front end chips with no hits---if the statistics is enough</caption>
 	    <xlabel>GTFE</xlabel>
@@ -858,7 +858,7 @@
     </outputList>
 		
     <outputList group="TKR" name="TKR Details - Strip hits per tower" enabled="True">						
-        <TH1F name="TkrHits_TH1_Tower" enabled="True" level="tower">
+        <TH1F name="TkrHits_TH1" enabled="True" level="tower">
 	    <title>Distribution of strip hits per tower</title>
 	    <xbins>200</xbins>
 	    <xmin>0</xmin>
@@ -872,33 +872,12 @@
     </outputList>
 
     <outputList group="TKR" name="TKR Details - Planes hit in a tower" enabled="True">		
-        <CUSTOM type="TkrPlanesHit" name="TkrPlanesHit_TH1_Tower" level="tower" enabled="True">
+        <CUSTOM type="TkrPlanesHit" name="TkrPlanesHit_TH1" level="tower" enabled="True">
 	    <title>Distribution of the number of planes hit in a tower</title>
 	    <xlabel>Layer number</xlabel>
 	    <cut><![CDATA[ ]]></cut>
 	    <!-- this tag is useless for this CUSTOM plot since it is dedicated to a specific task<expression></expression> -->
         </CUSTOM>			
-       <TH1F name="ToT_con0_TH1_TowerPlane" enabled="True" level="tkr_layer">
-	    <title>Distribution of ToTs per tower and plane</title>
-	    <xbins>256</xbins>
-	    <xmin>0</xmin>
-	    <xmax>256</xmax>
-	    <xlabel>Tics</xlabel>
-	    <ylabel>N</ylabel>
-	    <cut><![CDATA[ ]]></cut>
-            <expression>ToT_con0_TowerPlane</expression>
-        </TH1F>				
-
-       <TH1F name="ToT_con1_TH1_TowerPlane" enabled="True" level="tkr_layer">
-	    <title>Distribution of ToTs per tower and plane</title>
-	    <xbins>256</xbins>
-	    <xmin>0</xmin>
-	    <xmax>256</xmax>
-	    <xlabel>Tics</xlabel>
-	    <ylabel>N</ylabel>
-	    <cut><![CDATA[ ]]></cut>
-            <expression>ToT_con1_TowerPlane</expression>
-        </TH1F>				
     </outputList>				
 
     <outputList group="TKR" name="TKR Details - ToT" enabled="True">		
@@ -955,14 +934,14 @@
 	    <ylabel>Number of ACD hits</ylabel>
             <expression>acd_tile_count</expression>
 	    <caption>This is the number of PHA values per event</caption>
-	    <cut><![CDATA[]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0  && (condsummary&64)==0]]></cut>
         </TH1F>
-        <CUSTOM type="AcdHitMap_GafeGarc" name="AcdHitMap_GafeGarc_TH2" level="lat" enabled="True">
-	    <title>ACD Hit Map Garc:Gafe</title>
-	    <xlabel>GAFE</xlabel>
-	    <ylabel>GARC</ylabel>
+        <CUSTOM type="AcdHitsCounter_CableChannel" name="AcdHitsCounter_CableChannel_TH2" level="lat" enabled="True">
+	    <title>Number hit for each ACD channel</title>
+	    <xlabel>Cable Id</xlabel>
+	    <ylabel>Channel Id</ylabel>
 	    <drawoptions>colz</drawoptions>
-	    <cut><![CDATA[]]></cut>
+	    <cut><![CDATA[(condsummary&64)==0]]></cut>
         </CUSTOM>
 	
     </outputList>
