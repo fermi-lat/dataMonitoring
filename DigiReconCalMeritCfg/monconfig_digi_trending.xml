@@ -741,7 +741,44 @@
       <description> Rate of  bytes (size AFTER compression) during the specified time interval for evts surviving the Fsw DGN filter. This is the bandwidth that we need to download those evts. </description>
     </object>
     
+   
 
+   <object>
+      <name> EventSizeInBytes_DGN_NoPeriodic </name>
+      <formula><![CDATA[ EventSizeInBytes ]]></formula>
+      <cut><![CDATA[ EventSizeInBytes>1 && FswFilters[3]>0 && !(condsummary&32)]]></cut>
+      <type> truncatedmean[0.5,100000000] </type>
+      <description> Mean Size (bytes) during the specified time interval for non-periodic events surviving the DGN filter   </description>
+    </object>
+
+
+    <object>
+      <name> EventSizeInBytes_DGN_NoPeriodic_Unprescaled </name>
+      <formula><![CDATA[ EventSizeInBytes*DGNGemPrescale ]]></formula>
+      <cut><![CDATA[ EventSizeInBytes>1 && FswFilters[3]>0 && !(condsummary&32)]]></cut>
+      <type> truncatedmean[0.5,100000000] </type>
+      <description> Unprescaled mean Size (bytes) during the specified time interval for non-periodic events surviving the DGN filter   </description>
+    </object>
+
+   <object>
+      <name> TriggerRate_EvtSize_DGN_NoPer_Unpres </name>
+      <formula><![CDATA[ CounterDiffRate_GemRate*Mean_EventSizeInBytes_DGN_NoPeriodic_Unprescaled ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Hardware Trigger Rate times the unprescaled mean Size (bytes) during the specified time interval for non-periodic events surviving the DGN filter   </description>
+    </object>
+
+   <object>
+      <name> TriggerRate_EvtSize_DGN_NoPer_Unpres_err </name>
+      <formula><![CDATA[ CounterDiffRate_GemRate*Mean_EventSizeInBytes_DGN_NoPeriodic_Unprescaled_err ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in Hardware Trigger Rate times the unprescaled mean Size (bytes) during the specified time interval for non-periodic events surviving the DGN filter   </description>
+    </object>
+
+     
 	      <!-- Trigger Rates per tower geometry -->
 
     <object>
