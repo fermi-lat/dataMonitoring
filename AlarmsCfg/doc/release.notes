@@ -1,3 +1,9 @@
+*** v5r14p2 ***
+- Warning high limit moved from 2.5 to 3.0 for the "y_values" alarms on
+CalXAdcPedPedMeanDeviation_HEX1_TH1 and CalXAdcPedPedMeanDeviation_LEX1_TH1
+for CAL channel 2784.
+
+
 *** v5r14p1 ***
 -- CalXAdcPedRMS_LEX8_TH1: warning and error limits moved down to 30/30
 for channel 2414.
