@@ -1,3 +1,8 @@
+*** v5r15p0 ***
+- Condition on the minimum number of entries for running the alarms on the
+calgains eor changed from 750,000 to 1,000,000.
+
+
 *** v5r14p2 ***
 - Warning high limit moved from 2.5 to 3.0 for the "y_values" alarms on
 CalXAdcPedPedMeanDeviation_HEX1_TH1 and CalXAdcPedPedMeanDeviation_LEX1_TH1
