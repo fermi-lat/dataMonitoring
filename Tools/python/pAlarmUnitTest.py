@@ -20,15 +20,15 @@ class pAlarmUnitTest:
             sys.exit('Could not find input file %s.' % inputFilePath)
         if group is None:
             print 'Try guessing the group from the name of the input file...'
-            if 'calhist' in inputFilePath:
+            if 'calhist' in inputFilePath.lower():
                 group = 'calhist'
-            elif 'acdpedsanalyzer' in inputFilePath:
+            elif 'acdpedsanalyzer' in inputFilePath.lower():
                 group = 'acdpeds_eor'
-            elif 'calpedsanalyzer' in inputFilePath:
+            elif 'calpedsanalyzer' in inputFilePath.lower():
                 group = 'calpeds_eor'
-            elif 'calgainsanalyzer' in inputFilePath:
+            elif 'calgainsanalyzer' in inputFilePath.lower():
                 group = 'calgains_eor'
-            elif 'tkrtrend' in inputFilePath:
+            elif 'tkrtrend' in inputFilePath.lower():
                 group = 'trackermon_trend'
             else:
                 group = os.path.basename(inputFilePath).split('_')[-1]
