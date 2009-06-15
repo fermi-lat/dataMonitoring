@@ -1,11 +1,13 @@
-*** v5r15p0 ***
-- Condition on the minimum number of entries for running the alarms on the
-calgains eor changed from 750,000 to 1,000,000.
+*** v5r15p1 ***
 - Add an exception on recon eor for LAC threshold of Tower 6 Layer 4 Column 6
   Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_6_4_1
   This LAC threshold has been disabled in the FSW configuration because this channel
   has a noise greater than 1MeV, hence the cristal is readout on the other side only
   and the observed LAC threshold is higher than normal.
+
+*** v5r15p0 ***
+- Condition on the minimum number of entries for running the alarms on the
+calgains eor changed from 750,000 to 1,000,000.
 
 *** v5r14p2 ***
 - Warning high limit moved from 2.5 to 3.0 for the "y_values" alarms on
