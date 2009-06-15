@@ -10,4 +10,8 @@
     <exception status_on_violation="clean"/>
   </alarm>
 
+  <alarm name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_6_4_1" algorithm="leftmost_edge">
+    <exception status_on_violation="clean"/>
+  </alarm>
+
 </alarm_exceptions>
