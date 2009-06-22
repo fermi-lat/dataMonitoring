@@ -30,10 +30,10 @@ ROB_POLYGON      = [(-86.1, -30.0),
                     (33.9 , -30.0)
                     ]
 
-MIN_LON = -180
-MAX_LON = 180
-MIN_LAT = -30
-MAX_LAT = 30
+MIN_LON = -180.
+MAX_LON = 180.
+MIN_LAT = -25.65
+MAX_LAT = 25.65
 NUM_LON_BINS = 300
 NUM_LAT_BINS = 200
 
@@ -44,6 +44,7 @@ class polygon:
         self.VertexList = vertexList
         self.VertexList.append(self.VertexList[0])
         self.LinesList = []
+        self.MarkersList = []
         self.ConditionsList = []
         for i in range(len(vertexList) - 1):
             lon1 = self.VertexList[i][0]
@@ -51,8 +52,16 @@ class polygon:
             lon2 = self.VertexList[i+1][0]
             lat2 = self.VertexList[i+1][1]
             self.LinesList.append(ROOT.TLine(lon1, lat1, lon2, lat2))
-        self.BaseHistogram = ROOT.TH2F('SAA', 'SAA', NUM_LON_BINS, MIN_LON,
-                                      MAX_LON, NUM_LAT_BINS, MIN_LAT, MAX_LAT)
+            self.MarkersList.append(ROOT.TMarker(lon1, lat1, 20))
+        self.BaseHistogram = ROOT.TH2F('SAA', 'SAA polygon',
+                                       NUM_LON_BINS, MIN_LON,
+                                       MAX_LON, NUM_LAT_BINS, MIN_LAT, MAX_LAT)
+        self.BaseHistogram.GetXaxis().SetTitle('Longitude (degrees)')
+        self.BaseHistogram.GetXaxis().SetTitleSize(0.03)
+        self.BaseHistogram.GetXaxis().SetLabelSize(0.03)
+        self.BaseHistogram.GetYaxis().SetTitle('Latitude (degrees)')
+        self.BaseHistogram.GetYaxis().SetTitleSize(0.03)
+        self.BaseHistogram.GetYaxis().SetLabelSize(0.03)
 
     def isInside(self, x0, y0):
         xIntercepts = []
@@ -75,14 +84,32 @@ class polygon:
             line.SetLineColor(lineColor)
             line.SetLineWidth(lineWidth)
             line.Draw('same')
+        for marker in self.MarkersList:
+            marker.SetMarkerColor(lineColor)
+            marker.Draw()
         ROOT.gPad.Update()
 
 
 if __name__ == '__main__':
-    p = polygon(ORIGINAL_POLYGON)
-    p.draw()
-    p2 = polygon(ROB_POLYGON)
-    p2.draw(True, 2, ROOT.kRed)
+    ROOT.gStyle.SetOptStat(0)
+    _MIN_LAT = MIN_LAT
+    _MAX_LAT = MAX_LAT
+    MIN_LAT = -30
+    MAX_LAT = 30
+    c = ROOT.TCanvas('SAA', 'SAA', 800, 600)
+    c.SetGridx(True)
+    c.SetGridy(True)
+    p = polygon(ROB_POLYGON)
+    p.BaseHistogram.SetNdivisions(520, 'X')
+    p.BaseHistogram.SetNdivisions(520, 'Y')
+    p.draw(False, 2, ROOT.kBlue)
+    minLine = ROOT.TLine(MIN_LON, _MIN_LAT, MAX_LON, _MIN_LAT)
+    maxLine = ROOT.TLine(MIN_LON, _MAX_LAT, MAX_LON, _MAX_LAT)
+    minLine.SetLineWidth(2)
+    maxLine.SetLineWidth(2)
+    minLine.Draw()
+    maxLine.Draw()
+    c.Update()
     
     #import random
     #markers = []
@@ -95,4 +122,3 @@ if __name__ == '__main__':
     #        m.SetMarkerColor(ROOT.kRed)
     #    markers.append(m)
     #    m.Draw('same')
-    ROOT.gPad.Update()
