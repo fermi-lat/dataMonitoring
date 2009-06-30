@@ -200,6 +200,27 @@
       </alarm>
     </alarmSet>
 
+    <alarmSet name="Time::Mean_CompressionLevel" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="7.8" max="8.00"/>
+	<error_limits   min="7.0" max="8.00"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="Time::Rate_CompressedEvtSizeInBytes" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="1.0e5" max="5.0e5"/>
+	<error_limits   min="0.5e5" max="10.0e5"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="Time::Mean_CompressedEvtSizeBytes" enabled="True">
+      <alarm function="values" enabled="True">
+	<warning_limits min="300" max="700"/>
+	<error_limits   min="100" max="1500"/>
+      </alarm>
+    </alarmSet>
+
   </alarmList>
 
 
