@@ -1,4 +1,4 @@
-*** v5r17p0 (TBT) ***
+*** v5r17p0 ***
 - Warning upper limit for OutF_Ratio_EvtSize_CompressedEvtSize in digi_trend
 changed from 3.2 to 3.25.
 
