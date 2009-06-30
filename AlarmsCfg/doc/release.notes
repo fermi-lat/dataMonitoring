@@ -1,3 +1,13 @@
+*** v5r16p2 ***
+- Added alarms on the compression level and bandwidth in the digi trending.
+Precisely, alarms have been added on the follwing quantities:
+Time::Mean_CompressionLevel
+Time::Rate_CompressedEvtSizeInBytes
+Time::Mean_CompressedEvtSizeBytes
+
+* Relevant jira(s): GDQMQ-313
+
+
 *** v5r16p1 ***
 - Added alarms on the filter rates in the digi trending:
 Time::Rate_FswFilters_DGN
