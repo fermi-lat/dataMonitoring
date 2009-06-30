@@ -1,4 +1,9 @@
 *** v5r16p2 ***
+- Warning upper limit for OutF_Ratio_EvtSize_CompressedEvtSize in digi_trend
+changed from 3.2 to 3.25.
+
+
+*** v5r16p2 ***
 - Added alarms on the compression level and bandwidth in the digi trending.
 Precisely, alarms have been added on the follwing quantities:
 Time::Mean_CompressionLevel
