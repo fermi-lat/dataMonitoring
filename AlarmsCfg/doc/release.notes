@@ -1,3 +1,14 @@
+*** v5r16p1 ***
+- Added alarms on the filter rates in the digi trending:
+Time::Rate_FswFilters_DGN
+Time::Rate_FswFilters_HIP
+Time::Rate_FswFilters_GAMMA
+This is essentially to make sure that all the filters are correctly running
+in the nominal science configuration.
+
+* Relevant jira(s): GDQMQ-312
+
+
 *** v5r16p0 ***
 - Alarm limits (warning max and error max) changed in calpeds_eor for channel
 1160 for the ""y_values" alarms on:
