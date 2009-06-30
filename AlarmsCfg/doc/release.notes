@@ -4,6 +4,8 @@
 CalXAdcPedRMS_LEX1_TH1 (1.2, 1.8 -> 3.6, 3.6) and
 CalXAdcPedRMS_LEX8_TH1 (10.0, 15.0 -> 30.0, 30.0)
 
+* Relevant jira(s): GDQMQ-314
+
 
 *** v5r15p1 ***
 - Add an exception on recon eor for LAC threshold of Tower 6 Layer 4 Column 6
@@ -138,17 +140,22 @@ been loaded on the LAT.
   TkrPlanesHit_TH1_Tower
 - Slightly extend Warning limits for low_high_ratio on CalX_NHit_TH1_Tower_*
   in order not to fire during ARR.
-- Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_4_3_4 exception for CAL noisy channel
-- Added exception TkrHitsCounter_PlaneGTFE_TH2_Tower_0 Empty Bin (GTFE 12, Plane 14) fastmon_eor
-- New strip masks so removing invalid exceptions in fastmon_eor "spikes and holes" and tkr_trend:
+- Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_4_3_4 exception for CAL
+noisy channel
+- Added exception TkrHitsCounter_PlaneGTFE_TH2_Tower_0 Empty Bin
+(GTFE 12, Plane 14) fastmon_eor
+- New strip masks so removing invalid exceptions in fastmon_eor "spikes and
+holes" and tkr_trend:
   - tower 0 layer 12 and 14 : remove exception in fastmon_eor (12, 14) (14, 12)
   - tower 2 layer 31 : remove exception in fastmon_eor (19, 31) 
   - tower 3 layer 1 and 35 : remove exception in fastmon_eor (1, 35) (12, 1)
   - tower 5 layer 32 :: remove exception in fastmon_eor (3, 32)
 - New masks are not perfect, adding the following exceptions :
-  - TkrHitsCounter_PlaneGTFE_TH2_Tower_0 fastmon_eor "spikes and holes" (13, 14)
+  - TkrHitsCounter_PlaneGTFE_TH2_Tower_0 fastmon_eor "spikes and holes"
+(13, 14)
   - TkrHitsCounter_PlaneGTFE_TH2_Tower_0 fastmon_eor "empty bins" (12, 14)
-  - Number_layerOcc_TowerPlane tkr_trend "Number_layerOcc_TowerPlane" (0, 14) and (3, 35)
+  - Number_layerOcc_TowerPlane tkr_trend "Number_layerOcc_TowerPlane"
+(0, 14) and (3, 35)
 
   
 *** v5r9p1 ***
