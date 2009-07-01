@@ -1,3 +1,9 @@
+*** v5r17p1 ***
+- Warning high limit on CondSummaryWord_TH1 (reference histogram) for both
+digi end of run and fastmon end of run changed from 100 to 110.
+See http://www-glast.stanford.edu/protected/mail/datamon/2892.html
+
+
 *** v5r17p0 ***
 - Warning upper limit for OutF_Ratio_EvtSize_CompressedEvtSize in digi_trend
 changed from 3.2 to 3.25.
