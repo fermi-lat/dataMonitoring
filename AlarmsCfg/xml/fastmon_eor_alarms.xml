@@ -9,7 +9,7 @@
     <alarmSet name="CondSummaryWord_TH1" enabled="True">
       <alarm function="reference_histogram" enabled="True">
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
-	<warning_limits min="" max="100"/>
+	<warning_limits min="" max="110"/>
 	<error_limits min="" max="1000"/>
       </alarm>
     </alarmSet>    
