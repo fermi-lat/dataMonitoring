@@ -1,7 +1,7 @@
 *** v5r17p2 ***
 - Condition on the minimum number of entries changed from 10 to 15 in
 CondArrCalHi_CNOOpensWindow_TH1 for the alarms on the average and the
-rm of the distribution.
+rms of the distribution.
 
 
 *** v5r17p1 ***
