@@ -837,12 +837,12 @@
       <alarm function="x_average" enabled="True">
 	<warning_limits min="0." max="5.0"/>
 	<error_limits min="0." max="10.0"/>
-        <condition name="min_entries" value="10"/>
+        <condition name="min_entries" value="15"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<warning_limits min="0." max="8.0"/>
 	<error_limits   min="0." max="10.0"/>
-        <condition name="min_entries" value="10"/>
+        <condition name="min_entries" value="15"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
