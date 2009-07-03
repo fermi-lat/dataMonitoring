@@ -1,3 +1,10 @@
+*** v5r17p3 ***
+- Alarm limits changed for CondArrCNO_CalLoOpensWindow_TH1 in both digi and
+fastmon eor.
+warning max: 0.0006 -> 0.0008
+error max  : 0.0010 -> 0.0015
+
+
 *** v5r17p2 ***
 - Condition on the minimum number of entries changed from 10 to 15 in
 CondArrCalHi_CNOOpensWindow_TH1 for the alarms on the average and the
