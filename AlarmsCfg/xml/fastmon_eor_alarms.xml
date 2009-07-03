@@ -8,6 +8,7 @@
 
     <alarmSet name="CondSummaryWord_TH1" enabled="True">
       <alarm function="reference_histogram" enabled="True">
+        <condition name="min_entries" value="10000"/>
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="110"/>
 	<error_limits min="" max="1000"/>
@@ -305,6 +306,7 @@
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
       <alarm function="reference_histogram" enabled="True">
+        <condition name="min_entries" value="5000"/>
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
@@ -353,6 +355,7 @@
 	<error_limits min="1.0" max="7.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
+        <condition name="min_entries" value="200"/>
 	<warning_limits min="1.0" max="3.0"/>
 	<error_limits min="0.5" max="5.0"/>
       </alarm> 
@@ -459,6 +462,7 @@
 	<error_limits min="-0.1" max="0.1"/>
       </alarm>
       <alarm function="reference_histogram" enabled="True">
+        <condition name="min_entries" value="1000"/>
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
@@ -498,6 +502,7 @@
 	<error_limits min="4.0" max="9.0"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
+        <condition name="min_entries" value="100"/>
 	<warning_limits min="2.0" max="3.0"/>
 	<error_limits min="1.0" max="4.0"/>
       </alarm> 
