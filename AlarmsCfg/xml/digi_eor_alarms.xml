@@ -559,8 +559,8 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="14"/>
 	<parameter name="pivot" value="0"/>
-	<warning_limits min="0.0" max="0.0006"/>
-	<error_limits   min="0.0" max="0.0010"/>
+	<warning_limits min="0.0" max="0.0008"/>
+	<error_limits   min="0.0" max="0.0015"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
