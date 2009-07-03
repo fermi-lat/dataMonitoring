@@ -1,3 +1,26 @@
+*** v5r17p4 ***
+Quite a few alarms protected against low statistics.
+Digi eor:
+- AcdVetoMap_TH1 (x_rms): added condition on minimum number of entries
+  (100000).
+- Acd_GemVeto_AcdTile_TH1 (x_rms): added condition on minimum number of
+  entries (100000).
+- CondArrCNO_CalLoOpensWindow_TH1 (x_rms): added condition on minimum number of
+  entries (100).
+- CondArrCNO_TKROpensWindow_TH1 (x_rms): added condition on minimum number of
+  entries (200)
+- TkrHits_TH1_Tower_* (x_average): added condition on minimum number of
+  entries (10000).
+- CondSummaryWord_TH1 (reference_histogram): added condition on minimum number
+  of entries (10000).
+- CondArrCalLo_TKROpensWindow_TH1 (reference_histogram): added condition on
+  minimum number of entries (5000).
+- CondArrTKR_CalLoOpensWindow_TH1 (reference_histogram): added condition on
+  minimum number of entries (1000).
+FastMon eor:
+- 
+
+
 *** v5r17p3 ***
 - Alarm limits changed for CondArrCNO_CalLoOpensWindow_TH1 in both digi and
 fastmon eor.
