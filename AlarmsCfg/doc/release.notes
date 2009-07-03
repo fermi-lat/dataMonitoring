@@ -8,7 +8,7 @@ Digi eor:
 - CondArrCNO_CalLoOpensWindow_TH1 (x_rms): added condition on minimum number of
   entries (100).
 - CondArrCNO_TKROpensWindow_TH1 (x_rms): added condition on minimum number of
-  entries (200)
+  entries (200).
 - TkrHits_TH1_Tower_* (x_average): added condition on minimum number of
   entries (10000).
 - CondSummaryWord_TH1 (reference_histogram): added condition on minimum number
@@ -18,7 +18,16 @@ Digi eor:
 - CondArrTKR_CalLoOpensWindow_TH1 (reference_histogram): added condition on
   minimum number of entries (1000).
 FastMon eor:
-- 
+- CondArrCalLo_TKROpensWindow_TH1 (reference_histogram): added condition on
+  minimum number of entries (5000).
+- CondArrTKR_CalLoOpensWindow_TH1 (reference_histogram): added condition on
+  minimum number of entries (1000).
+- CondSummaryWord_TH1 (reference_histogram): added condition on minimum number
+  of entries (10000).
+- CondArrCNO_CalLoOpensWindow_TH1 (x_rms): added condition on minimum number of
+  entries (100).
+- CondArrCNO_TKROpensWindow_TH1 (x_rms): added condition on minimum number of
+  entries (200).
 
 
 *** v5r17p3 ***
