@@ -1,3 +1,27 @@
+*** v5r18p1 ***
+- A few more alarms protected against low statistics.
+Digi eor:
+- CalX_NHit_TH1_Tower_*: min entries 100000 -> 500000 for algorithm x_rms.
+- CalX_Total_NHit_TH1: min entries 100000 -> 500000 for algorithm
+  low_high_ratio.
+- CondArrCalHiTrigger_TH1: added condition on min entries (60000) for
+  algorithms x_average, x_rms and low_high_ratio.
+- CondArrTKR_CalLoOpensWindow_TH1: added/changed condition on min entries
+  (20000) for algorithms x_average, x_rms and low_high_ratio.
+- TkrHits_TH1_Tower_*: added condition on min entries (500000) for
+  algorithm x_average.
+FastMon eor:
+- CalX_NHit_TH1_Tower_*: min entries 100000 -> 500000 for algorithm x_rms.
+- CalX_Total_NHit_TH1: min entries 100000 -> 500000 for algorithm
+  low_high_ratio.
+- CondArrCalHiTrigger_TH1: added condition on min entries (60000)for
+  algorithms x_average, x_rms and low_high_ratio.
+- CondArrTKR_CalLoOpensWindow_TH1: added/changed condition on min entries
+  (20000) for algorithms x_average, x_rms and low_high_ratio.
+- TkrHits_TH1_Tower_*: added condition on min entries (500000) for
+  algorithm x_average.
+
+
 *** v5r18p0 ***
 - Upper warning limit changed from 3.0 to 3.5 for CAL channel 2784,
 calpeds_eor alarms CalXAdcPedPedMeanDeviation_LEX1_TH1 and
