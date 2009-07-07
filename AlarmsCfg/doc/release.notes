@@ -1,3 +1,13 @@
+*** v5r18p0 ***
+- Upper warning limit changed from 3.0 to 3.5 for CAL channel 2784,
+calpeds_eor alarms CalXAdcPedPedMeanDeviation_LEX1_TH1 and
+CalXAdcPedPedMeanDeviation_HEX1_TH1.
+- Separate alarm limits for CAL channel 2785 on calpeds_eor alarm
+CalXAdcPedRMS_HEX1_TH1 (0.6, 0.8 -> 0.9, 1.2)
+
+* Relevant jira(s): GDQMQ-315
+
+
 *** v5r17p4 ***
 Quite a few alarms protected against low statistics.
 Digi eor:
