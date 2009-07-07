@@ -1,3 +1,17 @@
+*** v5r18p2 ***
+- A few more alarms protected against low statistics.
+Digi eor:
+- CondArrCNO_CalLoOpensWindow_TH1: added condition on min entries (1000) for
+  algorithms x_average, x_rms and low_high_ratio, reference_histogram.
+- CondArrTKR_CalLoOpensWindow_TH1: added condition on min entries (20000) for
+  reference histogram.
+FastMon eor:
+- CondArrCNO_CalLoOpensWindow_TH1: added condition on min entries (1000) for
+  algorithms x_average, x_rms and low_high_ratio, reference_histogram.
+- CondArrTKR_CalLoOpensWindow_TH1: added condition on min entries (20000) for
+  reference histogram.
+
+
 *** v5r18p1 ***
 - A few more alarms protected against low statistics.
 Digi eor:
