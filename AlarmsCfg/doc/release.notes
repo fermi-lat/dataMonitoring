@@ -9,7 +9,9 @@ Digi eor:
   and reference_histogram: condition on min entries changed from
   10000 to 15000.
 FastMon eor:
-- 
+- CondArrCNOTrigger_TH1, algorithms x_average, x_rms, low_high_ratio, y_values
+  and reference_histogram: condition on min entries changed from
+  10000 to 15000.
 
 
 *** v5r18p2 ***
