@@ -166,12 +166,12 @@
       <alarm function="x_average" enabled="True">
 	<warning_limits min="5.0" max="7.0"/>
 	<error_limits min="3.0" max="9.0"/>
-        <condition name="min_entries" value="10000"/>
+        <condition name="min_entries" value="15000"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<warning_limits min="2.0" max="3.0"/>
 	<error_limits min="1.0" max="5.0"/>
-        <condition name="min_entries" value="10000"/>
+        <condition name="min_entries" value="15000"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -179,7 +179,7 @@
 	<parameter name="pivot" value="0"/>
 	<warning_limits min="0.0010" max="0.0030"/>
 	<error_limits min="0.0005" max="0.0050"/>
-        <condition name="min_entries" value="10000"/>
+        <condition name="min_entries" value="15000"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -187,7 +187,7 @@
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="700" max="3000"/>
 	<error_limits min="300" max="6000"/>
-        <condition name="min_entries" value="10000"/>
+        <condition name="min_entries" value="15000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
@@ -198,7 +198,7 @@
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
-        <condition name="min_entries" value="10000"/>
+        <condition name="min_entries" value="15000"/>
       </alarm>
     </alarmSet>
     <alarmSet name="CondArrROITrigger_TH1" enabled="True">
