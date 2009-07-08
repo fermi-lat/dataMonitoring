@@ -5,7 +5,9 @@ Recon eor:
   ReconAcdPhaMipsCorrectedAngle_PMTB_TH1_AcdTile_*: condition on min entries
   changed from 10 to 35.
 Digi eor:
-- 
+- CondArrCNOTrigger_TH1, algorithms x_average, x_rms, low_high_ratio, y_values
+  and reference_histogram: condition on min entries changed from
+  10000 to 15000.
 FastMon eor:
 - 
 
