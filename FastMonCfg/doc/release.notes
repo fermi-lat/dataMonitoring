@@ -1,3 +1,8 @@
+*** v2r0p0 ***
+- Added a new variable (distance to the SAA) in the baseConfig.xml file.
+* Relevant jira(s): GDQMQ-311
+
+
 *** v1r6p1 ***
 - Change name CondArrCalLoTrigger_TH1 to CondArrCalLowTrigger_TH1
   to match Digi EOR name
@@ -8,14 +13,17 @@
 - All histograms at the tower level needs a _Tower added as a suffix
 * Relevant jira(s): GDQMQ-258
 
+
 *** v1r5p0 ***
 - Add spacecraft_orbit_mode and spacecraft_orbit_inSAA
 * Relevant jira(s): GDQMQ-195
+
 
 *** v1r4p8 ***
 - Remove cut at 0 for Cal plots CalX_Total_NHit_TH1 and CalX_NHit_TH1
   in config.xml
 * Relevant jira(s): GDQMQ-230
+
 
 *** v1r4p7 ***
 - Remove Tick20MHzDeviation_SuperZoom_TH1 and
@@ -23,11 +31,13 @@
   in config.xml configLCI.xml MergeHistos_FastMon.txt
 * Relevant jira(s): GDQMQ-246
 
+
 *** v1r4p6 ***
-- Change histogram name AcdHitsCounter_CableChannel_TH2 to AcdHitMap_GafeGarc_TH2,
-  and swap axis to match the Digi definition in
+- Change histogram name AcdHitsCounter_CableChannel_TH2 to
+  AcdHitMap_GafeGarc_TH2, and swap axis to match the Digi definition in
   config.xml configLCI.xml MergeHistos_FastMon.txt
 * Relevant jira(s): GDQMQ-244
+
 
 *** v1r4p5 ***
 - Add ToT plots per plane in merging list file : MergeHistos_FastMon.txt
@@ -46,9 +56,11 @@
   to spot them by any means.
 * Relevant jira(s): GDQMQ-203
 
+
 *** v1r4p2 ***
 - Fixed all cuts to be explicitly booleans in config.xml and configLCI.xml
 * Relevant jira(s): GDQMQ-208
+
 
 *** v1r4p1 ***
 - Added AcdHitChannel to monitor the ACD occupancy per cable, channel
@@ -95,12 +107,14 @@ CondSummaryWord_WithSolicited_TH1 histogram - GDQMQ-143
 
 
 *** v1r1p12 ***
-  - Renamed CondArrCalCNO_CalLoOpensWindow_TH1 to CondArrCNO_CalLoOpensWindow_TH1 in xml/config.xml
+  - Renamed CondArrCalCNO_CalLoOpensWindow_TH1 to
+  CondArrCNO_CalLoOpensWindow_TH1 in xml/config.xml
 * Relevant jira(s): GDQMQ-139
 
 
 *** v1r1p11 ***
- - Fix variable type for meta_LATC_master and evt_data_transfer_id to uint32 in baseConfig
+ - Fix variable type for meta_LATC_master and evt_data_transfer_id to uint32
+  in baseConfig
 * Relevant jira(s): GDQMQ-115
 
 
@@ -124,8 +138,9 @@ CondSummaryWord_WithSolicited_TH1 histogram - GDQMQ-143
 
 
 *** v1r1p7 ***
- - Added quantities meta_LATC_master, aka meta.hardwareKey, and meta.softwareKey
-   for good measure. That's the hardware configuration for the current run. 
+ - Added quantities meta_LATC_master, aka meta.hardwareKey, and
+   meta.softwareKey for good measure.
+   That's the hardware configuration for the current run. 
 * Relevant jira(s): GDQMQ-107
 
 *** v1r1p6 ***
