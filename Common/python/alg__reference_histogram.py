@@ -159,7 +159,7 @@ class alg__reference_histogram(pAlarmBaseAlgorithm):
             float(self.ReferenceObject.GetEntries())
         numBins = self.ReferenceObject.GetNbinsX()
         if self.RootObject.GetNbinsX() != numBins:
-            logger.error('Mismatch in bins while comparing histograms.')
+            logging.error('Mismatch in bins while comparing histograms.')
             return
         chiSquare = 0
         numDof = 0

@@ -89,7 +89,8 @@ class pErrorLogger(pAlarmHandler):
         for key in self.EventSummaryDict.keys():
             value = element.evalAttribute(key)
             if value is None:
-                logger.warn('Could not eval "%s", leaving default.' % key)
+                logger.warn('Could not eval attribute "%s", leaving default.' %\
+                                key)
                 value = self.EventSummaryDict[key]
             self.EventSummaryDict[key] = value
             logger.info('Key = "%s", value = "%s"'% (key, value))
