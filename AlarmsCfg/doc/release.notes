@@ -1,3 +1,15 @@
+*** v5r18p3 ***
+- A few more alarms protected against low statistics.
+Recon eor:
+- ReconAcdPhaMipsCorrectedAngle_PMTA_TH1_AcdTile_* and
+  ReconAcdPhaMipsCorrectedAngle_PMTB_TH1_AcdTile_*: condition on min entries
+  changed from 10 to 35.
+Digi eor:
+- 
+FastMon eor:
+- 
+
+
 *** v5r18p2 ***
 - A few more alarms protected against low statistics.
 Digi eor:
