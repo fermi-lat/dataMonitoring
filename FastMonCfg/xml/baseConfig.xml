@@ -45,6 +45,10 @@
 	    <type>double</type>
             <shape>(1)</shape>
 	</variable>
+	<variable name="spacecraft_distance_to_saa" enabled="True" reset="False">
+	    <type>double</type>
+            <shape>(1)</shape>
+	</variable>
 	<variable name="spacecraft_pitch" enabled="True" reset="False">
 	    <type>double</type>
             <shape>(1)</shape>
