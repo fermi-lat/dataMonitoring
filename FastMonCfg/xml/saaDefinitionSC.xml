@@ -41,6 +41,5 @@ Got by e-mail from Eric Siskind.
    <vertex longitude="-97.631027" latitude="-9.893027"/>
    <vertex longitude="-98.633476" latitude="-12.492111"/>
    <vertex longitude="-92.242928" latitude="-21.697994"/>
-   <! Longitude below is wrong, I just made it up. -->
-   <vertex longitude="-86.1"      latitude="-30.003532"/>
+   <vertex longitude="-86.252380" latitude="-30.003532"/>
 </polygon>
