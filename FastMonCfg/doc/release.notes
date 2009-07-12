@@ -1,3 +1,8 @@
+*** v2r0p1 *** (TO BE TAGGED)
+- Added a new xml file with the definition of the SAA uploaded on the
+spacecraft.
+
+
 *** v2r0p0 ***
 - Added a new variable (distance to the SAA) in the baseConfig.xml file.
 * Relevant jira(s): GDQMQ-311
