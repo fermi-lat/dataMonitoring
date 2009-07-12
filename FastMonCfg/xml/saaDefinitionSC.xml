@@ -27,19 +27,22 @@ Got by e-mail from Eric Siskind.
 09-187-12:11:00.542158: 63483 : Uplink : Accepted : /SMFPFLOAT  PARAMID=FPVSGSAA1PLONG09, VALUE=-97.631027
 09-187-12:11:02.640781: 63484 : Uplink : Accepted : /SMFPFLOAT  PARAMID=FPVSGSAA1PLONG10, VALUE=-98.633476
 09-187-12:11:04.640783: 63485 : Uplink : Accepted : /SMFPFLOAT  PARAMID=FPVSGSAA1PLONG11, VALUE=-92.242928
+
+Note: the code making use of the polygon relies on the fact that the vertices of the
+polygon run clockwise.
 -->
 
 <polygon>
-   <vertex longitude="33.795170"  latitude="-30.043982"/>
-   <vertex longitude="24.387259"  latitude="-22.648211"/>
-   <vertex longitude="-18.721142" latitude="2.449827"/>
-   <vertex longitude="-25.819790" latitude="5.152306"/>
-   <vertex longitude="-36.119049" latitude="5.157189"/>
-   <vertex longitude="-42.119034" latitude="4.560682"/>
-   <vertex longitude="-58.921329" latitude="0.672615"/>
-   <vertex longitude="-93.229866" latitude="-8.597076"/>
-   <vertex longitude="-97.631027" latitude="-9.893027"/>
-   <vertex longitude="-98.633476" latitude="-12.492111"/>
-   <vertex longitude="-92.242928" latitude="-21.697994"/>
    <vertex longitude="-86.252380" latitude="-30.003532"/>
+   <vertex longitude="-92.242928" latitude="-21.697994"/>
+   <vertex longitude="-98.633476" latitude="-12.492111"/>
+   <vertex longitude="-97.631027" latitude="-9.893027"/>
+   <vertex longitude="-93.229866" latitude="-8.597076"/>
+   <vertex longitude="-58.921329" latitude="0.672615"/>
+   <vertex longitude="-42.119034" latitude="4.560682"/>
+   <vertex longitude="-36.119049" latitude="5.157189"/>
+   <vertex longitude="-25.819790" latitude="5.152306"/>
+   <vertex longitude="-18.721142" latitude="2.449827"/>
+   <vertex longitude="24.387259"  latitude="-22.648211"/>
+   <vertex longitude="33.795170"  latitude="-30.043982"/>
 </polygon>
