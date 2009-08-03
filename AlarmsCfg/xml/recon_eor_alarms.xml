@@ -61,7 +61,7 @@
 
     <alarmSet name="SuspCalLo_Highest0_EnergyDistribution_TH1" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
-	<condition name="min_entries" value="2000"/>
+	<condition name="min_entries" value="5000"/>
 	<parameter name="window_half_width" value="15"/>
 	<parameter name="threshold" value="45"/>
 	<parameter name="start_x" value="50"/>
@@ -72,7 +72,7 @@
 
     <alarmSet name="SuspCalHi_Highest0_EnergyDistribution_TH1" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
-	<condition name="min_entries" value="2000"/>
+	<condition name="min_entries" value="5000"/>
 	<parameter name="window_half_width" value="15"/>
 	<parameter name="threshold" value="45"/>
 	<warning_limits min="800.0" max="1200.0"/>
