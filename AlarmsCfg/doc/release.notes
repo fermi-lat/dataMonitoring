@@ -1,3 +1,9 @@
+** @file release.notes
+ * Package AlarmCfg
+ * Coordinator: Luca Baldini
+ *
+ *                  EOH
+
 *** v5r18p4 ***
 - A few more alarms protected against low statistics.
 FastMon and Digi eor:
