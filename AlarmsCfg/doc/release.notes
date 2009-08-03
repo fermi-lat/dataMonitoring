@@ -1,3 +1,18 @@
+*** v5r18p4 ***
+- A few more alarms protected against low statistics.
+FastMon and Digi eor:
+- CondArrROI_TKROpensWindow_TH1 x_rms and x-mean: condition on min entries
+  added at 10k events.
+Recon eor:
+- SuspCalLo_Highest0_EnergyDistribution_TH1 and SuspCalHi_Highest0_EnergyDistribution_TH1:
+  condition on min entries raised from 2000 to 5000.
+- ReconAcdPhaMipsCorrectedAngle_PMTB_Zoom_TH1_AcdTile_* and
+  ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_*: condition on min entries
+  changed from 100 to 200.
+- Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_*_*_* and
+  Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_*_*_*: condition on min entries
+  changed from 100 to 200.
+
 *** v5r18p3 ***
 - A few more alarms protected against low statistics.
 Recon eor:
