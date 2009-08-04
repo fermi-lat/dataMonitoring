@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-18-04 04-Aug-2009    jrb upgrade to v5r18p4 - first stag tag as 05-18-04
 *** v5r18p4 ***
 - A few more alarms protected against low statistics.
 FastMon and Digi eor:
