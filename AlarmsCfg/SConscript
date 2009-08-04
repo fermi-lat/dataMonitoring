@@ -1,4 +1,4 @@
 # -*- python -*-
 # Authors: L. Bladini <luca.baldini@pi.infn.it>
-# Version: AlarmCfg-05-18-03
+# Version: AlarmsCfg-05-18-03
 
