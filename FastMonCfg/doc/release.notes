@@ -1,4 +1,11 @@
-*** v2r0p1 *** (TO BE TAGGED)
+** @file release.notes
+ * Package FastMonCfg
+ * Coordinator: Luca Baldini <luca.baldini@pi.infn.it>
+ *
+ *                  EOH
+
+*** v2r0p1 ***
+- First stag/SCons tag 
 - Added a new xml file with the definition of the SAA uploaded on the
 spacecraft.
 
