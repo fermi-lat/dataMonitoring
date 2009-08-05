@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ FastMonCfg-02-00-01 05-Aug-2009 bregeon upgrade to v2r0p1 - first stag tag as 02-00-01
 *** v2r0p1 ***
 - First stag/SCons tag 
 - Added a new xml file with the definition of the SAA uploaded on the
