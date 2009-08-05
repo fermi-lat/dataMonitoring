@@ -14,9 +14,9 @@ DEFAULT_CFG_FILE_PATH = os.path.join(BASE_DIR_PATH, '../xml/grbReport.xml')
 class pGRBReportGenerator(pReportGenerator):
 
     def __init__(self, burstTime, halfWindow, pdfFolderPath, cfgFilePath):
-        endTime = burstTime + int(halfWindow*3600000)
+        endTime = burstTime + int(halfWindow*3600)
         pReportGenerator.__init__(self, endTime, 2*halfWindow, pdfFolderPath,\
-                                      cfgFilePath, 0)
+                                      cfgFilePath)
 
 
 if __name__ == '__main__':
@@ -37,9 +37,6 @@ if __name__ == '__main__':
     parser.add_option('-t', '--time-formats',
                       action='store_true', dest='t', default=False,
                       help='print the list of avilable time formats and exit')
-    parser.add_option('-l', '--do-not-cleanup-LaTeX',
-                      action='store_false', dest='l', default=True,
-                      help='do not clean up the temporary LaTeX folder')
     (opts, args) = parser.parse_args()
     if opts.t:
         print 'Available format strings for specifying end time:\n%s' %\
@@ -47,8 +44,8 @@ if __name__ == '__main__':
         sys.exit()
     if opts.b is None:
         sys.exit('Please provide the burst time.')
-    burstTime = convert2msec(opts.b)
+    burstTime = convert2sec(opts.b)
     reportGenerator = pGRBReportGenerator(burstTime, opts.s, opts.d, opts.c)
     reportGenerator.writeReport()
     reportGenerator.compile()    
-    reportGenerator.copyPdfAndCleanUp(opts.l)
+    reportGenerator.copyPdfAndCleanUp()    
