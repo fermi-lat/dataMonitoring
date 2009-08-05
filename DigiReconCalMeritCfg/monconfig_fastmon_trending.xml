@@ -21,6 +21,7 @@
    <!-- Environment quantities -->
    <object>FastMon_spacecraft_orbit_mode</object> 
    <object>FastMon_spacecraft_orbit_inSAA</object> 
+   <object>FastMon_spacecraft_distance_to_saa</object> 
 
    <object>FastMon_spacecraft_latitude</object>
    <object>FastMon_spacecraft_longitude</object>
@@ -391,6 +392,13 @@
       <cut><![CDATA[ ]]></cut>
       <type>valuechange[0]</type>
       <description> Changes of the spacecraft orbit in SAA flag (1==IN, 0==OUT) </description>
+    </object>
+    <object>
+      <name> FastMon_Spacecraft_Distance_To_SAA </name>
+      <formula><![CDATA[ FastMon_spacecraft_distance_to_saa ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> mean </type>
+      <description> Mean value of the spacecraft ditance to the SAA (km) </description>
     </object>
 
     <object>
