@@ -1,3 +1,18 @@
+** @file release.notes
+ * Package DigiReconCalMeritCfg
+ * Coordinator: D. Paneque <dpaneque@slac.stanford.edu>
+ *
+ *                  EOH
+
+v1r4p2  2009/08/07  (DEV)
+---------------------------
+This is the branch tag to be able to update pass6 monitoring withou
+reverting all changes done for pass7, see GDQMQ-311 and GDQM-308.
+Branch tag with stag type as DigiReconCalMeritCfg-01-04-02
+Added FastMon trending quantity FastMon_Spacecraft_Distance_To_SAA
+to address Jira GDQMQ-311
+
+
 v1r4p1  2009/03/30  (DEV)
 ---------------------------
 Added quantities to address Jira GDQM-309.
