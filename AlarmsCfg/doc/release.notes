@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-19-00 21-Sep-2009 lbaldini Digi trend limits updated for flight software B2-1-0
 - Upper limits on digi trending OutF_Ratio_EvtSize_CompressedEvtSize changed
 from 3.25, 3.50 to 3.40, 3.60 to accommodate the B2-1-0 version of the flight
 software (error events are now compressed).
