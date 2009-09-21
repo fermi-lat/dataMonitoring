@@ -202,8 +202,8 @@
 
     <alarmSet name="Time::Mean_CompressionLevel" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="7.8" max="8.00"/>
-	<error_limits   min="7.0" max="8.00"/>
+	<warning_limits min="8.00" max="8.00"/>
+	<error_limits   min="8.00" max="8.00"/>
       </alarm>
     </alarmSet>
 
