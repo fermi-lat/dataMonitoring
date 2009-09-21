@@ -7,6 +7,10 @@
 - Upper limits on digi trending OutF_Ratio_EvtSize_CompressedEvtSize changed
 from 3.25, 3.50 to 3.40, 3.60 to accommodate the B2-1-0 version of the flight
 software (error events are now compressed).
+- Lower limits on digi trending Mean_CompressionLevel changed from
+7.0, 7.8 to 8.0, 8.0 to accommodate the B2-1-0 version of the flight
+software. Now all the events are compressed and everything whose compression
+level is different from 8 should be regarded as unexpected.
 
 
  AlarmsCfg-05-18-04 04-Aug-2009    jrb upgrade to v5r18p4 - first stag tag as 05-18-04
