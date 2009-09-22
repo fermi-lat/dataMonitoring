@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-19-01 22-Sep-2009 lbaldini Minor change in one digi trend alarm.
 - num_sigma parameter set to zero for the alarm on digi trending quantity
 Mean_CompressionLevel (since we do not expect any single value lower than 8,
 we want to explicitely ignore the error on the average).
