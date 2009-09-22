@@ -204,6 +204,7 @@
       <alarm function="values" enabled="True">
 	<warning_limits min="8.00" max="8.00"/>
 	<error_limits   min="8.00" max="8.00"/>
+        <parameter name="num_sigma" value="0.0"/>
       </alarm>
     </alarmSet>
 
