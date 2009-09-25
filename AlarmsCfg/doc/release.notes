@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-19-04 24-Sep-2009 monzani added two checks to verify
 - Added two more error conditions to the verify alarm file: checking the FSW 
 compression level (GDQMQ-320), checking that periodic evts never have the TEM bug (GDQMQ-319)
 
