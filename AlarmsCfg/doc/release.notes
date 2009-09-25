@@ -4,7 +4,9 @@
  *
  *                  EOH
 
- AlarmsCfg-05-19-03 24-Sep-2009 monzani added two checks to verify
+- Added two more error conditions to the verify alarm file: checking the FSW 
+compression level (GDQMQ-320), checking that periodic evts never have the TEM bug (GDQMQ-319)
+
  AlarmsCfg-05-19-02 22-Sep-2009 lbaldini Minor change to protect against a bug in the alarm handler
 - Limits on the digi trending quantity Mean_CompressionLevel moved by an
 "epsilon" as a workaround to a bug in the alarm handler (which is now
