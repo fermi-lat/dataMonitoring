@@ -1,3 +1,29 @@
+** @file release.notes
+ * Package DigiReconCalMeritCfg
+ * Coordinator: D. Paneque <dpaneque@slac.stanford.edu>
+ *
+ *                  EOH
+
+ DigiReconCalMeritCfg-01-04-03 28-Sep-2009 monzani branch tag
+v1r4p3 2009/09/28 (DEV)
+---------------------------
+Trying to tag the branch again
+
+
+v1r4p2  2009/08/07  (DEV)
+---------------------------
+This is the branch tag to be able to update pass6 monitoring withou
+reverting all changes done for pass7, see GDQMQ-311 and GDQM-308.
+Branch tag with stag type as DigiReconCalMeritCfg-01-04-02
+Added FastMon trending quantity FastMon_Spacecraft_Distance_To_SAA
+to address Jira GDQMQ-311
+
+
+v1r4p1  2009/03/30  (DEV)
+---------------------------
+Added quantities to address Jira GDQM-309.
+
+
 v1r3p5  2009/03/30  (DEV)
 ---------------------------
 Added quantities to monitor the rate of Tem Bugs. 
