@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-19-05 28-Sep-2009 lbaldini Minor limit change for ACD tile 73.
 
 - Upper warning limit for AcdPedPedMeanDeviation_PMTB_TH1 (y_value) changed
 from 8 to 12. This is temporary change that will be reverted as soon as we
