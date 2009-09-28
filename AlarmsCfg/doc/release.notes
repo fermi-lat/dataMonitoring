@@ -4,6 +4,13 @@
  *
  *                  EOH
 
+
+- Upper warning limit for AcdPedPedMeanDeviation_PMTB_TH1 (y_value) changed
+from 8 to 12. This is temporary change that will be reverted as soon as we
+have updated the claibration constants.
+* Relevant jira(s): GDM-321
+
+
  AlarmsCfg-05-19-04 24-Sep-2009 monzani added two checks to verify
 - Added two more error conditions to the verify alarm file: checking the FSW 
 compression level (GDQMQ-320), checking that periodic evts never have the TEM bug (GDQMQ-319)
