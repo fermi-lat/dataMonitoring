@@ -4,6 +4,19 @@
  *
  *                  EOH
 
+
+- Added alarms on the CAL hitmaps to identify possible spikes and/or holes,
+along the lines of what we already have for the tracker.
+Specifically alarms ("empty_bins" and "spikes_and_holes") have been added,
+with reasobale settings, on:
+CalLogEndRangeHitCounter_Range0_TH2_Tower_*
+CalLogEndRangeHitCounter_Range1_TH2_Tower_*
+CalLogEndRangeHitCounter_Range2_TH2_Tower_*
+CalLogEndRangeHitCounter_Range3_TH2_Tower_*
+See also http://www-glast.stanford.edu/protected/mail/datamon/3435.html and
+the relative thread.
+
+
  AlarmsCfg-05-19-05 28-Sep-2009 lbaldini Minor limit change for ACD tile 73.
 
 - Upper warning limit for AcdPedPedMeanDeviation_PMTB_TH1 (y_value) changed
