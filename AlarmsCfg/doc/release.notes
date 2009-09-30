@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-20-00 30-Sep-2009 lbaldini Added alarms on the CAL hitmaps.
 
 - Added alarms on the CAL hitmaps to identify possible spikes and/or holes,
 along the lines of what we already have for the tracker.
