@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-20-01 02-Oct-2009 bregeon Add temporary alarms because of noisy cal channel 2414
 - Add exceptions for channel 2414 for calPedsAnalyzer:
 CalXAdcPedRMS_LEX1_TH1 y_values
 CalXAdcPedRMS_LEX8_TH1 y_values
