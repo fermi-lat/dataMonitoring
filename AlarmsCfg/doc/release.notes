@@ -4,6 +4,16 @@
  *
  *                  EOH
 
+- Add exceptions for channel 2414 for calPedsAnalyzer:
+CalXAdcPedRMS_LEX1_TH1 y_values
+CalXAdcPedRMS_LEX8_TH1 y_values
+- Add exceptions for Tower 12 b/C of channel 2414 for digi and fastmon eor:
+CalX_NHit_TH1_Tower_ x_average and x_rms
+CalLogEndRangeHitCounter_Range*_TH2_Tower_12 spikes_and_holes
+- Change back lkower limits on digi trending Mean_CompressionLevel changed from
+8.0, 8.0  to 7.0, 7.8 to accommodate with the reboot to the B2-0-2
+
+
  AlarmsCfg-05-20-00 30-Sep-2009 lbaldini Added alarms on the CAL hitmaps.
 
 - Added alarms on the CAL hitmaps to identify possible spikes and/or holes,
