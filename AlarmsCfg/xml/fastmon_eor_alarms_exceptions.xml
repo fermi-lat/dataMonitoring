@@ -30,4 +30,28 @@
     <exception identifier="(3, 32)" status_on_violation="clean"/>
   </alarm>
 
+  <!-- Added by Johan on Oct 2, 2009, because of channel 2414 -->
+  <alarm name="CalX_NHit_TH1_Tower_12" algorithm="x_average">
+    <exception status_on_violation="clean"/>
+  </alarm>
+  <alarm name="CalX_NHit_TH1_Tower_12" algorithm="x_rms">
+    <exception status_on_violation="clean"/>
+  </alarm>
+  <alarm name="CalLogEndRangeHitCounter_Range0_TH2_Tower_12" algorithm="spikes_and_holes">
+    <exception identifier="(6.75, 4)" status_on_violation="clean"/>
+    <exception identifier="(7.25, 4)" status_on_violation="clean"/>
+  </alarm>
+  <alarm name="CalLogEndRangeHitCounter_Range1_TH2_Tower_12" algorithm="spikes_and_holes">
+    <exception identifier="(7.25, 4)" status_on_violation="clean"/>
+  </alarm>
+  <alarm name="CalLogEndRangeHitCounter_Range2_TH2_Tower_12" algorithm="spikes_and_holes">
+    <exception identifier="(6.75, 4)" status_on_violation="clean"/>
+    <exception identifier="(7.25, 4)" status_on_violation="clean"/>
+  </alarm>
+  <alarm name="CalLogEndRangeHitCounter_Range3_TH2_Tower_12" algorithm="spikes_and_holes">
+    <exception identifier="(6.75, 4)" status_on_violation="clean"/>
+    <exception identifier="(7.25, 4)" status_on_violation="clean"/>
+  </alarm>
+
+
 </alarm_exceptions>

@@ -2,4 +2,12 @@
 
 <alarm_exceptions>
 
+  <!-- Added by Johan on Oct 2, 2009, because of channel 2414 -->
+  <alarm name="CalX_NHit_TH1_Tower_12" algorithm="x_average">
+    <exception status_on_violation="clean"/>
+  </alarm>
+  <alarm name="CalX_NHit_TH1_Tower_12" algorithm="x_rms">
+    <exception status_on_violation="clean"/>
+  </alarm>
+
 </alarm_exceptions>
