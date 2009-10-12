@@ -4,6 +4,12 @@
  *
  *                  EOH
 
+
+
+- Change back lkower limits on digi trending Mean_CompressionLevel changed from
+7.0, 7.8  to 8.0, 8.0 to accommodate with the reboot to the B2-1-0
+
+
  AlarmsCfg-05-20-01 02-Oct-2009 bregeon Add temporary alarms because of noisy cal channel 2414
 - Add exceptions for channel 2414 for calPedsAnalyzer:
 CalXAdcPedRMS_LEX1_TH1 y_values
@@ -16,7 +22,6 @@ CalLogEndRangeHitCounter_Range*_TH2_Tower_12 spikes_and_holes
 
 
  AlarmsCfg-05-20-00 30-Sep-2009 lbaldini Added alarms on the CAL hitmaps.
-
 - Added alarms on the CAL hitmaps to identify possible spikes and/or holes,
 along the lines of what we already have for the tracker.
 Specifically alarms ("empty_bins" and "spikes_and_holes") have been added,
@@ -30,7 +35,6 @@ the relative thread.
 
 
  AlarmsCfg-05-19-05 28-Sep-2009 lbaldini Minor limit change for ACD tile 73.
-
 - Upper warning limit for AcdPedPedMeanDeviation_PMTB_TH1 (y_value) changed
 from 8 to 12. This is temporary change that will be reverted as soon as we
 have updated the claibration constants.
@@ -40,6 +44,7 @@ have updated the claibration constants.
  AlarmsCfg-05-19-04 24-Sep-2009 monzani added two checks to verify
 - Added two more error conditions to the verify alarm file: checking the FSW 
 compression level (GDQMQ-320), checking that periodic evts never have the TEM bug (GDQMQ-319)
+
 
  AlarmsCfg-05-19-02 22-Sep-2009 lbaldini Minor change to protect against a bug in the alarm handler
 - Limits on the digi trending quantity Mean_CompressionLevel moved by an
