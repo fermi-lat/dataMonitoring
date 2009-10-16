@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-20-03 16-Oct-2009 lbaldini Changed limits on the uncompressed/compressed event size)
 - Limits on digi_trend OutF_Ratio_EvtSize_CompressedEvtSize changed
 after the enabling of the diagnostics.
 
