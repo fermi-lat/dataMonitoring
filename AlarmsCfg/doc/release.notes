@@ -4,10 +4,12 @@
  *
  *                  EOH
 
+- Limits on digi_trend OutF_Ratio_EvtSize_CompressedEvtSize changed
+after the enabling of the diagnostics.
+
+
  AlarmsCfg-05-20-02 12-Oct-2009 lbaldini Lower limits on the compression factor put back to 8.
-
-
-- Change back lkower limits on digi trending Mean_CompressionLevel changed from
+- Change back lower limits on digi trending Mean_CompressionLevel changed from
 7.0, 7.8  to 8.0, 8.0 to accommodate with the reboot to the B2-1-0
 
 
