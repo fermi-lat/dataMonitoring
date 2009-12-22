@@ -9,15 +9,17 @@ from pLongTermTrendMaker import *
 
 
 if __name__ == '__main__':
-    OUTPUT_DIR_PATH = '/nfs/slac/g/glast/users/glground/lbaldini/reference/' 
-    MIN_START_DATE = 'Oct/28/2008 12:10:00'
-    MAX_START_DATE = 'Oct/31/2008 23:59:00'
+    OUTPUT_DIR_PATH = './reference/'
+    if not os.path.exists(OUTPUT_DIR_PATH):
+        print 'Creating folder %s' % OUTPUT_DIR_PATH
+        os.makedirs(OUTPUT_DIR_PATH)
+    MIN_START_DATE = 'Dec/01/2009 00:00:00'
+    MAX_START_DATE = 'Dec/06/2009 23:59:59'
     MIN_START_TIME = utc2met(convert2sec(MIN_START_DATE))
     MAX_START_TIME = utc2met(convert2sec(MAX_START_DATE))
     MIN_RUN_DURATION = 1000
-    RUN_INTENT = 'nomSciOps'
+    RUN_INTENT = 'nomSciOps_diagEna'
     GROUPS = ['DIGIHIST', 'FASTMONHIST', 'RECONHIST', 'MERITHIST']
-
     for group in GROUPS:
         filePath = '%s_reference.txt' % group
         filePath = os.path.join(OUTPUT_DIR_PATH, filePath)
