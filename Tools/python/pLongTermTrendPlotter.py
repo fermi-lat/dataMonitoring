@@ -197,13 +197,13 @@ if __name__ == '__main__':
     optparser = pOptionParser('', 1, 1, False)
     filePath = optparser.Argument
     plotter = pLongTermTrendPlotter(filePath)
-    plotter.drawAcdPedDeviation('A', 98)
-##     plotter.drawMipPeak(0.8, 1.4, 15)
-##     plotter.save()
-##     raw_input('Press enter to continue...')
-##     plotter.drawLacThreshold(1.8, 2.2, 15)
-##     plotter.save()
-##     raw_input('Press enter to continue...')
+    #plotter.drawAcdPedDeviation('A', 98)
+    plotter.drawMipPeak(0.8, 1.4, 1)
+    #plotter.save()
+    #raw_input('Press enter to continue...')
+    #plotter.drawLacThreshold(1.8, 2.2, 15)
+    #plotter.save()
+    #raw_input('Press enter to continue...')
 
 ##     sys.exit()
 

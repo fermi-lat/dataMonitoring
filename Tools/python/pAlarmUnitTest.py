@@ -37,7 +37,8 @@ class pAlarmUnitTest:
                 group = group.replace('trend', '_trend')
             print 'Detected group is "%s".' % group
         if outputFilePath is None:
-            outputFilePath = os.path.join(os.curdir, group, 'alarms.xml')
+            folderName = inputFilePath.strip('.root')
+            outputFilePath = os.path.join(os.curdir, folderName, 'alarms.xml')
         outputFolderPath = os.path.dirname(outputFilePath)
         if not os.path.exists(outputFolderPath):
             print 'Creating the output folder %s...' % outputFolderPath
@@ -46,6 +47,10 @@ class pAlarmUnitTest:
               (self.joinPath('AlarmsCfg/xml/%s_alarms.xml' % group),
                self.joinPath('AlarmsCfg/xml/%s_alarms_exceptions.xml' % group),
                outputFilePath, options, inputFilePath)
+        try:
+            cmd = '%s -R %s' % (cmd, os.environ['DATAMONREFHIST'])
+        except KeyError:
+            pass
         print 'About to execute command "%s"...' % cmd
         os.system(cmd)
 
