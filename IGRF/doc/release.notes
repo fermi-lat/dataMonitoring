@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ IGRF-02-00-00 01-Jan-2010 lbaldini Temporary fix for the 2010 issue.
 
 
 - Brute force fix to prevent the package from crashing the pipeline after
