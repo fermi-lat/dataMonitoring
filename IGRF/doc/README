@@ -1,0 +1,39 @@
+Usage Information:
+
+class IGRF 
+==========
+
+Methods:
+
+   __init__() : Constructor, initialized field model
+   compute(latitude,longitude,altitude,year) : 
+          Compute magnetic field parameters from geographic latitude, longitude, orbit altitude
+	  and time. 
+   
+   
+Data members:
+   
+       BNorth            : North component of the geomagnetic field (Gauss)
+       BEast             : East component of the geomagnetic field (Gauss)
+       BDown             : Down component of the geomagnetic field (Gauss)
+       BAbs              : Absolute value of the geomagnetic field (Gauss)
+       BEquator          : B field at the equator following the local field line (Gauss) 
+       BB0               : BAbs/BEquator
+       McIlwainL         : McIlwain L parameter
+       RigidityCutoff    : Rigidity cutoff in GV from approximation DipoleMoment/(McIlwain L)**2 
+       InvariantLatitude : Invariant magnetic Latitude 
+       InvariantLambda   : Invariant lambda parameter (only valid for BB0<10)
+       InvariantRadius   : Invariant radius (only valid for BB0<10)
+       DipoleMoment      : Dipole Moment of the Earth
+
+
+Example :
+
+from IGRF import IGRF
+
+model=IGRF()
+model.compute(5.6,67.8,565.0,2008.7) # compute field at 5.6N, 67.8E for 565 km altitude at year 2008.7
+print model.RigidityCutoff  # print the rigidity cutoff
+
+
+
