@@ -9,3 +9,4 @@
 - Brute force fix to prevent the package from crashing the pipeline after
 January 1, 2010 (the field model is only valid up to that date).
 Will need some work to find a decent fix.
+* Relevant Jira(s): GDQMQ-332
