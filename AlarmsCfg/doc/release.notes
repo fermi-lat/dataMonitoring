@@ -4,6 +4,16 @@
  *
  *                  EOH
 
+
+- Limits on digi eor Tick20MHzDeviation_TH1 changed to:
+-200; -192; -176; -168; for the x_average algorithm;
+ 0.0;  0.0;  2.0;  3.5; for the x_rms algorithm.
+- For consistency the same alarm has been added to the FastMon, along with
+an additional one on DeltaEventTime_Zoom_TH1 (with the same limits used in the
+digi eor).
+* Relevnt Jira(s): GDQMQ-331
+
+
  AlarmsCfg-05-20-03 16-Oct-2009 lbaldini Changed limits on the uncompressed/compressed event size)
 - Limits on digi_trend OutF_Ratio_EvtSize_CompressedEvtSize changed
 after the enabling of the diagnostics.
