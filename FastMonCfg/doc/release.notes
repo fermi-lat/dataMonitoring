@@ -4,6 +4,12 @@
  *
  *                  EOH
 
+
+- Bug fix in the cuts used to prevent the events with errors from ending
+up in the FastMon eor plots. In the file config.xml 64 occurrences of
+"error_summary<64" have been changed into "error_summary<256".
+
+
  FastMonCfg-02-00-01 05-Aug-2009 bregeon upgrade to v2r0p1 - first stag tag as 02-00-01
 *** v2r0p1 ***
 - First stag/SCons tag 
