@@ -4,6 +4,14 @@
  *
  *                  EOH
 
+
+- Added a cut "FastMon_error_summary<256" to all the trending quantities
+in monconfig_fastmon_trending.xml which are related to the detector
+quantities (and therefore are affected by readout errors). Exactly
+7 variables modified, for the reference.
+* Relevant Jira(s): GDQMQ-325
+
+
  DigiReconCalMeritCfg-01-05-02 05-Aug-2009 bregeon upgrade to v1r5p2 - first stag tag as 01-05-02
 v1r5p2  2009/08/05  (DEV)
 ---------------------------
