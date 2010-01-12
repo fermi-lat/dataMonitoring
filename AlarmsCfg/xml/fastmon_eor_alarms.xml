@@ -2,6 +2,31 @@
 
 <alarms>
 
+  <!-- Miscellanea -->
+
+  <alarmList group="Miscellanea" name="Miscellanea" enabled="True">
+    
+    <alarmSet name="DeltaEventTime_Zoom_TH1" enabled="True">
+      <alarm function="x_min_bin" enabled="True">
+	<warning_limits min="530.0" max="550.0"/>
+	<error_limits min="530.0" max="570.0"/>
+      </alarm>
+    </alarmSet>
+
+    <alarmSet name="Tick20MHzDeviation_TH1" enabled="True">
+      <alarm function="x_average" enabled="True">
+	<warning_limits min="-192.0" max="-176.0"/>
+	<error_limits min="-200.0" max="-168.0"/>
+      </alarm>
+      <alarm function="x_rms" enabled="True">
+	<warning_limits min="0.0" max="2.0"/>
+	<error_limits min="0.0" max="3.5"/>
+      </alarm>
+    </alarmSet>
+
+  </alarmList>
+
+
   <!-- GEM group -->
 
   <alarmList group="GEM" name="GEM vectors" enabled="True">
