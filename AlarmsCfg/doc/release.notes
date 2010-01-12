@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-21-00 12-Jan-2010 lbaldini Alarms on the 20 MHz tick deviation retuned/added.
 
 - Limits on digi eor Tick20MHzDeviation_TH1 changed to:
 -200; -192; -176; -168; for the x_average algorithm;
