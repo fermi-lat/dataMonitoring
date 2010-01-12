@@ -555,7 +555,7 @@
      <object>
       <name> FastMon_TkrHits_TowerPlaneGTFE[16][36][24] </name>
       <formula><![CDATA[ FastMon_TkrHits_TowerPlaneGTFE ]]></formula>
-      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64)]]></cut>
+      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>
       <type> mean </type>
       <description> Vector reporting the accumulated (in the time bin)  number of Tkr Hits for tower,plane, GTFE </description>
     </object>
@@ -564,7 +564,7 @@
     <object>
       <name> FastMon_TkrHits </name>
       <formula><![CDATA[ FastMon_TkrHits ]]></formula>
-      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64)]]></cut>
+      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>
       <type> mean </type>
       <description> Mean number of Tkr Hits</description>
     </object>
@@ -572,7 +572,7 @@
     <object>
       <name> FastMon_TkrHits_TowerPlane[16][36] </name>
       <formula><![CDATA[ foreachtower: foreachtkrplane: FastMon_TkrHits_TowerPlane[tower][tkrplane] ]]></formula>
-      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64)]]></cut>
+      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>
       <type> mean </type>
       <description> Vector reporting the mean number of Tkr Hits for tower,plane </description>
     </object>
@@ -580,7 +580,7 @@
      <object>
       <name> FastMon_NTkrHits_TowerPlane[16][36] </name>
       <formula><![CDATA[ FastMon_TkrHits_TowerPlane ]]></formula>
-      <cut><![CDATA[(FastMon_condsummary&32)>0 && !(FastMon_condsummary&64)]]></cut>
+      <cut><![CDATA[(FastMon_condsummary&32)>0 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>
       <type> rate </type>
       <description> Rate of Tkr Hits in the time bin for each tower and  plane, only for periodic triggers (Noise Hits).  </description>
     </object>
@@ -590,7 +590,7 @@
     <object>
       <name> FastMon_CalTowerCount </name>
       <formula><![CDATA[ FastMon_Cal_Tower_Count ]]></formula>
-      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64)]]></cut>
+      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>
       <type> mean </type>
       <description> Mean number of Cal module with at least one CDE hit</description>
     </object>
@@ -598,7 +598,7 @@
     <object>
       <name> FM_CalLogRHit_TowerCalLayerCalColumnFR[16][8][12][2][4] </name>
       <formula><![CDATA[ FastMon_CalLogEndRangeHit ]]></formula>
-      <cut><![CDATA[ (FastMon_condsummary&30)>0 && (FastMon_condsummary&32)==0 && !(FastMon_condsummary&64)]]></cut>	    
+      <cut><![CDATA[ (FastMon_condsummary&30)>0 && (FastMon_condsummary&32)==0 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>	    
       <type> mean </type>
       <description> Mean number of of hits in each Cal log end for each range</description>
     </object>
@@ -610,7 +610,7 @@
     <object>
       <name> FastMon_AcdTileCount </name>
       <formula><![CDATA[ FastMon_Acd_Tile_Count ]]></formula>
-      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64)]]></cut>
+      <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>
       <type> mean </type>
       <description> Mean number of Acd tiles hit</description>
     </object>
