@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ FastMonCfg-02-01-00 12-Jan-2010 lbaldini Cut on the error_summary changed from <64 to <256
 
 - Bug fix in the cuts used to prevent the events with errors from ending
 up in the FastMon eor plots. In the file config.xml 64 occurrences of
