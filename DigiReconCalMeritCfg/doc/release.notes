@@ -4,8 +4,12 @@
  *
  *                  EOH
 
- DigiReconCalMeritCfg-01-07-00 15-Jan-2010 bregeon In digi, add cut on GoodEvent and periodic triggers
+- Added three new quantities (actually errors on quantities that were
+already in).
+* Relevant Jira(s): GDQMQ-327
 
+
+ DigiReconCalMeritCfg-01-07-00 15-Jan-2010 bregeon In digi, add cut on GoodEvent and periodic triggers
 v1r7p0 2010/01/15 (DEV)
 ---------------------------
 Remove CondSummaryWord_WithPeriodic_TH1 and add cut for error ev
