@@ -105,5 +105,37 @@ class pFastMonReportGenerator(pBaseReportGenerator):
         
 
 if __name__ == '__main__':
-    sys.exit('Not implemented, yet. Try using pReportGenerator.py')
+    sys.exit('Not implemented, yet. Sorry...')
+    from optparse import OptionParser
+    parser = OptionParser(usage='usage: %prog [options] data_file')
+    parser.add_option('-c', '--config-file', dest='config_file',\
+                      default=None, type=str,   \
+                      help='path to the input xml configuration file')
+    parser.add_option('-d', '--report-dir', dest='report_dir', type=str,
+                      default=None, help='path to the output report directory')
+    parser.add_option('-f', '--force-overwrite', action='store_true',
+                      dest='force_overwrite', default=False,
+                      help='overwrite existing files without asking')
+    parser.add_option('-e', '--errors-file', dest='errors_file',\
+                      default=None, type=str,   \
+                      help='path to the event errors file')
+    parser.add_option('-a', '--alarms-file', dest='alarms_file',\
+                      default=None, type=str,   \
+                      help='path to the alarm handler file')
+    parser.add_option('-v', '--verbose', action='store_true',
+                      dest='verbose', default=False,
+                      help='print a lot of ROOT/doxygen/LaTeX related stuff')
+    (options, args) = parser.parse_args()
+    if len(args) != 1:
+        parser.print_help()
+        parser.error('incorrect number of arguments.')
+        sys.exit()
 
+    xmlParser = pXmlParser(options.config_file)
+    reportGenerator = pFastMonReportGenerator(xmlParser, args[0],
+                                           options.errors_file,
+                                           options.alarms_file,
+                                           options.report_dir,
+                                           options.force_overwrite,
+                                           options.verbose)
+    reportGenerator.run()

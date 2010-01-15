@@ -123,8 +123,7 @@ class pDataProcessor:
         self.XmlParser       = pXmlParser(configFilePath)
         self.TreeMaker       = pFastMonTreeMaker(self)
         self.ErrorHandler    = pErrorHandler()
-        self.TreeProcessor   = pFastMonTreeProcessor(self.XmlParser,\
-                               self.TreeMaker.OutputFilePath)
+        self.TreeProcessor   = pFastMonTreeProcessor(self.XmlParser, self.TreeMaker.OutputFilePath)
         self.ReportGenerator = pFastMonReportGenerator(self)
 	self.MetaEventProcessor = pMetaEventProcessor(self.TreeMaker)
 	self.EvtMetaContextProcessor = pEvtMetaContextProcessor(self.TreeMaker)
@@ -171,7 +170,7 @@ class pDataProcessor:
         if not os.path.exists(self.InputFilePath):
             sys.exit('Input data file not found. Abort.')
         fileType = self.InputFilePath.split('.')[-1]
-        logger.info('Processing started on %s.' % time.asctime())
+        logger.info('Start processing...')
         self.NumEvents = 0
         self.StartTime = time.time()
         if fileType   == 'lsf':
@@ -291,16 +290,13 @@ class pDataProcessor:
         self.ErrorHandler.setEventNumber(self.NumEvents)
 
     def __postEvent(self):
-	self.TreeMaker.VariablesDictionary['%sprocessor_event_number' % \
-                                           FAST_MON_PREFIX][0] = self.NumEvents
+	self.TreeMaker.VariablesDictionary['%sprocessor_event_number' % FAST_MON_PREFIX][0] =\
+                                                            self.NumEvents
         self.TreeMaker.fillTree()
 	self.NumEvents += 1
 	if not self.NumEvents % 100:
-            elapsedTime = time.time() - self.StartTime
-            averageRate = self.NumEvents/elapsedTime
-            print '\r%s events processed in %.2f s (average rate %.2f Hz).' %\
-                  (self.NumEvents, elapsedTime, averageRate),
-            sys.stdout.flush()
+            print '\r%s events processed...' % self.NumEvents,
+            sys.stdout.flush()    
       
     ## @brief Finalize the data processing.
     #
@@ -314,9 +310,7 @@ class pDataProcessor:
         elapsedTime   = self.StopTime - self.StartTime
         averageRate   = self.NumEvents/elapsedTime
         self.TreeMaker.close()
-        print
-        logger.info('Processing stopped on %s.' % time.asctime())
-        logger.info('%d events processed in %.2f s (%.2f Hz).\n' %\
+        logger.info('Done. %d events processed in %.2f s (%.2f Hz).\n' %\
                     (self.NumEvents, elapsedTime, averageRate))
         self.ErrorHandler.dump(self.OutputFilePath.replace('.root',\
                                                            '.errors.pickle'))
@@ -329,7 +323,6 @@ if __name__ == '__main__':
     optparser = pOptionParser('cnodrvLpfV')
     if optparser.Options.r and not optparser.Options.p:
         optparser.error('cannot use the -r option without -p')
-
     dataProcessor = pDataProcessor(optparser.Argument, optparser.Options.c,\
                                    optparser.Options.d, optparser.Options.o)
     dataProcessor.startProcessing(optparser.Options.n)
@@ -337,6 +330,5 @@ if __name__ == '__main__':
         dataProcessor.TreeProcessor.run()
     if optparser.Options.r:
         dataProcessor.ReportGenerator.run(optparser.Options.v,\
-                                          optparser.Options.L)
-        
+                                          not optparser.Options.L)
 
