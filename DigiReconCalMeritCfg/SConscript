@@ -1,3 +1,3 @@
 # -*- python -*-
 # Authors: D. Paneque <dpaneque@slac.stanford.edu>
-# Version: DigiReconCalMeritCfg-01-04-04
+# Version: DigiReconCalMeritCfg-01-04-05
