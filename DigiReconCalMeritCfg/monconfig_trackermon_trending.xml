@@ -26,25 +26,28 @@
 
      <object>TOT_Peak_TowerPlane</object>
      <object>  TOT_PeakError_TowerPlane</object>
-    <object> TOT_LWidth_TowerPlane</object>
-    <object>  TOT_LWidthError_TowerPlane</object>
-    <object>  TOT_GSigma_TowerPlane</object>
-    <object>  TOT_GSigmaError_TowerPlane</object>
-    <object>  layerEff_TowerPlane</object>
-    <object>  layerEff_err_TowerPlane</object>
-    <object>  towerEff_Tower</object>
-    <object>  towerEff_err_Tower</object>
-    <object>  trigEff_Tower</object>
-    <object>  trigEff_err_Tower</object>
-    <object>  layerdXY_TowerPlane</object>
-    <object>  layerdXY_err_TowerPlane</object>
+     <object> TOT_LWidth_TowerPlane</object>
+     <object>  TOT_LWidthError_TowerPlane</object>
+     <object>  TOT_GSigma_TowerPlane</object>
+     <object>  TOT_GSigmaError_TowerPlane</object>
+     <object>  layerEff_TowerPlane</object>
+     <object>  layerEff_err_TowerPlane</object>
+     <object>  towerEff_Tower</object>
+     <object>  towerEff_err_Tower</object>
+     <object>  trigEff_Tower</object>
+     <object>  trigEff_err_Tower</object>
+     <object>  layerdXY_TowerPlane</object>
+     <object>  layerdXY_err_TowerPlane</object> 
 
-    <object>  TOT_FitProb_TowerPlane</object>
-    <object>  TOT_FracLowTOT_TowerPlane</object>
-    
-    <object>  layerOcc_TowerPlane</object>
-    <object>  stripOcc_TowerPlane</object>
-    <object>  fracSat_TowerPlane</object>
+     <object>  TOT_FitProb_TowerPlane</object>
+     <object>  TOT_FracLowTOT_TowerPlane</object>
+     
+     <object>  layerOcc_TowerPlane</object>
+     <object>  layerOcc_err_TowerPlane</object>
+     <object>  stripOcc_TowerPlane</object>
+     <object>  stripOcc_err_TowerPlane</object>
+     <object>  fracSat_TowerPlane</object>
+     <object>  fracSat_err_TowerPlane</object>
 
  
 
@@ -225,7 +228,15 @@
       <description> Vector [16][36] reporting the fraction of saturation events per layer </description>
     </object>
 
- <object>
+   <object>
+      <name> Number_fracSat_TowerPlane_err[16][36] </name>
+      <formula><![CDATA[ fracSat_err_TowerPlane ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> outputfloat </type>
+      <description> Vector [16][36] reporting the error on the fraction of saturation events per layer </description>
+    </object>
+
+    <object>
       <name> Number_stripOcc_TowerPlane[16][36] </name>
       <formula><![CDATA[ stripOcc_TowerPlane ]]></formula>
       <cut><![CDATA[ ]]></cut>
@@ -233,7 +244,7 @@
       <description> Vector [16][36] reporting the layer average strip occupancy </description>
     </object>
 
- <object>
+    <object>
       <name> Number_LATAverage_stripOcc </name>
       <formula><![CDATA[ RFun::loopovertowerANDtkrplanes_double(stripOcc_TowerPlane)/(16.*36.) ]]></formula>
       <cut><![CDATA[ ]]></cut>
@@ -241,13 +252,31 @@
       <description> LAT average strip occupancy </description>
     </object>
 
- <object>
+    <object>
+      <name> Number_LATAverage_stripOcc_err </name>
+      <formula><![CDATA[ RFun::loopovertowerANDtkrplanes_square_double(stripOcc_err_TowerPlane)/(16.*36.*sqrt(16.*36.)) ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> outputfloat </type>
+      <description> Error on the LAT average strip occupancy </description>
+    </object>
+
+
+    <object>
       <name> Number_layerOcc_TowerPlane[16][36] </name>
       <formula><![CDATA[ layerOcc_TowerPlane ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <type> outputfloat </type>
       <description> Vector [16][36] reporting the layer OR occupancy</description>
     </object>
+
+ <object>
+      <name> Number_layerOcc_TowerPlane_err[16][36] </name>
+      <formula><![CDATA[ layerOcc_err_TowerPlane ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> outputfloat </type>
+      <description> Vector [16][36] reporting the error on the layer OR occupancy</description>
+    </object>
+
 
  <object>
       <name> Mean_trigEff_Tower[16] </name>

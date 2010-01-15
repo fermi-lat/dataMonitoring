@@ -7,7 +7,7 @@ TkrPlanesHit_TH1_Tower_TowerLoop   Sum
 CalLogEndRangeHitCounter_Range3_TH2_Tower_TowerLoop   Sum
 CalXHit_NHit_Counter_TowerCalLayer_TH2   Sum
 TkrHitsCounter_PlaneGTFE_TH2_Tower_TowerLoop   Sum
-CondArrCalLowTrigger_TH1   Sum
+CondArrCalLoTrigger_TH1   Sum
 CalHiTrigger_Tower_TH1   Sum
 CalX_Total_NHit_TH1   Sum
 Acd_GemVeto_AcdTile_TH1   Sum
@@ -34,6 +34,7 @@ MetaContext_OpenMode_TH1   Sum
 TkrTrigger_Tower_TH1   Sum
 Tick20MHzDeviation_TH1   Sum
 Tick20MHzDeviation_Zoom_TH1   Sum
+Tick20MHzDeviation_SuperZoom_TH1   Sum
 DeltaEventTime_TH1   Sum
 DeltaEventTime_Zoom_TH1   Sum
 DeltaWindowOpen_TH1   Sum
@@ -62,7 +63,7 @@ CondArrROI_CNOOpensWindow_TH1   Sum
 CondArrTKR_CNOOpensWindow_TH1   Sum
 CondArrCalLo_CNOOpensWindow_TH1   Sum
 CondArrCalHi_CNOOpensWindow_TH1   Sum
-AcdHitMap_GafeGarc_TH2   Sum
+AcdHitsCounter_CableChannel_TH2   Sum
 ToT_con0_TH1_TowerPlane_TowerLoop_PlaneLoop  Sum
 ToT_con1_TH1_TowerPlane_TowerLoop_PlaneLoop  Sum
 
