@@ -23,7 +23,8 @@ class pMeritTrendMerger:
                  maxStartTime = None):
         if not os.path.exists(fileListPath):
             print 'Creating the file list...'
-            query = pDataCatalogQuery('MERITTREND', minStartTime, maxStartTime)
+            query = pDataCatalogQuery('MERITTREND', minStartTime, maxStartTime,
+                                      intent = 'nomSciOps_diagEna')
             query.dumpList(fileListPath)
         else:
             print 'File list %s found.' % fileListPath
@@ -80,6 +81,6 @@ class pMeritTrendMerger:
 if __name__ == '__main__':
     MIN_START_TIME = utc2met(convert2sec('Nov/19/2009 00:00:00'))
     MAX_START_TIME = None
-    merger = pMeritTrendMerger('filelist.txt', 'merittrend.root',
+    merger = pMeritTrendMerger('merittrend.txt', 'merittrend.root',
                                MIN_START_TIME, MAX_START_TIME)
     merger.run()
