@@ -64,11 +64,11 @@
             <shape>(1)</shape>
 	</variable>
 	<variable name="gem_delta_event_time">
-	    <type>double</type>
+	    <type>uint16</type>
             <shape>(1)</shape>
 	</variable>
 	<variable name="gem_delta_window_open_time">
-	    <type>double</type>
+	    <type>uint16</type>
             <shape>(1)</shape>
 	</variable>
 	<variable name="LivetimeLast">
@@ -173,7 +173,7 @@
         </TH1F>
         <TH1F name="DeltaEventTime_Zoom_TH1">
 	    <expression><![CDATA[ gem_delta_event_time ]]> </expression>
-	    <cut><![CDATA[ (condsummary&30)>0 && error_summary<256]]></cut>
+	    <cut><![CDATA[ (condsummary&30)>0 && (gem_delta_event_time<1500) && error_summary<256]]></cut>
 	    <xbins>160</xbins>
 	    <xmin>0</xmin>
 	    <xmax>1600</xmax>
@@ -205,7 +205,7 @@
 	    <caption> Delta window open time as measured by the GEM in system clock ticks with a cut of 1500 ticks.</caption>
         </TH1F>
         <TH1F name="PrescaledDelta_TH1">
-	    <expression><![CDATA[ PrescaledLast ]]> </expression>
+	    <expression><![CDATA[ PrescaledDelta[0] ]]> </expression>
 	    <cut><![CDATA[ (condsummary&32)==0 && error_summary<256]]></cut>
 	    <xbins>31</xbins>
 	    <xmin>-0.5</xmin>
