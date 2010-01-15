@@ -4,6 +4,15 @@
  *
  *                  EOH
 
+
+v1r7p0 2010/01/15 (DEV)
+---------------------------
+Remove CondSummaryWord_WithPeriodic_TH1 and add cut for error ev
+and periodic trigger on most histograms to mathc FastMon - GDQMQ-325
+
+
+ Tag DigiReconCalMeritCfg-01-06-01 is wrong - error when I tried to tag along
+ the branch
  DigiReconCalMeritCfg-01-06-01 15-Jan-2010 bregeon Add GoodEvent cuts in digi histo and remove CondSummaryWord_WithPeriodic_TH1 - GDQMQ-325
  DigiReconCalMeritCfg-01-06-00 12-Jan-2010 lbaldini Added a cut on FastMon_error_summary for the FastMon trending quantities.
 
