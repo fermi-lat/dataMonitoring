@@ -1,3 +1,27 @@
+** @file release.notes
+ * Package DigiReconCalMeritCfg
+ * Coordinator: D. Paneque <dpaneque@slac.stanford.edu>
+ *
+ *                  EOH
+
+ DigiReconCalMeritCfg-01-06-01 15-Jan-2010 bregeon Add GoodEvent cuts in digi histo and remove CondSummaryWord_WithPeriodic_TH1 - GDQMQ-325
+ DigiReconCalMeritCfg-01-06-00 12-Jan-2010 lbaldini Added a cut on FastMon_error_summary for the FastMon trending quantities.
+
+- Added a cut "FastMon_error_summary<256" to all the trending quantities
+in monconfig_fastmon_trending.xml which are related to the detector
+quantities (and therefore are affected by readout errors). Exactly
+7 variables modified, for the reference.
+* Relevant Jira(s): GDQMQ-325
+
+
+ DigiReconCalMeritCfg-01-05-02 05-Aug-2009 bregeon upgrade to v1r5p2 - first stag tag as 01-05-02
+v1r5p2  2009/08/05  (DEV)
+---------------------------
+First tag with stag as 01-05-02
+Added FastMon trending quantity FastMon_Spacecraft_Distance_To_SAA
+to address Jira GDQMQ-311
+
+
 v1r5p1  2009/06/06  (DEV)
 ---------------------------
 Added quantities to address Jira GDQM-308.
