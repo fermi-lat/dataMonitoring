@@ -18,7 +18,7 @@ DEFAULT_SORT = 'nRun'
 class pDataCatalogQuery:
 
     def __init__(self, group, minStartTime, maxStartTime = None,
-                 minDuration = 1000, intent = 'nomSciOps'):
+                 minDuration = 1000, intent = 'nomSciOps_diagEna'):
         self.Command = BASE_PATH
         self.Command += ' %s' % BASE_COMMAND
         self.Command += ' --group %s' % group
