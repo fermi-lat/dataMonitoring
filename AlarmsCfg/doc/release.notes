@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-21-01 15-Jan-2010 lbaldini New alarm added.
 - Added a new alarm on Mean_Tick20MHzDeviation.
 * Relevant Jira(s): GDQMQ-331
 
