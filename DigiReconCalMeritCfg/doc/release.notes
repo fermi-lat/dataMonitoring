@@ -4,7 +4,12 @@
  *
  *                  EOH
 
- DigiReconCalMeritCfg-01-04-03 28-Sep-2009 monzani branch tag
+v1r4p4 2010/01/15 (DEV)
+---------------------------
+Remove CondSummaryWord_WithPeriodic_TH1 and add cut for error ev
+and periodic trigger on most histograms to mathc FastMon - GDQMQ-325
+
+DigiReconCalMeritCfg-01-04-03 28-Sep-2009 monzani branch tag
 v1r4p3 2009/09/28 (DEV)
 ---------------------------
 Trying to tag the branch again
