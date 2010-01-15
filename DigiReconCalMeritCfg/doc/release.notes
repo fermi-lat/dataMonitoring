@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-08-00 15-Jan-2010 lbaldini Three quantities added.
 - Added three new quantities (actually errors on quantities that were
 already in).
 * Relevant Jira(s): GDQMQ-327
