@@ -43,9 +43,10 @@
     <object> CurrentORPreviousTimeToneMissing </object>
     <object> CurrentTimeToneMissing </object>
     <object> sourceGps </object>
-    <object>EventSizeInBytes</object>
-     <object>FswGAMMAEnergyInLeus</object>
-    <object>FswFilters</object>
+    <object> EventSizeInBytes </object>
+    <object> FswGAMMAEnergyInLeus </object>
+    <object> FswFilters </object>
+    <object> GoodEvent </object>
 
     <!-- Acd Variables -->
     
@@ -93,7 +94,7 @@
      <object>
       <name> CondSummaryWord_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[  ]]></cut>
+      <cut><![CDATA[ !(condsummary&64) && GoodEvent ]]></cut>
       <type> histogram-1d[34,-0.5,33.5] </type>
       <titledesc> Distribution of CondSummary Word values </titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
@@ -103,18 +104,18 @@
      <object>
       <name> CondSummaryWord_WithROI_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&1 ]]></cut>
+      <cut><![CDATA[ condsummary&1 && GoodEvent ]]></cut>
       <type> histogram-1d[34,-0.5,33.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a ROI trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
-      <description> Distribution of condsumary word valueswhen there is a ROI trigger. Values up to 33 are being displayed. </description>
+      <description> Distribution of condsumary word values when there is a ROI trigger. Values up to 33 are being displayed. </description>
     </object>
 
 
      <object>
       <name> CondSummaryWord_WithTKR_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&2 ]]></cut>
+      <cut><![CDATA[ condsummary&2 && GoodEvent ]]></cut>
       <type> histogram-1d[34,-0.5,33.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a TKR trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
@@ -124,7 +125,7 @@
       <object>
       <name> CondSummaryWord_WithCalLo_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&4 ]]></cut>
+      <cut><![CDATA[ condsummary&4 && GoodEvent ]]></cut>
       <type> histogram-1d[34,-0.5,33.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a CalLo trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
@@ -134,7 +135,7 @@
      <object>
       <name> CondSummaryWord_WithCalHi_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&8 ]]></cut>
+      <cut><![CDATA[ condsummary&8 && GoodEvent ]]></cut>
       <type> histogram-1d[34,-0.5,33.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a CalHi trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
@@ -145,29 +146,17 @@
      <object>
       <name> CondSummaryWord_WithCNO_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&16 ]]></cut>
+      <cut><![CDATA[ condsummary&16 && GoodEvent ]]></cut>
       <type> histogram-1d[34,-0.5,33.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a CNO trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
       <description> Distribution of condsumary word valueswhen there is a CNO trigger. Values up to 33 are being displayed. </description>
     </object>
 
-     <object>
-      <name> CondSummaryWord_WithPeriodic_TH1 </name>
-      <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&32 ]]></cut>
-      <type> histogram-1d[34,-0.5,33.5] </type>
-      <titledesc> Distribution of CondSummary Word values when there is a Periodic trigger</titledesc>
-      <axisdesc> [condsummary value, N] </axisdesc>
-      <description> Distribution of condsumary word values when there is a Periodic trigger. Values up to 33 are being displayed. </description>
-    </object>
-
-
-
       <object>
       <name> CondSummaryWord_Extended_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[  ]]></cut>
+      <cut><![CDATA[ GoodEvent ]]></cut>
       <type> histogram-1d[129,-0.5,128.5] </type>
       <titledesc> Distribution of CondSummary Word values </titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
@@ -178,7 +167,7 @@
        <object>
       <name> CondSummaryWord__WithROI_Extended_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&1 ]]></cut>
+      <cut><![CDATA[ condsummary&1 && GoodEvent ]]></cut>
       <type> histogram-1d[129,-0.5,128.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a ROI trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
@@ -188,7 +177,7 @@
          <object>
       <name> CondSummaryWord__WithTKR_Extended_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&2 ]]></cut>
+      <cut><![CDATA[ condsummary&2 && GoodEvent ]]></cut>
       <type> histogram-1d[129,-0.5,128.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a TKR trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
@@ -198,7 +187,7 @@
 	   <object>
       <name> CondSummaryWord__WithCalLo_Extended_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&4 ]]></cut>
+      <cut><![CDATA[ condsummary&4 && GoodEvent ]]></cut>
       <type> histogram-1d[129,-0.5,128.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a CalLo trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
@@ -208,7 +197,7 @@
 	     <object>
       <name> CondSummaryWord__WithCalHi_Extended_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&8 ]]></cut>
+      <cut><![CDATA[ condsummary&8 && GoodEvent ]]></cut>
       <type> histogram-1d[129,-0.5,128.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a CalHi trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
@@ -217,7 +206,7 @@
 	       <object>
       <name> CondSummaryWord__WithCNO_Extended_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&16 ]]></cut>
+      <cut><![CDATA[ condsummary&16 && GoodEvent ]]></cut>
       <type> histogram-1d[129,-0.5,128.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a CNO trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
@@ -227,7 +216,7 @@
 	         <object>
       <name> CondSummaryWord__WithPeriodic_Extended_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&32 ]]></cut>
+      <cut><![CDATA[ condsummary&32 && GoodEvent ]]></cut>
       <type> histogram-1d[129,-0.5,128.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a Periodic trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
@@ -237,7 +226,7 @@
     <object>
       <name> CondSummaryWord__WithSolicited_Extended_TH1 </name>
       <formula><![CDATA[ condsummary ]]></formula>
-      <cut><![CDATA[ condsummary&64 ]]></cut>
+      <cut><![CDATA[ condsummary&64 && GoodEvent ]]></cut>
       <type> histogram-1d[129,-0.5,128.5] </type>
       <titledesc> Distribution of CondSummary Word values when there is a Solicited trigger</titledesc>
       <axisdesc> [condsummary value, N] </axisdesc>
@@ -248,7 +237,7 @@
       <object>
       <name> CondArrTKRTrigger_TH1 </name>
       <formula><![CDATA[ condarrtkr ]]></formula>
-      <cut><![CDATA[ condsummary&2 && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ condsummary&2 && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival TKR triggers </titledesc>
       <axisdesc> [Condition arrival times for TKR triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -258,7 +247,7 @@
       <object>
       <name> CondArrCalLowTrigger_TH1 </name>
       <formula><![CDATA[ condarrcallo ]]></formula>
-      <cut><![CDATA[ condsummary&4 && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ condsummary&4 && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival Cal-Low triggers </titledesc>
       <axisdesc> [Condition arrival times for Cal-Low triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -268,7 +257,7 @@
       <object>
       <name> CondArrCalHiTrigger_TH1 </name>
       <formula><![CDATA[ condarrcalhi ]]></formula>
-      <cut><![CDATA[ condsummary&8 && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ condsummary&8 && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival Cal-Hi triggers </titledesc>
       <axisdesc> [Condition arrival times for Cal-Hi triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -278,7 +267,7 @@
       <object>
       <name> CondArrCNOTrigger_TH1 </name>
       <formula><![CDATA[ condarrcno ]]></formula>
-      <cut><![CDATA[ condsummary&16 && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ condsummary&16 && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival CNO triggers </titledesc>
       <axisdesc> [Condition arrival times for CNO triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -288,7 +277,7 @@
        <object>
       <name> CondArrROITrigger_TH1 </name>
       <formula><![CDATA[ condarrroi ]]></formula>
-      <cut><![CDATA[ condsummary&1 && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ condsummary&1 && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival ROI triggers </titledesc>
       <axisdesc> [Condition arrival times for ROI triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -299,7 +288,7 @@
      <object>
       <name> CondArrROI_TKROpensWindow_TH1 </name>
       <formula><![CDATA[ condarrroi ]]></formula>
-      <cut><![CDATA[ (condsummary&1) && (condsummary&2) && (condarrtkr==0) &&  !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&1) && (condsummary&2) && (condarrtkr==0) &&  !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival ROI triggers when TKR opened the window</titledesc>
       <axisdesc> [Condition arrival times for ROI triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -311,7 +300,7 @@
      <object>
       <name> CondArrCalLo_TKROpensWindow_TH1 </name>
       <formula><![CDATA[ condarrcallo ]]></formula>
-      <cut><![CDATA[ (condsummary&4) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&4) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival CalLo triggers when TKR opened the window</titledesc>
       <axisdesc> [Condition arrival times for CalLo triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -321,7 +310,7 @@
       <object>
       <name> CondArrCalHi_TKROpensWindow_TH1 </name>
       <formula><![CDATA[ condarrcalhi ]]></formula>
-      <cut><![CDATA[ (condsummary&8) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&8) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival CalHi triggers when TKR opened the window</titledesc>
       <axisdesc> [Condition arrival times for CalHi triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -331,7 +320,7 @@
        <object>
       <name> CondArrCNO_TKROpensWindow_TH1 </name>
       <formula><![CDATA[ condarrcno ]]></formula>
-      <cut><![CDATA[ (condsummary&16) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&16) && (condsummary&2) && (condarrtkr==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival CNO triggers when TKR opened the window</titledesc>
       <axisdesc> [Condition arrival times for CNO triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -342,7 +331,7 @@
         <object>
       <name> CondArrROI_CalLoOpensWindow_TH1 </name>
       <formula><![CDATA[ condarrroi ]]></formula>
-      <cut><![CDATA[ (condsummary&1) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&1) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival ROI triggers when CalLo opened the window</titledesc>
       <axisdesc> [Condition arrival times for ROI triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -352,7 +341,7 @@
 	   <object>
       <name> CondArrTKR_CalLoOpensWindow_TH1 </name>
       <formula><![CDATA[ condarrtkr ]]></formula>
-      <cut><![CDATA[ (condsummary&2) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&2) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival TKR triggers when CalLo opened the window</titledesc>
       <axisdesc> [Condition arrival times for TKR triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -362,7 +351,7 @@
 	      <object>
       <name> CondArrCalHi_CalLoOpensWindow_TH1 </name>
       <formula><![CDATA[ condarrcalhi ]]></formula>
-      <cut><![CDATA[ (condsummary&8) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&8) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival CalHi triggers when CalLo opened the window</titledesc>
       <axisdesc> [Condition arrival times for CalHi triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -372,7 +361,7 @@
     <object>
       <name> CondArrCNO_CalLoOpensWindow_TH1 </name>
       <formula><![CDATA[ condarrcno ]]></formula>
-      <cut><![CDATA[ (condsummary&16) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&16) && (condsummary&4) && (condarrcallo==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival CNO triggers when CalLo opened the window</titledesc>
       <axisdesc> [Condition arrival times for CNO triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -383,7 +372,7 @@
     <object>
       <name> CondArrROI_CalHiOpensWindow_TH1 </name>
       <formula><![CDATA[ condarrroi ]]></formula>
-      <cut><![CDATA[ (condsummary&1) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&1) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival ROI triggers when CalHi opened the window</titledesc>
       <axisdesc> [Condition arrival times for ROI triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -393,7 +382,7 @@
      <object>
       <name> CondArrTKR_CalHiOpensWindow_TH1 </name>
       <formula><![CDATA[ condarrtkr ]]></formula>
-      <cut><![CDATA[ (condsummary&2) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&2) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival TKR triggers when CalHi opened the window</titledesc>
       <axisdesc> [Condition arrival times for TKR triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -403,7 +392,7 @@
       <object>
       <name> CondArrCalLo_CalHiOpensWindow_TH1 </name>
       <formula><![CDATA[ condarrcallo ]]></formula>
-      <cut><![CDATA[ (condsummary&4) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&4) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival CalLo triggers when CalHi opened the window</titledesc>
       <axisdesc> [Condition arrival times for CalLo triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -413,7 +402,7 @@
        <object>
       <name> CondArrCNO_CalHiOpensWindow_TH1 </name>
       <formula><![CDATA[ condarrcno ]]></formula>
-      <cut><![CDATA[ (condsummary&16) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&16) && (condsummary&8) && (condarrcalhi==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival CNO triggers when CalHi opened the window</titledesc>
       <axisdesc> [Condition arrival times for CNO triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -425,7 +414,7 @@
         <object>
       <name> CondArrROI_CNOOpensWindow_TH1 </name>
       <formula><![CDATA[ condarrroi ]]></formula>
-      <cut><![CDATA[ (condsummary&1) && (condsummary&16) && (condarrcno==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&1) && (condsummary&16) && (condarrcno==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival ROI triggers when CNO opened the window</titledesc>
       <axisdesc> [Condition arrival times for ROI triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -436,7 +425,7 @@
 	 <object>
       <name> CondArrTKR_CNOOpensWindow_TH1 </name>
       <formula><![CDATA[ condarrtkr ]]></formula>
-      <cut><![CDATA[ (condsummary&2) && (condsummary&16) && (condarrcno==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&2) && (condsummary&16) && (condarrcno==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival TKR triggers when CNO opened the window</titledesc>
       <axisdesc> [Condition arrival times for TKR triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -446,7 +435,7 @@
     <object>
       <name> CondArrCalLo_CNOOpensWindow_TH1 </name>
       <formula><![CDATA[ condarrcallo ]]></formula>
-      <cut><![CDATA[ (condsummary&4) && (condsummary&16) && (condarrcno==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&4) && (condsummary&16) && (condarrcno==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival CalLo triggers when CNO opened the window</titledesc>
       <axisdesc> [Condition arrival times for CalLo triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -456,7 +445,7 @@
      <object>
       <name> CondArrCalHi_CNOOpensWindow_TH1 </name>
       <formula><![CDATA[ condarrcalhi ]]></formula>
-      <cut><![CDATA[ (condsummary&8) && (condsummary&16) && (condarrcno==0) && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ (condsummary&8) && (condsummary&16) && (condarrcno==0) && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[41,-0.5,40.5] </type>
       <titledesc> Distribution of Condition arrival CalHi triggers when CNO opened the window</titledesc>
       <axisdesc> [Condition arrival times for CalHi triggers (nominally 50 ns ticks), N] </axisdesc>
@@ -468,7 +457,7 @@
       <object>
       <name> DiscardedDelta_TH1 </name>
       <formula><![CDATA[ DiscardedDelta ]]></formula>
-      <cut><![CDATA[ !(condsummary&32) ]]></cut>
+      <cut><![CDATA[ !(condsummary&32) && !(condsummary&64) && GoodEvent ]]></cut>
       <type> histogram-1d[31,-0.5,30.5] </type>
       <titledesc> Number of GEM discarded events between two successive read out events. </titledesc>
       <axisdesc> [Number Gem discarded events, N] </axisdesc>
@@ -478,7 +467,7 @@
      <object>
       <name> DeadZoneDelta_TH1 </name>
       <formula><![CDATA[ DeadZoneDelta ]]></formula>
-      <cut><![CDATA[ !(condsummary&32) ]]></cut>
+      <cut><![CDATA[ !(condsummary&32) && !(condsummary&64) &&GoodEvent ]]></cut>
       <type> histogram-1d[31,-0.5,30.5] </type>
       <titledesc> Number of GEM deadzone events between two successive read out events. </titledesc>
       <axisdesc> [Number Gem deadzone events, N] </axisdesc>
@@ -488,7 +477,7 @@
       <object>
       <name> PrescaledDelta_TH1 </name>
       <formula><![CDATA[ PrescaledDelta ]]></formula>
-      <cut><![CDATA[ !(condsummary&32) ]]></cut>
+      <cut><![CDATA[ !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-1d[31,-0.5,30.5] </type>
       <titledesc> Number of GEM prescaled events between two successive read out events. </titledesc>
       <axisdesc> [Number Gem prescaled events, N] </axisdesc>
@@ -501,7 +490,7 @@
         <object>
       <name> TkrTrigger_Tower_TH1 </name>
       <formula><![CDATA[ TkrTriggerTower ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
       <titledesc> Number of tracker triggers per tower </titledesc>
       <axisdesc> [Tower number, N] </axisdesc>
@@ -515,7 +504,7 @@
          <object>
       <name> CalHiTrigger_Tower_TH1 </name>
       <formula><![CDATA[ CalHiTriggerTower ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
       <titledesc> Number of Cal HI triggers per tower </titledesc>
       <axisdesc> [Tower number, N] </axisdesc>
@@ -528,7 +517,7 @@
      <object>
       <name> CalLoTrigger_Tower_TH1 </name>
       <formula><![CDATA[ CalLoTriggerTower ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[16,-0.5,15.5] </type>
       <titledesc> Number of Cal LOW triggers per tower </titledesc>
       <axisdesc> [Tower number, N] </axisdesc>
@@ -538,7 +527,7 @@
      <object>
       <name> DeltaWindowOpen_TH1 </name>
       <formula><![CDATA[ DeltaWindowOpen*0.00005 ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-1d[100,0.,4] </type>
       <titledesc>  GEM Delta window open time in milliseconds </titledesc>
       <axisdesc> [DeltaWindowOpen time (ms), N] </axisdesc>
@@ -550,19 +539,16 @@
      <object>
       <name> DeltaEventTime_TH1 </name>
       <formula><![CDATA[ DeltaEventTime*0.00005 ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-1d[100,0.,4] </type>
       <titledesc>  GEM Delta Event time in milliseconds </titledesc>
       <axisdesc> [DeltaEvent time (ms), N] </axisdesc>
       <description> GEM Delta Event time in milliseconds. </description>
     </object>
-
-
-
      <object>
       <name> DeltaWindowOpen_Zoom_TH1 </name>
       <formula><![CDATA[ DeltaWindowOpen ]]></formula>
-      <cut><![CDATA[ (condsummary&30) && (DeltaWindowOpen<1500)]]></cut>
+      <cut><![CDATA[ (condsummary&30) && (DeltaWindowOpen<1500) && GoodEvent ]]></cut>
       <type> histogram-1d[160,0.,1600] </type>
       <titledesc>  GEM Delta window open time in 50 ns ticks </titledesc>
       <axisdesc> [DeltaWindowOpen time (nominally 50 ns ticks), N] </axisdesc>
@@ -574,7 +560,7 @@
      <object>
       <name> DeltaEventTime_Zoom_TH1 </name>
       <formula><![CDATA[ DeltaEventTime ]]></formula>
-      <cut><![CDATA[ (condsummary&30) && (DeltaEventTime<1500)]]></cut>
+      <cut><![CDATA[ (condsummary&30) && (DeltaEventTime<1500) && GoodEvent ]]></cut>
       <type> histogram-1d[160,0.,1600] </type>
       <titledesc>  GEM Delta Event time in 50 ns ticks </titledesc>
       <axisdesc> [DeltaEvent time (50 ns ticks), N] </axisdesc>
@@ -584,7 +570,7 @@
       <object>
       <name> TimeLastDiscardedEvt_TH1 </name>
       <formula><![CDATA[ DeltaEventTime-DeltaWindowOpen ]]></formula>
-      <cut><![CDATA[ (condsummary&30) && (DeltaWindowOpen<65500) && (DeltaEventTime<65500)]]></cut>
+      <cut><![CDATA[ (condsummary&30) && (DeltaWindowOpen<65500) && (DeltaEventTime<65500) && GoodEvent ]]></cut>
       <type> histogram-1d[210,-1000.,20000] </type>
       <titledesc>  Time of last discarded event in 50 ns ticks </titledesc>
       <axisdesc> [Time of last discarded event (50 ns ticks), N] </axisdesc>
@@ -594,7 +580,7 @@
        <object>
       <name> TimeLastDiscardedEvt_Zoom_TH1 </name>
       <formula><![CDATA[ DeltaEventTime-DeltaWindowOpen ]]></formula>
-      <cut><![CDATA[ (condsummary&30) && (DeltaWindowOpen<65500) && (DeltaEventTime<65500) && (DeltaEventTime-DeltaWindowOpen < 2000)]]></cut>
+      <cut><![CDATA[ (condsummary&30) && (DeltaWindowOpen<65500) && (DeltaEventTime<65500) && (DeltaEventTime-DeltaWindowOpen < 2000) && GoodEvent ]]></cut>
       <type> histogram-1d[210,-100.,2000] </type>
       <titledesc>  Time of last discarded event in 50 ns ticks (ZOOM below 2000 ticks) </titledesc>
       <axisdesc> [Time of last discarded event (50 ns ticks), N] </axisdesc>
@@ -631,7 +617,7 @@
         <object>
       <name> DeltaEventTimeManual_Zoom_TH1 </name>
       <formula><![CDATA[ DeltaEventTimeManual*1000. ]]></formula>
-      <cut><![CDATA[ condsummary&30 && (DeltaEventTimeManual*1000. < 0.4)]]></cut>
+      <cut><![CDATA[ condsummary&30 && (DeltaEventTimeManual*1000. < 0.4) ]]></cut>
       <type> histogram-1d[4100,0.0,0.41] </type>
       <titledesc> Distribution of Delta Event Time computed manually  (ZOOM)</titledesc>
       <axisdesc> [Time (ms), N] </axisdesc>
@@ -828,7 +814,7 @@
       <object>
       <name> Acd_GemVeto_AcdTile_TH1 </name>
       <formula><![CDATA[ AcdGemVeto_AcdTile ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30  && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
       <titledesc> Number of Acd Gem vetos by tile. Expect to see spikes at 15,31,47,63. These are the large tiles at the bottom of the sides of the ACD. </titledesc>
       <axisdesc> [Tile number, N] </axisdesc>
@@ -842,7 +828,7 @@
            <object>
       <name> AcdGemROI_Tower_TH1 </name>
       <formula><![CDATA[ AcdGemROI_Tower ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[16,-0.5,15.5,0] </type>
       <titledesc> Number of Acd ROI by tower. This bit is set if any of the tile in the ROI fired a veto. This bit is independent of if the Tower bit is set. </titledesc>
       <axisdesc> [Tower number, N] </axisdesc>
@@ -856,7 +842,7 @@
      <object>
       <name> AcdGemCNO_GARC_TH1 </name>
       <formula><![CDATA[ AcdGemCNO_GARC ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[12,-0.5,11.5,0] </type>
       <titledesc>  Number of Acd CNO by board. This bit is the OR of all the CNO signals on a single board. Because of the tile to board mapping, a factor two variation between boards is normal. </titledesc>
       <axisdesc> [Electronic Board number, N] </axisdesc>
@@ -869,7 +855,7 @@
         <object>
       <name> AcdDigis_TH1 </name>
       <formula><![CDATA[ RFun::loopoveracdtilesbool(AcdHit_AcdTile) ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-1d[111,-0.5,110] </type>
       <titledesc> Distribution of ACD Digis per event</titledesc>
       <axisdesc> [Number of ACD Digis, N] </axisdesc>
@@ -880,7 +866,7 @@
 	<object>
       <name> AcdHitMap_TH1 </name>
       <formula><![CDATA[ AcdHit_AcdTile ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
       <titledesc>  ACD Hit Map</titledesc>
       <axisdesc> [ACD GEM ID, N] </axisdesc>
@@ -890,7 +876,7 @@
     <object>
       <name> AcdSingleHitMap_TH1 </name>
       <formula><![CDATA[ AcdSingleHit ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[128,-0.5,127.5] </type>
       <titledesc>  ACD Single Hit Map</titledesc>
       <axisdesc> [ACD GEM ID, N] </axisdesc>
@@ -903,7 +889,7 @@
      <object>
       <name> AcdVetoMap_TH1 </name>
       <formula><![CDATA[ AcdVetoA_OR_B_AcdTile ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
       <titledesc>  ACD Veto Map</titledesc>
       <axisdesc> [ACD GEM ID, N] </axisdesc>
@@ -913,7 +899,7 @@
      <object>
       <name> AcdVetoAMap_TH1 </name>
       <formula><![CDATA[ AcdVetoA_AcdTile ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
       <titledesc>  ACD Veto Map from PMTA</titledesc>
       <axisdesc> [ACD GEM ID, N] </axisdesc>
@@ -923,7 +909,7 @@
      <object>
       <name> AcdVetoBMap_TH1 </name>
       <formula><![CDATA[ AcdVetoB_AcdTile ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
       <titledesc>  ACD Veto Map from PMTB</titledesc>
       <axisdesc> [ACD GEM ID, N] </axisdesc>
@@ -933,7 +919,7 @@
      <object>
       <name> AcdVetoA_DigiIdMap_TH1 </name>
       <formula><![CDATA[ AcdVetoA_AcdTileDigiId ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[604,-0.5,603.5,0] </type>
       <titledesc>  ACD Veto Map from PMTA (Digi ID)</titledesc>
       <axisdesc> [ACD DIGI ID, N] </axisdesc>
@@ -943,7 +929,7 @@
      <object>
       <name> AcdVetoB_DigiIdMap_TH1 </name>
       <formula><![CDATA[ AcdVetoB_AcdTileDigiId ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[604,-0.5,603.5,0] </type>
       <titledesc>  ACD Veto Map from PMTB (Digi ID)</titledesc>
       <axisdesc> [ACD DIGI ID, N] </axisdesc>
@@ -954,7 +940,7 @@
      <object>
       <name> AcdVetoA_And_B_DigiIdMap_TH1 </name>
       <formula><![CDATA[ foreachacdtiledigiid: ((AcdVetoA_AcdTileDigiId[acdtiledigiid] >0) && (AcdVetoB_AcdTileDigiId[acdtiledigiid] >0)) ? 1.0 : 0.0  ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[604,-0.5,603.5,0] </type>
       <titledesc>  ACD Veto Map for PMTA AND PMTB (Digi ID)</titledesc>
       <axisdesc> [ACD DIGI ID, N] </axisdesc>
@@ -965,7 +951,7 @@
     <object>
       <name> AcdVetoA_Or_B_DigiIdMap_TH1 </name>
       <formula><![CDATA[ foreachacdtiledigiid: ((AcdVetoA_AcdTileDigiId[acdtiledigiid] >0) || (AcdVetoB_AcdTileDigiId[acdtiledigiid] >0)) ? 1.0 : 0.0  ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[604,-0.5,603.5,0] </type>
       <titledesc>  ACD Veto Map for PMTA OR PMTB (Digi ID)</titledesc>
       <axisdesc> [ACD DIGI ID, N] </axisdesc>
@@ -976,7 +962,7 @@
        <object>
       <name> AcdVetoA_And_NotB_DigiIdMap_TH1 </name>
       <formula><![CDATA[ foreachacdtiledigiid: ((AcdVetoA_AcdTileDigiId[acdtiledigiid] >0) && (AcdVetoB_AcdTileDigiId[acdtiledigiid] ==0)) ? 1.0 : 0.0  ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[604,-0.5,603.5,0] </type>
       <titledesc>  ACD Veto Map for PMTA AND NOT PMTB (Digi ID)</titledesc>
       <axisdesc> [ACD DIGI ID, N] </axisdesc>
@@ -986,7 +972,7 @@
        <object>
       <name> AcdVetoB_And_NotA_DigiIdMap_TH1 </name>
       <formula><![CDATA[ foreachacdtiledigiid: ((AcdVetoA_AcdTileDigiId[acdtiledigiid] ==0) && (AcdVetoB_AcdTileDigiId[acdtiledigiid] >0)) ? 1.0 : 0.0  ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[604,-0.5,603.5,0] </type>
       <titledesc>  ACD Veto Map for PMTB AND NOT PMTB (Digi ID)</titledesc>
       <axisdesc> [ACD DIGI ID, N] </axisdesc>
@@ -997,7 +983,7 @@
       <object>
       <name> AcdSingleVetoMap_TH1 </name>
       <formula><![CDATA[ AcdSingleVeto_AcdTile ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[128,-0.5,127.5,0] </type>
       <titledesc>  ACD Single Veto Map</titledesc>
       <axisdesc> [ACD GEM ID, N] </axisdesc>
@@ -1008,7 +994,7 @@
        <object>
       <name> AcdPhaMap_PMTA_LowPMTRange_TH2 </name>
       <formula><![CDATA[ AcdPha_PmtIdPmtRangeAcdTile[0][0] ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-index-2d[128,-0.5,127.5, 4101, -1.5,4099.5,-1] </type>
       <titledesc>  ACD Pha Map PMT A (Low Range)</titledesc>
       <axisdesc> [ACD GEM ID, Pha] </axisdesc>
@@ -1018,7 +1004,7 @@
         <object>
       <name> AcdPhaMap_PMTB_LowPMTRange_TH2 </name>
       <formula><![CDATA[ AcdPha_PmtIdPmtRangeAcdTile[1][0] ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-index-2d[128,-0.5,127.5, 4101, -1.5,4099.5,-1] </type>
       <titledesc>  ACD Pha Map PMT B (Low Range)</titledesc>
       <axisdesc> [ACD GEM ID, Pha] </axisdesc>
@@ -1028,7 +1014,7 @@
 	  <object>
       <name> AcdPhaMap_PMTA_HighPMTRange_TH2 </name>
       <formula><![CDATA[ AcdPha_PmtIdPmtRangeAcdTile[0][1] ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-index-2d[128,-0.5,127.5, 4101, -1.5,4099.5,-1] </type>
       <titledesc>  ACD Pha Map PMT A (High Range)</titledesc>
       <axisdesc> [ACD GEM ID, Pha] </axisdesc>
@@ -1038,7 +1024,7 @@
         <object>
       <name> AcdPhaMap_PMTB_HighPMTRange_TH2 </name>
       <formula><![CDATA[ AcdPha_PmtIdPmtRangeAcdTile[1][1] ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-index-2d[128,-0.5,127.5, 4101, -1.5,4099.5,-1] </type>
       <titledesc>  ACD Pha Map PMT B (High Range)</titledesc>
       <axisdesc> [ACD GEM ID, Pha] </axisdesc>
@@ -1049,7 +1035,7 @@
     <object>
       <name> AcdHitMap_GafeGarc_TH2 </name>
       <formula><![CDATA[ AcdHit_GafeGarc ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-vecdim-2d[18,-0.5,17.5, 12, -0.5,11.5,0] </type>
       <titledesc>  ACD Hit Map Garc:Gafe </titledesc>
       <axisdesc> [GAFE, GARC] </axisdesc>
@@ -1060,7 +1046,7 @@
       <object>
       <name> AcdVetoMap_GafeGarc_TH2 </name>
       <formula><![CDATA[ AcdVeto_GafeGarc ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-vecdim-2d[18,-0.5,17.5, 12, -0.5,11.5,0] </type>
       <titledesc>  ACD Veto Map Garc:Gafe </titledesc>
       <axisdesc> [GAFE, GARC] </axisdesc>
@@ -1074,7 +1060,7 @@
        <object>
       <name> TkrHits_TH1 </name>
       <formula><![CDATA[ RFun::loopovertowerANDtkrplanes(TkrHitsTowerPlane) ]]></formula>
-      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-1d[300,0.0,3000] </type>
       <titledesc> Distribution of strip hits per event  (all towers included). </titledesc>
       <axisdesc> [Number of strip hits, N] </axisdesc>
@@ -1086,7 +1072,7 @@
       <object>
       <name> TkrHits_TH1_Tower[16] </name>
       <formula><![CDATA[ foreachtower: RFun::loopovertkrplanes(TkrHitsTowerPlane[tower]) ]]></formula>
-      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-1d[200,0,1000] </type>
       <!--<titledesc> Number of strip hits in a tower </titledesc>-->
       <axisdesc> [Number of strip hits, N] </axisdesc>
@@ -1099,7 +1085,7 @@
      <object>
       <name> TkrPlanesHit_TH1_Tower[16] </name>
       <formula><![CDATA[ foreachtower: RFun::getplaneshit(TkrHitsTowerPlane[tower]) ]]></formula>
-      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-1d[38,-0.5,37.5] </type>
       <!--<titledesc> Number of planes hit in a tower </titledesc>-->
       <axisdesc> [Number of planes hit, N] </axisdesc>
@@ -1110,7 +1096,7 @@
          <object>
       <name> TkrHitsCounter_TowerPlane_TH2 </name>
       <formula><![CDATA[ TkrHitsTowerPlane ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-2d[16,-0.5,15.5, 36, -0.5,35.5,0] </type>
       <titledesc>  Number of strip hits vs Tower and Tkr plane. </titledesc>
       <axisdesc> [Tower number, Tracker plane, N] </axisdesc>
@@ -1121,7 +1107,7 @@
       <object>
       <name> ZeroTkrHitsCounter_TowerPlane_TH2 </name>
       <formula><![CDATA[ foreachtower: foreachtkrplane: (TkrHitsTowerPlane[tower][tkrplane] ==0)]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-2d[16,-0.5,15.5, 36, -0.5,35.5,0] </type>
       <titledesc>  Counter for ZERO strip hits vs Tower and Tracker plane. </titledesc>
       <axisdesc> [Tower number, Tracker plane, N] </axisdesc>
@@ -1134,7 +1120,7 @@
       <object>
       <name> TkrHitsInEmptyTower_Tower_TH1 </name>
       <formula><![CDATA[ runonce: RFun::getemptytowers(TkrTriggerTower)# foreachtower: RFun::gethitsinemptytower(runonceformula[tower],TkrHitsTowerPlane[tower])  ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[16,-0.5,15.5,0] </type>
       <titledesc>  Number of hits when the tower was empty vs tower number  </titledesc>
       <axisdesc> [Tower number, N] </axisdesc>
@@ -1146,7 +1132,7 @@
        <object>
       <name> TkrDigiCounter_TowerPlane_TH2 </name>
       <formula><![CDATA[ foreachtower: foreachtkrplane : IsTkrDigi_TowerPlane[tower][tkrplane] > 0.5]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-2d[16,-0.5,15.5, 36, -0.5,35.5,0] </type>
       <titledesc>  Number of TkrDigi objects in each vs Tower and Tracker plane.  </titledesc>
       <axisdesc> [Tower number, Tracker plane, N] </axisdesc>
@@ -1158,7 +1144,7 @@
       <object>
       <name> TkrDigiCounter_Tower_TH1 </name>
       <formula><![CDATA[ foreachtower: RFun::loopovertkrplanes(IsTkrDigi_TowerPlane[tower]) ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-1d[16,-0.5,15.5,0] </type>
       <titledesc>  Number of TkrDigi objects vs tower number  </titledesc>
       <axisdesc> [Tower number, N] </axisdesc>
@@ -1169,7 +1155,7 @@
      <object>
       <name> TkrDigis_TH1 </name>
       <formula><![CDATA[ RFun::loopovertowerANDtkrplanes(IsTkrDigi_TowerPlane)]]></formula>
-      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-1d[201,-0.5,200.5,0] </type>
       <titledesc> Distribution of tracker Digis per event  (all towers included). </titledesc>
       <axisdesc> [Number of TkrDigis, N] </axisdesc>
@@ -1181,7 +1167,7 @@
      <object>
       <name> ToT_0_WhenTkrHitsExist_TowerPlane_TH2 </name>
       <formula><![CDATA[ foreachtower: foreachtkrplane: (IsTkrDigi_TowerPlane[tower][tkrplane]>0.5) && (ToT_con0_TowerPlane[tower][tkrplane]==0) && (ToT_con1_TowerPlane[tower][tkrplane]==0) && (TkrHitsTowerPlane[tower][tkrplane]>0) ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-vecdim-2d[16,-0.5,15.5, 36, -0.5,35.5,0] </type>
       <titledesc>  Number of times that, existing TkrDigi and having at least one hit, ToT==0 in both controller 0 and controller 1 in [tower][trkplane]  </titledesc>
       <axisdesc> [Tower number, Tracker plane, N] </axisdesc>
@@ -1192,7 +1178,7 @@
      <object>
       <name> ToT_con0_TH1_TowerPlane[16][36] </name>
       <formula><![CDATA[ ToT_con0_TowerPlane ]]></formula>
-      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-1d[263,-1.5,261.5,0] </type>
       <titledesc> ToT for controller 0. </titledesc>
       <axisdesc> [ToT value, N] </axisdesc>
@@ -1202,7 +1188,7 @@
      <object>
       <name> ToT_con1_TH1_TowerPlane[16][36] </name>
       <formula><![CDATA[ ToT_con1_TowerPlane ]]></formula>
-      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-1d[263,-1.5,261.5,0] </type>
       <titledesc> ToT for controller 1. </titledesc>
       <axisdesc> [ToT value, N] </axisdesc>
@@ -1217,7 +1203,7 @@
      <object>
       <name> CalXHit_NHit_Counter_TowerCalLayer_TH2 </name>
       <formula><![CDATA[ CalXHit_TowerCalLayer ]]></formula>
-      <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ condsummary&30 && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-vecdim-2d[16,-0.5,15.5, 8, -0.5,7.5, 0] </type>
       <titledesc>  Number of hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account.   </titledesc>
       <axisdesc> [Tower number, Cal-Layer, N] </axisdesc>
@@ -1227,7 +1213,7 @@
       <object>
       <name> ZeroCalXHit_NHit_Counter_TowerCalLayer_TH2 </name>
       <formula><![CDATA[ foreachtower: foreachcallayer: (CalXHit_TowerCalLayer[tower][callayer]<0.5) ]]></formula>
-      <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
+      <cut><![CDATA[ condsummary&30 && !(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-vecdim-2d[16,-0.5,15.5, 8, -0.5,7.5,0] </type>
       <titledesc>  Number of times there is ZERO hits in a calorimeter layer defined by the coordinates tower,callayer. Periodic triggers are NOT taken into account.   </titledesc>
       <axisdesc> [Tower number, Cal-layer, N] </axisdesc>
@@ -1238,7 +1224,7 @@
      <object>
       <name> CalX_NHit_TH1_Tower[16] </name>
       <formula><![CDATA[ foreachtower: RFun::loopovercallayers(CalXHit_TowerCalLayer[tower])]]></formula>
-      <cut><![CDATA[ condsummary&30  ]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-1d[151,-0.5,150.5,-1] </type>
      <!-- <titledesc> Distribution of Cal crystals hits per event in this tower </titledesc>-->
       <axisdesc> [Number of CalX_Hits in this tower, N] </axisdesc>
@@ -1251,7 +1237,7 @@
       <object>
       <name> CalX_Total_NHit_TH1 </name>
       <formula><![CDATA[ RFun::loopovertowerANDcallayers(CalXHit_TowerCalLayer)]]></formula>
-      <cut><![CDATA[ condsummary&30]]></cut>
+      <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type> histogram-1d[201,-0.5,200.5] </type>
       <titledesc> Distribution of Cal crystals hits per event (all towers included). </titledesc>
       <axisdesc> [Number of CalX_Hits, N] </axisdesc>
@@ -1264,7 +1250,7 @@
        <object>
       <name> CalXReadoutRange_TH2 </name>
       <formula><![CDATA[ CalReadoutRange ]]></formula>
-      <cut><![CDATA[!(condsummary&32)]]></cut>
+      <cut><![CDATA[!(condsummary&32) && GoodEvent ]]></cut>
       <type> histogram-index-2d[3072,-0.5,3071.5, 5, -0.5,4.5,-1] </type>
       <titledesc> Cal readout range used vs cal channel. Periodic triggers are NOT taken into account.   </titledesc>
       <axisdesc> [Cal channel, Range, N] </axisdesc>
