@@ -4,7 +4,6 @@
        CondSummaryWord_WithCalLo_TH1  Sum
        CondSummaryWord_WithCalHi_TH1  Sum
        CondSummaryWord_WithCNO_TH1  Sum
-       CondSummaryWord_WithPeriodic_TH1  Sum
        CondSummaryWord_Extended_TH1  Sum
        CondSummaryWord__WithROI_Extended_TH1  Sum
        CondSummaryWord__WithTKR_Extended_TH1  Sum
