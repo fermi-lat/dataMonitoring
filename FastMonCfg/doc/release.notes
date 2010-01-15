@@ -4,6 +4,8 @@
  *
  *                  EOH
 
+- change gem_delta_event_time type, fix PrescaledDelta histo - GDQMQ-325
+
  FastMonCfg-02-01-00 12-Jan-2010 lbaldini Cut on the error_summary changed from <64 to <256
 
 - Bug fix in the cuts used to prevent the events with errors from ending
