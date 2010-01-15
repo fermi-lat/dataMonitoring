@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-04-04 15-Jan-2010 bregeon Branch tag - Add GoodEvent cuts in digi histo and remove CondSummaryWord_WithPeriodic_TH1 - GDQMQ-325
 v1r4p4 2010/01/15 (DEV)
 ---------------------------
 Remove CondSummaryWord_WithPeriodic_TH1 and add cut for error ev
