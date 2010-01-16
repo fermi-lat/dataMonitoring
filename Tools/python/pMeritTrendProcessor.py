@@ -9,7 +9,7 @@ ROCK_ANGLE_CUT = 'abs(Mean_PtSCzenith - 50) < 0.2'
 MIN_L = 0.9
 MAX_L = 1.9
 NUM_BINS_L = 200
-"""
+
 VARIABLE_LIST = ['Rate_EvtsBeforeCuts',
                  'Rate_EvtsBeforeCutsWithGAMMAFilter',
                  'Rate_TransientEvts',
@@ -18,14 +18,16 @@ VARIABLE_LIST = ['Rate_EvtsBeforeCuts',
                  'CounterDiffRate_EvtsBeforeFilters',
                  'Rate_MeritTriggerEngine',
                  'Rate_GAMMAFilterAndTriggerEngine']
-"""
-VARIABLE_LIST = ['Rate_EvtsBeforeCuts']
+
+VARIABLE_ERR_LIST = []
+for varName in VARIABLE_LIST:
+    VARIABLE_ERR_LIST.append('%s_err' % varName)
 
 
 
 class pMeritTrendProcessor:
 
-    def __init__(self, filePath = 'merittrend.root', treeName = 'Output'):
+    def __init__(self, filePath, treeName = 'Time'):
         self.RootFile = ROOT.TFile(filePath)
         self.RootTree = self.RootFile.Get(treeName)
         self.McIlwainLHist = ROOT.TH1F('McIlwainL', 'McIlwainL',
@@ -64,6 +66,7 @@ class pMeritTrendProcessor:
         self.createRateHists()
 
     def getRate(self, mcIlwainL, varName, index = None):
+        varName = varName.replace('_err', '')
         hName = self.getHistName(varName, index)
         h = self.RateHistDict[hName]
         bin = int(NUM_BINS_L*(mcIlwainL - MIN_L)/(MAX_L - MIN_L)) + 1
@@ -94,7 +97,7 @@ class pMeritTrendProcessor:
     def copyArrays(self):
         mcIlwainL = self.InputArrayDict['Mean_PtMcIlwainL'][0]
         for (name, (length, type)) in VARIABLE_DICT.items():
-            if name not in VARIABLE_LIST:
+            if name not in VARIABLE_LIST and name not in VARIABLE_ERR_LIST:
                 self.OutputArrayDict[name][0] = self.InputArrayDict[name][0]
             elif length == 1:
                 (norm, err) = self.getRate(mcIlwainL, name)
@@ -112,9 +115,9 @@ class pMeritTrendProcessor:
 
     def write(self, outputFilePath):
         self.OutputFile = ROOT.TFile(outputFilePath, 'RECREATE')
-        self.OutputTree = ROOT.TTree('Output', 'Output')
+        self.OutputTree = ROOT.TTree('Time', 'Time')
         self.createArrays()
-        print 'Writing output file...'
+        print 'Writing output file %s...' % outputFilePath
         numEntries = self.RootTree.GetEntries()
         for i in xrange(numEntries):
             self.RootTree.GetEntry(i)
@@ -128,7 +131,7 @@ class pMeritTrendProcessor:
 
 
 if __name__ == '__main__':
-    p = pMeritTrendProcessor()
+    p = pMeritTrendProcessor('merit_norm.root')
     p.drawRateHists()
-    p.write('merittrend_proc.root')
+    p.write('merit_norm_proc.root')
     
