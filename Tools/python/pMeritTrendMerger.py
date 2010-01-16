@@ -4,28 +4,62 @@ from pLongTermTrendMaker import *
 
 
 VARIABLE_DICT = {'Rate_EvtsBeforeCuts': (1, 'F'),
+                 'Rate_EvtsBeforeCuts_err': (1, 'F'),
                  'Rate_EvtsBeforeCutsWithGAMMAFilter': (1, 'F'),
+                 'Rate_EvtsBeforeCutsWithGAMMAFilter_err': (1, 'F'),
                  'Rate_TransientEvts': (1, 'F'),
+                 'Rate_TransientEvts_err': (1, 'F'),
                  'Rate_DiffuseEvts': (1, 'F'),
+                 'Rate_DiffuseEvts_err': (1, 'F'),
                  'Rate_SourceEvts': (1, 'F'),
+                 'Rate_SourceEvts_err': (1, 'F'),
                  'CounterDiffRate_EvtsBeforeFilters': (1, 'F'),
+                 'CounterDiffRate_EvtsBeforeFilters_err': (1, 'F'),
                  'Rate_MeritTriggerEngine': (16, 'F'),
+                 'Rate_MeritTriggerEngine_err': (16, 'F'),
                  'Rate_GAMMAFilterAndTriggerEngine': (16, 'F'),
+                 'Rate_GAMMAFilterAndTriggerEngine_err': (16, 'F'),
+                 'Mean_PtLat': (1, 'F'),
+                 'Mean_PtLat_err': (1, 'F'),
+                 'Mean_PtLon': (1, 'F'),
+                 'Mean_PtLon_err': (1, 'F'),
                  'Mean_PtMcIlwainL': (1, 'F'),
+                 'Mean_PtMcIlwainL_err': (1, 'F'),
+                 'Mean_PtMcIlwainB': (1, 'F'),
+                 'Mean_PtMcIlwainB_err': (1, 'F'),
                  'Mean_PtSCzenith': (1, 'F'),
+                 'Mean_PtSCzenith_err': (1, 'F'),
                  'TimeStampFirstEvt': (1, 'D'),
                  }
 
 
 class pMeritTrendMerger:
 
-    def __init__(self, fileListPath, outputFilePath, minStartTime,
-                 maxStartTime = None):
+    def __init__(self, fileListPath, outputFilePath, maxStartDate,
+                 daysSpanned = 56):
         if not os.path.exists(fileListPath):
             print 'Creating the file list...'
+            maxStartTime = utc2met(convert2sec(maxStartDate))
+            minStartTime = maxStartTime - daysSpanned*24*3600
+            minRunDuration = 1000
+            runIntent = 'nomSciOps_diagEna'
             query = pDataCatalogQuery('MERITTREND', minStartTime, maxStartTime,
-                                      intent = 'nomSciOps_diagEna')
+                                      minRunDuration, runIntent)
             query.dumpList(fileListPath)
+            logFilePath = outputFilePath.replace('.root', '.log')
+            logFile = file(logFilePath, 'w')
+            logFile.writelines('File created by pMeritTrendMerger.py on %s.' %\
+                       time.asctime())
+            logFile.writelines('\n\n')
+            logFile.writelines('Selections for histogram merging:\n')
+            logFile.writelines('- Start run time between %s and %s (UTC).\n' %\
+                               (minStartDate, maxStartDate))
+            logFile.writelines('- Minimum run duration: %s s.\n' %\
+                               minRunDuration)
+            logFile.writelines('- Run intent: "%s".\n' % runIntent)
+            logFile.writelines('\n')
+            logFile.writelines('See the file lists for details. Bye.')
+            logFile.close()
         else:
             print 'File list %s found.' % fileListPath
             print 'Delete the file if you want to recreate it.'
@@ -55,7 +89,7 @@ class pMeritTrendMerger:
 
     def run(self, local = False):
         self.OutputFile = ROOT.TFile(self.OutputFilePath, 'RECREATE')
-        self.OutputTree = ROOT.TTree('Output', 'Output')
+        self.OutputTree = ROOT.TTree('Time', 'Time')
         self.createArrays()
         for filePath in self.FileList:
             print 'Looping over %s...' % filePath
@@ -79,8 +113,6 @@ class pMeritTrendMerger:
 
         
 if __name__ == '__main__':
-    MIN_START_TIME = utc2met(convert2sec('Nov/19/2009 00:00:00'))
-    MAX_START_TIME = None
-    merger = pMeritTrendMerger('merittrend.txt', 'merittrend.root',
-                               MIN_START_TIME, MAX_START_TIME)
+    merger = pMeritTrendMerger('merit_norm_filelist.txt', 'merit_norm.root',
+                               'Jan/15/2010 00:00:00', 56)
     merger.run()
