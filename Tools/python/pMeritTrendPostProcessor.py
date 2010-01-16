@@ -16,7 +16,19 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
         self.GraphDict = {}
         self.FitParamDict = {}
         self.FitErrorDict = {}
-        self.process()
+        self.RateHistDict = {}
+        self.__retrieveRateHists()
+
+    def __retrieveRateHists(self):
+        for varName in VARIABLE_LIST:
+            varLength = VARIABLE_DICT[varName][0]
+            if varLength == 1:
+                hName = self.getHistName(varName)
+                self.RateHistDict[hName] = self.RootFile.Get(hName)
+            else:
+                for i in range(varLength):
+                    hName = self.getHistName(varName, i)
+                    self.RateHistDict[hName] = self.RootFile.Get(hName)
 
     def resetFitFunction(self):
         for i in range(NUM_FIT_PARS):
@@ -58,6 +70,7 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
             raw_input('Press enter to continue.')
 
     def process(self, interactive = True):
+        print 'Post-processing file...'
         self.GraphCanvas = ROOT.TCanvas('Graph canvas')
         self.GraphCanvas.SetGridx(True)
         self.GraphCanvas.SetGridy(True)
@@ -69,8 +82,12 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
             else:
                 for i in range(varLength):
                     self.drawGraph(varName, i, interactive)
+        print 'Done.'
 
 
 
 if __name__ == '__main__':
     p = pMeritTrendPostProcessor('normrates/merit_norm_proc.root')
+    p.process(False)
+    p.writeConfigFile('normrates/merit_norm_postproc.txt')
+        

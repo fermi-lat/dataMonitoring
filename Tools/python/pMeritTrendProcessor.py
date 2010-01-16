@@ -24,6 +24,20 @@ for varName in VARIABLE_LIST:
     VARIABLE_ERR_LIST.append('%s_err' % varName)
 
 
+CONFIG_FILE_PREAMBLE =\
+"""# File containing the Normalization factors for several rates
+# -------------------------------------------------------------
+#
+
+"""
+
+VARIABLE_PREAMBLE =\
+"""RateName   :  %s
+Computation of Normalization factors   :  %s
+RefRateVal :  %.3f+/-%.3f
+Start Table:  Mean_PtMcIlwainL_LowEdge	Mean_PtMcIlwainL_UpperEdge	NormFactor	NormFactor_err
+"""
+
 
 class pMeritTrendProcessor:
 
@@ -50,6 +64,9 @@ class pMeritTrendProcessor:
             return 'h%s' % varName
         else:
             return 'h%s_%d' % (varName, index)
+
+    def getHist(self, varName, index = None):
+        return self.RateHistDict[self.getHistName(varName, index)]
         
     def createRateHists(self):
         for varName in VARIABLE_LIST:
@@ -113,25 +130,80 @@ class pMeritTrendProcessor:
                     self.OutputArrayDict[name][i] =\
                         self.InputArrayDict[name][i]/norm
 
-    def write(self, outputFilePath):
-        self.OutputFile = ROOT.TFile(outputFilePath, 'RECREATE')
+    def writeRootFile(self, filePath):
+        outputFile = ROOT.TFile(filePath, 'RECREATE')
         self.OutputTree = ROOT.TTree('Time', 'Time')
         self.createArrays()
-        print 'Writing output file %s...' % outputFilePath
+        print 'Writing output root file %s...' % filePath
+        print 'Writing processed tree...'
         numEntries = self.RootTree.GetEntries()
         for i in xrange(numEntries):
             self.RootTree.GetEntry(i)
             self.copyArrays()
             self.OutputTree.Fill()
-        self.OutputFile.cd()
+        outputFile.cd()
         self.OutputTree.Write()
-        self.OutputFile.Close()
+        print 'Writing histograms...'
+        for h in self.RateHistDict.values():
+            h.Write()
+        outputFile.Close()
+        print 'Done.'
+
+    def getHistAsText(self, varName, index = None):
+        h = self.getHist(varName, index)
+        numBins = h.GetNbinsX()
+        sy  = 0.0
+        syy = 0.0
+        n   = 0
+        for i in range(1, numBins + 1):
+            binContent = h.GetBinContent(i)
+            if binContent > 0:
+                sy  += binContent
+                syy += binContent*binContent
+                n   += 1
+        if n > 0:
+            yMean = sy/n
+            yMeanRms = math.sqrt((syy/n - yMean*yMean)/n)
+            status = 'Successful'
+        else:
+            yMean = -1
+            yMeanRms = -1
+            status = 'NOT-Successful'
+        text = VARIABLE_PREAMBLE % (varName, status, yMean, yMeanRms)
+        for i in range(1, numBins + 1):
+            loEdge = h.GetBinLowEdge(i)
+            hiEdge = loEdge + h.GetBinWidth(i)
+            binContent = h.GetBinContent(i)
+            binError = h.GetBinError(i)
+            if yMean > 0:
+                binContent /= yMean
+                binError   /= yMean
+            else:
+                binContent = 0
+                binError   = 0
+            text += '%.3f\t\t%.3f\t\t%.6f\t\t%.6f\n' %\
+                (loEdge, hiEdge, binContent, binError)
+        text += 'End Table\n\n'
+        return text
+        
+    def writeConfigFile(self, filePath):
+        print 'Writing output config file %s...' % filePath
+        outputFile = file(filePath, 'w')
+        outputFile.writelines(CONFIG_FILE_PREAMBLE)
+        for varName in VARIABLE_LIST:
+            varLength = VARIABLE_DICT[varName][0]
+            if varLength == 1:
+                outputFile.writelines(self.getHistAsText(varName))
+            else:
+                for i in range(varLength):
+                    outputFile.writelines(self.getHistAsText(varName, i))
+        outputFile.close()
         print 'Done.'
         
 
 
 if __name__ == '__main__':
-    p = pMeritTrendProcessor('merit_norm.root')
+    p = pMeritTrendProcessor('normrates/merit_norm.root')
     p.drawRateHists()
-    p.write('merit_norm_proc.root')
-    
+    p.writeRootFile('normrates/merit_norm_proc.root')
+    p.writeConfigFile('normrates/merit_norm_proc.txt')
