@@ -52,8 +52,8 @@ class pMeritTrendMerger:
                        time.asctime())
             logFile.writelines('\n\n')
             logFile.writelines('Selections for histogram merging:\n')
-            logFile.writelines('- Start run time between %s and %s (UTC).\n' %\
-                               (minStartDate, maxStartDate))
+            logFile.writelines('- Start run time between %s (UTC) and -%d d.\n' %\
+                               (maxStartDate, daysSpanned))
             logFile.writelines('- Minimum run duration: %s s.\n' %\
                                minRunDuration)
             logFile.writelines('- Run intent: "%s".\n' % runIntent)
