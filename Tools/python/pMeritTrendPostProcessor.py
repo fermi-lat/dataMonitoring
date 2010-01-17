@@ -42,6 +42,16 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
         else:
             return 'g%s_%d' % (varName, index)
 
+    def getEarthLimbCorrection(self, varName, index = None):
+        gName = self.getGraphName(varName, index)
+        params = self.FitParamDict[gName]
+        errors = self.FitErrorDict[gName]
+        numPars = len(params)
+        text = '\nEarth limb correction fit parameters   :  %d' % numPars
+        for i in range(numPars):
+            text += '\np%d :  %.4e+/-%.4e' % (i, params[i], errors[i])
+        return text
+
     def drawGraph(self, varName, index = None, interactive = True):
         if index is None:
             self.RootTree.Draw('%s:Mean_PtSCzenith' % varName,
@@ -61,7 +71,8 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
         errors = [FIT_FUNCTION.GetParError(i) for i in range(NUM_FIT_PARS)]
         self.FitParamDict[gName] = params
         self.FitErrorDict[gName] = errors
-        print '*** Variable %s' % varName
+        print '*** Variable %s %s' %\
+            (varName, ('(index = %s)' % index)*(index is not None))
         for i in range(NUM_FIT_PARS):
             print 'p_%d = %.3e +- %.3e' % (i, params[i], errors[i])
         print 'Value @ 50 degrees: %.3f\n' % FIT_FUNCTION.Eval(50)
@@ -88,6 +99,6 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
 
 if __name__ == '__main__':
     p = pMeritTrendPostProcessor('normrates/merit_norm_proc.root')
-    p.process(False)
+    p.process(interactive = False)
     p.writeConfigFile('normrates/merit_norm_postproc.txt')
         

@@ -9,6 +9,7 @@ ROCK_ANGLE_CUT = 'abs(Mean_PtSCzenith - 50) < 0.2'
 MIN_L = 0.9
 MAX_L = 1.9
 NUM_BINS_L = 200
+MIN_VALID_BINS_L = 150
 
 VARIABLE_LIST = ['Rate_EvtsBeforeCuts',
                  'Rate_EvtsBeforeCutsWithGAMMAFilter',
@@ -34,7 +35,7 @@ CONFIG_FILE_PREAMBLE =\
 VARIABLE_PREAMBLE =\
 """RateName   :  %s
 Computation of Normalization factors   :  %s
-RefRateVal :  %.3f+/-%.3f
+RefRateVal :  %.3f+/-%.3f%s
 Start Table:  Mean_PtMcIlwainL_LowEdge	Mean_PtMcIlwainL_UpperEdge	NormFactor	NormFactor_err
 """
 
@@ -149,6 +150,13 @@ class pMeritTrendProcessor:
         outputFile.Close()
         print 'Done.'
 
+    def getEarthLimbCorrection(self, varName, index = None):
+        return ''
+
+    def formatNumber(self, number, numDecPlaces):
+        formatString = '%%.%df' % numDecPlaces
+        return (formatString % number).rstrip('0').rstrip('.')
+
     def getHistAsText(self, varName, index = None):
         h = self.getHist(varName, index)
         numBins = h.GetNbinsX()
@@ -161,7 +169,7 @@ class pMeritTrendProcessor:
                 sy  += binContent
                 syy += binContent*binContent
                 n   += 1
-        if n > 0:
+        if n > MIN_VALID_BINS_L:
             yMean = sy/n
             yMeanRms = math.sqrt((syy/n - yMean*yMean)/n)
             status = 'Successful'
@@ -169,7 +177,10 @@ class pMeritTrendProcessor:
             yMean = -1
             yMeanRms = -1
             status = 'NOT-Successful'
-        text = VARIABLE_PREAMBLE % (varName, status, yMean, yMeanRms)
+        print '- %s %s: valid bins = %d, %s.' %\
+            (varName, ('(index = %s)' % index)*(index is not None), n, status)
+        text = VARIABLE_PREAMBLE % (varName, status, yMean, yMeanRms,
+                                    self.getEarthLimbCorrection(varName, index))
         for i in range(1, numBins + 1):
             loEdge = h.GetBinLowEdge(i)
             hiEdge = loEdge + h.GetBinWidth(i)
@@ -181,8 +192,11 @@ class pMeritTrendProcessor:
             else:
                 binContent = 0
                 binError   = 0
-            text += '%.3f\t\t%.3f\t\t%.6f\t\t%.6f\n' %\
-                (loEdge, hiEdge, binContent, binError)
+            text += '%s\t\t%s\t\t%s\t\t%s\n' %\
+                (self.formatNumber(loEdge, 3),
+                 self.formatNumber(hiEdge, 3),
+                 self.formatNumber(binContent, 6),
+                 self.formatNumber(binError, 6))
         text += 'End Table\n\n'
         return text
         
