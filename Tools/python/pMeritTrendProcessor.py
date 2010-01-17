@@ -9,7 +9,7 @@ ROCK_ANGLE_CUT = 'abs(Mean_PtSCzenith - 50) < 0.2'
 MIN_L = 0.9
 MAX_L = 1.9
 NUM_BINS_L = 200
-MIN_VALID_BINS_L = 150
+MIN_VALID_BINS_L = 1
 
 VARIABLE_LIST = ['Rate_EvtsBeforeCuts',
                  'Rate_EvtsBeforeCutsWithGAMMAFilter',
@@ -35,7 +35,7 @@ CONFIG_FILE_PREAMBLE =\
 VARIABLE_PREAMBLE =\
 """RateName   :  %s
 Computation of Normalization factors   :  %s
-RefRateVal :  %.3f+/-%.3f%s
+RefRateVal :  %s+/-%s%s
 Start Table:  Mean_PtMcIlwainL_LowEdge	Mean_PtMcIlwainL_UpperEdge	NormFactor	NormFactor_err
 """
 
@@ -169,18 +169,24 @@ class pMeritTrendProcessor:
                 sy  += binContent
                 syy += binContent*binContent
                 n   += 1
-        if n > MIN_VALID_BINS_L:
+        if n >= MIN_VALID_BINS_L:
             yMean = sy/n
             yMeanRms = math.sqrt((syy/n - yMean*yMean)/n)
             status = 'Successful'
+            yMeanText = '%.4e' % yMean
+            yMeanRmsText = '%.4e' % yMeanRms
         else:
             yMean = -1
             yMeanRms = -1
             status = 'NOT-Successful'
+            yMeanText = '-1'
+            yMeanRmsText = '-1'
         print '- %s %s: valid bins = %d, %s.' %\
             (varName, ('(index = %s)' % index)*(index is not None), n, status)
-        text = VARIABLE_PREAMBLE % (varName, status, yMean, yMeanRms,
-                                    self.getEarthLimbCorrection(varName, index))
+        compVarName = '%s%s' % (varName, ('[%s]' % index)*(index is not None))
+        text = VARIABLE_PREAMBLE %\
+               (compVarName, status, yMeanText, yMeanRmsText,
+                self.getEarthLimbCorrection(varName, index))
         for i in range(1, numBins + 1):
             loEdge = h.GetBinLowEdge(i)
             hiEdge = loEdge + h.GetBinWidth(i)
@@ -220,4 +226,4 @@ if __name__ == '__main__':
     p = pMeritTrendProcessor('normrates/merit_norm.root')
     p.drawRateHists()
     p.writeRootFile('normrates/merit_norm_proc.root')
-    p.writeConfigFile('normrates/merit_norm_proc.txt')
+    p.writeConfigFile('normrates/FactorsToNormRates_noEarthLimb.txt')

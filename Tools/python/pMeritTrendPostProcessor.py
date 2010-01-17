@@ -67,6 +67,15 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
         numFitPars = f.GetNpar()
         self.FitFuncDict[fName] = f
         g.Fit(fName, 'Q')
+        # If the value at 50 degree rocking is too far from 1, disengage the
+        # correction, i.e. set all parameters to zero except for the constant
+        # term (which is set to one).
+        if abs(f.Eval(50) - 1.0) > 0.1:
+            print 'Disengaging correction for the Earth limb in the FOV.'
+            for i in range(numFitPars):
+                f.SetParameter(i, 0.0)
+                f.SetParError(i, 0.0)
+            f.SetParameter(0, 1.0)
         params = [f.GetParameter(i) for i in range(numFitPars)]
         errors = [f.GetParError(i) for i in range(numFitPars)]
         self.FitParamDict[gName] = params
@@ -121,5 +130,5 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
 if __name__ == '__main__':
     p = pMeritTrendPostProcessor('normrates/merit_norm_proc.root')
     p.process(interactive = False)
-    p.writeConfigFile('normrates/merit_norm_postproc.txt')
     p.writeRootFile('normrates/merit_norm_postproc.root')
+    p.writeConfigFile('normrates/FactorsToNormRates_EarthLimb.txt')
