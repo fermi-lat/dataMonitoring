@@ -3,9 +3,7 @@ from pMeritTrendProcessor import *
 
 
 NOT_ROCK_ANGLE_CUT = '!(%s)' % ROCK_ANGLE_CUT
-FIT_FUNCTION = ROOT.TF1('fitFunc', 'pol3', 0, 100)
-NUM_FIT_PARS = FIT_FUNCTION.GetNpar()
-FIT_FUNCTION.SetLineColor(ROOT.kRed)
+FIT_FORMULA  = 'pol3'
 
 
 class pMeritTrendPostProcessor(pMeritTrendProcessor):
@@ -14,6 +12,7 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
         self.RootFile = ROOT.TFile(filePath)
         self.RootTree = self.RootFile.Get(treeName)
         self.GraphDict = {}
+        self.FitFuncDict = {}
         self.FitParamDict = {}
         self.FitErrorDict = {}
         self.RateHistDict = {}
@@ -30,17 +29,14 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
                     hName = self.getHistName(varName, i)
                     self.RateHistDict[hName] = self.RootFile.Get(hName)
 
-    def resetFitFunction(self):
-        for i in range(NUM_FIT_PARS):
-            FIT_FUNCTION.SetParameter(i, 0.0)
-            FIT_FUNCTION.SetParError(i, 1.0)
-        FIT_FUNCTION.SetParameter(1, 1.0)
-
     def getGraphName(self, varName, index = None):
         if index is None:
             return 'g%s' % varName
         else:
             return 'g%s_%d' % (varName, index)
+
+    def getFuncName(self, varName, index = None):
+        return 'fit_%s' % self.getGraphName(varName, index)
 
     def getEarthLimbCorrection(self, varName, index = None):
         gName = self.getGraphName(varName, index)
@@ -65,17 +61,21 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
         g.SetName(gName)
         g.SetMarkerStyle(26)
         g.SetMarkerSize(0.3)
-        self.resetFitFunction()
-        g.Fit('fitFunc', 'Q')
-        params = [FIT_FUNCTION.GetParameter(i) for i in range(NUM_FIT_PARS)]
-        errors = [FIT_FUNCTION.GetParError(i) for i in range(NUM_FIT_PARS)]
+        fName = self.getFuncName(varName, index)
+        f = ROOT.TF1(fName, FIT_FORMULA, 0, 105)
+        f.SetLineColor(ROOT.kRed)
+        numFitPars = f.GetNpar()
+        self.FitFuncDict[fName] = f
+        g.Fit(fName, 'Q')
+        params = [f.GetParameter(i) for i in range(numFitPars)]
+        errors = [f.GetParError(i) for i in range(numFitPars)]
         self.FitParamDict[gName] = params
         self.FitErrorDict[gName] = errors
         print '*** Variable %s %s' %\
             (varName, ('(index = %s)' % index)*(index is not None))
-        for i in range(NUM_FIT_PARS):
+        for i in range(numFitPars):
             print 'p_%d = %.3e +- %.3e' % (i, params[i], errors[i])
-        print 'Value @ 50 degrees: %.3f\n' % FIT_FUNCTION.Eval(50)
+        print 'Value @ 50 degrees: %.3f\n' % f.Eval(50)
         self.GraphCanvas.Update()
         if interactive:
             raw_input('Press enter to continue.')
@@ -95,10 +95,31 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
                     self.drawGraph(varName, i, interactive)
         print 'Done.'
 
+    def copyArrays(self):
+        rockAngle = self.InputArrayDict['Mean_PtSCzenith'][0]
+        for (name, (length, type)) in VARIABLE_DICT.items():
+            if name not in VARIABLE_LIST:
+                self.OutputArrayDict[name][0] = self.InputArrayDict[name][0]
+            elif length == 1:
+                f = self.FitFuncDict[self.getFuncName(name)]
+                norm = f.Eval(rockAngle)
+                if norm == 0:
+                    norm = 1
+                self.OutputArrayDict[name][0] =\
+                    self.InputArrayDict[name][0]/norm
+            else:
+                for i in range(length):
+                    f = self.FitFuncDict[self.getFuncName(name, i)]
+                    norm = f.Eval(rockAngle)
+                    if norm == 0:
+                        norm = 1
+                    self.OutputArrayDict[name][i] =\
+                        self.InputArrayDict[name][i]/norm
+
 
 
 if __name__ == '__main__':
     p = pMeritTrendPostProcessor('normrates/merit_norm_proc.root')
     p.process(interactive = False)
     p.writeConfigFile('normrates/merit_norm_postproc.txt')
-        
+    p.writeRootFile('normrates/merit_norm_postproc.root')
