@@ -4,6 +4,18 @@
  *
  *                  EOH
 
+- Added two new configuration files with the new normalization factors for the
+merit trending:
+FactorsToNormRates_noEarthLimb.txt: format identical to the one we've been
+using so far.
+FactorsToNormRates_EarthLimb.txt: new format with the four parameters for
+the correction for the Earth limb in the FOV.
+- Added Mean_PtSCzenith to all the relevant lines in
+monconfig_merit_trending.xml (to be used in the Earth limb correction for the
+normalized rates). Requires the new svac/Monitoring code.
+* Relevant Jira(s): GDQMQ-310, GDQMQ-317, GDQMQ-330
+
+
  DigiReconCalMeritCfg-01-08-00 15-Jan-2010 lbaldini Three quantities added.
 - Added three new quantities (actually errors on quantities that were
 already in).
