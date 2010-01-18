@@ -43,7 +43,7 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
         params = self.FitParamDict[gName]
         errors = self.FitErrorDict[gName]
         numPars = len(params)
-        text = '\nEarth limb correction fit parameters   :  %d' % numPars
+        text = '\nEarthLimbCorr : %d' % numPars
         for i in range(numPars):
             text += '\np%d :  %.4e+/-%.4e' % (i, params[i], errors[i])
         return text
