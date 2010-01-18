@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-04-06 18-Jan-2010 bregeon Handling earth limb correction in normalized rates
 - Added two new configuration files with the new normalization factors for the
 merit trending:
 FactorsToNormRates_noEarthLimb.txt: format identical to the one we've been
