@@ -4,6 +4,11 @@
  *
  *                  EOH
 
+- Minor changes in the upper limits for the CondArrCNO_CalHiOpensWindow_TH1
+quantity (in digi and FastMon eor) for the low_high_ratio (with the pivot
+at 31). Warning: 10000 -> 15000, error: 15000 -> 20000.
+
+
  AlarmsCfg-05-21-01 15-Jan-2010 lbaldini New alarm added.
 - Added a new alarm on Mean_Tick20MHzDeviation.
 * Relevant Jira(s): GDQMQ-331
