@@ -14,17 +14,4 @@
     <exception identifier="(12, 14)" status_on_violation="clean"/>
   </alarm>
 
-
-  <!--
-  Added by Johan on Oct 2, 2009, because of CAL channel 2414.
-  Last verification by Luca Baldini on January 21, 2010 (see GDQMQ-337).
-  Over the last months we had 0/454 violations.
-  -->
-  <alarm name="CalX_NHit_TH1_Tower_12" algorithm="x_average">
-    <exception status_on_violation="clean"/>
-  </alarm>
-  <alarm name="CalX_NHit_TH1_Tower_12" algorithm="x_rms">
-    <exception status_on_violation="clean"/>
-  </alarm>
-
 </alarm_exceptions>
