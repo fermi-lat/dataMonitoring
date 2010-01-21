@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+- Obsolete exceptions removed.
+* Relevant Jira(s): GDQMQ-337
+
+
  AlarmsCfg-05-21-02 19-Jan-2010 lbaldini A couple of minor limit changes.
 - Minor changes in the upper limits for the CondArrCNO_CalHiOpensWindow_TH1
 quantity (in digi and FastMon eor) for the low_high_ratio (with the pivot
