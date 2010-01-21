@@ -38,7 +38,8 @@ class pExceptionParser:
             runIntent = 'nomSciOps_diagEna'
             query = pDataCatalogQuery(group, self.MinStartTime,
                                       self.MaxStartTime, minRunDuration,
-                                      runIntent)
+                                      runIntent,
+                                      site = 'SLAC /Data/Flight/Level1/LPA')
             query.dumpList(fileListPath)
         else:
             print 'File list %s found.' % fileListPath
