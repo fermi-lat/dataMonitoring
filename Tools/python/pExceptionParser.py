@@ -64,18 +64,16 @@ class pExceptionParser:
                 violationList = eval(line.split('value="')[-1].strip('"/>\n'))
                 newViolationList = []
                 for (i, violation) in enumerate(violationList):
-                    if 'significance' in violation or \
-                           ':' in violation or \
-                           'value' in violation:
-                        v = ''
-                        for (j, piece) in enumerate(violation.split(',')):
-                            if 'significance' not in piece and \
-                                   ':' not in piece and \
-                                   'value' not in piece:
-                                v += '%s%s' % (','*(j!=0), piece)
-                        v = v.lstrip(', ').rstrip(' ,')
-                        if v not in newViolationList:
-                            newViolationList.append(v)
+                    v = ''
+                    for (j, piece) in enumerate(violation.split(',')):
+                        print piece
+                        if 'significance' not in piece and \
+                               ':' not in piece and \
+                               'value' not in piece:
+                            v += '%s%s' % (','*(j!=0), piece)
+                    v = v.lstrip(', ').rstrip(' ,')
+                    if v not in newViolationList:
+                        newViolationList.append(v)
                 for (i, violation) in enumerate(newViolationList):
                     key = '%s -> "%s"' % (baseKey, violation)
                     if key in self.ViolationDict:
