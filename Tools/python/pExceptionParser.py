@@ -66,7 +66,6 @@ class pExceptionParser:
                 for (i, violation) in enumerate(violationList):
                     v = ''
                     for (j, piece) in enumerate(violation.split(',')):
-                        print piece
                         if 'significance' not in piece and \
                                ':' not in piece and \
                                'value' not in piece:
