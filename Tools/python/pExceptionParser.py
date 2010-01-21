@@ -44,7 +44,8 @@ class pExceptionParser:
         else:
             print 'File list %s found.' % fileListPath
             print 'Delete the file if you want to recreate it.'
-        fileList = [line.strip('\n') for line in file(fileListPath, 'r')]
+        fileList = [line.strip('\n').strip()\
+                    for line in file(fileListPath, 'r')]
         fileList.sort()
         print 'Done. %d file(s) found.' % len(fileList)
         return fileList
@@ -61,6 +62,7 @@ class pExceptionParser:
                 if 'too much garbage following' in line:
                     line = line.replace(", '%s" % line.split(", '")[-1], ']')
                 violationList = eval(line.split('value="')[-1].strip('"/>\n'))
+                newViolationList = []
                 for (i, violation) in enumerate(violationList):
                     if 'significance' in violation or \
                            ':' in violation or \
@@ -71,8 +73,10 @@ class pExceptionParser:
                                    ':' not in piece and \
                                    'value' not in piece:
                                 v += '%s%s' % (','*(j!=0), piece)
-                        violationList[i] = v
-                for (i, violation) in enumerate(violationList):
+                        v = v.lstrip(', ').rstrip(' ,')
+                        if v not in newViolationList:
+                            newViolationList.append(v)
+                for (i, violation) in enumerate(newViolationList):
                     key = '%s -> "%s"' % (baseKey, violation)
                     if key in self.ViolationDict:
                         self.ViolationDict[key] += 1
