@@ -58,6 +58,9 @@ class pExceptionParser:
                algorithm = line.split('function="')[-1].strip('">\n')
             elif 'violations' in line:
                 baseKey = '%s_%s_%s' % (group, plotName, algorithm)
+                if algorithm == 'values':
+                    if 'too much garbage following' in line:
+                        line = line.replace(line.split(',')[-1], ']')
                 violationList = eval(line.split('value="')[-1].strip('"/>\n'))
                 for (i, violation) in enumerate(violationList):
                     if 'significance' in violation:
@@ -66,6 +69,15 @@ class pExceptionParser:
                             if 'significance' not in piece:
                                 v += '%s%s' % (','*(j!=0), piece)
                         violationList[i] = v
+                if algorithm == 'values':
+                    newViolationList = []
+                    for (i, violation) in enumerate(violationList):
+                        v = violation
+                        v = v.replace('%s, ' % violation.split(',')[0], '')
+                        v = v.replace(',%s' % violation.split(',')[-1], '')
+                        if v not in newViolationList:
+                            newViolationList.append(v)
+                    violationList = newViolationList
                 for (i, violation) in enumerate(violationList):
                     key = '%s -> "%s"' % (baseKey, violation)
                     if key in self.ViolationDict:
