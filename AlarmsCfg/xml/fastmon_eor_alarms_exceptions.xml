@@ -2,56 +2,29 @@
 
 <alarm_exceptions>
 
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_0" algorithm="spikes_and_holes">
-    <exception identifier="(13, 14)" status_on_violation="clean"/>
-  </alarm>
-
+  <!--
+  Last verification by Luca Baldini on January 21, 2010 (see GDQMQ-337).
+  Over the last months we had 453/454 failures for (20, 2), 425/454
+  for (21, 2) and no violations for (12, 14). These GTFEs most likely
+  corresponds to areas of tower 0 in which we have many disconnected strips.
+  -->
   <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_0" algorithm="empty_bins">
-    <exception identifier="(2, 7)" status_on_violation="clean"/>
-    <exception identifier="(3, 7)" status_on_violation="clean"/>
-    <exception identifier="(12, 14)" status_on_violation="clean"/>
     <exception identifier="(20, 2)" status_on_violation="clean"/>
     <exception identifier="(21, 2)" status_on_violation="clean"/>
+    <exception identifier="(12, 14)" status_on_violation="clean"/>
   </alarm>
 
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_2" algorithm="spikes_and_holes">
-    <exception identifier="(19, 31)" status_on_violation="clean"/>
-  </alarm>
 
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_3" algorithm="spikes_and_holes">
-    <exception identifier="(1, 35)" status_on_violation="clean"/>
-  </alarm>
-
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_4" algorithm="spikes_and_holes">
-    <exception identifier="(0, 13)" status_on_violation="clean"/>
-  </alarm>
-
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_5" algorithm="spikes_and_holes">
-    <exception identifier="(3, 32)" status_on_violation="clean"/>
-  </alarm>
-
-  <!-- Added by Johan on Oct 2, 2009, because of channel 2414 -->
+  <!--
+  Added by Johan on Oct 2, 2009, because of CAL channel 2414.
+  Last verification by Luca Baldini on January 21, 2010 (see GDQMQ-337).
+  Over the last months we had 0/454 failures
+  -->
   <alarm name="CalX_NHit_TH1_Tower_12" algorithm="x_average">
     <exception status_on_violation="clean"/>
   </alarm>
   <alarm name="CalX_NHit_TH1_Tower_12" algorithm="x_rms">
     <exception status_on_violation="clean"/>
   </alarm>
-  <alarm name="CalLogEndRangeHitCounter_Range0_TH2_Tower_12" algorithm="spikes_and_holes">
-    <exception identifier="(6.75, 4)" status_on_violation="clean"/>
-    <exception identifier="(7.25, 4)" status_on_violation="clean"/>
-  </alarm>
-  <alarm name="CalLogEndRangeHitCounter_Range1_TH2_Tower_12" algorithm="spikes_and_holes">
-    <exception identifier="(7.25, 4)" status_on_violation="clean"/>
-  </alarm>
-  <alarm name="CalLogEndRangeHitCounter_Range2_TH2_Tower_12" algorithm="spikes_and_holes">
-    <exception identifier="(6.75, 4)" status_on_violation="clean"/>
-    <exception identifier="(7.25, 4)" status_on_violation="clean"/>
-  </alarm>
-  <alarm name="CalLogEndRangeHitCounter_Range3_TH2_Tower_12" algorithm="spikes_and_holes">
-    <exception identifier="(6.75, 4)" status_on_violation="clean"/>
-    <exception identifier="(7.25, 4)" status_on_violation="clean"/>
-  </alarm>
-
 
 </alarm_exceptions>
