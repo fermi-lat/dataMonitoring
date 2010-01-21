@@ -60,7 +60,8 @@ class pExceptionParser:
                 baseKey = '%s_%s_%s' % (group, plotName, algorithm)
                 if algorithm == 'values':
                     if 'too much garbage following' in line:
-                        line = line.replace(line.split(',')[-1], ']')
+                        extra = ", '%s" % line.split(", '")[-1]
+                        line = line.replace(extra, ']')
                 violationList = eval(line.split('value="')[-1].strip('"/>\n'))
                 for (i, violation) in enumerate(violationList):
                     if 'significance' in violation:
