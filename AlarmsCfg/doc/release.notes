@@ -4,6 +4,11 @@
  *
  *                  EOH
 
+- Limits on OutF_Normalized_AcdHit_AcdTile tuned. This is meant to
+have a systematic log of solar flares causing an increase in the hit rate on 
+the +X side of the ACD.
+
+
  AlarmsCfg-05-22-00 21-Jan-2010 lbaldini Obsolete alarm exceptions removed.
 - Obsolete exceptions removed.
 * Relevant Jira(s): GDQMQ-337
