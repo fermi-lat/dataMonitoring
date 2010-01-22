@@ -159,10 +159,25 @@
     </alarmSet>
     <alarmSet name="Time::OutF_Normalized_AcdHit_AcdTile" enabled="True">
       <alarm function="values" enabled="True">
-	<parameter name="exclude" value="range(89, 96) + range(104, 128)"/>
-	<warning_limits min="0" max="0.3"/>
-	<error_limits   min="0" max="0.4"/>
-      </alarm> 
+	<parameter name="only" value="range(0, 15) + range(16, 31) + range(32, 47) + range(48, 63)"/>
+	<warning_limits min="0.03" max="0.11"/>
+	<error_limits   min="0.02" max="0.20"/>
+      </alarm>
+      <alarm function="values" enabled="True">
+	<parameter name="only" value="[15, 31, 47, 63]"/>
+	<warning_limits min="0.12" max="0.22"/>
+	<error_limits   min="0.06" max="0.40"/>
+      </alarm>
+      <alarm function="values" enabled="True">
+	<parameter name="only" value="range(64, 89)"/>
+	<warning_limits min="0.04" max="0.13"/>
+	<error_limits   min="0.02" max="0.25"/>
+      </alarm>
+      <alarm function="values" enabled="True">
+	<parameter name="only" value="range(96, 104)"/>
+	<warning_limits min="0.015" max="0.07"/>
+	<error_limits   min="0.005" max="0.15"/>
+      </alarm>
     </alarmSet>
     <alarmSet name="Time::Rate_SingleAcdVeto_AcdTile" enabled="True">
       <alarm function="values" enabled="True">
