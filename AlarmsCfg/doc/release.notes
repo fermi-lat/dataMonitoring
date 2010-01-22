@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-22-01 22-Jan-2010 lbaldini Limits on OutF_Normalized_AcdHit_AcdTile tuned
 - Limits on OutF_Normalized_AcdHit_AcdTile tuned. This is meant to
 have a systematic log of solar flares causing an increase in the hit rate on 
 the +X side of the ACD.
