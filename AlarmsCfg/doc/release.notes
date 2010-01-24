@@ -11,6 +11,7 @@
 ---
 > 	<warning_limits min="5.0" max="30.0"/>
 > 	<error_limits   min="2.0" max="50.0"/>
+See comment Science_Operations/General_Comments - Log - 7071 on the ops log.
 
 
  AlarmsCfg-05-22-02 24-Jan-2010 lbaldini New parameter max_rel_err used for the alarm on towerEff in tkrTrending.
