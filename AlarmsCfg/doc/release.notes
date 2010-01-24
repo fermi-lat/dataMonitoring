@@ -4,6 +4,15 @@
  *
  *                  EOH
 
+- Minor limit change for one of the alarms on CondArrROI_CNOOpensWindow_TH1
+(low_high_ratio with pivot 31) for both FastMon and digi end of run:
+< 	<warning_limits min="5.0" max="20.0"/>
+< 	<error_limits   min="2.0" max="40.0"/>
+---
+> 	<warning_limits min="5.0" max="30.0"/>
+> 	<error_limits   min="2.0" max="50.0"/>
+
+
  AlarmsCfg-05-22-02 24-Jan-2010 lbaldini New parameter max_rel_err used for the alarm on towerEff in tkrTrending.
 - New parameter max_rel_err of alg__values.py used for the alarm on 
 towerEff in tkrmon trending (set to 3%).
