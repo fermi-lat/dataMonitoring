@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-22-03 24-Jan-2010 lbaldini Minor change.
 - Minor limit change for one of the alarms on CondArrROI_CNOOpensWindow_TH1
 (low_high_ratio with pivot 31) for both FastMon and digi end of run:
 < 	<warning_limits min="5.0" max="20.0"/>
