@@ -4,6 +4,11 @@
  *
  *                  EOH
 
+- New parameter max_rel_err of alg__values.py used for the alarm on 
+towerEff in tkrmon trending (set to 3%).
+* Relevant Jira(s): GDQMQ-338
+
+
  AlarmsCfg-05-22-01 22-Jan-2010 lbaldini Limits on OutF_Normalized_AcdHit_AcdTile tuned
 - Limits on OutF_Normalized_AcdHit_AcdTile tuned. This is meant to
 have a systematic log of solar flares causing an increase in the hit rate on 
