@@ -535,12 +535,12 @@
       <alarm function="x_average" enabled="True">
 	<warning_limits min="5.5" max="8.0"/>
 	<error_limits min="4.0" max="9.0"/>
-        <condition name="min_entries" value="1000"/>
+        <condition name="min_entries" value="2500"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<warning_limits min="2.0" max="3.0"/>
 	<error_limits min="1.0" max="4.0"/>
-        <condition name="min_entries" value="1000"/>
+        <condition name="min_entries" value="2500"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -548,7 +548,7 @@
 	<parameter name="pivot" value="0"/>
 	<warning_limits min="0.0" max="0.0008"/>
 	<error_limits   min="0.0" max="0.0015"/>
-        <condition name="min_entries" value="1000"/>
+        <condition name="min_entries" value="2500"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
@@ -556,7 +556,7 @@
 	<parameter name="pivot" value="31"/>
 	<warning_limits min="1500" max="10000"/>
 	<error_limits min="500" max="15000"/>
-        <condition name="min_entries" value="1000"/>
+        <condition name="min_entries" value="2500"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
