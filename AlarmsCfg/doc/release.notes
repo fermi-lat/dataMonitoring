@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+- Condition on min_entries for the alarms on CondArrCNO_CalLoOpensWindow_TH1
+changed from 1000 to 2500 (for both FastMon and digi eor).
+
+
  AlarmsCfg-05-22-03 24-Jan-2010 lbaldini Minor change.
 - Minor limit change for one of the alarms on CondArrROI_CNOOpensWindow_TH1
 (low_high_ratio with pivot 31) for both FastMon and digi end of run:
