@@ -4,6 +4,11 @@
  *
  *                  EOH
 
+- Condition in min entries for CondSummaryWord_TH1 (reference histogram,
+digi and FastMon eor) changed from 10000 to 25000.
+- A couple of not-so-obsolete exceptions on FastMon eor back in.
+
+
  AlarmsCfg-05-22-04 25-Jan-2010 lbaldini Minor change.
 - Condition on min_entries for the alarms on CondArrCNO_CalLoOpensWindow_TH1
 changed from 1000 to 3000 (for both FastMon and digi eor).
