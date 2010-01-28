@@ -27,8 +27,8 @@ class pGOESTreeMerger(pMeritTrendMerger):
                                    time.asctime())
             logFile.writelines('\n\n')
             logFile.writelines('Selections for histogram merging:\n')
-            logFile.writelines('- Start run between %s (UTC) and -%d d.\n' %\
-                               (maxStartDate, daysSpanned))
+            logFile.writelines('- Start run between %s and %s UTC.\n' %\
+                               (minStartDate, maxStartDate))
             logFile.writelines('- Minimum run duration: %s s.\n' %\
                                minRunDuration)
             logFile.writelines('- Run intent: "%s".\n' % runIntent)
@@ -41,13 +41,19 @@ class pGOESTreeMerger(pMeritTrendMerger):
         self.FileList = [line.strip('\n') for line in file(fileListPath, 'r')]
         self.FileList.sort()
         self.OutputFilePath = outputFilePath
+        self.VariableDict = VARIABLE_DICT
         print 'Done. %d file(s) found.' % len(self.FileList)
 
 
 
 
 if __name__ == '__main__':
-    merger = pGOESTreeMerger('digi_goes_filelist.txt', 'digi_goes.root',
-                             'Dec/01/2009 00:00:00', 'Jan/27/2010 00:00:00')
+    startDate = 'Jan/17/2010 00:00:00'
+    stopDate  = 'Jan/22/2010 00:00:00'
+    merger = pGOESTreeMerger('goes_digi_filelist.txt', 'goes_digi.root',
+                             startDate, stopDate)
+    merger.run()
+    merger = pMeritTrendMerger('goes_merit_filelist.txt', 'goes_merit.root',
+                               stopDate, 5)
     merger.run()
 
