@@ -6,7 +6,9 @@ from pLongTermTrendMaker import *
 from pMeritTrendMerger   import pMeritTrendMerger
 
 VARIABLE_DICT = {'OutF_Normalized_AcdHit_AcdTile': (128, 'F'),
-                 'TimeStampFirstEvt': (1, 'D')
+                 'TimeStampFirstEvt': (1, 'D'),
+                 'Bin_Start', (1, 'I'),
+                 'Bin_End', (1, 'I')
                  }
 
 BRYSON_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
