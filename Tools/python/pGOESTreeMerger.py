@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+
+from pLongTermTrendMaker import *
+from pMeritTrendMerger   import pMeritTrendMerger
+
+VARIABLE_DICT = {'OutF_Normalized_AcdHit_AcdTile': (128, 'F'),
+                 'TimeStampFirstEvt': (1, 'D')
+                 }
+
+
+class pGOESTreeMerger(pMeritTrendMerger):
+
+    def __init__(self, fileListPath, outputFilePath, minStartDate,
+                 maxStartDate):
+        if not os.path.exists(fileListPath):
+            print 'Creating the file list...'
+            minStartTime = utc2met(convert2sec(minStartDate))
+            maxStartTime = utc2met(convert2sec(maxStartDate))
+            minRunDuration = 1000
+            runIntent = 'nomSciOps_diagEna'
+            query = pDataCatalogQuery('DIGITREND', minStartTime, maxStartTime,
+                                      minRunDuration, runIntent)
+            query.dumpList(fileListPath)
+            logFilePath = outputFilePath.replace('.root', '.log')
+            logFile = file(logFilePath, 'w')
+            logFile.writelines('File created by pGOESTreeMerger.py on %s.' %\
+                                   time.asctime())
+            logFile.writelines('\n\n')
+            logFile.writelines('Selections for histogram merging:\n')
+            logFile.writelines('- Start run between %s (UTC) and -%d d.\n' %\
+                               (maxStartDate, daysSpanned))
+            logFile.writelines('- Minimum run duration: %s s.\n' %\
+                               minRunDuration)
+            logFile.writelines('- Run intent: "%s".\n' % runIntent)
+            logFile.writelines('\n')
+            logFile.writelines('See the file lists for details. Bye.')
+            logFile.close()
+        else:
+            print 'File list %s found.' % fileListPath
+            print 'Delete the file if you want to recreate it.'
+        self.FileList = [line.strip('\n') for line in file(fileListPath, 'r')]
+        self.FileList.sort()
+        self.OutputFilePath = outputFilePath
+        print 'Done. %d file(s) found.' % len(self.FileList)
+
+
+
+
+if __name__ == '__main__':
+    merger = pGOESTreeMerger('digi_goes_filelist.txt', 'digi_goes.root',
+                             'Dec/01/2009 00:00:00', 'Jan/27/2010 00:00:00')
+    merger.run()
+
