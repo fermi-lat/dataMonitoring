@@ -66,13 +66,14 @@ class pMeritTrendMerger:
         self.FileList = [line.strip('\n') for line in file(fileListPath, 'r')]
         self.FileList.sort()
         self.OutputFilePath = outputFilePath
+        self.VariableDict = VARIABLE_DICT
         print 'Done. %d file(s) found.' % len(self.FileList)
 
     def createArrays(self):
         print 'Creating arrays...'
         self.InputArrayDict  = {}
         self.OutputArrayDict = {}
-        for (name, (length, type)) in VARIABLE_DICT.items():
+        for (name, (length, type)) in self.VariableDict.items():
             self.InputArrayDict[name] = array.array(type.lower(), [0.]*length)
             self.OutputArrayDict[name] = array.array(type.lower(), [0.]*length)
             suffix = '/%s' % type
@@ -83,7 +84,7 @@ class pMeritTrendMerger:
         print 'Done.'
 
     def copyArrays(self):
-        for (name, (length, type)) in VARIABLE_DICT.items():
+        for (name, (length, type)) in self.VariableDict.items():
             for i in range(length):
                 self.OutputArrayDict[name][i] = self.InputArrayDict[name][i]
 
@@ -98,7 +99,7 @@ class pMeritTrendMerger:
             else:
                 rootFile = ROOT.TXNetFile(filePath)
             rootTree = rootFile.Get('Time')
-            for name in VARIABLE_DICT.keys():
+            for name in self.VariableDict.keys():
                 rootTree.SetBranchAddress(name, self.InputArrayDict[name])
             numEntries = rootTree.GetEntries()
             for i in xrange(numEntries):
