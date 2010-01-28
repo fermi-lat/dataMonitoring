@@ -1,11 +1,22 @@
 #!/usr/bin/env python
 
+import os
+
 from pLongTermTrendMaker import *
 from pMeritTrendMerger   import pMeritTrendMerger
 
 VARIABLE_DICT = {'OutF_Normalized_AcdHit_AcdTile': (128, 'F'),
                  'TimeStampFirstEvt': (1, 'D')
                  }
+
+BRYSON_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
+
+def getTelemetry(filePath, startDate, stopDate):
+    command = 'MnemRet.py --csv %s -b "%s" -e "%s" SACFLAGISINSUN'%\
+        (filePath, startDate, stopDate)
+    logging.info('About to execute command "%s".' % command)
+    os.system(command)
+
 
 
 class pGOESTreeMerger(pMeritTrendMerger):
@@ -56,4 +67,4 @@ if __name__ == '__main__':
     merger = pMeritTrendMerger('goes_merit_filelist.txt', 'goes_merit.root',
                                stopDate, 5)
     merger.run()
-
+    getTelemetry('2010-01-17 00:00:00', '2010-01-22 00:00:00')
