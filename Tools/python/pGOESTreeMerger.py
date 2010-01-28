@@ -12,6 +12,7 @@ VARIABLE_DICT = {'OutF_Normalized_AcdHit_AcdTile': (128, 'F'),
 BRYSON_TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 def getTelemetry(filePath, startDate, stopDate):
+    # Remember that you need "source /u/gl/glastops/flightops.csh"
     command = 'MnemRet.py --csv %s -b "%s" -e "%s" SACFLAGISINSUN'%\
         (filePath, startDate, stopDate)
     logging.info('About to execute command "%s".' % command)
@@ -67,4 +68,4 @@ if __name__ == '__main__':
     merger = pMeritTrendMerger('goes_merit_filelist.txt', 'goes_merit.root',
                                stopDate, 5)
     merger.run()
-    getTelemetry('2010-01-17 00:00:00', '2010-01-22 00:00:00')
+    getTelemetry('goes_sunflag.csv', '2010-01-17 00:00:00', '2010-01-22 00:00:00')
