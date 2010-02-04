@@ -27,7 +27,7 @@
     </alarmSet>
     <alarmSet name="Time::Rate_NTkrHits_TowerPlane" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.0" max="2.5"/>
+	<warning_limits min="0.0" max="2.75"/>
 	<error_limits   min="0.0" max="5.0"/>
       </alarm> 
     </alarmSet>
