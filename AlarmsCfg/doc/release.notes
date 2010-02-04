@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-22-06 04-Feb-2010 lbaldini Minor changes.
 - Condition on the minimum number of entries changed for
 CondArrCNO_CalLoOpensWindow_TH1 (reference_histogram algorithm, both
 digi and fastmon end-of-run) changed from 1000 to 2500.
