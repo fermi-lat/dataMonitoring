@@ -4,6 +4,11 @@
  *
  *                  EOH
 
+- Retuned the alarms on the normalized rates after the new normalization factors
+have been put in production.
+* Relevant Jira(s): GDQMQ-317.
+
+
  AlarmsCfg-05-22-06 04-Feb-2010 lbaldini Minor changes.
 - Condition on the minimum number of entries changed for
 CondArrCNO_CalLoOpensWindow_TH1 (reference_histogram algorithm, both
