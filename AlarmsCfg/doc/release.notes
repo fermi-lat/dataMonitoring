@@ -4,6 +4,11 @@
  *
  *                  EOH
 
+- Condition on the minimum number of entries changed for
+CondArrCNO_CalLoOpensWindow_TH1 (reference_histogram algorithm, both
+digi and fastmon end-of-run) changed from 1000 to 2500.
+
+
  AlarmsCfg-05-22-05 27-Jan-2010 lbaldini Minor changes.
 - Condition in min entries for CondSummaryWord_TH1 (reference histogram,
 digi and FastMon eor) changed from 10000 to 25000.
