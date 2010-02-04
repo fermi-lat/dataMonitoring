@@ -7,6 +7,10 @@
 - Condition on the minimum number of entries changed for
 CondArrCNO_CalLoOpensWindow_TH1 (reference_histogram algorithm, both
 digi and fastmon end-of-run) changed from 1000 to 2500.
+- Upper warning limit for the alarm on the digi trending quantity
+Rate_NTkrHits_TowerPlane changed from 2.5 to 2.75. See the thread
+https://www-glast.stanford.edu/protected/mail/datamon/3560.html 
+for more details.
 
 
  AlarmsCfg-05-22-05 27-Jan-2010 lbaldini Minor changes.
