@@ -596,7 +596,7 @@
 	<parameter name="ref_file_name" value="'DIGIHIST_reference.root'"/>
 	<warning_limits min="" max="50"/>
 	<error_limits min="" max="100"/>
-        <condition name="min_entries" value="1000"/>
+        <condition name="min_entries" value="2500"/>
       </alarm>
     </alarmSet>
 
