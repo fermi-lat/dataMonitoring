@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-23-00 04-Feb-2010 lbaldini Alarms on the normalized rates retuned.
 - Retuned the alarms on the normalized rates after the new normalization factors
 have been put in production.
 * Relevant Jira(s): GDQMQ-317.
