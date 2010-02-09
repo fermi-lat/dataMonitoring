@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-23-02 09-Feb-2010 lbaldini Minor limit change.
 - Lower warnign limit for the merit trend OutF_NormRateEvtsBeforeFilters
 quantity changed from 0.85 to 0.80 (it was a bit too tight).
 
