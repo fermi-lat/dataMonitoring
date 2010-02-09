@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+- Lower warnign limit for the merit trend OutF_NormRateEvtsBeforeFilters
+quantity changed from 0.85 to 0.80 (it was a bit too tight).
+
+
  AlarmsCfg-05-23-01 04-Feb-2010 lbaldini Minor change.
 - Alarm on the digi eor GPSInLock_TH1 protected against low statistics
 (condition on min entrioes changed from 500 to 1250).
