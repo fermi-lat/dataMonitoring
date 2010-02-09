@@ -165,7 +165,7 @@
       </alarm>
       <alarm function="values" enabled="True">
 	<parameter name="only" value="[15, 31, 47, 63]"/>
-	<warning_limits min="0.12" max="0.22"/>
+	<warning_limits min="0.11" max="0.22"/>
 	<error_limits   min="0.06" max="0.40"/>
       </alarm>
       <alarm function="values" enabled="True">

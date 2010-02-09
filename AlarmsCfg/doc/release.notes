@@ -4,8 +4,12 @@
  *
  *                  EOH
 
+- Lower warning limit for the digi trend OutF_Normalized_AcdHit_AcdTile
+quantity (tiles [15, 31, 47, 63]) changed from 0.12 to 0.11.
+
+
  AlarmsCfg-05-23-02 09-Feb-2010 lbaldini Minor limit change.
-- Lower warnign limit for the merit trend OutF_NormRateEvtsBeforeFilters
+- Lower warning limit for the merit trend OutF_NormRateEvtsBeforeFilters
 quantity changed from 0.85 to 0.80 (it was a bit too tight).
 
 
