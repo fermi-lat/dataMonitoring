@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-23-03 09-Feb-2010 lbaldini Minor limit change.
 - Lower warning limit for the digi trend OutF_Normalized_AcdHit_AcdTile
 quantity (tiles [15, 31, 47, 63]) changed from 0.12 to 0.11.
 
