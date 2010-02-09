@@ -20,6 +20,7 @@ C 2005.00 04/25/05 CALL FELDI and DO 1111 I=1,7 (Alexey Petrov)
 C 2005.01 11/10/05 added igrf_dip and geodip (MLAT) 
 C 2005.02 11/10/05 updated to IGRF-10 version
 C 2006.00 12/21/06 GH2(120) -> GH2(144)
+C 2010.00 02/08/10 Implemented IGRF-11 constants (Markus Ackermann)
 C
 C*********************************************************************
 
@@ -202,7 +203,7 @@ C          DIMO       DIPOL MOMENT IN GAUSS (NORMALIZED TO EARTH RADIUS)
 C
 C          COMMON 
 C               X(3)    NOT USED
-C               H(144)  FIELD MODEL COEFFICIENTS ADJUSTED FOR SHELLG
+C               H(225)  FIELD MODEL COEFFICIENTS ADJUSTED FOR SHELLG
 C-----------------------------------------------------------------------
 C  OUTPUT: FL           L-VALUE
 C          ICODE        =1 NORMAL COMPLETION
@@ -220,7 +221,7 @@ Cf2py intent(out) icode
 Cf2py intent(out) b0
 
       DIMENSION         V(3),U(3,3),P(8,100),SP(3)
-      COMMON            X(3),H(144)
+      COMMON            X(3),H(225)
       COMMON/FIDB0/     SP
       COMMON/GENER/     UMR,ERA,AQUAD,BQUAD
 C
@@ -418,7 +419,7 @@ C* SUBROUTINE USED FOR FIELD LINE TRACING IN SHELLG                *
 C* CALLS ENTRY POINT FELDI IN GEOMAGNETIC FIELD SUBROUTINE FELDG   *
 C*******************************************************************
       DIMENSION         P(7),U(3,3)
-      COMMON            XI(3),H(144)
+      COMMON            XI(3),H(225)
 C*****XM,YM,ZM  ARE GEOMAGNETIC CARTESIAN INVERSE CO-ORDINATES          
       ZM=P(3)                                                           
       FLI=P(1)*P(1)+P(2)*P(2)+1E-15
@@ -510,8 +511,8 @@ Cf2py intent(out) bdown
 
       DIMENSION         V(3),B(3)   
       CHARACTER*12      NAME
-      COMMON            XI(3),H(144)
-      COMMON/MODEL/     NAME,NMAX,TIME,G(144)  
+      COMMON            XI(3),H(225)
+      COMMON/MODEL/     NAME,NMAX,TIME,G(225)  
       COMMON/GENER/     UMR,ERA,AQUAD,BQUAD
 C
 C-- IS RECORDS ENTRY POINT
@@ -609,7 +610,7 @@ Cf2py intent(out) dimo
      
 C ### FILMOD, DTEMOD arrays +1
         CHARACTER*12    FIL1
-        DIMENSION       GH1(144),GH2(144),GHA(144),DTEMOD(5)
+        DIMENSION       GH1(225),GH2(225),GHA(225),DTEMOD(5)
         DOUBLE PRECISION X,F0,F 
         COMMON/MODEL/   FIL1,NMAX,TIME,GH1
         COMMON/GENER/   UMR,ERAD,AQUAD,BQUAD
@@ -620,7 +621,7 @@ C ### FILMOD, DTEMOD arrays +1
 C
 C ### numye = numye + 1 ; is number of years represented by IGRF
 C
-        NUMYE=4
+        NUMYE=5
 C
 C  IS=0 FOR SCHMIDT NORMALIZATION   IS=1 GAUSS NORMALIZATION
 C  IU  IS INPUT UNIT NUMBER FOR IGRF COEFFICIENT SETS
@@ -648,11 +649,15 @@ C-- GET IGRF COEFFICIENTS FOR THE BOUNDARY YEARS
         ENDIF
         IF (L.EQ.3) THEN
 	  CALL GETSHC (dgrf00, NMAX1, ERAD, GH1, IER)  
-          CALL GETSHC (igrf05, NMAX2, ERAD, GH2, IER)  
+          CALL GETSHC (dgrf05, NMAX2, ERAD, GH2, IER)  
         ENDIF
         IF (L.EQ.4) THEN
-	  CALL GETSHC (igrf05, NMAX1, ERAD, GH1, IER)  
-          CALL GETSHC (igrf05s, NMAX2, ERAD, GH2, IER)  
+	  CALL GETSHC (dgrf05, NMAX1, ERAD, GH1, IER)  
+          CALL GETSHC (igrf10, NMAX2, ERAD, GH2, IER)  
+        ENDIF
+        IF (L.EQ.5) THEN
+	  CALL GETSHC (igrf10, NMAX1, ERAD, GH1, IER)  
+          CALL GETSHC (igrf10s, NMAX2, ERAD, GH2, IER)  
         ENDIF
      
         IF (IER .NE. 0) GOTO 9998                           

@@ -5,7 +5,7 @@ import pylab as p
 mfield=IGRF()
 
 altitude=565.0
-year=2008.5
+year=2000.0
 
 latitudes=arange(-30,30.1,1.0)
 longitudes=arange(-180,180,1.0)
