@@ -4,6 +4,25 @@
  *
  *                  EOH
 
+- Some alarms protected against low statistics:
+CondArrCalLo_CalHiOpensWindow_TH1 (reference_histogram): min_entries = 5000
+(both digi and fastmon eor).
+CondArrCalLowTrigger_TH1 (reference_histogram): min_entries = 10000
+(both digi and fastmon eor).
+AcdSingleVetoMap_TH1 (x_average and x_rms): min_entries = 10000 (digi eor).
+CrateNumber_TH1 (x_average): min_entries = 10000 (digi eor).
+CondArrROITrigger_TH1 (x_average and x_rms): min_entries = 10000
+(both digi and fastmon eor).
+CondArrTKRTrigger_TH1 (x_average and x_rms): min_entries = 10000
+(both digi and fastmon eor).
+CondArrCalHi_CalLoOpensWindow_TH1 (x_average and x_rms): min_entries = 1000
+(both digi and fastmon eor).
+CondArrTKR_CalHiOpensWindow_TH1 (x_average and x_rms): min_entries = 5000
+(both digi and fastmon eor).
+CondArrROI_CalLoOpensWindow_TH1 (x_average and x_rms): min_entries = 1000
+(both digi and fastmon eor).
+
+
  AlarmsCfg-05-23-04 15-Feb-2010 lbaldini Minor limit change.
 - A couple of minor limit changes for the alarms on the arrival times for both
 the digi and the FastMon eor.
