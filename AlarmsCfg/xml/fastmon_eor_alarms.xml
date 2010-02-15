@@ -99,7 +99,7 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="7000" max="30000"/>
+	<warning_limits min="7000" max="35000"/>
 	<error_limits min="3000" max="60000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
@@ -633,8 +633,8 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="500" max="5000"/>
-	<error_limits   min="250" max="8000"/>
+	<warning_limits min="500" max="5500"/>
+	<error_limits   min="250" max="10000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>

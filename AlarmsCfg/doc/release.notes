@@ -4,6 +4,15 @@
  *
  *                  EOH
 
+- A couple of minor limit changes for the alarms on the arrival times for both
+the digi and the FastMon eor.
+CondArrTKR_CalHiOpensWindow_TH1 (low_high_ratio, pivot = 31):
+warning max: 5000 -> 5500
+error max  : 8000 -> 10000
+CondArrTKRTrigger_TH1 (low_high_ratio, pivot = 31):
+warning max: 30000 -> 35000
+
+
  AlarmsCfg-05-23-03 09-Feb-2010 lbaldini Minor limit change.
 - Lower warning limit for the digi trend OutF_Normalized_AcdHit_AcdTile
 quantity (tiles [15, 31, 47, 63]) changed from 0.12 to 0.11.
