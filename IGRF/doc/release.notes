@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ IGRF-02-01-00 15-Feb-2010 lbaldini Bug fix for the 2k.1 issue.
 - Markus updated and committed the IGRF code. It should now be fine until 2015
 and deliver magnetic fields from a multipole expansion up to l=13 (was l=10).
 The update is documented in some more detail in Jira.
