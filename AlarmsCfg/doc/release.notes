@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-23-05 15-Feb-2010 lbaldini A few alarms protected against low statistics.
 - Some alarms protected against low statistics:
 CondArrCalLo_CalHiOpensWindow_TH1 (reference_histogram): min_entries = 5000
 (both digi and fastmon eor).
