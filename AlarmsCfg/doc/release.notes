@@ -1,0 +1,72 @@
+*** v2r1p0 ***
+- New alarm on the CAL lac threshold, and a couple of obsolete ones removed.
+* Relevant jira(s): GDQMQ-205
+
+
+*** v2r0p5 ***
+- Alarms back on the 2D cal trigger plots (leftmost_edge_slices).
+
+
+*** v2r0p4 ***
+- Digi eor and trend limits and settings reviewed after the change in the
+default configuration.
+- Minor change to the recon eor configuration file.
+
+
+*** v2r0p3 ***
+- Recon eor limits and settings reviewed after the change in the default
+configuration.
+
+
+*** v2r0p2 ***
+- Wrong sign in the digi eor limits changed.
+
+
+*** v2r0p1 ***
+- Updated the exception file for the alarms on the digi trending to take into
+account the broken GTRC in tower 10, plane 0.
+
+
+*** v2r0p0 ***
+- Added config files for the merit eor and trending.
+- Added configuration files for the alarm postprocessing for all the quantity
+ types---makes the debugging easier.
+- First version with reasonable alarm limits.
+
+
+*** v1r1p1 ***
+- Added config files (alarms) for trackermon quantities.
+This addresses Jira GDQMQ-119.
+
+*** v1r1p0 ***
+
+- Added a configuration file for the alarm post-processing tool.
+* Relevant jira(s): GDM-27
+
+
+*** v1r0p4 ***
+
+- Typo fixed in the relese.notes.
+
+
+*** v1r0p3 ***
+
+- Release notes updated with references to the relevant jira. No change in any
+of the functionalities at all.
+
+
+*** v1r0p2 ***
+
+- doc/relese.notes moved to doc/release.notes.
+* Relevant jira(s): GDQMQ-64
+
+
+*** v1r0p1 ***
+
+- release.notes added.
+* Relevant jira(s): GDQMQ-64
+
+
+*** v1r0p0 ***
+
+- Baseline for the software freeze.
