@@ -389,11 +389,13 @@
       <alarm function="x_average" enabled="True">
 	<warning_limits min="3.0" max="5.0"/>
 	<error_limits min="1.0" max="7.0"/>
+        <condition name="min_entries" value="1000"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
         <condition name="min_entries" value="200"/>
 	<warning_limits min="1.0" max="3.0"/>
 	<error_limits min="0.5" max="5.0"/>
+        <condition name="min_entries" value="1000"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
 	<parameter name="min" value="0"/>
