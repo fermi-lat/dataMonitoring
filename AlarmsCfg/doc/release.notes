@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+- Lower warning limit changed from 0.85 to 0.80 for the two merit trend quantities
+OutF_NormRateEvtsBeforeCutsWithFswGAMMAFilter and OutF_NormRateEvtsBeforeFilters.
+
+
  AlarmsCfg-05-23-05 15-Feb-2010 lbaldini A few alarms protected against low statistics.
 - Some alarms protected against low statistics:
 CondArrCalLo_CalHiOpensWindow_TH1 (reference_histogram): min_entries = 5000
