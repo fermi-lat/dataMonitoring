@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-23-06 19-Feb-2010 lbaldini Minor changes.
 - Lower warning limit changed from 0.85 to 0.80 for the two merit trend quantities
 OutF_NormRateEvtsBeforeCutsWithFswGAMMAFilter and OutF_NormRateEvtsBeforeFilters.
 - Condition on the minimum number of entries (1000) added on the x_average and x_rms
