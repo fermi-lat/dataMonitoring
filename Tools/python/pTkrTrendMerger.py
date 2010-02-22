@@ -4,10 +4,19 @@ import os
 import ROOT
 import numpy
 
+import sys
+sys.path.append('../../Report/python')
+from pTimeConverter import *
+
 BASE_PATH = '/afs/slac.stanford.edu/u/gl/glast/datacatalog/prod/datacat'
 BASE_COMMAND = 'find'
 DEFAULT_SITE = 'SLAC_XROOT /Data/Flight/Level1/LPA'
 DEFAULT_SORT = 'nRun'
+
+# These guys have been put in only recently.
+# Error in <TTree::SetBranchAddress>: unknown branch -> Number_LATAverage_stripOcc_err
+# Error in <TTree::SetBranchAddress>: unknown branch -> Number_fracSat_TowerPlane_err
+# Error in <TTree::SetBranchAddress>: unknown branch -> Number_layerOcc_TowerPlane_err
 
 
 VARIABLE_DICT = {'Bin_Index': ('i', ''),
@@ -15,7 +24,7 @@ VARIABLE_DICT = {'Bin_Index': ('i', ''),
                  'nEvents': ('i', ''),
                  'nPassed': ('i', ''),
                  'Bin_End': ('l', ''),
-                 'Number_LATAverage_stripOcc_err': ('F', ''),
+                 #'Number_LATAverage_stripOcc_err': ('F', ''),
                  'Number_LATAverage_stripOcc': ('F', ''),
                  'Bin_Start': ('l', ''),
                  'TimeStampFirstEvt': ('D', ''),
@@ -34,8 +43,8 @@ VARIABLE_DICT = {'Bin_Index': ('i', ''),
                  'Mean_layerEff_TowerPlane_err': ('F', '[16][36]'),
                  'Mean_TOT_Peak_TowerPlane_err': ('F', '[16][36]'),
                  'Mean_layerdXY_TowerPlane_err': ('F', '[16][36]'),
-                 'Number_fracSat_TowerPlane_err': ('F', '[16][36]'),
-                 'Number_layerOcc_TowerPlane_err': ('F', '[16][36]'),
+                 #'Number_fracSat_TowerPlane_err': ('F', '[16][36]'),
+                 #'Number_layerOcc_TowerPlane_err': ('F', '[16][36]'),
                  'Number_TOT_FracLowTOT_TowerPlane': ('F', '[16][36]'),
                  'Number_fracSat_TowerPlane': ('F', '[16][36]'),
                  'Number_layerOcc_TowerPlane': ('F', '[16][36]'),
@@ -110,8 +119,12 @@ class pTkrTrendMerger:
             print 'Creating the file list...'
             if minStartDate is not None:
                 minStartTime = utc2met(convert2sec(minStartDate))
+            else:
+                minStartTime = None
             if maxStartDate is not None:
                 maxStartTime = utc2met(convert2sec(maxStartDate))
+            else:
+                maxStartTime = None
             minRunDuration = 1500
             runIntents = ['nomSciOps', 'nomSciOps_diagEna']
             query = pDataCatalogQuery('TKRTREND', minStartTime, maxStartTime,
@@ -200,5 +213,6 @@ class pTkrTrendMerger:
 if __name__ == '__main__':
     #dumpVarDict('r0288475156_tkrtrend.root')
     merger = pTkrTrendMerger('tkrtrend_filelist.txt', 'tkrtrend.root',
-                             'Jan/15/2010 00:00:00', 'Jan/20/2010 00:00:00')
+                             None, None)
+    #                         'Jan/15/2010 00:00:00', 'Jan/20/2010 00:00:00')
     merger.run(False)
