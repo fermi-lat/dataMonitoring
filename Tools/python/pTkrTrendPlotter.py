@@ -98,11 +98,16 @@ class pTkrTrendPlotter:
                 g.SetPoint(i, x, v[tower])
                 g.SetPointError(i, 0, dv[tower])
         self.EffMeanHist = ROOT.TH1F('h_eff_mean', 'h_eff_mean',
-                                     50, 0.98, 1.01)
+                                     50, 0.97, 1.01)
         self.EffMeanHist.SetXTitle('Average hit efficiency')
         self.EffSlopeHist = ROOT.TH1F('h_eff_slope', 'h_eff_slope',
                                      50, -0.2, 0.2)
         self.EffSlopeHist.SetXTitle('Hit efficiency slope (% in 5 years)')
+        l98h = ROOT.TLine(MIN_TIME, 0.98, MAX_TIME, 0.98)
+        l98h.SetLineWidth(2)
+        l98h.SetLineStyle(7)
+        l98h.SetLineColor(ROOT.kRed)
+        self.store(l98h)
         for tower in range(16):
             c = ROOT.TCanvas('hit_eff_canvas_%d' % tower,
                              'Hit efficiency, tower %d' % tower, 1000, 400)
@@ -144,20 +149,27 @@ class pTkrTrendPlotter:
             line2 = 'Slope = %s%.3f #pm %.3f %% in 5 years' %\
                     ('+'*(effSlope > 0), effSlope, effSlopeErr)
             text = '#splitline{%s}{%s}' % (line1, line2)
-            l = ROOT.TLatex(0.23, 0.22, text)
+            l = ROOT.TLatex(0.24, 0.22, text)
             l.SetNDC()
             l.SetTextSize(0.05)
             l.SetTextAlign(22)
             l.SetTextColor(ROOT.kRed)
             self.store(l)
             l.Draw()
-            c.Update()
             self.EffMeanHist.Fill(effMean)
             self.EffSlopeHist.Fill(effSlope)
+            l98h.Draw()
+            c.Update()
         c = ROOT.TCanvas('eff_mean_canvas', 'Mean hit efficiency')
         c.SetBottomMargin(0.15)
         self.CanvasDict[c.GetName()] = c
         self.EffMeanHist.Draw()
+        l98v = ROOT.TLine(0.98, 0, 0.98, 1.05*self.EffMeanHist.GetMaximum())
+        l98v.SetLineWidth(2)
+        l98v.SetLineStyle(7)
+        l98v.SetLineColor(ROOT.kRed)
+        self.store(l98v)
+        l98v.Draw()
         c = ROOT.TCanvas('eff_slope_canvas', 'Hit efficiency slope')
         c.SetBottomMargin(0.15)
         self.CanvasDict[c.GetName()] = c
