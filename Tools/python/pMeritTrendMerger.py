@@ -30,8 +30,8 @@ VARIABLE_DICT = {'Rate_EvtsBeforeCuts': (1, 'F'),
                  'Mean_PtSCzenith': (1, 'F'),
                  'Mean_PtSCzenith_err': (1, 'F'),
                  'TimeStampFirstEvt': (1, 'D'),
-                 'Bin_Start', (1, 'I'),
-                 'Bin_End', (1, 'I')
+                 'Bin_Start': (1, 'I'),
+                 'Bin_End': (1, 'I')
                  }
 
 
