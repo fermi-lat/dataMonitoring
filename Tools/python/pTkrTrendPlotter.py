@@ -2,41 +2,28 @@ import os
 import sys
 import math
 import numpy
+import time
 
 sys.path.append('../../Common/python')
 sys.path.append('../../Report/python')
 
-from pTimeConverter import utc2met, convert2sec
-import ROOT
+from pTimeConverter import utc2met, met2utc, convert2sec, sec2string
+from pRootStyle     import *
 
-ROOT.gStyle.SetOptStat(111111)
-ROOT.gStyle.SetMarkerStyle(26)
-ROOT.gStyle.SetMarkerSize(0.3)
-ROOT.gStyle.SetPalette(1)
-ROOT.gStyle.SetCanvasColor(10)
-ROOT.gStyle.SetFrameBorderMode(0)
-ROOT.gStyle.SetFrameFillColor(0)
-ROOT.gStyle.SetPadBorderMode(0)
-ROOT.gStyle.SetPadColor(0)
-ROOT.gStyle.SetHistFillStyle(0)
-ROOT.gStyle.SetStatColor(10)
-ROOT.gStyle.SetGridColor(16)
-ROOT.gStyle.SetLegendBorderSize(1)
-ROOT.gStyle.SetTitleYOffset(1.1)
-ROOT.gStyle.SetOptTitle(0)
-ROOT.gStyle.SetOptStat(111111)
-ROOT.gStyle.SetPaintTextFormat("1.2g")
-ROOT.gStyle.SetTitleSize(0.06, 'XY')
-ROOT.gStyle.SetTitleOffset(1.00, 'X')
-ROOT.gStyle.SetTitleOffset(0.60, 'Y')
-
-LABEL_SIZE = 0.04
-TIME_FORMAT = '%m/%d/20%y%F2001-01-01 00:00:00'
+TIME_FORMAT = '%b %d, 20%y%F2001-01-01 00:00:00'
 
 MIN_TIME = 2.4e8
 MAX_TIME = 2.9e8
 
 SECS_PER_YEAR = 60*60*24*365
+
+
+def setupStripChart(g):
+    g.GetXaxis().SetRangeUser(MIN_TIME, MAX_TIME)
+    g.GetXaxis().SetTimeDisplay(True)
+    g.GetXaxis().SetTimeFormat(TIME_FORMAT)
+    g.GetXaxis().SetNdivisions(509)
+    g.GetXaxis().SetTitle('Time (UTC)')
 
 
 class pTkrTrendPlotter:
@@ -52,12 +39,7 @@ class pTkrTrendPlotter:
         print 'Done. %s entries found.' % self.NumEntries
         self.__retrieveTimestamps()
         self.GraphDict  = {}
-        self.CanvasDict = {}
         self.FuncDict   = {}
-        self.Pool       = []
-
-    def store(self, rootObject):
-        self.Pool.append(rootObject) 
 
     def __retrieveTimestamps(self):
         print 'Retrieving timestamps...'
@@ -100,48 +82,51 @@ class pTkrTrendPlotter:
         self.EffMeanHist = ROOT.TH1F('h_eff_mean', 'h_eff_mean',
                                      50, 0.97, 1.01)
         self.EffMeanHist.SetXTitle('Average hit efficiency')
+        self.EffMeanHist.SetYTitle('Entries/bin')
+        self.EffMeanHist.SetLineWidth(LINE_WIDTH)
         self.EffSlopeHist = ROOT.TH1F('h_eff_slope', 'h_eff_slope',
                                      50, -0.2, 0.2)
         self.EffSlopeHist.SetXTitle('Hit efficiency slope (% in 5 years)')
+        self.EffSlopeHist.SetYTitle('Entries/bin')
+        self.EffSlopeHist.SetLineWidth(LINE_WIDTH)
         l98h = ROOT.TLine(MIN_TIME, 0.98, MAX_TIME, 0.98)
         l98h.SetLineWidth(2)
         l98h.SetLineStyle(7)
         l98h.SetLineColor(ROOT.kRed)
-        self.store(l98h)
+        store(l98h)
         for tower in range(16):
-            c = ROOT.TCanvas('hit_eff_canvas_%d' % tower,
-                             'Hit efficiency, tower %d' % tower, 1000, 400)
-            self.CanvasDict[c.GetName()] = c
+            c = getSkinnyCanvas('hit_eff_canvas_%d' % tower,
+                                'Hit efficiency, tower %d' % tower)
             c.SetGridx(True)
             c.SetGridy(True)
-            c.SetLeftMargin(0.08)
-            c.SetRightMargin(0.03)
-            c.SetTopMargin(0.15)
-            c.SetBottomMargin(0.15)
             f = ROOT.TF1('hit_eff_func_%d' % tower, 'pol1', MIN_TIME, MAX_TIME)
-            f.SetLineColor(ROOT.kRed)
+            f.SetLineColor(ROOT.kBlue)
             self.FuncDict[f.GetName()] = f
             g = self.GraphDict['hit_efficiency_%d' % tower]
-            g.GetXaxis().SetRangeUser(MIN_TIME, MAX_TIME)
+            setupStripChart(g)
             g.GetYaxis().SetRangeUser(0.96, 1.005)
-            g.GetXaxis().SetTimeDisplay(True)
-            g.GetXaxis().SetTimeFormat(TIME_FORMAT)
-            g.GetXaxis().SetTitle('Time UTC')
             g.GetYaxis().SetNdivisions(508)
             g.GetYaxis().SetTitle('Average hit efficiency')
             g.Draw('ap')
             g.Fit('hit_eff_func_%d' % tower)
             l = ROOT.TLatex(0.5, 0.9, 'Tower %d' % tower)
             l.SetNDC()
-            l.SetTextSize(0.07)
             l.SetTextAlign(22)
-            self.store(l)
+            store(l)
             l.Draw()
             f.Draw('same')
             effMean = f.GetParameter(0)
             effMeanErr = f.GetParError(0)
             effSlope = f.GetParameter(1)
             effSlopeErr = f.GetParError(1)
+            if effSlope > 0:
+                intercept = (1 - effMean)/effSlope
+                intercept = sec2string(met2utc(intercept))
+                print 'Tower %d intercepts 1 at %s' % (tower, intercept)
+            else:
+                intercept = (0.98 - effMean)/effSlope
+                intercept = sec2string(met2utc(intercept))
+                print 'Tower %d intercepts 0.98 at %s' % (tower, intercept)
             effSlope *= (5*100*SECS_PER_YEAR)
             effSlopeErr *= (5*100*SECS_PER_YEAR)
             line1 = 'Average efficiency = %.2f #pm %.2f' %\
@@ -149,30 +134,25 @@ class pTkrTrendPlotter:
             line2 = 'Slope = %s%.3f #pm %.3f %% in 5 years' %\
                     ('+'*(effSlope > 0), effSlope, effSlopeErr)
             text = '#splitline{%s}{%s}' % (line1, line2)
-            l = ROOT.TLatex(0.24, 0.22, text)
+            l = ROOT.TLatex(0.27, 0.22, text)
             l.SetNDC()
-            l.SetTextSize(0.05)
             l.SetTextAlign(22)
-            l.SetTextColor(ROOT.kRed)
-            self.store(l)
+            l.SetTextColor(ROOT.kBlue)
+            store(l)
             l.Draw()
             self.EffMeanHist.Fill(effMean)
             self.EffSlopeHist.Fill(effSlope)
             l98h.Draw()
             c.Update()
-        c = ROOT.TCanvas('eff_mean_canvas', 'Mean hit efficiency')
-        c.SetBottomMargin(0.15)
-        self.CanvasDict[c.GetName()] = c
+        c = getCanvas('eff_mean_canvas', 'Mean hit efficiency')
         self.EffMeanHist.Draw()
         l98v = ROOT.TLine(0.98, 0, 0.98, 1.05*self.EffMeanHist.GetMaximum())
         l98v.SetLineWidth(2)
         l98v.SetLineStyle(7)
         l98v.SetLineColor(ROOT.kRed)
-        self.store(l98v)
+        store(l98v)
         l98v.Draw()
-        c = ROOT.TCanvas('eff_slope_canvas', 'Hit efficiency slope')
-        c.SetBottomMargin(0.15)
-        self.CanvasDict[c.GetName()] = c
+        c = getCanvas('eff_slope_canvas', 'Hit efficiency slope')
         self.EffSlopeHist.Draw()
 
 
