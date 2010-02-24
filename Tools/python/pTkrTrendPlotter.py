@@ -123,7 +123,7 @@ def fitTrend(g, minTime = MIN_TIME, maxTime = MAX_TIME,
     elif 'noise_occ' in gName:
         slope    *= SECS_PER_YEAR
         slopeErr *= SECS_PER_YEAR
-        line1 = 'Average layer occupancy = (%.2e #pm %.2e) fC' %\
+        line1 = 'Average layer occupancy = (%.2e #pm %.2e)' %\
                 (mean, meanErr)
         line2 = 'Slope = (%s%.2e #pm %.2e) year^{-1}' %\
                 ('+'*(slope > 0), slope, slopeErr)
@@ -360,8 +360,27 @@ class pTkrTrendPlotter:
         gSample.Draw('ap')
         f = fitTrend(gSample, 1.015*MIN_TIME)
         drawSIUReboot(1e-3, 1e-1)
-        #drawMarker(MIN_TKRMON_BUG_RUN, 1e-3, 1.1e-1, '')
-        #drawMarker(MAX_TKRMON_BUG_RUN, 1e-3, 1.1e-1, 'TKR monitoring bug')
+        gInsert = gSample.Clone()
+        store(gInsert)
+        gInsert.GetYaxis().SetTitleOffset(0.9)
+        gInsert.GetYaxis().SetRangeUser(1e-3, 1e-1)
+        gInsert.GetXaxis().SetTitleOffset(1.75)
+        setupStripChart(gInsert)
+        insert = ROOT.TPad('insert', 'insert', 0.45, 0.45, 0.95, 0.9)
+        store(insert)
+        insert.SetTopMargin(0.1)
+        insert.SetBottomMargin(0.28)
+        insert.SetRightMargin(0.03)
+        insert.SetLeftMargin(0.13)
+        insert.SetLogy(True)
+        insert.Draw()
+        insert.cd()
+        gInsert.Draw('ap')
+        gInsert.GetXaxis().SetRangeUser(1.006*MIN_TIME, 1.0115*MIN_TIME)
+        drawMarker(MIN_TKRMON_BUG_RUN, 1e-3, 1.1e-1, '')
+        drawMarker(MAX_TKRMON_BUG_RUN, 1e-3, 1.1e-1,
+                   'TKR monitoring feature :-)')
+        insert.Update()
         c = getSkinnyCanvas('noise_occ_worst_c',
                             'Occupancy for the worst layer', True)
         c.SetLogy(True)
