@@ -58,15 +58,18 @@ OBJECT_POOL = []
 def store(rootObject):
     OBJECT_POOL.append(rootObject)
 
-def getCanvas(name, title = None, width = 800, height = 500):
+def getCanvas(name, title = None, width = 800, height = 500, grid = False):
     title = title or name
     canvas = ROOT.TCanvas(name, title, width, height)
     canvas.SetBottomMargin(1.25*(TITLE_SIZE + LABEL_SIZE)/height)
     canvas.SetRightMargin(0.9*(TEXT_SIZE)/width)
     canvas.SetTopMargin(1.3*(TEXT_SIZE)/height)
     canvas.SetLeftMargin(1.8*(TITLE_SIZE + LABEL_SIZE)/width)
+    if grid:
+        canvas.SetGridx(True)
+        canvas.SetGridy(True)
     store(canvas)
     return canvas
 
-def getSkinnyCanvas(name, title = None):
-    return getCanvas(name, title, 1000, 400)
+def getSkinnyCanvas(name, title = None, grid = False):
+    return getCanvas(name, title, 1000, 400, grid)
