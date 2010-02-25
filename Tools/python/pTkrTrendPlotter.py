@@ -12,8 +12,10 @@ from pRootStyle     import *
 
 TIME_FORMAT = '%b %d, 20%y%F2001-01-01 00:00:00'
 
-MIN_TIME = 2.4e8
-MAX_TIME = 2.9e8
+LAUNCH_DATE = '11/Jun/2008'
+LAUNCH_TIME = utc2met(string2sec(LAUNCH_DATE, '%d/%b/%Y'))
+MIN_TIME    = 2.4e8
+MAX_TIME    = 2.9e8
 
 SECS_PER_YEAR = 60*60*24*365
 
@@ -25,16 +27,22 @@ TOT_SCALE_DICT = {244419664: 'New TOT charge scale (SSC-140)',
                   }
 
 # Masked strips.
-PRE_FLIGHT_NUM_MASKED_STRIPS = 203
-STRIP_MASK_DICT = {'2008/204'   : (3 , 206, 'OBCONF-49' ),
-                   '18/Aug/2008': (14, 220, 'OBCONF-66' ),
-                   '28/Oct/2008': (61, 281, 'OBCONF-86' ),
-                   '2009/33'    : (35, 316, 'OBCONF-97' ),
-                   '28/Apr/2009': (9 , 325, 'OBCONF-105'),
-                   '16/Oct/2009': (4 , 329, 'OBCONF-118'),
-                   '23/Jan/2010': (2 , 331, 'OBCONF-120'),
-                   '23/Feb/2010': (2 , 333, 'OBCONF-121')
-                   }
+STRIP_MASK_DICT   = {LAUNCH_DATE  : (0, 203, 'Pre-flight'),
+                     '2008/204'   : (3 , 206, 'OBCONF-49' ),
+                     '18/Aug/2008': (14, 220, 'OBCONF-66' ),
+                     '28/Oct/2008': (61, 281, 'OBCONF-86' ),
+                     '2009/33'    : (35, 316, 'OBCONF-97' ),
+                     '28/Apr/2009': (9 , 325, 'OBCONF-105'),
+                     '16/Oct/2009': (4 , 329, 'OBCONF-118'),
+                     '23/Jan/2010': (2 , 331, 'OBCONF-120'),
+                     '23/Feb/2010': (2 , 333, 'OBCONF-121')
+                     }
+STRIP_MASK_DICT_0 = {LAUNCH_DATE  : (0 , 22 , 'Pre-flight'),
+                     '18/Aug/2008': (9 , 31 , 'OBCONF-66' ),
+                     '28/Oct/2008': (52, 83 , 'OBCONF-86' ),
+                     '2009/33'    : (29, 112, 'OBCONF-97' ),
+                     '28/Apr/2009': (3 , 115, 'OBCONF-105')
+                     }
 
 # There was a bug in the tkr monitoring code that screwed up the
 # calculation of the occupancy.
@@ -47,8 +55,42 @@ SIU_REBOOT  = utc2met(string2sec('11/Mar/2009', '%d/%b/%Y'))
 SIU_RECOVER = utc2met(string2sec('2009/74', '%Y/%j'))
 
 
-def setupStripChart(g):
-    g.GetXaxis().SetRangeUser(MIN_TIME, MAX_TIME)
+def getMaskedStripChart(ymin, ymax, color, tower = None, logscale = False,
+                        minTime = LAUNCH_TIME, maxTime = MAX_TIME):
+    maskDict = {}
+    if tower is None:
+        baseDict = STRIP_MASK_DICT
+    else:
+        baseDict = eval('STRIP_MASK_DICT_%d' % tower)
+    for timestamp, (numStr, totNumStr, jira) in baseDict.items():
+        try:
+            timestamp = utc2met(string2sec(timestamp, '%Y/%j'))
+        except ValueError:
+            timestamp = utc2met(string2sec(timestamp, '%d/%b/%Y'))
+        if timestamp >= minTime and timestamp <= maxTime:
+            maskDict[timestamp] = totNumStr
+    timestamps = maskDict.keys()
+    timestamps.sort()
+    pl = ROOT.TPolyLine()
+    pl.SetLineWidth(2)
+    pl.SetLineColor(color)
+    pl.SetLineStyle(0)
+    ylast = None
+    for (i, x) in enumerate(timestamps):
+        n = maskDict[x]
+        y = n
+        if ylast is not None:
+            pl.SetNextPoint(x, ylast)
+            pl.SetNextPoint(x, y)
+        else:
+            pl.SetNextPoint(x, y)
+        ylast = y
+    pl.SetNextPoint(maxTime, ylast)
+    store(pl)
+    return pl
+
+def setupStripChart(g, minTime = MIN_TIME, maxTime = MAX_TIME):
+    g.GetXaxis().SetRangeUser(minTime, maxTime)
     g.GetXaxis().SetTimeDisplay(True)
     g.GetXaxis().SetTimeFormat(TIME_FORMAT)
     g.GetXaxis().SetNdivisions(509)
@@ -70,20 +112,22 @@ def drawMarker(timestamp, ymin, ymax, text, color = ROOT.kBlue, ylabel = None):
     l.Draw()
     ROOT.gPad.Update()
 
-def drawSIUReboot(ymin, ymax):
-    drawMarker(SIU_REBOOT, ymin, ymax, 'SIU reboot', ROOT.kRed, 1.1*ymax)
-    drawMarker(SIU_RECOVER, ymin, ymax, '', ROOT.kRed, 1.1*ymax)
+def drawSIUReboot(ymin, ymax, ylabel = None):
+    ylabel = ylabel or 1.1*ymax
+    drawMarker(SIU_REBOOT, ymin, ymax, 'SIU reboot', ROOT.kRed, ylabel)
+    drawMarker(SIU_RECOVER, ymin, ymax, '', ROOT.kRed, ylabel)
         
 def fitTrend(g, minTime = MIN_TIME, maxTime = MAX_TIME,
-             label = 'Average value'):
+             label = 'Average value', draw = True):
     gName = g.GetName()
     print 'Fitting graph %s...' % gName
     fName = '%s_fitfunc' % gName
     f = ROOT.TF1(fName, 'pol1', minTime, maxTime)
     f.SetLineColor(ROOT.kBlue)
     store(f)
-    g.Fit(fName, 'RQ')
-    f.Draw('same')
+    g.Fit(fName, 'RQN')
+    if draw:
+        f.Draw('same')
     intercept = f.GetParameter(0)
     interceptErr = f.GetParError(0)
     slope = f.GetParameter(1)
@@ -137,7 +181,9 @@ def fitTrend(g, minTime = MIN_TIME, maxTime = MAX_TIME,
     l.SetTextAlign(12)
     l.SetTextColor(ROOT.kBlue)
     store(l)
-    l.Draw()
+    if draw:
+        l.Draw()
+        ROOT.gPad.Update()
     return f
 
 def drawTitle(title):
@@ -182,7 +228,7 @@ class pTkrTrendPlotter:
     def getTimestamp(self, i):
         return self.Timestamps[i]
 
-    def plotHitEfficiency(self):
+    def plotHitEfficiency(self, sampleTowers = [0, 15]):
         self.RootTree.SetBranchStatus('*', 0)
         self.RootTree.SetBranchStatus('Mean_towerEff_Tower', 1)
         self.RootTree.SetBranchStatus('Mean_towerEff_Tower_err', 1)
@@ -201,49 +247,53 @@ class pTkrTrendPlotter:
                 g = self.GraphDict['hit_efficiency_%d' % tower]
                 g.SetPoint(i, x, v[tower])
                 g.SetPointError(i, 0, dv[tower])
-        self.EffMeanHist = ROOT.TH1F('h_eff_mean', 'h_eff_mean',
-                                     61, 0.97, 1.01)
-        self.EffMeanHist.SetXTitle('Average hit efficiency')
-        self.EffMeanHist.SetYTitle('Entries/bin')
-        self.EffMeanHist.SetLineWidth(LINE_WIDTH)
-        self.EffSlopeHist = ROOT.TH1F('h_eff_slope', 'h_eff_slope',
-                                      50, -0.2, 0.2)
-        self.EffSlopeHist.SetXTitle('Hit efficiency slope (% year^{-1})')
-        self.EffSlopeHist.SetYTitle('Entries/bin')
-        self.EffSlopeHist.SetLineWidth(LINE_WIDTH)
+        hMean = ROOT.TH1F('h_hit_eff_mean', 'h_hit_eff_mean', 61, 0.97, 1.01)
+        store(hMean)
+        hMean.SetXTitle('Average hit efficiency')
+        hMean.SetYTitle('Entries/bin')
+        hMean.SetLineWidth(LINE_WIDTH)
+        hSlope = ROOT.TH1F('h_hit_eff_slope', 'h_hit_eff_slope', 50, -0.2, 0.2)
+        store(hSlope)
+        hSlope.SetXTitle('Hit efficiency slope (% year^{-1})')
+        hSlope.SetYTitle('Entries/bin')
+        hSlope.SetLineWidth(LINE_WIDTH)
         l98h = ROOT.TLine(MIN_TIME, 0.98, MAX_TIME, 0.98)
         l98h.SetLineWidth(2)
         l98h.SetLineStyle(7)
         l98h.SetLineColor(ROOT.kRed)
         store(l98h)
         for tower in range(16):
-            c = getSkinnyCanvas('hit_eff_canvas_%d' % tower,
-                                'Hit efficiency, tower %d' % tower,
-                                grid = True)
             g = self.GraphDict['hit_efficiency_%d' % tower]
             setupStripChart(g)
             g.GetYaxis().SetRangeUser(0.96, 1.005)
             g.GetYaxis().SetNdivisions(508)
             g.GetYaxis().SetTitle('Average hit efficiency')
-            g.Draw('ap')
-            f = fitTrend(g)
-            drawTitle('Tower %d' % tower) 
-            self.EffMeanHist.Fill(f.Eval(0.5*(MIN_TIME + MAX_TIME)))
-            self.EffSlopeHist.Fill(f.GetParameter(1)*(100*SECS_PER_YEAR))
-            l98h.Draw()
-            c.Update()
-        c = getCanvas('eff_mean_canvas', 'Mean hit efficiency')
-        self.EffMeanHist.Draw()
-        l98v = ROOT.TLine(0.98, 0, 0.98, 1.05*self.EffMeanHist.GetMaximum())
+            if tower in sampleTowers:
+                c = getSkinnyCanvas('hit_eff_canvas_%d' % tower,
+                                    'Hit efficiency, tower %d' % tower,
+                                    grid = True)
+                g.Draw('ap')
+                drawTitle('Tower %d' % tower) 
+                l98h.Draw()
+                drawSIUReboot(0.96, 1.005, 1.006)
+                c.Update()
+            f = fitTrend(g, draw = (tower in sampleTowers))
+            hMean.Fill(f.Eval(0.5*(MIN_TIME + MAX_TIME)))
+            hSlope.Fill(f.GetParameter(1)*(100*SECS_PER_YEAR))
+        c = getCanvas('hit_eff_mean_canvas', 'Mean hit efficiency')
+        hMean.Draw()
+        l98v = ROOT.TLine(0.98, 0, 0.98, 1.05*hMean.GetMaximum())
         l98v.SetLineWidth(2)
         l98v.SetLineStyle(7)
         l98v.SetLineColor(ROOT.kRed)
         store(l98v)
         l98v.Draw()
-        c = getCanvas('eff_slope_canvas', 'Hit efficiency slope')
-        self.EffSlopeHist.Draw()
+        c.Update()
+        c = getCanvas('hit_eff_slope_canvas', 'Hit efficiency slope')
+        hSlope.Draw()
+        c.Update()
 
-    def plotTrigEfficiency(self):
+    def plotTrigEfficiency(self, sampleTowers = [0, 15]):
         self.RootTree.SetBranchStatus('*', 0)
         self.RootTree.SetBranchStatus('Mean_trigEff_Tower', 1)
         self.RootTree.SetBranchStatus('Mean_trigEff_Tower_err', 1)
@@ -262,19 +312,39 @@ class pTkrTrendPlotter:
                 g = self.GraphDict['trg_efficiency_%d' % tower]
                 g.SetPoint(i, x, v[tower])
                 g.SetPointError(i, 0, dv[tower])
+        hMean = ROOT.TH1F('h_trg_eff_mean', 'h_trg_eff_mean', 50, 0.995, 1.005)
+        store(hMean)
+        hMean.SetXTitle('Average trigger efficiency')
+        hMean.SetYTitle('Entries/bin')
+        hMean.SetLineWidth(LINE_WIDTH)
+        hSlope = ROOT.TH1F('h_trg_eff_slope', 'h_trg_eff_slope', 50, -0.2, 0.2)
+        store(hSlope)
+        hSlope.SetXTitle('Trigger efficiency slope (% year^{-1})')
+        hSlope.SetYTitle('Entries/bin')
+        hSlope.SetLineWidth(LINE_WIDTH)
         for tower in range(16):
-            c = getSkinnyCanvas('trg_eff_canvas_%d' % tower,
-                                'Trigger efficiency, tower %d' % tower,
-                                grid = True)
             g = self.GraphDict['trg_efficiency_%d' % tower]
             setupStripChart(g)
             g.GetYaxis().SetRangeUser(0.8, 1.1)
             g.GetYaxis().SetNdivisions(508)
             g.GetYaxis().SetTitle('Average trigger efficiency')
-            g.Draw('ap')
-            f = fitTrend(g, 1.01*MIN_TIME)
-            drawTitle('Tower %d' % tower) 
+            if tower in sampleTowers:
+                c = getSkinnyCanvas('trg_eff_canvas_%d' % tower,
+                                    'Trigger efficiency, tower %d' % tower,
+                                    grid = True)
+                g.Draw('ap')
+                drawSIUReboot(0.8, 1.1, 1.108)
+                drawTitle('Tower %d' % tower) 
+            f = fitTrend(g, 1.06*MIN_TIME, draw = (tower in sampleTowers))
+            hMean.Fill(f.Eval(0.5*(MIN_TIME + MAX_TIME)))
+            hSlope.Fill(f.GetParameter(1)*(100*SECS_PER_YEAR))
             c.Update()
+        c = getCanvas('trg_eff_mean_canvas', 'Mean trigger efficiency')
+        hMean.Draw()
+        c.Update()
+        c = getCanvas('trg_eff_slope_canvas', 'Trigger efficiency slope')
+        hSlope.Draw()
+        c.Update()
 
     def plotTOTPeak(self, probThreshold = 0, sampleLayer = (15, 10)):
         self.RootTree.SetBranchStatus('*', 0)
@@ -313,6 +383,8 @@ class pTkrTrendPlotter:
         c = getSkinnyCanvas('tot_peak_c', 'TOT average peak position', True)
         setupStripChart(g)
         g.Draw('ap')
+        drawSIUReboot(4, 6, 6.05)
+        drawTitle('LAT average')
         f = fitTrend(g, 260810033)
         gSample.GetYaxis().SetRangeUser(4, 6)
         gSample.GetYaxis().SetTitle('Average TOT peak position (fC)')
@@ -321,12 +393,14 @@ class pTkrTrendPlotter:
                                   sampleLayer, True)
         setupStripChart(gSample)
         gSample.Draw('ap')
+        drawSIUReboot(4, 6, 6.05)
+        drawTitle('Tower %d, plane %d' % sampleLayer)
         f = fitTrend(gSample, 260810033)
         for (timestamp, text) in TOT_SCALE_DICT.items():
             c.cd()
-            drawMarker(timestamp, 4, 5.5, text)
+            drawMarker(timestamp, 4, 5.6, text)
             cSample.cd()
-            drawMarker(timestamp, 4, 5.5, text)
+            drawMarker(timestamp, 4, 5.6, text)
         c.Update()
         cSample.Update()
 
@@ -358,6 +432,7 @@ class pTkrTrendPlotter:
         cSample.SetLogy(True)
         setupStripChart(gSample)
         gSample.Draw('ap')
+        drawTitle('Tower %d, plane %d' % sampleLayer)
         f = fitTrend(gSample, 1.015*MIN_TIME)
         drawSIUReboot(1e-3, 1e-1)
         gInsert = gSample.Clone()
@@ -366,7 +441,7 @@ class pTkrTrendPlotter:
         gInsert.GetYaxis().SetRangeUser(1e-3, 1e-1)
         gInsert.GetXaxis().SetTitleOffset(1.75)
         setupStripChart(gInsert)
-        insert = ROOT.TPad('insert', 'insert', 0.45, 0.45, 0.95, 0.9)
+        insert = ROOT.TPad('insert', 'insert', 0.15, 0.45, 0.65, 0.9)
         store(insert)
         insert.SetTopMargin(0.1)
         insert.SetBottomMargin(0.28)
@@ -379,13 +454,14 @@ class pTkrTrendPlotter:
         gInsert.GetXaxis().SetRangeUser(1.006*MIN_TIME, 1.0115*MIN_TIME)
         drawMarker(MIN_TKRMON_BUG_RUN, 1e-3, 1.1e-1, '')
         drawMarker(MAX_TKRMON_BUG_RUN, 1e-3, 1.1e-1,
-                   'TKR monitoring feature :-)')
+                   'TKR monitoring feature (SSC-132) :-)')
         insert.Update()
         c = getSkinnyCanvas('noise_occ_worst_c',
                             'Occupancy for the worst layer', True)
         c.SetLogy(True)
         setupStripChart(g)
         g.Draw('ap')
+        drawTitle('Worst TKR plane')
         drawSIUReboot(1e-2, 10)
         yDict = {'OBCONF-49' : 5,
                  'OBCONF-66' : 1.5,
@@ -401,17 +477,66 @@ class pTkrTrendPlotter:
                 timestamp = utc2met(string2sec(timestamp, '%Y/%j'))
             except ValueError:
                 timestamp = utc2met(string2sec(timestamp, '%d/%b/%Y'))
-            if timestamp > MIN_TIME and timestamp < MAX_TIME:
+            if timestamp >= MIN_TIME and timestamp <= MAX_TIME:
                 text = '#splitline{+%d strips (%d)}{%s}' %\
                        (numStr, totNumStr, jira)
                 drawMarker(timestamp, 1e-2, yDict[jira], text,
                            ylabel = 1.3*yDict[jira])
-        
-        
+
+    def plotMaskStripChart(self, minTime = LAUNCH_TIME, maxTime = MAX_TIME):
+        ymin = 0
+        ymax = 400
+        sc = getMaskedStripChart(ymin, ymax, ROOT.kBlue)
+        sc0 = getMaskedStripChart(ymin, ymax, ROOT.kRed, 0)
+        h = ROOT.TH1F('h_mask_strip', 'h_mask_strip', 10000, minTime, maxTime)
+        store(h)
+        setupStripChart(h, minTime)
+        h.SetMinimum(ymin)
+        h.SetMaximum(ymax)
+        c = getSkinnyCanvas('c_masked_strip', 'Masked strips', True)
+        h.SetYTitle('Number of masked strips')
+        h.Draw()
+        sc.Draw('same')
+        sc0.Draw('same')
+        for timestamp, (numStr, totNumStr, jira) in STRIP_MASK_DICT.items():
+            try:
+                totNumStr0 = STRIP_MASK_DICT_0[timestamp][1]
+            except:
+                totNumStr0 = None
+            try:
+                timestamp = utc2met(string2sec(timestamp, '%Y/%j'))
+            except ValueError:
+                timestamp = utc2met(string2sec(timestamp, '%d/%b/%Y'))
+            if timestamp >= minTime and timestamp <= maxTime:
+                l = ROOT.TLatex(timestamp, totNumStr+5, '%d' % totNumStr)
+                store(l)
+                l.SetTextAlign(21)
+                l.SetTextColor(ROOT.kBlue)
+                l.SetTextSize(TEXT_SIZE - 5)
+                l.Draw()
+                if totNumStr0 is not None:
+                    l = ROOT.TLatex(timestamp, totNumStr0+5, '%d' % totNumStr0)
+                    store(l)
+                    l.SetTextAlign(21)
+                    l.SetTextColor(ROOT.kRed)
+                    l.SetTextSize(TEXT_SIZE - 5)
+                    l.Draw()
+        l = ROOT.TLatex(1.18*MIN_TIME, 290, 'Full LAT')
+        l.SetTextColor(ROOT.kBlue)
+        l.Draw()
+        store(l)
+        l = ROOT.TLatex(1.18*MIN_TIME, 75, 'Tower 0')
+        l.SetTextColor(ROOT.kRed)
+        l.Draw()
+        store(l)
+        c.Update()
+
 
 if __name__ == '__main__':
+    print LAUNCH_TIME
     p = pTkrTrendPlotter('/data/work/datamon/runs/tkrtrend/tkrtrend.root')
     #p.plotHitEfficiency()
-    #p.plotTrigEfficiency()
+    p.plotTrigEfficiency()
     #p.plotTOTPeak()
-    p.plotNoiseOcc()
+    #p.plotNoiseOcc()
+    #p.plotMaskStripChart()
