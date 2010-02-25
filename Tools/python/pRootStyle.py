@@ -15,7 +15,7 @@ ROOT.gStyle.SetGridColor(16)
 ROOT.gStyle.SetLegendBorderSize(1)
 ROOT.gStyle.SetTitleYOffset(1.1)
 ROOT.gStyle.SetOptTitle(0)
-ROOT.gStyle.SetOptStat(111111)
+ROOT.gStyle.SetOptStat(1111)
 ROOT.gStyle.SetPaintTextFormat("1.2g")
 ROOT.gStyle.SetTitleSize(0.06, 'XY')
 ROOT.gStyle.SetTitleOffset(1.00, 'X')
@@ -36,7 +36,6 @@ TITLE_OFFSET_Y = 0.6
 TITLE_OFFSET_X_DOUBLE = 3.0
 TITLE_OFFSET_Y_DOUBLE = 1.2
 
-ROOT.gStyle.SetOptStat(0)
 ROOT.gStyle.SetTextFont(TEXT_STYLE)
 ROOT.gStyle.SetTextSize(TEXT_SIZE)
 ROOT.gStyle.SetLabelFont(TEXT_STYLE, 'XY')

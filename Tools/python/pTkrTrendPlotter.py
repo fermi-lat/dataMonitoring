@@ -357,12 +357,14 @@ class pTkrTrendPlotter:
         self.RootTree.SetBranchAddress('Mean_TOT_Peak_TowerPlane', v)
         self.RootTree.SetBranchAddress('Mean_TOT_Peak_TowerPlane_err', dv)
         self.RootTree.SetBranchAddress('Number_TOT_FitProb_TowerPlane', p)
-        g = ROOT.TGraphErrors()
-        g.SetName('tot_peak')
-        self.GraphDict[g.GetName()] = g
-        gSample = ROOT.TGraphErrors()
-        gSample.SetName('tot_peak_%d%d' % sampleLayer)
-        self.GraphDict[gSample.GetName()] = gSample
+        gLAT = ROOT.TGraphErrors()
+        gLAT.SetName('tot_peak')
+        self.GraphDict[gLAT.GetName()] = gLAT
+        for tower in range(16):
+            for plane in range(36):
+                g = ROOT.TGraphErrors()
+                g.SetName('tot_peak_%d_%d' % (tower, plane))
+                self.GraphDict[g.GetName()] = g
         one = numpy.ones((16, 36), 'f')
         for i in xrange(self.NumEntries):
             self.RootTree.GetEntry(i)
@@ -372,37 +374,56 @@ class pTkrTrendPlotter:
             entries = (one*(p > probThreshold)).sum()
             peak /= entries
             peakErr /= entries**1.5
-            g.SetPoint(i, x, peak)
-            g.SetPointError(i, 0, peakErr)
-            peakSample = v[sampleLayer[0]][sampleLayer[1]]
-            peakErrSample = dv[sampleLayer[0]][sampleLayer[1]]
-            gSample.SetPoint(i, x, peakSample)
-            gSample.SetPointError(i, 0, peakErrSample)
-        g.GetYaxis().SetRangeUser(4, 6)
-        g.GetYaxis().SetTitle('Average TOT peak position (fC)')
+            gLAT.SetPoint(i, x, peak)
+            gLAT.SetPointError(i, 0, peakErr)
+            for tower in range(16):
+                for plane in range(36):
+                    g = self.GraphDict['tot_peak_%d_%d' % (tower, plane)]
+                    g.SetPoint(i, x, v[tower][plane])
+                    g.SetPointError(i, 0, dv[tower][plane])
+        gLAT.GetYaxis().SetRangeUser(4, 6)
+        gLAT.GetYaxis().SetTitle('Average TOT peak position (fC)')
         c = getSkinnyCanvas('tot_peak_c', 'TOT average peak position', True)
-        setupStripChart(g)
-        g.Draw('ap')
+        setupStripChart(gLAT)
+        gLAT.Draw('ap')
         drawSIUReboot(4, 6, 6.05)
         drawTitle('LAT average')
-        f = fitTrend(g, 260810033)
-        gSample.GetYaxis().SetRangeUser(4, 6)
-        gSample.GetYaxis().SetTitle('Average TOT peak position (fC)')
-        cSample = getSkinnyCanvas('tot_peak_c_%d_%d' % sampleLayer,
-                  'TOT average peak position (Tower %d, plane %d)' %\
-                                  sampleLayer, True)
-        setupStripChart(gSample)
-        gSample.Draw('ap')
-        drawSIUReboot(4, 6, 6.05)
-        drawTitle('Tower %d, plane %d' % sampleLayer)
-        f = fitTrend(gSample, 260810033)
-        for (timestamp, text) in TOT_SCALE_DICT.items():
-            c.cd()
-            drawMarker(timestamp, 4, 5.6, text)
-            cSample.cd()
-            drawMarker(timestamp, 4, 5.6, text)
+        f = fitTrend(gLAT, 260810033)
+        hMean = ROOT.TH1F('h_tot_peak_mean', 'h_tot_peak_mean', 50, 4.7, 5.0)
+        store(hMean)
+        hMean.SetXTitle('Average TOT peak (fC)')
+        hMean.SetYTitle('Entries/bin')
+        hMean.SetLineWidth(LINE_WIDTH)
+        hSlope = ROOT.TH1F('h_tot_peak_slope', 'h_tot_peak_slope',
+                           50, -0.05, 0.05)
+        store(hSlope)
+        hSlope.SetXTitle('TOT peak slope (fC year^{-1})')
+        hSlope.SetYTitle('Entries/bin')
+        hSlope.SetLineWidth(LINE_WIDTH)
+        for tower in range(16):
+            for plane in range(36):
+                g = self.GraphDict['tot_peak_%d_%d' % (tower, plane)]
+                g.GetYaxis().SetRangeUser(4, 6)
+                g.GetYaxis().SetTitle('Average TOT peak position (fC)')
+                if (tower, plane) == sampleLayer:
+                    c = getSkinnyCanvas('tot_peak_c_%d_%d' % sampleLayer,
+                        'TOT average peak position (Tower %d, plane %d)' %\
+                        sampleLayer, True)
+                    setupStripChart(g)
+                    g.Draw('ap')
+                    drawSIUReboot(4, 6, 6.05)
+                    drawTitle('Tower %d, plane %d' % sampleLayer)
+                f = fitTrend(g, 260810033,
+                             draw = ((tower, plane) == sampleLayer))
+                hMean.Fill(f.Eval(0.5*(MIN_TIME + MAX_TIME)))
+                hSlope.Fill(f.GetParameter(1)*SECS_PER_YEAR)
+                c.Update()
+        c = getCanvas('tot_peak_mean_canvas', 'Mean TOT peak')
+        hMean.Draw()
         c.Update()
-        cSample.Update()
+        c = getCanvas('tot_peak_slope_canvas', 'TOT peak slope')
+        hSlope.Draw()
+        c.Update()
 
     def plotNoiseOcc(self, sampleLayer = (15, 10)):
         self.RootTree.SetBranchStatus('*', 0)
@@ -424,7 +445,7 @@ class pTkrTrendPlotter:
             gSample.SetPoint(i, x, occSample)
         g.GetYaxis().SetRangeUser(1e-2, 10)
         g.GetYaxis().SetTitle('Occupancy')
-        gSample.GetYaxis().SetRangeUser(1e-3, 1e-1)
+        gSample.GetYaxis().SetRangeUser(1e-3, 1.5e-1)
         gSample.GetYaxis().SetTitle('Occupancy')
         cSample = getSkinnyCanvas('noise_occ_sample_c',
                             'Occupancy for Tower %d, layer %d' % sampleLayer,
@@ -432,9 +453,15 @@ class pTkrTrendPlotter:
         cSample.SetLogy(True)
         setupStripChart(gSample)
         gSample.Draw('ap')
+        llim = ROOT.TLine(MIN_TIME, 0.08, MAX_TIME, 0.08)
+        store(llim)
+        llim.SetLineColor(ROOT.kRed)
+        llim.SetLineStyle(7)
+        llim.SetLineWidth(2)
+        llim.Draw()
         drawTitle('Tower %d, plane %d' % sampleLayer)
         f = fitTrend(gSample, 1.015*MIN_TIME)
-        drawSIUReboot(1e-3, 1e-1)
+        drawSIUReboot(1e-3, 1.5e-1)
         gInsert = gSample.Clone()
         store(gInsert)
         gInsert.GetYaxis().SetTitleOffset(0.9)
@@ -484,6 +511,7 @@ class pTkrTrendPlotter:
                            ylabel = 1.3*yDict[jira])
 
     def plotMaskStripChart(self, minTime = LAUNCH_TIME, maxTime = MAX_TIME):
+        ROOT.gStyle.SetOptStat(0)
         ymin = 0
         ymax = 400
         sc = getMaskedStripChart(ymin, ymax, ROOT.kBlue)
@@ -536,7 +564,7 @@ if __name__ == '__main__':
     print LAUNCH_TIME
     p = pTkrTrendPlotter('/data/work/datamon/runs/tkrtrend/tkrtrend.root')
     #p.plotHitEfficiency()
-    p.plotTrigEfficiency()
+    #p.plotTrigEfficiency()
     #p.plotTOTPeak()
     #p.plotNoiseOcc()
-    #p.plotMaskStripChart()
+    p.plotMaskStripChart()
