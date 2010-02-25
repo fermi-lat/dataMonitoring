@@ -278,6 +278,8 @@ class pTkrTrendPlotter:
                 drawSIUReboot(0.96, 1.005, 1.006)
                 c.Update()
             f = fitTrend(g, draw = (tower in sampleTowers))
+            if tower in sampleTowers:
+                saveCanvas(c)
             hMean.Fill(f.Eval(0.5*(MIN_TIME + MAX_TIME)))
             hSlope.Fill(f.GetParameter(1)*(100*SECS_PER_YEAR))
         c = getCanvas('hit_eff_mean_canvas', 'Mean hit efficiency')
@@ -289,9 +291,11 @@ class pTkrTrendPlotter:
         store(l98v)
         l98v.Draw()
         c.Update()
+        saveCanvas(c)
         c = getCanvas('hit_eff_slope_canvas', 'Hit efficiency slope')
         hSlope.Draw()
         c.Update()
+        saveCanvas(c)
 
     def plotTrigEfficiency(self, sampleTowers = [0, 15]):
         self.RootTree.SetBranchStatus('*', 0)
@@ -336,17 +340,22 @@ class pTkrTrendPlotter:
                 drawSIUReboot(0.8, 1.1, 1.108)
                 drawTitle('Tower %d' % tower) 
             f = fitTrend(g, 1.06*MIN_TIME, draw = (tower in sampleTowers))
+            if tower in sampleTowers:
+                saveCanvas(c)
             hMean.Fill(f.Eval(0.5*(MIN_TIME + MAX_TIME)))
             hSlope.Fill(f.GetParameter(1)*(100*SECS_PER_YEAR))
             c.Update()
         c = getCanvas('trg_eff_mean_canvas', 'Mean trigger efficiency')
         hMean.Draw()
         c.Update()
+        saveCanvas(c)
         c = getCanvas('trg_eff_slope_canvas', 'Trigger efficiency slope')
         hSlope.Draw()
         c.Update()
+        saveCanvas(c)
 
-    def plotTOTPeak(self, probThreshold = 0, sampleLayer = (15, 10)):
+    def plotTOTPeak(self, probThreshold = 0,
+                    sampleLayers = [(15, 10), (0, 14), (6, 26), (6, 31)]):
         self.RootTree.SetBranchStatus('*', 0)
         self.RootTree.SetBranchStatus('Mean_TOT_Peak_TowerPlane', 1)
         self.RootTree.SetBranchStatus('Mean_TOT_Peak_TowerPlane_err', 1)
@@ -389,41 +398,55 @@ class pTkrTrendPlotter:
         drawSIUReboot(4, 6, 6.05)
         drawTitle('LAT average')
         f = fitTrend(gLAT, 260810033)
+        c.Update()
+        saveCanvas(c)
         hMean = ROOT.TH1F('h_tot_peak_mean', 'h_tot_peak_mean', 50, 4.7, 5.0)
         store(hMean)
         hMean.SetXTitle('Average TOT peak (fC)')
         hMean.SetYTitle('Entries/bin')
         hMean.SetLineWidth(LINE_WIDTH)
         hSlope = ROOT.TH1F('h_tot_peak_slope', 'h_tot_peak_slope',
-                           50, -0.05, 0.05)
+                           50, -0.075, 0.075)
         store(hSlope)
         hSlope.SetXTitle('TOT peak slope (fC year^{-1})')
         hSlope.SetYTitle('Entries/bin')
         hSlope.SetLineWidth(LINE_WIDTH)
+        notes = []
         for tower in range(16):
             for plane in range(36):
                 g = self.GraphDict['tot_peak_%d_%d' % (tower, plane)]
                 g.GetYaxis().SetRangeUser(4, 6)
                 g.GetYaxis().SetTitle('Average TOT peak position (fC)')
-                if (tower, plane) == sampleLayer:
-                    c = getSkinnyCanvas('tot_peak_c_%d_%d' % sampleLayer,
+                if (tower, plane) in sampleLayers:
+                    c = getSkinnyCanvas('tot_peak_c_%d_%d' % (tower, plane),
                         'TOT average peak position (Tower %d, plane %d)' %\
-                        sampleLayer, True)
+                        (tower, plane), True)
                     setupStripChart(g)
                     g.Draw('ap')
                     drawSIUReboot(4, 6, 6.05)
-                    drawTitle('Tower %d, plane %d' % sampleLayer)
+                    drawTitle('Tower %d, plane %d' % (tower, plane))
                 f = fitTrend(g, 260810033,
-                             draw = ((tower, plane) == sampleLayer))
-                hMean.Fill(f.Eval(0.5*(MIN_TIME + MAX_TIME)))
-                hSlope.Fill(f.GetParameter(1)*SECS_PER_YEAR)
-                c.Update()
+                             draw = ((tower, plane) in sampleLayers))
+                if (tower, plane) in sampleLayers:
+                    c.Update()
+                    saveCanvas(c)
+                mean  = f.Eval(0.5*(MIN_TIME + MAX_TIME))
+                slope = f.GetParameter(1)*SECS_PER_YEAR
+                if abs(mean - 4.85) > 0.15 or abs(slope) > 0.075:
+                    notes.append('Tower %d, plane %d: mean = %f, slope = %f' %\
+                                     (tower, plane, mean, slope))
+                hMean.Fill(mean)
+                hSlope.Fill(slope)
+        for note in notes:
+            print note
         c = getCanvas('tot_peak_mean_canvas', 'Mean TOT peak')
         hMean.Draw()
         c.Update()
+        saveCanvas(c)
         c = getCanvas('tot_peak_slope_canvas', 'TOT peak slope')
         hSlope.Draw()
         c.Update()
+        saveCanvas(c)
 
     def plotNoiseOcc(self, sampleLayer = (15, 10)):
         self.RootTree.SetBranchStatus('*', 0)
@@ -462,6 +485,8 @@ class pTkrTrendPlotter:
         drawTitle('Tower %d, plane %d' % sampleLayer)
         f = fitTrend(gSample, 1.015*MIN_TIME)
         drawSIUReboot(1e-3, 1.5e-1)
+        cSample.Update()
+        saveCanvas(cSample)
         gInsert = gSample.Clone()
         store(gInsert)
         gInsert.GetYaxis().SetTitleOffset(0.9)
@@ -483,6 +508,8 @@ class pTkrTrendPlotter:
         drawMarker(MAX_TKRMON_BUG_RUN, 1e-3, 1.1e-1,
                    'TKR monitoring feature (SSC-132) :-)')
         insert.Update()
+        cSample.Update()
+        saveCanvas(cSample, 'noise_occ_sample_c_insert.eps')
         c = getSkinnyCanvas('noise_occ_worst_c',
                             'Occupancy for the worst layer', True)
         c.SetLogy(True)
@@ -509,6 +536,8 @@ class pTkrTrendPlotter:
                        (numStr, totNumStr, jira)
                 drawMarker(timestamp, 1e-2, yDict[jira], text,
                            ylabel = 1.3*yDict[jira])
+        c.Update()
+        saveCanvas(c)
 
     def plotMaskStripChart(self, minTime = LAUNCH_TIME, maxTime = MAX_TIME):
         ROOT.gStyle.SetOptStat(0)
@@ -558,13 +587,14 @@ class pTkrTrendPlotter:
         l.Draw()
         store(l)
         c.Update()
+        saveCanvas(c)
 
 
 if __name__ == '__main__':
     print LAUNCH_TIME
     p = pTkrTrendPlotter('/data/work/datamon/runs/tkrtrend/tkrtrend.root')
-    #p.plotHitEfficiency()
-    #p.plotTrigEfficiency()
-    #p.plotTOTPeak()
-    #p.plotNoiseOcc()
+    p.plotHitEfficiency()
+    p.plotTrigEfficiency()
+    p.plotTOTPeak()
+    p.plotNoiseOcc()
     p.plotMaskStripChart()

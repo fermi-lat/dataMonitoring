@@ -1,4 +1,5 @@
 import ROOT
+import os
 
 ROOT.gStyle.SetOptStat(111111)
 ROOT.gStyle.SetMarkerStyle(26)
@@ -15,7 +16,6 @@ ROOT.gStyle.SetGridColor(16)
 ROOT.gStyle.SetLegendBorderSize(1)
 ROOT.gStyle.SetTitleYOffset(1.1)
 ROOT.gStyle.SetOptTitle(0)
-ROOT.gStyle.SetOptStat(1111)
 ROOT.gStyle.SetPaintTextFormat("1.2g")
 ROOT.gStyle.SetTitleSize(0.06, 'XY')
 ROOT.gStyle.SetTitleOffset(1.00, 'X')
@@ -72,3 +72,8 @@ def getCanvas(name, title = None, width = 800, height = 500, grid = False):
 
 def getSkinnyCanvas(name, title = None, grid = False):
     return getCanvas(name, title, 1000, 400, grid)
+
+def saveCanvas(canvas, epsFilePath = None):
+    epsFilePath = epsFilePath or '%s.eps' % canvas.GetName()
+    canvas.SaveAs(epsFilePath)
+    os.system('epstopdf %s' % epsFilePath)
