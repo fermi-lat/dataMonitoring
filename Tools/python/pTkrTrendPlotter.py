@@ -22,9 +22,10 @@ SECS_PER_YEAR = 60*60*24*365
 # Apr 07--08 2009: jump in the TOT peak.
 # Oct 27--28 2008: jump in the TOT peak.
 # Mar 11--15 2009: no data.
-TOT_SCALE_DICT = {244419664: 'New TOT charge scale (SSC-140)',
-                  260810033: 'New TOT charge scale (SSC-181)'
-                  }
+TOT_CHANGE_DICT = {#244419664: 'New TOT charge scale (SSC-140)',
+                   260810033: 'New TOT charge scale (SSC-181)',
+                   246823875: 'Timing change (trigger window set to 14 ticks)'
+                   }
 
 # Masked strips.
 STRIP_MASK_DICT   = {LAUNCH_DATE  : (0, 203, 'Pre-flight'),
@@ -398,8 +399,10 @@ class pTkrTrendPlotter:
         drawSIUReboot(4, 6, 6.05)
         drawTitle('LAT average')
         f = fitTrend(gLAT, 260810033)
-        for (timestamp, text) in TOT_SCALE_DICT.items():
-            drawMarker(timestamp, 4, 5.6, text)
+        totDict = {260810033: 5.8,
+                   246823875: 5.6}
+        for (timestamp, text) in TOT_CHANGE_DICT.items():
+            drawMarker(timestamp, 4, totDict[timestamp], text)
         c.Update()
         saveCanvas(c)
         hMean = ROOT.TH1F('h_tot_peak_mean', 'h_tot_peak_mean', 50, 4.7, 5.0)
@@ -430,8 +433,8 @@ class pTkrTrendPlotter:
                 f = fitTrend(g, 260810033,
                              draw = ((tower, plane) in sampleLayers))
                 if (tower, plane) in sampleLayers:
-                    for (timestamp, text) in TOT_SCALE_DICT.items():
-                        drawMarker(timestamp, 4, 5.6, text)
+                    for (timestamp, text) in TOT_CHANGE_DICT.items():
+                        drawMarker(timestamp, 4, totDict[timestamp], text)
                     c.Update()
                     saveCanvas(c)
                 mean  = f.Eval(0.5*(MIN_TIME + MAX_TIME))
