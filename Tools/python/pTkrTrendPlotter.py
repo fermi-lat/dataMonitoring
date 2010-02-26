@@ -137,7 +137,7 @@ def fitTrend(g, minTime = MIN_TIME, maxTime = MAX_TIME,
     if 'hit_eff' in gName:
         try:
             proj = (0.98 - intercept)/slope
-            proj = sec2string(met2utc(proj))
+            proj = sec2string(met2utc(proj), '%d-%b-%Y %H:%M:%S')
             print 'Tower will intercept 0.98 at %s' % proj
         except:
             pass
@@ -398,6 +398,8 @@ class pTkrTrendPlotter:
         drawSIUReboot(4, 6, 6.05)
         drawTitle('LAT average')
         f = fitTrend(gLAT, 260810033)
+        for (timestamp, text) in TOT_SCALE_DICT.items():
+            drawMarker(timestamp, 4, 5.6, text)
         c.Update()
         saveCanvas(c)
         hMean = ROOT.TH1F('h_tot_peak_mean', 'h_tot_peak_mean', 50, 4.7, 5.0)
@@ -428,6 +430,8 @@ class pTkrTrendPlotter:
                 f = fitTrend(g, 260810033,
                              draw = ((tower, plane) in sampleLayers))
                 if (tower, plane) in sampleLayers:
+                    for (timestamp, text) in TOT_SCALE_DICT.items():
+                        drawMarker(timestamp, 4, 5.6, text)
                     c.Update()
                     saveCanvas(c)
                 mean  = f.Eval(0.5*(MIN_TIME + MAX_TIME))
