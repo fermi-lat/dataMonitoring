@@ -4,6 +4,11 @@
  *
  *                  EOH
 
+- Condition on the min number of entries for Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn
+and Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn changed from 200 to 500
+(a typical value for a normal run being ~5000).
+
+
  AlarmsCfg-05-23-06 19-Feb-2010 lbaldini Minor changes.
 - Lower warning limit changed from 0.85 to 0.80 for the two merit trend quantities
 OutF_NormRateEvtsBeforeCutsWithFswGAMMAFilter and OutF_NormRateEvtsBeforeFilters.
