@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-23-07 05-Mar-2010 lbaldini Improved protection against low statistics.
 - Condition on the min number of entries for Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn
 and Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn changed from 200 to 500
 (a typical value for a normal run being ~5000).
