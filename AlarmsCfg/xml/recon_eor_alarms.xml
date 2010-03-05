@@ -39,7 +39,7 @@
 
     <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_*_*_*" exclude="[846]" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
-	<condition name="min_entries" value="200"/>
+	<condition name="min_entries" value="500"/>
 	<parameter name="window_half_width" value="12"/>
 	<parameter name="threshold" value="15"/>
 	<parameter name="start_x" value="0.5"/>
@@ -50,7 +50,7 @@
 
     <alarmSet name="Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_*_*_*" exclude="[13410, 428]" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
-	<condition name="min_entries" value="200"/>
+	<condition name="min_entries" value="500"/>
 	<parameter name="window_half_width" value="12"/>
 	<parameter name="threshold" value="15"/>
 	<parameter name="start_x" value="0.5"/>
