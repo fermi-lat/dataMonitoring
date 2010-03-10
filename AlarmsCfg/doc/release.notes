@@ -4,6 +4,11 @@
  *
  *                  EOH
 
+- High warning limit for merit trend OutF_NormRateSourceEvts and OutF_NormRate
+DiffuseEvts changed from 1.5 to 1.65.
+* Relevant Jira(s): GDQMQ-341
+
+
  AlarmsCfg-05-23-07 05-Mar-2010 lbaldini Improved protection against low statistics.
 - Condition on the min number of entries for Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn
 and Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn changed from 200 to 500
