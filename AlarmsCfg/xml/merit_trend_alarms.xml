@@ -59,7 +59,7 @@
     </alarmSet>
     <alarmSet name="Time::OutF_NormRateDiffuseEvts" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits max="1.65"/>
+	<warning_limits max="1.75"/>
 	<error_limits   max="5.00"/>
       </alarm> 
     </alarmSet>
@@ -93,7 +93,7 @@
     </alarmSet>
     <alarmSet name="Time::OutF_NormRateMeritTriggerEngine" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.80" max="1.15"/>
+	<warning_limits min="0.75" max="1.15"/>
 	<error_limits   min="0.50" max="2.00"/>
 	<parameter name="only" value="[7]"/>
       </alarm> 
