@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-24-02 11-Mar-2010  pesce Some changes on the limits for the normalized rates.
 -Wanring limit for merit trend OutF_NormRateSourceEvts changed from 1.65 to 1.75.
 *Relevant Jira: GDQMQ-341
 
