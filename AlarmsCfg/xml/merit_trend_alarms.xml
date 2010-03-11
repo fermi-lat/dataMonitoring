@@ -53,7 +53,7 @@
     </alarmSet>
     <alarmSet name="Time::OutF_NormRateSourceEvts" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits max="1.65"/>
+	<warning_limits max="1.75"/>
 	<error_limits   max="5.00"/>
       </alarm> 
     </alarmSet>
