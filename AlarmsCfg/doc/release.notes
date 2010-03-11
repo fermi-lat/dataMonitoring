@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+-Wanring limit for merit trend OutF_NormRateSourceEvts changed from 1.65 to 1.75.
+*Relevant Jira: GDQMQ-341
+
+
  AlarmsCfg-05-24-01 10-Mar-2010  pesce Some changes on the limits for the normalized rates.
 -Warning limit for merit trend OutF_NormRateMeritTriggerEngine (trigger engine 7) changed
 from 0.80 to 0.75 and warning limit for merit trend OutF_NormRateDiffuseEvts changed
