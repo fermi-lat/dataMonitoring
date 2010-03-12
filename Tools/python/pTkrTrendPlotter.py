@@ -38,11 +38,11 @@ STRIP_MASK_DICT   = {LAUNCH_DATE  : (0, 203, 'Pre-flight'),
                      '23/Jan/2010': (2 , 331, 'OBCONF-120'),
                      '23/Feb/2010': (2 , 333, 'OBCONF-121')
                      }
-STRIP_MASK_DICT_0 = {LAUNCH_DATE  : (0 , 22 , 'Pre-flight'),
-                     '18/Aug/2008': (9 , 31 , 'OBCONF-66' ),
-                     '28/Oct/2008': (52, 83 , 'OBCONF-86' ),
-                     '2009/33'    : (29, 112, 'OBCONF-97' ),
-                     '28/Apr/2009': (3 , 115, 'OBCONF-105')
+STRIP_MASK_DICT_0 = {LAUNCH_DATE  : (0 , 18 , 'Pre-flight'),
+                     '18/Aug/2008': (9 , 27 , 'OBCONF-66' ),
+                     '28/Oct/2008': (52, 79 , 'OBCONF-86' ),
+                     '2009/33'    : (29, 108, 'OBCONF-97' ),
+                     '28/Apr/2009': (3 , 111, 'OBCONF-105')
                      }
 
 # There was a bug in the tkr monitoring code that screwed up the
@@ -147,7 +147,7 @@ def fitTrend(g, minTime = MIN_TIME, maxTime = MAX_TIME,
         slope    *= (100*SECS_PER_YEAR)
         slopeErr *= (100*SECS_PER_YEAR)
         line1 = 'Average hit efficiency = (%.2f #pm %.2f) %%' % (mean, meanErr)
-        line2 = 'Slope = (%s%.3f #pm %.3f) %% year^{-1}' %\
+        line2 = 'Slope = (%s%.4f #pm %.4f) %% year^{-1}' %\
                 ('+'*(slope > 0), slope, slopeErr)
     elif 'trg_eff' in gName:
         mean     *= 100

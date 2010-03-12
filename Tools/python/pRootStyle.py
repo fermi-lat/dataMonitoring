@@ -31,7 +31,7 @@ TICK_LENGTH_Y = 0.015
 
 # Style settings.
 TITLE_OFFSET_X = 1.0
-TITLE_OFFSET_Y = 0.6
+TITLE_OFFSET_Y = 0.9
 
 TITLE_OFFSET_X_DOUBLE = 3.0
 TITLE_OFFSET_Y_DOUBLE = 1.2
@@ -77,3 +77,19 @@ def saveCanvas(canvas, epsFilePath = None):
     epsFilePath = epsFilePath or '%s.eps' % canvas.GetName()
     canvas.SaveAs(epsFilePath)
     os.system('epstopdf %s' % epsFilePath)
+
+def getLegend(entryList, x0, y1 = 0.9, width = 0.4, style = 'l',
+              vshrink = 1.0, autocolor = True):
+    height = vshrink*0.08*len(entryList)
+    legend = ROOT.TLegend(x0, y1 - height, x0 + width, y1)
+    legend.SetFillStyle(0)
+    legend.SetLineStyle(0)
+    legend.SetLineWidth(0)
+    legend.SetBorderSize(0)
+    legend.SetTextSize(TEXT_SIZE)
+    for (plot, label) in entryList:
+        if autocolor:
+            label = '#color[%d]{%s}' % (plot.GetLineColor(), label)
+        legend.AddEntry(plot, label, style)
+    store(legend)
+    return legend
