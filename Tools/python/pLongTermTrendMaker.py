@@ -141,15 +141,15 @@ class pACDPEDSANALYZERAnalyzer(pBaseFileAnalyzer):
 
 
 if __name__ == '__main__':
-    MIN_START_TIME = utc2met(convert2sec('Sep/05/2008 00:00:00'))
+    MIN_START_TIME = utc2met(convert2sec('Apr/01/2010 00:00:00'))
     MAX_START_TIME = None
     analyzer1 = pACDPEDSANALYZERAnalyzer('ACDPEDSANALYZER.txt',
-                                        'ACDPEDSANALYZER.root',
-                                        MIN_START_TIME,
-                                        MAX_START_TIME)
+                                         'ACDPEDSANALYZER.root',
+                                         MIN_START_TIME,
+                                         MAX_START_TIME)
     analyzer1.run()
     analyzer2 = pRECONHISTALARMDISTAnalyzer('RECONHISTALARMDIST.txt',
-                                           'RECONHISTALARMDIST.root',
-                                           MIN_START_TIME,
-                                           MAX_START_TIME)
+                                            'RECONHISTALARMDIST.root',
+                                            MIN_START_TIME,
+                                            MAX_START_TIME)
     analyzer2.run()
