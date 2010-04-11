@@ -55,8 +55,8 @@ class pLongTermTrendPlotter:
             self.Graph.SetPoint(point, timestamp, deviation)
             self.Graph.SetPointError(point, 0.0, 0.0)
             point += 1
-        self.drawGraph('Tile %d ped. mean deviation (ADC counts)' % tileNumber,
-                       ymin, ymax)
+        self.drawGraph('#splitline{Pedestal mean deviation (ADC counts)}{Tile %d, PMT %s}' %\
+                       (tileNumber, PMT), ymin, ymax)
         self.LastVarName = 'AcdPedDeviation'
         return self.Graph    
 
