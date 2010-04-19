@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-24-06 19-Apr-2010  pesce Some changes to the limits on Digi and FastMon Tick20MHzDeviation_TH1 and DigiTrend Mean_Tick20MHzDeviation
 -Warning rates for Digi and FastMon Tick20MHzDeviation_TH1 and DigiTrend Mean_Tick20MHzDeviation changed from -192.0 to -195.0.
 
  AlarmsCfg-05-24-05 19-Apr-2010  pesce Some changes to the limits on the normalized rates
