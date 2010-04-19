@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+-Warning limit for merit trend OutF_NormRateSourceEvts from 1.75 to 1.95, OutF_NormRateDiffuseEvts from 1.85 to 1.95 and OutF_NormRateTransientEvts from 1.55 to
+1.55
+*Relevant Jira: GDQMQ-341
+
  AlarmsCfg-05-24-04 14-Mar-2010  pesce Some changes on the limits for the normalized rates.
 -Warning limit for merit trend OutF_NormRateEvtsBeforeFilters changed from 1.15 to 1.17 and
 for OutF_NormRateDiffuseEvts changed from 1.75 to 1.85.
