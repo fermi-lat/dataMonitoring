@@ -4,6 +4,8 @@
  *
  *                  EOH
 
+-Warning limit for Digi and FastMon Tick20MHzDeviation_TH1 and DigiTrend Mean_Tick20MHzDeviation changed from -192 to -196.
+
  AlarmsCfg-05-25-00 23-Apr-2010  pesce Some changes on the limits for Digi and FastMon Tick20MHzDeviation_TH1 and DigiTrend Mean_Tick20MHzDeviation.
 -Returned to old alarm limits values for Digi and FastMon Tick20MHzDeviation_TH1 and DigiTrend Mean_Tick20MHzDeviation quantities (i.e from -195.0 to -192.0). 
 
