@@ -4,6 +4,9 @@
  *
  *                  EOH
 
+-Raised the limit value for the quantities CalXAdcPedRMS_LEX8 and 
+CalXAdcPedRMS_LEX1 for cal channel 1685.
+
  AlarmsCfg-05-26-00 23-May-2010  pesce Some changes on the limits for the Tick20MHzDeviation (FastMon and Digi) and Digi_Trend_Mean_Tick20MHzDeviation
 -Warning limit for Digi and FastMon Tick20MHzDeviation_TH1 and DigiTrend Mean_Tick20MHzDeviation changed from -192 to -196.
 
