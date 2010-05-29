@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-26-01 29-May-2010  pesce Raised the limit for CalXAdcPedRMS_LEX8 and CalXAdcPedRMS_LEX1 for cal channel 1865.
 -Raised the limit value for the quantities CalXAdcPedRMS_LEX8 and 
 CalXAdcPedRMS_LEX1 for cal channel 1685.
 
