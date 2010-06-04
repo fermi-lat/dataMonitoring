@@ -599,7 +599,7 @@ class pTkrTrendPlotter:
 
 if __name__ == '__main__':
     print LAUNCH_TIME
-    p = pTkrTrendPlotter('/data/work/datamon/runs/tkrtrend/tkrtrend.root')
+    p = pTkrTrendPlotter('/data43/work/datamon/runs/tkrtrend/tkrtrend.root')
     p.plotHitEfficiency()
     p.plotTrigEfficiency()
     p.plotTOTPeak()
