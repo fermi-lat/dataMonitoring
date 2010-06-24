@@ -1,3 +1,9 @@
+*** v5r2p0 ***
+- All the y-values alarms on digi and fastmon eor updated to the new trigger
+window width (14 ticks instead of 12).
+- Limits relaxed on some of the timing quantities in digi and fastmon eor.
+
+
 *** v5r1p0 ***
 - Channel 1983 added as an exception on the the LEX1 and LEX8 pedestal rms
 values (cal_eor).
