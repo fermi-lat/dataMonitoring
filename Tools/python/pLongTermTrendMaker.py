@@ -77,9 +77,13 @@ class pBaseFileAnalyzer:
             print 'Analyzing %s...' % filePath
             fileName = os.path.basename(filePath)
             self.Arrays['RunId'][0] = int(fileName.split('_')[0].strip('r'))
+            print 'Opening file...'
             self.InputFile = ROOT.TXNetFile(filePath)
+            print 'Grabbing the numbers...'
             self.analyze()
+            print 'Filling the tree...'
             self.OutputTree.Fill()
+            print 'Closing the file...'
             self.InputFile.Close()
         self.OutputFile.cd()
         self.OutputTree.Write()
@@ -151,7 +155,7 @@ class pCALPEDSANALYZERAnalyzer(pBaseFileAnalyzer):
                          }
         self.LabelList = self.PlotDict.keys()
         self.LabelList.sort()
-        self.QuantityList = ['chan%d' % tile for chan in range(3072)]
+        self.QuantityList = ['chan%d' % chan for chan in range(3072)]
         pBaseFileAnalyzer.__init__(self, fileListPath, outputFilePath,
                                    'CALPEDSANALYZER', minStartTime,
                                    maxStartTime)
