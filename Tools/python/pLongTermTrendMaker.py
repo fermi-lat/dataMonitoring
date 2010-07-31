@@ -140,16 +140,45 @@ class pACDPEDSANALYZERAnalyzer(pBaseFileAnalyzer):
                                     plot.GetBinContent(tile + 1)
 
 
+class pCALPEDSANALYZERAnalyzer(pBaseFileAnalyzer):
+
+    def __init__(self, fileListPath, outputFilePath, minStartTime,
+                 maxStartTime = None):
+        self.PlotDict = {'PedRmsLEX1': 'CalXAdcPedRMS_LEX1_TH1',
+                         'PedRmsLEX8': 'CalXAdcPedRMS_LEX8_TH1',
+                         'PedRmsHEX1': 'CalXAdcPedRMS_HEX1_TH1',
+                         'PedRmsHEX8': 'CalXAdcPedRMS_HEX8_TH1'
+                         }
+        self.LabelList = self.PlotDict.keys()
+        self.LabelList.sort()
+        self.QuantityList = ['chan%d' % tile for chan in range(3072)]
+        pBaseFileAnalyzer.__init__(self, fileListPath, outputFilePath,
+                                   'CALPEDSANALYZER', minStartTime,
+                                   maxStartTime)
+
+    def analyze(self):
+        for label in self.LabelList:
+            plot = self.InputFile.Get(self.PlotDict[label])
+            for (chan, quantity) in enumerate(self.QuantityList):
+                self.Arrays['%s_%s' % (label, quantity)][0] =\
+                                    plot.GetBinContent(chan + 1)
+
+
 if __name__ == '__main__':
-    MIN_START_TIME = utc2met(convert2sec('Apr/01/2010 00:00:00'))
+    MIN_START_TIME = utc2met(convert2sec('Jul/20/2010 00:00:00'))
     MAX_START_TIME = None
-    analyzer1 = pACDPEDSANALYZERAnalyzer('ACDPEDSANALYZER.txt',
-                                         'ACDPEDSANALYZER.root',
+    #analyzer1 = pACDPEDSANALYZERAnalyzer('ACDPEDSANALYZER.txt',
+    #                                     'ACDPEDSANALYZER.root',
+    #                                     MIN_START_TIME,
+    #                                     MAX_START_TIME)
+    #analyzer1.run()
+    #analyzer2 = pRECONHISTALARMDISTAnalyzer('RECONHISTALARMDIST.txt',
+    #                                        'RECONHISTALARMDIST.root',
+    #                                        MIN_START_TIME,
+    #                                        MAX_START_TIME)
+    #analyzer2.run()
+    analyzer3 = pCALPEDSANALYZERAnalyzer('CALPEDSANALYZER.txt',
+                                         'CALPEDSANALYZER.root',
                                          MIN_START_TIME,
                                          MAX_START_TIME)
-    analyzer1.run()
-    analyzer2 = pRECONHISTALARMDISTAnalyzer('RECONHISTALARMDIST.txt',
-                                            'RECONHISTALARMDIST.root',
-                                            MIN_START_TIME,
-                                            MAX_START_TIME)
-    analyzer2.run()
+    analyzer3.run()
