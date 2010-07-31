@@ -10,5 +10,12 @@
   <alarm name="Mean_ToT_con0_Trunc_1_249_TowerPlane" algorithm="values">
     <exception identifier="(10, 0)" status_on_violation="error"/>
   </alarm>
+  <!--
+  Added by Melissa Pesce-Rollins, Jul 31, 2010.
+  Noisy strip.
+  -->
+ <alarm name="OutF_Normalized_ToT_250_TowerPlane" algorithm="values">
+    <exception identifier="(15, 32)" status_on_violation="clean"/>
+  </alarm>
 
 </alarm_exceptions>
