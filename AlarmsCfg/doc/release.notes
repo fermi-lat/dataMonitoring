@@ -4,6 +4,8 @@
  *
  *                  EOH
 
+-New limit for the quantities CalXAdcPedRMS_LEX8 and CalXAdcPedRMS_LEX1 for cal channel 824, masked plane 32 of tower 15 for the quantity OutF_Normalized_ToT_250_TowerPlane and masked channel 412 for cal log in tower 4, layer 2, column4  for the quantities RPp_Mean_TH1 and RPp_RMS_TH1 due to the blow out of the HE diode.
+
  AlarmsCfg-05-26-01 29-May-2010  pesce Raised the limit for CalXAdcPedRMS_LEX8 and CalXAdcPedRMS_LEX1 for cal channel 1865.
 -Raised the limit value for the quantities CalXAdcPedRMS_LEX8 and 
 CalXAdcPedRMS_LEX1 for cal channel 1685.
