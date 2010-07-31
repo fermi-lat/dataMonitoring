@@ -60,6 +60,25 @@ class pLongTermTrendPlotter:
         self.LastVarName = 'AcdPedDeviation'
         return self.Graph    
 
+    def drawCalPedRms(self, chan, rrange, ymin = None, ymax = None):
+        if self.Canvas is None:
+            self.createCanvas()
+        print 'Drawing CAL ped...'
+        varName = 'PedRms%s_chan%d' % (rrange, chan)
+        self.Graph = ROOT.TGraphErrors(self.NumEntries)
+        point = 0
+        for i in xrange(self.NumEntries):
+            self.RootTree.GetEntry(i)
+            timestamp = float(self.RootTree.RunId)
+            deviation = eval('self.RootTree.%s' % varName)
+            self.Graph.SetPoint(point, timestamp, deviation)
+            self.Graph.SetPointError(point, 0.0, 0.0)
+            point += 1
+        self.drawGraph('Cal Ped rms (chan %s, range %s)' %\
+                           (chan, rrange), ymin, ymax)
+        self.LastVarName = 'CalPedRms'
+        return self.Graph    
+
     def drawMipPeak(self, ymin = None, ymax = None, rebin = 15):
         if self.Canvas is None:
             self.createCanvas()
@@ -197,8 +216,12 @@ if __name__ == '__main__':
     optparser = pOptionParser('', 1, 1, False)
     filePath = optparser.Argument
     plotter = pLongTermTrendPlotter(filePath)
+    for rrange in ['LEX1', 'LEX8', 'HEX1', 'HEX8']:
+        plotter.drawCalPedRms(824, rrange)
+        plotter.save('CalPedRms_chan824_%s.png' % rrange)
+    #plotter.draw('PedRmsHEX8_chan824')
     #plotter.drawAcdPedDeviation('A', 98)
-    plotter.drawMipPeak(0.8, 1.4, 1)
+    #plotter.drawMipPeak(0.8, 1.4, 1)
     #plotter.save()
     #raw_input('Press enter to continue...')
     #plotter.drawLacThreshold(1.8, 2.2, 15)
