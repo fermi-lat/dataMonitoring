@@ -1,6 +1,7 @@
 
 import math
 import array
+import os
 
 from pSafeROOT         import ROOT
 from pMeritTrendMerger import VARIABLE_DICT
@@ -223,7 +224,21 @@ class pMeritTrendProcessor:
 
 
 if __name__ == '__main__':
-    p = pMeritTrendProcessor('normrates/merit_norm.root')
+    from optparse import OptionParser
+    parser = OptionParser(usage = 'usage: %prog [options] rootFilePath')
+    (opts, args) = parser.parse_args()
+    if len(args) != 1:
+        parser.print_help()
+        parser.error('Exactly one argument required.')
+    rootFilePath = args[0]
+    if not rootFilePath.endswith('.root'):
+        parser.print_help()
+        parser.error('Please give an input root file.')
+    p = pMeritTrendProcessor(rootFilePath)
     p.drawRateHists()
-    p.writeRootFile('normrates/merit_norm_proc.root')
-    p.writeConfigFile('normrates/FactorsToNormRates_noEarthLimb.txt')
+    outputRootFilePath = rootFilePath.replace('.root', '_proc.root')
+    outputFolder = os.path.dirname(rootFilePath)
+    outputTextFilePath = os.path.join(outputFolder,
+                                      'FactorsToNormRates_noEarthLimb.txt')
+    p.writeRootFile(outputRootFilePath)
+    p.writeConfigFile(outputTextFilePath)

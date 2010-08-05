@@ -3,7 +3,10 @@ from pMeritTrendProcessor import *
 
 
 NOT_ROCK_ANGLE_CUT = '!(%s)' % ROCK_ANGLE_CUT
-FIT_FORMULA  = 'pol3'
+FIT_FORMULA     = '[0] + [1]*(x>[3])*(x-[3]) + [2]*(x>[3])*(x-[3])**2'
+MIN_ROCK_ANGLE  = 0
+LIMB_ROCK_ANGLE = 35
+MAX_ROCK_ANGLE  = 95
 
 
 class pMeritTrendPostProcessor(pMeritTrendProcessor):
@@ -43,34 +46,41 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
         params = self.FitParamDict[gName]
         errors = self.FitErrorDict[gName]
         numPars = len(params)
-        text = '\nEarthLimbCorr : %d' % numPars
+        text = '\nEarthLimbCorr (%s): %d' % (FIT_FORMULA, numPars)
         for i in range(numPars):
             text += '\np%d :  %.4e+/-%.4e' % (i, params[i], errors[i])
         return text
 
     def drawGraph(self, varName, index = None, interactive = True):
         if index is None:
-            self.RootTree.Draw('%s:Mean_PtSCzenith' % varName,
-                               NOT_ROCK_ANGLE_CUT)
+            expr = '%s:Mean_PtSCzenith' % varName
             gName = self.getGraphName(varName)
         else:
-            self.RootTree.Draw('%s[%d]:Mean_PtSCzenith' % (varName, index),
-                               NOT_ROCK_ANGLE_CUT)
+            expr = '%s[%d]:Mean_PtSCzenith' % (varName, index)
             gName = self.getGraphName(varName, index)
+        self.RootTree.Draw(expr, NOT_ROCK_ANGLE_CUT)
         g = self.GraphCanvas.GetPrimitive('Graph')
         g.SetName(gName)
         g.SetMarkerStyle(26)
         g.SetMarkerSize(0.3)
+        h = ROOT.TH2D('h', 'h', 50, MIN_ROCK_ANGLE, MAX_ROCK_ANGLE, 500, 0, 20)
+        self.RootTree.Project('h', expr, NOT_ROCK_ANGLE_CUT)
+        p = h.ProfileX()
+        p.SetLineColor(ROOT.kBlue)
+        p.SetLineWidth(2)
+        p.Draw('same')
         fName = self.getFuncName(varName, index)
-        f = ROOT.TF1(fName, FIT_FORMULA, 0, 105)
+        f = ROOT.TF1(fName, FIT_FORMULA, MIN_ROCK_ANGLE, MAX_ROCK_ANGLE)
+        f.FixParameter(3, LIMB_ROCK_ANGLE)
         f.SetLineColor(ROOT.kRed)
         numFitPars = f.GetNpar()
         self.FitFuncDict[fName] = f
-        g.Fit(fName, 'Q')
+        p.Fit(fName, 'QRN')
+        f.Draw('same')
         # If the value at 50 degree rocking is too far from 1, disengage the
         # correction, i.e. set all parameters to zero except for the constant
         # term (which is set to one).
-        if abs(f.Eval(50) - 1.0) > 0.1:
+        if abs(f.Eval(50) - 1.0) > 0.5:
             print 'Disengaging correction for the Earth limb in the FOV.'
             for i in range(numFitPars):
                 f.SetParameter(i, 0.0)
@@ -128,7 +138,24 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
 
 
 if __name__ == '__main__':
-    p = pMeritTrendPostProcessor('normrates/merit_norm_proc.root')
-    p.process(interactive = False)
-    p.writeRootFile('normrates/merit_norm_postproc.root')
-    p.writeConfigFile('normrates/FactorsToNormRates_EarthLimb.txt')
+    from optparse import OptionParser
+    parser = OptionParser(usage = 'usage: %prog [options] rootFilePath')
+    parser.add_option('-i', '--interactive', dest = 'i',
+                      default = False, action = 'store_true',
+                      help = 'run interactively')
+    (opts, args) = parser.parse_args()
+    if len(args) != 1:
+        parser.print_help()
+        parser.error('Exactly one argument required.')
+    rootFilePath = args[0]
+    if not rootFilePath.endswith('_proc.root'):
+        parser.print_help()
+        parser.error('Please give a processed input root file.')
+    p = pMeritTrendPostProcessor(rootFilePath)
+    p.process(interactive = opts.i)
+    outputRootFilePath = rootFilePath.replace('_proc.root', '_postproc.root')
+    outputFolder = os.path.dirname(rootFilePath)
+    outputTextFilePath = os.path.join(outputFolder,
+                                      'FactorsToNormRates_EarthLimb.txt')
+    p.writeRootFile(outputRootFilePath)
+    p.writeConfigFile(outputTextFilePath)
