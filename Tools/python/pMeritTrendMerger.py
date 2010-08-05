@@ -117,5 +117,5 @@ class pMeritTrendMerger:
         
 if __name__ == '__main__':
     merger = pMeritTrendMerger('merit_norm_filelist.txt', 'merit_norm.root',
-                               'Jan/15/2010 00:00:00', 56)
+                               'Aug/04/2010 00:00:00', 56)
     merger.run()
