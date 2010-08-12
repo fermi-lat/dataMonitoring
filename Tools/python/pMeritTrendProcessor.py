@@ -50,6 +50,7 @@ class pMeritTrendProcessor:
                                        NUM_BINS_L, MIN_L, MAX_L)
         self.RootTree.Project('McIlwainL', 'Mean_PtMcIlwainL', ROCK_ANGLE_CUT)
         self.RateHistDict = {}
+        self.LimbFuncDict = {}
         self.SlopeGraphDict = {}
         self.process()
 
@@ -103,8 +104,8 @@ class pMeritTrendProcessor:
         self.InputArrayDict  = {}
         self.OutputArrayDict = {}
         for (name, (length, type)) in VARIABLE_DICT.items():
-            self.InputArrayDict[name] = array.array(type.lower(), [0.]*length)
-            self.OutputArrayDict[name] = array.array(type.lower(), [0.]*length)
+            self.InputArrayDict[name] = array.array(type.lower(), [0]*length)
+            self.OutputArrayDict[name] = array.array(type.lower(), [0]*length)
             suffix = '/%s' % type
             if length > 1:
                 suffix = '[%d]%s' % (length, type)
@@ -148,6 +149,8 @@ class pMeritTrendProcessor:
         print 'Writing histograms...'
         for h in self.RateHistDict.values():
             h.Write()
+        for f in self.LimbFuncDict.values():
+            f.Write()
         outputFile.Close()
         print 'Done.'
 
