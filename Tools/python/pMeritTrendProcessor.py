@@ -49,8 +49,9 @@ class pMeritTrendProcessor:
         self.McIlwainLHist = ROOT.TH1F('McIlwainL', 'McIlwainL',
                                        NUM_BINS_L, MIN_L, MAX_L)
         self.RootTree.Project('McIlwainL', 'Mean_PtMcIlwainL', ROCK_ANGLE_CUT)
-        self.RateHistDict = {}
-        self.LimbFuncDict = {}
+        self.RateHistDict   = {}
+        self.LimbFuncDict   = {}
+        self.LonFuncDict    = {}
         self.SlopeGraphDict = {}
         self.process()
 
@@ -151,10 +152,12 @@ class pMeritTrendProcessor:
             h.Write()
         for f in self.LimbFuncDict.values():
             f.Write()
+        for f in self.LonFuncDict.values():
+            f.Write()
         outputFile.Close()
         print 'Done.'
 
-    def getEarthLimbCorrection(self, varName, index = None):
+    def getFullCorrection(self, varName, index = None):
         return ''
 
     def formatNumber(self, number, numDecPlaces):
@@ -190,7 +193,7 @@ class pMeritTrendProcessor:
         compVarName = '%s%s' % (varName, ('[%s]' % index)*(index is not None))
         text = VARIABLE_PREAMBLE %\
                (compVarName, status, yMeanText, yMeanRmsText,
-                self.getEarthLimbCorrection(varName, index))
+                self.getFullCorrection(varName, index))
         for i in range(1, numBins + 1):
             loEdge = h.GetBinLowEdge(i)
             hiEdge = loEdge + h.GetBinWidth(i)

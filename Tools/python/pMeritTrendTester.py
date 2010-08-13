@@ -52,7 +52,8 @@ class pMeritTrendTester(pMeritTrendPostProcessor):
         print 'Calculating the new normalization factors...'
         unnormBranchName = 'Rate_%s' % branchName
         hRate = self.NormRootFile.Get('h%s' % unnormBranchName)
-        fLimb = self.NormRootFile.Get('fit_g%s' % unnormBranchName)
+        fLimb = self.NormRootFile.Get('fLimb_gLimb%s' % unnormBranchName)
+        fLon = self.NormRootFile.Get('fLon_gLon%s' % unnormBranchName)
         self.NewGraph = ROOT.TGraphErrors()
         self.NewGraph.SetMarkerStyle(23)
         for i in xrange(self.NumEntries):
@@ -71,6 +72,11 @@ class pMeritTrendTester(pMeritTrendPostProcessor):
             # Correct for rocking angle
             rockAngle = self.MeritTrendTree.Mean_PtSCzenith
             norm = fLimb.Eval(rockAngle)
+            value /= norm
+            error /= norm
+            # Correct for the longitude modulation
+            longitude = self.MeritTrendTree.Mean_PtLon
+            norm = fLon.Eval(longitude)
             value /= norm
             error /= norm
             if value > THRESHOLD:
@@ -93,9 +99,9 @@ class pMeritTrendTester(pMeritTrendPostProcessor):
 
 if __name__ == '__main__':
     t = pMeritTrendTester(
-        #'/data/work/datamon/runs/normrates/r0303054436_merittrend.root',
+        '/data/work/datamon/runs/normrates/r0303054436_merittrend.root',
         #'/data/work/datamon/runs/normrates/r0302951541_merittrend.root',
-        '/data/work/datamon/runs/normrates/r0303123354_merittrend.root',
+        #'/data/work/datamon/runs/normrates/r0303123354_merittrend.root',
         'normrates_v2/merit_norm_postproc.root')
     for branchName in BRANCH_LIST:
         t.draw(branchName)
