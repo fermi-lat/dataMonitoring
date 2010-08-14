@@ -8,6 +8,7 @@ BRANCH_LIST = ['EvtsBeforeCuts',
 
 TIME_EXP = '0.5*(Bin_Start + Bin_End)'
 THRESHOLD = 2.5
+TIME_FORMAT = '%b %d 20%y %H:%M%F2001-01-01 00:00:00'
 
 
 class pMeritTrendTester(pMeritTrendPostProcessor):
@@ -45,6 +46,11 @@ class pMeritTrendTester(pMeritTrendPostProcessor):
         else:
             self.OrigCanvas.cd()
             self.OrigCanvas.Clear()
+        self.OrigGraph.GetXaxis().SetNdivisions(503)
+        self.OrigGraph.GetXaxis().SetTimeDisplay(True)
+        self.OrigGraph.GetXaxis().SetTimeFormat(TIME_FORMAT)
+        self.OrigGraph.GetXaxis().SetTitle('Time (UTC)')
+        self.OrigGraph.GetYaxis().SetTitle('Normalized rate (%s)' % branchName)
         self.OrigGraph.Draw('ap')
         self.OrigCanvas.Update()
         print 'Done.'
@@ -90,6 +96,11 @@ class pMeritTrendTester(pMeritTrendPostProcessor):
         else:
             self.NewCanvas.cd()
             self.NewCanvas.Clear()
+        self.NewGraph.GetXaxis().SetNdivisions(503)
+        self.NewGraph.GetXaxis().SetTimeDisplay(True)
+        self.NewGraph.GetXaxis().SetTimeFormat(TIME_FORMAT)
+        self.NewGraph.GetXaxis().SetTitle('Time (UTC)')
+        self.NewGraph.GetYaxis().SetTitle('Normalized rate for %s' % branchName)
         self.NewGraph.Draw('ap')
         self.NewCanvas.Update()
         print 'Done.'
