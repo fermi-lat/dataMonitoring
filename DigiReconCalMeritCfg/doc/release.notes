@@ -4,6 +4,9 @@
  *
  *                  EOH
 
+- Added a memo on the normalization of the on-orbit rates in the doc folder.
+
+
  DigiReconCalMeritCfg-01-09-00 18-Jan-2010 lbaldini New normalization constants (including correction for the Earth limb).
 - Added two new configuration files with the new normalization factors for the
 merit trending:
