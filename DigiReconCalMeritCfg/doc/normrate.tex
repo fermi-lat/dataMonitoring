@@ -220,6 +220,80 @@ is consistent with unity to 10\% and the dip is much less prominent.
 
 All the code needed in order to generate the configuration files for the
 rate normalization lives in the cvs area \texttt{dataMonitoring/Tools/python}.
+The structure of the code reflects the process through which it was implemented
+and therefore the generation of the files involves several steps.
+
+Setting the environment should be fairly easy, as the code does not
+really depend on any other package than \texttt{dataMonitoring/Common}.
+Assuming that one has checked out the entire \texttt{dataMonitoring} package,
+the only requirement is to make sure that the \texttt{PYTHONPATH} environment
+variable includes the folder \texttt{dataMonitoring/Common/python}.
+
+\subsection{Merging the trending files}
+
+The first step is the generation of the root file in which the
+\texttt{MERITTREND} datamonitoring products for the desired time span
+are merged together. This is accomplished by running the\\
+\texttt{\small pMeritTrendMerger.py}\\
+script on a SLAC machine (i. e. a machine having access to the Fermi
+xrootd area).
+
+Right now the script does not accept command line arguments (it might get
+better in the future) so one has to edit by hand the final lines of the
+script to change the end of the time span (and, optionally, the length of the
+time span itself, which is 56 days by default). The script produce two output
+files:
+\begin{itemize}
+  \item \texttt{merit\_norm\_filelist.txt} containing the list of files used
+    for the merging process;
+  \item \texttt{merit\_norm.root} containing the actual root tree to be used
+    for further processing.
+\end{itemize}
+If you have already a \texttt{merit\_norm\_filelist.txt} in the working
+directory make sure you delete it before you run the script (otherwise it will
+be reused). The \texttt{merit\_norm.root} file is the file you have to copy over
+locally (if you wish) to produce the text configuration files.
+
+\subsection{Processing the file}
+
+The next step is the processing of the merged root file. As mentioned before,
+this does not involve any xrootd access and can be done locally:\\
+\texttt{> python pMeritTrendProcessor merit\_norm.root}
+
+\noindent This will create, again, two files:
+\begin{itemize}
+  \item \texttt{FactorsToNormRates\_noEarthLimb.txt}, a text configuration
+    files that can be used in the L1Proc, containing the normalization
+    factors for the McIlwain L correction;
+  \item \texttt{merit\_norm\_proc.root}, a root file containing all the
+    McIlwain L histograms and the full merged tree, processed and normalized
+    for the McIlwain L correction.
+\end{itemize}
+
+The file \texttt{FactorsToNormRates\_noEarthLimb.txt} should be copied
+to\\
+\texttt{dataMonitoring/DigiReconCalMeritCfg}\\
+and committed in that cvs area.
+
+\subsection{Post-processing the file}
+
+The final step is the correction for the Earth limb and the geographic
+longitude:\\
+\texttt{> python pMeritTrendPostProcessor merit\_norm\_proc.root}
+
+The two files created are:
+\begin{itemize}
+  \item \texttt{FactorsToNormRates\_EarthLimb.txt}, the full text configuration
+    files---including all the corrections;
+  \item \texttt{merit\_norm\_postproc.root}, a root file containing all the
+    McIlwain L histograms, all the correction functions and the full merged
+    tree, processed and normalized for McIlwain L, Earth limb and longitude.
+\end{itemize}
+
+The file \texttt{FactorsToNormRates\_EarthLimb.txt} is ready be copied
+to\\
+\texttt{dataMonitoring/DigiReconCalMeritCfg}\\
+and committed/tagged.
 
 
 \end{document}
