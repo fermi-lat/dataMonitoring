@@ -13,7 +13,7 @@
 \abstract{This is a short memo on the basic strategy we use to normalize the
 on-orbit LAT rates (with several different cuts applied) for the purpose of the
 data monitoring and the alarm system. The original implementation of the
-necessary code was put in place by David Paneque shorlty after the launch.
+necessary code was put in place by David Paneque shortly after the launch.
 When we changed the rocking angle from $35^\circ$ to $50^\circ$ I made the
 necessary modifications to take into account the rate variations due to the
 change of the Earth limb arc length into the instrument field of view
@@ -80,7 +80,7 @@ The first (and most prominent) correction is the one taking into account
 the McIlwain L geomagnetic parameter.
 
 The starting point is a root tree in which the merit trending product for a
-long time span (tipically 56 days) are merged together (details on how to
+long time span (typically 56 days) are merged together (details on how to
 produce such a tree will be given in the next sections).
 \begin{figure}[htb!]
   \begin{center}
@@ -94,7 +94,7 @@ produce such a tree will be given in the next sections).
 \end{figure}
 An histogram of the \texttt{Mean\_PtMcIlwainL} variable
 is created requiring that the rocking zenith angle $\theta_r$ is close
-(tipically within $0.2^\circ$) to $50^\circ$. The for each rate variable 
+(typically within $0.2^\circ$) to $50^\circ$. For each rate variable 
 another histogram is made (with the same cut) and the latter is divided by the
 first one. The procedure (the result is shown in figure \ref{mcIlwainL} for
 two different selections) is equivalent to the calculation of the average rate 
@@ -106,24 +106,25 @@ rocking angle) in each McIlwain L bin (for historical reasons the information
 in the output text file is stored in the form of a global average value and
 the relative bin-to-bin corrections, but this is substantially irrelevant).
 The basic idea is that this first step takes care of the geomagnetic
-dependence at the tipical rocking angle and the additional variations are
+dependence at the typical rocking angle and the additional variations are
 taken care of in successive steps.
 
 \section{The Earth limb in the FOV}
 
-Next comes the normalization for the Earth limb in the field ov view. In the
+Next comes the normalization for the Earth limb in the field of view. In the
 original implementation the dependence of the various rates on the rocking
 angle (for $\theta_r \neq 50^\circ$) was fitted (with no additional cut) with
-a polinomial of third degree.
+a polynomial of third degree.
 The choice of the fitting function was, retrospectively, a bad choice, as
-in general the best fit featured a concavity in the regin
+in general the best fit featured a concavity in the region
 $0^\circ \leq \theta_r \leq 40^\circ$, where the Earth limb is outside the
 field of view and therefore the event rates should be approximately constant.
 Another issue was due to the fact that for the low-background event classes
-(most notably the diffuse class) the absolute average rate is low---tipically
-of the order of $\approx 0.2$~Hz when the limb is outside the field of view.
+(most notably the diffuse class) the absolute average rate is low---typically
+of the order of $\approx 0.2$~Hz when the Earth limb is outside the field of
+view.
 As a consequence the number of counts in a 15~s time bin is also low
-($\approx 3$) and the corresponding Poisson fluctuaction (especially toward
+($\approx 3$) and the corresponding Poisson fluctuations (especially toward
 high values) can be noticeable.
 
 The new implementation constitutes an attempt to overcome this limitation. The
@@ -135,14 +136,14 @@ functional form of the new fitting function is:
     c_0 + c_1 \theta_r + c_2 \theta_r^2 & \theta_r > 35^\circ
   \end{cases}
 \end{equation}
-i. e. it is a constant when the limb is outside the field of view with the
-addition of a second order polinomial to parametrize the effect of the limb
-itself. On top of that, a cut of the normalized rate (i. e. rate normalized
-for the McIlwain L) is performed before the fit, requiring that the rate itelf
+i. e. it is a constant when the Earth limb is outside the field of view with the
+addition of a second order polynomial to parametrize the effect of the Earth
+limb itself. On top of that, a cut of the normalized rate (i. e. rate normalized
+for the McIlwain L) is performed before the fit, requiring that the rate itself
 is greater than 0.3 (adjustable). This has small or no effect for most of the
 event classes and constitutes a rough but effective way to artificially
 increase the average for the low-rate classes (i. e. diffuse and source) and
-suppress the effect of the Poisson fluctuactions toward high values.
+suppress the effect of the Poisson fluctuations toward high values.
 
 An example of such a fit (for the diffuse selection, which at this stage is the
 most critical one) is presented in figure \ref{DiffuseEvts_zenith}.
@@ -186,7 +187,7 @@ feature the highest correlation with the geographic longitude
   \begin{center}
     \includegraphics[width=\linewidth]{figures/EvtsBeforeCuts_lon}
     \caption{Dependence of the normalized rate of events before the cuts
-      on the geographics longitude.}
+      on the geographic longitude.}
     \label{EvtsBeforeCuts_lon}
   \end{center}
 \end{figure}
