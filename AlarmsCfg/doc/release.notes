@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+- CAL channel 848 masked in the calpeds alarms on CalXAdcPedRMS_LEX8_TH1
+(y_average and y_values).
+
+
  AlarmsCfg-05-26-02 31-Jul-2010  pesce Several changes due to dead HE diode in tower 4, layer 2, column 4 as well as maked strip in tower 15 plane 32.
 -New limit for the quantities CalXAdcPedRMS_LEX8 and CalXAdcPedRMS_LEX1 for cal channel 824, masked plane 32 of tower 15 for the quantity OutF_Normalized_ToT_250_TowerPlane and masked channel 412 for cal log in tower 4, layer 2, column4  for the quantities RPp_Mean_TH1 and RPp_RMS_TH1 due to the blow out of the HE diode.
 

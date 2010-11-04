@@ -127,18 +127,19 @@
 	<warning_limits min="4.5" max="10.0"/>
 	<error_limits   min="4.0" max="15.0"/>
         <condition name="min_entries" value="750000"/>
-        <parameter name="exclude" value="[1983+1,2414+1, 1160+1,1685+1,824+1]"/>
+        <parameter name="exclude" value="[1983+1,2414+1, 1160+1,1685+1,824+1,848+1]"/>
       </alarm>
       <alarm function="y_values" enabled="True">
 	<warning_limits min="4.5" max="30.0"/>
 	<error_limits   min="4.0" max="30.0"/>
         <condition name="min_entries" value="750000"/>
-        <parameter name="only" value="[1983+1, 2414+1, 1160+1,1685+1,824+1]"/>
+        <parameter name="only" value="[1983+1, 2414+1, 1160+1,1685+1,824+1,848+1]"/>
       </alarm>
       <alarm function="y_average" enabled="True">
 	<warning_limits min="5.0" max="5.5"/>
 	<error_limits   min="4.0" max="7.0"/>
         <condition name="min_entries" value="750000"/>
+        <parameter name="exclude" value="[1983+1,2414+1, 1160+1,1685+1,824+1,848+1]"/>
       </alarm>
     </alarmSet>
 
