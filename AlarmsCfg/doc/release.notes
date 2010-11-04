@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-26-03 04-Nov-2010 lbaldini CAL channel 848 masked off to a few alarms
 - CAL channel 848 masked in the calpeds alarms on CalXAdcPedRMS_LEX8_TH1
 (y_average and y_values).
 
