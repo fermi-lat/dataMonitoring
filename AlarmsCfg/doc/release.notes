@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-27-00 05-Nov-2010  pesce Masked off Tracker GTFE 5 plane 35 of tower 3.
 
 -Masked Tracker GTFE 5 plane 35 of tower 3 for the quantities Number_layerOcc_TowerPlane (algorithm values) and TkrHitsCounter_PlaneGTFE_TH2_Tower_3 (algorithm spikes and holes).
 
