@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 
 <alarm_exceptions>
-
-</alarm_exceptions>
+  <alarm name="Number_layerOcc_TowerPlane" algorithm="values">
+    <exception identifier="(3, 35)" status_on_violation="error"/>
+  </alarm>
+ </alarm_exceptions>
