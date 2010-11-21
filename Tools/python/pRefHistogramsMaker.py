@@ -13,8 +13,8 @@ if __name__ == '__main__':
     if not os.path.exists(OUTPUT_DIR_PATH):
         print 'Creating folder %s' % OUTPUT_DIR_PATH
         os.makedirs(OUTPUT_DIR_PATH)
-    MIN_START_DATE = 'Dec/01/2009 00:00:00'
-    MAX_START_DATE = 'Dec/06/2009 23:59:59'
+    MIN_START_DATE = 'Mar/01/2010 00:00:00'
+    MAX_START_DATE = 'Mar/08/2010 00:00:00'
     MIN_START_TIME = utc2met(convert2sec(MIN_START_DATE))
     MAX_START_TIME = utc2met(convert2sec(MAX_START_DATE))
     MIN_RUN_DURATION = 1000
@@ -29,7 +29,7 @@ if __name__ == '__main__':
         fileList = file(filePath, 'r').readlines()
         rootFilePath = '%s_reference.root' % group
         rootFilePath = os.path.join(OUTPUT_DIR_PATH, rootFilePath)
-        cmd = 'hadd  %s' % rootFilePath
+        cmd = 'hadd -T %s' % rootFilePath
         for filePath in fileList:
             cmd += ' %s' % filePath.strip('\n')
         print 'Executing command "%s"...' % cmd
