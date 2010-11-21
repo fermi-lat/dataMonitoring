@@ -68,7 +68,10 @@ class pBaseFileAnalyzer:
         self.OutputTree.Branch('RunId', self.Arrays['RunId'], 'RunId/I')
         for label in self.LabelList:
             for quantity in self.QuantityList:
-                key = '%s_%s' % (label, quantity)
+                if quantity == '':
+                    key = label
+                else:
+                    key = '%s_%s' % (label, quantity)
                 self.Arrays[key] = array.array('d', [0.0])
                 self.OutputTree.Branch(key, self.Arrays[key], '%s/D' % key)
 
