@@ -18,7 +18,8 @@ DEFAULT_SORT = 'nRun'
 class pDataCatalogQuery:
 
     def __init__(self, group, minStartTime, maxStartTime = None,
-                 minDuration = 1000, intent = 'nomSciOps_diagEna',
+                 minDuration = 1000,
+                 intents = ['nomSciOps', 'nomSciOps_diagEna'],
                  site = DEFAULT_SITE):
         self.Command = BASE_PATH
         self.Command += ' %s' % BASE_COMMAND
@@ -27,7 +28,14 @@ class pDataCatalogQuery:
         self.Command += ' --sort %s' % DEFAULT_SORT
         self.Command += ' --filter '
         self.Command += "'"
-        self.Command += 'sIntent=="%s"' % intent
+        if len(intents) == 1:
+            self.Command += 'sIntent=="%s"' % intents[0]
+        elif len(intents) > 1:
+            self.Command += '('
+            for intent in intents[:-1]:
+                self.Command += 'sIntent=="%s" || ' % intent
+            self.Command += 'sIntent=="%s"' % intents[-1]
+            self.Command += ')'
         self.Command += ' && nMetStart>%s' % minStartTime
         if maxStartTime is not None:
             self.Command += ' && nMetStart<%s' % maxStartTime
@@ -174,6 +182,11 @@ class pCALPEDSANALYZERAnalyzer(pBaseFileAnalyzer):
 if __name__ == '__main__':
     MIN_START_TIME = utc2met(convert2sec('Jul/20/2010 00:00:00'))
     MAX_START_TIME = None
+    q = pDataCatalogQuery('ACDPEDSANALYZER', MIN_START_TIME)
+    print q.Command
+    q = pDataCatalogQuery('ACDPEDSANALYZER', MIN_START_TIME,
+                          intents = ['nomSciOps'])
+    print q.Command
     #analyzer1 = pACDPEDSANALYZERAnalyzer('ACDPEDSANALYZER.txt',
     #                                     'ACDPEDSANALYZER.root',
     #                                     MIN_START_TIME,
@@ -184,8 +197,8 @@ if __name__ == '__main__':
     #                                        MIN_START_TIME,
     #                                        MAX_START_TIME)
     #analyzer2.run()
-    analyzer3 = pCALPEDSANALYZERAnalyzer('CALPEDSANALYZER.txt',
-                                         'CALPEDSANALYZER.root',
-                                         MIN_START_TIME,
-                                         MAX_START_TIME)
-    analyzer3.run()
+    #analyzer3 = pCALPEDSANALYZERAnalyzer('CALPEDSANALYZER.txt',
+    #                                     'CALPEDSANALYZER.root',
+    #                                     MIN_START_TIME,
+    #                                     MAX_START_TIME)
+    #analyzer3.run()
