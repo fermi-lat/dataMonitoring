@@ -4,9 +4,11 @@
  *
  *                  EOH
 
- AlarmsCfg-05-27-00 05-Nov-2010  pesce Masked off Tracker GTFE 5 plane 35 of tower 3.
+- Condition on minimum number of entries for the alarms on recon eor quantities Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn and Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn (lefmost_edge) changed from 500 to 750.
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/5453.html
 
--Masked Tracker GTFE 5 plane 35 of tower 3 for the quantities Number_layerOcc_TowerPlane (algorithm values) and TkrHitsCounter_PlaneGTFE_TH2_Tower_3 (algorithm spikes and holes).
+ AlarmsCfg-05-27-00 05-Nov-2010  pesce Masked off Tracker GTFE 5 plane 35 of tower 3.
+- Masked Tracker GTFE 5 plane 35 of tower 3 for the quantities Number_layerOcc_TowerPlane (algorithm values) and TkrHitsCounter_PlaneGTFE_TH2_Tower_3 (algorithm spikes and holes).
 
  AlarmsCfg-05-26-03 04-Nov-2010 lbaldini CAL channel 848 masked off to a few alarms
 - CAL channel 848 masked in the calpeds alarms on CalXAdcPedRMS_LEX8_TH1
