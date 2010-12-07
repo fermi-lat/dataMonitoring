@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+- Exceptions for the fastMon eor quantity TkrHitsCounter_PlaneGTFE_TH2_Tower_3 (spikes_and_holes) changed. From now on we'll happily ignore any warning/error from GTFEs 4 and 5 of the infamous noisy ladder in tower 3, plane 35.
 - Condition on minimum number of entries for the alarms on recon eor quantities Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn and Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn (lefmost_edge) changed from 500 to 750.
 * Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/5453.html
 
