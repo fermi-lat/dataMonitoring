@@ -14,4 +14,8 @@
     <exception identifier="412"  status_on_violation="clean"/>
   </alarm>
 
+  <alarm name="RPp_GainMeanDifference_TH1" algorithm="y_values">
+    <exception identifier="412"  status_on_violation="clean"/>
+  </alarm>
+
 </alarm_exceptions>
