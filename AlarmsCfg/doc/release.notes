@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-28-00 04-Jan-2011  pesce Added exception on quantity RPp_GainMeanDifference_TH1 for cal channel 412
 
 -Exception on quantity RPp_GainMeanDifference_TH1 for cal channel 412 due to
 the dead HE diode for tower 4, layer 2 column 4.
