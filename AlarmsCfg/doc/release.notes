@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+
+-Exception on quantity RPp_GainMeanDifference_TH1 for cal channel 412 due to
+the dead HE diode for tower 4, layer 2 column 4.
+
  AlarmsCfg-05-27-02 10-Dec-2010 lbaldini One more exception for the fastmon eor for the noisy ladder in tower 3, plane 35.
 - Exceptions for the fastMon eor quantity TkrHitsCounter_PlaneGTFE_TH2_Tower_3 (spikes_and_holes) changed. From now on we'll happily ignore any warning/error from GTFEs 0 of the infamous noisy ladder in tower 3, plane 35.
 
