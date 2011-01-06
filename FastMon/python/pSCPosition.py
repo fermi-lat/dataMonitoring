@@ -14,7 +14,12 @@
 import time
 import math
 import bisect
-from pSafeROOT import ROOT
+import numpy
+
+import pTETEUtils
+
+from pSafeROOT   import ROOT
+from pSAAPolygon import pVertex
 
 #Earth Flattening Coeff.
 EARTH_FLAT      = 1/298.25 
@@ -39,7 +44,8 @@ class pSCPosition:
     #  The space craft attitude quaternion, as a 4D vector (x, y, z, w) in the ECI J2000 frame
     #
 
-    def __init__(self, time,yearfloat = None, position=None, quaternion=None, orbmode=None, orbinsaa=None):
+    def __init__(self, time,yearfloat = None, position=None, quaternion=None, orbmode=None, orbinsaa=None,
+                 saaPolygon = None):
        ## @var YearFloat
        ## @brief A float representing the Year and Month of the data
        
@@ -126,6 +132,7 @@ class pSCPosition:
        self.Quaternion = quaternion
        self.OrbMode    = orbmode
        self.OrbInSAA   = orbinsaa
+       self.SAAPolygon = saaPolygon
        self.XaxisVector = None
        self.YaxisVector = None
        self.ZaxisVector = None
@@ -388,48 +395,33 @@ class pSCPosition:
 	    self.processCoordinates()
 	return self.ArcAngleEarthLimb
 
-    ## @brief Returns the Julian date for a given mission elapsed time 
+    ## @brief Returns the Julian date for a given Gregorian date
     ## @param self
     #  The class instance is actually not used in this stand alone function
-    ## @param An
-    #  The year
-    ## @param Me
-    #  The month
-    ## @param Gio
-    #  The day
-    ## @param met
-    #  The mission elapsed time in seconds
-    
-    def getJulianDate(self, An, Me, Gio, met):
-        """Calculate Julian Date of 0.0 Jan year
-	   convert from MET to JD
-	   Changed Trunc to math.floor
-	"""
-        if Me>2 :
-	    pass
-        else:
-	    An = An - 1
-            Me = Me + 12
-
-        A = An/100.
-        B = 2 - A + A/4.
-        C = 365.25 * An 
-        if An < 0:
-	    C = C - 1
-        D = int(30.6001 * (Me + 1))
-        m_JD = B + C + D + Gio + 1720994.5 + float(met) / SECONDS_PER_DAY
-        return m_JD
-
-    ## @brief Returns the Julian Date since start of the mission
-    ## @param self
-    #  The class instance is actually not used in this stand alone function
-    ## @param met
-    #  The mission elapsed time in seconds
-    def getGLASTDate(self, met):
-        """
-	   Changed Trunc to math.floor
-	"""
-	return self.getJulianDate(2001,1,1,met)
+    ## @param Year
+    #  The year : K is the year (1801 <= K <= 2099)
+    ## @param Month
+    #  The month :  M is the month (1 <= M <= 12)
+    ## @param Day 
+    #  The day : I is the day of the month (1 <= I <= 31)
+    ## @param UT
+    #  UT is the universal time in hours
+    def getJulianDate(self, Year, Month, Day, UT):
+    	"""Conversion of Gregorian calendar date to Julian date for years AD 1801-2099
+    	   Ref is at http://aa.usno.navy.mil/faq/docs/JD_Formula.php
+    	   Changed Trunc to math.floor
+    	   Checked that getJulianDate(1877,8,11,7.5) = 2406841.8125 as in ref above
+           <> is replaced with math.floor()
+	   Validated on July 16th 2009
+	   Note that the Julian date here is not corrected for the leap second
+	   and takes UT (not UTC) as argument - different from the astro package JulianDate class
+    	"""
+    	K=Year
+    	M=Month
+    	I=Day
+    	JD = 367*K - math.floor( (7*(K+ math.floor((M+9)/12.) ) )/4. ) + math.floor((275*M)/9.) + I + 1721013.5 + UT/24.
+    	# Removed - 0.5*sign(100K+M-190002.5) + 0.5  as it is 0 after 1900 February 28
+    	return JD
 
     ## @brief Returns the Julian Date for the mission start date : 1 Jan 2001 00:00
     ## @param self
@@ -437,9 +429,20 @@ class pSCPosition:
     #
     ## the GLAST official mission start is : 1 Jan 2001 00:00
     #
-    ##  Should return 2451910.5, currently returning 2451910.9
+    ##  Should return 2451910.5, currently returning 2451910.5
     def getMissionStart(self):
-        return self.getGLASTDate(0)
+        return self.getJulianDate(2001,1,1,0)
+	
+    ## @brief Returns the Julian Date for a given MET
+    ## @param self
+    #  The class instance is actually not used in this stand alone function
+    ## @param met
+    #  The mission elapsed time in seconds
+    def getJulianDateFromMET(self, met):
+        """ Convert from MET to Julian date
+        """
+        MET_in_JD = self.getMissionStart() + float(met) / SECONDS_PER_DAY
+	return MET_in_JD
 
     ## @brief Returns the Julian Date for the J2000 reference.
     ## @param self
@@ -449,11 +452,15 @@ class pSCPosition:
 
     ## @brief Returns the Greenwich Meridian Sideral Time for a given Julian Date
     #  Routine was checked against astro package code, Jun 13th 2008 JB
+    #  Corrected for the leap second
     ## @param self
     #  The class instance is actually not used in this stand alone function
     ## @param jd
     #  A Julian Date
-    def getGMSTime(self, jd):
+    def getGMSTime(self, jd):	
+	#To fix the leap seconds and UT1 offset
+	jd -= 1.764810/86400.
+	
 	# integer part - Not Used
 	M=math.modf(jd-0.5)[1] 
 	# fractional part
@@ -462,7 +469,8 @@ class pSCPosition:
 	jd-=Ora_Un_Dec/24.
 	
      	T = (jd - self.getJ2000()) / 36525.
-     	T1 = (24110.54841 + 8640184.812866 * T + 0.0093103 * T * T)/86400.0
+        
+     	T1 = (24110.54841 + 8640184.812866*T + 0.093104*T*T - 0.0000062*T*T*T)/86400.0
      	
 	Tempo_Siderale_0 = math.modf(T1)[0] * 24.
         # integer part - Not Used
@@ -497,6 +505,16 @@ class pSCPosition:
  	x = self.Position[0]
 	y = self.Position[1]
 	z = self.Position[2]
+
+        # This is absolutely brilliant! We start with a list coverted to three numbers,
+        # create a numpy matrix for the multiplication with the rotation matrix, go back to
+        # three numbers and then convert them into a ROOT.TVector3 object to transform into
+        # polar coordinates.
+        # Talking about code optimization...
+        R = pTETEUtils.getJ2000toTETEMatrix(self.JulianDate)
+        v = numpy.matrix([[x], [y], [z]], 'd')
+        v = R*v
+        (x, y, z) = (v[0, 0], v[1, 0], v[2, 0])
 
         # use ROOT TVector3 to avoid dumb errors
         v3 = ROOT.TVector3(x, y, z)
@@ -638,13 +656,20 @@ class pSCPosition:
     def getZaxisPointing(self):        
         return self.getAxisRaDec(self.ZaxisVector)
 
+    def getDistanceToSAA(self):
+        if self.SAAPolygon is None:
+            return -9999
+        else:
+            vertex = pVertex(self.getLongitude(), self.getLatitude())
+            return self.SAAPolygon.getDistanceToBorder(vertex)
+
     ## @brief Call processing of the earth coordinates
     ## @param self
     #  The class instance.
     def processCoordinates(self):
 	self.setAllAxisVectors()
 	self.setRockAngle()
-        self.JulianDate = self.getGLASTDate(self.MetInSeconds)
+        self.JulianDate = self.getJulianDateFromMET(self.MetInSeconds)
         self.GMSTime    = self.getGMSTime(self.JulianDate)
         self.EarthCoordinates = self.getEarthCoordinate()
         self.Latitude         = self.EarthCoordinates[0]
