@@ -1,0 +1,4 @@
+10 0 * * * /afs/slac.stanford.edu/g/glast/ground/releases/volume03/Report/python/cronjobTrending.csh
+10 1 * * * /afs/slac.stanford.edu/g/glast/ground/releases/volume03/Report/python/cronjobTelemetry.csh
+10 8 * * * /afs/slac.stanford.edu/g/glast/ground/releases/volume03/Report/python/cronjobDaily.csh
+10 9 * * * /afs/slac.stanford.edu/g/glast/ground/releases/volume03/Report/python/cronjobWeekly.csh
