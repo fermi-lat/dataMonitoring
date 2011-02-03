@@ -59,10 +59,14 @@ if not status:
     cpCmd = '''
     cp %(fpath)s %(fullName)s 
     ''' % locals()
+    rmCmd = '''
+    rm %(fpath)s 
+    ''' % locals()
     cpStatus = runner.run(cpCmd)
     if not cpStatus:
         registerPrep.prep(fullName, shortName, tStart, tStop)
+        rmStatus = runner.run(rmCmd)
         pass
     pass
     
-sys.exit(status or cpStatus)
+sys.exit(status or cpStatus or rmStatus)

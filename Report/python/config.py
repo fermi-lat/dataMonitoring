@@ -8,7 +8,7 @@ import os
 import sys
 
 taskName = "launchReport"
-taskVersion = "1.5"
+taskVersion = "1.7"
 ReportMainDir = '/afs/slac.stanford.edu/g/glast/ground/releases/volume03/Report'
 
 doCleanup = True
@@ -54,7 +54,7 @@ reportXml = os.path.join(ReportMainDir, 'xml')
 
 dataCatBase = '/SRep/'
 reportOutBase = '/nfs/slac/g/glast/ground/links/Documentation' 
-reportTempBase = '/afs/slac.stanford.edu/g/glast/ground/PipelineStaging6'
+reportTempBase = ReportMainDir
 
 # Used to distinguish our variable names from the hoi polloi
 nameManglingPrefix = 'SR'
