@@ -35,7 +35,7 @@ tStop = utc2met(endTimeMs/1000.)
 tStart = tStop-float(duration)*3600 + padSeconds
 
 configFile = os.path.join(config.reportXml,config.reportConfigFile[reportType])
-tempDir = os.path.join(config.reportTempBase,'Report')
+tempDir = os.path.join(config.reportOutBase,'TempReports')
 
 outDir = os.path.join(config.reportOutBase,config.reportOutType[reportType])
 shiftYear = '%s' %(shiftYear)
@@ -59,14 +59,10 @@ if not status:
     cpCmd = '''
     cp %(fpath)s %(fullName)s 
     ''' % locals()
-    rmCmd = '''
-    rm %(fpath)s 
-    ''' % locals()
     cpStatus = runner.run(cpCmd)
     if not cpStatus:
         registerPrep.prep(fullName, shortName, tStart, tStop)
-        rmStatus = runner.run(rmCmd)
         pass
     pass
     
-sys.exit(status or cpStatus or rmStatus)
+sys.exit(status or cpStatus)

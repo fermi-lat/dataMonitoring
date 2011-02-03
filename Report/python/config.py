@@ -54,7 +54,6 @@ reportXml = os.path.join(ReportMainDir, 'xml')
 
 dataCatBase = '/SRep/'
 reportOutBase = '/nfs/slac/g/glast/ground/links/Documentation' 
-reportTempBase = ReportMainDir
 
 # Used to distinguish our variable names from the hoi polloi
 nameManglingPrefix = 'SR'
