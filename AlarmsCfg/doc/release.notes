@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+
+- Protect Tick20MHzDeviation_TH1 against low stats for both FastMon and Digi EOR
+- Fine tune lower limit on CondArrROI_TKROpensWindow_TH1 for both FastMon and Digi EOR
+
  AlarmsCfg-05-28-00 04-Jan-2011  pesce Added exception on quantity RPp_GainMeanDifference_TH1 for cal channel 412
 
 -Exception on quantity RPp_GainMeanDifference_TH1 for cal channel 412 due to

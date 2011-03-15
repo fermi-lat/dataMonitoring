@@ -17,10 +17,12 @@
       <alarm function="x_average" enabled="True">
 	<warning_limits min="-196.0" max="-176.0"/>
 	<error_limits min="-200.0" max="-168.0"/>
+        <condition name="min_entries" value="300"/>	
       </alarm>
       <alarm function="x_rms" enabled="True">
 	<warning_limits min="0.0" max="2.0"/>
 	<error_limits min="0.0" max="3.5"/>
+        <condition name="min_entries" value="300"/>	
       </alarm>
     </alarmSet>
 
@@ -281,7 +283,7 @@
         <condition name="min_entries" value="10000"/>	
       </alarm> 
       <alarm function="x_rms" enabled="True">
-	<warning_limits min="4." max="6.0"/>
+	<warning_limits min="3.9" max="6.0"/>
 	<error_limits min="3.0" max="7.0"/>
         <condition name="min_entries" value="10000"/>	
       </alarm> 
