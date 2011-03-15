@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-05-28-01 15-Mar-2011 bregeon Fine tuning
 
 - Protect Tick20MHzDeviation_TH1 against low stats for both FastMon and Digi EOR
 - Fine tune lower limit on CondArrROI_TKROpensWindow_TH1 for both FastMon and Digi EOR
