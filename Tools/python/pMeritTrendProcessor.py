@@ -15,8 +15,11 @@ MIN_VALID_BINS_L = 1
 VARIABLE_LIST = ['Rate_EvtsBeforeCuts',
                  'Rate_EvtsBeforeCutsWithGAMMAFilter',
                  'Rate_TransientEvts',
+                 'Rate_TransientEvtsBelowZenithTheta100',
                  'Rate_DiffuseEvts',
+                 'Rate_DiffuseEvtsBelowZenithTheta100',
                  'Rate_SourceEvts',
+                 'Rate_SourceEvtsBelowZenithTheta100',
                  'CounterDiffRate_EvtsBeforeFilters',
                  'Rate_MeritTriggerEngine',
                  'Rate_GAMMAFilterAndTriggerEngine']

@@ -59,7 +59,8 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
         params = self.LimbParamDict[gName]
         errors = self.LimbErrorDict[gName]
         numPars = len(params)
-        text = '\nEarthLimbCorr (%s): %d' % (LIMB_FIT_FORMULA, numPars)
+        text = '\nEarthLimbCorr : %d\nFunction : %s' %\
+            (numPars, LIMB_FIT_FORMULA)
         for i in range(numPars):
             text += '\np%d :  %.4e+/-%.4e' % (i, params[i], errors[i])
         return text
@@ -69,7 +70,8 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
         params = self.LonParamDict[gName]
         errors = self.LonErrorDict[gName]
         numPars = len(params)
-        text = '\nLongitudeCorr (%s): %d' % (LON_FIT_FORMULA, numPars)
+        text = '\nLongitudeCorr : %d\nFunction : %s' %\
+            (numPars, LON_FIT_FORMULA)
         for i in range(numPars):
             text += '\np%d :  %.4e+/-%.4e' % (i, params[i], errors[i])
         return text
