@@ -9,10 +9,16 @@ VARIABLE_DICT = {'Rate_EvtsBeforeCuts': (1, 'F'),
                  'Rate_EvtsBeforeCutsWithGAMMAFilter_err': (1, 'F'),
                  'Rate_TransientEvts': (1, 'F'),
                  'Rate_TransientEvts_err': (1, 'F'),
+                 'Rate_TransientEvtsBelowZenithTheta100': (1, 'F'),
+                 'Rate_TransientEvtsBelowZenithTheta100_err': (1, 'F'),
                  'Rate_DiffuseEvts': (1, 'F'),
                  'Rate_DiffuseEvts_err': (1, 'F'),
+                 'Rate_DiffuseEvtsBelowZenithTheta100': (1, 'F'),
+                 'Rate_DiffuseEvtsBelowZenithTheta100_err': (1, 'F'),
                  'Rate_SourceEvts': (1, 'F'),
                  'Rate_SourceEvts_err': (1, 'F'),
+                 'Rate_SourceEvtsBelowZenithTheta100': (1, 'F'),
+                 'Rate_SourceEvtsBelowZenithTheta100_err': (1, 'F'),
                  'CounterDiffRate_EvtsBeforeFilters': (1, 'F'),
                  'CounterDiffRate_EvtsBeforeFilters_err': (1, 'F'),
                  'Rate_MeritTriggerEngine': (16, 'F'),
@@ -44,7 +50,7 @@ class pMeritTrendMerger:
             maxStartTime = utc2met(convert2sec(maxStartDate))
             minStartTime = maxStartTime - daysSpanned*24*3600
             minRunDuration = 1000
-            runIntent = 'nomSciOps_diagEna'
+            runIntent = ['nomSciOps_diagEna', 'nomSciOps']
             query = pDataCatalogQuery('MERITTREND', minStartTime, maxStartTime,
                                       minRunDuration, runIntent)
             query.dumpList(fileListPath)
@@ -117,5 +123,5 @@ class pMeritTrendMerger:
         
 if __name__ == '__main__':
     merger = pMeritTrendMerger('merit_norm_filelist.txt', 'merit_norm.root',
-                               'Aug/04/2010 00:00:00', 56)
+                               'Jan/10/2011 00:00:00', 56)
     merger.run()
