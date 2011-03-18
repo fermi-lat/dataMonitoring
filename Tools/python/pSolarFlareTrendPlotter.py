@@ -65,8 +65,8 @@ class pFlareInterval:
 class pSolarFlarePlotter:
 
     def __init__(self, filePath):
-        self.RootFile = ROOT.TFile(filePath)
-        self.RootTree = self.RootFile.Get('Time')
+        self.RootTree = ROOT.TChain('Time')
+        self.RootTree.Add(filePath)
         for (key, value) in ALIAS_DICT.items():
             self.RootTree.SetAlias(key, value)
         if os.path.exists(PICKLE_FILE_NAME):
@@ -307,6 +307,6 @@ class pSolarFlarePlotter:
 
 
 if __name__ == '__main__':
-    filePath = '/data/work/datamon/solartrend/solarflare_trend.root'
+    filePath = '/data/work/datamon/solartrend/solarflare_trend*.root'
     plotter = pSolarFlarePlotter(filePath)
     plotter.createReport('bad_time_intervals.ps')
