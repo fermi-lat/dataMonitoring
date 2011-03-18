@@ -4,6 +4,12 @@
  *
  *                  EOH
 
+- New normalization factors with new fitting function for the Earth limb 
+correction and new correction for the geographic longitude.
+- Added Mean_PtLon to all the relevant lines in monconfig_merit_trending.xml (longitude correction for the
+normalized rates). Requires the new svac/Monitoring code.
+- New normalized quantities to study solar flares
+
  DigiReconCalMeritCfg-01-04-06 18-Jan-2010 bregeon Handling earth limb correction in normalized rates
 - Added two new configuration files with the new normalization factors for the
 merit trending:
