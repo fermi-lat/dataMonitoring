@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-04-07 22-Mar-2011 bregeon Update and add new normalized quantities, take longitude into account
 - New normalization factors with new fitting function for the Earth limb 
 correction and new correction for the geographic longitude.
 - Added Mean_PtLon to all the relevant lines in monconfig_merit_trending.xml (longitude correction for the
