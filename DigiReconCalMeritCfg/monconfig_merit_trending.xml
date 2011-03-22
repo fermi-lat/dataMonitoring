@@ -499,6 +499,23 @@
       <description> Rate of events after application of TRANSIENT gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 100. </description>
     </object>
 
+        <object>
+      <name> NormRateTransientEvtsBelowZenithTheta100 </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon,Rate_TransientEvtsBelowZenithTheta100, Rate_TransientEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of transient events with FT1ZenithTheta smaller than 100. The Normalization is done according to the value of PtMcIlwainL </description>
+    </object>
+
+	  <object>
+      <name> NormRateTransientEvtsBelowZenithTheta100_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon,Rate_TransientEvtsBelowZenithTheta100, Rate_TransientEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in normalized Rate of transient events with FT1ZenithTheta smaller than 100. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
 
           <object>
       <name> TransientEvtsBelowZenithTheta60_E100MeV </name>
@@ -533,6 +550,24 @@
       <description> Rate of events after application of DIFFUSE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 100. </description>
     </object>
 
+        <object>
+      <name> NormRateDiffuseEvtsBelowZenithTheta100 </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_DiffuseEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon,Rate_DiffuseEvtsBelowZenithTheta100, Rate_DiffuseEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of Diffuse events with FT1ZenithTheta smaller than 100. The Normalization is done according to the value of PtMcIlwainL </description>
+    </object>
+
+	  <object>
+      <name> NormRateDiffuseEvtsBelowZenithTheta100_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_DiffuseEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon,Rate_DiffuseEvtsBelowZenithTheta100, Rate_DiffuseEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in normalized Rate of Diffuse events with FT1ZenithTheta smaller than 100. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
        <object>
       <name> DiffuseEvtsBelowZenithTheta60_E100MeV  </name>
       <formula><![CDATA[ 1 ]]></formula>
@@ -565,6 +600,25 @@
       <type> rate </type>
       <description> Rate of events after application of SOURCE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 100. </description>
     </object>
+
+        <object>
+      <name> NormRateSourceEvtsBelowZenithTheta100 </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon,Rate_SourceEvtsBelowZenithTheta100, Rate_SourceEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of Source events with FT1ZenithTheta smaller than 100. The Normalization is done according to the value of PtMcIlwainL, PtLon and PtZenithAngle. </description>
+    </object>
+
+	  <object>
+      <name> NormRateSourceEvtsBelowZenithTheta100_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon,Rate_SourceEvtsBelowZenithTheta100, Rate_SourceEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in normalized Rate of Source events with FT1ZenithTheta smaller than 100. The Normalization is done according to the value of PtMcIlwainL.</description>
+    </object>
+
 
          <object>
       <name> SourceEvtsBelowZenithTheta60_E100MeV  </name>
