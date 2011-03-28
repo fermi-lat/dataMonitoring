@@ -41,6 +41,7 @@ BAD_TIME_END   = 0.98 # []    the fraction of the int. loss defining the BTI end
 BAD_TIME_PAD   = 0.0  # [s]   additional padding to the BTI
 MIN_INT_LOSS   = 1.0  # [min] the minimum integrated loss for defining a BTI
 MIN_DIFF_LOSS  = 0.15 # []    the minimum fractional loss for defining a BTI
+ACD_TILE_THRES = 1.6  # []    the threshold on Eric's normalized tile count
 
 
 
@@ -223,6 +224,53 @@ class pSolarFlarePlotter:
         g22 = self.drawStripChart('NormAcdTileCount', tmin, tmax,
                                   'Normalized ACD tile count', 0, 8,
                                   tree = self.DigiTree)
+        l = ROOT.TLine(tmin,  ACD_TILE_THRES, tmax,  ACD_TILE_THRES)
+        l.SetLineColor(ROOT.kBlue)
+        l.SetLineWidth(2)
+        l.SetLineStyle(7)
+        self.Pool.append(l)
+        l.Draw()
+        x = ROOT.Double()
+        y = ROOT.Double()
+        inFlare = False
+        minEric = None
+        maxEric = None
+        for i in range(g22.GetN()):
+            g22.GetPoint(i, x, y)
+            if not inFlare and y > ACD_TILE_THRES:
+                minEric = float(x)
+                inFlare = True
+            if inFlare and y < ACD_TILE_THRES:
+                maxEric = float(x)
+                break
+        if minEric is not None and maxEric is not None:
+            print minEric, maxEric
+            l1 = ROOT.TLine(minEric, 0, minEric, 2)
+            l1.SetLineColor(ROOT.kRed)
+            l1.SetLineWidth(2)
+            l1.SetLineStyle(7)
+            self.Pool.append(l1)
+            l1.Draw()
+            l2 = ROOT.TLine(maxEric, 0, maxEric, 2)
+            l2.SetLineColor(ROOT.kRed)
+            l2.SetLineWidth(2)
+            l2.SetLineStyle(7)
+            self.Pool.append(l2)
+            l2.Draw()
+            strFormat = getStringFormat('GCN notice')
+            minEricStr = sec2string(met2utc(minEric), strFormat)
+            maxEricStr = sec2string(met2utc(maxEric), strFormat)
+            l1 = ROOT.TLatex(minEric, 2, '%d--%s' % (minEric, minEricStr))
+            l1.SetTextAngle(30)
+            l1.SetTextColor(ROOT.kRed)
+            self.Pool.append(l1)
+            l1.Draw()
+            l2 = ROOT.TLatex(maxEric, 2, '%d--%s' % (maxEric, maxEricStr))
+            l2.SetTextAngle(30)
+            l2.SetTextColor(ROOT.kRed)
+            self.Pool.append(l2)
+            l2.Draw()
+            ROOT.gPad.Update()
         # Draw the normalized transient rate and fit excluding the flare
         # interval.
         c.cd(4)
@@ -310,7 +358,7 @@ class pSolarFlarePlotter:
         minBad -= BAD_TIME_PAD
         maxBad += BAD_TIME_PAD
         badMinutes = (maxBad - minBad)/60.
-        badTimeInterval = pBadTimeInterval(maxBad, minBad, loss) 
+        badTimeInterval = pBadTimeInterval(minBad, maxBad, loss) 
         if loss/badMinutes < MIN_DIFF_LOSS:
             ROOT.gPad.Update()
             return c
@@ -406,7 +454,12 @@ if __name__ == '__main__':
     filePath = '/data/work/datamon/solartrend/solarflare_trend*.root'
     plotter = pSolarFlarePlotter(filePath)
     plotter.createReport()
+    #plotter.drawFlare(0)
     #plotter.drawFlare(0, True)
     #plotter.drawFlare(12)
     #plotter.drawFlare(37)
     #plotter.drawFlare(47)
+    #plotter.drawFlare(52)
+    #plotter.drawFlare(7)
+    #plotter.drawFlare(56)
+    #plotter.drawFlare(15)
