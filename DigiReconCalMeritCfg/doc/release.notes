@@ -7,7 +7,12 @@
 - Added a memo on the normalization of the on-orbit rates in the doc folder.
 - New normalization factors with new fitting function for the Earth limb 
 correction and new correction for the geographic longitude.
-
+- Added Mean_PtLon to all the relevant lines in monconfig_merit_trending.xml (longitude correction for the
+normalized rates). Requires the new svac/Monitoring code.
+- New normalized quantity and associated errors
+  NormRateDiffuseEvtsBelowZenithTheta100
+  NormRateSourceEvtsBelowZenithTheta100
+  NormRateTransientEvtsBelowZenithTheta100
 
  DigiReconCalMeritCfg-01-09-00 18-Jan-2010 lbaldini New normalization constants (including correction for the Earth limb).
 - Added two new configuration files with the new normalization factors for the
