@@ -4,8 +4,10 @@
  *
  *                  EOH
 
- AlarmsCfg-05-29-00 16-Mar-2011 lbaldini Added condition on one fastmon_error quantity.
+- Added limit files for ft1/merit verify
+ 
 
+ AlarmsCfg-05-29-00 16-Mar-2011 lbaldini Added condition on one fastmon_error quantity.
 - Condition on the minimum elapsed time set on TIMETONE_INCOMPLETE for fastmon_errors.
 * Relevant e-mail thread: https://www-glast.stanford.edu/protected/mail/datamon/5667.html
 
