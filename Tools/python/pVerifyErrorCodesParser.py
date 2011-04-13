@@ -3,7 +3,7 @@ import os
 import sys
 import time
 
-sys.path.append('../../Common/v5r7p0/python')
+sys.path.append('/afs/slac.stanford.edu/g/glast/ground/releases/volume13/L1Proc/2.6/dataMonitoring/Common/Common-06-09-00/python')
 
 import pSafeLogger
 logger = pSafeLogger.getLogger('pVerifyParser')
@@ -103,14 +103,22 @@ class pVerifyErrorCodesParser(pHtmlWriter, pXmlWriter):
 
 
 if __name__ == '__main__':
-    runVerifyFilePath = '/a/sulky36/g.glast.u33/monzani/svac/L1Pipeline/TestReport/v6r9/src/RunVerify.cxx'
+    runVerifyFilePath = '/afs/slac/g/glast/users/monzani/L1Pipeline/TestReport/src/RunVerify.cxx'
     runParser = pVerifyErrorCodesParser(runVerifyFilePath)
     runParser.writeXmlAlarmFile('verify_errors_alarms.xml')
     runParser.writeHtmlTable('verifylog_error_codes.html')
-    ft2VerifyFilePath = '/a/sulky36/g.glast.u33/monzani/svac/L1Pipeline/TestReport/v6r9/src/ft2Verify.cxx'
+    ft1VerifyFilePath = '/afs/slac/g/glast/users/monzani/L1Pipeline/TestReport/src/ft1Verify.cxx'
+    ft1Parser = pVerifyErrorCodesParser(ft1VerifyFilePath)
+    ft1Parser.writeXmlAlarmFile('verify_ft1_errors_alarms.xml')
+    ft1Parser.writeHtmlTable('verify_ft1_error_codes.html')
+    ft2VerifyFilePath = '/afs/slac/g/glast/users/monzani/L1Pipeline/TestReport/src/ft2Verify.cxx'
     ft2Parser = pVerifyErrorCodesParser(ft2VerifyFilePath)
     ft2Parser.writeXmlAlarmFile('verify_ft2_errors_alarms.xml')
     ft2Parser.writeHtmlTable('verify_ft2_error_codes.html')
+    meritVerifyFilePath = '/afs/slac/g/glast/users/monzani/L1Pipeline/TestReport/src/meritVerify.cxx'
+    MeritParser = pVerifyErrorCodesParser(meritVerifyFilePath)
+    MeritParser.writeXmlAlarmFile('verify_merit_errors_alarms.xml')
+    MeritParser.writeHtmlTable('verify_merit_error_codes.html')
 
 
 
