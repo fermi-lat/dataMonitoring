@@ -4,6 +4,16 @@
  *
  *                  EOH
 
+
+DigiReconCalMeritCfg-01-10-00 (09-June-2011; D.Paneque)
+----------------------------------------------------------
+Modifications in the configuration files to deal with the new P7 variables.
+The following files were modified:
+ monconfig_merit_histos.xml MergeHistos_merit.txt monconfig_merit_trending.xml
+
+
+
+
  DigiReconCalMeritCfg-01-09-01 12-Apr-2011 bregeon New normalized quantity, new norm factor for longitude correction
 - Added a memo on the normalization of the on-orbit rates in the doc folder.
 - New normalization factors with new fitting function for the Earth limb 
