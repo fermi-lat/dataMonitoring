@@ -95,6 +95,13 @@
     <object> FT1Phi </object>
     <object> FT1ZenithTheta </object>
     <object> FT1EarthAzimuth </object>
+    <object> FT1EventClass </object> 
+    <object> FT1EventClassBitMap </object>
+
+     <!-- Others -->
+    <object> EvtCREventClass </object>
+    <object> EvtCREventClassBitMap </object>
+
 
      <!-- Pt parameters --> 
 
@@ -221,51 +228,67 @@
      <object>
       <name> TransientEvts </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ (FswGamState==0) && CTBBestEnergyProb>0. && CTBCORE>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) ]]></cut>
+      <cut><![CDATA[ RFun::IsBitSet(FT1EventClass, 0)  ]]></cut>
       <type> rate </type>
-      <description> Rate of events after application of TRANSIENT gamma cuts from pass5. </description>
+      <description> Rate of events after application of TRANSIENT gamma cuts from pass7. </description>
     </object>
 
       <object>
       <name> TransientEvts_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ (FswGamState==0) && CTBBestEnergyProb>0. && CTBCORE>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1Energy>100 ]]></cut>
+      <cut><![CDATA[ RFun::IsBitSet(FT1EventClass, 0)  && FT1Energy>100 ]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1Energy above 100 MeV, after application of TRANSIENT gamma cuts from pass5. </description>
+      <description> Rate of events with FT1Energy above 100 MeV, after application of TRANSIENT gamma cuts from pass7. </description>
     </object>
 
       <object>
-      <name> DiffuseEvts </name>
+      <name> CleanEvts </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) ]]></cut>
+      <cut><![CDATA[  RFun::IsBitSet(FT1EventClass, 3)  ]]></cut>
       <type> rate </type>
-      <description> Rate of events after application of DIFFUSE gamma cuts from pass5. </description>
+      <description> Rate of events after application of CLEAN gamma cuts from pass7. </description>
     </object>
 
          <object>
-      <name> DiffuseEvts_E100MeV </name>
+      <name> CleanEvts_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1Energy>100]]></cut>
+      <cut><![CDATA[  RFun::IsBitSet(FT1EventClass, 3)  && FT1Energy>100]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1Energy above 100 MeV, after application of DIFFUSE gamma cuts from pass5. </description>
+      <description> Rate of events with FT1Energy above 100 MeV, after application of CLEAN gamma cuts from pass7. </description>
+    </object>
+
+     <object>
+      <name> UltraCleanEvts </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[  RFun::IsBitSet(FT1EventClass, 4)  ]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of ULTRACLEAN gamma cuts from pass7. </description>
+    </object>
+
+         <object>
+      <name> UltraCleanEvts_E100MeV </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[  RFun::IsBitSet(FT1EventClass, 4)  && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events with FT1Energy above 100 MeV, after application of ULTRACLEAN gamma cuts from pass7. </description>
     </object>
 
 
        <object>
       <name> SourceEvts </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) ]]></cut>
+      <cut><![CDATA[  RFun::IsBitSet(FT1EventClass, 2) ]]></cut>
       <type> rate </type>
-      <description> Rate of events after application of SOURCE gamma cuts from pass5. </description>
+      <description> Rate of events after application of SOURCE gamma cuts from pass7. </description>
     </object>
 
        
        <object>
       <name> SourceEvts_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1Energy>100]]></cut>
+      <cut><![CDATA[  RFun::IsBitSet(FT1EventClass, 2) && FT1Energy>100]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1Energy above 100 MeV, after application of SOURCE gamma cuts from pass5. </description>
+      <description> Rate of events with FT1Energy above 100 MeV, after application of SOURCE gamma cuts from pass7. </description>
     </object>
 
 
@@ -273,50 +296,50 @@
        <object>
       <name> TransientEvtsBelowZenithTheta60_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ (FswGamState==0) && CTBBestEnergyProb>0. && CTBCORE>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ RFun::IsBitSet(FT1EventClass, 0) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
       <type> rate </type>
-      <description> Rate of events after application of TRANSIENT gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
+      <description> Rate of events after application of TRANSIENT gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
     </object>
 
        <object>
-      <name> DiffuseEvtsBelowZenithTheta60_E100MeV  </name>
+      <name> CleanEvtsBelowZenithTheta60_E100MeV  </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
+      <cut><![CDATA[   RFun::IsBitSet(FT1EventClass, 3) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
       <type> rate </type>
-      <description> Rate of events after application of DIFFUSE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
+      <description> Rate of events after application of CLEAN gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
     </object>
 
        <object>
       <name> SourceEvtsBelowZenithTheta60_E100MeV  </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
+      <cut><![CDATA[  RFun::IsBitSet(FT1EventClass, 2) && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
       <type> rate </type>
-      <description> Rate of events after application of SOURCE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
+      <description> Rate of events after application of SOURCE gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
     </object>
 
 
         <object>
       <name> TransientEvtsBelowZenithTheta100_E100MeV </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ (FswGamState==0) && CTBBestEnergyProb>0. && CTBCORE>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>0) && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[  RFun::IsBitSet(FT1EventClass, 0) && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type> rate </type>
-      <description> Rate of events after application of TRANSIENT gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV. </description>
+      <description> Rate of events after application of TRANSIENT gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV. </description>
     </object>
 
        <object>
-      <name> DiffuseEvtsBelowZenithTheta100_E100MeV  </name>
+      <name> CleanEvtsBelowZenithTheta100_E100MeV  </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>2) && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[   RFun::IsBitSet(FT1EventClass, 3) && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type> rate </type>
-      <description> Rate of events after application of DIFFUSE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV. </description>
+      <description> Rate of events after application of CLEAN gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV. </description>
     </object>
 
        <object>
       <name> SourceEvtsBelowZenithTheta100_E100MeV  </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ (FswGamState==0) && CTBBestEnergyProb>0.1 && CTBCORE>0.1 && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && (CTBClassLevel>1) && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[  RFun::IsBitSet(FT1EventClass, 2) && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type> rate </type>
-      <description> Rate of events after application of SOURCE gamma cuts from pass5 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV. </description>
+      <description> Rate of events after application of SOURCE gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV. </description>
     </object>
 
 
@@ -483,16 +506,7 @@
       <description> Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of TransientEvts. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates. </description>
     </object>
 
-        <object>
-      <name> DeviationFromOneInSigmas_NormRateDiffuseEvts_TH1 </name>
-      <formula><![CDATA[ RFun::NormalizeRate("Rate_DiffuseEvts",Mean_PtMcIlwainL,Rate_DiffuseEvts, Rate_DiffuseEvts_err, "NormRateErr")>0 ? (1.0-RFun::NormalizeRate("Rate_DiffuseEvts",Mean_PtMcIlwainL,Rate_DiffuseEvts, Rate_DiffuseEvts_err, "NormRate"))/RFun::NormalizeRate("Rate_DiffuseEvts",Mean_PtMcIlwainL,Rate_DiffuseEvts, Rate_DiffuseEvts_err, "NormRateErr") : -100]]></formula>
-      <cut><![CDATA[  ]]></cut>
-      <source>output</source>
-      <type> histogram-1d[200,-10,10,-100] </type>
-      <titledesc> Deviation From 1.0 (in Sigmas): NormRateDiffuseEvts </titledesc>
-      <axisdesc> [Deviation (in sigmas), N] </axisdesc>
-      <description> Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of DiffuseEvts. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates. </description>
-    </object>
+        
 
      <object>
       <name> DeviationFromOneInSigmas_NormRateSourceEvts_TH1 </name>
@@ -633,17 +647,6 @@
       <description> Distribution of Rate_TransientEvts  values. </description>
     </object>
 
-	      <object>
-      <name> Rate_DiffuseEvts_TH1 </name>
-      <formula><![CDATA[ Rate_DiffuseEvts ]]></formula>
-      <cut><![CDATA[  ]]></cut>
-      <source>output</source>
-      <type> histogram-1d[100,0,20] </type>
-      <titledesc> Rate_DiffuseEvts </titledesc>
-      <axisdesc> [Rate_DiffuseEvts(Hz), N] </axisdesc>
-      <description> Distribution of Rate_DiffuseEvts  values. </description>
-    </object>
-
 	 <object>
       <name> Rate_SourceEvts_TH1 </name>
       <formula><![CDATA[ Rate_SourceEvts ]]></formula>
@@ -654,6 +657,30 @@
       <axisdesc> [Rate_SourceEvts(Hz), N] </axisdesc>
       <description> Distribution of Rate_SourceEvts  values. </description>
     </object>
+
+    <object>
+      <name> Rate_CleanEvts_TH1 </name>
+      <formula><![CDATA[ Rate_CleanEvts ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,20] </type>
+      <titledesc> Rate_CleanEvts </titledesc>
+      <axisdesc> [Rate_CleanEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_CleanEvts  values. </description>
+    </object>
+
+    <object>
+      <name> Rate_UltraCleanEvts_TH1 </name>
+      <formula><![CDATA[ Rate_UltraCleanEvts ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,20] </type>
+      <titledesc> Rate_UltraCleanEvts </titledesc>
+      <axisdesc> [Rate_UltraCleanEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_UltraCleanEvts  values. </description>
+    </object>
+
+
 
 	 <object>
       <name> Rate_TransientEvts_E100MeV_TH1 </name>
@@ -667,14 +694,25 @@
     </object>
 
 	      <object>
-      <name> Rate_DiffuseEvts_E100MeV_TH1 </name>
-      <formula><![CDATA[ Rate_DiffuseEvts_E100MeV ]]></formula>
+      <name> Rate_CleanEvts_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_CleanEvts_E100MeV ]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
       <type> histogram-1d[100,0,10] </type>
-      <titledesc> Rate_DiffuseEvts_E100MeV </titledesc>
-      <axisdesc> [Rate_DiffuseEvts(Hz), N] </axisdesc>
-      <description> Distribution of Rate_DiffuseEvts_E100MeV  values. </description>
+      <titledesc> Rate_CleanEvts_E100MeV </titledesc>
+      <axisdesc> [Rate_CleanEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_CleanEvts_E100MeV  values. </description>
+    </object>
+
+    <object>
+      <name> Rate_UltraCleanEvts_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_UltraCleanEvts_E100MeV ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,10] </type>
+      <titledesc> Rate_UltraCleanEvts_E100MeV </titledesc>
+      <axisdesc> [Rate_UltraCleanEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_UltraCleanEvts_E100MeV  values. </description>
     </object>
 
 	 <object>
@@ -712,25 +750,25 @@
     </object>
 
 	      <object>
-      <name> Rate_DiffuseEvtsBelowZenithTheta60_E100MeV_TH1 </name>
-      <formula><![CDATA[ Rate_DiffuseEvtsBelowZenithTheta60_E100MeV ]]></formula>
+      <name> Rate_CleanEvtsBelowZenithTheta60_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_CleanEvtsBelowZenithTheta60_E100MeV ]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
       <type> histogram-1d[100,0,10] </type>
-      <titledesc> Rate_DiffuseEvtsBelowZenithTheta60_E100MeV </titledesc>
-      <axisdesc> [Rate_DiffuseEvts(Hz), N] </axisdesc>
-      <description> Distribution of Rate_DiffuseEvtsBelowZenithTheta60_E100MeV  values. </description>
+      <titledesc> Rate_CleanEvtsBelowZenithTheta60_E100MeV </titledesc>
+      <axisdesc> [Rate_CleanEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_CleanEvtsBelowZenithTheta60_E100MeV  values. </description>
     </object>
 
     <object>
-      <name> Rate_DiffuseEvtsBelowZenithTheta100_E100MeV_TH1 </name>
-      <formula><![CDATA[ Rate_DiffuseEvtsBelowZenithTheta100_E100MeV ]]></formula>
+      <name> Rate_CleanEvtsBelowZenithTheta100_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_CleanEvtsBelowZenithTheta100_E100MeV ]]></formula>
       <cut><![CDATA[  ]]></cut>
       <source>output</source>
       <type> histogram-1d[100,0,10] </type>
-      <titledesc> Rate_DiffuseEvtsBelowZenithTheta100_E100MeV </titledesc>
-      <axisdesc> [Rate_DiffuseEvts(Hz), N] </axisdesc>
-      <description> Distribution of Rate_DiffuseEvtsBelowZenithTheta100_E100MeV  values. </description>
+      <titledesc> Rate_CleanEvtsBelowZenithTheta100_E100MeV </titledesc>
+      <axisdesc> [Rate_CleanEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_CleanEvtsBelowZenithTheta100_E100MeV  values. </description>
     </object>
 
 	 <object>
@@ -1240,7 +1278,27 @@
     </object>
     
 
-	  
+    <object>
+      <name> FT1EventClassBitMap_TH1 </name>
+      <formula><![CDATA[  FT1EventClassBitMap ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-vecdim-1d[16,-0.5,15.5,0] </type>
+      <titledesc> Bit map of variable FT1EventClass </titledesc>
+      <axisdesc> [Bits, N] </axisdesc>
+      <description> Bit map from merit variable FT1EventClass (Reminder: a single event could have several entries in this histogram) </description>
+    </object>
+    	  
+    <object>
+      <name> EvtCREventClassBitMap_TH1 </name>
+      <formula><![CDATA[  EvtCREventClassBitMap ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <type> histogram-vecdim-1d[21,-0.5,20.5,0] </type>
+      <titledesc> Bit map of variable EvtCREventClass </titledesc>
+      <axisdesc> [Bits, N] </axisdesc>
+      <description> Bit map from merit variable EvtCREventClass (Reminder: a single event could have several entries in this histogram) </description>
+    </object>
+
+
   </outputList>
 
   <eventCut><![CDATA[ ]]></eventCut>
