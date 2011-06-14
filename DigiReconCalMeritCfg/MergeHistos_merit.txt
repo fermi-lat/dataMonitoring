@@ -34,6 +34,8 @@
        Rate_CleanEvtsBelowZenithTheta100_E100MeV_TH1  Sum
        Rate_SourceEvtsBelowZenithTheta60_E100MeV_TH1  Sum
        Rate_SourceEvtsBelowZenithTheta100_E100MeV_TH1  Sum
+       Rate_LLEEvents_TH1_RA_Dec_LLERaLoop_LLEDecLoop   Sum
+       LLEEvents_RA_Dec_TH2  Sum
        AcdCornerDoca_TH1  Sum
        AcdTileCount_TH1  Sum
        AcdRibbonCount_TH1  Sum

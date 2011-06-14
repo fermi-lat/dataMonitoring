@@ -101,7 +101,7 @@
      <!-- Others -->
     <object> EvtCREventClass </object>
     <object> EvtCREventClassBitMap </object>
-
+    <object> LLE_Vector_RA_Dec </object>
 
      <!-- Pt parameters --> 
 
@@ -341,6 +341,27 @@
       <type> rate </type>
       <description> Rate of events after application of SOURCE gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV. </description>
     </object>
+
+
+     <object>
+      <name> LLEEvents  </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[  RFun::IsBitSet(FT1EventClass, 14)]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of LLE gamma cuts from pass7. </description>
+    </object>
+
+    <object>
+      <name> LLEEvents_RA_DEC[8][5]  </name>
+      <formula><![CDATA[ LLE_Vector_RA_Dec ]]></formula>
+      <cut><![CDATA[ 1 ]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of LLE gamma cuts from pass7 that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. </description>
+    </object>
+
+
+
+    
 
 
      <object>
@@ -792,6 +813,36 @@
       <axisdesc> [Rate_SourceEvts(Hz), N] </axisdesc>
       <description> Distribution of Rate_SourceEvtsBelowZenithTheta100_E100MeV  values. </description>
     </object>
+
+
+
+    <object>
+      <name> Rate_LLEEvents_TH1_RA_Dec[8][5]  </name>
+      <formula><![CDATA[ Rate_LLEEvents_RA_DEC ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[170,-10.,500.,0]  </type>
+     <!-- <titledesc>  LLE event rate </titledesc> -->
+      <axisdesc> [Rate of LLE events for this RA,Dec bin (Hz), N] </axisdesc>
+      <description> LLE event rate for a 45 degree radius cicle centered at this particular RA,Dec bin. The RA,Dec bins are defined as: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90].</description>
+      </object>
+
+
+      <object>
+      <name> LLEEvents_RA_Dec_TH2 </name>
+      <formula><![CDATA[ LLE_Vector_RA_Dec ]]></formula>
+      <cut><![CDATA[ 1 ]]></cut>
+      <!-- <type> histogram-vecdim-2d[8,-22.5, 337.5, 5, -112.5,+112.5,0] </type> -->
+      <type> histogram-vecdim-2d[8,-0.5, 7.5, 5, -0.5, 4.5,0] </type>
+      <titledesc>  LLE event Hit Map RA:Dec </titledesc>
+      <axisdesc> [RA bin, DEC bin, N] </axisdesc>
+      <description> LLE event Hit Map RA:Dec. The histogram reports the number of LLE events that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. </description>
+    </object>
+
+
+
+    
+
 
        <!-- ACD -->
 

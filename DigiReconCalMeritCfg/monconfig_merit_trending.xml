@@ -116,6 +116,7 @@
 
     <!-- Others -->
     <object> EvtCREventClass </object>
+    <object>LLE_Vector_RA_Dec </object>
 
    
   </inputList>
@@ -708,6 +709,16 @@
       <type> rate </type>
       <description> Rate of events with FT1ZenithTheta below 60 deg, after application of LLE gamma cuts from pass7. </description>
     </object>
+
+
+    <object>
+      <name> LLEvents_BinsRaDec[8][5] </name>
+      <formula><![CDATA[LLE_Vector_RA_Dec]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <type> rate </type>
+      <description> Two dimensional vector [8][5] reporting whether the rate of LLE events that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins.</description>
+    </object>
+
 
 
     <object>
