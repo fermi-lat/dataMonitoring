@@ -4,7 +4,14 @@
  *
  *                  EOH
 
- DigiReconCalMeritCfg-01-10-00 09-Jun-2011 dpaneque Updates to deal with P7 variables
+
+DigiReconCalMeritCfg-01-11-00 (14-June-2011; D.Paneque)
+----------------------------------------------------------
+Changes in config files to monitor the LLE events vs RA nd DEC.
+monconfig_merit_trending.xml
+monconfig_merit_histos.xml
+MergeHistos_merit.txt
+
 
 DigiReconCalMeritCfg-01-10-00 (09-June-2011; D.Paneque)
 ----------------------------------------------------------
