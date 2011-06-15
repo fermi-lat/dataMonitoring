@@ -4,7 +4,14 @@
  *
  *                  EOH
 
- DigiReconCalMeritCfg-01-11-00 14-Jun-2011 dpaneque Updates to monitor LLE vs RA and DEC, as requested in GDQMQ-352 
+DigiReconCalMeritCfg-01-12-00 (15-June-2011; D.Paneque)
+-------------------------------------------------------
+Change in config file monconfig_digi_trending.xmls to 
+add hit rates and normrates for tile 63 (Jira GDQMQ-356). 
+Corrected typo in description of quantities in files 
+monconfig_merit_trending.xml
+monconfig_merit_histos.xml
+
 
 DigiReconCalMeritCfg-01-11-00 (14-June-2011; D.Paneque)
 ----------------------------------------------------------
