@@ -2049,6 +2049,14 @@
 	<description> Vector [AcdTile] reporting the rate of ACD hits. </description>
       </object>
 
+      <object>
+	<name> AcdHit_AcdTile63 </name>
+	<formula><![CDATA[ AcdHit_AcdTile[63] ]]></formula>
+	<cut><![CDATA[condsummary&30]]></cut>
+	<type> rate </type>
+	<description> Rate of ACD hits in tile 63 (which is useful to identify solar flares). </description>
+      </object>
+
 
 
      <object>
@@ -2069,6 +2077,28 @@
       <source>output</source>
       <type> outputfloat </type>
       <description> Vector [acdtile] reporting the error in quantity  OutF_Normalized_AcdHit_AcdTile. </description>
+    </object>
+
+
+
+     <object>
+      <name> Normalized_AcdHit_AcdTile63 </name>
+      <formula><![CDATA[Rate_Trigger_NOTPeriodic >0 ? (Rate_AcdHit_AcdTile[63]/Rate_Trigger_NOTPeriodic) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized number hits in the ACD tile 63. The used normalization factor is the number of NOT periodic triggers. This is an indicator of the OCCUPANCY IN THE ACD tile 63 (which is useful to identify solar flares) </description>
+    </object>
+
+
+
+      <object>
+      <name> Normalized_AcdHit_AcdTile63_err  </name>
+      <formula><![CDATA[( Rate_Trigger_NOTPeriodic >0 && Rate_AcdHit_AcdTile[63] >0 ) ? (Rate_AcdHit_AcdTile[63]/Rate_Trigger_NOTPeriodic * TMath::Sqrt(pow(Rate_Trigger_NOTPeriodic_err/Rate_Trigger_NOTPeriodic,2)+pow(Rate_AcdHit_AcdTile_err[63]/Rate_AcdHit_AcdTile[63],2))) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in quantity OutF_Normalized_AcdHit_AcdTile63. </description>
     </object>
 
 
