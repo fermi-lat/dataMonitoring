@@ -356,7 +356,7 @@
       <formula><![CDATA[ LLE_Vector_RA_Dec ]]></formula>
       <cut><![CDATA[ 1 ]]></cut>
       <type> rate </type>
-      <description> Rate of events after application of LLE gamma cuts from pass7 that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. </description>
+      <description> Rate of events after application of LLE gamma cuts from pass7 that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. Note also that the rates for Dec=-90 deg and for Dec=90 deg will be identical for all the RA bins. </description>
     </object>
 
 
@@ -824,7 +824,7 @@
       <type> histogram-1d[170,-10.,500.,0]  </type>
      <!-- <titledesc>  LLE event rate </titledesc> -->
       <axisdesc> [Rate of LLE events for this RA,Dec bin (Hz), N] </axisdesc>
-      <description> LLE event rate for a 45 degree radius cicle centered at this particular RA,Dec bin. The RA,Dec bins are defined as: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90].</description>
+      <description> LLE event rate for a 45 degree radius cicle centered at this particular RA,Dec bin. The RA,Dec bins are defined as: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. Note also that the rates for Dec=-90 deg and for Dec=90 deg will be identical for all the RA bins.</description>
       </object>
 
 
@@ -836,7 +836,7 @@
       <type> histogram-vecdim-2d[8,-0.5, 7.5, 5, -0.5, 4.5,0] </type>
       <titledesc>  LLE event Hit Map RA:Dec </titledesc>
       <axisdesc> [RA bin, DEC bin, N] </axisdesc>
-      <description> LLE event Hit Map RA:Dec. The histogram reports the number of LLE events that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. </description>
+      <description> LLE event Hit Map RA:Dec. The histogram reports the number of LLE events that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. Note also that the number of events for Dec=-90 deg and for Dec=90 deg will be identical for all the RA bins.</description>
     </object>
 
 

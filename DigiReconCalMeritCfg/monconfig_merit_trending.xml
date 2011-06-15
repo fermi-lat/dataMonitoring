@@ -716,7 +716,7 @@
       <formula><![CDATA[LLE_Vector_RA_Dec]]></formula>
       <cut><![CDATA[ ]]></cut>
       <type> rate </type>
-      <description> Two dimensional vector [8][5] reporting whether the rate of LLE events that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins.</description>
+      <description> Two dimensional vector [8][5] reporting the rate of LLE events that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. Note also that the rates for Dec=-90 deg and for Dec=90 deg will be identical for all the RA bins. </description>
     </object>
 
 
