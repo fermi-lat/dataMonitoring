@@ -4,7 +4,14 @@
  *
  *                  EOH
 
- DigiReconCalMeritCfg-01-12-00 15-Jun-2011 dpaneque Updates to address GDQMQ-356 
+
+DigiReconCalMeritCfg-01-13-00 (23-June-2011; D.Paneque)
+------------------------------------------------------- 
+Change in config file monconfig_digi_trending.xmls to
+add rate of GEM veto for tile 63 (Jira GDQMQ-356), 
+and livvetime corrected GemRate (Jira GDQMQ-358)
+
+
 DigiReconCalMeritCfg-01-12-00 (15-June-2011; D.Paneque)
 -------------------------------------------------------
 Change in config file monconfig_digi_trending.xmls to 
