@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-00-00 28-Jun-2011 lbaldini Obsolete P6 quantities removed.
 
 - Two alarms on the diffuse rates removed (they're not there anymore in Pass7).
 
