@@ -32,6 +32,7 @@ class pAlarmUnitTest:
                 group = 'trackermon_trend'
             else:
                 group = os.path.basename(inputFilePath).split('_')[-1]
+                group = group.lower()
                 group = group.replace('.root', '')
                 group = group.replace('hist', '_eor')
                 group = group.replace('trend', '_trend')

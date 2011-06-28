@@ -14,8 +14,8 @@ TIME_FORMAT = '%b %d, 20%y%F2001-01-01 00:00:00'
 
 LAUNCH_DATE = '11/Jun/2008'
 LAUNCH_TIME = utc2met(string2sec(LAUNCH_DATE, '%d/%b/%Y'))
-MIN_TIME    = 2.4e8
-MAX_TIME    = 2.9e8
+MIN_TIME    = 2.1e8
+MAX_TIME    = 3.4e8
 
 SECS_PER_YEAR = 60*60*24*365
 
@@ -599,9 +599,9 @@ class pTkrTrendPlotter:
 
 if __name__ == '__main__':
     print LAUNCH_TIME
-    p = pTkrTrendPlotter('/data43/work/datamon/runs/tkrtrend/tkrtrend.root')
+    p = pTkrTrendPlotter('/data/work/datamon/runs/tkrtrend/tkrtrend.root')
     p.plotHitEfficiency()
-    p.plotTrigEfficiency()
-    p.plotTOTPeak()
-    p.plotNoiseOcc()
-    p.plotMaskStripChart()
+    #p.plotTrigEfficiency()
+    #p.plotTOTPeak()
+    #p.plotNoiseOcc()
+    #p.plotMaskStripChart()
