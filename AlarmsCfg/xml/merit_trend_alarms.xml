@@ -16,12 +16,6 @@
 	<error_limits   min="0.0" max="100.0"/>
       </alarm> 
     </alarmSet>
-    <alarmSet name="Time::Rate_DiffuseEvts" enabled="True">
-      <alarm function="values" enabled="True">
-	<warning_limits min="0.0" max="25.0"/>
-	<error_limits   min="0.0" max="50.0"/>
-      </alarm> 
-    </alarmSet>
 
   </alarmList>
 
@@ -52,12 +46,6 @@
       </alarm> 
     </alarmSet>
     <alarmSet name="Time::OutF_NormRateSourceEvts" enabled="True">
-      <alarm function="values" enabled="True">
-	<warning_limits max="1.95"/>
-	<error_limits   max="5.00"/>
-      </alarm> 
-    </alarmSet>
-    <alarmSet name="Time::OutF_NormRateDiffuseEvts" enabled="True">
       <alarm function="values" enabled="True">
 	<warning_limits max="1.95"/>
 	<error_limits   max="5.00"/>
