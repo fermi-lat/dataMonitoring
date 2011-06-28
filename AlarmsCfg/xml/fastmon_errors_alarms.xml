@@ -13,6 +13,7 @@
 
     <alarmSet name="TIMETONE_INCOMPLETE" enabled="True">
       <alarm function="rate" enabled="True">
+	<condition name="min_seconds_elapsed" value="500"/>
 	<warning_limits min="0.0" max="0.50"/>
 	<error_limits   min="0.0" max="2.00"/>
       </alarm>

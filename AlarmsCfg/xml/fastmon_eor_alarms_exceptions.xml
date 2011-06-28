@@ -2,32 +2,33 @@
 
 <alarm_exceptions>
 
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_0" algorithm="spikes_and_holes">
-    <exception identifier="(13, 14)" status_on_violation="clean"/>
-  </alarm>
+  <!--
+  Last verification by Luca Baldini on January 21, 2010 (see GDQMQ-337).
+  Over the last months we had 453/454 violations for (20, 2), 425/454
+  for (21, 2) and no violations for (12, 14). These GTFEs most likely
+  corresponds to areas of tower 0 in which we have many disconnected strips.
 
+  Note by Luca Baldini on January 27, 2010.
+  On top of these I'm putting back (2, 7) and (3, 7) as they're almost dead
+  and would consistently fail for short runs.
+  -->
   <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_0" algorithm="empty_bins">
-    <exception identifier="(2, 7)" status_on_violation="clean"/>
-    <exception identifier="(3, 7)" status_on_violation="clean"/>
-    <exception identifier="(12, 14)" status_on_violation="clean"/>
     <exception identifier="(20, 2)" status_on_violation="clean"/>
     <exception identifier="(21, 2)" status_on_violation="clean"/>
+    <exception identifier="(12, 14)" status_on_violation="clean"/>
+    <exception identifier="(2, 7)" status_on_violation="clean"/>
+    <exception identifier="(3, 7)" status_on_violation="clean"/>
   </alarm>
 
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_2" algorithm="spikes_and_holes">
-    <exception identifier="(19, 31)" status_on_violation="clean"/>
-  </alarm>
-
+  <!--
+  This is the infamous ladder 0 of tower 3, plane 35. We don't need to have
+  one or more alarms per run.
+  Luca Baldini, December 7, 2010.
+  -->
   <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_3" algorithm="spikes_and_holes">
-    <exception identifier="(1, 35)" status_on_violation="clean"/>
-  </alarm>
-
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_4" algorithm="spikes_and_holes">
-    <exception identifier="(0, 13)" status_on_violation="clean"/>
-  </alarm>
-
-  <alarm name="TkrHitsCounter_PlaneGTFE_TH2_Tower_5" algorithm="spikes_and_holes">
-    <exception identifier="(3, 32)" status_on_violation="clean"/>
+    <exception identifier="(0, 35)" status_on_violation="clean"/>
+    <exception identifier="(4, 35)" status_on_violation="clean"/>
+    <exception identifier="(5, 35)" status_on_violation="clean"/>
   </alarm>
 
 </alarm_exceptions>
