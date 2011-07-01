@@ -10,12 +10,14 @@ sys.path.append('../../Report/python')
 from pTimeConverter import *
 from pRootStyle     import *
 
+ROOT.gStyle.SetTitleOffset(0.5, 'Y')
+
 TIME_FORMAT = '%b %d, 20%y%F2001-01-01 00:00:00'
 
 LAUNCH_DATE = '11/Jun/2008'
 LAUNCH_TIME = utc2met(string2sec(LAUNCH_DATE, '%d/%b/%Y'))
-MIN_TIME    = 2.1e8
-MAX_TIME    = 3.4e8
+MIN_TIME    = 2.40e8
+MAX_TIME    = 3.35e8
 
 SECS_PER_YEAR = 60*60*24*365
 
@@ -24,7 +26,7 @@ SECS_PER_YEAR = 60*60*24*365
 # Mar 11--15 2009: no data.
 TOT_CHANGE_DICT = {#244419664: 'New TOT charge scale (SSC-140)',
                    260810033: 'New TOT charge scale (SSC-181)',
-                   246823875: 'Timing change (trigger window set to 14 ticks)'
+                   246823875: '#splitline{Timing change}{trigger window set to 14 ticks}'
                    }
 
 # Masked strips.
@@ -36,13 +38,38 @@ STRIP_MASK_DICT   = {LAUNCH_DATE  : (0, 203, 'Pre-flight'),
                      '28/Apr/2009': (9 , 325, 'OBCONF-105'),
                      '16/Oct/2009': (4 , 329, 'OBCONF-118'),
                      '23/Jan/2010': (2 , 331, 'OBCONF-120'),
-                     '23/Feb/2010': (2 , 333, 'OBCONF-121')
+                     '23/Feb/2010': (2 , 333, 'OBCONF-121'),
+                     '08/Mar/2010': (3 , 336, 'OBCONF-122'),
+                     '19/Aug/2010': (4 , 340, 'OBCONF-136'),
+                     '10/Sep/2010': (2 , 342, 'OBCONF-137'),
+                     '20/Sep/2010': (4 , 346, 'OBCONF-140'),
+                     '30/Nov/2010': (16, 362, 'OBCONF-144'),
+                     '10/Jan/2011': (19, 381, 'OBCONF-145'),
+                     '21/Mar/2011': (13, 394, 'OBCONF-148'),
+                     '27/May/2011': (22, 416, 'OBCONF-151')
                      }
+
 STRIP_MASK_DICT_0 = {LAUNCH_DATE  : (0 , 18 , 'Pre-flight'),
                      '18/Aug/2008': (9 , 27 , 'OBCONF-66' ),
                      '28/Oct/2008': (52, 79 , 'OBCONF-86' ),
                      '2009/33'    : (29, 108, 'OBCONF-97' ),
                      '28/Apr/2009': (3 , 111, 'OBCONF-105')
+                     }
+
+STRIP_MASK_DICT_3 = {LAUNCH_DATE  : (0 , 1, 'Pre-flight'),
+                     '2008/204'   : (2 , 3, 'OBCONF-49' ),
+                     '2009/33'    : (2 , 5, 'OBCONF-97' ),
+                     '28/Apr/2009': (1 , 6 , 'OBCONF-105'),
+                     '16/Oct/2009': (2 , 8 , 'OBCONF-118'),
+                     '23/Jan/2010': (2 , 10, 'OBCONF-120'),
+                     '08/Mar/2010': (2 , 12, 'OBCONF-122'),
+                     '19/Aug/2010': (2 , 14, 'OBCONF-136'),
+                     '10/Sep/2010': (2 , 16, 'OBCONF-137'),
+                     '20/Sep/2010': (4 , 20, 'OBCONF-140'),
+                     '30/Nov/2010': (14, 34, 'OBCONF-144'),
+                     '10/Jan/2011': (19, 53, 'OBCONF-145'),
+                     '21/Mar/2011': (12, 65, 'OBCONF-148'),
+                     '27/May/2011': (21, 86, 'OBCONF-151')
                      }
 
 # There was a bug in the tkr monitoring code that screwed up the
@@ -54,6 +81,7 @@ MAX_TKRMON_BUG_RUN = 242206725
 # SIU reboot.
 SIU_REBOOT  = utc2met(string2sec('11/Mar/2009', '%d/%b/%Y'))
 SIU_RECOVER = utc2met(string2sec('2009/74', '%Y/%j'))
+DRAW_SIU_REBOOT = False
 
 
 def getMaskedStripChart(ymin, ymax, color, tower = None, logscale = False,
@@ -114,6 +142,8 @@ def drawMarker(timestamp, ymin, ymax, text, color = ROOT.kBlue, ylabel = None):
     ROOT.gPad.Update()
 
 def drawSIUReboot(ymin, ymax, ylabel = None):
+    if not DRAW_SIU_REBOOT:
+        return
     ylabel = ylabel or 1.1*ymax
     drawMarker(SIU_REBOOT, ymin, ymax, 'SIU reboot', ROOT.kRed, ylabel)
     drawMarker(SIU_RECOVER, ymin, ymax, '', ROOT.kRed, ylabel)
@@ -474,9 +504,9 @@ class pTkrTrendPlotter:
             occSample = v[sampleLayer[0]][sampleLayer[1]]
             gSample.SetPoint(i, x, occSample)
         g.GetYaxis().SetRangeUser(1e-2, 10)
-        g.GetYaxis().SetTitle('Occupancy')
+        g.GetYaxis().SetTitle('Noise occupancy')
         gSample.GetYaxis().SetRangeUser(1e-3, 1.5e-1)
-        gSample.GetYaxis().SetTitle('Occupancy')
+        gSample.GetYaxis().SetTitle('Noise occupancy')
         cSample = getSkinnyCanvas('noise_occ_sample_c',
                             'Occupancy for Tower %d, layer %d' % sampleLayer,
                             True)
@@ -541,17 +571,18 @@ class pTkrTrendPlotter:
             if timestamp >= MIN_TIME and timestamp <= MAX_TIME:
                 text = '#splitline{+%d strips (%d)}{%s}' %\
                        (numStr, totNumStr, jira)
-                drawMarker(timestamp, 1e-2, yDict[jira], text,
-                           ylabel = 1.3*yDict[jira])
+                #drawMarker(timestamp, 1e-2, yDict[jira], text,
+                #           ylabel = 1.3*yDict[jira])
         c.Update()
         saveCanvas(c)
 
     def plotMaskStripChart(self, minTime = LAUNCH_TIME, maxTime = MAX_TIME):
         ROOT.gStyle.SetOptStat(0)
         ymin = 0
-        ymax = 400
-        sc = getMaskedStripChart(ymin, ymax, ROOT.kBlue)
+        ymax = 475
+        sc = getMaskedStripChart(ymin, ymax, ROOT.kBlack)
         sc0 = getMaskedStripChart(ymin, ymax, ROOT.kRed, 0)
+        sc3 = getMaskedStripChart(ymin, ymax, ROOT.kBlue, 3)
         h = ROOT.TH1F('h_mask_strip', 'h_mask_strip', 10000, minTime, maxTime)
         store(h)
         setupStripChart(h, minTime)
@@ -559,38 +590,59 @@ class pTkrTrendPlotter:
         h.SetMaximum(ymax)
         c = getSkinnyCanvas('c_masked_strip', 'Masked strips', True)
         h.SetYTitle('Number of masked strips')
+        h.GetYaxis().SetTitleOffset(0.5)
         h.Draw()
         sc.Draw('same')
         sc0.Draw('same')
+        sc3.Draw('same')
         for timestamp, (numStr, totNumStr, jira) in STRIP_MASK_DICT.items():
             try:
                 totNumStr0 = STRIP_MASK_DICT_0[timestamp][1]
             except:
                 totNumStr0 = None
             try:
+                totNumStr3 = STRIP_MASK_DICT_3[timestamp][1]
+            except:
+                totNumStr3 = None
+            try:
                 timestamp = utc2met(string2sec(timestamp, '%Y/%j'))
             except ValueError:
                 timestamp = utc2met(string2sec(timestamp, '%d/%b/%Y'))
-            if timestamp >= minTime and timestamp <= maxTime:
+            if timestamp >= minTime and timestamp <= maxTime and \
+                    totNumStr not in [333, 342]:
                 l = ROOT.TLatex(timestamp, totNumStr+5, '%d' % totNumStr)
                 store(l)
-                l.SetTextAlign(21)
-                l.SetTextColor(ROOT.kBlue)
+                l.SetTextAlign(12)
+                l.SetTextAngle(60)
+                l.SetTextColor(ROOT.kBlack)
                 l.SetTextSize(TEXT_SIZE - 5)
                 l.Draw()
                 if totNumStr0 is not None:
                     l = ROOT.TLatex(timestamp, totNumStr0+5, '%d' % totNumStr0)
                     store(l)
-                    l.SetTextAlign(21)
+                    l.SetTextAlign(12)
+                    l.SetTextAngle(60)
                     l.SetTextColor(ROOT.kRed)
                     l.SetTextSize(TEXT_SIZE - 5)
                     l.Draw()
+                if totNumStr3 is not None and totNumStr3 not in [1, 3, 20]:
+                    l = ROOT.TLatex(timestamp, totNumStr3+5, '%d' % totNumStr3)
+                    store(l)
+                    l.SetTextAlign(12)
+                    l.SetTextAngle(60)
+                    l.SetTextColor(ROOT.kBlue)
+                    l.SetTextSize(TEXT_SIZE - 5)
+                    l.Draw()
         l = ROOT.TLatex(1.18*MIN_TIME, 290, 'Full LAT')
-        l.SetTextColor(ROOT.kBlue)
+        l.SetTextColor(ROOT.kBlack)
         l.Draw()
         store(l)
         l = ROOT.TLatex(1.18*MIN_TIME, 75, 'Tower 0')
         l.SetTextColor(ROOT.kRed)
+        l.Draw()
+        store(l)
+        l = ROOT.TLatex(1.25*MIN_TIME, 50, 'Tower 3')
+        l.SetTextColor(ROOT.kBlue)
         l.Draw()
         store(l)
         c.Update()
@@ -600,7 +652,7 @@ class pTkrTrendPlotter:
 if __name__ == '__main__':
     print LAUNCH_TIME
     p = pTkrTrendPlotter('/data/work/datamon/runs/tkrtrend/tkrtrend.root')
-    p.plotHitEfficiency()
+    #p.plotHitEfficiency()
     #p.plotTrigEfficiency()
     #p.plotTOTPeak()
     #p.plotNoiseOcc()
