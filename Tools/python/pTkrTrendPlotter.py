@@ -504,9 +504,9 @@ class pTkrTrendPlotter:
             occSample = v[sampleLayer[0]][sampleLayer[1]]
             gSample.SetPoint(i, x, occSample)
         g.GetYaxis().SetRangeUser(1e-2, 10)
-        g.GetYaxis().SetTitle('Noise occupancy')
+        g.GetYaxis().SetTitle('Layer noise occupancy')
         gSample.GetYaxis().SetRangeUser(1e-3, 1.5e-1)
-        gSample.GetYaxis().SetTitle('Noise occupancy')
+        gSample.GetYaxis().SetTitle('Layer noise occupancy')
         cSample = getSkinnyCanvas('noise_occ_sample_c',
                             'Occupancy for Tower %d, layer %d' % sampleLayer,
                             True)
@@ -655,5 +655,5 @@ if __name__ == '__main__':
     #p.plotHitEfficiency()
     #p.plotTrigEfficiency()
     #p.plotTOTPeak()
-    #p.plotNoiseOcc()
+    p.plotNoiseOcc()
     #p.plotMaskStripChart()
