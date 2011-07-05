@@ -4,7 +4,26 @@
  *
  *                  EOH
 
- DigiReconCalMeritCfg-01-13-01 05-Jul-2011 dpaneque Changes to deal with changes in the way Pass7 merit variables are being retrieved
+
+DigiReconCalMeritCfg-01-14-00 (05-July-2011; D.Paneque)
+------------------------------------------------------
+Added/Removed/Renamed variables, as requested in e-mail 
+from Maria Elena from June 28th.
+
+Variables with zenith cut 60 deg were removed. 
+Variables with zenith cut 100 deg were added. 
+Naming conventioned was changed to keep consistency:
+
+from:
+Rate_XXX_BelowZenithThetaYYY
+To:
+Rate_XXXBelowZenithThetaYYY 
+
+Files affected by those changes:
+monconfig_merit_trending.xml
+monconfig_merit_histos.xml
+MergeHistos_merit.txt
+
 DigiReconCalMeritCfg-01-13-01 (05-July-2011; D.Paneque)
 -------------------------------------------------------
 Changes in config files monconfig_digi_trending.xml and 
