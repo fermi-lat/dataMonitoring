@@ -16,9 +16,7 @@
        Rate_EvtsBeforeFilters_TH1  Sum
        Rate_EvtsBeforeCuts_TH1  Sum
        Rate_EvtsBeforeCuts_E100MeV_TH1  Sum
-       Rate_EvtsBeforeCutsAbove60ZenithTheta_TH1  Sum
        Rate_EvtsBeforeCutsAbove100ZenithTheta_TH1  Sum
-       Rate_EvtsBeforeCutsAbove60ZenithTheta_E100MeV_TH1  Sum
        Rate_EvtsBeforeCutsBelow100ZenithTheta_E100MeV_TH1  Sum
        Rate_TransientEvts_TH1  Sum
        Rate_SourceEvts_TH1  Sum
@@ -28,11 +26,8 @@
        Rate_CleanEvts_E100MeV_TH1  Sum
        Rate_UltraCleanEvts_E100MeV_TH1  Sum
        Rate_SourceEvts_E100MeV_TH1  Sum
-       Rate_TransientEvtsBelowZenithTheta60_E100MeV_TH1  Sum
        Rate_TransientEvtsBelowZenithTheta100_E100MeV_TH1  Sum
-       Rate_CleanEvtsBelowZenithTheta60_E100MeV_TH1  Sum
        Rate_CleanEvtsBelowZenithTheta100_E100MeV_TH1  Sum
-       Rate_SourceEvtsBelowZenithTheta60_E100MeV_TH1  Sum
        Rate_SourceEvtsBelowZenithTheta100_E100MeV_TH1  Sum
        Rate_LLEEvents_TH1_RA_Dec_LLERaLoop_LLEDecLoop   Sum
        LLEEvents_RA_Dec_TH2  Sum

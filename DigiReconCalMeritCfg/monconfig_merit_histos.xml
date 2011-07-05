@@ -176,13 +176,7 @@
       <description> Rate of events with FT1Energy above 100 MeV, before applicaltion of cuts.</description>
     </object>
 
-     <object>
-      <name> EvtsBeforeCutsBelow60ZenithTheta </name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1ZenithTheta<60 ]]></cut>
-      <type> rate </type>
-      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 60.</description>
-    </object>
+     
 
      <object>
       <name> EvtsBeforeCutsBelow100ZenithTheta </name>
@@ -193,13 +187,7 @@
     </object>
 
 
-      <object>
-      <name> EvtsBeforeCutsBelow60ZenithTheta_E100MeV </name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1ZenithTheta<60 && FT1Energy>100]]></cut>
-      <type> rate </type>
-      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 60 and FT1Energy larger than 100 MeV.</description>
-    </object>
+     
 
        <object>
       <name> EvtsBeforeCutsBelow100ZenithTheta_E100MeV </name>
@@ -209,13 +197,7 @@
       <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 100 and FT1Energy larger than 100 MeV.</description>
     </object>
 
-     <object>
-      <name> EvtsBeforeCutsAbove60ZenithTheta </name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1ZenithTheta>60 ]]></cut>
-      <type> rate </type>
-      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta larger than 60.</description>
-    </object>
+    
 
      <object>
       <name> EvtsBeforeCutsAbove100ZenithTheta </name>
@@ -293,29 +275,7 @@
 
 
 
-       <object>
-      <name> TransientEvtsBelowZenithTheta60_E100MeV </name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[0] && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
-      <type> rate </type>
-      <description> Rate of events after application of TRANSIENT gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
-    </object>
 
-       <object>
-      <name> CleanEvtsBelowZenithTheta60_E100MeV  </name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[   FT1EventClassBitMap[3] && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
-      <type> rate </type>
-      <description> Rate of events after application of CLEAN gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
-    </object>
-
-       <object>
-      <name> SourceEvtsBelowZenithTheta60_E100MeV  </name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  FT1EventClassBitMap[2] && FT1ZenithTheta<60 && FT1Energy>100]]></cut>
-      <type> rate </type>
-      <description> Rate of events after application of SOURCE gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 60 and FT1Energy above 100 MeV. </description>
-    </object>
 
 
         <object>
@@ -607,17 +567,7 @@
       <description> Distribution of Rate_EvtsBeforeCuts_E100MeV values. </description>
     </object>
 
-     <object>
-      <name> Rate_EvtsBeforeCutsAbove60ZenithTheta_TH1 </name>
-      <formula><![CDATA[ Rate_EvtsBeforeCutsAbove60ZenithTheta ]]></formula>
-      <cut><![CDATA[  ]]></cut>
-      <source>output</source>
-      <type> histogram-1d[100,0,500] </type>
-      <titledesc> Rate_EvtsBeforeCutsAbove60ZenithTheta </titledesc>
-      <axisdesc> [Rate_EvtsBeforeCutsAbove60ZenithTheta(Hz), N] </axisdesc>
-      <description> Distribution of Rate_EvtsBeforeCutsAbove60ZenithTheta  values. </description>
-    </object>
-
+    
      <object>
       <name> Rate_EvtsBeforeCutsAbove100ZenithTheta_TH1 </name>
       <formula><![CDATA[ Rate_EvtsBeforeCutsAbove100ZenithTheta ]]></formula>
@@ -629,16 +579,7 @@
       <description> Distribution of Rate_EvtsBeforeCutsAbove100ZenithTheta  values. </description>
     </object>
      
-      <object>
-      <name> Rate_EvtsBeforeCutsAbove60ZenithTheta_E100MeV_TH1 </name>
-      <formula><![CDATA[ Rate_EvtsBeforeCutsBelow60ZenithTheta_E100MeV ]]></formula>
-      <cut><![CDATA[  ]]></cut>
-      <source>output</source>
-      <type> histogram-1d[100,0,200] </type>
-      <titledesc> Rate_EvtsBeforeCutsBelow60ZenithTheta_E100MeV </titledesc>
-      <axisdesc> [Rate_EvtsBeforeCutsBelow60ZenithTheta(Hz), N] </axisdesc>
-      <description> Distribution of Rate_EvtsBeforeCutsBelow60ZenithTheta_E100MeV values. </description>
-    </object>
+     
 
       <object>
       <name> Rate_EvtsBeforeCutsBelow100ZenithTheta_E100MeV_TH1 </name>
@@ -744,16 +685,7 @@
     </object>
 
 
-    <object>
-      <name> Rate_TransientEvtsBelowZenithTheta60_E100MeV_TH1 </name>
-      <formula><![CDATA[ Rate_TransientEvtsBelowZenithTheta60_E100MeV ]]></formula>
-      <cut><![CDATA[  ]]></cut>
-      <source>output</source>
-      <type> histogram-1d[100,0,20] </type>
-      <titledesc> Rate_TransientEvtsBelowZenithTheta60_E100MeV </titledesc>
-      <axisdesc> [Rate_TransientEvts(Hz), N] </axisdesc>
-      <description> Distribution of Rate_TransientEvtsBelowZenithTheta60_E100MeV  values. </description>
-    </object>
+    
 
     <object>
       <name> Rate_TransientEvtsBelowZenithTheta100_E100MeV_TH1 </name>
@@ -766,16 +698,7 @@
       <description> Distribution of Rate_TransientEvtsBelowZenithTheta100_E100MeV  values. </description>
     </object>
 
-	      <object>
-      <name> Rate_CleanEvtsBelowZenithTheta60_E100MeV_TH1 </name>
-      <formula><![CDATA[ Rate_CleanEvtsBelowZenithTheta60_E100MeV ]]></formula>
-      <cut><![CDATA[  ]]></cut>
-      <source>output</source>
-      <type> histogram-1d[100,0,10] </type>
-      <titledesc> Rate_CleanEvtsBelowZenithTheta60_E100MeV </titledesc>
-      <axisdesc> [Rate_CleanEvts(Hz), N] </axisdesc>
-      <description> Distribution of Rate_CleanEvtsBelowZenithTheta60_E100MeV  values. </description>
-    </object>
+
 
     <object>
       <name> Rate_CleanEvtsBelowZenithTheta100_E100MeV_TH1 </name>
@@ -788,16 +711,7 @@
       <description> Distribution of Rate_CleanEvtsBelowZenithTheta100_E100MeV  values. </description>
     </object>
 
-	 <object>
-      <name> Rate_SourceEvtsBelowZenithTheta60_E100MeV_TH1 </name>
-      <formula><![CDATA[ Rate_SourceEvtsBelowZenithTheta60_E100MeV ]]></formula>
-      <cut><![CDATA[  ]]></cut>
-      <source>output</source>
-      <type> histogram-1d[100,0,10] </type>
-      <titledesc> Rate_SourceEvtsBelowZenithTheta60_E100MeV </titledesc>
-      <axisdesc> [Rate_SourceEvts(Hz), N] </axisdesc>
-      <description> Distribution of Rate_SourceEvtsBelowZenithTheta60_E100MeV  values. </description>
-    </object>
+
 
 	  <object>
       <name> Rate_SourceEvtsBelowZenithTheta100_E100MeV_TH1 </name>

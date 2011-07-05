@@ -312,13 +312,7 @@
     </object>
 
 
-     <object>
-      <name> EvtsBeforeCutsBelow60ZenithTheta</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1ZenithTheta<60]]></cut>
-      <type> rate </type>
-      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 60.</description>
-    </object>
+     
 
       <object>
       <name> EvtsBeforeCutsBelow100ZenithTheta</name>
@@ -336,13 +330,7 @@
       <description> Rate of events with FT1Energy larger than 100 MeV, before applicaltion of cuts.</description>
     </object>
 
-     <object>
-      <name> EvtsBeforeCutsBelow60ZenithTheta_E100MeV </name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1ZenithTheta<60 && FT1Energy>100]]></cut>
-      <type> rate </type>
-      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 60 and FT1Energy larger than 100 MeV.</description>
-    </object>
+    
 
      <object>
       <name> EvtsBeforeCutsBelow100ZenithTheta_E100MeV </name>
@@ -353,13 +341,7 @@
     </object>
 
 
-     <object>
-      <name> EvtsBeforeCutsAbove60ZenithTheta </name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1ZenithTheta>60 ]]></cut>
-      <type> rate </type>
-      <description> Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta larger than 60.</description>
-    </object>
+    
 
      <object>
       <name> EvtsBeforeCutsAbove100ZenithTheta </name>
@@ -409,11 +391,11 @@
 
     
     <object>
-      <name> TransientEvts_BelowZenithTheta60 </name>
+      <name> TransientEvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  FT1EventClassBitMap[0]  &&  FT1ZenithTheta<60  ]]></cut>
+      <cut><![CDATA[  FT1EventClassBitMap[0]  &&  FT1ZenithTheta<100  ]]></cut>
       <type> rate </type>
-      <description> Rate of events after application of TRANSIENT gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 60. </description>
+      <description> Rate of events after application of TRANSIENT gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100. </description>
     </object>
 
       
@@ -437,11 +419,11 @@
     </object>
       
     <object>
-      <name> CleanEvts_BelowZenithTheta60 </name>
+      <name> CleanEvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[3]  && FT1ZenithTheta<60]]></cut>
+      <cut><![CDATA[ FT1EventClassBitMap[3]  && FT1ZenithTheta<100]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1ZenithTheta below 60 deg, after application of CLEAN gamma cuts from pass7. </description>
+      <description> Rate of events with FT1ZenithTheta below 100 deg, after application of CLEAN gamma cuts from pass7. </description>
     </object>
 
 
@@ -481,16 +463,10 @@
       <description> Rate of events with FT1Energy above 100 MeV, after application of SOURCE gamma cuts from pass7. </description>
     </object>
 
-    <object>
-      <name> SourceEvts_BelowZenithTheta60 </name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[2]  && FT1ZenithTheta<60]]></cut>
-      <type> rate </type>
-      <description> Rate of events with FT1ZenithTheta below 60 deg, after application of SOURCE gamma cuts from pass7. </description>
-    </object>
+   
 
     <object>
-      <name> SourceEvts_BelowZenithTheta100 </name>
+      <name> SourceEvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[2]  && FT1ZenithTheta<100]]></cut>
       <type> rate </type>
@@ -515,11 +491,11 @@
     </object>
 
     <object>
-      <name> UltraCleanEvts_BelowZenithTheta60 </name>
+      <name> UltraCleanEvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[4]  && FT1ZenithTheta<60]]></cut>
+      <cut><![CDATA[ FT1EventClassBitMap[4]  && FT1ZenithTheta<100]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1ZenithTheta below 60 deg, after application of ULTRACLEAN gamma cuts from pass7. </description>
+      <description> Rate of events with FT1ZenithTheta below 100 deg, after application of ULTRACLEAN gamma cuts from pass7. </description>
     </object>
 
 
@@ -541,11 +517,11 @@
     </object>
 
     <object>
-      <name> S2Evts_BelowZenithTheta60 </name>
+      <name> S2EvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[8]  && FT1ZenithTheta<60]]></cut>
+      <cut><![CDATA[ FT1EventClassBitMap[8]  && FT1ZenithTheta<100]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1ZenithTheta below 60 deg, after application of S2 gamma cuts from pass7. </description>
+      <description> Rate of events with FT1ZenithTheta below 100 deg, after application of S2 gamma cuts from pass7. </description>
     </object>
 
 
@@ -567,11 +543,11 @@
     </object>
 
     <object>
-      <name> NoCalEvts_BelowZenithTheta60 </name>
+      <name> NoCalEvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[9]  && FT1ZenithTheta<60]]></cut>
+      <cut><![CDATA[ FT1EventClassBitMap[9]  && FT1ZenithTheta<100]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1ZenithTheta below 60 deg, after application of NoCal gamma cuts from pass7. </description>
+      <description> Rate of events with FT1ZenithTheta below 100 deg, after application of NoCal gamma cuts from pass7. </description>
     </object>
 
       
@@ -593,11 +569,11 @@
     </object>
 
     <object>
-      <name> S3Evts_BelowZenithTheta60 </name>
+      <name> S3EvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[10]  && FT1ZenithTheta<60]]></cut>
+      <cut><![CDATA[ FT1EventClassBitMap[10]  && FT1ZenithTheta<100]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1ZenithTheta below 60 deg, after application of S3 gamma cuts from pass7. </description>
+      <description> Rate of events with FT1ZenithTheta below 100 deg, after application of S3 gamma cuts from pass7. </description>
     </object>
 
     <object>
@@ -618,11 +594,11 @@
     </object>
 
     <object>
-      <name> CalOnlyEvts_BelowZenithTheta60 </name>
+      <name> CalOnlyEvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[11]  && FT1ZenithTheta<60]]></cut>
+      <cut><![CDATA[ FT1EventClassBitMap[11]  && FT1ZenithTheta<100]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1ZenithTheta below 60 deg, after application of CalOnly gamma cuts from pass7. </description>
+      <description> Rate of events with FT1ZenithTheta below 100 deg, after application of CalOnly gamma cuts from pass7. </description>
     </object>
 
 
@@ -644,11 +620,11 @@
     </object>
 
     <object>
-      <name> S3NoCalEvts_BelowZenithTheta60 </name>
+      <name> S3NoCalEvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[12]  && FT1ZenithTheta<60]]></cut>
+      <cut><![CDATA[ FT1EventClassBitMap[12]  && FT1ZenithTheta<100]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1ZenithTheta below 60 deg, after application of S3NoCal gamma cuts from pass7. </description>
+      <description> Rate of events with FT1ZenithTheta below 100 deg, after application of S3NoCal gamma cuts from pass7. </description>
     </object>
 
      <object>
@@ -669,11 +645,11 @@
     </object>
 
     <object>
-      <name> S2NoCalEvts_BelowZenithTheta60 </name>
+      <name> S2NoCalEvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[13]  && FT1ZenithTheta<60]]></cut>
+      <cut><![CDATA[ FT1EventClassBitMap[13]  && FT1ZenithTheta<100]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1ZenithTheta below 60 deg, after application of S2NoCal gamma cuts from pass7. </description>
+      <description> Rate of events with FT1ZenithTheta below 100 deg, after application of S2NoCal gamma cuts from pass7. </description>
     </object>
     
 
@@ -703,18 +679,18 @@
     </object>
 
     <object>
-      <name> LLEEvts_BelowZenithTheta60 </name>
+      <name> LLEEvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[14]  && FT1ZenithTheta<60]]></cut>
+      <cut><![CDATA[ FT1EventClassBitMap[14]  && FT1ZenithTheta<100]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1ZenithTheta below 60 deg, after application of LLE gamma cuts from pass7. </description>
+      <description> Rate of events with FT1ZenithTheta below 100 deg, after application of LLE gamma cuts from pass7. </description>
     </object>
 
 
     <object>                                                                                                 
       <name> LLEvents_BinsRaDec[8][5] </name>
       <formula><![CDATA[foreachllerabin: foreachlledecbin: RFun::IsEventInThisRaDecBin(FT1Ra, FT1Dec, llerabin, lledecbin)]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[14] ]]></cut>
+      <cut><![CDATA[ FT1EventClassBitMap[14] ]]></cut>                                     
       <type> rate </type>                                                                                        
       <description> Two dimensional vector [8][5] reporting the rate of LLE events that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. Note also that the rates for Dec=-90 deg and for Dec=90 deg will be identical for all the RA bins. </description>
     </object>
@@ -746,11 +722,11 @@
     </object>
 
     <object>
-      <name> LLESSDVetoEvts_BelowZenithTheta60 </name>
+      <name> LLESSDVetoEvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[15]  && FT1ZenithTheta<60]]></cut>
+      <cut><![CDATA[ FT1EventClassBitMap[15]  && FT1ZenithTheta<100]]></cut>
       <type> rate </type>
-      <description> Rate of events with FT1ZenithTheta below 60 deg, after application of LLESSDVeto gamma cuts from pass7. </description>
+      <description> Rate of events with FT1ZenithTheta below 100 deg, after application of LLESSDVeto gamma cuts from pass7. </description>
     </object>
 
 
