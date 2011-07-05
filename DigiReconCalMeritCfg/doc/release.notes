@@ -4,7 +4,13 @@
  *
  *                  EOH
 
- DigiReconCalMeritCfg-01-13-00 23-Jun-2011 dpaneque Updates to address GDQMQ-356 and GDQM-358 
+DigiReconCalMeritCfg-01-13-01 (05-July-2011; D.Paneque)
+-------------------------------------------------------
+Changes in config files monconfig_digi_trending.xml and 
+monconfig_digi_histos.xml in order to compute Pass7 
+output monitoring variables in a different way. 
+This fixes a problem when reading pass7 variables.
+
 
 DigiReconCalMeritCfg-01-13-00 (23-June-2011; D.Paneque)
 ------------------------------------------------------- 
