@@ -826,7 +826,7 @@
        <!-- Gleam (ground) gamma filter bit -->
        
     <object>
-      <name> TransientEvtsPassingGleamGammaFilter </name>
+      <name> TransientEvtsUsingGleamGammaFilter </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[  MeritObfGamStatus>0 && FT1EventClassBitMap[0]  ]]></cut>
       <type> rate </type>
@@ -835,7 +835,7 @@
      
        <object>
       <name> Ratio_TransientEvts_FswGamma_GleamGamma </name>
-      <formula><![CDATA[ foronetime: Rate_TransientEvtsPassingGleamGammaFilter >0 ? Rate_TransientEvts/Rate_TransientEvtsPassingGleamGammaFilter : -1.0 ]]></formula>
+      <formula><![CDATA[ foronetime: Rate_TransientEvtsUsingGleamGammaFilter >0 ? Rate_TransientEvts/Rate_TransientEvtsUsingGleamGammaFilter : -1.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -844,7 +844,7 @@
 
        <object>
       <name> Ratio_TransientEvts_FswGamma_GleamGamma_err </name>
-      <formula><![CDATA[ foronetime: (Rate_TransientEvtsPassingGleamGammaFilter >0 && Rate_TransientEvts > 0 )? (Rate_TransientEvts/Rate_TransientEvtsPassingGleamGammaFilter)*TMath::Sqrt(pow(Rate_TransientEvtsPassingGleamGammaFilter_err/Rate_TransientEvtsPassingGleamGammaFilter,2)+pow(Rate_TransientEvts_err/Rate_TransientEvts,2)) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Rate_TransientEvtsUsingGleamGammaFilter >0 && Rate_TransientEvts > 0 )? (Rate_TransientEvts/Rate_TransientEvtsUsingGleamGammaFilter)*TMath::Sqrt(pow(Rate_TransientEvtsUsingGleamGammaFilter_err/Rate_TransientEvtsUsingGleamGammaFilter,2)+pow(Rate_TransientEvts_err/Rate_TransientEvts,2)) : 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -853,7 +853,7 @@
 
 
        <object>
-      <name> SourceEvtsPassingGleamGammaFilter </name>
+      <name> SourceEvtsUsingGleamGammaFilter </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[  MeritObfGamStatus>0 && FT1EventClassBitMap[2] ]]></cut>
       <type> rate </type>
@@ -862,7 +862,7 @@
 
         <object>
       <name> Ratio_SourceEvts_FswGamma_GleamGamma </name>
-      <formula><![CDATA[ foronetime: Rate_SourceEvtsPassingGleamGammaFilter >0 ? Rate_SourceEvts/Rate_SourceEvtsPassingGleamGammaFilter : -1.0 ]]></formula>
+      <formula><![CDATA[ foronetime: Rate_SourceEvtsUsingGleamGammaFilter >0 ? Rate_SourceEvts/Rate_SourceEvtsUsingGleamGammaFilter : -1.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -871,7 +871,7 @@
 
        <object>
       <name> Ratio_SourceEvts_FswGamma_GleamGamma_err </name>
-      <formula><![CDATA[ foronetime: (Rate_SourceEvtsPassingGleamGammaFilter >0 && Rate_SourceEvts > 0 )? (Rate_SourceEvts/Rate_SourceEvtsPassingGleamGammaFilter)*TMath::Sqrt(pow(Rate_SourceEvtsPassingGleamGammaFilter_err/Rate_SourceEvtsPassingGleamGammaFilter,2)+pow(Rate_SourceEvts_err/Rate_SourceEvts,2)) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Rate_SourceEvtsUsingGleamGammaFilter >0 && Rate_SourceEvts > 0 )? (Rate_SourceEvts/Rate_SourceEvtsUsingGleamGammaFilter)*TMath::Sqrt(pow(Rate_SourceEvtsUsingGleamGammaFilter_err/Rate_SourceEvtsUsingGleamGammaFilter,2)+pow(Rate_SourceEvts_err/Rate_SourceEvts,2)) : 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -880,7 +880,7 @@
 
 
        <object>
-      <name> CleanEvtsPassingGleamGammaFilter </name>
+      <name> CleanEvtsUsingGleamGammaFilter </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[  MeritObfGamStatus>0 && FT1EventClassBitMap[3] ]]></cut>
       <type> rate </type>
@@ -889,7 +889,7 @@
 
           <object>
       <name> Ratio_CleanEvts_FswGamma_GleamGamma </name>
-      <formula><![CDATA[ foronetime: Rate_CleanEvtsPassingGleamGammaFilter >0 ? Rate_CleanEvts/Rate_CleanEvtsPassingGleamGammaFilter : -1.0 ]]></formula>
+      <formula><![CDATA[ foronetime: Rate_CleanEvtsUsingGleamGammaFilter >0 ? Rate_CleanEvts/Rate_CleanEvtsUsingGleamGammaFilter : -1.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -898,16 +898,46 @@
 
        <object>
       <name> Ratio_CleanEvts_FswGamma_GleamGamma_err </name>
-      <formula><![CDATA[ foronetime: (Rate_CleanEvtsPassingGleamGammaFilter >0 && Rate_CleanEvts > 0 )? (Rate_CleanEvts/Rate_CleanEvtsPassingGleamGammaFilter)*TMath::Sqrt(pow(Rate_CleanEvtsPassingGleamGammaFilter_err/Rate_CleanEvtsPassingGleamGammaFilter,2)+pow(Rate_CleanEvts_err/Rate_CleanEvts,2)) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Rate_CleanEvtsUsingGleamGammaFilter >0 && Rate_CleanEvts > 0 )? (Rate_CleanEvts/Rate_CleanEvtsUsingGleamGammaFilter)*TMath::Sqrt(pow(Rate_CleanEvtsUsingGleamGammaFilter_err/Rate_CleanEvtsUsingGleamGammaFilter,2)+pow(Rate_CleanEvts_err/Rate_CleanEvts,2)) : 0.0 ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type>outputfloat</type>
       <description> Error in quantity Ratio_CleanEvts_FswGamma_GleamGamma. </description>
     </object>
 
+    
        <object>
-      <name> NormRateTransientEvtsPassingGleamGammaFilter </name>
-      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvtsPassingGleamGammaFilter, Rate_TransientEvtsPassingGleamGammaFilter_err, "NormRate") ]]></formula>
+      <name> UltraCleanEvtsUsingGleamGammaFilter </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[  MeritObfGamStatus>0 && FT1EventClassBitMap[4] ]]></cut>
+      <type> rate </type>
+      <description> Rate of events surviving the UltraCLEAN gamma cuts from pass7 and the offline Gleam Gamma filter. </description>
+    </object>
+
+          <object>
+      <name> Ratio_UltraCleanEvts_FswGamma_GleamGamma </name>
+      <formula><![CDATA[ foronetime: Rate_UltraCleanEvtsUsingGleamGammaFilter >0 ? Rate_UltraCleanEvts/Rate_UltraCleanEvtsUsingGleamGammaFilter : -1.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>outputfloat</type>
+      <description> Ratio of rates of UltraClean events and UltraClean events surviving also the Offline Gleam GAMMA filter. </description>
+    </object>
+
+       <object>
+      <name> Ratio_UltraCleanEvts_FswGamma_GleamGamma_err </name>
+      <formula><![CDATA[ foronetime: (Rate_UltraCleanEvtsUsingGleamGammaFilter >0 && Rate_UltraCleanEvts > 0 )? (Rate_UltraCleanEvts/Rate_UltraCleanEvtsUsingGleamGammaFilter)*TMath::Sqrt(pow(Rate_UltraCleanEvtsUsingGleamGammaFilter_err/Rate_UltraCleanEvtsUsingGleamGammaFilter,2)+pow(Rate_UltraCleanEvts_err/Rate_UltraCleanEvts,2)) : 0.0 ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type>outputfloat</type>
+      <description> Error in quantity Ratio_UltraCleanEvts_FswGamma_GleamGamma. </description>
+    </object>
+
+
+
+
+       <object>
+      <name> NormRateTransientEvtsUsingGleamGammaFilter </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvtsUsingGleamGammaFilter, Rate_TransientEvtsUsingGleamGammaFilter_err, "NormRate") ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -915,18 +945,18 @@
     </object>
 
       <object>
-      <name> NormRateTransientEvtsPassingGleamGammaFilter_err </name>
-      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvtsPassingGleamGammaFilter, Rate_TransientEvtsPassingGleamGammaFilter_err, "NormRateErr") ]]></formula>
+      <name> NormRateTransientEvtsUsingGleamGammaFilter_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvtsUsingGleamGammaFilter, Rate_TransientEvtsUsingGleamGammaFilter_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Error in NormRateTransientEvtsPassingGleamGammaFilter. </description>
+      <description> Error in NormRateTransientEvtsUsingGleamGammaFilter. </description>
     </object>
 
       
         <object>
-      <name> NormRateSourceEvtsPassingGleamGammaFilter </name>
-      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvtsPassingGleamGammaFilter, Rate_SourceEvtsPassingGleamGammaFilter_err, "NormRate") ]]></formula>
+      <name> NormRateSourceEvtsUsingGleamGammaFilter </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvtsUsingGleamGammaFilter, Rate_SourceEvtsUsingGleamGammaFilter_err, "NormRate") ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
@@ -934,12 +964,12 @@
     </object>
 
 	  <object>
-      <name> NormRateSourceEvtsPassingGleamGammaFilter_err </name>
-      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvtsPassingGleamGammaFilter, Rate_SourceEvtsPassingGleamGammaFilter_err, "NormRateErr") ]]></formula>
+      <name> NormRateSourceEvtsUsingGleamGammaFilter_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvtsUsingGleamGammaFilter, Rate_SourceEvtsUsingGleamGammaFilter_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[ ]]></cut>
       <source>output</source>
       <type> outputfloat </type>
-      <description> Error in NormRateSourceEvtsPassingGleamGammaFilter</description>
+      <description> Error in NormRateSourceEvtsUsingGleamGammaFilter</description>
     </object>
 
 

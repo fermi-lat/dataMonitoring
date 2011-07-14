@@ -294,6 +294,14 @@
       <description> Rate of events after application of CLEAN gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV. </description>
     </object>
 
+      <object>
+      <name> UltraCleanEvtsBelowZenithTheta100_E100MeV  </name>
+      <formula><![CDATA[ 1 ]]></formula>
+      <cut><![CDATA[   FT1EventClassBitMap[4] && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <type> rate </type>
+      <description> Rate of events after application of UltraCLEAN gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV. </description>
+    </object>
+
        <object>
       <name> SourceEvtsBelowZenithTheta100_E100MeV  </name>
       <formula><![CDATA[ 1 ]]></formula>
@@ -712,6 +720,16 @@
     </object>
 
 
+    <object>
+      <name> Rate_UltraCleanEvtsBelowZenithTheta100_E100MeV_TH1 </name>
+      <formula><![CDATA[ Rate_UltraCleanEvtsBelowZenithTheta100_E100MeV ]]></formula>
+      <cut><![CDATA[  ]]></cut>
+      <source>output</source>
+      <type> histogram-1d[100,0,10] </type>
+      <titledesc> Rate_UltraCleanEvtsBelowZenithTheta100_E100MeV </titledesc>
+      <axisdesc> [Rate_UltraCleanEvts(Hz), N] </axisdesc>
+      <description> Distribution of Rate_UltraCleanEvtsBelowZenithTheta100_E100MeV  values. </description>
+    </object>
 
 	  <object>
       <name> Rate_SourceEvtsBelowZenithTheta100_E100MeV_TH1 </name>
@@ -732,7 +750,7 @@
       <source>output</source>
       <type> histogram-1d[177,-30.,501.]  </type>
      <!-- <titledesc>  LLE event rate </titledesc> -->
-      <axisdesc> [Rate of LLE events for this RA,Dec bin (Hz), N] </axisdesc>
+      <axisdesc> [Rate of LLE events for this RA and Dec bin, N] </axisdesc>
       <description> LLE event rate for a 45 degree radius cicle centered at this particular RA,Dec bin. The RA,Dec bins are defined as: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. Note also that the rates for Dec=-90 deg and for Dec=90 deg will be identical for all the RA bins.</description>
       </object>
 
