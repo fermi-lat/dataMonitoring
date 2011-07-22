@@ -5,6 +5,12 @@
  *                  EOH
 
  DigiReconCalMeritCfg-01-15-00 14-Jul-2011 dpaneque Added/Removed/Renamed variables according to request from Maria Elena from July 14th
+DigiReconCalMeritCfg-01-16-00 (16-July-2011; M.E.Monzani)
+------------------------------------------------------
+Removed Rate_LLEEvents_TH1_RA_Dec, after talking to the 
+GRB/LLE folks.
+
+
 DigiReconCalMeritCfg-01-15-00 (14-July-2011; D.Paneque)
 ------------------------------------------------------
 Added/Removed/Renamed variables, as requested in e-mail

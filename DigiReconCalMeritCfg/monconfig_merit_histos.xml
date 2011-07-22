@@ -743,18 +743,6 @@
     </object>
 
 
-    <object>
-      <name> Rate_LLEEvents_TH1_RA_Dec[8][5]  </name>
-      <formula><![CDATA[ Rate_LLEvents_BinsRaDec ]]></formula>
-      <cut><![CDATA[  ]]></cut>
-      <source>output</source>
-      <type> histogram-1d[177,-30.,501.]  </type>
-     <!-- <titledesc>  LLE event rate </titledesc> -->
-      <axisdesc> [Rate of LLE events for this RA and Dec bin, N] </axisdesc>
-      <description> LLE event rate for a 45 degree radius cicle centered at this particular RA,Dec bin. The RA,Dec bins are defined as: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. Note also that the rates for Dec=-90 deg and for Dec=90 deg will be identical for all the RA bins.</description>
-      </object>
-
-
       <object>
       <name> LLEEvents_RA_Dec_TH2 </name>
       <formula><![CDATA[ foreachllerabin: foreachlledecbin: RFun::IsEventInThisRaDecBin(FT1Ra, FT1Dec, llerabin, lledecbin) ]]></formula>
