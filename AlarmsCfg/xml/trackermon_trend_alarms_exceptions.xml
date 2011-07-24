@@ -1,14 +1,7 @@
 <?xml version="1.0" ?>
 
 <alarm_exceptions>
-
   <alarm name="Number_layerOcc_TowerPlane" algorithm="values">
-    <!-- Added on February 5th, 2009 by Johan Bregeon. -->
-    <exception identifier="(3, 35)" status_on_violation="clean"/>
-    <!-- Added on March 10th, 2009 by Johan Bregeon. -->
-    <exception identifier="(4, 13)" status_on_violation="clean"/>
-    <!-- Added on April 14th, 2009 by Luca Baldini. -->
-    <exception identifier="(5, 32)" status_on_violation="clean"/>
+    <exception identifier="(3, 35)" status_on_violation="error"/>
   </alarm>
-
-</alarm_exceptions>
+ </alarm_exceptions>
