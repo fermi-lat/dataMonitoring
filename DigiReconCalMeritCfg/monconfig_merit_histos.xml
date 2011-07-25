@@ -312,21 +312,12 @@
 
 
      <object>
-      <name> LLEEvents  </name>
+      <name> LLEEvts  </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[  FT1EventClassBitMap[14]]]></cut>
       <type> rate </type>
       <description> Rate of events after application of LLE gamma cuts from pass7. </description>
     </object>
-
-     <object>                                                                                                 
-      <name> LLEvents_BinsRaDec[8][5] </name>
-      <formula><![CDATA[foreachllerabin: foreachlledecbin: RFun::IsEventInThisRaDecBin(FT1Ra, FT1Dec, llerabin, lledecbin)]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[14] ]]></cut>                                     
-      <type> rate </type>                                                                                        
-      <description> Two dimensional vector [8][5] reporting the rate of LLE events that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. Note also that the rates for Dec=-90 deg and for Dec=90 deg will be identical for all the RA bins. </description>
-     </object>
-
 
      <object>
       <name> MeritTriggerEngine[16]  </name>
@@ -742,9 +733,8 @@
       <description> Distribution of Rate_SourceEvtsBelowZenithTheta100_E100MeV  values. </description>
     </object>
 
-
       <object>
-      <name> LLEEvents_RA_Dec_TH2 </name>
+      <name> LLEEvts_BinsRaDec_TH2 </name>
       <formula><![CDATA[ foreachllerabin: foreachlledecbin: RFun::IsEventInThisRaDecBin(FT1Ra, FT1Dec, llerabin, lledecbin) ]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[14] ]]></cut>
       <!-- <type> histogram-vecdim-2d[8,-22.5, 337.5, 5, -112.5,+112.5,0] </type> -->
