@@ -687,7 +687,7 @@
     </object>
 
     <object>                                                                                                 
-      <name> LLEEvts_BinsRaDec[8][5] </name>
+      <name> LLEEvtsBelowZenithTheta100_BinsRaDec[8][5] </name>
       <formula><![CDATA[foreachllerabin: foreachlledecbin: RFun::IsEventInThisRaDecBin(FT1Ra, FT1Dec, llerabin, lledecbin)]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[14]  && FT1ZenithTheta<100]]></cut>                                     
       <type> rate </type>                                                                                        

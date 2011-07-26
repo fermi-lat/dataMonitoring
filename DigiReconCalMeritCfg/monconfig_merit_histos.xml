@@ -734,14 +734,14 @@
     </object>
 
       <object>
-      <name> LLEEvts_BinsRaDec_TH2 </name>
+      <name> LLEEvtsBelowZenithTheta100_BinsRaDec_TH2 </name>
       <formula><![CDATA[ foreachllerabin: foreachlledecbin: RFun::IsEventInThisRaDecBin(FT1Ra, FT1Dec, llerabin, lledecbin) ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[14] ]]></cut>
+      <cut><![CDATA[ FT1EventClassBitMap[14] && FT1ZenithTheta<100 ]]></cut>
       <!-- <type> histogram-vecdim-2d[8,-22.5, 337.5, 5, -112.5,+112.5,0] </type> -->
       <type> histogram-vecdim-2d[8,-0.5, 7.5, 5, -0.5, 4.5,0] </type>
       <titledesc>  LLE event Hit Map RA:Dec </titledesc>
       <axisdesc> [RA bin, DEC bin, N] </axisdesc>
-      <description> LLE event Hit Map RA:Dec. The histogram reports the number of LLE events that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. Note also that the number of events for Dec=-90 deg and for Dec=90 deg will be identical for all the RA bins.</description>
+      <description> LLE event Hit Map RA:Dec. The histogram reports the number of LLE events with FT1ZenithTheta below 100 deg, that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. Note also that the number of events for Dec=-90 deg and for Dec=90 deg will be identical for all the RA bins.</description>
     </object>
 
 
