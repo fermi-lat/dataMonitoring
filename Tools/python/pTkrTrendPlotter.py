@@ -259,7 +259,7 @@ class pTkrTrendPlotter:
     def getTimestamp(self, i):
         return self.Timestamps[i]
 
-    def plotHitEfficiency(self, sampleTowers = [0, 15]):
+    def plotHitEfficiency(self, sampleTowers = [0, 15], outputFilePath = None):
         self.RootTree.SetBranchStatus('*', 0)
         self.RootTree.SetBranchStatus('Mean_towerEff_Tower', 1)
         self.RootTree.SetBranchStatus('Mean_towerEff_Tower_err', 1)
@@ -278,6 +278,14 @@ class pTkrTrendPlotter:
                 g = self.GraphDict['hit_efficiency_%d' % tower]
                 g.SetPoint(i, x, v[tower])
                 g.SetPointError(i, 0, dv[tower])
+        if outputFilePath is not None:
+            print 'Writing output file %s...' % outputFilePath
+            outputFile = ROOT.TFile(outputFilePath, 'RECREATE')
+            for tower in range(16):
+                g = self.GraphDict['hit_efficiency_%d' % tower]
+                g.Write()
+            outputFile.Close()
+            print 'Done.'
         hMean = ROOT.TH1F('h_hit_eff_mean', 'h_hit_eff_mean', 61, 0.97, 1.01)
         store(hMean)
         hMean.SetXTitle('Average hit efficiency')
@@ -328,7 +336,7 @@ class pTkrTrendPlotter:
         c.Update()
         saveCanvas(c)
 
-    def plotTrigEfficiency(self, sampleTowers = [0, 15]):
+    def plotTrigEfficiency(self, sampleTowers = [0, 15], outputFilePath = None):
         self.RootTree.SetBranchStatus('*', 0)
         self.RootTree.SetBranchStatus('Mean_trigEff_Tower', 1)
         self.RootTree.SetBranchStatus('Mean_trigEff_Tower_err', 1)
@@ -347,6 +355,14 @@ class pTkrTrendPlotter:
                 g = self.GraphDict['trg_efficiency_%d' % tower]
                 g.SetPoint(i, x, v[tower])
                 g.SetPointError(i, 0, dv[tower])
+        if outputFilePath is not None:
+            print 'Writing output file %s...' % outputFilePath
+            outputFile = ROOT.TFile(outputFilePath, 'RECREATE')
+            for tower in range(16):
+                g = self.GraphDict['trg_efficiency_%d' % tower]
+                g.Write()
+            outputFile.Close()
+            print 'Done.'
         hMean = ROOT.TH1F('h_trg_eff_mean', 'h_trg_eff_mean', 50, 0.995, 1.005)
         store(hMean)
         hMean.SetXTitle('Average trigger efficiency')
@@ -485,7 +501,7 @@ class pTkrTrendPlotter:
         c.Update()
         saveCanvas(c)
 
-    def plotNoiseOcc(self, sampleLayer = (15, 10)):
+    def plotNoiseOcc(self, sampleLayer = (15, 10), outputFilePath = None):
         self.RootTree.SetBranchStatus('*', 0)
         self.RootTree.SetBranchStatus('Number_layerOcc_TowerPlane', 1)
         v  = numpy.zeros((16, 36), 'f')
@@ -513,6 +529,12 @@ class pTkrTrendPlotter:
         cSample.SetLogy(True)
         setupStripChart(gSample)
         gSample.Draw('ap')
+        if outputFilePath is not None:
+            print 'Writing output file %s...' % outputFilePath
+            outputFile = ROOT.TFile(outputFilePath, 'RECREATE')
+            gSample.Write()
+            outputFile.Close()
+            print 'Done.'
         llim = ROOT.TLine(MIN_TIME, 0.08, MAX_TIME, 0.08)
         store(llim)
         llim.SetLineColor(ROOT.kRed)
@@ -652,8 +674,8 @@ class pTkrTrendPlotter:
 if __name__ == '__main__':
     print LAUNCH_TIME
     p = pTkrTrendPlotter('/data/work/datamon/runs/tkrtrend/tkrtrend.root')
-    #p.plotHitEfficiency()
-    #p.plotTrigEfficiency()
+    #p.plotHitEfficiency(outputFilePath = 'trend_hit_efficiency.root')
+    #p.plotTrigEfficiency(outputFilePath = 'trend_trg_efficiency.root')
     #p.plotTOTPeak()
-    p.plotNoiseOcc()
+    p.plotNoiseOcc(outputFilePath = 'trend_noise_occupancy.root')
     #p.plotMaskStripChart()
