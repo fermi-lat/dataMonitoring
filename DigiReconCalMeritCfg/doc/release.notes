@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-19-00 26-Jul-2011 monzani Zdding zenith angle cut to the LLE BinsRaDec vector
 DigiReconCalMeritCfg-01-19-00 (25-July-2011; M.E.Monzani)
 ------------------------------------------------------
 Added zenith angle cut to the LLE BinsRaDec vector.
