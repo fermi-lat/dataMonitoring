@@ -4,7 +4,13 @@
  *
  *                  EOH
 
- DigiReconCalMeritCfg-01-17-00 25-Jul-2011 dpaneque Change in variable names, as requested by ME on July 22
+
+
+DigiReconCalMeritCfg-01-18-00 (25-July-2011; M.E.Monzani)
+------------------------------------------------------
+Added zenith angle cut to the LLE BinsRaDec vector.
+
+
 DigiReconCalMeritCfg-01-17-00 (25-July-2011; D.Paneque)
 ------------------------------------------------------
 Change names of LLE variables as requested by ME on e-mail 
