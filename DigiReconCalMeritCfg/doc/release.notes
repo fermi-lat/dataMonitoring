@@ -4,7 +4,19 @@
  *
  *                  EOH
 
- DigiReconCalMeritCfg-01-19-00 26-Jul-2011 monzani Zdding zenith angle cut to the LLE BinsRaDec vector
+
+DigiReconCalMeritCfg-01-20-00 (26-July-2011; D. Paneque)
+------------------------------------------------------
+
+Change name of LLE BinsRaDec vector variable (to reflect
+the fact that the zenith angle cut <100 is applied), 
+and add the zenith angle cut also to the histogram 
+variable
+LLEEvts_BinsRaDec_TH2 
+that was renamed
+LLEEvtsBelowZenithTheta100_BinsRaDec_TH2
+
+
 DigiReconCalMeritCfg-01-19-00 (25-July-2011; M.E.Monzani)
 ------------------------------------------------------
 Added zenith angle cut to the LLE BinsRaDec vector.
