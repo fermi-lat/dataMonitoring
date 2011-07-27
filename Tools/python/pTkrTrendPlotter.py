@@ -271,19 +271,30 @@ class pTkrTrendPlotter:
             g = ROOT.TGraphErrors()
             g.SetName('hit_efficiency_%d' % tower)
             self.GraphDict[g.GetName()] = g
+        gLAT = ROOT.TGraphErrors()
+        gLAT.SetName('hit_efficiency_LAT')
         for i in xrange(self.NumEntries):
             self.RootTree.GetEntry(i)
             x = self.getTimestamp(i)
+            effLAT = 0.
+            deffLAT = 0.
             for tower in range(16):
                 g = self.GraphDict['hit_efficiency_%d' % tower]
-                g.SetPoint(i, x, v[tower])
-                g.SetPointError(i, 0, dv[tower])
+                y = v[tower]
+                dy = dv[tower]
+                dy2 = dy*dy
+                g.SetPoint(i, x, y)
+                g.SetPointError(i, 0, dy)
+                effLAT  += y/dy2
+                deffLAT += 1./dy2
+            effLAT /= deffLAT
+            deffLAT = math.sqrt(1./deffLAT)
+            gLAT.SetPoint(i, x, effLAT)
+            gLAT.SetPointError(i, 0, deffLAT)
         if outputFilePath is not None:
             print 'Writing output file %s...' % outputFilePath
             outputFile = ROOT.TFile(outputFilePath, 'RECREATE')
-            for tower in range(16):
-                g = self.GraphDict['hit_efficiency_%d' % tower]
-                g.Write()
+            gLAT.Write()
             outputFile.Close()
             print 'Done.'
         hMean = ROOT.TH1F('h_hit_eff_mean', 'h_hit_eff_mean', 61, 0.97, 1.01)
@@ -348,19 +359,30 @@ class pTkrTrendPlotter:
             g = ROOT.TGraphErrors()
             g.SetName('trg_efficiency_%d' % tower)
             self.GraphDict[g.GetName()] = g
+        gLAT = ROOT.TGraphErrors()
+        gLAT.SetName('trg_efficiency_LAT')
         for i in xrange(self.NumEntries):
             self.RootTree.GetEntry(i)
             x = self.getTimestamp(i)
+            effLAT = 0.
+            deffLAT = 0.
             for tower in range(16):
                 g = self.GraphDict['trg_efficiency_%d' % tower]
-                g.SetPoint(i, x, v[tower])
-                g.SetPointError(i, 0, dv[tower])
+                y = v[tower]
+                dy = dv[tower]
+                dy2 = dy*dy
+                g.SetPoint(i, x, y)
+                g.SetPointError(i, 0, dy)
+                effLAT  += y/dy2
+                deffLAT += 1./dy2
+            effLAT /= deffLAT
+            deffLAT = math.sqrt(1./deffLAT)
+            gLAT.SetPoint(i, x, effLAT)
+            gLAT.SetPointError(i, 0, deffLAT)
         if outputFilePath is not None:
             print 'Writing output file %s...' % outputFilePath
             outputFile = ROOT.TFile(outputFilePath, 'RECREATE')
-            for tower in range(16):
-                g = self.GraphDict['trg_efficiency_%d' % tower]
-                g.Write()
+            gLAT.Write()
             outputFile.Close()
             print 'Done.'
         hMean = ROOT.TH1F('h_trg_eff_mean', 'h_trg_eff_mean', 50, 0.995, 1.005)
@@ -511,6 +533,8 @@ class pTkrTrendPlotter:
         self.GraphDict[g.GetName()] = g
         gSample = ROOT.TGraph()
         gSample.SetName('noise_occ_sample')
+        gLAT = ROOT.TGraph()
+        gLAT.SetName('noise_occ_LAT')
         self.GraphDict[gSample.GetName()] = gSample
         for i in xrange(self.NumEntries):
             self.RootTree.GetEntry(i)
@@ -519,6 +543,7 @@ class pTkrTrendPlotter:
             g.SetPoint(i, x, occWorst)
             occSample = v[sampleLayer[0]][sampleLayer[1]]
             gSample.SetPoint(i, x, occSample)
+            gLAT.SetPoint(i, x, v.mean())
         g.GetYaxis().SetRangeUser(1e-2, 10)
         g.GetYaxis().SetTitle('Layer noise occupancy')
         gSample.GetYaxis().SetRangeUser(1e-3, 1.5e-1)
@@ -532,7 +557,7 @@ class pTkrTrendPlotter:
         if outputFilePath is not None:
             print 'Writing output file %s...' % outputFilePath
             outputFile = ROOT.TFile(outputFilePath, 'RECREATE')
-            gSample.Write()
+            gLAT.Write()
             outputFile.Close()
             print 'Done.'
         llim = ROOT.TLine(MIN_TIME, 0.08, MAX_TIME, 0.08)
