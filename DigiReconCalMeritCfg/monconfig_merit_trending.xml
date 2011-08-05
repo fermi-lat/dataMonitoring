@@ -389,17 +389,31 @@
       <description> Rate of events with FT1Energy above 100 MeV, after application of TRANSIENT gamma cuts from pass7. </description>
     </object>
 
-    
-    <object>
+     <object>
       <name> TransientEvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[  FT1EventClassBitMap[0]  &&  FT1ZenithTheta<100  ]]></cut>
       <type> rate </type>
       <description> Rate of events after application of TRANSIENT gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100. </description>
+    </object>  
+
+     <object>
+      <name> NormRateTransientEvtsBelowZenithTheta100 </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvtsBelowZenithTheta100, Rate_TransientEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of Transient events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
     </object>
 
-      
-
+	 <object>
+      <name> NormRateTransientEvtsBelowZenithTheta100_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvtsBelowZenithTheta100, Rate_TransientEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in normalized Rate of Transient events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
+    </object>
 
      <object>
       <name> CleanEvts </name>
@@ -409,6 +423,23 @@
       <description> Rate of events after application of CLEAN gamma cuts from pass7. </description>
     </object>
 
+        <object>
+      <name> NormRateCleanEvts </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_CleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvts, Rate_CleanEvts_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of clean class events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
+    </object>
+
+	  <object>
+      <name> NormRateCleanEvts_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_CleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvts, Rate_CleanEvts_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in normalized Rate of clean class events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
+    </object>
 
       <object>
       <name> CleanEvts_E100MeV </name>
@@ -426,6 +457,23 @@
       <description> Rate of events with FT1ZenithTheta below 100 deg, after application of CLEAN gamma cuts from pass7. </description>
     </object>
 
+     <object>
+      <name> NormRateCleanEvtsBelowZenithTheta100 </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_CleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvtsBelowZenithTheta100, Rate_CleanEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of Clean events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
+    </object>
+
+	 <object>
+      <name> NormRateCleanEvtsBelowZenithTheta100_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_CleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvtsBelowZenithTheta100, Rate_CleanEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in normalized Rate of Clean events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
+    </object>
 
       <object>
       <name> SourceEvts </name>
@@ -463,8 +511,6 @@
       <description> Rate of events with FT1Energy above 100 MeV, after application of SOURCE gamma cuts from pass7. </description>
     </object>
 
-   
-
     <object>
       <name> SourceEvtsBelowZenithTheta100 </name>
       <formula><![CDATA[ 1 ]]></formula>
@@ -473,12 +519,48 @@
       <description> Rate of events with FT1ZenithTheta below 100 deg, after application of SOURCE gamma cuts from pass7. </description>
     </object>
 
+     <object>
+      <name> NormRateSourceEvtsBelowZenithTheta100 </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvtsBelowZenithTheta100, Rate_SourceEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of Source events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
+    </object>
+
+	 <object>
+      <name> NormRateSourceEvtsBelowZenithTheta100_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvtsBelowZenithTheta100, Rate_SourceEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in normalized Rate of Source events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
+    </object>
+
     <object>
       <name> UltraCleanEvts </name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[4]]]></cut>
       <type> rate </type>
       <description>  Rate of events after application of ULTRACLEAN gamma cuts from pass7.  </description>
+    </object>
+
+        <object>
+      <name> NormRateUltraCleanEvts </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_UltraCleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvts, Rate_UltraCleanEvts_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of ultra clean class events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
+    </object>
+
+	  <object>
+      <name> NormRateUltraCleanEvts_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_UltraCleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvts, Rate_UltraCleanEvts_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in normalized Rate of ultra clean class events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
     </object>
 
 
@@ -498,6 +580,23 @@
       <description> Rate of events with FT1ZenithTheta below 100 deg, after application of ULTRACLEAN gamma cuts from pass7. </description>
     </object>
 
+     <object>
+      <name> NormRateUltraCleanEvtsBelowZenithTheta100 </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_UltraCleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvtsBelowZenithTheta100, Rate_UltraCleanEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of UltraClean events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
+    </object>
+
+	 <object>
+      <name> NormRateUltraCleanEvtsBelowZenithTheta100_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_UltraCleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvtsBelowZenithTheta100, Rate_UltraCleanEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in normalized Rate of UltraClean events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
+    </object>
 
      <object>
       <name> S2Evts </name>
@@ -659,6 +758,24 @@
       <cut><![CDATA[ FT1EventClassBitMap[14]]]></cut>
       <type> rate </type>
       <description>  Rate of events after application of LLE gamma cuts from pass7.  </description>
+    </object>
+
+     <object>
+      <name> NormRateLLEEvts </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_LLEEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_LLEEvts, Rate_LLEEvts_err, "NormRate") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Normalized Rate of LLE events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
+    </object>
+
+	 <object>
+      <name> NormRateLLEEvts_err </name>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_LLEEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_LLEEvts, Rate_LLEEvts_err, "NormRateErr") ]]></formula>
+      <cut><![CDATA[ ]]></cut>
+      <source>output</source>
+      <type> outputfloat </type>
+      <description> Error in normalized Rate of LLE events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
     </object>
 
 
