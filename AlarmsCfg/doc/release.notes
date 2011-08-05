@@ -4,6 +4,13 @@
  *
  *                  EOH
 
+
+- A couple of status_on_violations changed from warning to clean:
+  CalXAdcPedRMS_LEX8_TH1 for channel 848;
+  CalXAdcPedRMS_LEX1_TH1 for channel 848.
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/6730.html
+
+
  AlarmsCfg-06-00-01 24-Jul-2011 lbaldini A couple of small changes in the limits for the normalized rates for the p7 release.
 - A couple of small changes to the limits on the normalized rates for the p7 release.
 
