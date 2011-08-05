@@ -12,17 +12,31 @@ MAX_L = 1.9
 NUM_BINS_L = 200
 MIN_VALID_BINS_L = 1
 
-VARIABLE_LIST = ['Rate_EvtsBeforeCuts',
-                 'Rate_EvtsBeforeCutsWithGAMMAFilter',
-                 'Rate_TransientEvts',
-                 'Rate_TransientEvtsBelowZenithTheta100',
-                 'Rate_DiffuseEvts',
-                 'Rate_DiffuseEvtsBelowZenithTheta100',
-                 'Rate_SourceEvts',
-                 'Rate_SourceEvtsBelowZenithTheta100',
-                 'CounterDiffRate_EvtsBeforeFilters',
-                 'Rate_MeritTriggerEngine',
-                 'Rate_GAMMAFilterAndTriggerEngine']
+
+VARIABLE_LIST = [
+    # Events before cuts/filters
+    'Rate_EvtsBeforeCuts',
+    'Rate_EvtsBeforeCutsWithGAMMAFilter',
+    'CounterDiffRate_EvtsBeforeFilters',
+    # Trigger engines
+    'Rate_MeritTriggerEngine',
+    'Rate_GAMMAFilterAndTriggerEngine',
+    # Photon classes: transient...
+    'Rate_TransientEvts',
+    'Rate_TransientEvtsBelowZenithTheta100',
+    # ... source ...
+    'Rate_SourceEvts',
+    'Rate_SourceEvtsBelowZenithTheta100',
+    # ... clean ...
+    'Rate_CleanEvts',
+    'Rate_CleanEvtsBelowZenithTheta100',
+    # ... and ultraclean
+    'Rate_UltraCleanEvts',
+    'Rate_UltraCleanEvtsBelowZenithTheta100',
+    # LLE events
+    'Rate_LLEEvts'
+    ]
+
 
 VARIABLE_ERR_LIST = []
 for varName in VARIABLE_LIST:
