@@ -6,7 +6,7 @@ import os
 from pSafeROOT         import ROOT
 from pMeritTrendMerger import VARIABLE_DICT
 
-ROCK_ANGLE_CUT = 'abs(Mean_PtSCzenith - 50) < 0.2'
+ROCK_ANGLE_CUT = 'abs(abs(Mean_PtSCzenith) - 50) < 0.2'
 MIN_L = 0.9
 MAX_L = 1.9
 NUM_BINS_L = 200

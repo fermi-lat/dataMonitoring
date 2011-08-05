@@ -94,13 +94,13 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
         if index is None:
             cut = '%s > %.3f && %s' %\
                 (varName, MIN_NORM_RATE, NOT_ROCK_ANGLE_CUT)
-            expr = '%s:Mean_PtSCzenith' % varName
+            expr = '%s:abs(Mean_PtSCzenith)' % varName
             gName = self.getLimbGraphName(varName)
         else:
             cut = '%s[%d] > %.3f && %s' %\
                 (varName, index, MIN_NORM_RATE, NOT_ROCK_ANGLE_CUT)
             print cut
-            expr = '%s[%d]:Mean_PtSCzenith' % (varName, index)
+            expr = '%s[%d]:abs(Mean_PtSCzenith)' % (varName, index)
             gName = self.getLimbGraphName(varName, index)
         self.RootTree.Draw(expr, cut)
         g = self.GraphCanvas.GetPrimitive('Graph')
@@ -240,7 +240,7 @@ class pMeritTrendPostProcessor(pMeritTrendProcessor):
         print 'Done.'
 
     def copyArrays(self):
-        rockAngle = self.InputArrayDict['Mean_PtSCzenith'][0]
+        rockAngle = abs(self.InputArrayDict['Mean_PtSCzenith'][0])
         longitude = self.InputArrayDict['Mean_PtLon'][0]
         for (name, (length, type)) in VARIABLE_DICT.items():
             if name not in VARIABLE_LIST:
