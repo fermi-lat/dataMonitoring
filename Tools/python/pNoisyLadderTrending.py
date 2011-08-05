@@ -1,10 +1,14 @@
-
 from pLongTermTrendMaker import *
+from __coupling_shorts__ import *
 
+LAYER_LIST = BAD_DEFECT_DICT.keys()
+LAYER_LIST.sort()
 
-TOWER = 3
-PLANE = 'Y17'
-HITMAP_PATH = 'TkrNoiseOcc/Hitmap/Tower%d/hTkrHitMapT%d%s' % (TOWER, TOWER, PLANE)
+def getHitmapPath(layer):
+    (id, sn, plane) = layer
+    return 'TkrNoiseOcc/Hitmap/Tower%d/hTkrHitMapT%d%s' % (id, id, plane)
+
+HITMAP_PATH_LIST = [getHitmapPath(layer) for layer in LAYER_LIST]
 
 
 class pTKRANALYSISAnalyzer(pBaseFileAnalyzer):
@@ -21,10 +25,14 @@ class pTKRANALYSISAnalyzer(pBaseFileAnalyzer):
         runId = self.Arrays['RunId'][0]
         numEvents = self.InputFile.Get('TkrHits/numCalXtal').GetEntries()
         self.Arrays['NumEvents'][0] = numEvents
-        hitmap = self.InputFile.Get(HITMAP_PATH)
-        hitmap.SetName('%s_%s' % (runId, hitmap.GetName()))
+        hitmaps = []
+        for hitmapPath in HITMAP_PATH_LIST:
+            hitmap = self.InputFile.Get(hitmapPath)
+            hitmap.SetName('%s_%s' % (runId, hitmap.GetName()))
+            hitmaps.append(hitmap)
         self.OutputFile.cd()
-        hitmap.Write()
+        for hitmap in hitmaps:
+            hitmap.Write()
 
 
 

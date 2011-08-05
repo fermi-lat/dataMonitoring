@@ -14,20 +14,22 @@ DEFAULT_SITE = 'SLAC_XROOT /Data/Flight/Level1/LPA'
 DEFAULT_SORT = 'nRun'
 
 VARIABLE_DICT = {
-    'Digi_Trend_Bin_Start'                              : ('I', ''     ),
-    'Digi_Trend_Bin_End'                                : ('I', ''     ),
-    'Digi_Trend_TrueTimeInterval'                       : ('D', ''     ),
-    'Digi_Trend_Rate_AcdDigis'                          : ('F', ''     ),
-    'Digi_Trend_Rate_FswFilters_GAMMA'                  : ('F', ''     ),
-    'Digi_Trend_OutF_Normalized_AcdHit_AcdTile'         : ('F', '[128]'),
-    'Digi_Trend_Rate_AnyAcdVeto_AcdTile'                : ('F', '[128]'),
-    'FastMon_Trend_Mean_FastMon_SpaceCraft_RockAngle'   : ('F', ''     ),
-    'Merit_Trend_OutF_NormRateTransientEvts'            : ('F', ''     ),
-    'Merit_Trend_Rate_TransientEvts'                    : ('F', ''     ),
-    'Merit_Trend_Rate_TransientEvtsBelowZenithTheta100' : ('F', ''     ),
-    'Merit_Trend_Mean_PtLat'                            : ('F', ''     ),
-    'Merit_Trend_Mean_PtLon'                            : ('F', ''     ),
-    'Merit_Trend_Mean_PtMcIlwainL'                      : ('F', ''     )
+    'Digi_Trend_Bin_Start'                                 : ('I', ''     ),
+    'Digi_Trend_Bin_End'                                   : ('I', ''     ),
+    'Digi_Trend_TrueTimeInterval'                          : ('D', ''     ),
+    'Digi_Trend_Rate_AcdDigis'                             : ('F', ''     ),
+    'Digi_Trend_Rate_FswFilters_GAMMA'                     : ('F', ''     ),
+    'Digi_Trend_OutF_Normalized_AcdHit_AcdTile'            : ('F', '[128]'),
+    'Digi_Trend_Rate_AnyAcdVeto_AcdTile'                   : ('F', '[128]'),
+    'FastMon_Trend_Mean_FastMon_SpaceCraft_RockAngle'      : ('F', ''     ),
+    'Merit_Trend_OutF_NormRateTransientEvts'               : ('F', ''     ),
+    'Merit_Trend_Rate_TransientEvts'                       : ('F', ''     ),
+    'Merit_Trend_Rate_TransientEvts_err'                   : ('F', ''     ),
+    'Merit_Trend_Rate_TransientEvtsBelowZenithTheta100'    : ('F', ''     ),
+    'Merit_Trend_Rate_TransientEvtsBelowZenithTheta100_err': ('F', ''     ),
+    'Merit_Trend_Mean_PtLat'                               : ('F', ''     ),
+    'Merit_Trend_Mean_PtLon'                               : ('F', ''     ),
+    'Merit_Trend_Mean_PtMcIlwainL'                         : ('F', ''     )
     }
 
 GROUP_LIST  = ['DIGITREND', 'FASTMONTREND', 'MERITTREND']
@@ -159,13 +161,16 @@ class pSolarFlareTrendMerger:
             self.FastmonTree = fastmonFile.Get('Time')
             self.MeritTree = meritFile.Get('Time')
             # Wanna check that the three trees have the same number of entries?
-            numEntries = self.DigiTree.GetEntries()
-            for i in xrange(numEntries):
-                self.DigiTree.GetEntry(i)
-                self.FastmonTree.GetEntry(i)
-                self.MeritTree.GetEntry(i)
-                self.copyArrays()
-                self.OutputTree.Fill()
+            try:
+                numEntries = self.DigiTree.GetEntries()
+                for i in xrange(numEntries):
+                    self.DigiTree.GetEntry(i)
+                    self.FastmonTree.GetEntry(i)
+                    self.MeritTree.GetEntry(i)
+                    self.copyArrays()
+                    self.OutputTree.Fill()
+            except:
+                print 'File read failed.'
         self.OutputFile.cd()
         self.OutputTree.Write()
         self.OutputFile.Close()
@@ -175,7 +180,7 @@ class pSolarFlareTrendMerger:
 if __name__ == '__main__':
     #q = pDataCatalogQuery()
     #q.dumpList('testlist.txt')
-    merger = pSolarFlareTrendMerger('solarflare_filelist.txt',
-                                    'solarflare_trend.root',
-                                    'Jan/01/2010 00:00:00')
+    merger = pSolarFlareTrendMerger('solarflare_filelist_2010_01_2010_04.txt',
+                                    'solarflare_trend_2010_01_2010_04.root',
+                                    'Jan/01/2010 00:00:00', 'May/01/2010 00:00:00')
     merger.run(False)
