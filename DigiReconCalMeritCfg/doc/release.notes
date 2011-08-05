@@ -5,6 +5,7 @@
  *                  EOH
 
 
+- NormRates, NormRatesErr and NormRatesBelowZenithTheta100 for Transient, Source, Clean, UltraClean and LLE
 - Normalization factors for the normalized rates updated to Pass7.
 
 
