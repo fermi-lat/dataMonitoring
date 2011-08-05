@@ -5,9 +5,9 @@
  *                  EOH
 
 
-- A couple of status_on_violations changed from warning to clean:
-  CalXAdcPedRMS_LEX8_TH1 for channel 848;
-  CalXAdcPedRMS_LEX1_TH1 for channel 848.
+- A couple of status_on_violations changed from warning to clean in calpeds_eor_alarms_exceptions.xml:
+  CalXAdcPedRMS_LEX8_TH1 (y_values) for channel 848;
+  CalXAdcPedRMS_LEX1_TH1 (y_values) for channel 848.
 * Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/6730.html
 
 
