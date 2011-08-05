@@ -3,42 +3,57 @@
 from pLongTermTrendMaker import *
 
 
-VARIABLE_DICT = {'Rate_EvtsBeforeCuts': (1, 'F'),
-                 'Rate_EvtsBeforeCuts_err': (1, 'F'),
-                 'Rate_EvtsBeforeCutsWithGAMMAFilter': (1, 'F'),
-                 'Rate_EvtsBeforeCutsWithGAMMAFilter_err': (1, 'F'),
-                 'Rate_TransientEvts': (1, 'F'),
-                 'Rate_TransientEvts_err': (1, 'F'),
-                 'Rate_TransientEvtsBelowZenithTheta100': (1, 'F'),
-                 'Rate_TransientEvtsBelowZenithTheta100_err': (1, 'F'),
-                 'Rate_DiffuseEvts': (1, 'F'),
-                 'Rate_DiffuseEvts_err': (1, 'F'),
-                 'Rate_DiffuseEvtsBelowZenithTheta100': (1, 'F'),
-                 'Rate_DiffuseEvtsBelowZenithTheta100_err': (1, 'F'),
-                 'Rate_SourceEvts': (1, 'F'),
-                 'Rate_SourceEvts_err': (1, 'F'),
-                 'Rate_SourceEvtsBelowZenithTheta100': (1, 'F'),
-                 'Rate_SourceEvtsBelowZenithTheta100_err': (1, 'F'),
-                 'CounterDiffRate_EvtsBeforeFilters': (1, 'F'),
-                 'CounterDiffRate_EvtsBeforeFilters_err': (1, 'F'),
-                 'Rate_MeritTriggerEngine': (16, 'F'),
-                 'Rate_MeritTriggerEngine_err': (16, 'F'),
-                 'Rate_GAMMAFilterAndTriggerEngine': (16, 'F'),
-                 'Rate_GAMMAFilterAndTriggerEngine_err': (16, 'F'),
-                 'Mean_PtLat': (1, 'F'),
-                 'Mean_PtLat_err': (1, 'F'),
-                 'Mean_PtLon': (1, 'F'),
-                 'Mean_PtLon_err': (1, 'F'),
-                 'Mean_PtMcIlwainL': (1, 'F'),
-                 'Mean_PtMcIlwainL_err': (1, 'F'),
-                 'Mean_PtMcIlwainB': (1, 'F'),
-                 'Mean_PtMcIlwainB_err': (1, 'F'),
-                 'Mean_PtSCzenith': (1, 'F'),
-                 'Mean_PtSCzenith_err': (1, 'F'),
-                 'TimeStampFirstEvt': (1, 'D'),
-                 'Bin_Start': (1, 'I'),
-                 'Bin_End': (1, 'I')
-                 }
+VARIABLE_DICT = { 
+    # Events before cuts/filters
+    'Rate_EvtsBeforeCuts': (1, 'F'),
+    'Rate_EvtsBeforeCuts_err': (1, 'F'),
+    'Rate_EvtsBeforeCutsWithGAMMAFilter': (1, 'F'),
+    'Rate_EvtsBeforeCutsWithGAMMAFilter_err': (1, 'F'),
+    'CounterDiffRate_EvtsBeforeFilters': (1, 'F'),
+    'CounterDiffRate_EvtsBeforeFilters_err': (1, 'F'),
+    # Trigger engines
+    'Rate_MeritTriggerEngine': (16, 'F'),
+    'Rate_MeritTriggerEngine_err': (16, 'F'),
+    'Rate_GAMMAFilterAndTriggerEngine': (16, 'F'),
+    'Rate_GAMMAFilterAndTriggerEngine_err': (16, 'F'),
+    # Photon classes: transient...
+    'Rate_TransientEvts': (1, 'F'),
+    'Rate_TransientEvts_err': (1, 'F'),
+    'Rate_TransientEvtsBelowZenithTheta100': (1, 'F'),
+    'Rate_TransientEvtsBelowZenithTheta100_err': (1, 'F'),
+    # ... source ...
+    'Rate_SourceEvts': (1, 'F'),
+    'Rate_SourceEvts_err': (1, 'F'),
+    'Rate_SourceEvtsBelowZenithTheta100': (1, 'F'),
+    'Rate_SourceEvtsBelowZenithTheta100_err': (1, 'F'),
+    # ... clean ...
+    'Rate_CleanEvts': (1, 'F'),
+    'Rate_CleanEvts_err': (1, 'F'),
+    'Rate_CleanEvtsBelowZenithTheta100': (1, 'F'),
+    'Rate_CleanEvtsBelowZenithTheta100_err': (1, 'F'),
+    # ... and ultraclean
+    'Rate_UltraCleanEvts': (1, 'F'),
+    'Rate_UltraCleanEvts_err': (1, 'F'),
+    'Rate_UltraCleanEvtsBelowZenithTheta100': (1, 'F'),
+    'Rate_UltraCleanEvtsBelowZenithTheta100_err': (1, 'F'),
+    # LLE events
+    'Rate_LLEEvts': (1, 'F'),
+    'Rate_LLEEvts_err': (1, 'F'),
+    # More stuff that's needed for the normalization.
+    'Mean_PtLat': (1, 'F'),
+    'Mean_PtLat_err': (1, 'F'),
+    'Mean_PtLon': (1, 'F'),
+    'Mean_PtLon_err': (1, 'F'),
+    'Mean_PtMcIlwainL': (1, 'F'),
+    'Mean_PtMcIlwainL_err': (1, 'F'),
+    'Mean_PtMcIlwainB': (1, 'F'),
+    'Mean_PtMcIlwainB_err': (1, 'F'),
+    'Mean_PtSCzenith': (1, 'F'),
+    'Mean_PtSCzenith_err': (1, 'F'),
+    'TimeStampFirstEvt': (1, 'D'),
+    'Bin_Start': (1, 'I'),
+    'Bin_End': (1, 'I')
+    }
 
 
 class pMeritTrendMerger:
@@ -123,5 +138,5 @@ class pMeritTrendMerger:
         
 if __name__ == '__main__':
     merger = pMeritTrendMerger('merit_norm_filelist.txt', 'merit_norm.root',
-                               'Jan/10/2011 00:00:00', 56)
+                               'August/05/2011 20:00:00', 4)
     merger.run()
