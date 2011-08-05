@@ -7,7 +7,7 @@
   Over the last months we had 0/454 violations for both.
   -->
   <alarm name="CalXAdcPedRMS_LEX8_TH1" algorithm="y_values">
-    <exception identifier="848"  status_on_violation="warning"/>
+    <exception identifier="848"  status_on_violation="clean"/>
     <exception identifier="1250" status_on_violation="warning"/>
   </alarm>
 
@@ -17,7 +17,7 @@
   Over the last months we had 0/454 violations for both.
   -->
   <alarm name="CalXAdcPedRMS_LEX1_TH1" algorithm="y_values">
-    <exception identifier="848"  status_on_violation="warning"/>
+    <exception identifier="848"  status_on_violation="clean"/>
     <exception identifier="1250" status_on_violation="warning"/>
   </alarm>
 
