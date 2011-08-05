@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-00-02 05-Aug-2011 lbaldini A couple of minor changes in the exceptions for calpeds_eor.
 
 - A couple of status_on_violations changed from warning to clean in calpeds_eor_alarms_exceptions.xml:
   CalXAdcPedRMS_LEX8_TH1 (y_values) for channel 848;
