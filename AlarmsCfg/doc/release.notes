@@ -4,6 +4,11 @@
  *
  *                  EOH
 
+
+- One more CAL channel (1250) excluded from the average for the CalXAdcPedRMS_LEX8_TH1 (algorithm y_average) alarm in the calpeds_eor.
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/6888.html
+
+
  AlarmsCfg-06-00-02 05-Aug-2011 lbaldini A couple of minor changes in the exceptions for calpeds_eor.
 
 - A couple of status_on_violations changed from warning to clean in calpeds_eor_alarms_exceptions.xml:
