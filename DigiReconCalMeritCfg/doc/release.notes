@@ -4,6 +4,8 @@
  *
  *                  EOH
 
+- Update NormRates for Pass7 with 56 days up to September 25th 2011
+
  DigiReconCalMeritCfg-01-20-01 05-Aug-2011 bregeon Add NormRates for new event classes--Pass7
 
 - NormRates, NormRatesErr and NormRatesBelowZenithTheta100 for Transient, Source, Clean, UltraClean and LLE
