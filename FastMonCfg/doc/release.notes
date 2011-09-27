@@ -4,6 +4,9 @@
  *
  *                  EOH
 
+- save full configuration in configFull.xml - GDQMQ-360
+- minimize configuration to gain processing time, turn off some histograms - GDQMQ-360
+
  FastMonCfg-02-01-01 15-Jan-2010 bregeon minor change for GDQMQ-325
 - change gem_delta_event_time type, fix PrescaledDelta histo - GDQMQ-325
 
