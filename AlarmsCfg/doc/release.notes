@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-00-04 27-Sep-2011 lbaldini Added exceptions for CAL channel 2414 in the calpeds_eor alarms.
 - Added exceptions for channel 2414 in the calpeds_eor alarms.
 * Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/6922.html
 
