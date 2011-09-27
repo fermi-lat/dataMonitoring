@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ FastMonCfg-02-02-01 27-Sep-2011 lbaldini Some obsolete quantities from the merging configuration file removed.
 - Merging configuration file changed according to the changes in the xml
   configuration files (see the change log for FastMonCfg-02-02-00).
 * Relevant Jira(s): GDQMQ-360
