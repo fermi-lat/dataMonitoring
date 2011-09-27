@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ FastMonCfg-02-02-00 27-Sep-2011 bregeon Remove plots to go faster - GDQMQ-360
 - save full configuration in configFull.xml - GDQMQ-360
 - minimize configuration to gain processing time, turn off some histograms - GDQMQ-360
 
