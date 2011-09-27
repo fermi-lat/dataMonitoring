@@ -658,7 +658,7 @@
 	    <type>bool_</type>
 	    <shape>(NUM_TOWERS, NUM_CAL_LAYERS_PER_TOWER, NUM_CAL_COLUMNS_PER_TOWER, 2, 4)</shape>
 	</variable>
-	<variable name="CalXHit_TowerCalLayerCalColumn" enabled="True">
+	<variable name="CalXHit_TowerCalLayerCalColumn" enabled="False">
 	    <type>int</type>
 	    <shape>(NUM_TOWERS, NUM_CAL_LAYERS_PER_TOWER, NUM_CAL_COLUMNS_PER_TOWER)</shape>
 	</variable>
@@ -712,7 +712,7 @@
     </outputList>
     
     <outputList group="CAL" name="CAL base" enabled="True">
-        <CUSTOM type="CalXHit_NHit_Counter_TowerCalLayer" name="CalXHit_NHit_Counter_TowerCalLayer_TH2" enabled="True">
+        <CUSTOM type="CalXHit_NHit_Counter_TowerCalLayer" name="CalXHit_NHit_Counter_TowerCalLayer_TH2" enabled="False">
 	    <title>Number of hits in a calorimeter layer defined by the coordinates tower,callayer.
 	           Periodic triggers are NOT taken into account</title>
 	    <xlabel>Tower number</xlabel>
@@ -723,7 +723,7 @@
 	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&32)==0 && (condsummary&64)==0 && error_summary<256]]></cut>	    
         </CUSTOM>
 
-        <CUSTOM type="ZeroCalXHit_NHit_Counter_TowerCalLayer" name="ZeroCalXHit_NHit_Counter_TowerCalLayer_TH2" enabled="True">
+        <CUSTOM type="ZeroCalXHit_NHit_Counter_TowerCalLayer" name="ZeroCalXHit_NHit_Counter_TowerCalLayer_TH2" enabled="False">
 	    <title>Number of times there is ZERO hits in a calorimeter layer defined by the coordinates tower,callayer.
 	           Periodic triggers are NOT taken into account</title>
 	    <xlabel>Tower number</xlabel>
@@ -804,11 +804,11 @@
 	    <type>int</type>
 	    <shape>(NUM_TOWERS, NUM_TKR_LAYERS_PER_TOWER, 2)</shape>
 	</variable>	
-	<variable name="ToT_con0_TowerPlane" enabled="True">
+	<variable name="ToT_con0_TowerPlane" enabled="False">
 	    <type>int</type>
 	    <shape>(NUM_TOWERS, NUM_TKR_LAYERS_PER_TOWER)</shape>
 	</variable>		
-	<variable name="ToT_con1_TowerPlane" enabled="True">
+	<variable name="ToT_con1_TowerPlane" enabled="False">
 	    <type>int</type>
 	    <shape>(NUM_TOWERS, NUM_TKR_LAYERS_PER_TOWER)</shape>
 	</variable>	
@@ -825,7 +825,7 @@
 	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0 && error_summary<256]]></cut>
             <expression>TkrHits</expression>
         </TH1F>		
-        <CUSTOM type="ZeroTkrHitsCounter_TowerPlane" name="ZeroTkrHitsCounter_TowerPlane_TH2" enabled="True">
+        <CUSTOM type="ZeroTkrHitsCounter_TowerPlane" name="ZeroTkrHitsCounter_TowerPlane_TH2" enabled="False">
 	    <title>Counter of ZERO strip hits vs Tower and Tracker plane</title>
 	    <caption>Number of times there are no strip hits in a Tracker plane</caption>
 	    <xlabel>Tower</xlabel>
@@ -836,7 +836,7 @@
     </outputList>
 		
     <outputList group="TKR" name="TKR in electronics space" enabled="True">
-        <CUSTOM type="TkrHitsCounter_TowerPlane" name="TkrHitsCounter_TowerPlane_TH2" enabled="True">
+        <CUSTOM type="TkrHitsCounter_TowerPlane" name="TkrHitsCounter_TowerPlane_TH2" enabled="False">
 	    <title>Overall number of hits vs. TKR tower and plane</title>
 	    <caption>Test</caption>
 	    <xlabel>Tower</xlabel>
@@ -844,7 +844,7 @@
 	    <drawoptions>colz</drawoptions>
             <cut><![CDATA[(condsummary&30)>0 && (condsummary&64)==0 && error_summary<256]]></cut>
         </CUSTOM>
-        <CUSTOM type="TkrHitsCounter_Plane" name="TkrHitsCounter_Plane_TH1_Tower" level="tower" enabled="True">
+        <CUSTOM type="TkrHitsCounter_Plane" name="TkrHitsCounter_Plane_TH1_Tower" level="tower" enabled="False">
 	    <title>Overall number of hits vs. TKR plane (one per tower)</title>
 	    <caption>Watch out for spikes (but don't get too excited, most likely it's just a noisy strip) and dips</caption>
 	    <xlabel>Tracker plane</xlabel>
@@ -885,7 +885,7 @@
 
     <outputList group="TKR" name="TKR Details - ToT" enabled="True">		
 
-        <CUSTOM type="ToT_0_WhenTkrHitsExist_TowerPlane" name="ToT_0_WhenTkrHitsExist_TowerPlane_TH2" enabled="True">
+        <CUSTOM type="ToT_0_WhenTkrHitsExist_TowerPlane" name="ToT_0_WhenTkrHitsExist_TowerPlane_TH2" enabled="False">
 	    <title>Number of times that, existing at least one hit, ToT==0 in both controllers</title>
 	    <xlabel>Tower Number</xlabel>
 	    <ylabel>Tracker plane</ylabel>
@@ -893,7 +893,7 @@
 	    <cut><![CDATA[ (condsummary&30)>0 && (condsummary&64)==0 && error_summary<256]]></cut>
         </CUSTOM>		
 
-       <TH1F name="ToT_con0_TH1_TowerPlane" enabled="True" level="tkr_layer">
+       <TH1F name="ToT_con0_TH1_TowerPlane" enabled="False" level="tkr_layer">
 	    <title>Distribution of raw ToTs per tower and plane - controller 0</title>
 	    <xbins>256</xbins>
 	    <xmin>-0.5</xmin>
@@ -904,7 +904,7 @@
             <expression>ToT_con0_TowerPlane</expression>
         </TH1F>				
 
-       <TH1F name="ToT_con1_TH1_TowerPlane" enabled="True" level="tkr_layer">
+       <TH1F name="ToT_con1_TH1_TowerPlane" enabled="False" level="tkr_layer">
 	    <title>Distribution of raw ToTs per tower and plane - controller 1</title>
 	    <xbins>256</xbins>
 	    <xmin>-0.5</xmin>
