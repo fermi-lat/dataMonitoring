@@ -4,6 +4,11 @@
  *
  *                  EOH
 
+- Merging configuration file changed according to the changes in the xml
+  configuration files (see the change log for FastMonCfg-02-02-00).
+* Relevant Jira(s): GDQMQ-360
+
+
  FastMonCfg-02-02-00 27-Sep-2011 bregeon Remove plots to go faster - GDQMQ-360
 - save full configuration in configFull.xml - GDQMQ-360
 - minimize configuration to gain processing time, turn off some histograms - GDQMQ-360
@@ -12,7 +17,6 @@
 - change gem_delta_event_time type, fix PrescaledDelta histo - GDQMQ-325
 
  FastMonCfg-02-01-00 12-Jan-2010 lbaldini Cut on the error_summary changed from <64 to <256
-
 - Bug fix in the cuts used to prevent the events with errors from ending
 up in the FastMon eor plots. In the file config.xml 64 occurrences of
 "error_summary<64" have been changed into "error_summary<256".
