@@ -4,14 +4,16 @@
  *
  *                  EOH
 
- AlarmsCfg-06-00-03 27-Sep-2011 lbaldini One CAL noisy channel excluded from a y average.
+- Added exceptions for channel 2414 in the calpeds_eor alarms.
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/6922.html
 
+
+ AlarmsCfg-06-00-03 27-Sep-2011 lbaldini One CAL noisy channel excluded from a y average.
 - One more CAL channel (1250) excluded from the average for the CalXAdcPedRMS_LEX8_TH1 (algorithm y_average) alarm in the calpeds_eor.
 * Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/6888.html
 
 
  AlarmsCfg-06-00-02 05-Aug-2011 lbaldini A couple of minor changes in the exceptions for calpeds_eor.
-
 - A couple of status_on_violations changed from warning to clean in calpeds_eor_alarms_exceptions.xml:
   CalXAdcPedRMS_LEX8_TH1 (y_values) for channel 848;
   CalXAdcPedRMS_LEX1_TH1 (y_values) for channel 848.
