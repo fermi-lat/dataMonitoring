@@ -776,13 +776,13 @@
     <alarmSet name="CondArrROI_CNOOpensWindow_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
 	<condition name="min_entries" value="100"/>
-	<warning_limits min="1.0" max="6.0"/>
-	<error_limits min="0.5" max="8.0"/>
+	<warning_limits min="0.5" max="6.0"/>
+	<error_limits min="0.2" max="8.0"/>
         <condition name="min_entries" value="100"/>
       </alarm> 
       <alarm function="x_rms" enabled="True">
 	<condition name="min_entries" value="100"/>
-	<warning_limits min="5.0" max="12.0"/>
+	<warning_limits min="3.0" max="12.0"/>
 	<error_limits min="2.0" max="14.0"/>
         <condition name="min_entries" value="100"/>
       </alarm> 
