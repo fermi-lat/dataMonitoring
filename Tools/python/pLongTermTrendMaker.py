@@ -180,23 +180,23 @@ class pCALPEDSANALYZERAnalyzer(pBaseFileAnalyzer):
 
 
 if __name__ == '__main__':
-    MIN_START_TIME = utc2met(convert2sec('Jul/20/2010 00:00:00'))
+    MIN_START_TIME = utc2met(convert2sec('Jun/20/2008 00:00:00'))
     MAX_START_TIME = None
-    q = pDataCatalogQuery('ACDPEDSANALYZER', MIN_START_TIME)
-    print q.Command
-    q = pDataCatalogQuery('ACDPEDSANALYZER', MIN_START_TIME,
-                          intents = ['nomSciOps'])
-    print q.Command
+    #q = pDataCatalogQuery('ACDPEDSANALYZER', MIN_START_TIME)
+    #print q.Command
+    #q = pDataCatalogQuery('ACDPEDSANALYZER', MIN_START_TIME,
+    #                      intents = ['nomSciOps'])
+    #print q.Command
     #analyzer1 = pACDPEDSANALYZERAnalyzer('ACDPEDSANALYZER.txt',
     #                                     'ACDPEDSANALYZER.root',
     #                                     MIN_START_TIME,
     #                                     MAX_START_TIME)
     #analyzer1.run()
-    #analyzer2 = pRECONHISTALARMDISTAnalyzer('RECONHISTALARMDIST.txt',
-    #                                        'RECONHISTALARMDIST.root',
-    #                                        MIN_START_TIME,
-    #                                        MAX_START_TIME)
-    #analyzer2.run()
+    analyzer2 = pRECONHISTALARMDISTAnalyzer('RECONHISTALARMDIST.txt',
+                                            'RECONHISTALARMDIST.root',
+                                            MIN_START_TIME,
+                                            MAX_START_TIME)
+    analyzer2.run()
     #analyzer3 = pCALPEDSANALYZERAnalyzer('CALPEDSANALYZER.txt',
     #                                     'CALPEDSANALYZER.root',
     #                                     MIN_START_TIME,
