@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-00-06 04-May-2012 lbaldini Some tweas to the alarm limits.
 
 - Limits on digi_eor_alarms GPSInLock_TH1 relaxed a little bit.
 - Limits on calpeds_eor_alarms CalXAdcPedRMS_LEX8/LEX1_TH1 y_values increased a
