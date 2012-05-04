@@ -329,7 +329,7 @@
 	<parameter name="min" value="0"/>
 	<parameter name="max" value="31"/>
 	<parameter name="pivot" value="31"/>
-	<warning_limits min="55" max="100"/>
+	<warning_limits min="55" max="110"/>
 	<error_limits min="40" max="150"/>
         <condition name="min_entries" value="50000"/>
       </alarm> 
