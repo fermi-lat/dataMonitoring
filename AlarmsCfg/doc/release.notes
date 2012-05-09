@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-00-07 09-May-2012 lbaldini One exception violation modified.
 - Status on violation changed from error to clean for the alarm exception on
   Number_layerOcc_TowerPlane (tower 3, layer 35) for tkrmon trend.
 * Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/8338.html
