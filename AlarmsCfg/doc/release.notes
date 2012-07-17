@@ -4,6 +4,9 @@
  *
  *                  EOH
 
+- Change pivot and alarm level for the last bin of the ROI arrival time histogram
+  as per GDQMQ-351, and fix alarm thresholds
+
  AlarmsCfg-06-00-07 09-May-2012 lbaldini One exception violation modified.
 - Status on violation changed from error to clean for the alarm exception on
   Number_layerOcc_TowerPlane (tower 3, layer 35) for tkrmon trend.
