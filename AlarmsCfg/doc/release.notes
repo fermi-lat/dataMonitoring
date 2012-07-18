@@ -4,8 +4,11 @@
  *
  *                  EOH
 
-- Change pivot and alarm level for the last bin of the ROI arrival time histogram
-  as per GDQMQ-351, and fix alarm thresholds
+- A few minor changes in the alarm limits for CalXAdcPedPed/RMSDifference.
+- Change pivot and alarm level for the last bin of the ROI arrival time
+  histogram as per GDQMQ-351, and fix alarm thresholds
+* Relevant JIRA: https://jira.slac.stanford.edu/browse/GDQMQ-366
+
 
  AlarmsCfg-06-00-07 09-May-2012 lbaldini One exception violation modified.
 - Status on violation changed from error to clean for the alarm exception on
