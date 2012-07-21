@@ -4,6 +4,8 @@
  *
  *                  EOH
 
+- Update ROI arrival times alarm limits
+
  AlarmsCfg-06-00-08 18-Jul-2012 lbaldini A few minor changes in the alarm limits.
 - A few minor changes in the alarm limits for CalXAdcPedPed/RMSDifference.
 - Change pivot and alarm level for the last bin of the ROI arrival time
