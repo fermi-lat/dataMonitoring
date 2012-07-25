@@ -450,8 +450,8 @@
 	<parameter name="min" value="-0.5"/>
 	<parameter name="max" value="14.5"/>
 	<parameter name="pivot" value="0.5"/>
-	<warning_limits min="0.002" max="0.008"/>
-	<error_limits   min="0.001" max="0.015"/>
+	<warning_limits min="0.002" max="0.05"/>
+	<error_limits   min="0.001" max="0.01"/>
         <condition name="min_entries" value="10000"/>
       </alarm> 
       <alarm function="low_high_ratio" enabled="True">
@@ -611,8 +611,8 @@
 	<parameter name="min" value="-0.5"/>
 	<parameter name="max" value="30.5"/>
 	<parameter name="pivot" value="30.5"/>
-	<warning_limits min="2000" max="7000"/>
-	<error_limits min="1000" max="10000"/>
+	<warning_limits min="1000" max="7000"/>
+	<error_limits min="200" max="10000"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<parameter name="only" value="range(15,32)"/>
