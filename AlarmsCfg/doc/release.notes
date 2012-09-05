@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-01-00 05-Sep-2012 bregeon Fix for ConArr alarms
 - Removed CondArrCNO_CalHiOpensWindow and CondArrCalLo_CNOOpensWindow low_high ratio alarms 
 
  AlarmsCfg-06-00-10 25-Jul-2012 bregeon Tuning reparametrized CondArr lowhigh ratio alarms
