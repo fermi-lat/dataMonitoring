@@ -4,6 +4,350 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-01-00 05-Sep-2012 bregeon Fix for ConArr alarms
+- Removed CondArrCNO_CalHiOpensWindow and CondArrCalLo_CNOOpensWindow low_high ratio alarms 
+
+ AlarmsCfg-06-00-10 25-Jul-2012 bregeon Tuning reparametrized CondArr lowhigh ratio alarms
+- Yet another  Update ROI arrival times alarm limits
+
+ AlarmsCfg-06-00-09 21-Jul-2012 bregeon Update minor alarm limits
+- Update ROI arrival times alarm limits
+
+ AlarmsCfg-06-00-08 18-Jul-2012 lbaldini A few minor changes in the alarm limits.
+- A few minor changes in the alarm limits for CalXAdcPedPed/RMSDifference.
+- Change pivot and alarm level for the last bin of the ROI arrival time
+  histogram as per GDQMQ-351, and fix alarm thresholds
+* Relevant JIRA: https://jira.slac.stanford.edu/browse/GDQMQ-366
+
+
+ AlarmsCfg-06-00-07 09-May-2012 lbaldini One exception violation modified.
+- Status on violation changed from error to clean for the alarm exception on
+  Number_layerOcc_TowerPlane (tower 3, layer 35) for tkrmon trend.
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/8338.html
+
+
+ AlarmsCfg-06-00-06 04-May-2012 lbaldini Some tweas to the alarm limits.
+- Limits on digi_eor_alarms GPSInLock_TH1 relaxed a little bit.
+- Limits on calpeds_eor_alarms CalXAdcPedRMS_LEX8/LEX1_TH1 y_values increased a
+  little to compensate for the slight increase in the noise baseline.
+- Lower warning limit on digitrend OutF_Normalized_AcdHit_AcdTile moved from
+  0.11 to 0.10 for tile 15.
+- LImits on digi_eor and Fastmon_eor CondArrROI_TKROpensWindow_TH1 relaxed a
+  little bit.
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/8245.html
+
+
+ AlarmsCfg-06-00-05 27-Sep-2011 lbaldini Warning limits relaxed a little bit for a couple of alarms on CondArrROI_CNOOpensWindow_TH1.
+- Warning limits relaxed a little bit for a couple of alarms (x_average and
+  x_rms) on CondArrROI_CNOOpensWindow_TH1.
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/6936.html
+       
+
+ AlarmsCfg-06-00-04 27-Sep-2011 lbaldini Added exceptions for CAL channel 2414 in the calpeds_eor alarms.
+- Added exceptions for channel 2414 in the calpeds_eor alarms.
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/6922.html
+
+
+ AlarmsCfg-06-00-03 27-Sep-2011 lbaldini One CAL noisy channel excluded from a y average.
+- One more CAL channel (1250) excluded from the average for the CalXAdcPedRMS_LEX8_TH1 (algorithm y_average) alarm in the calpeds_eor.
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/6888.html
+
+
+ AlarmsCfg-06-00-02 05-Aug-2011 lbaldini A couple of minor changes in the exceptions for calpeds_eor.
+- A couple of status_on_violations changed from warning to clean in calpeds_eor_alarms_exceptions.xml:
+  CalXAdcPedRMS_LEX8_TH1 (y_values) for channel 848;
+  CalXAdcPedRMS_LEX1_TH1 (y_values) for channel 848.
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/6730.html
+
+
+ AlarmsCfg-06-00-01 24-Jul-2011 lbaldini A couple of small changes in the limits for the normalized rates for the p7 release.
+- A couple of small changes to the limits on the normalized rates for the p7 release.
+
+
+ AlarmsCfg-06-00-00 28-Jun-2011 lbaldini Obsolete P6 quantities removed.
+- Two alarms on the diffuse rates removed (they're not there anymore in Pass7).
+
+
+ AlarmsCfg-05-30-00 12-Apr-2011 monzani Two config files added
+- Added limit files for ft1/merit verify
+ 
+
+ AlarmsCfg-05-29-00 16-Mar-2011 lbaldini Added condition on one fastmon_error quantity.
+- Condition on the minimum elapsed time set on TIMETONE_INCOMPLETE for fastmon_errors.
+* Relevant e-mail thread: https://www-glast.stanford.edu/protected/mail/datamon/5667.html
+
+
+ AlarmsCfg-05-28-01 15-Mar-2011 bregeon Fine tuning
+- Protect Tick20MHzDeviation_TH1 against low stats for both FastMon and Digi EOR
+- Fine tune lower limit on CondArrROI_TKROpensWindow_TH1 for both FastMon and Digi EOR
+
+
+ AlarmsCfg-05-28-00 04-Jan-2011  pesce Added exception on quantity RPp_GainMeanDifference_TH1 for cal channel 412
+-Exception on quantity RPp_GainMeanDifference_TH1 for cal channel 412 due to
+the dead HE diode for tower 4, layer 2 column 4.
+
+
+ AlarmsCfg-05-27-02 10-Dec-2010 lbaldini One more exception for the fastmon eor for the noisy ladder in tower 3, plane 35.
+- Exceptions for the fastMon eor quantity TkrHitsCounter_PlaneGTFE_TH2_Tower_3 (spikes_and_holes) changed. From now on we'll happily ignore any warning/error from GTFEs 0 of the infamous noisy ladder in tower 3, plane 35.
+
+
+ AlarmsCfg-05-27-01 07-Dec-2010 lbaldini A couple of modifications for protecting against low statistics and ingoring the noisy ladder on tower 3, plane 35.
+- Exceptions for the fastMon eor quantity TkrHitsCounter_PlaneGTFE_TH2_Tower_3 (spikes_and_holes) changed. From now on we'll happily ignore any warning/error from GTFEs 4 and 5 of the infamous noisy ladder in tower 3, plane 35.
+- Condition on minimum number of entries for the alarms on recon eor quantities Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn and Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn (lefmost_edge) changed from 500 to 750.
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/5453.html
+
+
+ AlarmsCfg-05-27-00 05-Nov-2010  pesce Masked off Tracker GTFE 5 plane 35 of tower 3.
+- Masked Tracker GTFE 5 plane 35 of tower 3 for the quantities Number_layerOcc_TowerPlane (algorithm values) and TkrHitsCounter_PlaneGTFE_TH2_Tower_3 (algorithm spikes and holes).
+
+ AlarmsCfg-05-26-03 04-Nov-2010 lbaldini CAL channel 848 masked off to a few alarms
+- CAL channel 848 masked in the calpeds alarms on CalXAdcPedRMS_LEX8_TH1
+(y_average and y_values).
+
+
+ AlarmsCfg-05-26-02 31-Jul-2010  pesce Several changes due to dead HE diode in tower 4, layer 2, column 4 as well as maked strip in tower 15 plane 32.
+-New limit for the quantities CalXAdcPedRMS_LEX8 and CalXAdcPedRMS_LEX1 for cal channel 824, masked plane 32 of tower 15 for the quantity OutF_Normalized_ToT_250_TowerPlane and masked channel 412 for cal log in tower 4, layer 2, column4  for the quantities RPp_Mean_TH1 and RPp_RMS_TH1 due to the blow out of the HE diode.
+
+ AlarmsCfg-05-26-01 29-May-2010  pesce Raised the limit for CalXAdcPedRMS_LEX8 and CalXAdcPedRMS_LEX1 for cal channel 1865.
+-Raised the limit value for the quantities CalXAdcPedRMS_LEX8 and 
+CalXAdcPedRMS_LEX1 for cal channel 1685.
+
+ AlarmsCfg-05-26-00 23-May-2010  pesce Some changes on the limits for the Tick20MHzDeviation (FastMon and Digi) and Digi_Trend_Mean_Tick20MHzDeviation
+-Warning limit for Digi and FastMon Tick20MHzDeviation_TH1 and DigiTrend Mean_Tick20MHzDeviation changed from -192 to -196.
+
+ AlarmsCfg-05-25-00 23-Apr-2010  pesce Some changes on the limits for Digi and FastMon Tick20MHzDeviation_TH1 and DigiTrend Mean_Tick20MHzDeviation.
+-Returned to old alarm limits values for Digi and FastMon Tick20MHzDeviation_TH1 and DigiTrend Mean_Tick20MHzDeviation quantities (i.e from -195.0 to -192.0). 
+
+ AlarmsCfg-05-24-06 19-Apr-2010  pesce Some changes to the limits on Digi and FastMon Tick20MHzDeviation_TH1 and DigiTrend Mean_Tick20MHzDeviation
+-Warning rates for Digi and FastMon Tick20MHzDeviation_TH1 and DigiTrend Mean_Tick20MHzDeviation changed from -192.0 to -195.0.
+
+ AlarmsCfg-05-24-05 19-Apr-2010  pesce Some changes to the limits on the normalized rates
+-Warning limit for merit trend OutF_NormRateSourceEvts from 1.75 to 1.95, OutF_NormRateDiffuseEvts from 1.85 to 1.95 and OutF_NormRateTransientEvts from 1.55 to
+1.55
+*Relevant Jira: GDQMQ-341
+
+ AlarmsCfg-05-24-04 14-Mar-2010  pesce Some changes on the limits for the normalized rates.
+-Warning limit for merit trend OutF_NormRateEvtsBeforeFilters changed from 1.15 to 1.17 and
+for OutF_NormRateDiffuseEvts changed from 1.75 to 1.85.
+*Relevant Jira: GDQMQ-341
+
+
+ AlarmsCfg-05-24-03 12-Mar-2010  pesce Some changes on the limits for the normalized rates.
+-Warning limit for merit trend OutF_NormRateEvtsBeforeFilters from 0.80 to 0.75.
+*Relevant Jira: GDQMQ-341
+
+
+ AlarmsCfg-05-24-02 11-Mar-2010  pesce Some changes on the limits for the normalized rates.
+-Wanring limit for merit trend OutF_NormRateSourceEvts changed from 1.65 to 1.75.
+*Relevant Jira: GDQMQ-341
+
+
+ AlarmsCfg-05-24-01 10-Mar-2010  pesce Some changes on the limits for the normalized rates.
+-Warning limit for merit trend OutF_NormRateMeritTriggerEngine (trigger engine 7) changed
+from 0.80 to 0.75 and warning limit for merit trend OutF_NormRateDiffuseEvts changed
+from 1.65 to 1.75.
+*Relevant Jira: GDQMQ-341
+
+
+ AlarmsCfg-05-24-00 10-Mar-2010 lbaldini Some changes on the limits for the normalized rates.
+- High warning limit for merit trend OutF_NormRateSourceEvts and OutF_NormRate
+DiffuseEvts changed from 1.5 to 1.65.
+* Relevant Jira(s): GDQMQ-341
+
+
+ AlarmsCfg-05-23-07 05-Mar-2010 lbaldini Improved protection against low statistics.
+- Condition on the min number of entries for Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn
+and Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn changed from 200 to 500
+(a typical value for a normal run being ~5000).
+
+
+ AlarmsCfg-05-23-06 19-Feb-2010 lbaldini Minor changes.
+- Lower warning limit changed from 0.85 to 0.80 for the two merit trend quantities
+OutF_NormRateEvtsBeforeCutsWithFswGAMMAFilter and OutF_NormRateEvtsBeforeFilters.
+- Condition on the minimum number of entries (1000) added on the x_average and x_rms
+algorithms for CondArrCNO_TKROpensWindow_TH1 (both digi and fastMon).
+
+
+ AlarmsCfg-05-23-05 15-Feb-2010 lbaldini A few alarms protected against low statistics.
+- Some alarms protected against low statistics:
+CondArrCalLo_CalHiOpensWindow_TH1 (reference_histogram): min_entries = 5000
+(both digi and fastmon eor).
+CondArrCalLowTrigger_TH1 (reference_histogram): min_entries = 10000
+(both digi and fastmon eor).
+AcdSingleVetoMap_TH1 (x_average and x_rms): min_entries = 10000 (digi eor).
+CrateNumber_TH1 (x_average): min_entries = 10000 (digi eor).
+CondArrROITrigger_TH1 (x_average and x_rms): min_entries = 10000
+(both digi and fastmon eor).
+CondArrTKRTrigger_TH1 (x_average and x_rms): min_entries = 10000
+(both digi and fastmon eor).
+CondArrCalHi_CalLoOpensWindow_TH1 (x_average and x_rms): min_entries = 1000
+(both digi and fastmon eor).
+CondArrTKR_CalHiOpensWindow_TH1 (x_average and x_rms): min_entries = 5000
+(both digi and fastmon eor).
+CondArrROI_CalLoOpensWindow_TH1 (x_average and x_rms): min_entries = 1000
+(both digi and fastmon eor).
+
+
+ AlarmsCfg-05-23-04 15-Feb-2010 lbaldini Minor limit change.
+- A couple of minor limit changes for the alarms on the arrival times for both
+the digi and the FastMon eor.
+CondArrTKR_CalHiOpensWindow_TH1 (low_high_ratio, pivot = 31):
+warning max: 5000 -> 5500
+error max  : 8000 -> 10000
+CondArrTKRTrigger_TH1 (low_high_ratio, pivot = 31):
+warning max: 30000 -> 35000
+
+
+ AlarmsCfg-05-23-03 09-Feb-2010 lbaldini Minor limit change.
+- Lower warning limit for the digi trend OutF_Normalized_AcdHit_AcdTile
+quantity (tiles [15, 31, 47, 63]) changed from 0.12 to 0.11.
+
+
+ AlarmsCfg-05-23-02 09-Feb-2010 lbaldini Minor limit change.
+- Lower warning limit for the merit trend OutF_NormRateEvtsBeforeFilters
+quantity changed from 0.85 to 0.80 (it was a bit too tight).
+
+
+ AlarmsCfg-05-23-01 04-Feb-2010 lbaldini Minor change.
+- Alarm on the digi eor GPSInLock_TH1 protected against low statistics
+(condition on min entrioes changed from 500 to 1250).
+
+
+ AlarmsCfg-05-23-00 04-Feb-2010 lbaldini Alarms on the normalized rates retuned.
+- Retuned the alarms on the normalized rates after the new normalization
+factors have been put in production.
+* Relevant Jira(s): GDQMQ-317.
+
+
+ AlarmsCfg-05-22-06 04-Feb-2010 lbaldini Minor changes.
+- Condition on the minimum number of entries changed for
+CondArrCNO_CalLoOpensWindow_TH1 (reference_histogram algorithm, both
+digi and fastmon end-of-run) changed from 1000 to 2500.
+- Upper warning limit for the alarm on the digi trending quantity
+Rate_NTkrHits_TowerPlane changed from 2.5 to 2.75. See the thread
+https://www-glast.stanford.edu/protected/mail/datamon/3560.html 
+for more details.
+
+
+ AlarmsCfg-05-22-05 27-Jan-2010 lbaldini Minor changes.
+- Condition in min entries for CondSummaryWord_TH1 (reference histogram,
+digi and FastMon eor) changed from 10000 to 25000.
+- A couple of not-so-obsolete exceptions on FastMon eor back in.
+
+
+ AlarmsCfg-05-22-04 25-Jan-2010 lbaldini Minor change.
+- Condition on min_entries for the alarms on CondArrCNO_CalLoOpensWindow_TH1
+changed from 1000 to 3000 (for both FastMon and digi eor).
+
+
+ AlarmsCfg-05-22-03 24-Jan-2010 lbaldini Minor change.
+- Minor limit change for one of the alarms on CondArrROI_CNOOpensWindow_TH1
+(low_high_ratio with pivot 31) for both FastMon and digi end of run:
+< 	<warning_limits min="5.0" max="20.0"/>
+< 	<error_limits   min="2.0" max="40.0"/>
+---
+> 	<warning_limits min="5.0" max="30.0"/>
+> 	<error_limits   min="2.0" max="50.0"/>
+See comment Science_Operations/General_Comments - Log - 7071 on the ops log.
+
+
+ AlarmsCfg-05-22-02 24-Jan-2010 lbaldini New parameter max_rel_err used for the alarm on towerEff in tkrTrending.
+- New parameter max_rel_err of alg__values.py used for the alarm on 
+towerEff in tkrmon trending (set to 3%).
+* Relevant Jira(s): GDQMQ-338
+
+
+ AlarmsCfg-05-22-01 22-Jan-2010 lbaldini Limits on OutF_Normalized_AcdHit_AcdTile tuned
+- Limits on OutF_Normalized_AcdHit_AcdTile tuned. This is meant to
+have a systematic log of solar flares causing an increase in the hit rate on 
+the +X side of the ACD.
+
+
+ AlarmsCfg-05-22-00 21-Jan-2010 lbaldini Obsolete alarm exceptions removed.
+- Obsolete exceptions removed.
+* Relevant Jira(s): GDQMQ-337
+
+
+ AlarmsCfg-05-21-02 19-Jan-2010 lbaldini A couple of minor limit changes.
+- Minor changes in the upper limits for the CondArrCNO_CalHiOpensWindow_TH1
+quantity (in digi and FastMon eor) for the low_high_ratio (with the pivot
+at 31). Warning: 10000 -> 15000, error: 15000 -> 20000.
+
+
+ AlarmsCfg-05-21-01 15-Jan-2010 lbaldini New alarm added.
+- Added a new alarm on Mean_Tick20MHzDeviation.
+* Relevant Jira(s): GDQMQ-331
+
+
+ AlarmsCfg-05-21-00 12-Jan-2010 lbaldini Alarms on the 20 MHz tick deviation retuned/added.
+- Limits on digi eor Tick20MHzDeviation_TH1 changed to:
+-200; -192; -176; -168; for the x_average algorithm;
+ 0.0;  0.0;  2.0;  3.5; for the x_rms algorithm.
+- For consistency the same alarm has been added to the FastMon, along with
+an additional one on DeltaEventTime_Zoom_TH1 (with the same limits used in the
+digi eor).
+* Relevnt Jira(s): GDQMQ-331
+
+
+ AlarmsCfg-05-20-03 16-Oct-2009 lbaldini Changed limits on the uncompressed/compressed event size)
+- Limits on digi_trend OutF_Ratio_EvtSize_CompressedEvtSize changed
+after the enabling of the diagnostics.
+
+
+ AlarmsCfg-05-20-02 12-Oct-2009 lbaldini Lower limits on the compression factor put back to 8.
+- Change back lower limits on digi trending Mean_CompressionLevel changed from
+7.0, 7.8  to 8.0, 8.0 to accommodate with the reboot to the B2-1-0
+
+
+ AlarmsCfg-05-20-01 02-Oct-2009 bregeon Add temporary alarms because of noisy cal channel 2414
+- Add exceptions for channel 2414 for calPedsAnalyzer:
+CalXAdcPedRMS_LEX1_TH1 y_values
+CalXAdcPedRMS_LEX8_TH1 y_values
+- Add exceptions for Tower 12 b/C of channel 2414 for digi and fastmon eor:
+CalX_NHit_TH1_Tower_ x_average and x_rms
+CalLogEndRangeHitCounter_Range*_TH2_Tower_12 spikes_and_holes
+- Change back lkower limits on digi trending Mean_CompressionLevel changed from
+8.0, 8.0  to 7.0, 7.8 to accommodate with the reboot to the B2-0-2
+
+
+ AlarmsCfg-05-20-00 30-Sep-2009 lbaldini Added alarms on the CAL hitmaps.
+- Added alarms on the CAL hitmaps to identify possible spikes and/or holes,
+along the lines of what we already have for the tracker.
+Specifically alarms ("empty_bins" and "spikes_and_holes") have been added,
+with reasobale settings, on:
+CalLogEndRangeHitCounter_Range0_TH2_Tower_*
+CalLogEndRangeHitCounter_Range1_TH2_Tower_*
+CalLogEndRangeHitCounter_Range2_TH2_Tower_*
+CalLogEndRangeHitCounter_Range3_TH2_Tower_*
+See also http://www-glast.stanford.edu/protected/mail/datamon/3435.html and
+the relative thread.
+
+
+ AlarmsCfg-05-19-05 28-Sep-2009 lbaldini Minor limit change for ACD tile 73.
+- Upper warning limit for AcdPedPedMeanDeviation_PMTB_TH1 (y_value) changed
+from 8 to 12. This is temporary change that will be reverted as soon as we
+have updated the claibration constants.
+* Relevant jira(s): GDM-321
+
+
+ AlarmsCfg-05-19-04 24-Sep-2009 monzani added two checks to verify
+- Added two more error conditions to the verify alarm file: checking the FSW 
+compression level (GDQMQ-320), checking that periodic evts never have the TEM bug (GDQMQ-319)
+
+
+ AlarmsCfg-05-19-02 22-Sep-2009 lbaldini Minor change to protect against a bug in the alarm handler
+- Limits on the digi trending quantity Mean_CompressionLevel moved by an
+"epsilon" as a workaround to a bug in the alarm handler (which is now
+fixed and will make it into the L1Proc at some point, see GDQMQ-272 for
+details).
+
+
+ AlarmsCfg-05-19-01 22-Sep-2009 lbaldini Minor change in one digi trend alarm.
+- num_sigma parameter set to zero for the alarm on digi trending quantity
+Mean_CompressionLevel (since we do not expect any single value lower than 8,
+we want to explicitely ignore the error on the average).
+
+
  AlarmsCfg-05-19-00 21-Sep-2009 lbaldini Digi trend limits updated for flight software B2-1-0
 - Upper limits on digi trending OutF_Ratio_EvtSize_CompressedEvtSize changed
 from 3.25, 3.50 to 3.40, 3.60 to accommodate the B2-1-0 version of the flight
