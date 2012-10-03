@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-01-01 03-Oct-2012 lbaldini One minor limit change.
 - Limits changed for AcdPedPedMeanDeviation_PMTB_TH1 y_values (from 8, 15 to
   15, 25).
 * Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/9143.html
