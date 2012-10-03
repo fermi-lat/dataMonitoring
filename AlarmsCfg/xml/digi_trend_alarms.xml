@@ -27,7 +27,7 @@
     </alarmSet>
     <alarmSet name="Time::Rate_NTkrHits_TowerPlane" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="0.0" max="2.5"/>
+	<warning_limits min="0.0" max="2.75"/>
 	<error_limits   min="0.0" max="5.0"/>
       </alarm> 
     </alarmSet>
@@ -159,10 +159,25 @@
     </alarmSet>
     <alarmSet name="Time::OutF_Normalized_AcdHit_AcdTile" enabled="True">
       <alarm function="values" enabled="True">
-	<parameter name="exclude" value="range(89, 96) + range(104, 128)"/>
-	<warning_limits min="0" max="0.3"/>
-	<error_limits   min="0" max="0.4"/>
-      </alarm> 
+	<parameter name="only" value="range(0, 15) + range(16, 31) + range(32, 47) + range(48, 63)"/>
+	<warning_limits min="0.03" max="0.11"/>
+	<error_limits   min="0.02" max="0.20"/>
+      </alarm>
+      <alarm function="values" enabled="True">
+	<parameter name="only" value="[15, 31, 47, 63]"/>
+	<warning_limits min="0.10" max="0.22"/>
+	<error_limits   min="0.06" max="0.40"/>
+      </alarm>
+      <alarm function="values" enabled="True">
+	<parameter name="only" value="range(64, 89)"/>
+	<warning_limits min="0.04" max="0.13"/>
+	<error_limits   min="0.02" max="0.25"/>
+      </alarm>
+      <alarm function="values" enabled="True">
+	<parameter name="only" value="range(96, 104)"/>
+	<warning_limits min="0.015" max="0.07"/>
+	<error_limits   min="0.005" max="0.15"/>
+      </alarm>
     </alarmSet>
     <alarmSet name="Time::Rate_SingleAcdVeto_AcdTile" enabled="True">
       <alarm function="values" enabled="True">
@@ -195,15 +210,15 @@
     
     <alarmSet name="Time::OutF_Ratio_EvtSize_CompressedEvtSize" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="2.75" max="3.40"/>
-	<error_limits   min="2.50" max="3.60"/>
+	<warning_limits min="4.00" max="5.50"/>
+	<error_limits   min="3.50" max="6.00"/>
       </alarm>
     </alarmSet>
 
     <alarmSet name="Time::Mean_CompressionLevel" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="8.00" max="8.00"/>
-	<error_limits   min="8.00" max="8.00"/>
+	<warning_limits min="8.0" max="8.00001"/>
+	<error_limits   min="8.0" max="8.00001"/>
         <parameter name="num_sigma" value="0.0"/>
       </alarm>
     </alarmSet>
@@ -247,6 +262,21 @@
       <alarm function="values" enabled="True">
 	<warning_limits min="200" max="1000"/>
 	<error_limits   min="100" max="2000"/>
+      </alarm>
+    </alarmSet>
+
+  </alarmList>
+
+
+  <!-- Miscellanea-->
+  
+  <alarmList group="Miscellanea" name="Miscellanea" enabled="True">
+
+    <alarmSet name="Time::Mean_Tick20MHzDeviation" enabled="True">
+      <alarm function="values" enabled="True">
+        <warning_limits min="-196.0" max="-176.0"/>
+        <error_limits min="-200.0" max="-168.0"/>
+        <parameter name="min_n" value="1"/>
       </alarm>
     </alarmSet>
 
