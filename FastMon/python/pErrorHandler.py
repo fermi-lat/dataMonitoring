@@ -46,7 +46,10 @@ class pErrorHandler:
             errorEvent = pErrorEvent(eventNumber)
             for error in self.ErrorsBuffer:
                 errorEvent.addError(error)
-            self.ErrorEventsList.append(errorEvent)
+            if errorEvent.hasUnusualErrors():
+	        logger.info('Unsual errors found, probably just a phase error.')
+		logger.info(errorEvent.getAsText())
+	    self.ErrorEventsList.append(errorEvent)
             self.ErrorsBuffer = []
             return errorEvent.ErrorSummary
         return 0
@@ -91,13 +94,14 @@ class pErrorHandler:
                            'truncated'             : truncated})
         xmlWriter.indent()
         for errorEvent in self.ErrorEventsList:
-            xmlWriter.openTag('errorEvent',\
-                                  {'eventNumber': errorEvent.EventNumber})
-            xmlWriter.indent()
-            for error in errorEvent.ErrorsList:
-                xmlWriter.writeLine(error.getXmlLine())
-            xmlWriter.backup()
-            xmlWriter.closeTag('errorEvent')
+            if not errorEvent.hasOnlyGTCCFIFOErrors():
+                xmlWriter.openTag('errorEvent',\
+                                      {'eventNumber': errorEvent.EventNumber})
+                xmlWriter.indent()
+                for error in errorEvent.ErrorsList:
+                    xmlWriter.writeLine(error.getXmlLine())
+                xmlWriter.backup()
+                xmlWriter.closeTag('errorEvent')
         xmlWriter.backup()
         xmlWriter.closeTag('eventSummary')
         xmlWriter.backup()
