@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-01-02 26-Mar-2013 lbaldini Minor changes to the alarm settings.
 - Calorimeter channels 1692 pushed in the group of the guys with higher
   limits (30/30) for the calpeds eor alarm on CalXAdcPedRMS_LEX8_TH1,
   algorithm y-values.
