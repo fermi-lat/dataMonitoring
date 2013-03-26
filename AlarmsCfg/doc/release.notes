@@ -4,6 +4,11 @@
  *
  *                  EOH
 
+- Calorimeter channels 1692 pushed in the group of the guys with higher
+  limits (30/30) for the calpeds eor alarm on CalXAdcPedRMS_LEX8_TH1,
+  algorithm y-values.
+
+
  AlarmsCfg-06-01-01 03-Oct-2012 lbaldini One minor limit change.
 - Limits changed for AcdPedPedMeanDeviation_PMTB_TH1 y_values (from 8, 15 to
   15, 25).
