@@ -22,7 +22,7 @@ class pDownloadManager:
         self.LastUrl = None
 
     def downloadUrl(self, url, options = ''):
-        command  = 'wget -p -nv --convert-links -nH -nd '
+        command  = 'wget --server-response -p -nv --no-check-certificate --convert-links -nH -nd '
         if not os.path.exists(self.CookieFilePath):
             logging.debug('Storing cookies in %s...' % self.CookieFilePath)
             command += '--save-cookies %s ' % self.CookieFilePath

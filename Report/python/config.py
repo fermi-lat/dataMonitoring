@@ -8,7 +8,7 @@ import os
 import sys
 
 taskName = "launchReport"
-taskVersion = "1.7"
+taskVersion = "1.8"
 ReportMainDir = '/afs/slac.stanford.edu/g/glast/ground/releases/volume03/Report'
 
 doCleanup = True

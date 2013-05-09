@@ -5,7 +5,7 @@ set time_utc = `date --utc`
 set time_str = \""$time_utc"\"
 
 # Here we find the stream id
-@ doy = `date +%j`
+@ doy = `date +%j | sed 's/^0*//'`
 @ year = `date +%y`
 @ stream = $year * 100000 + $doy * 100 
 
