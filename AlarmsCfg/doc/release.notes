@@ -4,6 +4,12 @@
  *
  *                  EOH
 
+- Calorimeter channel 412 excluded from the RPp_RMS_TH1 alarm, y_average
+  algorithm (it is known to have a dead HE diode and is already masked
+  to several other alarms).
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/10269.html
+
+
  AlarmsCfg-06-01-02 26-Mar-2013 lbaldini Minor changes to the alarm settings.
 - Calorimeter channels 1692 pushed in the group of the guys with higher
   limits (30/30) for the calpeds eor alarm on CalXAdcPedRMS_LEX8_TH1,

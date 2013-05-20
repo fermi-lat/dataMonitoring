@@ -78,6 +78,7 @@
         <condition name="min_entries" value="1000000"/>
       </alarm>
       <alarm function="y_average" enabled="True">
+	<parameter name="exclude" value="[412+1]"/>
 	<warning_limits min="0.35" max="0.45"/>
 	<error_limits   min="0.20"  max="0.70"/>
         <condition name="min_entries" value="1000000"/>
