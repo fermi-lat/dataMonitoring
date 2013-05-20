@@ -8,6 +8,9 @@
   algorithm (it is known to have a dead HE diode and is already masked
   to several other alarms).
 * Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/10269.html
+- Added exception for channel 824 on CalXAdcPedPedRMSDifference_HEX8_TH1,
+  algorithm y_values.
+* Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/10286.html
 
 
  AlarmsCfg-06-01-02 26-Mar-2013 lbaldini Minor changes to the alarm settings.
