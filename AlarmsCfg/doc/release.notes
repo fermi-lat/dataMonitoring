@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-01-04 30-May-2013 lbaldini Added an exception on CAL channel 824.
 
 - Added exception for channel 824 on CalXAdcPedRMS_HEX1_TH1 and
   CalXAdcPedRMS_HEX1_TH1, algorithm y_values.
