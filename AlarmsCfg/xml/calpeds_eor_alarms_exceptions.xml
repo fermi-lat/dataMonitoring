@@ -32,6 +32,26 @@
   </alarm>
 
 
+  <!-- Channel 824 was added on May 30, 2013. See the threads
+  https://www-glast.stanford.edu/protected/mail/datamon/10351.html
+  https://www-glast.stanford.edu/protected/mail/datamon/10349.html
+  -->
+
+  <alarm name="CalXAdcPedRMS_HEX1_TH1" algorithm="y_values">
+    <exception identifier="824"  status_on_violation="clean"/>
+  </alarm>
+
+
+  <!-- Channel 824 was added on May 30, 2013. See the threads
+  https://www-glast.stanford.edu/protected/mail/datamon/10351.html
+  https://www-glast.stanford.edu/protected/mail/datamon/10349.html
+  -->
+
+  <alarm name="CalXAdcPedRMS_HEX8_TH1" algorithm="y_values">
+    <exception identifier="824"  status_on_violation="clean"/>
+  </alarm>
+
+
   <!--
   Last verification by Luca Baldini on January 21, 2010 (see GDQMQ-337).
   Over the last months we had 168/454 violations for 1250. We had 454/454

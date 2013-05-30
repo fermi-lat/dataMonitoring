@@ -4,6 +4,14 @@
  *
  *                  EOH
 
+
+- Added exception for channel 824 on CalXAdcPedRMS_HEX1_TH1 and
+  CalXAdcPedRMS_HEX1_TH1, algorithm y_values.
+* Relevant threads:
+  https://www-glast.stanford.edu/protected/mail/datamon/10351.html
+  https://www-glast.stanford.edu/protected/mail/datamon/10349.html
+
+
  AlarmsCfg-06-01-03 20-May-2013 lbaldini A couple of changes to suppress warnings from a CAL channel with a dead HE diode.
 - Calorimeter channel 412 excluded from the RPp_RMS_TH1 alarm, y_average
   algorithm (it is known to have a dead HE diode and is already masked
