@@ -212,7 +212,7 @@ class pTkrTrendMerger:
         
 if __name__ == '__main__':
     #dumpVarDict('r0288475156_tkrtrend.root')
-    merger = pTkrTrendMerger('tkrtrend_filelist.txt', 'tkrtrend.root',
+    merger = pTkrTrendMerger('tkrtrend_filelist.txt', 'tkrtrend_5years.root',
                              None, None)
-    #                         'Jan/15/2010 00:00:00', 'Jan/20/2010 00:00:00')
+    #                         'Jun/11/2008 00:00:00', 'Jun/25/2013 00:00:00')
     merger.run(False)
