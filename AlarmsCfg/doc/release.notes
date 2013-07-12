@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-01-05 12-Jul-2013 lbaldini Some tweaks to the alarm limits.
 - Loosened a little bit the warning limits for channel 824 on
   CalXAdcPedPedMeanDifference_HEX8_TH1, y_values.
 - Loosened a little bit the warning limits for channel 69 on
