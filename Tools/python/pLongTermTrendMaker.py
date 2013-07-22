@@ -92,10 +92,11 @@ class pBaseFileAnalyzer:
             self.InputFile = ROOT.TXNetFile(filePath)
             print 'Grabbing the numbers...'
             self.analyze()
-            print 'Filling the tree...'
-            self.OutputTree.Fill()
             print 'Closing the file...'
             self.InputFile.Close()
+            print 'Filling the tree...'
+            self.OutputFile.cd()
+            self.OutputTree.Fill()
         self.OutputFile.cd()
         self.OutputTree.Write()
         self.OutputFile.Close()
