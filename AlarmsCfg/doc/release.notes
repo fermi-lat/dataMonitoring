@@ -4,6 +4,12 @@
  *
  *                  EOH
 
+- CAL channel 412 excluded from the RMS calculation in the alarms on 
+  RPp_Mean_TH1, y_rms algorithm.
+ * Relevant thread(s):
+ https://www-glast.stanford.edu/protected/mail/datamon/10606.html
+
+
  AlarmsCfg-06-01-05 12-Jul-2013 lbaldini Some tweaks to the alarm limits.
 - Loosened a little bit the warning limits for channel 824 on
   CalXAdcPedPedMeanDifference_HEX8_TH1, y_values.
