@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-01-06 31-Jul-2013 lbaldini Minor tweak to the alarm setting.
 - CAL channel 412 excluded from the RMS calculation in the alarms on 
   RPp_Mean_TH1, y_rms algorithm.
  * Relevant thread(s):
