@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-01-07 27-Sep-2013 lbaldini Alarm limits relaxed on ACD tile 68.
 - Limits on AcdPedPedMeanDeviation_PMTA_TH1, y_values algorithm, relaxed a
   little bit for tile 68.
 * Relevant thread(s):
