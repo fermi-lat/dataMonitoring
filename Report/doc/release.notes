@@ -1,10 +1,10 @@
 ** @file release.notes
- * Package Reports
+ * Package Report
  * Coordinator: Maria Elena Monzani <monzani@slac.stanford.edu>
  *
  *   
 
- Reports-05-00-09 06-Nov-2013 lbaldini Bug fix for a missing report.
+ Report-05-00-09 06-Nov-2013 lbaldini Bug fix for a missing report.
 - Bug fix for a missing panel in the report after the migration of the
   servers (added an initial wget to get the cookies).
 
