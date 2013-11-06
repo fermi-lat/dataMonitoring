@@ -4,18 +4,25 @@
  *
  *                  EOH
 
+- Minor tweaks to the alarm limits on the CAL LAC thresholds to cope with
+  the different calibration constants after the L1Proc switchover to
+  P7_REP.
+* Relevant thread(s):
+  https://www-glast.stanford.edu/protected/mail/datamon/11260.html
+
+
  AlarmsCfg-06-01-07 27-Sep-2013 lbaldini Alarm limits relaxed on ACD tile 68.
 - Limits on AcdPedPedMeanDeviation_PMTA_TH1, y_values algorithm, relaxed a
   little bit for tile 68.
 * Relevant thread(s):
-https://www-glast.stanford.edu/protected/mail/datamon/10917.html
+  https://www-glast.stanford.edu/protected/mail/datamon/10917.html
 
 
  AlarmsCfg-06-01-06 31-Jul-2013 lbaldini Minor tweak to the alarm setting.
 - CAL channel 412 excluded from the RMS calculation in the alarms on 
   RPp_Mean_TH1, y_rms algorithm.
- * Relevant thread(s):
- https://www-glast.stanford.edu/protected/mail/datamon/10606.html
+* Relevant thread(s):
+  https://www-glast.stanford.edu/protected/mail/datamon/10606.html
 
 
  AlarmsCfg-06-01-05 12-Jul-2013 lbaldini Some tweaks to the alarm limits.
