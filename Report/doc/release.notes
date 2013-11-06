@@ -1,3 +1,7 @@
+- Bug fix for a missing panel in the report after the migration of the
+  servers (added an initial wget to get the cookies).
+
+
 *** v4r4 ***
 - Bug fix correcting the order of plots within panels.
 - Guess we forgot to write release notes for a long time, here...
