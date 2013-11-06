@@ -19,7 +19,13 @@ class pDownloadManager:
         self.CookieFilePath = os.path.join(cookieFolder, COOKIE_FILE_NAME)
         if not os.path.exists(self.CookieFolderPath):
             os.makedirs(self.CookieFolderPath)
+        self.__saveCookies()
         self.LastUrl = None
+        
+    def __saveCookies(self):
+        """
+        """
+        self.downloadUrl('http://glast-ground.slac.stanford.edu/Reports')
 
     def downloadUrl(self, url, options = ''):
         command  = 'wget --server-response -p -nv --no-check-certificate --convert-links -nH -nd '
