@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-01-09 11-Nov-2013 lbaldini Minor tweak.
 - Minor tweaks to the alarm limits on the CAL LAC thresholds to cope with
   the different calibration constants after the L1Proc switchover to
   P7_REP.
