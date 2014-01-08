@@ -160,7 +160,7 @@
     <alarmSet name="Time::OutF_Normalized_AcdHit_AcdTile" enabled="True">
       <alarm function="values" enabled="True">
 	<parameter name="only" value="range(0, 15) + range(16, 31) + range(32, 47) + range(48, 63)"/>
-	<warning_limits min="0.03" max="0.11"/>
+	<warning_limits min="0.025" max="0.11"/>
 	<error_limits   min="0.02" max="0.20"/>
       </alarm>
       <alarm function="values" enabled="True">
