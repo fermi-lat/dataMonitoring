@@ -7,6 +7,8 @@
 - Upper limits on calpeds_eor CalXAdcPedRMS_LEX1/8_TH1 (algorithm y_values)
   raised per request by Eric Grove.
 - Upper warning limit on merit_trend Rate_TransientEvts raised (75 -> 110).
+- Upper warning limit on digi_trend OutF_Ratio_EvtSize_CompressedEvtSize
+  raised (5.5 -> 5.75).
 
 
  AlarmsCfg-06-01-09 11-Nov-2013 lbaldini Minor tweak.
