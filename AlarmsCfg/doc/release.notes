@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+- Upper limits on calpeds_eor CalXAdcPedRMS_LEX1/8_TH1 (algorithm y_values)
+  raised per request by Eric Grove.
+
+
  AlarmsCfg-06-01-09 11-Nov-2013 lbaldini Minor tweak.
 - Minor tweaks to the alarm limits on the CAL LAC thresholds to cope with
   the different calibration constants after the L1Proc switchover to
