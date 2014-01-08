@@ -6,7 +6,7 @@
 
     <alarmSet name="Time::Rate_TransientEvts" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="1.0" max="75.0"/>
+	<warning_limits min="1.0" max="110.0"/>
 	<error_limits   min="0.5" max="150.0"/>
       </alarm> 
     </alarmSet>
