@@ -4,6 +4,12 @@
  *
  *                  EOH
 
+- Upper yellow limit the merit_trend Rate_TransientEvts changed from 110
+  to 120.
+* Relevant thread(s):
+  https://www-glast.stanford.edu/protected/mail/datamon/11711.html
+
+
  AlarmsCfg-06-02-00 08-Jan-2014 lbaldini Updated limits after the change in the rocking profile.
 - Upper limits on calpeds_eor CalXAdcPedRMS_LEX1/8_TH1 (algorithm y_values)
   raised per request by Eric Grove.
