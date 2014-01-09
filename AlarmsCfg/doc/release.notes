@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-03-00 09-Jan-2014 lbaldini Updated limits after the change in the rocking profile (second round).
 - Upper limits on merit_trend Rate_TransientEvts changed from 110/150
   to 150/200.
 - Upper yellow limit on merit_trend Rate_SourceEvts changed from 50
