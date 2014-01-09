@@ -4,8 +4,10 @@
  *
  *                  EOH
 
-- Upper yellow limit the merit_trend Rate_TransientEvts changed from 110
-  to 120.
+- Upper limits on merit_trend Rate_TransientEvts changed from 110/150
+  to 150/200.
+- Upper yellow limit on merit_trend Rate_SourceEvts changed from 50
+  to 60.
 - Lower limits on fastmon_trend Mean_FastMon_CalTowerCount changed from
   2.0/2.5 to 1.5/2.0.
 - Upper yellow limit on digi_trend Rate_FswFilters_GAMMA changed from 
