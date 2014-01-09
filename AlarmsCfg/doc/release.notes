@@ -6,6 +6,8 @@
 
 - Upper yellow limit the merit_trend Rate_TransientEvts changed from 110
   to 120.
+- Lower limits on fastmon_trend Mean_FastMon_CalTowerCount changed from
+  2.0/2.5 to 1.5/2.0.
 * Relevant thread(s):
   https://www-glast.stanford.edu/protected/mail/datamon/11711.html
 
