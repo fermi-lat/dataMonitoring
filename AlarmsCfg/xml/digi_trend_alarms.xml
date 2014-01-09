@@ -260,7 +260,7 @@
 
     <alarmSet name="Time::Rate_FswFilters_GAMMA" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="200" max="1000"/>
+	<warning_limits min="200" max="1200"/>
 	<error_limits   min="100" max="2000"/>
       </alarm>
     </alarmSet>
