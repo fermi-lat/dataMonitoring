@@ -33,8 +33,8 @@
 
     <alarmSet name="Time::Mean_FastMon_CalTowerCount" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="2.5" max="4.0"/>
-	<error_limits   min="2.0" max="5.0"/>
+	<warning_limits min="2.0" max="4.0"/>
+	<error_limits   min="1.5" max="5.0"/>
       </alarm> 
     </alarmSet>
 
