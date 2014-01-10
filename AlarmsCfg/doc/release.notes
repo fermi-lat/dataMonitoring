@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-03-01 10-Jan-2014 lbaldini Updated limits after the change in the rocking profile (second round).
 - Lower yellow limit on digi_trend OutF_Normalized_AcdHit_AcdTile changed from
   0.04 to 0.03 for tiles 64--89.
 
