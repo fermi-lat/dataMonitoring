@@ -170,7 +170,7 @@
       </alarm>
       <alarm function="values" enabled="True">
 	<parameter name="only" value="range(64, 89)"/>
-	<warning_limits min="0.04" max="0.13"/>
+	<warning_limits min="0.03" max="0.13"/>
 	<error_limits   min="0.02" max="0.25"/>
       </alarm>
       <alarm function="values" enabled="True">
