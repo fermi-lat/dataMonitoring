@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-20-02 11-Jan-2014 dpaneque Update on calculation of mean PtSCzenith so that only the absolute values are used.
 DigiReconCalMeritCfg-01-20-02  (11-January-2014; David Paneque)
 -------------------------------------------------------------------
 
