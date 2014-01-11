@@ -4,13 +4,13 @@
  *
  *                  EOH
 
- DigiReconCalMeritCfg-01-20-02 11-Jan-2014 dpaneque Update on calculation of mean PtSCzenith so that only the absolute values are used.
-DigiReconCalMeritCfg-01-20-02  (11-January-2014; David Paneque)
--------------------------------------------------------------------
+DigiReconCalMeritCfg-01-20-03  (11-January-2014; David Paneque)
+-----------------------------------------------------------------------
 
 Update in file monconfig_merit_trending.xml. 
 Change the calculation of the mean of PtSCzenith so that only the absolute value of PtSCzenith is used. The previous calculation, which uses the sign of the PtSCzenith, was giving trouble with the modified survey mode, where the sign could change with angular movements as small as 0.01 deg, and hence in less than one second.
 
+---------------------------------------------------------------------------------------------------
 
  DigiReconCalMeritCfg-01-20-02 26-Sep-2011 bregeon new norm factors for Pass7 with 56days
 - Update NormRates for Pass7 with 56 days up to September 25th 2011
