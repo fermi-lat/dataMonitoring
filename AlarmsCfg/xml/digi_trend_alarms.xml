@@ -210,8 +210,8 @@
     
     <alarmSet name="Time::OutF_Ratio_EvtSize_CompressedEvtSize" enabled="True">
       <alarm function="values" enabled="True">
-	<warning_limits min="4.00" max="5.75"/>
-	<error_limits   min="3.50" max="6.00"/>
+	<warning_limits min="4.00" max="5.85"/>
+	<error_limits   min="3.50" max="6.25"/>
       </alarm>
     </alarmSet>
 
