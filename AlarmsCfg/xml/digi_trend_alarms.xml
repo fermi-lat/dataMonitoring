@@ -274,8 +274,8 @@
 
     <alarmSet name="Time::Mean_Tick20MHzDeviation" enabled="True">
       <alarm function="values" enabled="True">
-        <warning_limits min="-196.0" max="-176.0"/>
-        <error_limits min="-200.0" max="-168.0"/>
+        <warning_limits min="-196.0" max="-165.0"/>
+        <error_limits min="-200.0" max="-150.0"/>
         <parameter name="min_n" value="1"/>
       </alarm>
     </alarmSet>
