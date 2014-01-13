@@ -5,6 +5,8 @@
  *                  EOH
 
 - Upper limits on the digi_eor Tick20MHzDeviation_TH1 (x_average) moved from
+  -176/-168 to -165/-150.
+- Upper limits on the fastmon_eor Tick20MHzDeviation_TH1 (x_average) moved from
   -176/-168 to -165/-150. 
 * Relevant thread(s):
 
