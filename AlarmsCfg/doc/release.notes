@@ -10,6 +10,8 @@
   -176/-168 to -165/-150.
 - Upper limits on the digi_trend Tick20MHzDeviation_TH1 moved from
   -176/-168 to -165/-150.
+- Upper limits on the digi_trend OutF_Ratio_EvtSize_CompressedEvtSize changed
+  from  5.75/6 to 5.85/6.25.
 * Relevant thread(s):
 https://www-glast.stanford.edu/protected/mail/datamon/11758.html
 
