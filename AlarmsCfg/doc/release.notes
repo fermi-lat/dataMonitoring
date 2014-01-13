@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-03-02 13-Jan-2014 lbaldini Updated limits after the change in the rocking profile (third round).
 - Upper limits on the digi_eor Tick20MHzDeviation_TH1 (x_average) moved from
   -176/-168 to -165/-150.
 - Upper limits on the fastmon_eor Tick20MHzDeviation_TH1 (x_average) moved from
