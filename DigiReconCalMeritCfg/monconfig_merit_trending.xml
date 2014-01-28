@@ -194,7 +194,7 @@
 
     <object>
       <name> PtSCzenith </name>
-      <formula><![CDATA[ fabs(PtSCzenith)  ]]></formula>
+      <formula><![CDATA[ abs(PtSCzenith)  ]]></formula>
       <cut><![CDATA[]]></cut>
       <type> mean </type>
       <description> Mean value  of the absolute value of PtSCzenith.</description>
