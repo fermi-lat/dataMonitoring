@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-03-03 29-Jan-2014 lbaldini Minor tweaks to the alarm limits.
 - Warning limits tweaked (+-8 -> +-12) for the acdpedsanalyzer y_values
   alarm on AcdPedPedMeanDeviation_PMTB_TH1, tile 62.
 * Relevant tread:
