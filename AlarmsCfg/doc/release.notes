@@ -4,6 +4,12 @@
  *
  *                  EOH
 
+- Warning limits tweaked (+-8 -> +-12) for the acdpedsanalyzer y_values
+  alarm on AcdPedPedMeanDeviation_PMTB_TH1, tile 62.
+* Relevant tread:
+https://www-glast.stanford.edu/protected/mail/datamon/11872.html
+
+
  AlarmsCfg-06-03-02 13-Jan-2014 lbaldini Updated limits after the change in the rocking profile (third round).
 - Upper limits on the digi_eor Tick20MHzDeviation_TH1 (x_average) moved from
   -176/-168 to -165/-150.
@@ -15,6 +21,7 @@
   from  5.75/6 to 5.85/6.25.
 * Relevant thread(s):
 https://www-glast.stanford.edu/protected/mail/datamon/11758.html
+
 
  AlarmsCfg-06-03-01 10-Jan-2014 lbaldini Updated limits after the change in the rocking profile (second round).
 - Lower yellow limit on digi_trend OutF_Normalized_AcdHit_AcdTile changed from
