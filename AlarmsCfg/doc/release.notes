@@ -12,8 +12,11 @@
   warning limit from 1.15 to 1.20
 - Minimum number of entries for fastmon_eor
   CalLogEndRangeHitCounter_Range0_TH2_Tower_* changed from 1000000 to 750000.
+- acdpeds_eor upper warning limit for AcdPedPedMeanDeviation_PMTB_TH1
+  (y_values) changed from 8 to 10.
 * Relevant thread(s):
 https://www-glast.stanford.edu/protected/mail/datamon/12916.html
+https://www-glast.stanford.edu/protected/mail/datamon/12589.html
 
 
  AlarmsCfg-06-03-03 29-Jan-2014 lbaldini Minor tweaks to the alarm limits.
