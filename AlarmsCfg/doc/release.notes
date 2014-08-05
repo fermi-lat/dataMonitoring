@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-04-00 05-Aug-2014 lbaldini Some tweaks of the alarm limits
 - merit_trend OutF_NormRateMeritTriggerEngine (engine 7): raise the upper
   warning limit from 1.15 to 1.25
 - merit_trendOutF_NormRateEvtsBeforeCuts: raise the upper warning limit from
