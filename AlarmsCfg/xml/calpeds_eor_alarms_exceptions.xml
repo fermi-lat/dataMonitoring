@@ -61,11 +61,16 @@
 
   Channel 2414 was added on September 27, 2011. See the thread
   https://www-glast.stanford.edu/protected/mail/datamon/6922.html
+
+
+  Channel 3060 was added on August 6, 2014. See the thread
+  https://www-glast.stanford.edu/protected/mail/datamon/12955.html
   -->
   <alarm name="CalXAdcPedPedRMSDifference_LEX8_TH1" algorithm="y_values">
     <exception identifier="848" status_on_violation="clean"/>
     <exception identifier="1250" status_on_violation="clean"/>
     <exception identifier="2414" status_on_violation="clean"/>
+    <exception identifier="3060" status_on_violation="clean"/>
   </alarm>
 
 
@@ -92,6 +97,14 @@
   </alarm>
 
   <!--
+  Channel 824 was added on August 4, 2014. See the thread
+  https://www-glast.stanford.edu/protected/mail/datamon/12955.html
+  -->
+  <alarm name="CalXAdcPedPedRMSDifference_HEX1_TH1" algorithm="y_values">
+    <exception identifier="824" status_on_violation="clean"/>
+  </alarm>
+
+  <!--
   Last verification by Luca Baldini on January 21, 2010 (see GDQMQ-337).
   Over the last months we had 440/454 violations for 848. We had 454/454
   for 1250 but I decided to leave it in anyway, as it's known to be noisy
@@ -100,11 +113,16 @@
 
   Channel 2414 was added on September 27, 2011. See the thread
   https://www-glast.stanford.edu/protected/mail/datamon/6922.html
+
+
+  Channel 3060 was added on August 6, 2014. See the thread
+  https://www-glast.stanford.edu/protected/mail/datamon/12955.html
   -->
   <alarm name="CalXAdcPedPedMeanDifference_LEX8_TH1" algorithm="y_values">
     <exception identifier="848" status_on_violation="clean"/>
     <exception identifier="1250" status_on_violation="clean"/>
     <exception identifier="2414" status_on_violation="clean"/>
+    <exception identifier="3060" status_on_violation="clean"/>
   </alarm>
 
 
@@ -123,5 +141,22 @@
     <exception identifier="1250" status_on_violation="clean"/>
     <exception identifier="2414" status_on_violation="clean"/>
   </alarm>
+
+  <!--
+  Channel 824 was added on August 4, 2014. See the thread
+  https://www-glast.stanford.edu/protected/mail/datamon/12955.html
+  -->
+  <alarm name="CalXAdcPedPedMeanDifference_HEX1_TH1" algorithm="y_values">
+    <exception identifier="824" status_on_violation="clean"/>
+  </alarm>
+
+  <!--
+  Channel 824 was added on August 4, 2014. See the thread
+  https://www-glast.stanford.edu/protected/mail/datamon/12955.html
+  -->
+  <alarm name="CalXAdcPedPedMeanDifference_HEX8_TH1" algorithm="y_values">
+    <exception identifier="824" status_on_violation="clean"/>
+  </alarm>
+
 
 </alarm_exceptions>
