@@ -4,10 +4,20 @@
  *
  *                  EOH
 
+- merit_trend OutF_NormRateMeritTriggerEngine (engine 7): raise the upper
+  warning limit from 1.15 to 1.25
+- merit_trendOutF_NormRateEvtsBeforeCuts: raise the upper warning limit from
+  1.15 to 1.20
+- merit_trendOutF_NormRateEvtsBeforeCutsWithFswGAMMAFilter: raise the upper
+  warning limit from 1.15 to 1.20
+* Relevant thread(s):
+https://www-glast.stanford.edu/protected/mail/datamon/12916.html
+
+
  AlarmsCfg-06-03-03 29-Jan-2014 lbaldini Minor tweaks to the alarm limits.
 - Warning limits tweaked (+-8 -> +-12) for the acdpedsanalyzer y_values
   alarm on AcdPedPedMeanDeviation_PMTB_TH1, tile 62.
-* Relevant tread:
+* Relevant thread:
 https://www-glast.stanford.edu/protected/mail/datamon/11872.html
 
 
