@@ -851,7 +851,7 @@
 
     <alarmSet name="CalLogEndRangeHitCounter_Range0_TH2_Tower_*" enabled="True">
       <alarm function="empty_bins" enabled="False">
-      	<condition name="min_entries" value="1000000"/>
+      	<condition name="min_entries" value="750000"/>
 	<parameter name="num_neighbours" value="2"/>
 	<parameter name="out_low_cut" value="0.0"/>
 	<parameter name="out_high_cut" value="0.25"/>
@@ -866,7 +866,7 @@
 
     <alarmSet name="CalLogEndRangeHitCounter_Range1_TH2_Tower_*" enabled="True">
       <alarm function="empty_bins" enabled="True">
-      	<condition name="min_entries" value="1000000"/>
+      	<condition name="min_entries" value="750000"/>
 	<parameter name="num_neighbours" value="2"/>
 	<parameter name="out_low_cut" value="0.0"/>
 	<parameter name="out_high_cut" value="0.25"/>
@@ -881,7 +881,7 @@
 
     <alarmSet name="CalLogEndRangeHitCounter_Range2_TH2_Tower_*" enabled="True">
       <alarm function="empty_bins" enabled="True">
-      	<condition name="min_entries" value="1000000"/>
+      	<condition name="min_entries" value="750000"/>
 	<parameter name="num_neighbours" value="2"/>
 	<parameter name="out_low_cut" value="0.0"/>
 	<parameter name="out_high_cut" value="0.25"/>
@@ -896,7 +896,7 @@
 
     <alarmSet name="CalLogEndRangeHitCounter_Range3_TH2_Tower_*" enabled="True">
       <alarm function="empty_bins" enabled="True">
-      	<condition name="min_entries" value="1000000"/>
+      	<condition name="min_entries" value="750000"/>
 	<parameter name="num_neighbours" value="2"/>
 	<parameter name="out_low_cut" value="0.0"/>
 	<parameter name="out_high_cut" value="0.25"/>

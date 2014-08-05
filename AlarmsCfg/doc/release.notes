@@ -10,6 +10,8 @@
   1.15 to 1.20
 - merit_trendOutF_NormRateEvtsBeforeCutsWithFswGAMMAFilter: raise the upper
   warning limit from 1.15 to 1.20
+- Minimum number of entries for fastmon_eor
+  CalLogEndRangeHitCounter_Range0_TH2_Tower_* changed from 1000000 to 750000.
 * Relevant thread(s):
 https://www-glast.stanford.edu/protected/mail/datamon/12916.html
 
