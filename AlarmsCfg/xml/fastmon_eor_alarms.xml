@@ -15,8 +15,8 @@
 
     <alarmSet name="Tick20MHzDeviation_TH1" enabled="True">
       <alarm function="x_average" enabled="True">
-	<warning_limits min="-196.0" max="-165.0"/>
-	<error_limits min="-200.0" max="-150.0"/>
+	<warning_limits min="-210.0" max="-180.0"/>
+	<error_limits min="-230.0" max="-160.0"/>
         <condition name="min_entries" value="300"/>	
       </alarm>
       <alarm function="x_rms" enabled="True">
