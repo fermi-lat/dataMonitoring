@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-06-04-01 18-Nov-2014 lbaldini Minor tweak on the alarms on the GPS 20 MHz deviation.
 
 - A few tweaks in the alarms on the GPS 20 MHz deviation. Essenatially
   for digi_eor_alarms.xml, digi_trend_alarms.xml and fastmon_eor_alarms.xml
