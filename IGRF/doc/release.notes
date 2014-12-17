@@ -4,6 +4,14 @@
  *
  *                  EOH
 
+
+- IGRF now checking whether the IGNORE_IGRF_BOUNDARY environmental variable
+  is defined before raising an exception if the require model date is outside
+  the model boundaries (this is similar to what the IGRF implementation in
+  astro is doing).
+* Relevant Jira(s): GDQMQ-369
+
+
  IGRF-02-01-00 15-Feb-2010 lbaldini Bug fix for the 2k.1 issue.
 - Markus updated and committed the IGRF code. It should now be fine until 2015
 and deliver magnetic fields from a multipole expansion up to l=13 (was l=10).
