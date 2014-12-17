@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ IGRF-02-01-01 17-Dec-2014 lbaldini IGRF now checking the IGNORE_IGRF_BOUNDARY environmental variable before raising an exception if the model date exceeds the model boundaries.
 
 - IGRF now checking whether the IGNORE_IGRF_BOUNDARY environmental variable
   is defined before raising an exception if the require model date is outside
