@@ -1,4 +1,5 @@
 import igrf
+import os
 from math import acos,sqrt
 
 earth_radius=6371.2
@@ -25,7 +26,10 @@ class IGRF:
         if year < 1990:
             raise ValueError, 'This model is valid only after 1990.'
         elif year >= 2015:
-            raise ValueError, 'This model is valid only until 2015.'
+            if 'IGNORE_IGRF_BOUNDARY' in os.environ.keys():
+                year = 2014.999
+            else:
+                raise ValueError, 'This model is valid only until 2015.'
 	igrf.initize()
         self.DipoleMoment=igrf.feldcof(year)
         rigidity_const= 0.25 * self.DipoleMoment * earth_radius *  3e-2
@@ -47,3 +51,18 @@ class IGRF:
             self.InvariantRadius= rl*self.McIlwainL
             if rl<=1: self.InvariantLambda = acos(sqrt(rl))
 	    else: self.InvariantLambda = 0
+
+    def __str__(self):
+        """ String formatting.
+        """
+        return '%s' % vars(self)
+
+
+
+
+if __name__ == '__main__':
+    model = IGRF()
+    model.compute(0, 0, 565, 2014.0)
+    print model
+    model.compute(0, 0, 565, 2015.7)
+    print model
