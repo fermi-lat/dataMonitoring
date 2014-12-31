@@ -4,6 +4,17 @@
  *
  *                  EOH
 
+ -Relaxing the alarms limits on the 20MHz clock frequency deviation.
+  In digi_eor_alarms.xml and  fastmon_eor_alarms.xml: upper limits for x_average of Tick20MHzDeviation_TH1
+  rised to -150(warning) and -100(error)
+
+  In digi_trend_alarms.xml: upper limits for Mean_Tick20MHzDeviation 
+  rised to -150(warning) and -100(error)
+
+* Relevant thread:
+   https://www-glast.stanford.edu/protected/mail/datamon/13785.html
+
+
  AlarmsCfg-06-04-01 18-Nov-2014 lbaldini Minor tweak on the alarms on the GPS 20 MHz deviation.
 
 - A few tweaks in the alarms on the GPS 20 MHz deviation. Essenatially
