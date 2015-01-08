@@ -1,27 +1,27 @@
 <monitoring>
 
-  <inputList name="top"> 
+  <inputList name="top">
 
 
     <!-- Time stamp -->
-    <object> fastmontimestampdouble </object>
+    <object>fastmontimestampdouble </object>
     
    <!-- Evt type -->
-   <object>FastMon_condsummary</object> 
-   <object>FastMon_meta_LATC_master</object> 
-   <object>FastMon_evt_data_transfer_id</object> 
-   <object>FastMon_error_summary</object> 
+   <object>FastMon_condsummary</object>
+   <object>FastMon_meta_LATC_master</object>
+   <object>FastMon_evt_data_transfer_id</object>
+   <object>FastMon_error_summary</object>
 
    <!-- Context information -->
-   <object>FastMon_meta_context_open_mode</object> 
-   <object>FastMon_meta_context_open_modechanges</object> 
-   <object>FastMon_meta_context_current_source_gps</object> 
-   <object>FastMon_new_second</object> 
+   <object>FastMon_meta_context_open_mode</object>
+   <object>FastMon_meta_context_open_modechanges</object>
+   <object>FastMon_meta_context_current_source_gps</object>
+   <object>FastMon_new_second</object>
 
    <!-- Environment quantities -->
-   <object>FastMon_spacecraft_orbit_mode</object> 
-   <object>FastMon_spacecraft_orbit_inSAA</object> 
-   <object>FastMon_spacecraft_distance_to_saa</object> 
+   <object>FastMon_spacecraft_orbit_mode</object>
+   <object>FastMon_spacecraft_orbit_inSAA</object>
+   <object>FastMon_spacecraft_distance_to_saa</object>
 
    <object>FastMon_spacecraft_latitude</object>
    <object>FastMon_spacecraft_longitude</object>
@@ -49,8 +49,8 @@
      <!-- Tkr Variables -->
        
    <object>FastMon_TkrHits</object>	       
-   <object>FastMon_TkrHits_TowerPlane</object> 
-   <object>FastMon_TkrHits_TowerPlaneGTFE</object> 
+   <object>FastMon_TkrHits_TowerPlane</object>
+   <object>FastMon_TkrHits_TowerPlaneGTFE</object>
 
      <!-- Acd Variables -->	 
    <object>FastMon_Acd_Tile_Count</object>	       
@@ -66,541 +66,541 @@
   
    <!-- Context information -->
     <object>
-      <name> FastMon_Evt_DataTransferId </name>
+      <name>FastMon_Evt_DataTransferId</name>
       <formula><![CDATA[ FastMon_evt_data_transfer_id ]]></formula>
-      <cut><![CDATA[ ]]></cut>
+      <cut><![CDATA[]]></cut>
       <type>valuechange[0]</type>
-      <description> Changes in data transfer id, within the time bin </description>
+      <description>Changes in data transfer id, within the time bin</description>
     </object>
     <object>
-      <name> FastMon_MetaContext_LATC_Master</name>
+      <name>FastMon_MetaContext_LATC_Master</name>
       <formula><![CDATA[ FastMon_meta_LATC_master ]]></formula>
-      <cut><![CDATA[ ]]></cut>
+      <cut><![CDATA[]]></cut>
       <type>valuechange[0]</type>
-      <description> Changes in the LATC Master key, within the time bin </description>
+      <description>Changes in the LATC Master key, within the time bin</description>
     </object>
     <object>
-      <name> FastMon_MetaContext_OpenMode </name>
+      <name>FastMon_MetaContext_OpenMode</name>
       <formula><![CDATA[ FastMon_meta_context_open_mode ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> valuechange[0] </type>
-      <description> Changes of the LAT mode as read from the datagram open mode </description>
+      <cut><![CDATA[]]></cut>
+      <type>valuechange[0]</type>
+      <description>Changes of the LAT mode as read from the datagram open mode</description>
     </object>
     <object>
-      <name> FastMon_MetaContext_OpenMode_Changes </name>
+      <name>FastMon_MetaContext_OpenMode_Changes</name>
       <formula><![CDATA[ FastMon_meta_context_open_modechanges ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
       <description>
         Mean value of the LAT mode changes as read from the datagram open mode.
         This is a counter, reset at the beginning of each run
-      </description>
+    </description>
     </object>
     <object>
-      <name> FastMon_MetaContext_GPS_OUTofLock </name>
+      <name>FastMon_MetaContext_GPS_OUTofLock</name>
       <formula><![CDATA[ !(FastMon_meta_context_current_source_gps) ]]></formula>
       <cut><![CDATA[ FastMon_new_second&1]]></cut>
-      <type> rate </type>
+      <type>rate</type>
       <description>
-        Rate of number of seconds in which the GPS is out of lock.
+        Rate of number of seconds in which the GPS is  out of lock.
         This rate should be ZERO, meaning that GPS is always in lock.
-      </description>
+    </description>
     </object>
 
     <object>
-      <name> FastMon_NewSecond </name>
+      <name>FastMon_NewSecond</name>
       <formula><![CDATA[ FastMon_new_second ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> rate </type>
-      <description> Rate of 'NewSecond'; where 'NewSecond' is a variable set to 1 when current time (in units of seconds) is different to previous' evt time. The variable is 0 otherwise. The time is extracted as digi->getMetaEvent().time().current().timeSecs(). </description>
+      <cut><![CDATA[]]></cut>
+      <type>rate</type>
+      <description>Rate of 'NewSecond'; where 'NewSecond' is a variable set to 1 when current time (in units of seconds) is different to previous' evt time. The variable is 0 otherwise. The time is extracted as digi->getMetaEvent().time().current().timeSecs().</description>
     </object>
     <object>
-      <name> NormalizedRate_FastMon_MetaContext_GPS_OUTofLock </name>
+      <name>NormalizedRate_FastMon_MetaContext_GPS_OUTofLock</name>
       <formula><![CDATA[ foronetime: (Rate_FastMon_NewSecond>0) ? Rate_FastMon_MetaContext_GPS_OUTofLock/Rate_FastMon_NewSecond: -1.0 ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <source> output </source>
-      <type> outputfloat </type>
-      <description> Normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones. </description>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type>outputfloat</type>
+      <description>Normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones.</description>
     </object>	      
     <object>
-      <name> NormalizedRate_FastMon_MetaContext_GPS_OUTofLock_err </name> <!-- Rate_NewSecond does not have error !! -->
+      <name>NormalizedRate_FastMon_MetaContext_GPS_OUTofLock_err</name><!-- Rate_NewSecond does not have error !! -->
       <formula><![CDATA[ foronetime: (Rate_FastMon_NewSecond>0) ? Rate_FastMon_MetaContext_GPS_OUTofLock_err/Rate_FastMon_NewSecond: 0.0 ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <source> output </source>
-      <type> outputfloat </type>
-      <description> Error in the normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones. </description>
+      <cut><![CDATA[]]></cut>
+      <source>output</source>
+      <type>outputfloat</type>
+      <description>Error in the normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones.</description>
     </object>	    
 
     <object>
-      <name> FastMon_TemBug_Event </name>
+      <name>FastMon_TemBug_Event</name>
       <formula><![CDATA[ foronetime: (FastMon_error_summary>>23)&0x1 ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> rate </type>
-      <description> Rate of events with a TEM bug. </description>
+      <cut><![CDATA[]]></cut>
+      <type>rate</type>
+      <description>Rate of events with a TEM bug.</description>
     </object>
     <object>
-      <name> FastMon_Any_Error </name>
+      <name>FastMon_Any_Error</name>
       <formula><![CDATA[ foronetime: FastMon_error_summary>=256 ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> rate </type>
-      <description> Rate of events with any type of error. </description>
+      <cut><![CDATA[]]></cut>
+      <type>rate</type>
+      <description>Rate of events with any type of error.</description>
     </object>
     <object>
-	<name> FastMon_AnyThingButTEM </name>
+	<name>FastMon_AnyThingButTEM</name>
 	<formula><![CDATA[ foronetime: ( FastMon_error_summary>=256 && !((FastMon_error_summary>>23)&0x1) )]]></formula>
-	<cut><![CDATA[ ]]></cut>
-	<type> rate </type>
-	<description> Rate of events with any type of error but TEM bug. </description>
+	<cut><![CDATA[]]></cut>
+	<type>rate</type>
+	<description>Rate of events with any type of error but TEM bug.</description>
     </object>
     
     <object>
-      <name> FastMon_GTCC_WORD_COUNT_PARITY_ERROR </name>
+      <name>FastMon_GTCC_WORD_COUNT_PARITY_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>17)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a GTCC_WORD_COUNT_PARITY_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a GTCC_WORD_COUNT_PARITY_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_TIMETONE_FLYWHEELING </name>
+      <name>FastMon_TIMETONE_FLYWHEELING</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>2)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a TIMETONE_FLYWHEELING error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a TIMETONE_FLYWHEELING error bit.</description>
     </object>
     <object>
-      <name> FastMon_AEM_CONTRIB_ERROR </name>
+      <name>FastMon_AEM_CONTRIB_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>27)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a AEM_CONTRIB_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a AEM_CONTRIB_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_GCCC_ERROR </name>
+      <name>FastMon_GCCC_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>8)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a GCCC_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a GCCC_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_ACD_PHA_INCONSISTENCY </name>
+      <name>FastMon_ACD_PHA_INCONSISTENCY</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>22)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a ACD_PHA_INCONSISTENCY error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a ACD_PHA_INCONSISTENCY error bit.</description>
     </object>
     <!--object>
-      <name> FastMon_TEM_BUG </name>
+      <name>FastMon_TEM_BUG</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>23)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a TEM_BUG error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a TEM_BUG error bit.</description>
     </object-->
     <object>
-      <name> FastMon_GTCC_ERROR </name>
+      <name>FastMon_GTCC_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>9)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a GTCC_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a GTCC_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_LAT_DATAGRAM_ERROR </name>
+      <name>FastMon_LAT_DATAGRAM_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>31)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a LAT_DATAGRAM_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a LAT_DATAGRAM_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_TKR_CONTRIB_ERROR </name>
+      <name>FastMon_TKR_CONTRIB_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>25)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a TKR_CONTRIB_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a TKR_CONTRIB_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_GTCC_DATA_PARITY_ERROR </name>
+      <name>FastMon_GTCC_DATA_PARITY_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>19)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a GTCC_DATA_PARITY_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a GTCC_DATA_PARITY_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_CAL_CONTRIB_ERROR </name>
+      <name>FastMon_CAL_CONTRIB_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>26)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a CAL_CONTRIB_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a CAL_CONTRIB_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_TIMETONE_INCOMPLETE </name>
+      <name>FastMon_TIMETONE_INCOMPLETE</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>0)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a TIMETONE_INCOMPLETE error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a TIMETONE_INCOMPLETE error bit.</description>
     </object>
     <object>
-      <name> FastMon_PHASE_ERROR </name>
+      <name>FastMon_PHASE_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>10)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a PHASE_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a PHASE_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_TIMETONE_MISSING_TIMETONE </name>
+      <name>FastMon_TIMETONE_MISSING_TIMETONE</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>5)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a TIMETONE_MISSING_TIMETONE error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a TIMETONE_MISSING_TIMETONE error bit.</description>
     </object>
     <object>
-      <name> FastMon_ACD_HEADER_PARITY_ERROR </name>
+      <name>FastMon_ACD_HEADER_PARITY_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>20)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a ACD_HEADER_PARITY_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a ACD_HEADER_PARITY_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_TIMETONE_NULL_SOURCE_GPS </name>
+      <name>FastMon_TIMETONE_NULL_SOURCE_GPS</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>6)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a TIMETONE_NULL_SOURCE_GPS error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a TIMETONE_NULL_SOURCE_GPS error bit.</description>
     </object>
     <object>
-      <name> FastMon_ERR_CONTRIB_ERROR </name>
+      <name>FastMon_ERR_CONTRIB_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>24)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a ERR_CONTRIB_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a ERR_CONTRIB_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_LAT_CONTRIB_ERROR </name>
+      <name>FastMon_LAT_CONTRIB_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>30)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a LAT_CONTRIB_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a LAT_CONTRIB_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_EBF_CONTRIB_ERROR </name>
+      <name>FastMon_EBF_CONTRIB_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>29)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a EBF_CONTRIB_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a EBF_CONTRIB_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_TIMETONE_MISSING_LATPPS </name>
+      <name>FastMon_TIMETONE_MISSING_LATPPS</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>4)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a TIMETONE_MISSING_LATPPS error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a TIMETONE_MISSING_LATPPS error bit.</description>
     </object>
     <object>
-      <name> FastMon_GTFE_PHASE_ERROR </name>
+      <name>FastMon_GTFE_PHASE_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>13)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a GTFE_PHASE_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a GTFE_PHASE_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_GTRC_SUMMARY_ERROR </name>
+      <name>FastMon_GTRC_SUMMARY_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>18)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a GTRC_SUMMARY_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a GTRC_SUMMARY_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_TIMETONE_MISSING_CPUPPS </name>
+      <name>FastMon_TIMETONE_MISSING_CPUPPS</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>3)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a TIMETONE_MISSING_CPUPPS error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a TIMETONE_MISSING_CPUPPS error bit.</description>
     </object>
     <object>
-      <name> FastMon_GTRC_PHASE_ERROR </name>
+      <name>FastMon_GTRC_PHASE_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>12)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a GTRC_PHASE_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a GTRC_PHASE_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_GTCC_HEADER_PARITY_ERROR </name>
+      <name>FastMon_GTCC_HEADER_PARITY_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>16)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a GTCC_HEADER_PARITY_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a GTCC_HEADER_PARITY_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_GTCC_TIMEOUT_ERROR </name>
+      <name>FastMon_GTCC_TIMEOUT_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>15)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a GTCC_TIMEOUT_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a GTCC_TIMEOUT_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_TIMEOUT_ERROR </name>
+      <name>FastMon_TIMEOUT_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>11)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a TIMEOUT_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a TIMEOUT_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_TIMETONE_EARLY_EVENT </name>
+      <name>FastMon_TIMETONE_EARLY_EVENT</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>1)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a TIMETONE_EARLY_EVENT error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a TIMETONE_EARLY_EVENT error bit.</description>
     </object>
     <object>
-      <name> FastMon_GTCC_FIFO_ERROR </name>
+      <name>FastMon_GTCC_FIFO_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>14)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a GTCC_FIFO_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a GTCC_FIFO_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_PACKET_ERROR </name>
+      <name>FastMon_PACKET_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>28)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a PACKET_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a PACKET_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_EBF_EVENT_ERROR </name>
+      <name>FastMon_EBF_EVENT_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>31)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a EBF_EVENT_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a EBF_EVENT_ERROR error bit.</description>
     </object>
     <object>
-      <name> FastMon_ACD_PHA_PARITY_ERROR </name>
+      <name>FastMon_ACD_PHA_PARITY_ERROR</name>
         <formula><![CDATA[ foronetime: (FastMon_error_summary>>21)&0x1 ]]></formula>
-        <cut><![CDATA[ ]]></cut>
-        <type> rate </type>
-        <description> Rate of events with a ACD_PHA_PARITY_ERROR error bit. </description>
+        <cut><![CDATA[]]></cut>
+        <type>rate</type>
+        <description>Rate of events with a ACD_PHA_PARITY_ERROR error bit.</description>
     </object>
   
     <!-- Spacecraft quantities -->
     <object>
-      <name> FastMon_Spacecraft_OrbitMode </name>
+      <name>FastMon_Spacecraft_OrbitMode</name>
       <formula><![CDATA[ FastMon_spacecraft_orbit_mode ]]></formula>
-      <cut><![CDATA[ ]]></cut>
+      <cut><![CDATA[]]></cut>
       <type>valuechange[0]</type>
-      <description> Changes of the spacecraft orbit mode (3==inertially pointed, 5==sky survey) </description>
+      <description>Changes of the spacecraft orbit mode (3==inertially pointed, 5==sky survey)</description>
     </object>
     <object>
-      <name> FastMon_Spacecraft_OrbitInSAA </name>
+      <name>FastMon_Spacecraft_OrbitInSAA</name>
       <formula><![CDATA[ FastMon_spacecraft_orbit_inSAA ]]></formula>
-      <cut><![CDATA[ ]]></cut>
+      <cut><![CDATA[]]></cut>
       <type>valuechange[0]</type>
-      <description> Changes of the spacecraft orbit in SAA flag (1==IN, 0==OUT) </description>
+      <description>Changes of the spacecraft orbit in SAA flag (1==IN, 0==OUT)</description>
     </object>
     <object>
-      <name> FastMon_Spacecraft_Distance_To_SAA </name>
+      <name>FastMon_Spacecraft_Distance_To_SAA</name>
       <formula><![CDATA[ FastMon_spacecraft_distance_to_saa ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft ditance to the SAA (km) </description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft ditance to the SAA (km)</description>
     </object>
 
     <object>
-      <name> FastMon_SpaceCraft_Latitude </name>
+      <name>FastMon_SpaceCraft_Latitude</name>
       <formula><![CDATA[ FastMon_spacecraft_latitude ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft latitude </description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft latitude</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_Longitude </name>
+      <name>FastMon_SpaceCraft_Longitude</name>
       <formula><![CDATA[ FastMon_spacecraft_longitude ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft longitude</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft longitude</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_Altitude </name>
+      <name>FastMon_SpaceCraft_Altitude</name>
       <formula><![CDATA[ FastMon_spacecraft_altitude ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft altitude with respect to the earth surface (km)</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft altitude with respect to the earth surface (km)</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_Pitch </name>
+      <name>FastMon_SpaceCraft_Pitch</name>
       <formula><![CDATA[ FastMon_spacecraft_pitch ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft pitch angle</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft pitch angle</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_Roll </name>
+      <name>FastMon_SpaceCraft_Roll</name>
       <formula><![CDATA[ FastMon_spacecraft_roll ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft roll angle</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft roll angle</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_Yaw </name>
+      <name>FastMon_SpaceCraft_Yaw</name>
       <formula><![CDATA[ FastMon_spacecraft_yaw ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft yaw angle</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft yaw angle</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_RockAngle </name>
+      <name>FastMon_SpaceCraft_RockAngle</name>
       <formula><![CDATA[ FastMon_spacecraft_rock ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft rock angle</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft rock angle</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_XaxisRA </name>
+      <name>FastMon_SpaceCraft_XaxisRA</name>
       <formula><![CDATA[ FastMon_spacecraft_xra ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft x axis right ascension</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft x axis right ascension</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_XaxisDec </name>
+      <name>FastMon_SpaceCraft_XaxisDec</name>
       <formula><![CDATA[ FastMon_spacecraft_xdec ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft x axis declination</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft x axis declination</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_ZaxisRA </name>
+      <name>FastMon_SpaceCraft_ZaxisRA</name>
       <formula><![CDATA[ FastMon_spacecraft_zra ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft z axis right ascension</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft z axis right ascension</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_ZaxisDec </name>
+      <name>FastMon_SpaceCraft_ZaxisDec</name>
       <formula><![CDATA[ FastMon_spacecraft_zdec ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft z axis declination</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft z axis declination</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_EarthLimb </name>
+      <name>FastMon_SpaceCraft_EarthLimb</name>
       <formula><![CDATA[ FastMon_spacecraft_earthlimb ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the angle between the LAT Z axis and the Earth limb</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the angle between the LAT Z axis and the Earth limb</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_EarthLimb_FOV </name>
+      <name>FastMon_SpaceCraft_EarthLimb_FOV</name>
       <formula><![CDATA[ FastMon_spacecraft_earthlimb_fov ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the arc length of Earth limb in the LAT field of view</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the arc length of Earth limb in the LAT field of view</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_ZGalL </name>
+      <name>FastMon_SpaceCraft_ZGalL</name>
       <formula><![CDATA[ FastMon_spacecraft_zgalL ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft z axis galactic L coordinate</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft z axis galactic L coordinate</description>
     </object>
     <object>
-      <name> FastMon_SpaceCraft_ZGalB </name>
+      <name>FastMon_SpaceCraft_ZGalB</name>
       <formula><![CDATA[ FastMon_spacecraft_zgalB ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the spacecraft z axis galactic B coordinate</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the spacecraft z axis galactic B coordinate</description>
     </object>
     
     <!-- Environment quantities -->
     <object>
-      <name> FastMon_GeoMag_cutoff </name>
+      <name>FastMon_GeoMag_cutoff</name>
       <formula><![CDATA[ FastMon_geomagnetic_cutoff ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the Rigidity cutoff in GeV from approximation DipoleMoment divided by McIlwain_L squared </description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the Rigidity cutoff in GeV from approximation DipoleMoment divided by McIlwain_L squared</description>
     </object>
     <object>
-      <name> FastMon_GeoMag_bb0 </name>
+      <name>FastMon_GeoMag_bb0</name>
       <formula><![CDATA[ FastMon_geomagnetic_bb0 ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of BAbs divided by BEquator </description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of BAbs divided by BEquator</description>
     </object>
     <object>
-      <name> FastMon_GeoMag_InvariantLambda </name>
+      <name>FastMon_GeoMag_InvariantLambda</name>
       <formula><![CDATA[ FastMon_geomagnetic_InvariantLambda ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the geomagnetic invariant lambda (only valid for BB0_le_10)</description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the geomagnetic invariant lambda (only valid for BB0_le_10)</description>
     </object>
     <object>
-      <name> FastMon_GeoMag_InvariantLatitude </name>
+      <name>FastMon_GeoMag_InvariantLatitude</name>
       <formula><![CDATA[ FastMon_geomagnetic_InvariantLatitude ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the geomagnetic invariant latitude </description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the geomagnetic invariant latitude</description>
     </object>
     <object>
-      <name> FastMon_GeoMag_InvariantRadius </name>
+      <name>FastMon_GeoMag_InvariantRadius</name>
       <formula><![CDATA[ FastMon_geomagnetic_InvariantRadius ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the geomagnetic invariant radius (only valid for BB0_le_10) </description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the geomagnetic invariant radius (only valid for BB0_le_10)</description>
     </object>
     <object>
-      <name> FastMon_GeoMag_McIlwainL </name>
+      <name>FastMon_GeoMag_McIlwainL</name>
       <formula><![CDATA[ FastMon_geomagnetic_McIlwainL ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> mean </type>
-      <description> Mean value of the McIlwain L parameter </description>
+      <cut><![CDATA[]]></cut>
+      <type>mean</type>
+      <description>Mean value of the McIlwain L parameter</description>
     </object>
 
      <!-- Tkr Variables -->
      <object>
-      <name> FastMon_TkrHits_TowerPlaneGTFE[16][36][24] </name>
+      <name>FastMon_TkrHits_TowerPlaneGTFE[16][36][24]</name>
       <formula><![CDATA[ FastMon_TkrHits_TowerPlaneGTFE ]]></formula>
       <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>
-      <type> mean </type>
-      <description> Vector reporting the accumulated (in the time bin)  number of Tkr Hits for tower,plane, GTFE </description>
+      <type>mean</type>
+      <description>Vector reporting the accumulated (in the time bin)  number of Tkr Hits for tower,plane, GTFE</description>
     </object>
  
 
     <object>
-      <name> FastMon_TkrHits </name>
+      <name>FastMon_TkrHits</name>
       <formula><![CDATA[ FastMon_TkrHits ]]></formula>
       <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>
-      <type> mean </type>
-      <description> Mean number of Tkr Hits</description>
+      <type>mean</type>
+      <description>Mean number of Tkr Hits</description>
     </object>
 
     <object>
-      <name> FastMon_TkrHits_TowerPlane[16][36] </name>
+      <name>FastMon_TkrHits_TowerPlane[16][36]</name>
       <formula><![CDATA[ foreachtower: foreachtkrplane: FastMon_TkrHits_TowerPlane[tower][tkrplane] ]]></formula>
       <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>
-      <type> mean </type>
-      <description> Vector reporting the mean number of Tkr Hits for tower,plane </description>
+      <type>mean</type>
+      <description>Vector reporting the mean number of Tkr Hits for tower,plane</description>
     </object>
 
      <object>
-      <name> FastMon_NTkrHits_TowerPlane[16][36] </name>
+      <name>FastMon_NTkrHits_TowerPlane[16][36]</name>
       <formula><![CDATA[ FastMon_TkrHits_TowerPlane ]]></formula>
       <cut><![CDATA[(FastMon_condsummary&32)>0 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>
-      <type> rate </type>
-      <description> Rate of Tkr Hits in the time bin for each tower and  plane, only for periodic triggers (Noise Hits).  </description>
+      <type>rate</type>
+      <description>Rate of Tkr Hits in the time bin for each tower and  plane, only for periodic triggers (Noise Hits).</description>
     </object>
 
      <!-- Cal Variables -->
 
     <object>
-      <name> FastMon_CalTowerCount </name>
+      <name>FastMon_CalTowerCount</name>
       <formula><![CDATA[ FastMon_Cal_Tower_Count ]]></formula>
       <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>
-      <type> mean </type>
-      <description> Mean number of Cal module with at least one CDE hit</description>
+      <type>mean</type>
+      <description>Mean number of Cal module with at least one CDE hit</description>
     </object>
 
     <object>
-      <name> FM_CalLogRHit_TowerCalLayerCalColumnFR[16][8][12][2][4] </name>
+      <name>FM_CalLogRHit_TowerCalLayerCalColumnFR[16][8][12][2][4]</name>
       <formula><![CDATA[ FastMon_CalLogEndRangeHit ]]></formula>
       <cut><![CDATA[ (FastMon_condsummary&30)>0 && (FastMon_condsummary&32)==0 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>	    
-      <type> mean </type>
-      <description> Mean number of of hits in each Cal log end for each range</description>
+      <type>mean</type>
+      <description>Mean number of of hits in each Cal log end for each range</description>
     </object>
 
    
@@ -608,17 +608,17 @@
      <!-- Acd Variables -->
 
     <object>
-      <name> FastMon_AcdTileCount </name>
+      <name>FastMon_AcdTileCount</name>
       <formula><![CDATA[ FastMon_Acd_Tile_Count ]]></formula>
       <cut><![CDATA[FastMon_condsummary&30 && !(FastMon_condsummary&64) && FastMon_error_summary<256]]></cut>
-      <type> mean </type>
-      <description> Mean number of Acd tiles hit</description>
+      <type>mean</type>
+      <description>Mean number of Acd tiles hit</description>
     </object>
  
 
   </outputList>
 
 
-  <eventCut><![CDATA[ ]]></eventCut>
-  <timestamp> fastmontimestampdouble </timestamp>
+  <eventCut><![CDATA[]]></eventCut>
+  <timestamp>fastmontimestampdouble </timestamp>
 </monitoring>

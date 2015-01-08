@@ -1,22 +1,22 @@
 <monitoring>
 
-  <inputList name="top"> 
+  <inputList name="top">
 
 
     <!-- Time stamp -->
-    <object> fastmontimestampdouble </object>
+    <object>fastmontimestampdouble</object>
     
    <!-- Evt type -->
-   <object>FastMon_condsummary</object> 
+   <object>FastMon_condsummary</object>
 
 
    <!-- Environment quantities -->
-   <object> FastMon_geomagnetic_InvariantLatitude</object>
+   <object>FastMon_geomagnetic_InvariantLatitude</object>
 
     <!-- Tkr Variables -->
         
     <object>FastMon_TkrHits</object>		
-    <object>FastMon_TkrHits_TowerPlane</object> 
+    <object>FastMon_TkrHits_TowerPlane</object>
 
    
   </inputList>
@@ -30,13 +30,13 @@
     
 
         <object>
-      <name> FastMon_CondSummaryWord_TH1 </name>
+      <name>FastMon_CondSummaryWord_TH1</name>
       <formula><![CDATA[ FastMon_condsummary ]]></formula>
-      <cut><![CDATA[  ]]></cut>
-      <type> histogram-1d[34,-0.5,33.5] </type>
-      <titledesc> Distribution of CondSummary Word values </titledesc>
-      <axisdesc> [condsummary value, N] </axisdesc>
-      <description> Distribution of condsumary word values. Values up to 33 are being displayed. </description>
+      <cut><![CDATA[]]></cut>
+      <type>histogram-1d[34,-0.5,33.5]</type>
+      <titledesc>Distribution of CondSummary Word values</titledesc>
+      <axisdesc>[condsummary value, N]</axisdesc>
+      <description>Distribution of condsumary word values. Values up to 33 are being displayed.</description>
     </object>
 
 
@@ -47,35 +47,35 @@
     <!-- Tkr Variables -->
 
            <object>
-      <name> FastMon_TkrHits_TH1 </name>
+      <name>FastMon_TkrHits_TH1</name>
       <formula><![CDATA[ FastMon_TkrHits ]]></formula>
       <cut><![CDATA[ FastMon_condsummary&30 && !(FastMon_condsummary&64) ]]></cut>
-      <type> histogram-1d[300,0.0,3000] </type>
-      <titledesc> Distribution of strip hits per event  (all towers included). </titledesc>
-      <axisdesc> [Number of strip hits, N] </axisdesc>
-      <description> Distribution of the number of strip hits per event (all towers included).  </description>
+      <type>histogram-1d[300,0.0,3000]</type>
+      <titledesc>Distribution of strip hits per event  (all towers included).</titledesc>
+      <axisdesc>[Number of strip hits, N]</axisdesc>
+      <description>Distribution of the number of strip hits per event (all towers included).</description>
     </object>
 
         <object>
-      <name> FastMon_TkrHits_TestRFun_TH1 </name>
+      <name>FastMon_TkrHits_TestRFun_TH1</name>
       <formula><![CDATA[ RFun::loopovertowerANDtkrplanes_int(FastMon_TkrHits_TowerPlane) ]]></formula>
       <cut><![CDATA[ FastMon_condsummary&30 && !(FastMon_condsummary&64)  ]]></cut>
-      <type> histogram-1d[300,0.0,3000] </type>
-      <titledesc> Distribution of strip hits per event  (all towers included). </titledesc>
-      <axisdesc> [Number of strip hits, N] </axisdesc>
-      <description> Distribution of the number of strip hits per event (all towers included).  </description>
+      <type>histogram-1d[300,0.0,3000]</type>
+      <titledesc>Distribution of strip hits per event  (all towers included).</titledesc>
+      <axisdesc>[Number of strip hits, N]</axisdesc>
+      <description>Distribution of the number of strip hits per event (all towers included).</description>
     </object>
 
 
        
       <object>
-      <name> FastMon_TkrHits_TH1_Tower[16] </name>
+      <name>FastMon_TkrHits_TH1_Tower[16]</name>
       <formula><![CDATA[ foreachtower: RFun::loopovertkrplanes_int(FastMon_TkrHits_TowerPlane[tower]) ]]></formula>
       <cut><![CDATA[ FastMon_condsummary&30 && !(FastMon_condsummary&64)  ]]></cut>
-      <type> histogram-1d[200,0,1000] </type>
-      <titledesc> Number of strip hits in a tower </titledesc>
-      <axisdesc> [Number of strip hits, N] </axisdesc>
-      <description> Distribution of the number of strip hits per tower.  </description>
+      <type>histogram-1d[200,0,1000]</type>
+      <titledesc>Number of strip hits in a tower</titledesc>
+      <axisdesc>[Number of strip hits, N]</axisdesc>
+      <description>Distribution of the number of strip hits per tower.</description>
     </object>
 
 
@@ -83,6 +83,6 @@
   </outputList>
 
 
-  <eventCut><![CDATA[ ]]></eventCut>
-  <timestamp> fastmontimestampdouble </timestamp>
+  <eventCut><![CDATA[]]></eventCut>
+  <timestamp>fastmontimestampdouble</timestamp>
 </monitoring>
