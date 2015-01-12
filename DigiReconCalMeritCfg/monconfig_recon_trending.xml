@@ -1,23 +1,23 @@
 <monitoring>
 
-  <inputList name="top"> 
+  <inputList name="top">
 
     
     <!-- Time stamp -->
-    <object> timestampdouble </object>
+    <object>timestampdouble</object>
      <!-- Event classification information -->
-    <object> condsummary </object>
+    <object>condsummary</object>
 
 
       <!-- Tkr Variables -->
-    <object> ReconNumTracks</object>
-    <object> ReconVertexPosXYZ </object>
-    <object> ReconDirXYZ </object>
+    <object>ReconNumTracks</object>
+    <object>ReconVertexPosXYZ</object>
+    <object>ReconDirXYZ</object>
 
     <!-- Cal Variables -->
     
-    <object> ReconEnergy_TowerCalLayerCalColumn </object>
-    <object> CalXtalFaceSignal </object>
+    <object>ReconEnergy_TowerCalLayerCalColumn</object>
+    <object>CalXtalFaceSignal</object>
   </inputList>
 
 
@@ -26,11 +26,11 @@
     <!-- Trigger/counters -->
 
      <object>
-      <name> CondsummaryBitAnd30_NOTPeriodic_Rec </name>
+      <name>CondsummaryBitAnd30_NOTPeriodic_Rec</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[condsummary&30 && !(condsummary&32)]]></cut>
-      <type> counter </type>
-      <description> Counter of events with condsummaryBitAnd30 AND NotcondsummaryBitAnd32) </description>
+      <type>counter</type>
+      <description>Counter of events with condsummaryBitAnd30 AND NotcondsummaryBitAnd32)</description>
     </object>
 
     
@@ -40,37 +40,37 @@
 
 
      <object>
-      <name> ReconNumTracks[11] </name>
+      <name>ReconNumTracks[11]</name>
       <formula><![CDATA[ReconNumTracks]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
-      <type> rate </type>
-      <description> Vector[11] reporting the rate of events with n tracks [0,10]. Periodic triggers are NOT taken into account. </description>
+      <type>rate</type>
+      <description>Vector[11] reporting the rate of events with n tracks [0,10]. Periodic triggers are NOT taken into account.</description>
     </object>
 
 
      <object>
-      <name> ReconTracks </name>
+      <name>ReconTracks</name>
       <formula><![CDATA[RFun::returnnonzerocomponent(ReconNumTracks,11)]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32) && (RFun::returnnonzerocomponent(ReconNumTracks,11) >= 0)]]></cut>
-      <type> mean </type>
-      <description> Mean number of reconstructed tracks. Periodic triggers are NOT taken into account. </description>
+      <type>mean</type>
+      <description>Mean number of reconstructed tracks. Periodic triggers are NOT taken into account.</description>
     </object>
 
      <object>
-      <name> ReconVertexDir_XYZ[3] </name>
+      <name>ReconVertexDir_XYZ[3]</name>
       <formula><![CDATA[ReconDirXYZ]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
-      <type> mean </type>
-      <description> Vector[3] reporting the MEAN reconstructed Vertex direction X, Y and Z. Periodic triggers are NOT taken into account. </description>
+      <type>mean</type>
+      <description>Vector[3] reporting the MEAN reconstructed Vertex direction X, Y and Z. Periodic triggers are NOT taken into account.</description>
     </object>
 
 
      <object>
-      <name> ReconVertexPos_XYZ[3] </name>
+      <name>ReconVertexPos_XYZ[3]</name>
       <formula><![CDATA[ReconVertexPosXYZ]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32) && ReconVertexPosXYZ[0]<1000000]]></cut>
-      <type> mean </type>
-      <description> Vector[3] reporting the MEAN reconstructed Vertex position X, Y and Z. Periodic triggers are NOT taken into account. Only events with TkrVertex objects are being considered. </description>
+      <type>mean</type>
+      <description>Vector[3] reporting the MEAN reconstructed Vertex position X, Y and Z. Periodic triggers are NOT taken into account. Only events with TkrVertex objects are being considered.</description>
     </object>
 
 
@@ -79,73 +79,73 @@
 
 
     <object>
-      <name> ReconEnergy </name>
+      <name>ReconEnergy</name>
       <formula><![CDATA[RFun::loopovertowerANDcallayersANDcalcolumns_float(ReconEnergy_TowerCalLayerCalColumn)]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
-      <type> truncatedmean[1.0,10000000] </type>
-      <description> Mean measured energy (MeV) in the calorimeter per event. All towers and layers taken into account. Periodic triggers are NOT taken into account. </description>
+      <type>truncatedmean[1.0,10000000]</type>
+      <description>Mean measured energy (MeV) in the calorimeter per event. All towers and layers taken into account. Periodic triggers are NOT taken into account.</description>
     </object>
 
     <object>
-      <name> ReconEnergy_Tower[16] </name>
+      <name>ReconEnergy_Tower[16]</name>
       <formula><![CDATA[foreachtower: RFun::loopovercallayersANDcalcolumns_float(ReconEnergy_TowerCalLayerCalColumn[tower])]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
-      <type> truncatedmean[1.0,10000000] </type>
-      <description> Vector [tower] reporting the mean measured energy (MeV) per event in the calorimeter of tower.  Periodic triggers are NOT taken into account. If the calorimeter of this tower was totally empty (for that event), the value is not taken into account in the average procedure.</description>
+      <type>truncatedmean[1.0,10000000]</type>
+      <description>Vector [tower] reporting the mean measured energy (MeV) per event in the calorimeter of tower.  Periodic triggers are NOT taken into account. If the calorimeter of this tower was totally empty (for that event), the value is not taken into account in the average procedure.</description>
     </object>
 
     <object>
-      <name> ReconEnergy_TowerCalLayer[16][8] </name>
+      <name>ReconEnergy_TowerCalLayer[16][8]</name>
       <formula><![CDATA[foreachtower: foreachcallayer:  RFun::loopovercalcolumns_float(ReconEnergy_TowerCalLayerCalColumn[tower][callayer])]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
-      <type> truncatedmean[1.0,10000000] </type>
-      <description> Vector [tower][callayer] reporting the mean energy (MeV) in the calorimeter layer defined by tower,callayer. Periodic triggers are NOT taken into account. If the layer was totally empty, the value is not taken into account in the average procedure.</description>
+      <type>truncatedmean[1.0,10000000]</type>
+      <description>Vector [tower][callayer] reporting the mean energy (MeV) in the calorimeter layer defined by tower,callayer. Periodic triggers are NOT taken into account. If the layer was totally empty, the value is not taken into account in the average procedure.</description>
     </object>
 
       <object>
-      <name> ReconEnergy_TowerCalLayerCalColumn[16][8][12] </name>
+      <name>ReconEnergy_TowerCalLayerCalColumn[16][8][12]</name>
       <formula><![CDATA[foreachtower: foreachcallayer: foreachcalcolumn: ReconEnergy_TowerCalLayerCalColumn[tower][callayer][calcolumn] ]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
-      <type> truncatedmean[1.0,10000000]  </type>
-      <description> Vector [tower][callayer][calcolumn] containing the Mean energy (MeV) in the calorimeter crystal log defined by tower,callayer,calcolumn. Periodic triggers are NOT taken into account. If the crystal was totally empty (not used), the value is not taken into account in the average procedure.</description>
+      <type>truncatedmean[1.0,10000000]</type>
+      <description>Vector [tower][callayer][calcolumn] containing the Mean energy (MeV) in the calorimeter crystal log defined by tower,callayer,calcolumn. Periodic triggers are NOT taken into account. If the crystal was totally empty (not used), the value is not taken into account in the average procedure.</description>
     </object>
 
 
       <object>
-      <name> ReconEnergy_TowerCalLayerCalColumnF[16][8][12][2] </name>
+      <name>ReconEnergy_TowerCalLayerCalColumnF[16][8][12][2]</name>
       <formula><![CDATA[foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: CalXtalFaceSignal[tower][callayer][calcolumn][calxface]]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
-      <type> truncatedmean[1.0,10000000]  </type>
-      <description> Vector [tower][callayer][calcolumn][calxface] containing the Mean energy (MeV) in the calorimeter crystal diode defined by tower,callayer,calcolumn, calxface. Periodic triggers are NOT taken into account. If the diode was not used, the value is not taken into account in the average procedure.</description>
+      <type>truncatedmean[1.0,10000000]</type>
+      <description>Vector [tower][callayer][calcolumn][calxface] containing the Mean energy (MeV) in the calorimeter crystal diode defined by tower,callayer,calcolumn, calxface. Periodic triggers are NOT taken into account. If the diode was not used, the value is not taken into account in the average procedure.</description>
     </object>
 
 
       
       <object>
-      <name> ReconZeroEnergy_TowerCalLayer[16][8] </name>
+      <name>ReconZeroEnergy_TowerCalLayer[16][8]</name>
       <formula><![CDATA[foreachtower: foreachcallayer: RFun::loopovercalcolumns_float(ReconEnergy_TowerCalLayerCalColumn[tower][callayer]) <=0]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
-      <type> counter </type>
-      <description> Vector [tower][callayer] containing the number of times the calorimeter layer defined by tower,callayer is empty. Periodic triggers are NOT taken into account.</description>
+      <type>counter</type>
+      <description>Vector [tower][callayer] containing the number of times the calorimeter layer defined by tower,callayer is empty. Periodic triggers are NOT taken into account.</description>
     </object>
 
 
       <object>
-      <name> ReconZeroEnergy_Fraction_TowerCalLayer[16][8] </name>
-      <formula><![CDATA[foreachtower: foreachcallayer: Counter_CondsummaryBitAnd30_NOTPeriodic_Rec > 0 ? double(Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec) : 0.0]]></formula>
+      <name>ReconZeroEnergy_Fraction_TowerCalLayer[16][8]</name>
+      <formula><![CDATA[foreachtower: foreachcallayer: Counter_CondsummaryBitAnd30_NOTPeriodic_Rec >0 ? double(Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec) : 0.0]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
-      <type> outputfloat </type>
-      <description> Vector [tower][callayer] containing the fraction of events with ZERO energy (as well as events whose energy in [tower][callayer] could not be reconstructed) in the calorimeter layer defined by tower,callayer. Periodic triggers are NOT taken into account.</description>
+      <type>outputfloat</type>
+      <description>Vector [tower][callayer] containing the fraction of events with ZERO energy (as well as events whose energy in [tower][callayer] could not be reconstructed) in the calorimeter layer defined by tower,callayer. Periodic triggers are NOT taken into account.</description>
     </object>
 
         <object>
-      <name> ReconZeroEnergy_Fraction_TowerCalLayer_err[16][8] </name>
+      <name>ReconZeroEnergy_Fraction_TowerCalLayer_err[16][8]</name>
       <formula><![CDATA[foreachtower: foreachcallayer: Counter_CondsummaryBitAnd30_NOTPeriodic_Rec>0 ? sqrt((1./double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec))*(double(Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec))*(1-(double(Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec)))): 0.0]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
-      <type> outputfloat </type>
-      <description> Error in quantity ReconZeroEnergy_Fraction_TowerCalLayer.</description>
+      <type>outputfloat</type>
+      <description>Error in quantity ReconZeroEnergy_Fraction_TowerCalLayer.</description>
     </object>
 
 
@@ -153,6 +153,6 @@
 
   </outputList>
 
-  <eventCut><![CDATA[ ]]></eventCut>
-  <timestamp> timestampdouble  </timestamp>
+  <eventCut><![CDATA[]]></eventCut>
+  <timestamp>timestampdouble</timestamp>
 </monitoring>
