@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-21-01 12-Jan-2015 monzani sanitize input
  DigiReconCalMeritCfg-01-21-00 08-Jan-2015 monzani sanitizing xml input
  DigiReconCalMeritCfg-01-20-04 28-Jan-2014 monzani correct sytax for absolute value
  DigiReconCalMeritCfg-01-20-03 11-Jan-2014 dpaneque Update on calculation of mean PtSCzenith so that only the absolute values are used.
