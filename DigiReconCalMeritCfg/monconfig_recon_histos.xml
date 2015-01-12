@@ -637,7 +637,7 @@ Remove comments and XXXX (this is needed for producing merging files) in names t
 -->
 
      <object>
-      <name>SuspCalLo_Highest0_TH2</name>                 
+      <name>SuspCalLo_Highest0_TH2</name>
       <formula><![CDATA[ RFun::getChannelEnergyHighest(CalXtalFaceSignal,0,0):RFun::getChannelEnergyHighest(CalXtalFaceSignal,0,1)]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32) && condsummary&4 && !(condsummary&8) ]]></cut>
       <type>histogram-2d[3072,-0.5,3071.5, 100, 1,300]</type>

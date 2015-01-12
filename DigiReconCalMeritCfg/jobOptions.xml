@@ -3,10 +3,10 @@
 
 <ifile cvs_Header="$Header$" cvs_Revision="$Revision$" >
 
-  <section name="parameters"> 
-    <item name="outputPrefix" value="ete"> output file prefix </item>
-    <item name="configFile" value="../src/monconfig_v19_nocal.xml"> output file prefix </item>
-    <item name="sharedLibDir" value="/tmp"> shared library directory </item>
-    <item name="htmlFile" value="variables.html"> html output file </item>
+  <section name="parameters">
+    <item name="outputPrefix" value="ete">output file prefix</item>
+    <item name="configFile" value="../src/monconfig_v19_nocal.xml">output file prefix</item>
+    <item name="sharedLibDir" value="/tmp">shared library directory</item>
+    <item name="htmlFile" value="variables.html">html output file</item>
   </section>
 </ifile>

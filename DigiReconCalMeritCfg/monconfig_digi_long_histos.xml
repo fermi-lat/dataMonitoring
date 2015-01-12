@@ -155,7 +155,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       <name>CalXAdc_LEX8_TowerCalLayerCalColumnF[16][8][12][2]</name>
       <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][calxface][0]]]></formula>
       <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress) && (DeltaEventTime>2000)]]></cut>
-      <type>truncatedmeanboundandfracbigdataequaln[0,100000,0.96]</type> 
+      <type>truncatedmeanboundandfracbigdataequaln[0,100000,0.96]</type>
       <description>Vector[tower][callayer][calcolumn][face] reporting the mean (and rms by means of the the CalXAdc_TowerCalLayerCalColumnF_err quantity) pedestal for LEX8. The mean (and rms) is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. This is done to remove outliers. Only periodic triggers with 4 range readout events are being used.</description>
      </object>
 
@@ -164,7 +164,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       <name>CalXAdc_LEX1_TowerCalLayerCalColumnF[16][8][12][2]</name>
       <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][calxface][1]]]></formula>
       <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress)  && (DeltaEventTime>2000)]]></cut>
-      <type>truncatedmeanboundandfracbigdataequaln[0,100000,0.96]</type> 
+      <type>truncatedmeanboundandfracbigdataequaln[0,100000,0.96]</type>
       <description>Vector[tower][callayer][calcolumn][face] reporting the mean (and rms by means of the the CalXAdc_TowerCalLayerCalColumnF_err quantity) pedestal for LEX1. The mean (and rms) is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. This is done to remove outliers. Only periodic triggers with 4 range readout events are being used.</description>
      </object>
 
@@ -173,7 +173,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       <name>CalXAdc_HEX8_TowerCalLayerCalColumnF[16][8][12][2]</name>
       <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][calxface][2]]]></formula>
       <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress)  && (DeltaEventTime>2000)]]></cut>
-      <type>truncatedmeanboundandfracbigdataequaln[0,100000,0.96]</type> 
+      <type>truncatedmeanboundandfracbigdataequaln[0,100000,0.96]</type>
       <description>Vector[tower][callayer][calcolumn][face] reporting the mean (and rms by means of the the CalXAdc_TowerCalLayerCalColumnF_err quantity) pedestal for HEX8. The mean (and rms) is computed removing (truncating) 2 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. This is done to remove outliers. Only periodic triggers with 4 range readout events are being used.</description>
      </object>
 
@@ -182,7 +182,7 @@ OF THE TRUNCATED MEAN RELATED OBJECTS -->
       <name>CalXAdc_HEX1_TowerCalLayerCalColumnF[16][8][12][2]</name>
       <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: CalXAdc_TowerCalLayerCalColumnFaceRange[tower][callayer][calcolumn][calxface][3]]]></formula>
       <cut><![CDATA[ condsummary==32 && Range4 && (!ZeroSuppress)  && (DeltaEventTime>2000) ]]></cut>
-      <type>truncatedmeanboundandfracbigdataequaln[0,100000,0.96]</type> 
+      <type>truncatedmeanboundandfracbigdataequaln[0,100000,0.96]</type>
       <description>Vector[tower][callayer][calcolumn][face] reporting the mean (and rms by means of the the CalXAdc_TowerCalLayerCalColumnF_err quantity) pedestal for HEX1. The mean (and rms) is computed removing (truncating) 4 percent of the events located at each of the sides (beginning+end) of the distribution of values; that is with the 96 percent central values. This is done to remove outliers. Only periodic triggers with 4 range readout events are being used.</description>
      </object>
 

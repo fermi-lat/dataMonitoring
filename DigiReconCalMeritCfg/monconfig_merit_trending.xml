@@ -5,7 +5,7 @@
     <object>timestampdouble</object>
     
     <!-- Trigger related vars -->
-    <object>GltWord</object> <!-- TO BE DELETED at some point, use GltGemSummary instead!! -->
+    <object>GltWord</object><!-- TO BE DELETED at some point, use GltGemSummary instead!! -->
     <object>GltGemSummary</object>
     <object>EvtEventId</object>
     <object>TriggerEngine</object>
@@ -92,7 +92,7 @@
     <object>CTBBestEnergyRatio</object>
     <object>CTBParticleType</object>
 
-    <!-- <object>CTBGAM</object> OBSOLETE -->
+    <!-- <object>CTBGAM</object>OBSOLETE -->
     <object>CTBCalDocaAngle</object>
 
     <!-- FT1 variables -->
@@ -395,7 +395,7 @@
       <cut><![CDATA[  FT1EventClassBitMap[0]  &&  FT1ZenithTheta<100  ]]></cut>
       <type>rate</type>
       <description>Rate of events after application of TRANSIENT gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100.</description>
-   </object> 
+   </object>
 
      <object>
       <name>NormRateTransientEvtsBelowZenithTheta100</name>
@@ -542,7 +542,7 @@
       <formula><![CDATA[1]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[4]]]></cut>
       <type>rate</type>
-      <description> Rate of events after application of ULTRACLEAN gamma cuts from pass7. </description>
+      <description>Rate of events after application of ULTRACLEAN gamma cuts from pass7. </description>
    </object>
 
         <object>
@@ -603,7 +603,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[8]]]></cut>
       <type>rate</type>
-      <description> Rate of events after application of S2 gamma cuts from pass7. </description>
+      <description>Rate of events after application of S2 gamma cuts from pass7. </description>
    </object>
 
 
@@ -629,7 +629,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[9]]]></cut>
       <type>rate</type>
-      <description> Rate of events after application of NoCal gamma cuts from pass7. </description>
+      <description>Rate of events after application of NoCal gamma cuts from pass7. </description>
    </object>
 
 
@@ -655,7 +655,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[10]]]></cut>
       <type>rate</type>
-      <description> Rate of events after application of S3 gamma cuts from pass7. </description>
+      <description>Rate of events after application of S3 gamma cuts from pass7. </description>
    </object>
 
 
@@ -680,7 +680,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[11]]]></cut>
       <type>rate</type>
-      <description> Rate of events after application of CalOnly gamma cuts from pass7. </description>
+      <description>Rate of events after application of CalOnly gamma cuts from pass7. </description>
    </object>
 
 
@@ -706,7 +706,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[12]]]></cut>
       <type>rate</type>
-      <description> Rate of events after application of S3NoCal gamma cuts from pass7. </description>
+      <description>Rate of events after application of S3NoCal gamma cuts from pass7. </description>
    </object>
 
 
@@ -731,7 +731,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[13]]]></cut>
       <type>rate</type>
-      <description> Rate of events after application of S2NoCal gamma cuts from pass7. </description>
+      <description>Rate of events after application of S2NoCal gamma cuts from pass7. </description>
    </object>
 
 
@@ -757,7 +757,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[14]]]></cut>
       <type>rate</type>
-      <description> Rate of events after application of LLE gamma cuts from pass7. </description>
+      <description>Rate of events after application of LLE gamma cuts from pass7. </description>
    </object>
 
      <object>
@@ -803,11 +803,11 @@
       <description>Rate of events with FT1ZenithTheta below 100 deg, after application of LLE gamma cuts from pass7.</description>
    </object>
 
-    <object>                                                                                                
+    <object>
       <name>LLEEvtsBelowZenithTheta100_BinsRaDec[8][5]</name>
       <formula><![CDATA[foreachllerabin: foreachlledecbin: RFun::IsEventInThisRaDecBin(FT1Ra, FT1Dec, llerabin, lledecbin)]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[14]  && FT1ZenithTheta<100]]></cut>                                    
-      <type>rate</type>                                                                                       
+      <cut><![CDATA[ FT1EventClassBitMap[14]  && FT1ZenithTheta<100]]></cut>
+      <type>rate</type>
       <description>Two dimensional vector [8][5] reporting the rate of LLE events with FT1ZenithTheta below 100 deg, that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. Note also that the rates for Dec=-90 deg and for Dec=90 deg will be identical for all the RA bins.</description>
    </object>
 
@@ -817,7 +817,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClassBitMap[15]]]></cut>
       <type>rate</type>
-      <description> Rate of events after application of LLESSDVeto gamma cuts from pass7. </description>
+      <description>Rate of events after application of LLESSDVeto gamma cuts from pass7. </description>
    </object>
 
 
@@ -1337,7 +1337,7 @@
 
 
     <object>
-      <name> CalCsIRLn</name>
+      <name>CalCsIRLn</name>
       <formula><![CDATA[  CalCsIRLn  ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>mean</type>
@@ -1468,7 +1468,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ EvtCREventClassBitMap[0]]]></cut>
       <type>rate</type>
-      <description> Rate of Low Energy Electron (LEE) events, determined with the merit variable EvtCREventClass</description>
+      <description>Rate of Low Energy Electron (LEE) events, determined with the merit variable EvtCREventClass</description>
     </object>
 
      <object>
@@ -1476,7 +1476,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ EvtCREventClassBitMap[1]]]></cut>
       <type>rate</type>
-      <description> Rate of High Energy Electron (HEE) events, determined with the merit variable EvtCREventClass</description>
+      <description>Rate of High Energy Electron (HEE) events, determined with the merit variable EvtCREventClass</description>
     </object>
 
      <object>
@@ -1484,7 +1484,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ EvtCREventClassBitMap[8]]]></cut>
       <type>rate</type>
-      <description> Rate of High acceptence proton sample events, determined with the merit variable EvtCREventClass</description>
+      <description>Rate of High acceptence proton sample events, determined with the merit variable EvtCREventClass</description>
     </object>
 
      <object>
@@ -1492,7 +1492,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ EvtCREventClassBitMap[9]]]></cut>
       <type>rate</type>
-      <description> Rate of High purity proton sample events, determined with the merit variable EvtCREventClass</description>
+      <description>Rate of High purity proton sample events, determined with the merit variable EvtCREventClass</description>
     </object>
 
      <object>
@@ -1500,7 +1500,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ EvtCREventClassBitMap[10]]]></cut>
       <type>rate</type>
-      <description> Rate of High purity and high quality reconstruction proton sample events, determined with the merit variable EvtCREventClass</description>
+      <description>Rate of High purity and high quality reconstruction proton sample events, determined with the merit variable EvtCREventClass</description>
     </object>
 
      <object>
@@ -1508,7 +1508,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ EvtCREventClassBitMap[16]]]></cut>
       <type>rate</type>
-      <description> Rate of Alpha Particle events, determined with the merit variable EvtCREventClass</description>
+      <description>Rate of Alpha Particle events, determined with the merit variable EvtCREventClass</description>
     </object>
 
      <object>
@@ -1516,7 +1516,7 @@
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ EvtCREventClassBitMap[20]]]></cut>
       <type>rate</type>
-      <description> Rate of Heavy ion events, determined with the merit variable EvtCREventClass</description>
+      <description>Rate of Heavy ion events, determined with the merit variable EvtCREventClass</description>
     </object>
 
     
