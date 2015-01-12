@@ -2,11 +2,11 @@
 
 
 
-  <inputList name="top"> 
+  <inputList name="top">
 
 
     <!-- Time stamp -->
-    <object> trackermontimestamp </object>
+    <object>trackermontimestamp</object>
     
    <!-- Evt type -->
    <object>firstRunId</object>
@@ -22,32 +22,32 @@
 
      <!-- Tkr Variables -->
      
-     <object>  TOT_Entries_TowerPlane</object>
+     <object>TOT_Entries_TowerPlane</object>
 
      <object>TOT_Peak_TowerPlane</object>
-     <object>  TOT_PeakError_TowerPlane</object>
-     <object> TOT_LWidth_TowerPlane</object>
-     <object>  TOT_LWidthError_TowerPlane</object>
-     <object>  TOT_GSigma_TowerPlane</object>
-     <object>  TOT_GSigmaError_TowerPlane</object>
-     <object>  layerEff_TowerPlane</object>
-     <object>  layerEff_err_TowerPlane</object>
-     <object>  towerEff_Tower</object>
-     <object>  towerEff_err_Tower</object>
-     <object>  trigEff_Tower</object>
-     <object>  trigEff_err_Tower</object>
-     <object>  layerdXY_TowerPlane</object>
-     <object>  layerdXY_err_TowerPlane</object> 
+     <object>TOT_PeakError_TowerPlane</object>
+     <object>TOT_LWidth_TowerPlane</object>
+     <object>TOT_LWidthError_TowerPlane</object>
+     <object>TOT_GSigma_TowerPlane</object>
+     <object>TOT_GSigmaError_TowerPlane</object>
+     <object>layerEff_TowerPlane</object>
+     <object>layerEff_err_TowerPlane</object>
+     <object>towerEff_Tower</object>
+     <object>towerEff_err_Tower</object>
+     <object>trigEff_Tower</object>
+     <object>trigEff_err_Tower</object>
+     <object>layerdXY_TowerPlane</object>
+     <object>layerdXY_err_TowerPlane</object>
 
-     <object>  TOT_FitProb_TowerPlane</object>
-     <object>  TOT_FracLowTOT_TowerPlane</object>
+     <object>TOT_FitProb_TowerPlane</object>
+     <object>TOT_FracLowTOT_TowerPlane</object>
      
-     <object>  layerOcc_TowerPlane</object>
-     <object>  layerOcc_err_TowerPlane</object>
-     <object>  stripOcc_TowerPlane</object>
-     <object>  stripOcc_err_TowerPlane</object>
-     <object>  fracSat_TowerPlane</object>
-     <object>  fracSat_err_TowerPlane</object>
+     <object>layerOcc_TowerPlane</object>
+     <object>layerOcc_err_TowerPlane</object>
+     <object>stripOcc_TowerPlane</object>
+     <object>stripOcc_err_TowerPlane</object>
+     <object>fracSat_TowerPlane</object>
+     <object>fracSat_err_TowerPlane</object>
 
  
 
@@ -63,62 +63,62 @@
   
    <!-- Context information -->
     <object>
-      <name> Number_TrackerMon_firstRunId</name>
+      <name>Number_TrackerMon_firstRunId</name>
       <formula><![CDATA[ firstRunId ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputuint </type>
-      <description> firstRunId</description>
+      <cut><![CDATA[]]></cut>
+      <type>outputuint</type>
+      <description>firstRunId</description>
     </object>
  
     <object>
-      <name> Number_TrackerMon_lastRunId</name>
+      <name>Number_TrackerMon_lastRunId</name>
       <formula><![CDATA[ lastRunId ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputuint </type>
-      <description> lastRunId</description>
+      <cut><![CDATA[]]></cut>
+      <type>outputuint</type>
+      <description>lastRunId</description>
     </object>
     
      <object>
-      <name> TimeStampFirstEvt</name>
+      <name>TimeStampFirstEvt</name>
       <formula><![CDATA[ trackermontimestamp ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputdouble </type>
-      <description> Time of the first event</description>
+      <cut><![CDATA[]]></cut>
+      <type>outputdouble</type>
+      <description>Time of the first event</description>
     </object>
      
      <object>
-      <name> TimeStampLastEvt</name>
+      <name>TimeStampLastEvt</name>
       <formula><![CDATA[ endTime ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputdouble </type>
-      <description> Time of the last event</description>
+      <cut><![CDATA[]]></cut>
+      <type>outputdouble</type>
+      <description>Time of the last event</description>
     </object>
      
 
      <object>
-      <name> TrueTimeInterval </name>
+      <name>TrueTimeInterval</name>
       <formula><![CDATA[ TimeStampLastEvt-TimeStampFirstEvt]]></formula>
-      <cut><![CDATA[ ]]></cut>
+      <cut><![CDATA[]]></cut>
       <source>output</source>
-      <type> outputdouble </type>
-      <description> Time interval</description>
+      <type>outputdouble</type>
+      <description>Time interval</description>
     </object>
 
 
      <object>
-      <name> Bin_Start </name>
+      <name>Bin_Start</name>
       <formula><![CDATA[ trackermontimestamp]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputlint </type>
-      <description> Start of the bin; this is the timestamp (in ULong64_t) of the first event.</description>
+      <cut><![CDATA[]]></cut>
+      <type>outputlint</type>
+      <description>Start of the bin; this is the timestamp (in ULong64_t) of the first event.</description>
     </object>
 
      <object>
-      <name> Bin_End </name>
+      <name>Bin_End</name>
       <formula><![CDATA[ endTime]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputlint </type>
-      <description> End of the bin; this is the timestamp (in ULong64_t) of the last event.</description>
+      <cut><![CDATA[]]></cut>
+      <type>outputlint</type>
+      <description>End of the bin; this is the timestamp (in ULong64_t) of the last event.</description>
     </object>
 
    
@@ -129,251 +129,251 @@
 
 
       <object>
-      <name> Mean_TOT_Peak_TowerPlane[16][36] </name>
+      <name>Mean_TOT_Peak_TowerPlane[16][36]</name>
       <formula><![CDATA[ TOT_Peak_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the mean ToT peak value in fC  </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the mean ToT peak value in fC</description>
     </object>
 
        <object>
-      <name> Mean_TOT_Peak_TowerPlane_err[16][36] </name>
+      <name>Mean_TOT_Peak_TowerPlane_err[16][36]</name>
       <formula><![CDATA[ TOT_PeakError_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the error in the mean ToT peak  value in fC  </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the error in the mean ToT peak  value in fC</description>
     </object>
 
      <object>
-      <name> Mean_TOT_Peak_TowerPlane_n[16][36] </name>
+      <name>Mean_TOT_Peak_TowerPlane_n[16][36]</name>
       <formula><![CDATA[ TOT_Entries_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputuint </type>
-      <description> Vector [16][36] reporting the number of events used to compute TOT_Peak (TOT_Entries in trackermon input root file). </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputuint</type>
+      <description>Vector [16][36] reporting the number of events used to compute TOT_Peak (TOT_Entries in trackermon input root file).</description>
     </object>
 
 
      <object>
-      <name> Mean_TOT_LWidth_TowerPlane[16][36] </name>
+      <name>Mean_TOT_LWidth_TowerPlane[16][36]</name>
       <formula><![CDATA[ TOT_LWidth_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the TOT Landau width   </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the TOT Landau width</description>
     </object>
 
        <object>
-      <name> Mean_TOT_LWidth_TowerPlane_err[16][36] </name>
+      <name>Mean_TOT_LWidth_TowerPlane_err[16][36]</name>
       <formula><![CDATA[ TOT_LWidthError_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the error in the TOT Landau width  </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the error in the TOT Landau width</description>
     </object>
 
      <object>
-      <name> Mean_TOT_LWidth_TowerPlane_n[16][36] </name>
+      <name>Mean_TOT_LWidth_TowerPlane_n[16][36]</name>
       <formula><![CDATA[ TOT_Entries_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputuint </type>
-      <description> Vector [16][36] reporting the number of events used to compute TOT_LWidth (TOT_Entries in trackermon input root file). </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputuint</type>
+      <description>Vector [16][36] reporting the number of events used to compute TOT_LWidth (TOT_Entries in trackermon input root file).</description>
     </object>
 
 
       <object>
-      <name> Mean_TOT_GSigma_TowerPlane[16][36] </name>
+      <name>Mean_TOT_GSigma_TowerPlane[16][36]</name>
       <formula><![CDATA[ TOT_GSigma_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the TOT Gaussian sigma   </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the TOT Gaussian sigma </description>
     </object>
 
        <object>
-      <name> Mean_TOT_GSigma_TowerPlane_err[16][36] </name>
+      <name>Mean_TOT_GSigma_TowerPlane_err[16][36]</name>
       <formula><![CDATA[ TOT_GSigmaError_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the error in the TOT Gaussian sigma </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the error in the TOT Gaussian sigma</description>
     </object>
 
      <object>
-      <name> Mean_TOT_GSigma_TowerPlane_n[16][36] </name>
+      <name>Mean_TOT_GSigma_TowerPlane_n[16][36]</name>
       <formula><![CDATA[ TOT_Entries_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputuint </type>
-      <description> Vector [16][36] reporting the number of events used to compute TOT_GSigma (TOT_Entries in trackermon input root file). </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputuint</type>
+      <description>Vector [16][36] reporting the number of events used to compute TOT_GSigma (TOT_Entries in trackermon input root file).</description>
     </object>
 
  <object>
-      <name> Number_TOT_FitProb_TowerPlane[16][36] </name>
+      <name>Number_TOT_FitProb_TowerPlane[16][36]</name>
       <formula><![CDATA[ TOT_FitProb_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the TOT Fit Probability </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the TOT Fit Probability</description>
     </object>
 
 
 
  <object>
-      <name> Number_TOT_FracLowTOT_TowerPlane[16][36] </name>
+      <name>Number_TOT_FracLowTOT_TowerPlane[16][36]</name>
       <formula><![CDATA[ TOT_FracLowTOT_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the fraction of low TOT events </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the fraction of low TOT events</description>
     </object>
  
    <object>
-      <name> Number_fracSat_TowerPlane[16][36] </name>
+      <name>Number_fracSat_TowerPlane[16][36]</name>
       <formula><![CDATA[ fracSat_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the fraction of saturation events per layer </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the fraction of saturation events per layer</description>
     </object>
 
    <object>
-      <name> Number_fracSat_TowerPlane_err[16][36] </name>
+      <name>Number_fracSat_TowerPlane_err[16][36]</name>
       <formula><![CDATA[ fracSat_err_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the error on the fraction of saturation events per layer </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the error on the fraction of saturation events per layer</description>
     </object>
 
     <object>
-      <name> Number_stripOcc_TowerPlane[16][36] </name>
+      <name>Number_stripOcc_TowerPlane[16][36]</name>
       <formula><![CDATA[ stripOcc_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the layer average strip occupancy </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the layer average strip occupancy</description>
     </object>
 
     <object>
-      <name> Number_LATAverage_stripOcc </name>
+      <name>Number_LATAverage_stripOcc</name>
       <formula><![CDATA[ RFun::loopovertowerANDtkrplanes_double(stripOcc_TowerPlane)/(16.*36.) ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> LAT average strip occupancy </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>LAT average strip occupancy</description>
     </object>
 
     <object>
-      <name> Number_LATAverage_stripOcc_err </name>
+      <name>Number_LATAverage_stripOcc_err</name>
       <formula><![CDATA[ RFun::loopovertowerANDtkrplanes_square_double(stripOcc_err_TowerPlane)/(16.*36.*sqrt(16.*36.)) ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Error on the LAT average strip occupancy </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Error on the LAT average strip occupancy</description>
     </object>
 
 
     <object>
-      <name> Number_layerOcc_TowerPlane[16][36] </name>
+      <name>Number_layerOcc_TowerPlane[16][36]</name>
       <formula><![CDATA[ layerOcc_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the layer OR occupancy</description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the layer OR occupancy</description>
     </object>
 
  <object>
-      <name> Number_layerOcc_TowerPlane_err[16][36] </name>
+      <name>Number_layerOcc_TowerPlane_err[16][36]</name>
       <formula><![CDATA[ layerOcc_err_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the error on the layer OR occupancy</description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the error on the layer OR occupancy</description>
     </object>
 
 
  <object>
-      <name> Mean_trigEff_Tower[16] </name>
+      <name>Mean_trigEff_Tower[16]</name>
       <formula><![CDATA[ trigEff_Tower ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16] reporting the tower average trigger efficiency   </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16] reporting the tower average trigger efficiency </description>
     </object>
 
        <object>
-      <name> Mean_trigEff_Tower_err[16] </name>
+      <name>Mean_trigEff_Tower_err[16]</name>
       <formula><![CDATA[ trigEff_err_Tower ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16] reporting the error in the tower average trigger efficiency </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16] reporting the error in the tower average trigger efficiency</description>
     </object>
 
      <object>
-      <name> Mean_trigEff_Tower_n[16] </name>
+      <name>Mean_trigEff_Tower_n[16]</name>
       <formula><![CDATA[ foreachtower: RFun::loopovertkrplanes_double(TOT_Entries_TowerPlane[tower]) ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputuint </type>
-      <description> Vector [16] reporting the number of events used to compute trigEff (TOT_Entries[tower] in trackermon input root file). </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputuint</type>
+      <description>Vector [16] reporting the number of events used to compute trigEff (TOT_Entries[tower] in trackermon input root file).</description>
     </object>
 
 
  <object>
-      <name> Mean_towerEff_Tower[16] </name>
+      <name>Mean_towerEff_Tower[16]</name>
       <formula><![CDATA[ towerEff_Tower ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16] reporting the tower average hit efficiency  </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16] reporting the tower average hit efficiency</description>
     </object>
 
        <object>
-      <name> Mean_towerEff_Tower_err[16] </name>
+      <name>Mean_towerEff_Tower_err[16]</name>
       <formula><![CDATA[ towerEff_err_Tower ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16] reporting the error in the tower average hit efficiency  </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16] reporting the error in the tower average hit efficiency</description>
     </object>
 
      <object>
-      <name> Mean_towerEff_Tower_n[16] </name>
+      <name>Mean_towerEff_Tower_n[16]</name>
       <formula><![CDATA[ foreachtower: RFun::loopovertkrplanes_double(TOT_Entries_TowerPlane[tower]) ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputuint </type>
-      <description> Vector [16] reporting the number of events used to compute towerEff (TOT_Entries[tower] in trackermon input root file). </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputuint</type>
+      <description>Vector [16] reporting the number of events used to compute towerEff (TOT_Entries[tower] in trackermon input root file).</description>
     </object>
 
  <object>
-      <name> Mean_layerdXY_TowerPlane[16][36] </name>
+      <name>Mean_layerdXY_TowerPlane[16][36]</name>
       <formula><![CDATA[ layerdXY_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the mean displacement per layer   </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the mean displacement per layer </description>
     </object>
 
        <object>
-      <name> Mean_layerdXY_TowerPlane_err[16][36] </name>
+      <name>Mean_layerdXY_TowerPlane_err[16][36]</name>
       <formula><![CDATA[ layerdXY_err_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the error in the mean displacement per layer  </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the error in the mean displacement per layer</description>
     </object>
 
      <object>
-      <name> Mean_layerdXY_TowerPlane_n[16][36] </name>
+      <name>Mean_layerdXY_TowerPlane_n[16][36]</name>
       <formula><![CDATA[ TOT_Entries_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputuint </type>
-      <description> Vector [16][36] reporting the number of events used to compute layerdXY (TOT_Entries in trackermon input root file). </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputuint</type>
+      <description>Vector [16][36] reporting the number of events used to compute layerdXY (TOT_Entries in trackermon input root file).</description>
     </object>
 
 
  <object>
-      <name> Mean_layerEff_TowerPlane[16][36] </name>
+      <name>Mean_layerEff_TowerPlane[16][36]</name>
       <formula><![CDATA[ layerEff_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the layer average hit efficiency   </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the layer average hit efficiency</description>
     </object>
 
        <object>
-      <name> Mean_layerEff_TowerPlane_err[16][36] </name>
+      <name>Mean_layerEff_TowerPlane_err[16][36]</name>
       <formula><![CDATA[ layerEff_err_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputfloat </type>
-      <description> Vector [16][36] reporting the error in the layer average hit efficiency  </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputfloat</type>
+      <description>Vector [16][36] reporting the error in the layer average hit efficiency</description>
     </object>
 
      <object>
-      <name> Mean_layerEff_TowerPlane_n[16][36] </name>
+      <name>Mean_layerEff_TowerPlane_n[16][36]</name>
       <formula><![CDATA[ TOT_Entries_TowerPlane ]]></formula>
-      <cut><![CDATA[ ]]></cut>
-      <type> outputuint </type>
-      <description> Vector [16][36] reporting the number of events used to compute layerEff (TOT_Entries in trackermon input root file). </description>
+      <cut><![CDATA[]]></cut>
+      <type>outputuint</type>
+      <description>Vector [16][36] reporting the number of events used to compute layerEff (TOT_Entries in trackermon input root file).</description>
     </object>
 
 
@@ -381,6 +381,6 @@
   </outputList>
 
 
-  <eventCut><![CDATA[ ]]></eventCut>
-  <timestamp> trackermontimestamp </timestamp>
+  <eventCut><![CDATA[]]></eventCut>
+  <timestamp>trackermontimestamp</timestamp>
 </monitoring>
