@@ -333,12 +333,12 @@
     
 
      <object>
-      <name>EvtsBeforeCutsBelow100ZenithTheta_E100MeV /name>
+      <name>EvtsBeforeCutsBelow100ZenithTheta_E100MeV </name>
       <formula><![CDATA[1]]></formula>
       <cut><![CDATA[FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type>rate</type>
       <description>Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 100 and FT1Energy larger than 100 MeV.</description>
-   </object>
+     </object>
 
 
     
@@ -490,7 +490,7 @@
       <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvts, Rate_SourceEvts_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
-      <type>outputfloaty</type>
+      <type>outputfloat</type>
       <description>Normalized Rate of source events. The Normalization is done according to the value of PtMcIlwainL.</description>
    </object>
 

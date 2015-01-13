@@ -2538,7 +2538,7 @@
 
       <object>
       <name>Normalized_ToT_0_TowerPlane_err[16][36]</name>
-      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TewerPlane[tower][tkrplane] >0 &&  Rate_TkrDigi_TowerPlane_err[tower][tkrplane]>0 ) ? sqrt((1./double(pow(Rate_TkrDigi_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane_err[tower][tkrplane],2)))*(Rate_ToT_0_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*(1-(Rate_ToT_0_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane]))) : 0.0 ]]></formula>
+      <formula><![CDATA[foreachtower: foreachtkrplane: ( Rate_TkrDigi_TowerPlane[tower][tkrplane] >0 &&  Rate_TkrDigi_TowerPlane_err[tower][tkrplane]>0 ) ? sqrt((1./double(pow(Rate_TkrDigi_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane_err[tower][tkrplane],2)))*(Rate_ToT_0_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane])*(1-(Rate_ToT_0_TowerPlane[tower][tkrplane]/Rate_TkrDigi_TowerPlane[tower][tkrplane]))) : 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
