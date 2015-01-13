@@ -87,9 +87,6 @@
     <object>CTBBestEnergyRatio</object>
     <object>CTBParticleType</object>
 
-    <!-- <object>CTBGAM</object>OBSOLETE -->
-    <object>CTBCalDocaAngle</object>
-
     <!-- FT1 variables -->
 
     <object>FT1Energy</object>
@@ -1314,15 +1311,7 @@
       <description>Mean value (per evt) of CTBBestEnergy</description>
    </object>
 
-    <object>
-      <name>CTBCalDocaAngle </name>
-      <formula><![CDATA[ CTBCalDocaAngle  ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>mean</type>
-      <description>Mean value (per evt) of CTBCalDocaAngle</description>
-   </object>
-
-    <object>
+   <object>
       <name>CTBBestEnergyProb </name>
       <formula><![CDATA[ CTBBestEnergyProb   ]]></formula>
       <cut><![CDATA[]]></cut>
