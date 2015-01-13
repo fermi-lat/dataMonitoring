@@ -585,7 +585,7 @@
       <name>NormalizedRate_GPS_OUTofLock</name>
       <formula><![CDATA[ foronetime: (Rate_NewSecond>0) ? Rate_GPS_OUTofLock/Rate_NewSecond: 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
-      <source>output </source>
+      <source>output</source>
       <type>outputfloat</type>
       <description>Normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones.</description>
    </object>	      
@@ -595,9 +595,9 @@
     <object><!-- Error in number of events is Sqrt(N*fraction*(1-fraction), which is expected from binomial distribution -->
       <!-- Then the error needs to be normalized with the number of new seconds; pow(Rate_NewSecond/Rate_NewSecond_err,2) -->
       <name>NormalizedRate_GPS_OUTofLock_err</name>
-      <formula><![CDATA[ foronetime: (Rate_NewSecond>0 && Rate_NewSecond_err>0) ? TMath::Sqrt(pow(Rate_NewSecond/Rate_NewSecond_err,2)*(Rate_GPS_OUTofLock/Rate_NewSecond)*(1-(Rate_GPS_OUTofLock/Rate_NewSecond)))/pow(Rate_NewSecond/Rate_NewSecond_err,2) : 0.0 ]]></formula>
+      <formula><![CDATA[ foronetime: (Rate_NewSecond>0 && Rate_NewSecond_err>0)? TMath::Sqrt(pow(Rate_NewSecond/Rate_NewSecond_err,2)*(Rate_GPS_OUTofLock/Rate_NewSecond)*(1-(Rate_GPS_OUTofLock/Rate_NewSecond)))/pow(Rate_NewSecond/Rate_NewSecond_err,2): 0.0 ]]></formula>
       <cut><![CDATA[]]></cut>
-      <source>output </source>
+      <source>output</source>
       <type>outputfloat</type>
       <description>Error in the normalized Rate of number of seconds in which the GPS is out of lock. This rate should be ZERO, meaning that GPS is always in lock. The normalization factor is Rate_NewSecond, that is the rate of time tones.</description>
    </object>	    
@@ -606,7 +606,7 @@
     <object>
       <name>Tick20MHzDeviation</name>
       <formula><![CDATA[ Tick20MHzDeviation ]]></formula>
-      <cut><![CDATA[ NewSecond&1 && !CurrentORPreviousTimeToneMissing]]></cut>
+      <cut><![CDATA[ NewSecond&1 && !CurrentORPreviousTimeToneMissing ]]></cut>
       <type>mean</type>
       <description>Mean of the the deviation from the 20 MHz clock</description>
    </object>
@@ -615,7 +615,7 @@
       <name>RMS_Tick20MHzDeviation</name>
       <formula><![CDATA[ Mean_Tick20MHzDeviation_err*TMath::Sqrt(Mean_Tick20MHzDeviation_n) ]]></formula>
       <cut><![CDATA[]]></cut>
-       <source>output </source>
+       <source>output</source>
       <type>outputfloat</type>
       <description>RMS of the the deviation from the 20 MHz clock</description>
    </object>
@@ -624,7 +624,7 @@
       <name>RMS_Tick20MHzDeviation_err</name>
       <formula><![CDATA[ Mean_Tick20MHzDeviation_err/TMath::Sqrt(2) ]]></formula>
       <cut><![CDATA[]]></cut>
-       <source>output </source>
+       <source>output</source>
       <type>outputfloat</type>
       <description>Error in the RMS of the the deviation from the 20 MHz clock</description>
    </object>
@@ -1808,7 +1808,7 @@
       <name>Datagram_EPU0_And_EPU1</name>
       <formula><![CDATA[ CounterDiffRate_Datagram_EPU0 + CounterDiffRate_Datagram_EPU1  ]]></formula>
       <cut><![CDATA[]]></cut>
-      <source>output </source>
+      <source>output</source>
       <type>outputfloat</type>
       <description>Rate of datagrams from EPU0+EPU1 (A datagram is about 64kbytes of compressed data). This rate, multiplied by 64kbytes, is a rough etimate of the bandwidth needed to transfer the data to the ground.</description>
    </object>
@@ -1817,7 +1817,7 @@
       <name>Datagram_EPU0_And_EPU1_err</name>
       <formula><![CDATA[ TMath::Sqrt(pow(CounterDiffRate_Datagram_EPU0_err,2) + pow(CounterDiffRate_Datagram_EPU1_err,2))  ]]></formula>
       <cut><![CDATA[]]></cut>
-      <source>output </source>
+      <source>output</source>
       <type>outputfloat</type>
       <description>Error in quantity Datagram_EPU0_And_EPU1</description>
    </object>
@@ -2819,5 +2819,5 @@
   </outputList>
 
   <eventCut><![CDATA[]]></eventCut>
-  <timestamp>timestampdouble </timestamp>
+  <timestamp>timestampdouble</timestamp>
 </monitoring>
