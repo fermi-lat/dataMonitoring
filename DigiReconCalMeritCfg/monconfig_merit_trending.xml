@@ -106,10 +106,6 @@
     <object>PtLon</object>
     <object>PtMagLat</object>
     <object>PtSCzenith</object>
-
-    <!-- Others -->
-    <object>EvtCREventClassBitMap</object>
-
    
  </inputList>
 
@@ -1375,67 +1371,6 @@
       <type>rate</type>
       <description>Rate of heavy ion events, according to CTBParticleType variable (that is CTBParticleType==4).</description>
    </object>
-
-    <!-- New particle types based on merit variable EvtCREventClass -->
-
-     <object>
-      <name>LowEnergyElectrons</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ EvtCREventClassBitMap[0]]]></cut>
-      <type>rate</type>
-      <description>Rate of Low Energy Electron (LEE) events, determined with the merit variable EvtCREventClass</description>
-    </object>
-
-     <object>
-      <name>HighEnergyElectrons</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ EvtCREventClassBitMap[1]]]></cut>
-      <type>rate</type>
-      <description>Rate of High Energy Electron (HEE) events, determined with the merit variable EvtCREventClass</description>
-    </object>
-
-     <object>
-      <name>ProtonHiAccept</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ EvtCREventClassBitMap[8]]]></cut>
-      <type>rate</type>
-      <description>Rate of High acceptence proton sample events, determined with the merit variable EvtCREventClass</description>
-    </object>
-
-     <object>
-      <name>ProtonHiPure</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ EvtCREventClassBitMap[9]]]></cut>
-      <type>rate</type>
-      <description>Rate of High purity proton sample events, determined with the merit variable EvtCREventClass</description>
-    </object>
-
-     <object>
-      <name>ProtonHiQual</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ EvtCREventClassBitMap[10]]]></cut>
-      <type>rate</type>
-      <description>Rate of High purity and high quality reconstruction proton sample events, determined with the merit variable EvtCREventClass</description>
-    </object>
-
-     <object>
-      <name>Alpha</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ EvtCREventClassBitMap[16]]]></cut>
-      <type>rate</type>
-      <description>Rate of Alpha Particle events, determined with the merit variable EvtCREventClass</description>
-    </object>
-
-     <object>
-      <name>Heavy</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ EvtCREventClassBitMap[20]]]></cut>
-      <type>rate</type>
-      <description>Rate of Heavy ion events, determined with the merit variable EvtCREventClass</description>
-    </object>
-
-    
-
 
     <!-- FT1 Variables -->
 
