@@ -13,17 +13,12 @@
     <object>FswFilters</object>
     <object>FswGamState</object>
     <object>FswGAMMAEnergyInLeus</object>
-
     
-    <!-- Filter variables -->
-<!--    <object>FilterStatus_HI</object>obsolete-->
-    <object>MeritObfGamStatus</object>
-
     <!-- ACD -->
+    <!--
     <object>AcdCornerDoca</object>
     <object>AcdTileCount</object>
     <object>AcdRibbonCount</object>
- 
     <object>AcdActiveDist3D</object>
     <object>AcdTkr1ActiveDist</object>
     <object>AcdTkr1ActDistTileEnergy</object>
@@ -31,7 +26,7 @@
     <object>AcdRibbonEnergy</object>
     <object>AcdTotalEnergy</object>
     <object>AcdActDistTileEnergy</object>
-
+    -->
     
     
     <!-- Tracker -->
@@ -132,7 +127,7 @@
       <cut><![CDATA[]]></cut>
       <type>mean</type>
       <description>Mean value (per evt) of GltWord</description>
-   </object>
+    </object>
 
      <object>
       <name>GltGemSummary</name>
@@ -941,14 +936,7 @@
 
        <!-- Gleam (ground) gamma filter bit -->
        
-    <object>
-      <name>TransientEvtsUsingGleamGammaFilter</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  MeritObfGamStatus>0 && FT1EventClassBitMap[0]  ]]></cut>
-      <type>rate</type>
-      <description>Rate of events surviving the TRANSIENT gamma cuts from pass7 and the offline Gleam Gamma filter.</description>
-   </object>
-     
+
        <object>
       <name>Ratio_TransientEvts_FswGamma_GleamGamma</name>
       <formula><![CDATA[ foronetime: Rate_TransientEvtsUsingGleamGammaFilter >0 ? Rate_TransientEvts/Rate_TransientEvtsUsingGleamGammaFilter : -1.0 ]]></formula>
@@ -965,15 +953,6 @@
       <source>output</source>
       <type>outputfloat</type>
       <description>Error in quantity Ratio_TransientEvts_FswGamma_GleamGamma.</description>
-   </object>
-
-
-       <object>
-      <name>SourceEvtsUsingGleamGammaFilter</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  MeritObfGamStatus>0 && FT1EventClassBitMap[2] ]]></cut>
-      <type>rate</type>
-      <description>Rate of events surviving the SOURCE gamma cuts from pass7 and the offline Gleam Gamma filter.</description>
    </object>
 
         <object>
@@ -994,15 +973,6 @@
       <description>Error in quantity Ratio_SourceEvts_FswGamma_GleamGamma.</description>
    </object>
 
-
-       <object>
-      <name>CleanEvtsUsingGleamGammaFilter</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  MeritObfGamStatus>0 && FT1EventClassBitMap[3] ]]></cut>
-      <type>rate</type>
-      <description>Rate of events surviving the CLEAN gamma cuts from pass7 and the offline Gleam Gamma filter.</description>
-   </object>
-
           <object>
       <name>Ratio_CleanEvts_FswGamma_GleamGamma</name>
       <formula><![CDATA[ foronetime: Rate_CleanEvtsUsingGleamGammaFilter >0 ? Rate_CleanEvts/Rate_CleanEvtsUsingGleamGammaFilter : -1.0 ]]></formula>
@@ -1021,14 +991,6 @@
       <description>Error in quantity Ratio_CleanEvts_FswGamma_GleamGamma.</description>
    </object>
 
-    
-       <object>
-      <name>UltraCleanEvtsUsingGleamGammaFilter</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  MeritObfGamStatus>0 && FT1EventClassBitMap[4] ]]></cut>
-      <type>rate</type>
-      <description>Rate of events surviving the UltraCLEAN gamma cuts from pass7 and the offline Gleam Gamma filter.</description>
-   </object>
 
           <object>
       <name>Ratio_UltraCleanEvts_FswGamma_GleamGamma</name>
@@ -1120,7 +1082,7 @@
 
        <!-- ACD -->
 
-
+<!--
      <object>
       <name>AcdTileCount</name>
       <formula><![CDATA[ AcdTileCount ]]></formula>
@@ -1178,42 +1140,6 @@
       <cut><![CDATA[]]></cut>
       <type>mean</type>
       <description>Mean value (per evt) of AcdTkr1ActDistTileEnergy</description>
-   </object>
-
-<!-- Distances will not be trended
-             <object>
-      <name>AcdVtxActiveDist</name>
-      <formula><![CDATA[ AcdVtxActiveDist ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>mean</type>
-      <description>Mean value (per evt) of AcdVtxActiveDist</description>
-   </object>
-
-
-    <object>
-      <name>AcdActiveDist3D</name>
-      <formula><![CDATA[ AcdActiveDist3D ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>mean</type>
-      <description>Mean value (per evt) of AcdActiveDist3D</description>
-   </object>
-
-    <object>
-      <name>AcdTkr1ActiveDist</name>
-      <formula><![CDATA[ AcdTkr1ActiveDist ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>mean</type>
-      <description>Mean value (per evt) of AcdTkr1ActiveDist</description>
-   </object>
-
-    
-
-    <object>
-      <name>AcdRibbonActDist</name>
-      <formula><![CDATA[ AcdRibbonActDist ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>mean</type>
-      <description>Mean value (per evt) of AcdRibbonActDist</description>
    </object>
 
 -->

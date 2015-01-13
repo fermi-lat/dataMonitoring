@@ -5,17 +5,15 @@
     
     <!-- Time stamp -->
     <object>timestampdouble</object>
-     <!-- Event classification information -->
+    <!-- Event classification information -->
     <object>condsummary</object>
 
-
-      <!-- Tkr Variables -->
+    <!-- Tkr Variables -->
     <object>ReconNumTracks</object>
     <object>ReconVertexPosXYZ</object>
     <object>ReconDirXYZ</object>
 
     <!-- Cal Variables -->
-    
     <object>ReconEnergy_TowerCalLayerCalColumn</object>
     <object>CalXtalFaceSignal</object>
   </inputList>

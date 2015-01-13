@@ -7,7 +7,6 @@
     <object>timestampdouble</object>
     
     <!-- Trigger related vars -->
-    <object>GltWord</object><!-- TO BE DELETED at some point, use GltGemSummary instead!! -->
     <object>GltGemSummary</object>
     <object>EvtEventId</object>
     <object>TriggerEngine</object>
@@ -15,94 +14,60 @@
     <object>FswFilters</object>
     <object>FswGamState</object>
 
-    <!-- Filter variables -->
-    <object>MeritObfGamStatus</object>
-
+    <!-- Removed for the time being, need to switch to Acd2 -->
     <!-- ACD -->
-
-    <object>AcdCornerDoca</object>
+    <!--object>AcdCornerDoca</object>
     <object>AcdTileCount</object>
     <object>AcdRibbonCount</object>
- 
     <object>AcdActiveDist3D</object>
     <object>AcdTkr1ActiveDist</object>
     <object>AcdTkr1ActDistTileEnergy</object>
     <object>AcdRibbonActDist</object>
     <object>AcdRibbonEnergy</object>
     <object>AcdTotalEnergy</object>
-    <object>AcdActDistTileEnergy</object>
-
+    <object>AcdActDistTileEnergy</object-->
         
     <!-- Tracker -->
-
     <object>TkrTwrEdge</object>
     <object>Tkr1TwrGap</object>
     <object>Tkr1LATEdge</object>
-
     <object>TkrSurplusHCInside</object>
     <object>TkrThinHits</object>
     <object>TkrThickHits</object>
     <object>TkrBlankHits</object>
-
-<!--     <object>TkrSurplusHitsInside </object>-->
     <object>TkrSurplusHitRatio</object>
-
     <object>Tkr1KalEne</object>
     <object>Tkr1KalThetaMS</object>
     <object>TkrNumTracks</object>
 
-      <!-- Calorimeter -->
-
+    <!-- Calorimeter -->
     <object>CalEnergyRaw</object>
     <object>CalEnergyCorr</object>
-
     <object>CalCsIRLn</object>
     <object>CalTwrEdgeCntr</object>
     <object>CalTrackAngle</object>
-
     <object>CalTransRms</object>
     <object>CalMIPRatio</object>
-<!--    
-    <object></object>
-    <object></object>
-    <object></object>
-
-    <object></object>
-    <object></object>
-    <object></object>
-
-    <object></object>
-    <object></object>
-    <object></object>
-    -->
 
     <!-- CTB variables -->
-        
     <object>CTBBestZDir</object>		
     <object>CTBClassLevel</object>		
     <object>CTBBestEnergyProb</object>
-    <object>CTBCORE</object>			
+    <object>CTBCORE</object>		
     <object>CTBBestEnergy</object>		
     <object>CTBBestEnergyRatio</object>
-
-    <object>CTBCalDocaAngle</object>
     <object>CTBParticleType</object>
 
     <!-- FT1 variables -->
-
     <object>FT1Energy</object>
     <object>FT1Theta</object>
     <object>FT1Phi</object>
     <object>FT1ZenithTheta</object>
     <object>FT1EarthAzimuth</object>
-    <object>FT1EventClassBitMap</object>
+    <object>FT1EventClass</object>
     <object>FT1Ra</object>
     <object>FT1Dec</object>
-
-    <!-- Others -->
-    <object>EvtCREventClassBitMap</object>
     
-
     <!-- Pt parameters -->
     <object>PtMcIlwainL</object>
     
@@ -209,113 +174,109 @@
      <object>
       <name>TransientEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[0]  ]]></cut>
+      <cut><![CDATA[ FT1EventClass&16 ]]></cut>
       <type>rate</type>
-      <description>Rate of events after application of TRANSIENT gamma cuts from pass7.</description>
+      <description>Rate of events after application of Pass 8 TRANSIENT_R020 cuts.</description>
     </object>
 
       <object>
       <name>TransientEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[0]  && FT1Energy>100 ]]></cut>
+      <cut><![CDATA[ FT1EventClass&16 && FT1Energy>100 ]]></cut>
       <type>rate</type>
-      <description>Rate of events with FT1Energy above 100 MeV, after application of TRANSIENT gamma cuts from pass7.</description>
+      <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 TRANSIENT_R020 cuts.</description>
     </object>
 
       <object>
       <name>CleanEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  FT1EventClassBitMap[3]  ]]></cut>
+      <cut><![CDATA[ FT1EventClass&256 ]]></cut>
       <type>rate</type>
-      <description>Rate of events after application of CLEAN gamma cuts from pass7.</description>
+      <description>Rate of events after application of Pass 8 CLEAN gamma cuts.</description>
     </object>
 
          <object>
       <name>CleanEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  FT1EventClassBitMap[3]  && FT1Energy>100]]></cut>
+      <cut><![CDATA[ FT1EventClass&256 && FT1Energy>100]]></cut>
       <type>rate</type>
-      <description>Rate of events with FT1Energy above 100 MeV, after application of CLEAN gamma cuts from pass7.</description>
+      <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 CLEAN gamma cuts.</description>
     </object>
 
      <object>
       <name>UltraCleanEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  FT1EventClassBitMap[4]  ]]></cut>
+      <cut><![CDATA[ FT1EventClass&512 ]]></cut>
       <type>rate</type>
-      <description>Rate of events after application of ULTRACLEAN gamma cuts from pass7.</description>
+      <description>Rate of events after application of Pass 8 ULTRACLEAN gamma cuts.</description>
     </object>
 
-         <object>
+    <object>
       <name>UltraCleanEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  FT1EventClassBitMap[4]  && FT1Energy>100]]></cut>
+      <cut><![CDATA[ FT1EventClass&512 && FT1Energy>100]]></cut>
       <type>rate</type>
-      <description>Rate of events with FT1Energy above 100 MeV, after application of ULTRACLEAN gamma cuts from pass7.</description>
+      <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 ULTRACLEAN gamma cuts.</description>
     </object>
 
 
-       <object>
+    <object>
       <name>SourceEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  FT1EventClassBitMap[2] ]]></cut>
+      <cut><![CDATA[ FT1EventClass&128 ]]></cut>
       <type>rate</type>
-      <description>Rate of events after application of SOURCE gamma cuts from pass7.</description>
+      <description>Rate of events after application of Pass 8 SOURCE gamma cuts.</description>
     </object>
 
        
-       <object>
+    <object>
       <name>SourceEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  FT1EventClassBitMap[2] && FT1Energy>100]]></cut>
+      <cut><![CDATA[ FT1EventClass&128 && FT1Energy>100]]></cut>
       <type>rate</type>
-      <description>Rate of events with FT1Energy above 100 MeV, after application of SOURCE gamma cuts from pass7.</description>
+      <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 SOURCE gamma cuts.</description>
     </object>
 
-
-
-
-
-
-        <object>
+    
+    <object>
       <name>TransientEvtsBelowZenithTheta100_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  FT1EventClassBitMap[0] && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ FT1EventClass&16 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type>rate</type>
-      <description>Rate of events after application of TRANSIENT gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
+      <description>Rate of events after application of Pass 8 TRANSIENT_R020 gamma cutsand the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
     </object>
 
        <object>
       <name>CleanEvtsBelowZenithTheta100_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[   FT1EventClassBitMap[3] && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ FT1EventClass&256 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type>rate</type>
-      <description>Rate of events after application of CLEAN gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
+      <description>Rate of events after application of Pass 8 CLEAN gamma cuts and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
     </object>
 
       <object>
       <name>UltraCleanEvtsBelowZenithTheta100_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[   FT1EventClassBitMap[4] && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ FT1EventClass&512 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type>rate</type>
-      <description>Rate of events after application of UltraCLEAN gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
+      <description>Rate of events after application of Pass 8 ULTRACLEAN gamma cuts and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
     </object>
 
        <object>
       <name>SourceEvtsBelowZenithTheta100_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  FT1EventClassBitMap[2] && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ FT1EventClass&128 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type>rate</type>
-      <description>Rate of events after application of SOURCE gamma cuts from pass7 and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
+      <description>Rate of events after application of Pass 8 SOURCE gamma cuts and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
     </object>
 
 
      <object>
       <name>LLEEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[  FT1EventClassBitMap[14]]]></cut>
+      <cut><![CDATA[ FT1EventClass&65536 ]]></cut>
       <type>rate</type>
-      <description>Rate of events after application of LLE gamma cuts from pass7.</description>
+      <description>Rate of events after application of Pass 8 LLE gamma cuts.</description>
     </object>
 
      <object>
@@ -361,7 +322,7 @@
       <description>Distribution of PtMcIlwainL</description>
     </object>
 
-        <object>
+    <object>
       <name>RigidityCutoff_TH1</name>
       <formula><![CDATA[ 14.56/(PtMcIlwainL*PtMcIlwainL)  ]]></formula>
       <cut><![CDATA[PtMcIlwainL>0.1]]></cut>
@@ -747,10 +708,9 @@
 
 
 
-
-       <!-- ACD -->
-
-    <object>
+<!-- ACD -->
+<!--
+<object>
       <name>AcdCornerDoca_TH1</name>
       <formula><![CDATA[ AcdCornerDoca ]]></formula>
       <cut><![CDATA[ AcdCornerDoca != (-2000) ]]></cut>
@@ -810,10 +770,6 @@
       <axisdesc>[AcdRibbonActDist(mm), N]</axisdesc>
       <description>Distribution of AcdRibbonActDist  values.</description>
     </object>
-
-  
-
-    
  
         <object>
       <name>AcdRibbonEnergy_Log10_TH1</name>
@@ -856,9 +812,7 @@
       <axisdesc>[log10(AcdTkr1ActDistTileEnergy), N]</axisdesc>
       <description>Distribution of log10(AcdTkr1ActDistTileEnergy) values.</description>
     </object>
-
-
-	   
+-->	   
 
 
 	  <!-- Tracker-->
@@ -1156,29 +1110,6 @@
 
 
 
-    <object>
-      <name>CTBCalDocaAngle_TH1</name>
-      <formula><![CDATA[ CTBCalDocaAngle ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>histogram-1d[200,0,2000]</type>
-      <titledesc>CTBCalDocaAngle</titledesc>
-      <axisdesc>[CTBCalDocaAngle(units), N]</axisdesc>
-      <description>Distribution of CTBCalDocaAngle  values.</description>
-    </object>
-
-    <object>
-      <name>CTBCalDocaAngle_Zoom_TH1</name>
-      <formula><![CDATA[ CTBCalDocaAngle ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>histogram-1d[150,0,150]</type>
-      <titledesc>CTBCalDocaAngle Zoom</titledesc>
-      <axisdesc>[CTBCalDocaAngle, N]</axisdesc>
-      <description>Distribution of CTBCalDocaAngle  values.</description>
-    </object>
-
-
-   
-
     <!-- FT1 Variables -->
 
     <object>
@@ -1233,7 +1164,7 @@
     </object>
     
 
-    <object>
+    <!--object>
       <name>FT1EventClassBitMap_TH1</name>
       <formula><![CDATA[  FT1EventClassBitMap ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -1241,18 +1172,8 @@
       <titledesc>Bit map of variable FT1EventClass</titledesc>
       <axisdesc>[Bits, N]</axisdesc>
       <description>Bit map from merit variable FT1EventClass (Reminder: a single event could have several entries in this histogram)</description>
-    </object>
+    </object-->
     	  
-    <object>
-      <name>EvtCREventClassBitMap_TH1</name>
-      <formula><![CDATA[  EvtCREventClassBitMap ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>histogram-vecdim-1d[21,-0.5,20.5,0]</type>
-      <titledesc>Bit map of variable EvtCREventClass</titledesc>
-      <axisdesc>[Bits, N]</axisdesc>
-      <description>Bit map from merit variable EvtCREventClass (Reminder: a single event could have several entries in this histogram)</description>
-    </object>
-
 
   </outputList>
 
