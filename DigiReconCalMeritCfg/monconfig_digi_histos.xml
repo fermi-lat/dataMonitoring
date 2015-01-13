@@ -1126,7 +1126,7 @@
 
      <object>
       <name>TkrDigiCounter_TowerPlane_TH2</name>
-      <formula><![CDATA[ foreachtower: foreachtkrplane : IsTkrDigi_TowerPlane[tower][tkrplane] >0.5]]></formula>
+      <formula><![CDATA[ foreachtower: foreachtkrplane: IsTkrDigi_TowerPlane[tower][tkrplane] >0.5]]></formula>
       <cut><![CDATA[ condsummary&30 && GoodEvent ]]></cut>
       <type>histogram-vecdim-2d[16,-0.5,15.5, 36, -0.5,35.5,0]</type>
       <titledesc>Number of TkrDigi objects in each vs Tower and Tracker plane.</titledesc>
