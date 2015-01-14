@@ -5,6 +5,7 @@ from pLongTermTrendMaker import *
 
 VARIABLE_DICT = { 
     'OutF_Ratio_EvtSize_CompressedEvtSize': (1, 'F'),
+    'Rate_CompressedEvtSizeInBytes': (1, 'F'),
     'TimeStampFirstEvt': (1, 'D'),
     'Bin_Start': (1, 'I'),
     'Bin_End': (1, 'I')
