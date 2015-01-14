@@ -6,7 +6,7 @@
     <object>timestampdouble</object>
     
     <!-- Event classification information -->
-    <object>condsummar </object>
+    <object>condsummary</object>
 
     <!-- ACD Variables -->
     <!--
