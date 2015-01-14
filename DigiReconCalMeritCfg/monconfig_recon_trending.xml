@@ -10,20 +10,23 @@
 
     <!-- Tkr Variables -->
     <object>ReconNumTracks</object>
+    <!--
     <object>ReconVertexPosXYZ</object>
     <object>ReconDirXYZ</object>
+    -->
 
     <!-- Cal Variables -->
+    <!--
     <object>ReconEnergy_TowerCalLayerCalColumn</object>
     <object>CalXtalFaceSignal</object>
+    -->
   </inputList>
 
 
   <outputList name="top">
 
     <!-- Trigger/counters -->
-
-     <object>
+    <object>
       <name>CondsummaryBitAnd30_NOTPeriodic_Rec</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[condsummary&30 && !(condsummary&32)]]></cut>
@@ -31,18 +34,13 @@
       <description>Counter of events with condsummaryBitAnd30 AND NotcondsummaryBitAnd32)</description>
     </object>
 
-    
-
-
      <!-- Tkr Variables -->
-
-
      <object>
-      <name>ReconNumTracks[11]</name>
-      <formula><![CDATA[ReconNumTracks]]></formula>
-      <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
-      <type>rate</type>
-      <description>Vector[11] reporting the rate of events with n tracks [0,10]. Periodic triggers are NOT taken into account.</description>
+       <name>ReconNumTracks[11]</name>
+       <formula><![CDATA[ReconNumTracks]]></formula>
+       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
+       <type>rate</type>
+       <description>Vector[11] reporting the rate of events with n tracks [0,10]. Periodic triggers are NOT taken into account.</description>
     </object>
 
 
@@ -54,6 +52,7 @@
       <description>Mean number of reconstructed tracks. Periodic triggers are NOT taken into account.</description>
     </object>
 
+    <!--
      <object>
       <name>ReconVertexDir_XYZ[3]</name>
       <formula><![CDATA[ReconDirXYZ]]></formula>
@@ -70,13 +69,13 @@
       <type>mean</type>
       <description>Vector[3] reporting the MEAN reconstructed Vertex position X, Y and Z. Periodic triggers are NOT taken into account. Only events with TkrVertex objects are being considered.</description>
     </object>
-
-
+    -->
+    
 
       <!-- Cal Variables -->
 
-
-    <object>
+      <!--
+      <object>
       <name>ReconEnergy</name>
       <formula><![CDATA[RFun::loopovertowerANDcallayersANDcalcolumns_float(ReconEnergy_TowerCalLayerCalColumn)]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
@@ -145,7 +144,7 @@
       <type>outputfloat</type>
       <description>Error in quantity ReconZeroEnergy_Fraction_TowerCalLayer.</description>
     </object>
-
+    -->
 
 
 

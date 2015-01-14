@@ -1,44 +1,46 @@
 <monitoring>
 
   <inputList name="top">
-
+    
     <!-- Time stamp -->
     <object>timestampdouble</object>
-     <!-- Event classification information -->
+    
+    <!-- Event classification information -->
     <object>condsummar </object>
 
     <!-- ACD Variables -->
+    <!--
     <object>AcdVetoA_AcdTile</object>
     <object>AcdVetoB_AcdTile</object>
     <object>AcdPhaMips_PmtA_AcdTile</object>
     <object>AcdPhaMips_PmtB_AcdTile</object>
     <object>AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile</object>
     <object>AcdGlobalPos_ExtrapolatedTrack_MatchedFacePosXYZ</object>
-    
+    -->
 
-      <!-- Tkr Variables -->
+    <!-- Tkr Variables -->
     <object>ReconNumTracks</object>
+    <!--
     <object>ReconVertexPosXYZ</object>
     <object>ReconDirXYZ</object>
+    -->
 
-     <!-- Cal Variables -->
-     <object>ReconEnergy_TowerCalLayerCalColumn</object>
-     <object>CalXtalFaceSignal</object>
-     <object>CalXtalAdcPed</object>
-     <object>CalXtalAdcRng</object>
+    <!-- Cal Variables -->
+    <!--
+    <object>ReconEnergy_TowerCalLayerCalColumn</object>
+    <object>CalXtalFaceSignal</object>
+    <object>CalXtalAdcPed</object>
+    <object>CalXtalAdcRng</object>
+    -->
+
   </inputList>
 
-     
 
   <outputList name="top">
 
-    <!-- Trigger/counters -->
-
-
-
     <!-- ACD Variables -->
-    
-       <object>
+    <!--
+    <object>
       <name>ReconAcdPhaMips_PMTA_TH1_AcdTile[128]</name>
       <formula><![CDATA[foreachacdtile: (AcdVetoA_AcdTile[acdtile] >0 && AcdPhaMips_PmtA_AcdTile[acdtile]>0) ? TMath::Log10(AcdPhaMips_PmtA_AcdTile[acdtile]) : -3 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
@@ -48,8 +50,8 @@
       <description>Distribution of log10(Mip values) for PMT A from the acd tile index in the name suffix (range [0,127]). Only events with Veto from PMT A from this tile are considered.</description>
     </object>
 
-
-      <object>
+    
+    <object>
       <name>ReconAcdPhaMips_PMTB_TH1_AcdTile[128]</name>
       <formula><![CDATA[foreachacdtile: (AcdVetoB_AcdTile[acdtile] >0 && AcdPhaMips_PmtB_AcdTile[acdtile]>0) ? TMath::Log10(AcdPhaMips_PmtB_AcdTile[acdtile]) : -3 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
@@ -60,7 +62,7 @@
     </object>
 
 
-      <object>
+    <object>
       <name>ReconAcdPhaMipsCorrectedAngle_PMTA_TH1_AcdTile[128]</name>
       <formula><![CDATA[foreachacdtile: (AcdVetoA_AcdTile[acdtile] >0 && AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0][acdtile]>0)? TMath::Log10(AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0][acdtile]) : -3 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
@@ -71,7 +73,7 @@
     </object>
 
 
-       <object>
+    <object>
       <name>ReconAcdPhaMipsCorrectedAngle_PMTB_TH1_AcdTile[128]</name>
       <formula><![CDATA[foreachacdtile: (AcdVetoB_AcdTile[acdtile] >0 && AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1][acdtile]>0)? TMath::Log10(AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1][acdtile]) : -3 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
@@ -93,7 +95,7 @@
     </object>
 
 
-      <object>
+    <object>
       <name>ReconAcdPhaMips_PMTB_Zoom_TH1_AcdTile[128]</name>
       <formula><![CDATA[foreachacdtile: (AcdVetoB_AcdTile[acdtile] >0 && AcdPhaMips_PmtB_AcdTile[acdtile]<1.1) ? AcdPhaMips_PmtB_AcdTile[acdtile] : -1 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
@@ -104,7 +106,7 @@
     </object>
 
 
-      <object>
+    <object>
       <name>ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile[128]</name>
       <formula><![CDATA[foreachacdtile: (AcdVetoA_AcdTile[acdtile] >0 && AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0][acdtile]<2.5)? AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0][acdtile] : -1 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
@@ -115,7 +117,7 @@
     </object>
 
 
-       <object>
+    <object>
       <name>ReconAcdPhaMipsCorrectedAngle_PMTB_Zoom_TH1_AcdTile[128]</name>
       <formula><![CDATA[foreachacdtile: (AcdVetoB_AcdTile[acdtile] >0 && AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1][acdtile]<2.5)? AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1][acdtile] : -1 ]]></formula>
       <cut><![CDATA[ condsummary&30]]></cut>
@@ -126,7 +128,7 @@
     </object>
 
 
-        <object>
+    <object>
       <name>ReconAcdPhaMips_PMTA_TH2</name>
       <formula><![CDATA[ AcdPhaMips_PmtA_AcdTile ]]></formula>
       <cut><![CDATA[condsummary&30]]></cut>
@@ -135,8 +137,8 @@
       <axisdesc>[AcdGemId, Mip value, N]</axisdesc>
       <description>ACD MIPs map for PMT A. This shows the PHA values for each channel calibrated into MIP equivalent. All AcdHits are being used (regardless whether they are related to a reconstructed track).</description>
     </object>
-
-	   <object>
+    
+    <object>
       <name>ReconAcdPhaMips_PMTB_TH2</name>
       <formula><![CDATA[ AcdPhaMips_PmtB_AcdTile ]]></formula>
       <cut><![CDATA[condsummary&30]]></cut>
@@ -147,7 +149,7 @@
     </object>
 
 
-   <object>
+    <object>
       <name>ReconAcdPhaMipsAngleCorrected_PMTA_TH2</name>
       <formula><![CDATA[ AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[0] ]]></formula>
       <cut><![CDATA[condsummary&30]]></cut>
@@ -158,7 +160,7 @@
     </object>
 
 
-   <object>
+    <object>
       <name>ReconAcdPhaMipsAngleCorrected_PMTB_TH2</name>
       <formula><![CDATA[ AcdPhaMipAngleCorrected_PmtExtrapolatedAcdTile[1] ]]></formula>
       <cut><![CDATA[condsummary&30]]></cut>
@@ -167,11 +169,12 @@
       <axisdesc>[AcdGemId, Mip value, N]</axisdesc>
       <description>ACD MIPs (angle corrected) map for PMT B. This shows the PHA values for each channel calibrated into MIP equivalent, which has been path length corrected using the incoming reconstructed track angle. Obviously, only AcdHits related to reconstructed tracks are being used to fill this histogram.</description>
     </object>
-
+    -->
 
      <!-- Not matched extrapolated tracks -->
-   <object>
-      <name>ReconAcdGlobalPosNotMatchedTracks_TopFace_TH2</name>
+     <!--
+     <object>
+       <name>ReconAcdGlobalPosNotMatchedTracks_TopFace_TH2</name>
       <formula><![CDATA[ AcdGlobalPos_ExtrapolatedTrack_MatchedFacePosXYZ[0][0][0]:AcdGlobalPos_ExtrapolatedTrack_MatchedFacePosXYZ[0][0][1] ]]></formula>
       <cut><![CDATA[condsummary&30]]></cut>
       <type>histogram-2d[500,-1000.,1000.,500,-1000.,1000.,10000]</type>
@@ -180,7 +183,7 @@
       <description>GLOBAL X-Y positions for track extrapolations NOT MATCHED hits: top of ACD. You should see the outline of the overlap regions, as this is where the association sometimes fails. Depending on the sample you may also see a number of events in the central parts fo the tiles.</description>
     </object>
 
-   <object>
+    <object>
       <name>ReconAcdGlobalPosNotMatchedTracks_MinusXFace_TH2</name>
       <formula><![CDATA[ AcdGlobalPos_ExtrapolatedTrack_MatchedFacePosXYZ[0][1][1]:AcdGlobalPos_ExtrapolatedTrack_MatchedFacePosXYZ[0][1][2] ]]></formula>
       <cut><![CDATA[condsummary&30]]></cut>
@@ -244,9 +247,11 @@
       <axisdesc>[Position (mm), N]</axisdesc>
       <description>Distribution of GLOBAL postion for track extrapolations NOT MATCHED hits: Y oriented Ribbons. The index in the histogram name indicates the dimension which is being displayed: 0 for X, 1 for Y and 2 for Z.</description>
     </object>
+    -->
 
 
 	 <!-- matched extrapolated tracks -->
+	 <!--
          <object>
       <name>ReconAcdGlobalPosONLYMatchedTracks_TopFace_TH2</name>
       <formula><![CDATA[ AcdGlobalPos_ExtrapolatedTrack_MatchedFacePosXYZ[1][0][0]:AcdGlobalPos_ExtrapolatedTrack_MatchedFacePosXYZ[1][0][1] ]]></formula>
@@ -317,7 +322,7 @@
       <axisdesc>[Position (mm), N]</axisdesc>
       <description>Distribution of GLOBAL postion for track extrapolations WITH MATCHED hits: Y oriented Ribbons. The index in the histogram name indicates the dimension which is being displayed: 0 for X, 1 for Y and 2 for Z.</description>
     </object>
-
+    -->
    
 
 
@@ -325,20 +330,18 @@
 
 
        
-       <object>
-      <name>ReconNumTracks_TH1</name>
-      <formula><![CDATA[ ReconNumTracks ]]></formula>
-      <cut><![CDATA[ condsummary&30 ]]></cut>
-      <type>histogram-vecdim-1d[11,-0.5,10.5]</type>
-      <titledesc>Number of reconstructed tracks [0-10]</titledesc>
-      <axisdesc>[Number of reconstructed tracks, N]</axisdesc>
-      <description>Number of reconstructed tracks [0-10]</description>
-    </object>
+     <object>
+       <name>ReconNumTracks_TH1</name>
+       <formula><![CDATA[ ReconNumTracks ]]></formula>
+       <cut><![CDATA[ condsummary&30 ]]></cut>
+       <type>histogram-vecdim-1d[11,-0.5,10.5]</type>
+       <titledesc>Number of reconstructed tracks [0-10]</titledesc>
+       <axisdesc>[Number of reconstructed tracks, N]</axisdesc>
+       <description>Number of reconstructed tracks [0-10]</description>
+     </object>
 
-     
-
-
-       <object>
+     <!--
+     <object>
       <name>ReconVertex_YXDir_TH2</name>
       <formula><![CDATA[ ReconDirXYZ[0]:ReconDirXYZ[1] ]]></formula>
       <cut><![CDATA[ condsummary&30  ]]></cut>
@@ -428,19 +431,16 @@
       <axisdesc>[Reconstructed Y position (mm), N]</axisdesc>
       <description>Reconstructed event position along the Y axis.The value is obtained from the first reconstructed vertex.</description>
     </object>
-
+    -->
 
 
       <!-- Cal Variables -->
-
-      
-
-         <object>
+      <!--
+      <object>
       <name>ReconEnergy_TH1_TowerCalLayer[16][8]</name>
       <formula><![CDATA[ foreachtower: foreachcallayer: RFun::loopovercalcolumns_float(ReconEnergy_TowerCalLayerCalColumn[tower][callayer]) ]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
       <type>histogram-1d[102,-10.,500.,0]</type>
-      <!--<titledesc>Distribution of energies</titledesc>-->
       <axisdesc>[Measured energy for this tower/cal-layer (MeV), N]</axisdesc>
       <description>Distribution of measured energy (MeV) per event for this particular Cal-layer defined by the coordinates tower and callayer. Periodic triggers are NOT taken into account.</description>
     </object>
@@ -451,7 +451,6 @@
       <formula><![CDATA[ foreachtower: foreachcallayer: RFun::loopovercalcolumns_float(ReconEnergy_TowerCalLayerCalColumn[tower][callayer]) ]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
       <type>histogram-1d[102,-0.1,10.1,0]</type>
-      <!--<titledesc>Distribution of energies</titledesc>-->
       <axisdesc>[Measured energy for this tower/cal-layer (MeV), N]</axisdesc>
       <description>Distribution of measured energy (MeV) per event for this particular Cal-layer defined by the coordinates tower and callayer. Periodic triggers are NOT taken into account. Only energies below 10 MeV are being displayed.</description>
     </object>
@@ -466,8 +465,10 @@
       <axisdesc>[Tower number, Cal-layer, Accumulated Energy (MeV)]</axisdesc>
       <description>Measured energy (MeV) vs tower and cal-layer. Note that, in each bin, the energy of all considered events is added up.   Periodic triggers are NOT taken into account.</description>
     </object>
+    -->
 
     <!-- TO BE Normalized with number of events !!! -->
+    <!--
      <object>
       <name>ZeroReconEnergy_TowerCalLayer_TH2</name>
       <formula><![CDATA[ foreachtower: foreachcallayer: RFun::loopovercalcolumns_float(ReconEnergy_TowerCalLayerCalColumn[tower][callayer]) <=0 ]]></formula>
@@ -477,10 +478,6 @@
       <axisdesc>[Tower number, Cal-layer, N]</axisdesc>
       <description>2D histogram (tower, callayer) showing the number of times that the measured energy is ZERO. Periodic triggers are NOT taken into account.</description>
     </object>
-
-
-      
-
       
  <object>
       <name>ReconEnergy_VeryLowEnergy_TH1_TowerCalLayerCalColumn[16][8][12]</name>
@@ -491,29 +488,6 @@
       <axisdesc>[Measured crystal log energy (MeV), N]</axisdesc>
       <description>Distribution of measured energy (MeV) in the crystal log defined by the coordinates (suffix in the histogram name) tower,callayer,calcolum. Energies up to 5 MeV are shown in the histogram. Those events whose energy could not be reconstructed for this crystal log are not shown in the histogram.</description>
     </object>
-
-<!-- NOT used. Too many histograms !!! 
-Remove comments and XXXX (this is needed for producing merging files) in names to be used 
-<object>
-      <nameXXXX>ReconEnergyFromCalTuple_TH1_TowerCalLayerCalColumn[16][8][12][2]</name>
-      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn:foreachcalxface: (CalXtalFaceSignal[tower][callayer][calcolumn][calxface]>0.0 && CalXtalFaceSignal[tower][callayer][calcolumn][calxface]<=10000.0) ? CalXtalFaceSignal[tower][callayer][calcolumn][calxface] : -1.0  ]]></formula>
-      <cut><![CDATA[ condsummary&30  ]]></cut>
-      <type>histogram-1d[200,0.0,10000.,-1]</type>
-      <titledesc>Distribution of measured energy (MeV) in the crystal log/face (from CalTuple).</titledesc>
-      <axisdesc>[Measured crystal log energy (MeV), N]</axisdesc>
-      <description>Distribution of measured energy (MeV) in the crystal log defined by the coordinates (suffix in the histogram name) tower,callayer,calcolum,calxface. Energies up to 10000 MeV are shown in the histogram. Those events whose energy could not be reconstructed for this crystal log are not shown in the histogram.</description>
-    </object>
-
-<object>
-      <nameXXXX>ReconEnergyFromCalTuple_VeryLowEnergy_TH1_TowerCalLayerCalColumn[16][8][12][2]</name>
-      <formula><![CDATA[ foreachtower: foreachcallayer: foreachcalcolumn:foreachcalxface: (CalXtalFaceSignal[tower][callayer][calcolumn][calxface]>0.0 && CalXtalFaceSignal[tower][callayer][calcolumn][calxface]<=5.0) ? CalXtalFaceSignal[tower][callayer][calcolumn][calxface] : -1.0 ]]></formula>
-      <cut><![CDATA[ condsummary&30  ]]></cut>
-      <type>histogram-1d[160,-2.0,6.,-1]</type>
-      <titledesc>Distribution of measured energy (MeV) in the crystal log/face (from CalTuple).</titledesc>
-      <axisdesc>[Measured crystal log energy (MeV), N]</axisdesc>
-      <description>Distribution of measured energy (MeV) in the crystal log defined by the coordinates (suffix in the histogram name) tower,callayer,calcolum,calxface. Energies up to 5 MeV are shown in the histogram. Those events whose energy could not be reconstructed for this crystal log are not shown in the histogram.</description>
-    </object>
--->
 
 <object>
       <name>Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn[16][8][12]</name>
@@ -614,28 +588,6 @@ Remove comments and XXXX (this is needed for producing merging files) in names t
       <description>2D histogram showing the highest energy vs channel when CALHi was asserted. Periodic triggers are NOT taken into account.</description>
     </object>
 
-<!--
-     <object>
-      <name>SuspCalHi_Highest1_TH2</name>
-      <formula><![CDATA[ RFun::getChannelEnergyHighest(CalXtalFaceSignal,1,0):RFun::getChannelEnergyHighest(CalXtalFaceSignal,1,1)]]></formula>
-      <cut><![CDATA[ condsummary&30 && !(condsummary&32) && condsummary&8]]></cut>
-      <type>histogram-2d[3072,-0.5,3071.5, 100, 100,3000]</type>
-      <titledesc>Suspect CALHi (highest energy)</titledesc>
-      <axisdesc>[channel number, Energy in MeV, N]</axisdesc>
-      <description>2D histogram showing the second highest energy vs channel when CALHi was asserted. Periodic triggers are NOT taken into account.</description>
-    </object>
-
-      <object>
-      <name>SuspCalHi_Highest2_TH2</name>
-      <formula><![CDATA[ RFun::getChannelEnergyHighest(CalXtalFaceSignal,2,0):RFun::getChannelEnergyHighest(CalXtalFaceSignal,2,1)]]></formula>
-      <cut><![CDATA[ condsummary&30 && !(condsummary&32) && condsummary&8 ]]></cut>
-      <type>histogram-2d[3072,-0.5,3071.5, 100, 100,3000]</type>
-      <titledesc>Suspect CALHi (third highest energy)</titledesc>
-      <axisdesc>[channel number, Energy in MeV, N]</axisdesc>
-      <description>2D histogram showing the third highest energy vs channel when CALHi was asserted. Periodic triggers are NOT taken into account.</description>
-    </object>
--->
-
      <object>
       <name>SuspCalLo_Highest0_TH2</name>
       <formula><![CDATA[ RFun::getChannelEnergyHighest(CalXtalFaceSignal,0,0):RFun::getChannelEnergyHighest(CalXtalFaceSignal,0,1)]]></formula>
@@ -645,28 +597,7 @@ Remove comments and XXXX (this is needed for producing merging files) in names t
       <axisdesc>[channel number, Energy in MeV, N]</axisdesc>
       <description>2D histogram showing the highest energy vs channel when CAL-Lo (and not CAL-Hi) was asserted. Periodic triggers are NOT taken into account.</description>
     </object>
-<!--
-     <object>
-      <name>SuspCalLo_Highest1_TH2</name>
-      <formula><![CDATA[ RFun::getChannelEnergyHighest(CalXtalFaceSignal,1,0):RFun::getChannelEnergyHighest(CalXtalFaceSignal,1,1)]]></formula>
-      <cut><![CDATA[ condsummary&30 && !(condsummary&32) && condsummary&4 && !(condsummary&8)]]></cut>
-      <type>histogram-2d[3072,-0.5,3071.5, 100, 1,300]</type>
-      <titledesc>Suspect CALLo (second highest energy)</titledesc>
-      <axisdesc>[channel number, Energy in MeV, N]</axisdesc>
-      <description>2D histogram showing the second highest energy vs channel when CAL-Lo (and not CAL-Hi) was asserted. Periodic triggers are NOT taken into account.</description>
-    </object>
 
-      <object>
-      <name>SuspCalLo_Highest2_TH2</name>
-      <formula><![CDATA[ RFun::getChannelEnergyHighest(CalXtalFaceSignal,2,0):RFun::getChannelEnergyHighest(CalXtalFaceSignal,2,1)]]></formula>
-      <cut><![CDATA[ condsummary&30 && !(condsummary&32) && condsummary&4 && !(condsummary&8)]]></cut>
-      <type>histogram-2d[3072,-0.5,3071.5, 100, 1,300]</type>
-      <titledesc>Suspect CALLo (third highest energy)</titledesc>
-      <axisdesc>[channel number, Energy in MeV, N]</axisdesc>
-      <description>2D histogram showing the third highest energy vs channel when CAL-Lo (and not CAL-Hi) was asserted. Periodic triggers are NOT taken into account.</description>
-    </object>
-   
--->
          <object>
       <name>SuspCalLo_Highest0_EnergyDistribution_TH1</name>
       <formula><![CDATA[ RFun::getChannelEnergyHighest(CalXtalFaceSignal,0,1) ]]></formula>
@@ -686,6 +617,7 @@ Remove comments and XXXX (this is needed for producing merging files) in names t
       <axisdesc>[Energy (MeV), N]</axisdesc>
       <description>Distribution of highest energy when CAL-Hi was asserted.</description>
     </object>
+-->
 
 
   </outputList>
