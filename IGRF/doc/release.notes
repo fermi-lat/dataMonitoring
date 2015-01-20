@@ -8,6 +8,10 @@
 - Added igrf-12 coefficients to handle times up to 2020.
 * Relevant Jira(s): GDQMQ-369
 
+ IGRF-03-00-00 20-Jan-2015  focke Incorporate igrf-12 coefficients.
+- Added igrf-12 coefficients to handle times up to 2020.
+* Relevant Jira(s): GDQMQ-369
+
  IGRF-02-01-01 17-Dec-2014 lbaldini IGRF now checking the IGNORE_IGRF_BOUNDARY environmental variable before raising an exception if the model date exceeds the model boundaries.
 
 - IGRF now checking whether the IGNORE_IGRF_BOUNDARY environmental variable
