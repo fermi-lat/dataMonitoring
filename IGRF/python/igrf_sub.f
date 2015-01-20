@@ -21,6 +21,7 @@ C 2005.01 11/10/05 added igrf_dip and geodip (MLAT)
 C 2005.02 11/10/05 updated to IGRF-10 version
 C 2006.00 12/21/06 GH2(120) -> GH2(144)
 C 2010.00 02/08/10 Implemented IGRF-11 constants (Markus Ackermann)
+C 2015.00 01/15/15 Implemented IGRF-12 constants (Warren Focke)
 C
 C*********************************************************************
 
@@ -610,18 +611,18 @@ Cf2py intent(out) dimo
      
 C ### FILMOD, DTEMOD arrays +1
         CHARACTER*12    FIL1
-        DIMENSION       GH1(225),GH2(225),GHA(225),DTEMOD(5)
+        DIMENSION       GH1(225),GH2(225),GHA(225),DTEMOD(6)
         DOUBLE PRECISION X,F0,F 
         COMMON/MODEL/   FIL1,NMAX,TIME,GH1
         COMMON/GENER/   UMR,ERAD,AQUAD,BQUAD
 	
         include "dgrfdata.inc"
 
-        DATA   DTEMOD / 1990., 1995., 2000.,2005.,2010./      
+        DATA   DTEMOD / 1990., 1995., 2000.,2005.,2010.,2015./      
 C
 C ### numye = numye + 1 ; is number of years represented by IGRF
 C
-        NUMYE=5
+        NUMYE=6
 C
 C  IS=0 FOR SCHMIDT NORMALIZATION   IS=1 GAUSS NORMALIZATION
 C  IU  IS INPUT UNIT NUMBER FOR IGRF COEFFICIENT SETS
@@ -653,11 +654,15 @@ C-- GET IGRF COEFFICIENTS FOR THE BOUNDARY YEARS
         ENDIF
         IF (L.EQ.4) THEN
 	  CALL GETSHC (dgrf05, NMAX1, ERAD, GH1, IER)  
-          CALL GETSHC (igrf10, NMAX2, ERAD, GH2, IER)  
+          CALL GETSHC (dgrf10, NMAX2, ERAD, GH2, IER)  
         ENDIF
         IF (L.EQ.5) THEN
-	  CALL GETSHC (igrf10, NMAX1, ERAD, GH1, IER)  
-          CALL GETSHC (igrf10s, NMAX2, ERAD, GH2, IER)  
+	  CALL GETSHC (dgrf10, NMAX1, ERAD, GH1, IER)  
+          CALL GETSHC (igrf15, NMAX2, ERAD, GH2, IER)  
+        ENDIF
+        IF (L.EQ.6) THEN
+	  CALL GETSHC (igrf15, NMAX1, ERAD, GH1, IER)  
+          CALL GETSHC (igrf15s, NMAX2, ERAD, GH2, IER)  
         ENDIF
      
         IF (IER .NE. 0) GOTO 9998                           
