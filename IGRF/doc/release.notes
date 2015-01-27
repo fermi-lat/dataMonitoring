@@ -4,7 +4,11 @@
  *
  *                  EOH
 
+- Modifying Makefile to hardcode the location of f2py. Temporary?
+
  IGRF-03-01-00 26-Jan-2015 monzani hardcoding the location of f2py
+- this tag didn't actually work... retrying...
+
  IGRF-03-00-00 20-Jan-2015  focke Incorporate igrf-12 coefficients.
 - Added igrf-12 coefficients to handle times up to 2020.
 * Relevant Jira(s): GDQMQ-369
