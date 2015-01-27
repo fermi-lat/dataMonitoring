@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ IGRF-03-01-01 26-Jan-2015 monzani hardcoding the path to f2py
 - Modifying Makefile to hardcode the location of f2py. Temporary?
 
  IGRF-03-01-00 26-Jan-2015 monzani hardcoding the location of f2py
