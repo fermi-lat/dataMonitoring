@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-26-04 30-Jan-2015 monzani adding back normalized quantities
  DigiReconCalMeritCfg-01-26-03 29-Jan-2015 monzani temporarily removing all normalized rates for char* issue
  DigiReconCalMeritCfg-01-26-02 14-Jan-2015 monzani removing Obf variables
  DigiReconCalMeritCfg-01-26-01 14-Jan-2015 monzani fixed a typo
