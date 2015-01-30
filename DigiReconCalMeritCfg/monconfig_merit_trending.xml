@@ -39,7 +39,6 @@
     <object>TkrBlankHits</object>
     <object>TkrNumTracks</object>
 
-  <!--   <object>TkrSurplusHitsInside</object>-->
       <object>TkrSurplusHitRatio</object>
 
       <object>Tkr1KalEne</object>
@@ -50,7 +49,6 @@
 
       <!-- Calorimeter -->
 
-     <!-- <object>CalMipNum</object>OBSOLETE -->
     <object>CalEnergyRaw</object>
     <object>CalEnergyCorr</object>
 
@@ -61,19 +59,6 @@
     <object>CalTransRms</object>
     <object>CalMIPRatio</object>
 
-<!--    
-    <object></object>
-    <object></object>
-    <object></object>
-
-    <object></object>
-    <object></object>
-    <object></object>
-
-    <object></object>
-    <object></object>
-    <object></object>
-    -->
 
     <!-- CTB variables -->
         
@@ -198,10 +183,9 @@
    </object>
 
 
-<!-- temporary removing all normalized rates
     <object>
       <name>NormRateEvtsBeforeFilters</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, (char*)"NormRate") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -210,7 +194,7 @@
 
     <object>
       <name>NormRateEvtsBeforeFilters_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -227,7 +211,7 @@
 
     <object>
       <name>NormRateEvtsBeforeCuts</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_EvtsBeforeCuts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, (char*)"NormRate") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -237,7 +221,7 @@
 
     <object>
       <name>NormRateEvtsBeforeCuts_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_EvtsBeforeCuts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -263,7 +247,7 @@
 
      <object>
       <name>NormRateEvtsBeforeCutsWithGAMMAFilter</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, (char*)"NormRate") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -272,7 +256,7 @@
 
      <object>
       char*<name>NormRateEvtsBeforeCutsWithGAMMAFilter_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -282,7 +266,7 @@
 
      <object>
       <name>NormRateEvtsBeforeCutsWithFswGAMMAFilter</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, (char*)"NormRate") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -291,7 +275,7 @@
 
      <object>
       <name>NormRateEvtsBeforeCutsWithFswGAMMAFilter_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -351,7 +335,7 @@
 
       <object>
       <name>NormRateTransientEvts</name>
-      <formula><![CDATA[RFun::NormalizeRate((char*)"Rate_TransientEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvts, Rate_TransientEvts_err, (char*)"NormRate")]]></formula>
+      <formula><![CDATA[RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvts, Rate_TransientEvts_err, "NormRate")]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -360,7 +344,7 @@
 
       <object>
       <name>NormRateTransientEvts_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_TransientEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvts, Rate_TransientEvts_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvts, Rate_TransientEvts_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -385,7 +369,7 @@
 
      <object>
       <name>NormRateTransientEvtsBelowZenithTheta100</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_TransientEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvtsBelowZenithTheta100, Rate_TransientEvtsBelowZenithTheta100_err, (char*)"NormRate") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvtsBelowZenithTheta100, Rate_TransientEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -394,7 +378,7 @@
 
 	 <object>
       <name>NormRateTransientEvtsBelowZenithTheta100_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_TransientEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvtsBelowZenithTheta100, Rate_TransientEvtsBelowZenithTheta100_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvtsBelowZenithTheta100, Rate_TransientEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -411,7 +395,7 @@
 
         <object>
       <name>NormRateCleanEvts</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_CleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvts, Rate_CleanEvts_err, (char*)"NormRate") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_CleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvts, Rate_CleanEvts_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -420,7 +404,7 @@
 
 	  <object>
       <name>NormRateCleanEvts_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_CleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvts, Rate_CleanEvts_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_CleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvts, Rate_CleanEvts_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -445,7 +429,7 @@
 
      <object>
       <name>NormRateCleanEvtsBelowZenithTheta100</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_CleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvtsBelowZenithTheta100, Rate_CleanEvtsBelowZenithTheta100_err, (char*)"NormRate") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_CleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvtsBelowZenithTheta100, Rate_CleanEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -454,7 +438,7 @@
 
 	 <object>
       <name>NormRateCleanEvtsBelowZenithTheta100_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_CleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvtsBelowZenithTheta100, Rate_CleanEvtsBelowZenithTheta100_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_CleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvtsBelowZenithTheta100, Rate_CleanEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -473,7 +457,7 @@
 
         <object>
       <name>NormRateSourceEvts</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_SourceEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvts, Rate_SourceEvts_err, (char*)"NormRate") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvts, Rate_SourceEvts_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -482,7 +466,7 @@
 
 	  <object>
       <name>NormRateSourceEvts_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_SourceEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvts, Rate_SourceEvts_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvts, Rate_SourceEvts_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -507,7 +491,7 @@
 
      <object>
       <name>NormRateSourceEvtsBelowZenithTheta100</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_SourceEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvtsBelowZenithTheta100, Rate_SourceEvtsBelowZenithTheta100_err, (char*)"NormRate") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvtsBelowZenithTheta100, Rate_SourceEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -516,7 +500,7 @@
 
 	 <object>
       <name>NormRateSourceEvtsBelowZenithTheta100_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_SourceEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvtsBelowZenithTheta100, Rate_SourceEvtsBelowZenithTheta100_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvtsBelowZenithTheta100, Rate_SourceEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -533,7 +517,7 @@
 
         <object>
       <name>NormRateUltraCleanEvts</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_UltraCleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvts, Rate_UltraCleanEvts_err, (char*)"NormRate") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_UltraCleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvts, Rate_UltraCleanEvts_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -542,7 +526,7 @@
 
 	  <object>
       <name>NormRateUltraCleanEvts_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_UltraCleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvts, Rate_UltraCleanEvts_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_UltraCleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvts, Rate_UltraCleanEvts_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -568,7 +552,7 @@
 
      <object>
       <name>NormRateUltraCleanEvtsBelowZenithTheta100</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_UltraCleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvtsBelowZenithTheta100, Rate_UltraCleanEvtsBelowZenithTheta100_err, (char*)"NormRate") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_UltraCleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvtsBelowZenithTheta100, Rate_UltraCleanEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -577,7 +561,7 @@
 
 	 <object>
       <name>NormRateUltraCleanEvtsBelowZenithTheta100_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_UltraCleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvtsBelowZenithTheta100, Rate_UltraCleanEvtsBelowZenithTheta100_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_UltraCleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvtsBelowZenithTheta100, Rate_UltraCleanEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -594,7 +578,7 @@
 
      <object>
       <name>NormRateLLEEvts</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_LLEEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_LLEEvts, Rate_LLEEvts_err, (char*)"NormRate") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_LLEEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_LLEEvts, Rate_LLEEvts_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -603,13 +587,12 @@
 
 	 <object>
       <name>NormRateLLEEvts_err</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_LLEEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_LLEEvts, Rate_LLEEvts_err, (char*)"NormRateErr") ]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_LLEEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_LLEEvts, Rate_LLEEvts_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
       <description>Error in normalized Rate of LLE events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
    </object>
--->
 
     <object>
       <name>LLEEvts_E100MeV</name>
@@ -671,10 +654,9 @@
     
 
      
-<!-- temporary removing all normalized rates
        <object>
       <name>NormRateMeritTriggerEngine[16]</name>
-      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector((char*)"Rate_MeritTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], (char*)"NormRate", engine) ]]></formula>
+      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_MeritTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], "NormRate", engine) ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -685,7 +667,7 @@
      
        <object>
       <name>NormRateMeritTriggerEngine_err[16]</name>
-      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector((char*)"Rate_MeritTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], (char*)"NormRateErr", engine) ]]></formula>
+      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_MeritTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], "NormRateErr", engine) ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -695,7 +677,7 @@
        
        <object>
       <name>NormRateGAMMAFilterAndTriggerEngine[16]</name>
-       <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector((char*)"Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], (char*)"NormRate", engine) ]]></formula>
+       <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], "NormRate", engine) ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -706,7 +688,7 @@
      
        <object>
       <name>NormRateGAMMAFilterAndTriggerEngine_err[16]</name>
-      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector((char*)"Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], (char*)"NormRateErr", engine) ]]></formula>
+      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], "NormRateErr", engine) ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -717,7 +699,7 @@
 
         <object>
       <name>NormRateFswGAMMAFilterAndTriggerEngine[16]</name>
-       <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector((char*)"Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], (char*)"NormRate", engine) ]]></formula>
+       <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], "NormRate", engine) ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -728,7 +710,7 @@
      
        <object>
       <name>NormRateFswGAMMAFilterAndTriggerEngine_err[16]</name>
-      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector((char*)"Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], (char*)"NormRateErr", engine) ]]></formula>
+      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], "NormRateErr", engine) ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
@@ -762,7 +744,6 @@
       <type>mean</type>
       <description>Mean of the ratio FswGAMMAEnergy/CalEnergyRaw. The FswGAMMA energy is computed as FswGAMMAEnergyInLeus[0]/4. . Only events with valid energy (getEnergyValid()>0) and CalEnergyRaw>10 MeV are being used.</description>
    </object>
--->
 
        <!-- ACD -->
 
@@ -890,17 +871,7 @@
       <description>Mean value (per evt) of TkrBlankHits</description>
    </object>
 
-<!-- It does not exist
-      <object>
-      <name>TkrSurplusHitsInside</name>
-      <formula><![CDATA[ TkrSurplusHitsInside ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>mean</type>
-      <description>Mean value (per evt) of TkrSurplusHitsInside.</description>
-   </object>
--->
-
-    <object>
+   <object>
       <name>TkrSurplusHitRatio</name>
       <formula><![CDATA[  TkrSurplusHitRatio ]]></formula>
       <cut><![CDATA[]]></cut>

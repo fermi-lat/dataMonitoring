@@ -381,12 +381,8 @@
 
 
 
-
-
-<!-- temporary removing all normalized rates
-     <object>
       <name>DeviationFromOneInSigmas_NormRateEvtsBeforeFilters_TH1</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, (char*)"NormRateErr")>0 ? (1.0-RFun::NormalizeRate((char*)"CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, (char*)"NormRate"))/RFun::NormalizeRate((char*)"CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, (char*)"NormRateErr") : -100]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRateErr")>0 ? (1.0-RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRate"))/RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>histogram-1d[200,-10,10,-100]</type>
@@ -397,7 +393,7 @@
 
       <object>
       <name>DeviationFromOneInSigmas_NormRateEvtsBeforeCuts_TH1</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, (char*)"NormRateErr") >0 ? (1.0-RFun::NormalizeRate((char*)"Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, (char*)"NormRate"))/RFun::NormalizeRate((char*)"Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, (char*)"NormRateErr") : -100]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRateErr") >0 ? (1.0-RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRate"))/RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>histogram-1d[200,-10,10,-100]</type>
@@ -408,7 +404,7 @@
 
      <object>
       <name>DeviationFromOneInSigmas_NormRateEvtsBeforeCutsWithGAMMAFilter_TH1</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, (char*)"NormRateErr") >0 ? (1.0-RFun::NormalizeRate((char*)"Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, (char*)"NormRate"))/RFun::NormalizeRate((char*)"Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, (char*)"NormRateErr") : -100]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, "NormRateErr") >0 ? (1.0-RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, "NormRate"))/RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>histogram-1d[200,-10,10,-100]</type>
@@ -421,7 +417,7 @@
 
      <object>
       <name>DeviationFromOneInSigmas_NormRateEvtsBeforeCutsWithFswGAMMAFilter_TH1</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, (char*)"NormRateErr") >0 ? (1.0-RFun::NormalizeRate((char*)"Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, (char*)"NormRate"))/RFun::NormalizeRate((char*)"Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, (char*)"NormRateErr") : -100]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, "NormRateErr") >0 ? (1.0-RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, "NormRate"))/RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL,Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>histogram-1d[200,-10,10,-100]</type>
@@ -433,7 +429,7 @@
 
        <object>
       <name>DeviationFromOneInSigmas_NormRateTransientEvts_TH1</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_TransientEvts",Mean_PtMcIlwainL,Rate_TransientEvts, Rate_TransientEvts_err, (char*)"NormRateErr") >0 ? (1.0-RFun::NormalizeRate((char*)"Rate_TransientEvts",Mean_PtMcIlwainL,Rate_TransientEvts, Rate_TransientEvts_err, (char*)"NormRate"))/RFun::NormalizeRate((char*)"Rate_TransientEvts",Mean_PtMcIlwainL,Rate_TransientEvts, Rate_TransientEvts_err, (char*)"NormRateErr") : -100]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL,Rate_TransientEvts, Rate_TransientEvts_err, "NormRateErr") >0 ? (1.0-RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL,Rate_TransientEvts, Rate_TransientEvts_err, "NormRate"))/RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL,Rate_TransientEvts, Rate_TransientEvts_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>histogram-1d[200,-10,10,-100]</type>
@@ -446,7 +442,7 @@
 
      <object>
       <name>DeviationFromOneInSigmas_NormRateSourceEvts_TH1</name>
-      <formula><![CDATA[ RFun::NormalizeRate((char*)"Rate_SourceEvts",Mean_PtMcIlwainL,Rate_SourceEvts, Rate_SourceEvts_err, (char*)"NormRateErr") >0 ? (1.0-RFun::NormalizeRate((char*)"Rate_SourceEvts",Mean_PtMcIlwainL,Rate_SourceEvts, Rate_SourceEvts_err, (char*)"NormRate"))/RFun::NormalizeRate((char*)"Rate_SourceEvts",Mean_PtMcIlwainL,Rate_SourceEvts, Rate_SourceEvts_err, (char*)"NormRateErr") : -100]]></formula>
+      <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL,Rate_SourceEvts, Rate_SourceEvts_err, "NormRateErr") >0 ? (1.0-RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL,Rate_SourceEvts, Rate_SourceEvts_err, "NormRate"))/RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL,Rate_SourceEvts, Rate_SourceEvts_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>histogram-1d[200,-10,10,-100]</type>
@@ -458,7 +454,7 @@
 
       <object>
       <name>DeviationFromOneInSigmas_NormRateTriggerEngine_TH1_TriggerEngine[16]</name>
-      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector((char*)"Rate_MeritTriggerEngine",Mean_PtMcIlwainL,Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], (char*)"NormRateErr",engine) >0 ? (1.0-RFun::NormalizeRateVector((char*)"Rate_MeritTriggerEngine",Mean_PtMcIlwainL,Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], (char*)"NormRate", engine))/RFun::NormalizeRateVector((char*)"Rate_MeritTriggerEngine",Mean_PtMcIlwainL,Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], (char*)"NormRateErr", engine) : -100]]></formula>
+      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_MeritTriggerEngine",Mean_PtMcIlwainL,Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], "NormRateErr",engine) >0 ? (1.0-RFun::NormalizeRateVector("Rate_MeritTriggerEngine",Mean_PtMcIlwainL,Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], "NormRate", engine))/RFun::NormalizeRateVector("Rate_MeritTriggerEngine",Mean_PtMcIlwainL,Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], "NormRateErr", engine) : -100]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>histogram-1d[200,-10,10,-100]</type>
@@ -471,7 +467,7 @@
 
           <object>
       <name>DeviationFromOneInSigmas_NormRateGAMMAFilterAndTriggerEngine_TH1_TriggerEngine[16]</name>
-      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector((char*)"Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], (char*)"NormRateErr",engine) >0 ? (1.0-RFun::NormalizeRateVector((char*)"Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], (char*)"NormRate", engine))/RFun::NormalizeRateVector((char*)"Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], (char*)"NormRateErr", engine) : -100]]></formula>
+      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], "NormRateErr",engine) >0 ? (1.0-RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], "NormRate", engine))/RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_GAMMAFilterAndTriggerEngine[engine], Rate_GAMMAFilterAndTriggerEngine_err[engine], "NormRateErr", engine) : -100]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>histogram-1d[200,-10,10,-100]</type>
@@ -483,7 +479,7 @@
 
 	   <object>
       <name>DeviationFromOneInSigmas_NormRateFswGAMMAFilterAndTriggerEngine_TH1_TriggerEngine[16]</name>
-      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector((char*)"Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], (char*)"NormRateErr",engine) >0 ? (1.0-RFun::NormalizeRateVector((char*)"Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], (char*)"NormRate", engine))/RFun::NormalizeRateVector((char*)"Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], (char*)"NormRateErr", engine) : -100]]></formula>
+      <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], "NormRateErr",engine) >0 ? (1.0-RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], "NormRate", engine))/RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL,Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], "NormRateErr", engine) : -100]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>histogram-1d[200,-10,10,-100]</type>
@@ -491,7 +487,6 @@
       <axisdesc>[Deviation (in sigmas), N]</axisdesc>
       <description>Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of the different trigger engines (DigiEvent->getL1T().getGemEngine()) that survive the Flight Software GAMMA filter. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates.</description>
     </object>
--->
 
         <object>
       <name>Rate_EvtsBeforeFilters_TH1</name>
