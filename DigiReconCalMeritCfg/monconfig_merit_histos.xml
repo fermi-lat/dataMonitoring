@@ -383,7 +383,7 @@
 
 
 
-
+<!-- temporary removing all normalized rates
      <object>
       <name>DeviationFromOneInSigmas_NormRateEvtsBeforeFilters_TH1</name>
       <formula><![CDATA[ RFun::NormalizeRate((char*)"CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, (char*)"NormRateErr")>0 ? (1.0-RFun::NormalizeRate((char*)"CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, (char*)"NormRate"))/RFun::NormalizeRate((char*)"CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, (char*)"NormRateErr") : -100]]></formula>
@@ -491,7 +491,7 @@
       <axisdesc>[Deviation (in sigmas), N]</axisdesc>
       <description>Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of the different trigger engines (DigiEvent->getL1T().getGemEngine()) that survive the Flight Software GAMMA filter. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates.</description>
     </object>
-
+-->
 
         <object>
       <name>Rate_EvtsBeforeFilters_TH1</name>

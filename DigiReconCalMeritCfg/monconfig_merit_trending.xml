@@ -198,6 +198,7 @@
    </object>
 
 
+<!-- temporary removing all normalized rates
     <object>
       <name>NormRateEvtsBeforeFilters</name>
       <formula><![CDATA[ RFun::NormalizeRate((char*)"CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, (char*)"NormRate") ]]></formula>
@@ -365,7 +366,6 @@
       <type>outputfloat</type>
       <description>Error in Normalized Rate of transient events. The Normalization is done according to the value of PtMcIlwainL.</description>
    </object>
-
 
      <object>
       <name>TransientEvts_E100MeV</name>
@@ -609,7 +609,7 @@
       <type>outputfloat</type>
       <description>Error in normalized Rate of LLE events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
    </object>
-
+-->
 
     <object>
       <name>LLEEvts_E100MeV</name>
@@ -671,6 +671,7 @@
     
 
      
+<!-- temporary removing all normalized rates
        <object>
       <name>NormRateMeritTriggerEngine[16]</name>
       <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector((char*)"Rate_MeritTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], (char*)"NormRate", engine) ]]></formula>
@@ -761,7 +762,7 @@
       <type>mean</type>
       <description>Mean of the ratio FswGAMMAEnergy/CalEnergyRaw. The FswGAMMA energy is computed as FswGAMMAEnergyInLeus[0]/4. . Only events with valid energy (getEnergyValid()>0) and CalEnergyRaw>10 MeV are being used.</description>
    </object>
-
+-->
 
        <!-- ACD -->
 
