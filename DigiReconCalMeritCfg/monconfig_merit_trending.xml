@@ -254,8 +254,8 @@
       <description>Normalized Rate of events before applicaltion of cuts that survive the Gleam GAMMA filter. The Normalization is done according to the value of PtMcIlwainL.</description>
    </object>
 
-     <object>
-      char*<name>NormRateEvtsBeforeCutsWithGAMMAFilter_err</name>
+   <object>
+      <name>NormRateEvtsBeforeCutsWithGAMMAFilter_err</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
@@ -708,7 +708,7 @@
 
 
      
-       <object>
+   <object>
       <name>NormRateFswGAMMAFilterAndTriggerEngine_err[16]</name>
       <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_GAMMAFilterAndTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_FswGAMMAFilterAndTriggerEngine[engine], Rate_FswGAMMAFilterAndTriggerEngine_err[engine], "NormRateErr", engine) ]]></formula>
       <cut><![CDATA[]]></cut>

@@ -379,8 +379,7 @@
     </object>
 
 
-
-
+    <object>
       <name>DeviationFromOneInSigmas_NormRateEvtsBeforeFilters_TH1</name>
       <formula><![CDATA[ RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRateErr")>0 ? (1.0-RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRate"))/RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL,CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[]]></cut>
@@ -391,7 +390,7 @@
       <description>Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of EvtsBeforeFilters. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates.</description>
     </object>
 
-      <object>
+    <object>
       <name>DeviationFromOneInSigmas_NormRateEvtsBeforeCuts_TH1</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRateErr") >0 ? (1.0-RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRate"))/RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL,Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRateErr") : -100]]></formula>
       <cut><![CDATA[]]></cut>
