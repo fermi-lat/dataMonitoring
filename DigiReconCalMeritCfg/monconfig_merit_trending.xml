@@ -182,7 +182,7 @@
       <description>Rate of evts before any filter (computed using MeritTuple->EvtEventId)</description>
    </object>
 
-
+<!-- remove normalized rates for now 
     <object>
       <name>NormRateEvtsBeforeFilters</name>
       <formula><![CDATA[ RFun::NormalizeRate("CounterDiffRate_EvtsBeforeFilters",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, CounterDiffRate_EvtsBeforeFilters, CounterDiffRate_EvtsBeforeFilters_err, "NormRate") ]]></formula>
@@ -200,8 +200,9 @@
       <type>outputfloat</type>
       <description>Normalized Rate of events before applicaltion of filters. The Normalization is done according to the value of PtMcIlwainL.</description>
    </object>
+-->   
 
-    <object>
+   <object>
       <name>EvtsBeforeCuts</name>
       <formula><![CDATA[1]]></formula>
       <cut><![CDATA[]]></cut>
@@ -209,7 +210,8 @@
       <description>Rate of events before applicaltion of cuts.</description>
    </object>
 
-    <object>
+<!-- remove normalized rates for now 
+   <object>
       <name>NormRateEvtsBeforeCuts</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -219,7 +221,7 @@
    </object>
 
 
-    <object>
+   <object>
       <name>NormRateEvtsBeforeCuts_err</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCuts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCuts, Rate_EvtsBeforeCuts_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -227,7 +229,7 @@
       <type>outputfloat</type>
       <description>Error in Normalized Rate of events before applicaltion of cuts. The Normalization is done according to the value of PtMcIlwainL.</description>
    </object>
-
+-->
 
     <object>
       <name>EvtsBeforeCutsWithGAMMAFilter</name>
@@ -245,7 +247,8 @@
       <description>Rate of events before applicaltion of cuts that survive the Flight Sowftware GAMMA filter</description>
    </object>
 
-     <object>
+<!-- remove normalized rates for now 
+   <object>
       <name>NormRateEvtsBeforeCutsWithGAMMAFilter</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCutsWithGAMMAFilter, Rate_EvtsBeforeCutsWithGAMMAFilter_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -263,8 +266,7 @@
       <description>Error in normalized rate of events before applicaltion of cuts that survive the Gleam GAMMA filter. The Normalization is done according to the value of PtMcIlwainL.</description>
    </object>
 
-
-     <object>
+   <object>
       <name>NormRateEvtsBeforeCutsWithFswGAMMAFilter</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_EvtsBeforeCutsWithGAMMAFilter",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_EvtsBeforeCutsWithFswGAMMAFilter, Rate_EvtsBeforeCutsWithFswGAMMAFilter_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -281,11 +283,9 @@
       <type>outputfloat</type>
       <description>Error in normalized rate of events before applicaltion of cuts that survive the Flight Software GAMMA filter. The Normalization is done according to the value of PtMcIlwainL.</description>
    </object>
+-->
 
-
-     
-
-      <object>
+   <object>
       <name>EvtsBeforeCutsBelow100ZenithTheta</name>
       <formula><![CDATA[1]]></formula>
       <cut><![CDATA[FT1ZenithTheta<100]]></cut>
@@ -333,6 +333,7 @@
    </object>
   
 
+<!-- removing normalized rates for now
       <object>
       <name>NormRateTransientEvts</name>
       <formula><![CDATA[RFun::NormalizeRate("Rate_TransientEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvts, Rate_TransientEvts_err, "NormRate")]]></formula>
@@ -350,8 +351,8 @@
       <type>outputfloat</type>
       <description>Error in Normalized Rate of transient events. The Normalization is done according to the value of PtMcIlwainL.</description>
    </object>
-
-     <object>
+-->
+   <object>
       <name>TransientEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClass&16  && FT1Energy>100 ]]></cut>
@@ -367,7 +368,8 @@
       <description>Rate of events after application of Pass 8 TRANSIENT gamma cuts and the cut FT1ZenithTheta smaller than 100.</description>
    </object>
 
-     <object>
+<!-- removing normalized rates for now
+   <object>
       <name>NormRateTransientEvtsBelowZenithTheta100</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvtsBelowZenithTheta100, Rate_TransientEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -376,7 +378,7 @@
       <description>Normalized Rate of Transient events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
    </object>
 
-	 <object>
+    <object>
       <name>NormRateTransientEvtsBelowZenithTheta100_err</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_TransientEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_TransientEvtsBelowZenithTheta100, Rate_TransientEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -384,8 +386,9 @@
       <type>outputfloat</type>
       <description>Error in normalized Rate of Transient events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
    </object>
+-->
 
-     <object>
+    <object>
       <name>CleanEvts</name>
       <formula><![CDATA[1]]></formula>
       <cut><![CDATA[ FT1EventClass&256  ]]></cut>
@@ -393,7 +396,9 @@
       <description>Rate of events after application of Pass 8 CLEAN gamma cuts.</description>
    </object>
 
-        <object>
+	
+<!-- removing normalized rates for now
+   <object>
       <name>NormRateCleanEvts</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_CleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvts, Rate_CleanEvts_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -410,14 +415,15 @@
       <type>outputfloat</type>
       <description>Error in normalized Rate of clean class events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
    </object>
+-->
 
-      <object>
+    <object>
       <name>CleanEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClass&256  && FT1Energy>100]]></cut>
       <type>rate</type>
       <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 CLEAN gamma cuts.</description>
-   </object>
+    </object>
       
     <object>
       <name>CleanEvtsBelowZenithTheta100</name>
@@ -425,9 +431,10 @@
       <cut><![CDATA[ FT1EventClass&256  && FT1ZenithTheta<100]]></cut>
       <type>rate</type>
       <description>Rate of events with FT1ZenithTheta below 100 deg, after application of Pass 8 CLEAN gamma cuts.</description>
-   </object>
+    </object>
 
-     <object>
+<!-- removing normalized rates for now
+    <object>
       <name>NormRateCleanEvtsBelowZenithTheta100</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_CleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_CleanEvtsBelowZenithTheta100, Rate_CleanEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -444,36 +451,38 @@
       <type>outputfloat</type>
       <description>Error in normalized Rate of Clean events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
    </object>
+-->
 
-      <object>
+    <object>
       <name>SourceEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[FT1EventClass&128]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 SOURCE gamma cuts.</description>
-   </object>
+    </object>
 
 
-
-        <object>
+<!-- removing normalized rates for now
+    <object>
       <name>NormRateSourceEvts</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvts, Rate_SourceEvts_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
       <description>Normalized Rate of source events. The Normalization is done according to the value of PtMcIlwainL.</description>
-   </object>
+    </object>
 
-	  <object>
+    <object>
       <name>NormRateSourceEvts_err</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvts, Rate_SourceEvts_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
       <description>Error in normalized Rate of source events. The Normalization is done according to the value of PtMcIlwainL.</description>
-   </object>
+    </object>
+-->
 
-       <object>
+    <object>
       <name>SourceEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[  FT1EventClass&128  && FT1Energy>100]]></cut>
@@ -489,7 +498,8 @@
       <description>Rate of events with FT1ZenithTheta below 100 deg, after application of Pass 8 SOURCE gamma cuts.</description>
    </object>
 
-     <object>
+<!-- removing normalized rates for now
+   <object>
       <name>NormRateSourceEvtsBelowZenithTheta100</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvtsBelowZenithTheta100, Rate_SourceEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -498,7 +508,7 @@
       <description>Normalized Rate of Source events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
    </object>
 
-	 <object>
+   <object>
       <name>NormRateSourceEvtsBelowZenithTheta100_err</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_SourceEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_SourceEvtsBelowZenithTheta100, Rate_SourceEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -506,16 +516,18 @@
       <type>outputfloat</type>
       <description>Error in normalized Rate of Source events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
    </object>
+-->
 
-    <object>
+   <object>
       <name>UltraCleanEvts</name>
       <formula><![CDATA[1]]></formula>
       <cut><![CDATA[ FT1EventClass&512 ]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 ULTRACLEAN gamma cuts.</description>
    </object>
-
-        <object>
+  
+<!-- removing normalized rates for now
+   <object>
       <name>NormRateUltraCleanEvts</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_UltraCleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvts, Rate_UltraCleanEvts_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -524,7 +536,7 @@
       <description>Normalized Rate of ultra clean class events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
    </object>
 
-	  <object>
+   <object>
       <name>NormRateUltraCleanEvts_err</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_UltraCleanEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvts, Rate_UltraCleanEvts_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -532,7 +544,7 @@
       <type>outputfloat</type>
       <description>Error in normalized Rate of ultra clean class events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
    </object>
-
+-->
 
     <object>
       <name>UltraCleanEvts_E100MeV</name>
@@ -550,7 +562,8 @@
       <description>Rate of events with FT1ZenithTheta below 100 deg, after application of Pass 8 ULTRACLEAN gamma cuts.</description>
    </object>
 
-     <object>
+<!-- removing normalized rates for now
+   <object>
       <name>NormRateUltraCleanEvtsBelowZenithTheta100</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_UltraCleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvtsBelowZenithTheta100, Rate_UltraCleanEvtsBelowZenithTheta100_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -559,40 +572,42 @@
       <description>Normalized Rate of UltraClean events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
    </object>
 
-	 <object>
+    <object>
       <name>NormRateUltraCleanEvtsBelowZenithTheta100_err</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_UltraCleanEvtsBelowZenithTheta100",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_UltraCleanEvtsBelowZenithTheta100, Rate_UltraCleanEvtsBelowZenithTheta100_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
       <description>Error in normalized Rate of UltraClean events with ZenithTheta below 100 deg. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
-	 </object>
-
-     <object>
+    </object>
+-->
+    <object>
       <name>LLEEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClass&65536 ]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 LLE gamma cuts. </description>
-   </object>
+    </object>
 
-     <object>
+<!-- removing normalized rates for now
+    <object>
       <name>NormRateLLEEvts</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_LLEEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_LLEEvts, Rate_LLEEvts_err, "NormRate") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
       <description>Normalized Rate of LLE events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
-   </object>
+    </object>
 
-	 <object>
+    <object>
       <name>NormRateLLEEvts_err</name>
       <formula><![CDATA[ RFun::NormalizeRate("Rate_LLEEvts",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_LLEEvts, Rate_LLEEvts_err, "NormRateErr") ]]></formula>
       <cut><![CDATA[]]></cut>
       <source>output</source>
       <type>outputfloat</type>
       <description>Error in normalized Rate of LLE events. The Normalization is done according to the value of PtMcIlwainL, PtLat and PtLon.</description>
-   </object>
+    </object>
+-->
 
     <object>
       <name>LLEEvts_E100MeV</name>
@@ -600,7 +615,7 @@
       <cut><![CDATA[ FT1EventClass&65536  && FT1Energy>100]]></cut>
       <type>rate</type>
       <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 LLE gamma cuts.</description>
-   </object>
+    </object>
 
     <object>
       <name>LLEEvts_BelowE100MeV</name>
@@ -608,7 +623,7 @@
       <cut><![CDATA[ FT1EventClass&65536  && FT1Energy<100]]></cut>
       <type>rate</type>
       <description>Rate of events with FT1Energy below 100 MeV, after application of Pass 8 LLE gamma cuts.</description>
-   </object>
+    </object>
 
     <object>
       <name>LLEEvtsBelowZenithTheta100</name>
@@ -653,8 +668,9 @@
       
     
 
-     
-       <object>
+      
+<!-- removing normalized rates for now
+   <object>
       <name>NormRateMeritTriggerEngine[16]</name>
       <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_MeritTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], "NormRate", engine) ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -663,9 +679,8 @@
       <description>Vector [16] with the normalized rates for the 16 TriggerEngines. The Normalization is done according to the value of PtMcIlwainL.</description>
    </object>
 
-
      
-       <object>
+   <object>
       <name>NormRateMeritTriggerEngine_err[16]</name>
       <formula><![CDATA[ foreachengine: RFun::NormalizeRateVector("Rate_MeritTriggerEngine",Mean_PtMcIlwainL, Mean_PtSCzenith, Mean_PtLon, Rate_MeritTriggerEngine[engine], Rate_MeritTriggerEngine_err[engine], "NormRateErr", engine) ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -716,7 +731,7 @@
       <type>outputfloat</type>
       <description>Vector [16] with the error in the normalized rates for the 16 TriggerEngines. The Normalization is done according to the value of PtMcIlwainL.</description>
    </object>
-	
+-->	
 
 	<object>
       <name>CTBClassLevel_Bkg</name>
