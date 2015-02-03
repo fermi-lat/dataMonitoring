@@ -4,6 +4,9 @@
  *
  *                  EOH
 
+- All the ACD quantities for the merit trending file back in (in the Acd2 flavor).
+- Old CTB variables replaced with the WP8 equivalent for the merit trending.
+
 - Old CTB variables replaced with the WP8 equivalent for the merit hist.
 
  DigiReconCalMeritCfg-01-28-00 03-Feb-2015 lbaldini ACD quantities back in the merit eor.

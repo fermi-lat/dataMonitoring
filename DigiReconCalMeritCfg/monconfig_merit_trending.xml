@@ -15,18 +15,18 @@
     <object>FswGAMMAEnergyInLeus</object>
     
     <!-- ACD -->
-    <!--
-    <object>AcdCornerDoca</object>
-    <object>AcdTileCount</object>
-    <object>AcdRibbonCount</object>
-    <object>AcdActiveDist3D</object>
-    <object>AcdTkr1ActiveDist</object>
-    <object>AcdTkr1ActDistTileEnergy</object>
-    <object>AcdRibbonActDist</object>
-    <object>AcdRibbonEnergy</object>
-    <object>AcdTotalEnergy</object>
-    <object>AcdActDistTileEnergy</object>
-    -->
+   
+    <object>Acd2CornerDoca</object>   
+    <object>Acd2TileCount</object>    
+    <object>Acd2RibbonCount</object>  
+    <object>Acd2CRActiveDist3D</object> 
+    <object>Acd2CR1ActiveDist</object>  
+    <object>Acd2CR1ActDistTileEnergy</object>
+    <object>Acd2RibbonActDist</object>  
+    <object>Acd2RibbonEnergy</object>    
+    <object>Acd2TotalTileEnergy</object> 
+    <object>Acd2CRActDistTileEnergy</object> 
+
     
     <!-- Tracker -->
     <object>TkrTwrEdge</object>
@@ -38,14 +38,12 @@
     <object>TkrThickHits</object>
     <object>TkrBlankHits</object>
     <object>TkrNumTracks</object>
-
-      <object>TkrSurplusHitRatio</object>
-
-      <object>Tkr1KalEne</object>
-      <object>Tkr1KalThetaMS</object>
-      <object>GrbXDir</object>
-      <object>GrbYDir</object>
-      <object>GrbZDir</object>
+    <object>TkrSurplusHitRatio</object>
+    <object>Tkr1KalEne</object>
+    <object>Tkr1KalThetaMS</object>
+    <object>GrbXDir</object>
+    <object>GrbYDir</object>
+    <object>GrbZDir</object>
 
       <!-- Calorimeter -->
 
@@ -62,13 +60,12 @@
 
     <!-- CTB variables -->
         
-    <object>CTBBestZDir</object>		
-    <object>CTBClassLevel</object>		
-    <object>CTBBestEnergyProb</object>
-    <object>CTBCORE</object>			
-    <object>CTBBestEnergy</object>		
-    <object>CTBBestEnergyRatio</object>
-    <object>CTBParticleType</object>
+    <object>WP8BestZDir</object>		
+    <object>WP8CTBestEnergyProb</object>
+    <object>WP8CTPSFCore</object>			
+    <object>WP8BestEnergy</object>		
+    <!--object>CTBBestEnergyRatio</object-->
+    <!--object>CTBParticleType</object-->
 
     <!-- FT1 variables -->
 
@@ -733,14 +730,16 @@
    </object>
 -->	
 
+
+<!-- to be removed
 	<object>
       <name>CTBClassLevel_Bkg</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ CTBClassLevel==0 ]]></cut>
       <type>rate</type>
       <description>Rate of events that are  considered to be bkg as far as the CTBClassLevel variable is concerned (that is CTBClassLevel=0).</description>
-   </object>
-
+   </object> 
+-->
      
 
      <object>
@@ -762,67 +761,66 @@
 
        <!-- ACD -->
 
-<!--
+
      <object>
-      <name>AcdTileCount</name>
-      <formula><![CDATA[ AcdTileCount ]]></formula>
-      <cut><![CDATA[  ]]></cut>
+      <name>Acd2TileCount</name>
+      <formula><![CDATA[ Acd2TileCount ]]></formula>
+      <cut><![CDATA[]]></cut>
       <type>mean</type>
-      <description>Mean value (per evt) of AcdTileCount</description>
+      <description>Mean value (per evt) of Acd2TileCount</description>
    </object>
 
 
 	 <object>
-      <name>AcdRibbonCount</name>
-      <formula><![CDATA[ AcdRibbonCount ]]></formula>
+      <name>Acd2RibbonCount</name>
+      <formula><![CDATA[ Acd2RibbonCount ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>mean</type>
-      <description>Mean value (per evt) of AcdRibbonCount</description>
+      <description>Mean value (per evt) of Acd2RibbonCount</description>
    </object>
 
        <object>
-      <name>AcdCornerDoca</name>
-      <formula><![CDATA[ AcdCornerDoca ]]></formula>
+      <name>Acd2CornerDoca</name>
+      <formula><![CDATA[ Acd2CornerDoca ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>mean</type>
-      <description>Mean value (per evt) of AcdCornerDoca</description>
+      <description>Mean value (per evt) of Acd2CornerDoca</description>
    </object>
 
  
     <object>
-      <name>AcdRibbonEnergy</name>
-      <formula><![CDATA[ AcdRibbonEnergy ]]></formula>
+      <name>Acd2RibbonEnergy</name>
+      <formula><![CDATA[ Acd2RibbonEnergy ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>mean</type>
-      <description>Mean value (per evt) of AcdRibbonEnergy</description>
+      <description>Mean value (per evt) of Acd2RibbonEnergy</description>
    </object>
 
      <object>
-      <name>AcdTotalEnergy</name>
-      <formula><![CDATA[ AcdTotalEnergy ]]></formula>
+      <name>Acd2TotalTileEnergy</name>
+      <formula><![CDATA[ Acd2TotalTileEnergy ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>mean</type>
-      <description>Mean value (per evt) of AcdTotalEnergy</description>
+      <description>Mean value (per evt) of Acd2TotalTileEnergy</description>
    </object>
 
     <object>
-      <name>AcdActDistTileEnergy</name>
-      <formula><![CDATA[ AcdActDistTileEnergy ]]></formula>
+      <name>Acd2CRActDistTileEnergy</name>
+      <formula><![CDATA[ Acd2CRActDistTileEnergy ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>mean</type>
-      <description>Mean value (per evt) of AcdActDistTileEnergy</description>
+      <description>Mean value (per evt) of Acd2CRActDistTileEnergy</description>
    </object>
 
 
     <object>
-      <name>AcdTkr1ActDistTileEnergy</name>
-      <formula><![CDATA[ AcdTkr1ActDistTileEnergy ]]></formula>
+      <name>Acd2CR1ActDistTileEnergy</name>
+      <formula><![CDATA[ Acd2CR1ActDistTileEnergy ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>mean</type>
-      <description>Mean value (per evt) of AcdTkr1ActDistTileEnergy</description>
+      <description>Mean value (per evt) of Acd2CR1ActDistTileEnergy</description>
    </object>
 
--->
 
 	  <!-- Tracker-->
 
@@ -905,7 +903,7 @@
      <object>
       <name>Tkr1KalThetaMS</name>
       <formula><![CDATA[  Tkr1KalThetaMS ]]></formula>
-      <cut><![CDATA[Tkr1KalThetaMS>0.0 && Tkr1KalThetaMS<0.015 && TkrNumTracks==1 && abs(CalMIPRatio-1)<0.5 && CTBParticleType==2 ]]></cut>
+      <cut><![CDATA[Tkr1KalThetaMS>0.0 && Tkr1KalThetaMS<0.015 && TkrNumTracks==1 && abs(CalMIPRatio-1)<0.5  ]]></cut>
       <type>mean</type>
       <description>Mean value (per evt) of Tkr1KalThetaMS.</description>
    </object>
@@ -969,85 +967,30 @@
 
      
     <object>
-      <name>CTBCORE</name>
-      <formula><![CDATA[ CTBCORE ]]></formula>
+      <name>WP8CTPSFCore</name>
+      <formula><![CDATA[ WP8CTPSFCore ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>mean</type>
-      <description>Mean value (per evt) of CTBCORE</description>
+      <description>Mean value (per evt) of WP8CTPSFCore</description>
    </object>
 
     <object>
-      <name>CTBBestEnergy</name>
-      <formula><![CDATA[ CTBBestEnergy ]]></formula>
+      <name>WP8BestEnergy</name>
+      <formula><![CDATA[ WP8BestEnergy ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>mean</type>
-      <description>Mean value (per evt) of CTBBestEnergy</description>
+      <description>Mean value (per evt) of WP8BestEnergy</description>
    </object>
 
    <object>
-      <name>CTBBestEnergyProb </name>
-      <formula><![CDATA[ CTBBestEnergyProb   ]]></formula>
+      <name>WP8CTBestEnergyProb</name>
+      <formula><![CDATA[ WP8CTBestEnergyProb ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>mean</type>
-      <description>Mean value (per evt) of CTBBestEnergyProb </description>
-   </object>
-
-    <object>
-      <name>CTBBestEnergyRatio </name>
-      <formula><![CDATA[ CTBBestEnergyRatio   ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>mean</type>
-      <description>Mean value (per evt) of CTBBestEnergyRatio </description>
+      <description>Mean value (per evt) of WP8CTBestEnergyProb </description>
    </object>
 
     
-    <object>
-      <name>CTBParticleType_initializedvalue</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBParticleType== -1 ]]></cut>
-      <type>rate</type>
-      <description>Rate of events for which CTBParticleType could not be computed, and thus the initialized value remained (that is CTBParticleType == -1).</description>
-   </object>
-
-    <object>
-      <name>CTBParticleType_equalZero</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBParticleType==0 ]]></cut>
-      <type>rate</type>
-      <description>Rate of events with CTBParticleType == 0.</description>
-   </object>
-
-    <object>
-      <name>CTBParticleType_lepton</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBParticleType==1 ]]></cut>
-      <type>rate</type>
-      <description>Rate of e-/e+ events, according to CTBParticleType variable (that is CTBParticleType==1).</description>
-   </object>
-
-       <object>
-      <name>CTBParticleType_proton</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBParticleType==2 ]]></cut>
-      <type>rate</type>
-      <description>Rate of proton events, according to CTBParticleType variable (that is CTBParticleType==2).</description>
-   </object>
-
-        <object>
-      <name>CTBParticleType_alpha</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBParticleType==3]]></cut>
-      <type>rate</type>
-      <description>Rate of alpha events, according to CTBParticleType variable (that is CTBParticleType==3).</description>
-   </object>
-
-     <object>
-      <name>CTBParticleType_heavy</name>
-      <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ CTBParticleType==4 ]]></cut>
-      <type>rate</type>
-      <description>Rate of heavy ion events, according to CTBParticleType variable (that is CTBParticleType==4).</description>
-   </object>
 
     <!-- FT1 Variables -->
 
@@ -1100,7 +1043,7 @@
       <object>
       <name>FT1Energy_export</name>
       <formula><![CDATA[ FT1Energy ]]></formula>
-      <cut><![CDATA[(FswGamState==0)  && CTBCORE>0. && CTBBestEnergyProb>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && CTBClassLevel>0]]></cut>
+      <cut><![CDATA[(FswGamState==0)  && WP8CTPSFCore>0. && WP8CTBestEnergyProb>0. && WP8BestEnergy>10  ]]></cut>
       <type>mean</type>
       <description>Mean value (per evt) of FT1Energy, for those events surviving the Gamma Transient cuts.</description>
    </object>
@@ -1108,7 +1051,7 @@
     <object>
       <name>FT1Theta_export</name>
       <formula><![CDATA[ FT1Theta ]]></formula>
-      <cut><![CDATA[(FswGamState==0)  && CTBCORE>0. && CTBBestEnergyProb>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && CTBClassLevel>0]]></cut>
+      <cut><![CDATA[(FswGamState==0)  && WP8CTPSFCore>0. && WP8CTBestEnergyProb>0. && WP8BestEnergy>10   ]]></cut>
       <type>truncatedmean[0,360]</type>
       <description>Mean value (per evt) of FT1Theta, for those events surviving the Gamma Transient cuts.</description>
    </object>
@@ -1116,7 +1059,7 @@
      <object>
       <name>FT1Phi_export</name>
       <formula><![CDATA[ FT1Phi ]]></formula>
-      <cut><![CDATA[(FswGamState==0)  && CTBCORE>0. && CTBBestEnergyProb>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && CTBClassLevel>0]]></cut>
+      <cut><![CDATA[(FswGamState==0)  && WP8CTPSFCore>0. && WP8CTBestEnergyProb>0. && WP8BestEnergy>10  ]]></cut>
       <type>truncatedmean[0,360]</type>
       <description>Mean value (per evt) of FT1Phi, for those events surviving the Gamma Transient cuts.</description>
    </object>
@@ -1124,7 +1067,7 @@
     <object>
       <name>FT1ZenithTheta_export</name>
       <formula><![CDATA[ FT1ZenithTheta ]]></formula>
-      <cut><![CDATA[(FswGamState==0)  && CTBCORE>0. && CTBBestEnergyProb>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && CTBClassLevel>0]]></cut>
+      <cut><![CDATA[(FswGamState==0)  && WP8CTPSFCore>0. && WP8CTBestEnergyProb>0. && WP8BestEnergy>10  ]]></cut>
       <type>truncatedmean[0,360]</type>
       <description>Mean value (per evt) of FT1ZenithTheta, for those events surviving the Gamma Transient cuts.</description>
    </object>
@@ -1134,7 +1077,7 @@
     <object>
       <name>FT1EarthAzimuth_export</name>
       <formula><![CDATA[ FT1EarthAzimuth ]]></formula>
-      <cut><![CDATA[(FswGamState==0)  && CTBCORE>0. && CTBBestEnergyProb>0. && CTBBestEnergy>10 && CTBBestEnergyRatio<5 && CTBClassLevel>0]]></cut>
+      <cut><![CDATA[(FswGamState==0)  && WP8CTPSFCore>0. && WP8CTBestEnergyProb>0. && WP8BestEnergy>10  ]]></cut>
       <type>truncatedmean[0,360]</type>
       <description>Mean value (per evt) of FT1EarthAzimuth, for those events surviving the Gamma Transient cuts.</description>
    </object>
