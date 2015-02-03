@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-27-00 03-Feb-2015 lbaldini Putting back in the TKR and CAL recon quantities.
 - Started putting back the recon variables for the Pass 8 flavor of the
   L1 Proc. At this point in time most of the TKR and CAL stuff is
   up and running. Need to work on the ACD.
