@@ -589,7 +589,7 @@
       <description>2D histogram showing the highest energy vs channel when CAL-Lo (and not CAL-Hi) was asserted. Periodic triggers are NOT taken into account.</description>
     </object>
 
-    <!--object>
+    <object>
       <name>SuspCalLo_Highest0_EnergyDistribution_TH1</name>
       <formula><![CDATA[ RFun::getChannelEnergyHighest(CalXtalFaceSignal,0,1) ]]></formula>
       <cut><![CDATA[  condsummary&30 && !(condsummary&32) && condsummary&4 && !(condsummary&8) ]]></cut>
@@ -607,7 +607,7 @@
       <titledesc>Distribution of highest energy when CAL-Hi was asserted.</titledesc>
       <axisdesc>[Energy (MeV), N]</axisdesc>
       <description>Distribution of highest energy when CAL-Hi was asserted.</description>
-    </object-->
+    </object>
 
 
   </outputList>
