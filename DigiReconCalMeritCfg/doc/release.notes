@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-28-00 03-Feb-2015 lbaldini ACD quantities back in the merit eor.
 - All the ACD quantities for the merit hist file back in (in the Acd2 flavor).
 
  DigiReconCalMeritCfg-01-27-00 03-Feb-2015 lbaldini Putting back in the TKR and CAL recon quantities.
