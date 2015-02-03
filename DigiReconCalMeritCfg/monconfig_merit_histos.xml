@@ -1,7 +1,7 @@
 <monitoring>
 
   <inputList name="top">
-
+    
     <!-- Time stamp -->
     <object>timestampdouble</object>
     
@@ -13,7 +13,6 @@
     <object>FswFilters</object>
     <object>FswGamState</object>
 
-    <!-- Removed for the time being, need to switch to Acd2 -->
     <!-- ACD -->
     <object>Acd2CornerDoca</object>
     <object>Acd2TileCount</object>
@@ -48,14 +47,11 @@
     <object>CalTransRms</object>
     <object>CalMIPRatio</object>
 
-    <!-- CTB variables -->
-    <object>CTBBestZDir</object>		
-    <object>CTBClassLevel</object>		
-    <object>CTBBestEnergyProb</object>
-    <object>CTBCORE</object>		
-    <object>CTBBestEnergy</object>		
-    <object>CTBBestEnergyRatio</object>
-    <object>CTBParticleType</object>
+    <!-- New classification tree variables -->
+    <object>WP8BestZDir</object>
+    <object>WP8CTBestEnergyProb</object>
+    <object>WP8CTPSFCore</object>		
+    <object>WP8BestEnergy</object>
 
     <!-- FT1 variables -->
     <object>FT1Energy</object>
@@ -69,44 +65,40 @@
     
     <!-- Pt parameters -->
     <object>PtMcIlwainL</object>
-    
-
-
-
    
   </inputList>
 
 
   <outputList name="top">
-  
+    
     <!-- Magnetic quantities -->
-
-     <object>
+    
+    <object>
       <name>PtMcIlwainL</name>
       <formula><![CDATA[ PtMcIlwainL  ]]></formula>
       <cut><![CDATA[PtMcIlwainL>0.1]]></cut>
       <type>mean</type>
       <description>Mean value  of PtMcIlwainL</description>
     </object>
-
-        <object>
+    
+    <object>
       <name>RigidityCutoff</name>
       <formula><![CDATA[ 14.56/(PtMcIlwainL*PtMcIlwainL)  ]]></formula>
       <cut><![CDATA[PtMcIlwainL>0.1]]></cut>
       <type>mean</type>
       <description>Mean value of Rigidity cutoff (GeV)</description>
     </object>
-
+    
     <!-- Trending quantities that are used to fill histograms (ONLY RATES !!)-->
-
-      <object>
+    
+    <object>
       <name>EvtsBeforeFilters</name>
       <formula><![CDATA[ EvtEventId ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>counterdiffrate[10000,17,MC]</type>
       <description>Rate of evts before any filter (computed using MeritTuple->EvtEventId)</description>
     </object>
-
+    
     <object>
       <name>EvtsBeforeCuts</name>
       <formula><![CDATA[ 1 ]]></formula>
@@ -137,11 +129,9 @@
       <cut><![CDATA[ FT1Energy>100 ]]></cut>
       <type>rate</type>
       <description>Rate of events with FT1Energy above 100 MeV, before applicaltion of cuts.</description>
-    </object>
-
-     
-
-     <object>
+    </object> 
+    
+    <object>
       <name>EvtsBeforeCutsBelow100ZenithTheta</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1ZenithTheta<100 ]]></cut>
@@ -149,10 +139,7 @@
       <description>Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta smaller than 100.</description>
     </object>
 
-
-     
-
-       <object>
+    <object>
       <name>EvtsBeforeCutsBelow100ZenithTheta_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1ZenithTheta<100 && FT1Energy>100]]></cut>
@@ -162,15 +149,15 @@
 
     
 
-     <object>
+    <object>
       <name>EvtsBeforeCutsAbove100ZenithTheta</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1ZenithTheta>100 ]]></cut>
       <type>rate</type>
       <description>Rate of events before application of gamma selection cuts that survive the cut FT1ZenithTheta larger than 100.</description>
     </object>
-
-     <object>
+    
+    <object>
       <name>TransientEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClass&16 ]]></cut>
@@ -178,7 +165,7 @@
       <description>Rate of events after application of Pass 8 TRANSIENT_R020 cuts.</description>
     </object>
 
-      <object>
+    <object>
       <name>TransientEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClass&16 && FT1Energy>100 ]]></cut>
@@ -186,7 +173,7 @@
       <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 TRANSIENT_R020 cuts.</description>
     </object>
 
-      <object>
+    <object>
       <name>CleanEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClass&256 ]]></cut>
@@ -194,7 +181,7 @@
       <description>Rate of events after application of Pass 8 CLEAN gamma cuts.</description>
     </object>
 
-         <object>
+    <object>
       <name>CleanEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClass&256 && FT1Energy>100]]></cut>
@@ -202,7 +189,7 @@
       <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 CLEAN gamma cuts.</description>
     </object>
 
-     <object>
+    <object>
       <name>UltraCleanEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClass&512 ]]></cut>
@@ -245,7 +232,7 @@
       <description>Rate of events after application of Pass 8 TRANSIENT_R020 gamma cutsand the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
     </object>
 
-       <object>
+    <object>
       <name>CleanEvtsBelowZenithTheta100_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClass&256 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
@@ -253,7 +240,7 @@
       <description>Rate of events after application of Pass 8 CLEAN gamma cuts and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
     </object>
 
-      <object>
+    <object>
       <name>UltraCleanEvtsBelowZenithTheta100_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClass&512 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
@@ -261,7 +248,7 @@
       <description>Rate of events after application of Pass 8 ULTRACLEAN gamma cuts and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
     </object>
 
-       <object>
+    <object>
       <name>SourceEvtsBelowZenithTheta100_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClass&128 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
@@ -269,8 +256,7 @@
       <description>Rate of events after application of Pass 8 SOURCE gamma cuts and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
     </object>
 
-
-     <object>
+    <object>
       <name>LLEEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
       <cut><![CDATA[ FT1EventClass&65536 ]]></cut>
@@ -278,7 +264,7 @@
       <description>Rate of events after application of Pass 8 LLE gamma cuts.</description>
     </object>
 
-     <object>
+    <object>
       <name>MeritTriggerEngine[16]</name>
       <formula><![CDATA[ TriggerEngine ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -286,7 +272,7 @@
       <description>Rate of Trigger Engines (DigiEvent->getL1T().getGemEngine())</description>
     </object>
 
-	   <object>
+    <object>
       <name>GAMMAFilterAndTriggerEngine[16]</name>
       <formula><![CDATA[ TriggerEngine ]]></formula>
       <cut><![CDATA[ OBFStatus[0]>0]]></cut>
@@ -294,8 +280,7 @@
       <description>Rate of Trigger Engines (DigiEvent->getL1T().getGemEngine()) passing the Gleam GAMMA filter</description>
     </object>
 
-
-     <object>
+    <object>
       <name>FswGAMMAFilterAndTriggerEngine[16]</name>
       <formula><![CDATA[ TriggerEngine ]]></formula>
       <cut><![CDATA[ FswGamState==0]]></cut>
@@ -332,7 +317,7 @@
     </object>
 
 
-     <object>
+    <object>
       <name>Correlation_RateEvtsBeforeFilters_McIlwainL_TH2</name>
       <formula><![CDATA[ Mean_PtMcIlwainL:CounterDiffRate_EvtsBeforeFilters ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -343,7 +328,7 @@
       <description>Correlation Rate Before Filters with the magnetic parameter McIlwainL.</description>
     </object>
 
-      <object>
+    <object>
       <name>Correlation_RateEvtsBeforeCuts_McIlwainL_TH2</name>
       <formula><![CDATA[ Mean_PtMcIlwainL:Rate_EvtsBeforeCuts ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -354,8 +339,7 @@
       <description>Correlation Rate Before cuts (i.e. rate of events written to disk) with the magnetic parameter McIlwainL.</description>
     </object>
 
-
-      <object>
+    <object>
       <name>Correlation_RateEvtsBeforeFilters_RigidityCutoff_TH2</name>
       <formula><![CDATA[ Mean_RigidityCutoff:CounterDiffRate_EvtsBeforeFilters ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -366,7 +350,7 @@
       <description>Correlation Rate Before Filters with the magnetic parameter RigidityCutoff.</description>
     </object>
 
-      <object>
+    <object>
       <name>Correlation_RateEvtsBeforeCuts_RigidityCutoff_TH2</name>
       <formula><![CDATA[ Mean_RigidityCutoff:Rate_EvtsBeforeCuts ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -487,7 +471,7 @@
       <description>Distribution of deviations from the 1.0 (which should be the mean of the normalized rate, if normalization is successful) for the normalized rate of the different trigger engines (DigiEvent->getL1T().getGemEngine()) that survive the Flight Software GAMMA filter. The Normalization is done according to the value of PtMcIlwainL. The deviations are measured in sigmas, that is in error bars of the normalized rates.</description>
     </object>
 -->
-        <object>
+    <object>
       <name>Rate_EvtsBeforeFilters_TH1</name>
       <formula><![CDATA[ CounterDiffRate_EvtsBeforeFilters ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -498,7 +482,7 @@
       <description>Distribution of Rate_EvtsBeforeFilters values.</description>
     </object>
 
-     <object>
+    <object>
       <name>Rate_EvtsBeforeCuts_TH1</name>
       <formula><![CDATA[ Rate_EvtsBeforeCuts ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -506,10 +490,10 @@
       <type>histogram-1d[100,0,1000]</type>
       <titledesc>Rate_EvtsBeforeCuts</titledesc>
       <axisdesc>[RateEvtsBeforeCuts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_EvtsBeforeCuts  values.</description>
+      <description>Distribution of Rate_EvtsBeforeCuts values.</description>
     </object>
 
-     <object>
+    <object>
       <name>Rate_EvtsBeforeCuts_E100MeV_TH1</name>
       <formula><![CDATA[ Rate_EvtsBeforeCuts_E100MeV ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -519,9 +503,8 @@
       <axisdesc>[RateEvtsBeforeCuts(Hz), N]</axisdesc>
       <description>Distribution of Rate_EvtsBeforeCuts_E100MeV values.</description>
     </object>
-
     
-     <object>
+    <object>
       <name>Rate_EvtsBeforeCutsAbove100ZenithTheta_TH1</name>
       <formula><![CDATA[ Rate_EvtsBeforeCutsAbove100ZenithTheta ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -529,12 +512,10 @@
       <type>histogram-1d[100,0,500]</type>
       <titledesc>Rate_EvtsBeforeCutsAbove100ZenithTheta</titledesc>
       <axisdesc>[Rate_EvtsBeforeCutsAbove100ZenithTheta(Hz), N]</axisdesc>
-      <description>Distribution of Rate_EvtsBeforeCutsAbove100ZenithTheta  values.</description>
+      <description>Distribution of Rate_EvtsBeforeCutsAbove100ZenithTheta values.</description>
     </object>
-     
-     
 
-      <object>
+    <object>
       <name>Rate_EvtsBeforeCutsBelow100ZenithTheta_E100MeV_TH1</name>
       <formula><![CDATA[ Rate_EvtsBeforeCutsBelow100ZenithTheta_E100MeV ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -545,8 +526,6 @@
       <description>Distribution of Rate_EvtsBeforeCutsBelow0ZenithTheta_E100MeV values.</description>
     </object>
 
-	      
-
     <object>
       <name>Rate_TransientEvts_TH1</name>
       <formula><![CDATA[ Rate_TransientEvts ]]></formula>
@@ -555,10 +534,10 @@
       <type>histogram-1d[100,0,50]</type>
       <titledesc>Rate_TransientEvts</titledesc>
       <axisdesc>[Rate_TransientEvts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_TransientEvts  values.</description>
+      <description>Distribution of Rate_TransientEvts values.</description>
     </object>
 
-	 <object>
+    <object>
       <name>Rate_SourceEvts_TH1</name>
       <formula><![CDATA[ Rate_SourceEvts ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -566,7 +545,7 @@
       <type>histogram-1d[100,0,20]</type>
       <titledesc>Rate_SourceEvts</titledesc>
       <axisdesc>[Rate_SourceEvts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_SourceEvts  values.</description>
+      <description>Distribution of Rate_SourceEvts values.</description>
     </object>
 
     <object>
@@ -577,7 +556,7 @@
       <type>histogram-1d[100,0,20]</type>
       <titledesc>Rate_CleanEvts</titledesc>
       <axisdesc>[Rate_CleanEvts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_CleanEvts  values.</description>
+      <description>Distribution of Rate_CleanEvts values.</description>
     </object>
 
     <object>
@@ -588,12 +567,10 @@
       <type>histogram-1d[100,0,20]</type>
       <titledesc>Rate_UltraCleanEvts</titledesc>
       <axisdesc>[Rate_UltraCleanEvts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_UltraCleanEvts  values.</description>
+      <description>Distribution of Rate_UltraCleanEvts values.</description>
     </object>
 
-
-
-	 <object>
+    <object>
       <name>Rate_TransientEvts_E100MeV_TH1</name>
       <formula><![CDATA[ Rate_TransientEvts_E100MeV ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -601,10 +578,10 @@
       <type>histogram-1d[100,0,20]</type>
       <titledesc>Rate_TransientEvts_E100MeV</titledesc>
       <axisdesc>[Rate_TransientEvts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_TransientEvts_E100MeV  values.</description>
+      <description>Distribution of Rate_TransientEvts_E100MeV values.</description>
     </object>
 
-	      <object>
+    <object>
       <name>Rate_CleanEvts_E100MeV_TH1</name>
       <formula><![CDATA[ Rate_CleanEvts_E100MeV ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -612,7 +589,7 @@
       <type>histogram-1d[100,0,10]</type>
       <titledesc>Rate_CleanEvts_E100MeV</titledesc>
       <axisdesc>[Rate_CleanEvts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_CleanEvts_E100MeV  values.</description>
+      <description>Distribution of Rate_CleanEvts_E100MeV values.</description>
     </object>
 
     <object>
@@ -623,10 +600,10 @@
       <type>histogram-1d[100,0,10]</type>
       <titledesc>Rate_UltraCleanEvts_E100MeV</titledesc>
       <axisdesc>[Rate_UltraCleanEvts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_UltraCleanEvts_E100MeV  values.</description>
+      <description>Distribution of Rate_UltraCleanEvts_E100MeV values.</description>
     </object>
 
-	 <object>
+    <object>
       <name>Rate_SourceEvts_E100MeV_TH1</name>
       <formula><![CDATA[ Rate_SourceEvts_E100MeV ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -634,11 +611,8 @@
       <type>histogram-1d[100,0,10]</type>
       <titledesc>Rate_SourceEvts_E100MeV</titledesc>
       <axisdesc>[Rate_SourceEvts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_SourceEvts_E100MeV  values.</description>
+      <description>Distribution of Rate_SourceEvts_E100MeV values.</description>
     </object>
-
-
-    
 
     <object>
       <name>Rate_TransientEvtsBelowZenithTheta100_E100MeV_TH1</name>
@@ -648,10 +622,8 @@
       <type>histogram-1d[100,0,20]</type>
       <titledesc>Rate_TransientEvtsBelowZenithTheta100_E100MeV</titledesc>
       <axisdesc>[Rate_TransientEvts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_TransientEvtsBelowZenithTheta100_E100MeV  values.</description>
+      <description>Distribution of Rate_TransientEvtsBelowZenithTheta100_E100MeV values.</description>
     </object>
-
-
 
     <object>
       <name>Rate_CleanEvtsBelowZenithTheta100_E100MeV_TH1</name>
@@ -661,9 +633,8 @@
       <type>histogram-1d[100,0,10]</type>
       <titledesc>Rate_CleanEvtsBelowZenithTheta100_E100MeV</titledesc>
       <axisdesc>[Rate_CleanEvts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_CleanEvtsBelowZenithTheta100_E100MeV  values.</description>
+      <description>Distribution of Rate_CleanEvtsBelowZenithTheta100_E100MeV values.</description>
     </object>
-
 
     <object>
       <name>Rate_UltraCleanEvtsBelowZenithTheta100_E100MeV_TH1</name>
@@ -673,10 +644,10 @@
       <type>histogram-1d[100,0,10]</type>
       <titledesc>Rate_UltraCleanEvtsBelowZenithTheta100_E100MeV</titledesc>
       <axisdesc>[Rate_UltraCleanEvts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_UltraCleanEvtsBelowZenithTheta100_E100MeV  values.</description>
+      <description>Distribution of Rate_UltraCleanEvtsBelowZenithTheta100_E100MeV values.</description>
     </object>
 
-	  <object>
+    <object>
       <name>Rate_SourceEvtsBelowZenithTheta100_E100MeV_TH1</name>
       <formula><![CDATA[ Rate_SourceEvtsBelowZenithTheta100_E100MeV ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -684,7 +655,7 @@
       <type>histogram-1d[100,0,10]</type>
       <titledesc>Rate_SourceEvtsBelowZenithTheta100_E100MeV</titledesc>
       <axisdesc>[Rate_SourceEvts(Hz), N]</axisdesc>
-      <description>Distribution of Rate_SourceEvtsBelowZenithTheta100_E100MeV  values.</description>
+      <description>Distribution of Rate_SourceEvtsBelowZenithTheta100_E100MeV values.</description>
     </object>
 
 <!--
@@ -702,16 +673,16 @@
 
 
 
-<!-- ACD -->
+    <!-- ACD -->
 
-<object>
+    <object>
       <name>Acd2CornerDoca_TH1</name>
       <formula><![CDATA[ Acd2CornerDoca ]]></formula>
       <cut><![CDATA[ Acd2CornerDoca != (-2000) ]]></cut>
       <type>histogram-1d[400,-2005,2005]</type>
       <titledesc>Acd2CornerDoca</titledesc>
       <axisdesc>[Acd2CornerDoca(units), N]</axisdesc>
-      <description>Distribution of Acd2CornerDoca  values.</description>
+      <description>Distribution of Acd2CornerDoca values.</description>
     </object>
 
     <object>
@@ -814,86 +785,90 @@
       <type>histogram-1d[200,0,200]</type>
       <titledesc>TkrTwrEdge</titledesc>
       <axisdesc>[TkrTwrEdge(mm), N]</axisdesc>
-      <description>Distribution of TkrTwrEdge  values.</description>
+      <description>Distribution of TkrTwrEdge values.</description>
     </object>
-          <object>
+
+    <object>
       <name>Tkr1TwrGap_TH1</name>
       <formula><![CDATA[ Tkr1TwrGap ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[300,0,300]</type>
       <titledesc>Tkr1TwrGap</titledesc>
       <axisdesc>[Tkr1TwrGap(mm), N]</axisdesc>
-      <description>Distribution of Tkr1TwrGap  values.</description>
+      <description>Distribution of Tkr1TwrGap values.</description>
     </object>
-	    <object>
+
+    <object>
       <name>Tkr1LATEdge_TH1</name>
       <formula><![CDATA[ Tkr1LATEdge ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[200,-1000,1000]</type>
       <titledesc>Tkr1LATEdge</titledesc>
       <axisdesc>[Tkr1LATEdge(units), N]</axisdesc>
-      <description>Distribution of Tkr1LATEdge  values.</description>
+      <description>Distribution of Tkr1LATEdge values.</description>
     </object>
 
-	    	    <object>
+    <object>
       <name>Tkr1LATEdge_ZOOM_TH1</name>
       <formula><![CDATA[ Tkr1LATEdge ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[250,0,500]</type>
       <titledesc>Tkr1LATEdge (zoom)</titledesc>
       <axisdesc>[Tkr1LATEdge(mm), N]</axisdesc>
-      <description>Distribution of Tkr1LATEdge  values. Only values in range 0-500 are displayed</description>
+      <description>Distribution of Tkr1LATEdge values. Only values in range 0-500 are displayed</description>
     </object>
-          <object>
+
+    <object>
       <name>TkrSurplusHCInside_TH1</name>
       <formula><![CDATA[ TkrSurplusHCInside ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[200,0,2000]</type>
       <titledesc>TkrSurplusHCInside</titledesc>
       <axisdesc>[TkrSurplusHCInside, N]</axisdesc>
-      <description>Distribution of TkrSurplusHCInside  values.</description>
+      <description>Distribution of TkrSurplusHCInside values.</description>
     </object>
 
-
-       <object>
+    <object>
       <name>TkrThinHits_TH1</name>
       <formula><![CDATA[ TkrThinHits ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[150,0,1500]</type>
       <titledesc>TkrThinHits</titledesc>
       <axisdesc>[TkrThinHits, N]</axisdesc>
-      <description>Distribution of TkrThinHits  values.</description>
+      <description>Distribution of TkrThinHits values.</description>
     </object>
-          <object>
+
+    <object>
       <name>TkrThickHits_TH1</name>
       <formula><![CDATA[ TkrThickHits ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[150,0,1500]</type>
       <titledesc>TkrThickHits</titledesc>
       <axisdesc>[TkrThickHits, N]</axisdesc>
-      <description>Distribution of TkrThickHits  values.</description>
+      <description>Distribution of TkrThickHits values.</description>
     </object>
-	    <object>
+
+    <object>
       <name>TkrBlankHits_TH1</name>
       <formula><![CDATA[ TkrBlankHits ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[100,0,500]</type>
       <titledesc>TkrBlankHits</titledesc>
       <axisdesc>[TkrBlankHits(units), N]</axisdesc>
-      <description>Distribution of TkrBlankHits  values.</description>
+      <description>Distribution of TkrBlankHits values.</description>
     </object>
-          <object>
+
+    <object>
       <name>TkrSurplusHitRatio_TH1</name>
       <formula><![CDATA[ TkrSurplusHitRatio ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[200,0,200]</type>
       <titledesc>TkrSurplusHitRatio</titledesc>
       <axisdesc>[TkrSurplusHitRatio, N]</axisdesc>
-      <description>Distribution of TkrSurplusHitRatio  values.</description>
+      <description>Distribution of TkrSurplusHitRatio values.</description>
     </object>
 
-
-     <object>
+    <object>
       <name>Tkr1KalEne_Log10_TH1</name>
       <formula><![CDATA[ TMath::Log10(Tkr1KalEne) ]]></formula>
       <cut><![CDATA[ Tkr1KalEne>0 ]]></cut>
@@ -903,7 +878,7 @@
       <description>Distribution of Log10(Tkr1KalEne) values. Values up to 5000000 MeV are being displayed.</description>
     </object>
 
-     <object>
+    <object>
       <name>Tkr1KalEne_Zoom_TH1</name>
       <formula><![CDATA[ Tkr1KalEne ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -913,92 +888,79 @@
       <description>Distribution of Tkr1KalEne values. Values up to 5000 MeV are being displayed.</description>
     </object>
 
-   
-
-       <object>
+    <object>
       <name>Tkr1KalThetaMS_TH1</name>
       <formula><![CDATA[ Tkr1KalThetaMS ]]></formula>
-      <cut><![CDATA[ Tkr1KalThetaMS>0.0 && Tkr1KalThetaMS<0.015 && TkrNumTracks==1 && TMath::Abs(CalMIPRatio-1)<0.5 && CTBParticleType==2 ]]></cut>
+      <cut><![CDATA[ Tkr1KalThetaMS>0.0 && Tkr1KalThetaMS<0.015 && TkrNumTracks==1 && TMath::Abs(CalMIPRatio-1)<0.5 ]]></cut>
       <type>histogram-1d[501,-0.01,5.0]</type>
       <titledesc>Tkr1KalThetaMS</titledesc>
       <axisdesc>[Tkr1KalThetaMS (rad), N]</axisdesc>
       <description>Distribution of Tkr1KalThetaMS values. Values up to 5.0 rad are being displayed.</description>
     </object>
 
-     <object>
+    <object>
       <name>Tkr1KalThetaMS_Zoom_TH1</name>
       <formula><![CDATA[ Tkr1KalThetaMS ]]></formula>
-      <cut><![CDATA[ Tkr1KalThetaMS>0.0 && Tkr1KalThetaMS<0.015 && TkrNumTracks==1 && TMath::Abs(CalMIPRatio-1)<0.5 && CTBParticleType==2 ]]></cut>
+      <cut><![CDATA[ Tkr1KalThetaMS>0.0 && Tkr1KalThetaMS<0.015 && TkrNumTracks==1 && TMath::Abs(CalMIPRatio-1)<0.5 ]]></cut>
       <type>histogram-1d[501,-0.0002,0.1]</type>
       <titledesc>Tkr1KalThetaMS</titledesc>
       <axisdesc>[Tkr1KalThetaMS (rad), N]</axisdesc>
       <description>Distribution of Tkr1KalThetaMS values. Values up to 0.1 rad are being displayed.</description>
     </object>
 
-
-
-
     <!-- Calorimeter -->
-
- 
-
-
 	
-	    <object>
+    <object>
       <name>CalCsIRLn_TH1</name>
       <formula><![CDATA[ CalCsIRLn ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[100,0,50]</type>
       <titledesc>CalCsIRLn</titledesc>
       <axisdesc>[CalCsIRLn, N]</axisdesc>
-      <description>Distribution of CalCsIRLn  values.</description>
+      <description>Distribution of CalCsIRLn values.</description>
     </object>
 
-
-	        <object>
+    <object>
       <name>CalTwrEdgeCntr_TH1</name>
       <formula><![CDATA[ CalTwrEdgeCntr ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[200,0,200]</type>
       <titledesc>CalTwrEdgeCntr</titledesc>
       <axisdesc>[CalTwrEdgeCntr(units), N]</axisdesc>
-      <description>Distribution of CalTwrEdgeCntr  values.</description>
+      <description>Distribution of CalTwrEdgeCntr values.</description>
     </object>
 
-
-         <object>
+    <object>
       <name>CalTrackAngle_TH1</name>
       <formula><![CDATA[ CalTrackAngle ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[120,-1.5,4.5]</type>
       <titledesc>CalTrackAngle</titledesc>
       <axisdesc>[CalTrackAngle(units), N]</axisdesc>
-      <description>Distribution of CalTrackAngle  values.</description>
+      <description>Distribution of CalTrackAngle values.</description>
     </object>
 	
-	    <object>
+    <object>
       <name>CalTransRms_TH1</name>
       <formula><![CDATA[ CalTransRms ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[60,0,600]</type>
       <titledesc>CalTransRms</titledesc>
       <axisdesc>[CalTransRms(mm), N]</axisdesc>
-      <description>Distribution of CalTransRms  values.</description>
+      <description>Distribution of CalTransRms values.</description>
     </object>
 
-	    	    <object>
+    <object>
       <name>CalTransRms_Zoom_TH1</name>
       <formula><![CDATA[ CalTransRms ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[100,0,50]</type>
       <titledesc>CalTransRms (zoom)</titledesc>
       <axisdesc>[CalTransRms(mm), N]</axisdesc>
-      <description>Distribution of CalTransRms  values. Only values in range 0-50 are displayed.</description>
+      <description>Distribution of CalTransRms values. Only values in range 0-50 are displayed.</description>
     </object>
-
-
-
-	      <object>
+    
+    <object>
       <name>CalEnergyRaw_Log10_TH1</name>
       <formula><![CDATA[ TMath::Log10(CalEnergyRaw) ]]></formula>
       <cut><![CDATA[ CalEnergyRaw>0 ]]></cut>
@@ -1007,9 +969,8 @@
       <axisdesc>[log10(CalEnergyRaw), N]</axisdesc>
       <description>Distribution of log10(CalEnergyRaw) values.</description>
     </object>
-
 	      
-	      <object>
+    <object>
       <name>CalEnergyCorr_Log10_TH1</name>
       <formula><![CDATA[ TMath::Log10(CalEnergyCorr) ]]></formula>
       <cut><![CDATA[ CalEnergyCorr>0 ]]></cut>
@@ -1019,86 +980,49 @@
       <description>Distribution of log10(CalEnergyCorr) values.</description>
     </object>
 
+    <!-- CTB variables -->
 
-
-
-     <!-- CTB variables -->
-
-     <object>
-      <name>CTBBestEnergy_Log10_TH1</name>
-      <formula><![CDATA[ TMath::Log10(CTBBestEnergy) ]]></formula>
-      <cut><![CDATA[ CTBBestEnergy>0 ]]></cut>
+    <object>
+      <name>WP8BestEnergy_Log10_TH1</name>
+      <formula><![CDATA[ TMath::Log10(WP8BestEnergy) ]]></formula>
+      <cut><![CDATA[ WP8BestEnergy>0 ]]></cut>
       <type>histogram-1d[120,-4,8]</type>
-      <titledesc>log10(CTBBestEnergy)</titledesc>
-      <axisdesc>[log10(CTBBestEnergy), N]</axisdesc>
-      <description>Distribution of log10(CTBBestEnergy) values.</description>
+      <titledesc>log10(WP8BestEnergy)</titledesc>
+      <axisdesc>[log10(WP8BestEnergy), N]</axisdesc>
+      <description>Distribution of log10(WP8BestEnergy) values.</description>
     </object>
 
 
-      <object>
-      <name>CTBBestZDir_TH1</name>
-      <formula><![CDATA[ CTBBestZDir ]]></formula>
+    <object>
+      <name>WP8BestZDir_TH1</name>
+      <formula><![CDATA[ WP8BestZDir ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[200,-1,1]</type>
-      <titledesc>CTBBestZDir</titledesc>
-      <axisdesc>[CTBBestZDir(cosinus), N]</axisdesc>
-      <description>Distribution of CTBBestZDir values.</description>
+      <titledesc>WP8BestZDir</titledesc>
+      <axisdesc>[WP8BestZDir(cosinus), N]</axisdesc>
+      <description>Distribution of WP8BestZDir values.</description>
     </object>
 
 
-        <object>
-      <name>CTBClassLevel_TH1</name>
-      <formula><![CDATA[ CTBClassLevel ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>histogram-1d[5,-0.5,4.5]</type>
-      <titledesc>CTBClassLevel</titledesc>
-      <axisdesc>[CTBClassLevel, N]</axisdesc>
-      <description>Distribution of CTBClassLevel values.</description>
-    </object>
-
-	<object>
-      <name>CTBParticleType_TH1</name>
-      <formula><![CDATA[ CTBParticleType ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>histogram-1d[8,-2.5,5.5]</type>
-      <titledesc>CTBParticleType</titledesc>
-      <axisdesc>[CTBParticleType, N]</axisdesc>
-      <description>Distribution of CTBParticleType values. -1 = initialized value, 0 = CTBClassLevel larger or equal than 1 (that is photon candidate),  1 = e+/e-, 2 = proton, 3 = alpha, and 4 = heavy ion</description>
-    </object>
-
- 
-
-         <object>
-      <name>CTBBestEnergyProb_TH1</name>
-      <formula><![CDATA[ CTBBestEnergyProb ]]></formula>
+    <object>
+      <name>WP8CTBestEnergyProb_TH1</name>
+      <formula><![CDATA[ WP8CTBestEnergyProb ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[100,0,1]</type>
-      <titledesc>CTBBestEnergyProb</titledesc>
-      <axisdesc>[CTBBestEnergyProb, N]</axisdesc>
-      <description>Distribution of CTBBestEnergyProb  values.</description>
+      <titledesc>WP8CTBestEnergyProb</titledesc>
+      <axisdesc>[WP8CTBestEnergyProb, N]</axisdesc>
+      <description>Distribution of WP8CTBestEnergyProb values.</description>
     </object>
 
-	   <object>
-      <name>CTBCORE_TH1</name>
-      <formula><![CDATA[ CTBCORE ]]></formula>
+    <object>
+      <name>WP8CTPSFCore_TH1</name>
+      <formula><![CDATA[ WP8CTPSFCore ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[100,0,1]</type>
-      <titledesc>CTBCORE</titledesc>
-      <axisdesc>[CTBCORE, N]</axisdesc>
-      <description>Distribution of CTBCORE  values.</description>
+      <titledesc>WP8CTPSFCore</titledesc>
+      <axisdesc>[WP8CTPSFCore, N]</axisdesc>
+      <description>Distribution of WP8CTPSFCore values.</description>
     </object>
-
-	     <object>
-      <name>CTBBestEnergyRatio_TH1</name>
-      <formula><![CDATA[ CTBBestEnergyRatio ]]></formula>
-      <cut><![CDATA[]]></cut>
-      <type>histogram-1d[200,0,20]</type>
-      <titledesc>CTBBestEnergyRatio</titledesc>
-      <axisdesc>[CTBBestEnergyRatio, N]</axisdesc>
-      <description>Distribution of CTBBestEnergyRatio  values.</description>
-    </object>
-
-
 
     <!-- FT1 Variables -->
 
@@ -1112,7 +1036,7 @@
       <description>Distribution of log10(FT1Energy) values.</description>
     </object>
 
-     <object>
+    <object>
       <name>FT1Theta_TH1</name>
       <formula><![CDATA[ FT1Theta ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -1122,7 +1046,7 @@
       <description>Distribution of FT1Theta values.</description>
     </object>
 
-     <object>
+    <object>
       <name>FT1Phi_TH1</name>
       <formula><![CDATA[ FT1Phi ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -1132,8 +1056,7 @@
       <description>Distribution of FT1Phi values.</description>
     </object>
     
-
-      <object>
+    <object>
       <name>FT1ZenithTheta_TH1</name>
       <formula><![CDATA[ FT1ZenithTheta ]]></formula>
       <cut><![CDATA[]]></cut>
@@ -1143,7 +1066,7 @@
       <description>Distribution of FT1ZenithTheta values.</description>
     </object>
 
-     <object>
+    <object>
       <name>FT1EarthAzimuth_TH1</name>
       <formula><![CDATA[ FT1EarthAzimuth ]]></formula>
       <cut><![CDATA[]]></cut>
