@@ -2,7 +2,6 @@
 
   <inputList name="top">
 
-
     <!-- Time stamp -->
     <object>timestampdouble</object>
     
@@ -16,16 +15,16 @@
 
     <!-- Removed for the time being, need to switch to Acd2 -->
     <!-- ACD -->
-    <!--object>AcdCornerDoca</object>
-    <object>AcdTileCount</object>
-    <object>AcdRibbonCount</object>
-    <object>AcdActiveDist3D</object>
-    <object>AcdTkr1ActiveDist</object>
-    <object>AcdTkr1ActDistTileEnergy</object>
-    <object>AcdRibbonActDist</object>
-    <object>AcdRibbonEnergy</object>
-    <object>AcdTotalEnergy</object>
-    <object>AcdActDistTileEnergy</object-->
+    <object>Acd2CornerDoca</object>
+    <object>Acd2TileCount</object>
+    <object>Acd2RibbonCount</object>
+    <object>Acd2CRActiveDist3D</object>
+    <object>Acd2CR1ActiveDist</object>
+    <object>Acd2CR1ActDistTileEnergy</object>
+    <object>Acd2RibbonActDist</object>
+    <object>Acd2RibbonEnergy</object>
+    <object>Acd2TotalTileEnergy</object>
+    <object>Acd2CRActDistTileEnergy</object>
         
     <!-- Tracker -->
     <object>TkrTwrEdge</object>
@@ -704,115 +703,111 @@
 
 
 <!-- ACD -->
-<!--
+
 <object>
-      <name>AcdCornerDoca_TH1</name>
-      <formula><![CDATA[ AcdCornerDoca ]]></formula>
-      <cut><![CDATA[ AcdCornerDoca != (-2000) ]]></cut>
+      <name>Acd2CornerDoca_TH1</name>
+      <formula><![CDATA[ Acd2CornerDoca ]]></formula>
+      <cut><![CDATA[ Acd2CornerDoca != (-2000) ]]></cut>
       <type>histogram-1d[400,-2005,2005]</type>
-      <titledesc>AcdCornerDoca</titledesc>
-      <axisdesc>[AcdCornerDoca(units), N]</axisdesc>
-      <description>Distribution of AcdCornerDoca  values.</description>
+      <titledesc>Acd2CornerDoca</titledesc>
+      <axisdesc>[Acd2CornerDoca(units), N]</axisdesc>
+      <description>Distribution of Acd2CornerDoca  values.</description>
     </object>
 
     <object>
-      <name>AcdTileCount_TH1</name>
-      <formula><![CDATA[ AcdTileCount ]]></formula>
+      <name>Acd2TileCount_TH1</name>
+      <formula><![CDATA[ Acd2TileCount ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[100,0,100]</type>
-      <titledesc>AcdTileCount</titledesc>
-      <axisdesc>[AcdTileCount, N]</axisdesc>
-      <description>Distribution of AcdTileCount  values.</description>
+      <titledesc>Acd2TileCount</titledesc>
+      <axisdesc>[Acd2TileCount, N]</axisdesc>
+      <description>Distribution of Acd2TileCount values.</description>
     </object>
 
     <object>
-      <name>AcdRibbonCount_TH1</name>
-      <formula><![CDATA[ AcdRibbonCount ]]></formula>
+      <name>Acd2RibbonCount_TH1</name>
+      <formula><![CDATA[ Acd2RibbonCount ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-1d[20,0,20]</type>
-      <titledesc>AcdRibbonCount</titledesc>
-      <axisdesc>[AcdRibbonCount, N]</axisdesc>
-      <description>Distribution of AcdRibbonCount  values.</description>
-    </object>
-
-
-    <object>
-      <name>AcdActiveDist3D_TH1</name>
-      <formula><![CDATA[ AcdActiveDist3D ]]></formula>
-      <cut><![CDATA[ AcdActiveDist3D != (-2000) ]]></cut>
-      <type>histogram-1d[401,-2005,2005]</type>
-      <titledesc>AcdActiveDist3D</titledesc>
-      <axisdesc>[AcdActiveDist3D(mm), N]</axisdesc>
-      <description>Distribution of AcdActiveDist3D  values.</description>
+      <titledesc>Acd2RibbonCount</titledesc>
+      <axisdesc>[Acd2RibbonCount, N]</axisdesc>
+      <description>Distribution of Acd2RibbonCount values.</description>
     </object>
 
     <object>
-      <name>AcdTkr1ActiveDist_TH1</name>
-      <formula><![CDATA[ AcdTkr1ActiveDist ]]></formula>
-      <cut><![CDATA[AcdTkr1ActiveDist != (-2000) ]]></cut>
+      <name>Acd2CRActiveDist3D_TH1</name>
+      <formula><![CDATA[ Acd2CRActiveDist3D ]]></formula>
+      <cut><![CDATA[ Acd2CRActiveDist3D != (-2000) ]]></cut>
       <type>histogram-1d[401,-2005,2005]</type>
-      <titledesc>AcdTkr1ActiveDist</titledesc>
-      <axisdesc>[AcdTkr1ActiveDist(mm), N]</axisdesc>
-      <description>Distribution of AcdTkr1ActiveDist  values.</description>
+      <titledesc>Acd2CRActiveDist3D</titledesc>
+      <axisdesc>[Acd2CRActiveDist3D(mm), N]</axisdesc>
+      <description>Distribution of Acd2CRActiveDist3D values.</description>
     </object>
 
     <object>
-      <name>AcdRibbonActDist_TH1</name>
-      <formula><![CDATA[ AcdRibbonActDist ]]></formula>
-      <cut><![CDATA[ AcdRibbonActDist != (-2000)  ]]></cut>
+      <name>Acd2CR1ActiveDist_TH1</name>
+      <formula><![CDATA[ Acd2CR1ActiveDist ]]></formula>
+      <cut><![CDATA[Acd2CR1ActiveDist != (-2000) ]]></cut>
       <type>histogram-1d[401,-2005,2005]</type>
-      <titledesc>AcdRibbonActDist</titledesc>
-      <axisdesc>[AcdRibbonActDist(mm), N]</axisdesc>
-      <description>Distribution of AcdRibbonActDist  values.</description>
+      <titledesc>Acd2CR1ActiveDist</titledesc>
+      <axisdesc>[Acd2CR1ActiveDist(mm), N]</axisdesc>
+      <description>Distribution of Acd2CR1ActiveDist values.</description>
+    </object>
+
+    <object>
+      <name>Acd2RibbonActDist_TH1</name>
+      <formula><![CDATA[ Acd2RibbonActDist ]]></formula>
+      <cut><![CDATA[ Acd2RibbonActDist != (-2000)  ]]></cut>
+      <type>histogram-1d[401,-2005,2005]</type>
+      <titledesc>Acd2RibbonActDist</titledesc>
+      <axisdesc>[Acd2RibbonActDist(mm), N]</axisdesc>
+      <description>Distribution of Acd2RibbonActDist values.</description>
     </object>
  
-        <object>
-      <name>AcdRibbonEnergy_Log10_TH1</name>
-      <formula><![CDATA[ TMath::Log10(AcdRibbonEnergy) ]]></formula>
-      <cut><![CDATA[ AcdRibbonEnergy>0 ]]></cut>
+    <object>
+      <name>Acd2RibbonEnergy_Log10_TH1</name>
+      <formula><![CDATA[ TMath::Log10(Acd2RibbonEnergy) ]]></formula>
+      <cut><![CDATA[ Acd2RibbonEnergy>0 ]]></cut>
       <type>histogram-1d[120,-4,8]</type>
-      <titledesc>log10(AcdRibbonEnergy)</titledesc>
-      <axisdesc>[log10(AcdRibbonEnergy), N]</axisdesc>
-      <description>Distribution of log10(AcdRibbonEnergy) values.</description>
+      <titledesc>log10(Acd2RibbonEnergy)</titledesc>
+      <axisdesc>[log10(Acd2RibbonEnergy), N]</axisdesc>
+      <description>Distribution of log10(Acd2RibbonEnergy) values.</description>
     </object>
 
-
-	    <object>
-      <name>AcdTotalEnergy_Log10_TH1</name>
-      <formula><![CDATA[ TMath::Log10(AcdTotalEnergy) ]]></formula>
-      <cut><![CDATA[ AcdTotalEnergy>0 ]]></cut>
+    <object>
+      <name>Acd2TotalTileEnergy_Log10_TH1</name>
+      <formula><![CDATA[ TMath::Log10(Acd2TotalTileEnergy) ]]></formula>
+      <cut><![CDATA[ Acd2TotalTileEnergy>0 ]]></cut>
       <type>histogram-1d[120,-4,8]</type>
-      <titledesc>log10(AcdTotalEnergy)</titledesc>
-      <axisdesc>[log10(AcdTotalEnergy), N]</axisdesc>
-      <description>Distribution of log10(AcdTotalEnergy) values.</description>
+      <titledesc>log10(Acd2TotalTileEnergy)</titledesc>
+      <axisdesc>[log10(Acd2TotalTileEnergy), N]</axisdesc>
+      <description>Distribution of log10(Acd2TotaTilelEnergy) values.</description>
     </object>
 
-
-	        <object>
-      <name>AcdActDistTileEnergy_Log10_TH1</name>
-      <formula><![CDATA[ TMath::Log10(AcdActDistTileEnergy) ]]></formula>
-      <cut><![CDATA[ AcdActDistTileEnergy>0 ]]></cut>
+    <object>
+      <name>Acd2CRActDistTileEnergy_Log10_TH1</name>
+      <formula><![CDATA[ TMath::Log10(Acd2CRActDistTileEnergy) ]]></formula>
+      <cut><![CDATA[ Acd2CRActDistTileEnergy>0 ]]></cut>
       <type>histogram-1d[120,-4,8]</type>
-      <titledesc>log10(AcdActDistTileEnergy)</titledesc>
-      <axisdesc>[log10(AcdActDistTileEnergy), N]</axisdesc>
-      <description>Distribution of log10(AcdActDistTileEnergy) values. Only positive values of AcdActDistTileEnergy are being used.</description>
+      <titledesc>log10(Acd2CRActDistTileEnergy)</titledesc>
+      <axisdesc>[log10(Acd2CRActDistTileEnergy), N]</axisdesc>
+      <description>Distribution of log10(Acd2CRActDistTileEnergy) values. Only positive values are being used.</description>
     </object>
 
-		    <object>
-      <name>AcdTkr1ActDistTileEnergy_Log10_TH1</name>
-      <formula><![CDATA[ TMath::Log10(AcdTkr1ActDistTileEnergy) ]]></formula>
-      <cut><![CDATA[ AcdTkr1ActDistTileEnergy>0 ]]></cut>
+    <object>
+      <name>Acd2CR1ActDistTileEnergy_Log10_TH1</name>
+      <formula><![CDATA[ TMath::Log10(Acd2CR1ActDistTileEnergy) ]]></formula>
+      <cut><![CDATA[ Acd2CR1ActDistTileEnergy>0 ]]></cut>
       <type>histogram-1d[120,-4,8]</type>
-      <titledesc>log10(AcdTkr1ActDistTileEnergy)</titledesc>
-      <axisdesc>[log10(AcdTkr1ActDistTileEnergy), N]</axisdesc>
-      <description>Distribution of log10(AcdTkr1ActDistTileEnergy) values.</description>
-    </object>
--->	   
+      <titledesc>log10(Acd2CR1ActDistTileEnergy)</titledesc>
+      <axisdesc>[log10(Acd2CR1ActDistTileEnergy), N]</axisdesc>
+      <description>Distribution of log10(Acd2CR1ActDistTileEnergy) values.</description>
+    </object>	   
 
 
-	  <!-- Tracker-->
-
-        <object>
+    <!-- Tracker-->
+    
+    <object>
       <name>TkrTwrEdge_TH1</name>
       <formula><![CDATA[ TkrTwrEdge ]]></formula>
       <cut><![CDATA[]]></cut>
