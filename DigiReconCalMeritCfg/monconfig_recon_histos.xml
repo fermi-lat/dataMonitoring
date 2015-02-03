@@ -20,18 +20,14 @@
 
     <!-- Tkr Variables -->
     <object>ReconNumTracks</object>
-    <!--
     <object>ReconVertexPosXYZ</object>
     <object>ReconDirXYZ</object>
-    -->
 
     <!-- Cal Variables -->
-    <!--
     <object>ReconEnergy_TowerCalLayerCalColumn</object>
     <object>CalXtalFaceSignal</object>
     <object>CalXtalAdcPed</object>
     <object>CalXtalAdcRng</object>
-    -->
 
   </inputList>
 
@@ -340,7 +336,6 @@
        <description>Number of reconstructed tracks [0-10]</description>
      </object>
 
-     <!--
      <object>
       <name>ReconVertex_YXDir_TH2</name>
       <formula><![CDATA[ ReconDirXYZ[0]:ReconDirXYZ[1] ]]></formula>
@@ -431,11 +426,9 @@
       <axisdesc>[Reconstructed Y position (mm), N]</axisdesc>
       <description>Reconstructed event position along the Y axis.The value is obtained from the first reconstructed vertex.</description>
     </object>
-    -->
 
 
       <!-- Cal Variables -->
-      <!--
       <object>
       <name>ReconEnergy_TH1_TowerCalLayer[16][8]</name>
       <formula><![CDATA[ foreachtower: foreachcallayer: RFun::loopovercalcolumns_float(ReconEnergy_TowerCalLayerCalColumn[tower][callayer]) ]]></formula>
@@ -465,10 +458,8 @@
       <axisdesc>[Tower number, Cal-layer, Accumulated Energy (MeV)]</axisdesc>
       <description>Measured energy (MeV) vs tower and cal-layer. Note that, in each bin, the energy of all considered events is added up.   Periodic triggers are NOT taken into account.</description>
     </object>
-    -->
 
     <!-- TO BE Normalized with number of events !!! -->
-    <!--
      <object>
       <name>ZeroReconEnergy_TowerCalLayer_TH2</name>
       <formula><![CDATA[ foreachtower: foreachcallayer: RFun::loopovercalcolumns_float(ReconEnergy_TowerCalLayerCalColumn[tower][callayer]) <=0 ]]></formula>
@@ -598,7 +589,7 @@
       <description>2D histogram showing the highest energy vs channel when CAL-Lo (and not CAL-Hi) was asserted. Periodic triggers are NOT taken into account.</description>
     </object>
 
-         <object>
+    <!--object>
       <name>SuspCalLo_Highest0_EnergyDistribution_TH1</name>
       <formula><![CDATA[ RFun::getChannelEnergyHighest(CalXtalFaceSignal,0,1) ]]></formula>
       <cut><![CDATA[  condsummary&30 && !(condsummary&32) && condsummary&4 && !(condsummary&8) ]]></cut>
@@ -616,8 +607,7 @@
       <titledesc>Distribution of highest energy when CAL-Hi was asserted.</titledesc>
       <axisdesc>[Energy (MeV), N]</axisdesc>
       <description>Distribution of highest energy when CAL-Hi was asserted.</description>
-    </object>
--->
+    </object-->
 
 
   </outputList>

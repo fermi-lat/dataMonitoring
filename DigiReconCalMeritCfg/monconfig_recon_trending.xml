@@ -10,16 +10,12 @@
 
     <!-- Tkr Variables -->
     <object>ReconNumTracks</object>
-    <!--
     <object>ReconVertexPosXYZ</object>
     <object>ReconDirXYZ</object>
-    -->
 
     <!-- Cal Variables -->
-    <!--
     <object>ReconEnergy_TowerCalLayerCalColumn</object>
-    <object>CalXtalFaceSignal</object>
-    -->
+    <!--object>CalXtalFaceSignal</object-->
   </inputList>
 
 
@@ -52,7 +48,6 @@
       <description>Mean number of reconstructed tracks. Periodic triggers are NOT taken into account.</description>
     </object>
 
-    <!--
      <object>
       <name>ReconVertexDir_XYZ[3]</name>
       <formula><![CDATA[ReconDirXYZ]]></formula>
@@ -69,14 +64,12 @@
       <type>mean</type>
       <description>Vector[3] reporting the MEAN reconstructed Vertex position X, Y and Z. Periodic triggers are NOT taken into account. Only events with TkrVertex objects are being considered.</description>
     </object>
-    -->
     
 
       <!-- Cal Variables -->
 
-      <!--
       <object>
-      <name>ReconEnergy</name>
+	<name>ReconEnergy</name>
       <formula><![CDATA[RFun::loopovertowerANDcallayersANDcalcolumns_float(ReconEnergy_TowerCalLayerCalColumn)]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
       <type>truncatedmean[1.0,10000000]</type>
@@ -107,16 +100,13 @@
       <description>Vector [tower][callayer][calcolumn] containing the Mean energy (MeV) in the calorimeter crystal log defined by tower,callayer,calcolumn. Periodic triggers are NOT taken into account. If the crystal was totally empty (not used), the value is not taken into account in the average procedure.</description>
     </object>
 
-
-      <object>
+      <!--object>
       <name>ReconEnergy_TowerCalLayerCalColumnF[16][8][12][2]</name>
       <formula><![CDATA[foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: CalXtalFaceSignal[tower][callayer][calcolumn][calxface]]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
       <type>truncatedmean[1.0,10000000]</type>
       <description>Vector [tower][callayer][calcolumn][calxface] containing the Mean energy (MeV) in the calorimeter crystal diode defined by tower,callayer,calcolumn, calxface. Periodic triggers are NOT taken into account. If the diode was not used, the value is not taken into account in the average procedure.</description>
-    </object>
-
-
+    </object-->
       
       <object>
       <name>ReconZeroEnergy_TowerCalLayer[16][8]</name>
@@ -144,7 +134,6 @@
       <type>outputfloat</type>
       <description>Error in quantity ReconZeroEnergy_Fraction_TowerCalLayer.</description>
     </object>
-    -->
 
 
 
