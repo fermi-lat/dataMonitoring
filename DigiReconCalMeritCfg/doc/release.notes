@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+- Started putting back the recon variables for the Pass 8 flavor of the
+  L1 Proc. At this point in time most of the TKR and CAL stuff is
+  up and running. Need to work on the ACD.
+
  DigiReconCalMeritCfg-01-26-06 30-Jan-2015 monzani removing normalized merit quantities -again-
  DigiReconCalMeritCfg-01-26-05 30-Jan-2015 monzani fixing more typos
  DigiReconCalMeritCfg-01-26-04 30-Jan-2015 monzani adding back normalized quantities
