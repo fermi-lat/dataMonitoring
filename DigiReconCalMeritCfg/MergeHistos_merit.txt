@@ -1,5 +1,5 @@
-        PtMcIlwainL_TH1  Sum
-        RigidityCutoff_TH1  Sum
+       PtMcIlwainL_TH1  Sum
+       RigidityCutoff_TH1  Sum
        Correlation_RateEvtsBeforeFilters_McIlwainL_TH2  Sum
        Correlation_RateEvtsBeforeCuts_McIlwainL_TH2  Sum
        Correlation_RateEvtsBeforeFilters_RigidityCutoff_TH2  Sum
@@ -31,16 +31,16 @@
        Rate_UltraCleanEvtsBelowZenithTheta100_E100MeV_TH1 Sum
        Rate_SourceEvtsBelowZenithTheta100_E100MeV_TH1  Sum
        LLEEvtsBelowZenithTheta100_BinsRaDec_TH2  Sum
-       AcdCornerDoca_TH1  Sum
-       AcdTileCount_TH1  Sum
-       AcdRibbonCount_TH1  Sum
-       AcdActiveDist3D_TH1  Sum
-       AcdTkr1ActiveDist_TH1  Sum
-       AcdRibbonActDist_TH1  Sum
-       AcdRibbonEnergy_Log10_TH1  Sum
-       AcdTotalEnergy_Log10_TH1  Sum
-       AcdActDistTileEnergy_Log10_TH1  Sum
-       AcdTkr1ActDistTileEnergy_Log10_TH1  Sum
+       Acd2CornerDoca_TH1  Sum
+       Acd2TileCount_TH1  Sum
+       Acd2RibbonCount_TH1  Sum
+       Acd2CRActiveDist3D_TH1  Sum
+       Acd2CR1ActiveDist_TH1  Sum
+       Acd2RibbonActDist_TH1  Sum
+       Acd2RibbonEnergy_Log10_TH1  Sum
+       Acd2TotalTileEnergy_Log10_TH1  Sum
+       Acd2CRActDistTileEnergy_Log10_TH1  Sum
+       Acd2CR1ActDistTileEnergy_Log10_TH1  Sum
        TkrTwrEdge_TH1  Sum
        Tkr1TwrGap_TH1  Sum
        Tkr1LATEdge_TH1  Sum
@@ -61,19 +61,13 @@
        CalTransRms_Zoom_TH1  Sum
        CalEnergyRaw_Log10_TH1  Sum
        CalEnergyCorr_Log10_TH1  Sum
-       CTBBestEnergy_Log10_TH1  Sum
-       CTBBestZDir_TH1  Sum
-       CTBClassLevel_TH1  Sum
-       CTBParticleType_TH1  Sum
-       CTBBestEnergyProb_TH1  Sum
-       CTBCORE_TH1  Sum
-       CTBBestEnergyRatio_TH1  Sum
-       CTBCalDocaAngle_TH1  Sum
-       CTBCalDocaAngle_Zoom_TH1  Sum
+       WP8BestEnergy_Log10_TH1  Sum
+       WP8BestZDir_TH1  Sum
+       WP8CTBestEnergyProb_TH1  Sum
+       WP8CTPSFCore_TH1  Sum
        FT1Energy_Log10_TH1  Sum
        FT1Theta_TH1  Sum
        FT1Phi_TH1  Sum
        FT1ZenithTheta_TH1  Sum
        FT1EarthAzimuth_TH1  Sum
        FT1EventClassBitMap_TH1  Sum
-       EvtCREventClassBitMap_TH1  Sum

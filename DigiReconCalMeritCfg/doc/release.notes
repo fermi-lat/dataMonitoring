@@ -4,6 +4,9 @@
  *
  *                  EOH
 
+- Added one more CAL variable that had been accidently left out.
+- Configuration files for hist merging updated.
+
  DigiReconCalMeritCfg-01-29-00 04-Feb-2015 lbaldini Acd2 variables in for recon hist.
 - Acd2 quantities back in for the recon hist.
 
