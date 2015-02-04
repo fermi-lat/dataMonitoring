@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-29-01 04-Feb-2015 lbaldini Configuration files for the eor merging updated.
 - Added one more CAL variable that had been accidently left out.
 - Configuration files for hist merging updated.
 
