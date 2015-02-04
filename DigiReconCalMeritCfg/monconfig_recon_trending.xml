@@ -15,7 +15,7 @@
 
     <!-- Cal Variables -->
     <object>ReconEnergy_TowerCalLayerCalColumn</object>
-    <!--object>CalXtalFaceSignal</object-->
+    <object>CalXtalFaceSignal</object>
   </inputList>
 
 
@@ -30,17 +30,16 @@
       <description>Counter of events with condsummaryBitAnd30 AND NotcondsummaryBitAnd32)</description>
     </object>
 
-     <!-- Tkr Variables -->
-     <object>
-       <name>ReconNumTracks[11]</name>
-       <formula><![CDATA[ReconNumTracks]]></formula>
-       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
-       <type>rate</type>
-       <description>Vector[11] reporting the rate of events with n tracks [0,10]. Periodic triggers are NOT taken into account.</description>
+    <!-- Tkr Variables -->
+    <object>
+      <name>ReconNumTracks[11]</name>
+      <formula><![CDATA[ReconNumTracks]]></formula>
+      <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
+      <type>rate</type>
+      <description>Vector[11] reporting the rate of events with n tracks [0,10]. Periodic triggers are NOT taken into account.</description>
     </object>
-
-
-     <object>
+    
+    <object>
       <name>ReconTracks</name>
       <formula><![CDATA[RFun::returnnonzerocomponent(ReconNumTracks,11)]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32) && (RFun::returnnonzerocomponent(ReconNumTracks,11) >= 0)]]></cut>
@@ -48,7 +47,7 @@
       <description>Mean number of reconstructed tracks. Periodic triggers are NOT taken into account.</description>
     </object>
 
-     <object>
+    <object>
       <name>ReconVertexDir_XYZ[3]</name>
       <formula><![CDATA[ReconDirXYZ]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
@@ -56,8 +55,7 @@
       <description>Vector[3] reporting the MEAN reconstructed Vertex direction X, Y and Z. Periodic triggers are NOT taken into account.</description>
     </object>
 
-
-     <object>
+    <object>
       <name>ReconVertexPos_XYZ[3]</name>
       <formula><![CDATA[ReconVertexPosXYZ]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32) && ReconVertexPosXYZ[0]<1000000]]></cut>
@@ -66,10 +64,10 @@
     </object>
     
 
-      <!-- Cal Variables -->
+    <!-- Cal Variables -->
 
-      <object>
-	<name>ReconEnergy</name>
+    <object>
+      <name>ReconEnergy</name>
       <formula><![CDATA[RFun::loopovertowerANDcallayersANDcalcolumns_float(ReconEnergy_TowerCalLayerCalColumn)]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
       <type>truncatedmean[1.0,10000000]</type>
@@ -92,7 +90,7 @@
       <description>Vector [tower][callayer] reporting the mean energy (MeV) in the calorimeter layer defined by tower,callayer. Periodic triggers are NOT taken into account. If the layer was totally empty, the value is not taken into account in the average procedure.</description>
     </object>
 
-      <object>
+    <object>
       <name>ReconEnergy_TowerCalLayerCalColumn[16][8][12]</name>
       <formula><![CDATA[foreachtower: foreachcallayer: foreachcalcolumn: ReconEnergy_TowerCalLayerCalColumn[tower][callayer][calcolumn] ]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
@@ -100,15 +98,15 @@
       <description>Vector [tower][callayer][calcolumn] containing the Mean energy (MeV) in the calorimeter crystal log defined by tower,callayer,calcolumn. Periodic triggers are NOT taken into account. If the crystal was totally empty (not used), the value is not taken into account in the average procedure.</description>
     </object>
 
-      <!--object>
+    <object>
       <name>ReconEnergy_TowerCalLayerCalColumnF[16][8][12][2]</name>
       <formula><![CDATA[foreachtower: foreachcallayer: foreachcalcolumn: foreachcalxface: CalXtalFaceSignal[tower][callayer][calcolumn][calxface]]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
       <type>truncatedmean[1.0,10000000]</type>
       <description>Vector [tower][callayer][calcolumn][calxface] containing the Mean energy (MeV) in the calorimeter crystal diode defined by tower,callayer,calcolumn, calxface. Periodic triggers are NOT taken into account. If the diode was not used, the value is not taken into account in the average procedure.</description>
-    </object-->
+    </object>
       
-      <object>
+    <object>
       <name>ReconZeroEnergy_TowerCalLayer[16][8]</name>
       <formula><![CDATA[foreachtower: foreachcallayer: RFun::loopovercalcolumns_float(ReconEnergy_TowerCalLayerCalColumn[tower][callayer]) <=0]]></formula>
       <cut><![CDATA[ condsummary&30 && !(condsummary&32)]]></cut>
@@ -116,8 +114,7 @@
       <description>Vector [tower][callayer] containing the number of times the calorimeter layer defined by tower,callayer is empty. Periodic triggers are NOT taken into account.</description>
     </object>
 
-
-      <object>
+    <object>
       <name>ReconZeroEnergy_Fraction_TowerCalLayer[16][8]</name>
       <formula><![CDATA[foreachtower: foreachcallayer: Counter_CondsummaryBitAnd30_NOTPeriodic_Rec >0 ? double(Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec) : 0.0]]></formula>
       <cut><![CDATA[]]></cut>
@@ -126,7 +123,7 @@
       <description>Vector [tower][callayer] containing the fraction of events with ZERO energy (as well as events whose energy in [tower][callayer] could not be reconstructed) in the calorimeter layer defined by tower,callayer. Periodic triggers are NOT taken into account.</description>
     </object>
 
-        <object>
+    <object>
       <name>ReconZeroEnergy_Fraction_TowerCalLayer_err[16][8]</name>
       <formula><![CDATA[foreachtower: foreachcallayer: Counter_CondsummaryBitAnd30_NOTPeriodic_Rec>0 ? sqrt((1./double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec))*(double(Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec))*(1-(double(Counter_ReconZeroEnergy_TowerCalLayer[tower][callayer])/double(Counter_CondsummaryBitAnd30_NOTPeriodic_Rec)))): 0.0]]></formula>
       <cut><![CDATA[]]></cut>
@@ -134,8 +131,6 @@
       <type>outputfloat</type>
       <description>Error in quantity ReconZeroEnergy_Fraction_TowerCalLayer.</description>
     </object>
-
-
 
   </outputList>
 
