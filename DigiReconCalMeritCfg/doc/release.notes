@@ -4,6 +4,8 @@
  *
  *                  EOH
 
+- Acd2 quantities back in for the recon hist.
+
  DigiReconCalMeritCfg-01-28-01 03-Feb-2015 lbaldini Add acd in merit trend, repalce CTB quantities with corresponding WP8 ones
 - All the ACD quantities for the merit trending file back in (in the Acd2 flavor).
 - Old CTB variables replaced with the WP8 equivalent for the merit trending.
