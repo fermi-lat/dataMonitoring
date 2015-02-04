@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-29-00 04-Feb-2015 lbaldini Acd2 variables in for recon hist.
 - Acd2 quantities back in for the recon hist.
 
  DigiReconCalMeritCfg-01-28-01 03-Feb-2015 lbaldini Add acd in merit trend, repalce CTB quantities with corresponding WP8 ones
