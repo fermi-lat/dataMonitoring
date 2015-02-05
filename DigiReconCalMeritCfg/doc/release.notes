@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-01-30-00 05-Feb-2015 bregeon Introduce DQMEventClass, DQMEventType - LPATE-183
 - Replaced FT1EventClass and CTBParticleType with DQMEventClass and DQMEventType,
   but did not check that the cuts were meaningful.
 
