@@ -59,13 +59,17 @@
     <object>FT1Phi</object>
     <object>FT1ZenithTheta</object>
     <object>FT1EarthAzimuth</object>
-    <object>FT1EventClass</object>
     <object>FT1Ra</object>
     <object>FT1Dec</object>
     
     <!-- Pt parameters -->
     <object>PtMcIlwainL</object>
-   
+
+    <!-- DQM variables for event rates -->
+
+    <object>DQMEventClass</object>
+    <object>DQMEventType</object>
+
   </inputList>
 
 
@@ -160,7 +164,7 @@
     <object>
       <name>TransientEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&16 ]]></cut>
+      <cut><![CDATA[ DQMEventClass&16 ]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 TRANSIENT_R020 cuts.</description>
     </object>
@@ -168,7 +172,7 @@
     <object>
       <name>TransientEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&16 && FT1Energy>100 ]]></cut>
+      <cut><![CDATA[ DQMEventClass&16 && FT1Energy>100 ]]></cut>
       <type>rate</type>
       <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 TRANSIENT_R020 cuts.</description>
     </object>
@@ -176,7 +180,7 @@
     <object>
       <name>CleanEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&256 ]]></cut>
+      <cut><![CDATA[ DQMEventClass&256 ]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 CLEAN gamma cuts.</description>
     </object>
@@ -184,7 +188,7 @@
     <object>
       <name>CleanEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&256 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ DQMEventClass&256 && FT1Energy>100]]></cut>
       <type>rate</type>
       <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 CLEAN gamma cuts.</description>
     </object>
@@ -192,7 +196,7 @@
     <object>
       <name>UltraCleanEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&512 ]]></cut>
+      <cut><![CDATA[ DQMEventClass&512 ]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 ULTRACLEAN gamma cuts.</description>
     </object>
@@ -200,7 +204,7 @@
     <object>
       <name>UltraCleanEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&512 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ DQMEventClass&512 && FT1Energy>100]]></cut>
       <type>rate</type>
       <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 ULTRACLEAN gamma cuts.</description>
     </object>
@@ -209,7 +213,7 @@
     <object>
       <name>SourceEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&128 ]]></cut>
+      <cut><![CDATA[ DQMEventClass&128 ]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 SOURCE gamma cuts.</description>
     </object>
@@ -218,7 +222,7 @@
     <object>
       <name>SourceEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&128 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ DQMEventClass&128 && FT1Energy>100]]></cut>
       <type>rate</type>
       <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 SOURCE gamma cuts.</description>
     </object>
@@ -227,7 +231,7 @@
     <object>
       <name>TransientEvtsBelowZenithTheta100_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&16 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ DQMEventClass&16 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 TRANSIENT_R020 gamma cutsand the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
     </object>
@@ -235,7 +239,7 @@
     <object>
       <name>CleanEvtsBelowZenithTheta100_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&256 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ DQMEventClass&256 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 CLEAN gamma cuts and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
     </object>
@@ -243,7 +247,7 @@
     <object>
       <name>UltraCleanEvtsBelowZenithTheta100_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&512 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ DQMEventClass&512 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 ULTRACLEAN gamma cuts and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
     </object>
@@ -251,7 +255,7 @@
     <object>
       <name>SourceEvtsBelowZenithTheta100_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&128 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
+      <cut><![CDATA[ DQMEventClass&128 && FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 SOURCE gamma cuts and the cut FT1ZenithTheta smaller than 100 and FT1Energy above 100 MeV.</description>
     </object>
@@ -259,7 +263,7 @@
     <object>
       <name>LLEEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ FT1EventClass&65536 ]]></cut>
+      <cut><![CDATA[ DQMEventClass&65536 ]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 LLE gamma cuts.</description>
     </object>
@@ -662,7 +666,7 @@
       <object>
       <name>LLEEvtsBelowZenithTheta100_BinsRaDec_TH2</name>
       <formula><![CDATA[ foreachllerabin: foreachlledecbin: RFun::IsEventInThisRaDecBin(FT1Ra, FT1Dec, llerabin, lledecbin) ]]></formula>
-      <cut><![CDATA[ FT1EventClassBitMap[14] && FT1ZenithTheta<100 ]]></cut>
+      <cut><![CDATA[ DQMEventClassBitMap[14] && FT1ZenithTheta<100 ]]></cut>
       <type>histogram-vecdim-2d[8,-0.5, 7.5, 5, -0.5, 4.5,0]</type>
       <titledesc>LLE event Hit Map RA:Dec</titledesc>
       <axisdesc>[RA bin, DEC bin, N]</axisdesc>
@@ -1078,13 +1082,13 @@
     
 
     <!--object>
-      <name>FT1EventClassBitMap_TH1</name>
-      <formula><![CDATA[  FT1EventClassBitMap ]]></formula>
+      <name>DQMEventClassBitMap_TH1</name>
+      <formula><![CDATA[  DQMEventClassBitMap ]]></formula>
       <cut><![CDATA[]]></cut>
       <type>histogram-vecdim-1d[16,-0.5,15.5,0]</type>
-      <titledesc>Bit map of variable FT1EventClass</titledesc>
+      <titledesc>Bit map of variable DQMEventClass</titledesc>
       <axisdesc>[Bits, N]</axisdesc>
-      <description>Bit map from merit variable FT1EventClass (Reminder: a single event could have several entries in this histogram)</description>
+      <description>Bit map from merit variable DQMEventClass (Reminder: a single event could have several entries in this histogram)</description>
     </object-->
     	  
 
