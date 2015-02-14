@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ IGRF-03-01-02 13-Feb-2015 monzani fixing initize function which had the wrong number of parameters
  IGRF-03-01-01 26-Jan-2015 monzani hardcoding the path to f2py
 - Modifying Makefile to hardcode the location of f2py. Temporary?
 
