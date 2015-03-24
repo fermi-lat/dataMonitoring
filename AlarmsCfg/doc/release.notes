@@ -4,6 +4,12 @@
  *
  *                  EOH
 
+ 
+ -acdpeds_eor_alarms.xml: relaxing  warning limit for AcdPedPedMeanDeviation_PMTB_TH1 (acd tile 44).    
+  Upper warning limit changed from 8 to 10. 
+  Relevant thread:  https://www-glast.stanford.edu/protected/mail/datamon/14159.html 
+
+
  AlarmsCfg-06-05-00 31-Dec-2014 maldera relaxing the alarms limits on the 20MHz clock (Tick20MHzDeviation)
  -Relaxing the alarms limits on the 20MHz clock frequency deviation.
   In digi_eor_alarms.xml and  fastmon_eor_alarms.xml: upper limits for x_average of Tick20MHzDeviation_TH1
