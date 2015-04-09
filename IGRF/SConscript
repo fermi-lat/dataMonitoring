@@ -1,3 +1,3 @@
 # -*- python -*-
 # Authors: M. Ackermann <markusa@slac.stanford.edu>
-# Version: IGRF-03-01-03
+# Version: IGRF-03-01-04
