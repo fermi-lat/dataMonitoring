@@ -298,7 +298,7 @@
     
 
      <object>
-      <name>EvtsBeforeCutsBelow100ZenithTheta_E100MeV </name>
+      <name>EvtsBeforeCutsBelow100ZenithTheta_E100MeV</name>
       <formula><![CDATA[1]]></formula>
       <cut><![CDATA[FT1ZenithTheta<100 && FT1Energy>100]]></cut>
       <type>rate</type>
