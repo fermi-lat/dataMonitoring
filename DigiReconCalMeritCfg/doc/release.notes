@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-02-01-00 17-Apr-2015 monzani removing DeviationFromOneInSigma variables
  DigiReconCalMeritCfg-02-00-01 17-Apr-2015 monzani more xml cleanup
  DigiReconCalMeritCfg-02-00-00 18-Feb-2015 monzani updating revision number for Pass8 - should have done this sooner
  DigiReconCalMeritCfg-01-30-01 12-Feb-2015 monzani removing normalized merit quantities
