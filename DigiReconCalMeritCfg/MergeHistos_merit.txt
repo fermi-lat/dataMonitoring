@@ -4,15 +4,6 @@
        Correlation_RateEvtsBeforeCuts_McIlwainL_TH2  Sum
        Correlation_RateEvtsBeforeFilters_RigidityCutoff_TH2  Sum
        Correlation_RateEvtsBeforeCuts_RigidityCutoff_TH2  Sum
-       DeviationFromOneInSigmas_NormRateEvtsBeforeFilters_TH1  Sum
-       DeviationFromOneInSigmas_NormRateEvtsBeforeCuts_TH1  Sum
-       DeviationFromOneInSigmas_NormRateEvtsBeforeCutsWithGAMMAFilter_TH1  Sum
-       DeviationFromOneInSigmas_NormRateEvtsBeforeCutsWithFswGAMMAFilter_TH1  Sum
-       DeviationFromOneInSigmas_NormRateTransientEvts_TH1  Sum
-       DeviationFromOneInSigmas_NormRateSourceEvts_TH1  Sum
-       DeviationFromOneInSigmas_NormRateTriggerEngine_TH1_TriggerEngine_TowerLoop  Sum
-       DeviationFromOneInSigmas_NormRateGAMMAFilterAndTriggerEngine_TH1_TriggerEngine_TowerLoop  Sum
-       DeviationFromOneInSigmas_NormRateFswGAMMAFilterAndTriggerEngine_TH1_TriggerEngine_TowerLoop  Sum
        Rate_EvtsBeforeFilters_TH1  Sum
        Rate_EvtsBeforeCuts_TH1  Sum
        Rate_EvtsBeforeCuts_E100MeV_TH1  Sum
