@@ -4,6 +4,13 @@
  *
  *                  EOH
 
+
+ -Replace Acd2CRActiveDist3D with Acd2TileActDist3D
+ -Replace Acd2CR1ActDistTileEnergy with Acd2TileActDistEnergy  
+ -Add Acd2Tkr1TileActDistEnergy
+ -Replace Acd2CR1ActiveDist with Acd2Tkr1TileActDist
+ -remove Acd2CRActDistTileEnergy
+
  DigiReconCalMeritCfg-02-01-00 17-Apr-2015 monzani removing DeviationFromOneInSigma variables
  DigiReconCalMeritCfg-02-00-01 17-Apr-2015 monzani more xml cleanup
  DigiReconCalMeritCfg-02-00-00 18-Feb-2015 monzani updating revision number for Pass8 - should have done this sooner

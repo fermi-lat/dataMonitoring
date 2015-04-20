@@ -25,13 +25,13 @@
        Acd2CornerDoca_TH1  Sum
        Acd2TileCount_TH1  Sum
        Acd2RibbonCount_TH1  Sum
-       Acd2CRActiveDist3D_TH1  Sum
-       Acd2CR1ActiveDist_TH1  Sum
+       Acd2TileActDist3D_TH1  Sum
+       Acd2Tkr1TileActDist_TH1 Sum
        Acd2RibbonActDist_TH1  Sum
        Acd2RibbonEnergy_Log10_TH1  Sum
        Acd2TotalTileEnergy_Log10_TH1  Sum
-       Acd2CRActDistTileEnergy_Log10_TH1  Sum
-       Acd2CR1ActDistTileEnergy_Log10_TH1  Sum
+       Acd2Tkr1TileActDistEnergy_Log10_TH1  Sum
+       Acd2TileActDistEnergy_Log10_TH1  Sum
        TkrTwrEdge_TH1  Sum
        Tkr1TwrGap_TH1  Sum
        Tkr1LATEdge_TH1  Sum

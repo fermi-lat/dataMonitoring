@@ -17,14 +17,16 @@
     <object>Acd2CornerDoca</object>
     <object>Acd2TileCount</object>
     <object>Acd2RibbonCount</object>
-    <object>Acd2CRActiveDist3D</object>
-    <object>Acd2CR1ActiveDist</object>
-    <object>Acd2CR1ActDistTileEnergy</object>
+    <object>Acd2TileActDist3D</object>
+    <object>Acd2Tkr1TileActDist</object>
+    <object>Acd2TileActDistEnergy</object>
     <object>Acd2RibbonActDist</object>
     <object>Acd2RibbonEnergy</object>
     <object>Acd2TotalTileEnergy</object>
-    <object>Acd2CRActDistTileEnergy</object>
-        
+    <!--object>Acd2CRActDistTileEnergy</object-->
+    <object>Acd2Tkr1TileActDistEnergy</object>
+      
+  
     <!-- Tracker -->
     <object>TkrTwrEdge</object>
     <object>Tkr1TwrGap</object>
@@ -600,24 +602,26 @@
     </object>
 
     <object>
-      <name>Acd2CRActiveDist3D_TH1</name>
-      <formula><![CDATA[ Acd2CRActiveDist3D ]]></formula>
-      <cut><![CDATA[ Acd2CRActiveDist3D != (-2000) ]]></cut>
+      <name>Acd2TileActDist3D_TH1</name>
+      <formula><![CDATA[Acd2TileActDist3D]]></formula>
+      <cut><![CDATA[ Acd2TileActDist3D != (-2000)]]></cut>
       <type>histogram-1d[401,-2005,2005]</type>
-      <titledesc>Acd2CRActiveDist3D</titledesc>
-      <axisdesc>[Acd2CRActiveDist3D(mm), N]</axisdesc>
-      <description>Distribution of Acd2CRActiveDist3D values.</description>
+      <titledesc>Acd2TileActDist3D</titledesc>
+      <axisdesc>[Acd2TileActDist3D(mm), N]</axisdesc>
+      <description>Distribution of Acd2TileActDist3D values.</description>
     </object>
 
+
     <object>
-      <name>Acd2CR1ActiveDist_TH1</name>
-      <formula><![CDATA[ Acd2CR1ActiveDist ]]></formula>
-      <cut><![CDATA[Acd2CR1ActiveDist != (-2000) ]]></cut>
+      <name>Acd2Tkr1TileActDist_TH1</name>
+      <formula><![CDATA[Acd2Tkr1TileActDist]]></formula>
+      <cut><![CDATA[Acd2Tkr1TileActDist != (-2000) ]]></cut>
       <type>histogram-1d[401,-2005,2005]</type>
-      <titledesc>Acd2CR1ActiveDist</titledesc>
-      <axisdesc>[Acd2CR1ActiveDist(mm), N]</axisdesc>
-      <description>Distribution of Acd2CR1ActiveDist values.</description>
+      <titledesc>Acd2Tkr1TileActDist</titledesc>
+      <axisdesc>[Acd2Tkr1TileActDist(mm), N]</axisdesc>
+      <description>Distribution of Acd2Tkr1TileActDist values.</description>
     </object>
+
 
     <object>
       <name>Acd2RibbonActDist_TH1</name>
@@ -649,7 +653,7 @@
       <description>Distribution of log10(Acd2TotaTilelEnergy) values.</description>
     </object>
 
-    <object>
+    <!--object>
       <name>Acd2CRActDistTileEnergy_Log10_TH1</name>
       <formula><![CDATA[ TMath::Log10(Acd2CRActDistTileEnergy) ]]></formula>
       <cut><![CDATA[ Acd2CRActDistTileEnergy>0 ]]></cut>
@@ -657,17 +661,34 @@
       <titledesc>log10(Acd2CRActDistTileEnergy)</titledesc>
       <axisdesc>[log10(Acd2CRActDistTileEnergy), N]</axisdesc>
       <description>Distribution of log10(Acd2CRActDistTileEnergy) values. Only positive values are being used.</description>
+    </object-->
+
+
+
+     <object>
+      <name>Acd2Tkr1TileActDistEnergy_Log10_TH1</name>
+      <formula><![CDATA[TMath::Log10(Acd2Tkr1TileActDistEnergy) ]]></formula>
+      <cut><![CDATA[Acd2Tkr1TileActDistEnergy>0 ]]></cut>
+      <type>histogram-1d[120,-4,8]</type>
+      <titledesc>log10(Acd2Tkr1TileActDistEnergy)</titledesc>
+      <axisdesc>[log10(Acd2Tkr1TileActDistEnergy), N]</axisdesc>
+      <description>Distribution of log10(Acd2Tkr1TileActDistEnergy) values.</description>
     </object>
 
+
+
     <object>
-      <name>Acd2CR1ActDistTileEnergy_Log10_TH1</name>
-      <formula><![CDATA[ TMath::Log10(Acd2CR1ActDistTileEnergy) ]]></formula>
-      <cut><![CDATA[ Acd2CR1ActDistTileEnergy>0 ]]></cut>
+      <name>Acd2TileActDistEnergy_Log10_TH1</name>
+      <formula><![CDATA[TMath::Log10(Acd2TileActDistEnergy)]]></formula>
+      <cut><![CDATA[Acd2TileActDistEnergy>0]]></cut>
       <type>histogram-1d[120,-4,8]</type>
-      <titledesc>log10(Acd2CR1ActDistTileEnergy)</titledesc>
-      <axisdesc>[log10(Acd2CR1ActDistTileEnergy), N]</axisdesc>
-      <description>Distribution of log10(Acd2CR1ActDistTileEnergy) values.</description>
-    </object>	   
+      <titledesc>log10(Acd2TileActDistEnergy)</titledesc>
+      <axisdesc>[log10(Acd2TileActDistEnergy), N]</axisdesc>
+      <description>Distribution of log10(Acd2TileActDistEnergy) values.</description>
+    </object>
+
+
+
 
 
     <!-- Tracker-->
