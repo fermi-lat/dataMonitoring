@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-02-01-01 22-Apr-2015 maldera fixing some Acd2 quantities
 
  -Replace Acd2CRActiveDist3D with Acd2TileActDist3D
  -Replace Acd2CR1ActDistTileEnergy with Acd2TileActDistEnergy  
