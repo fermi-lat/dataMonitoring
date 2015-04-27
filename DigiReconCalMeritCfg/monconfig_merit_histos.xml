@@ -655,7 +655,7 @@
 
     <!--object>
       <name>Acd2CRActDistTileEnergy_Log10_TH1</name>
-      <formula><![CDATA[ TMath::Log10(Acd2CRActDistTileEnergy) ]]></formula>
+      <formula><![CDATA[ TMath::Log10(Acd2CRActDistTileEnergy)]]></formula>
       <cut><![CDATA[ Acd2CRActDistTileEnergy>0 ]]></cut>
       <type>histogram-1d[120,-4,8]</type>
       <titledesc>log10(Acd2CRActDistTileEnergy)</titledesc>
@@ -667,7 +667,7 @@
 
      <object>
       <name>Acd2Tkr1TileActDistEnergy_Log10_TH1</name>
-      <formula><![CDATA[TMath::Log10(Acd2Tkr1TileActDistEnergy) ]]></formula>
+      <formula><![CDATA[TMath::Log10(Acd2Tkr1TileActDistEnergy)]]></formula>
       <cut><![CDATA[Acd2Tkr1TileActDistEnergy>0 ]]></cut>
       <type>histogram-1d[120,-4,8]</type>
       <titledesc>log10(Acd2Tkr1TileActDistEnergy)</titledesc>
