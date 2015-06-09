@@ -184,29 +184,29 @@
 	<condition name="min_entries" value="3000"/>
 	<parameter name="min" value="-600"/>
 	<parameter name="max" value="-400"/>
-	<warning_limits min="4.0" max="8.0"/>
-	<error_limits min="2.0" max="12.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<condition name="min_entries" value="3000"/>
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="-100"/>
-	<warning_limits min="4.0" max="8.0"/>
-	<error_limits min="2.0" max="12.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<condition name="min_entries" value="3000"/>
 	<parameter name="min" value="100"/>
 	<parameter name="max" value="400"/>
-	<warning_limits min="4.0" max="8.0"/>
-	<error_limits min="2.0" max="12.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<condition name="min_entries" value="3000"/>
 	<parameter name="min" value="400"/>
 	<parameter name="max" value="600"/>
-	<warning_limits min="4.0" max="8.0"/>
-	<error_limits min="2.0" max="12.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
     </alarmSet>
 
@@ -243,29 +243,29 @@
 	<condition name="min_entries" value="5000"/>
 	<parameter name="min" value="-600"/>
 	<parameter name="max" value="-400"/>
-	<warning_limits min="4.0" max="10.0"/>
-	<error_limits min="2.0" max="14.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<condition name="min_entries" value="5000"/>
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="-100"/>
-	<warning_limits min="4.0" max="10.0"/>
-	<error_limits min="2.0" max="14.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<condition name="min_entries" value="5000"/>
 	<parameter name="min" value="100"/>
 	<parameter name="max" value="400"/>
-	<warning_limits min="4.0" max="10.0"/>
-	<error_limits min="2.0" max="14.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<condition name="min_entries" value="5000"/>
 	<parameter name="min" value="400"/>
 	<parameter name="max" value="600"/>
-	<warning_limits min="4.0" max="10.0"/>
-	<error_limits min="2.0" max="14.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
     </alarmSet>
 
@@ -302,29 +302,29 @@
 	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="-600"/>
 	<parameter name="max" value="-400"/>
-	<warning_limits min="4.0" max="8.0"/>
-	<error_limits min="2.0" max="12.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="-100"/>
-	<warning_limits min="4.0" max="8.0"/>
-	<error_limits min="2.0" max="12.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="100"/>
 	<parameter name="max" value="400"/>
-	<warning_limits min="4.0" max="8.0"/>
-	<error_limits min="2.0" max="12.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="400"/>
 	<parameter name="max" value="600"/>
-	<warning_limits min="4.0" max="8.0"/>
-	<error_limits min="2.0" max="12.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
     </alarmSet>
 
@@ -361,29 +361,29 @@
 	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="-600"/>
 	<parameter name="max" value="-400"/>
-	<warning_limits min="5.0" max="14.0"/>
-	<error_limits min="3.0" max="18.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="-400"/>
 	<parameter name="max" value="-100"/>
-	<warning_limits min="5.0" max="14.0"/>
-	<error_limits min="3.0" max="18.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="100"/>
 	<parameter name="max" value="400"/>
-	<warning_limits min="5.0" max="14.0"/>
-	<error_limits min="3.0" max="18.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
       <alarm function="gauss_rms" enabled="True">
 	<condition name="min_entries" value="10000"/>
 	<parameter name="min" value="400"/>
 	<parameter name="max" value="600"/>
-	<warning_limits min="5.0" max="14.0"/>
-	<error_limits min="3.0" max="18.0"/>
+	<warning_limits min="1.0" max="4.0"/>
+	<error_limits min="0.1" max="10.0"/>
       </alarm>
     </alarmSet>
 
