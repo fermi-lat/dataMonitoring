@@ -14,33 +14,23 @@
     <xmax>3</xmax>
     <undefined_value></undefined_value>
   </alarmSet>
-  <alarmSet name="ReconAcdPhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_*" algorithm="gauss_mean" enabled="True">
+  <alarmSet name="ReconAcd2PhaMipsCorrectedAngle_PMTA_Zoom_TH1_AcdTile_*" algorithm="gauss_mean" enabled="True">
     <xbins>100</xbins>
     <xmin>0.5</xmin>
     <xmax>2.0</xmax>
   </alarmSet>
-  <alarmSet name="ReconAcdPhaMipsCorrectedAngle_PMTB_Zoom_TH1_AcdTile_*" algorithm="gauss_mean" enabled="True">
+  <alarmSet name="ReconAcd2PhaMipsCorrectedAngle_PMTB_Zoom_TH1_AcdTile_*" algorithm="gauss_mean" enabled="True">
     <xbins>100</xbins>
     <xmin>0.5</xmin>
     <xmax>2.0</xmax>
   </alarmSet>
-  <alarmSet name="ReconAcdPhaMipsCorrectedAngle_PMTA_TH1_AcdTile_*" algorithm="x_average" enabled="True">
-    <xbins>100</xbins>
-    <xmin>0.0</xmin>
-    <xmax>3.0</xmax>
-  </alarmSet>
-  <alarmSet name="ReconAcdPhaMipsCorrectedAngle_PMTB_TH1_AcdTile_*" algorithm="x_average" enabled="True">
-    <xbins>100</xbins>
-    <xmin>0.0</xmin>
-    <xmax>3.0</xmax>
-  </alarmSet>
-  <alarmSet name="ReconAcdPhaMips_PMTA_Zoom_TH1_AcdTile_*" algorithm="leftmost_edge" enabled="True">
+  <alarmSet name="ReconAcd2PhaMips_PMTA_Zoom_TH1_AcdTile_*" algorithm="leftmost_edge" enabled="True">
     <xbins>100</xbins>
     <xmin>0</xmin>
     <xmax>1</xmax>
     <undefined_value></undefined_value>
   </alarmSet>
-  <alarmSet name="ReconAcdPhaMips_PMTB_Zoom_TH1_AcdTile_*" algorithm="leftmost_edge" enabled="True">
+  <alarmSet name="ReconAcd2PhaMips_PMTB_Zoom_TH1_AcdTile_*" algorithm="leftmost_edge" enabled="True">
     <xbins>100</xbins>
     <xmin>0</xmin>
     <xmax>1</xmax>
