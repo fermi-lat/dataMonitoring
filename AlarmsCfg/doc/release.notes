@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-00 09-Jun-2015 monzani Recon alarms for Pass8
  AlarmsCfg-06-05-01 24-Mar-2015 maldera relaxing warning limit on AcdPedPedMeanDeviation_PMTB_TH1 for acd tile 44
  
  -acdpeds_eor_alarms.xml: relaxing  warning limit for AcdPedPedMeanDeviation_PMTB_TH1 (acd tile 44).    
