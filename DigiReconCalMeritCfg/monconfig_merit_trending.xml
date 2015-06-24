@@ -566,7 +566,7 @@
     <object>
       <name>LLEEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ DQMEventClass&65536 ]]></cut>
+      <cut><![CDATA[ DQMEventClass&16777216 ]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 LLE gamma cuts. </description>
     </object>
@@ -592,7 +592,7 @@
     <object>
       <name>LLEEvts_E100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ DQMEventClass&65536  && FT1Energy>100]]></cut>
+      <cut><![CDATA[ DQMEventClass&16777216  && FT1Energy>100]]></cut>
       <type>rate</type>
       <description>Rate of events with FT1Energy above 100 MeV, after application of Pass 8 LLE gamma cuts.</description>
     </object>
@@ -600,7 +600,7 @@
     <object>
       <name>LLEEvts_BelowE100MeV</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ DQMEventClass&65536  && FT1Energy<100]]></cut>
+      <cut><![CDATA[ DQMEventClass&16777216  && FT1Energy<100]]></cut>
       <type>rate</type>
       <description>Rate of events with FT1Energy below 100 MeV, after application of Pass 8 LLE gamma cuts.</description>
     </object>
@@ -608,7 +608,7 @@
     <object>
       <name>LLEEvtsBelowZenithTheta100</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ DQMEventClass&65536 && FT1ZenithTheta<100]]></cut>
+      <cut><![CDATA[ DQMEventClass&16777216 && FT1ZenithTheta<100]]></cut>
       <type>rate</type>
       <description>Rate of events with FT1ZenithTheta below 100 deg, after application of Pass 8 LLE gamma cuts.</description>
    </object>
@@ -616,7 +616,7 @@
     <object>
       <name>LLEEvtsBelowZenithTheta100_BinsRaDec[8][5]</name>
       <formula><![CDATA[foreachllerabin: foreachlledecbin: RFun::IsEventInThisRaDecBin(FT1Ra, FT1Dec, llerabin, lledecbin)]]></formula>
-      <cut><![CDATA[ DQMEventClass&65536 && FT1ZenithTheta<100]]></cut>
+      <cut><![CDATA[ DQMEventClass&16777216 && FT1ZenithTheta<100]]></cut>
       <type>rate</type>
       <description>Two dimensional vector [8][5] reporting the rate of LLE events with FT1ZenithTheta below 100 deg, that fall into 40 predefined circles of 45 deg radius centered at the following RA and DEC locations: RA=[0,45,90,135,180,225,270,315], Dec=[-90,-45,0,45,90]. Note that the circles overlap and hence one event can fall into several of the above mentioned bins. Note also that the rates for Dec=-90 deg and for Dec=90 deg will be identical for all the RA bins.</description>
    </object>
