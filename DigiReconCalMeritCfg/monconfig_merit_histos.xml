@@ -265,7 +265,7 @@
     <object>
       <name>LLEEvts</name>
       <formula><![CDATA[ 1 ]]></formula>
-      <cut><![CDATA[ DQMEventClass&65536 ]]></cut>
+      <cut><![CDATA[ DQMEventClass&16777216 ]]></cut>
       <type>rate</type>
       <description>Rate of events after application of Pass 8 LLE gamma cuts.</description>
     </object>
@@ -558,7 +558,7 @@
       <object>
       <name>LLEEvtsBelowZenithTheta100_BinsRaDec_TH2</name>
       <formula><![CDATA[ foreachllerabin: foreachlledecbin: RFun::IsEventInThisRaDecBin(FT1Ra, FT1Dec, llerabin, lledecbin) ]]></formula>
-      <cut><![CDATA[ DQMEventClassBitMap[14] && FT1ZenithTheta<100 ]]></cut>
+      <cut><![CDATA[ DQMEventClass&16777216 && FT1ZenithTheta<100 ]]></cut>
       <type>histogram-vecdim-2d[8,-0.5, 7.5, 5, -0.5, 4.5,0]</type>
       <titledesc>LLE event Hit Map RA:Dec</titledesc>
       <axisdesc>[RA bin, DEC bin, N]</axisdesc>
