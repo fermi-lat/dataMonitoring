@@ -97,8 +97,8 @@ class pMeritTrendMerger:
         self.InputArrayDict  = {}
         self.OutputArrayDict = {}
         for (name, (length, type)) in self.VariableDict.items():
-            self.InputArrayDict[name] = array.array(type.lower(), [0.]*length)
-            self.OutputArrayDict[name] = array.array(type.lower(), [0.]*length)
+            self.InputArrayDict[name] = array.array(type.lower(), [0]*length)
+            self.OutputArrayDict[name] = array.array(type.lower(), [0]*length)
             suffix = '/%s' % type
             if length > 1:
                 suffix = '[%d]%s' % (length, type)

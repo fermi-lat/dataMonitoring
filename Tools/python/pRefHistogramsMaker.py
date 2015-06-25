@@ -18,7 +18,7 @@ if __name__ == '__main__':
     MIN_START_TIME = utc2met(convert2sec(MIN_START_DATE))
     MAX_START_TIME = utc2met(convert2sec(MAX_START_DATE))
     MIN_RUN_DURATION = 1000
-    RUN_INTENT = 'nomSciOps_diagEna'
+    RUN_INTENT = ['nomSciOps_diagEna']
     GROUPS = ['DIGIHIST', 'FASTMONHIST', 'RECONHIST', 'MERITHIST']
     for group in GROUPS:
         filePath = '%s_reference.txt' % group
