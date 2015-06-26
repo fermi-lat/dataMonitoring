@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-02 26-Jun-2015 maldera updating alarms limits
 <<<<<<< release.notes
    -Relaxing limits for CalXAdcPedPedMeanDifference_LEX1_TH1 and CalXAdcPedPedRMSDifference_LEX1_TH1 of Cal Channel 3060 in calpeds_eor_alarms.xml:
      CalXAdcPedPedMeanDifference_LEX1_TH1: lower limits changed from  0.45 to -0.45 (warning) and from 0 to -1 (error).
