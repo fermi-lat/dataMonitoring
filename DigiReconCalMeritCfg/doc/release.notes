@@ -3,6 +3,8 @@
  * Coordinator: D. Paneque <dpaneque@slac.stanford.edu>
  *
  *                  EOH
+ 
+ -updating normalization files
 
  DigiReconCalMeritCfg-02-01-04 24-Jun-2015 monzani corrected bitmap for LLE events
  DigiReconCalMeritCfg-02-01-03 24-Jun-2015 lbaldini LLE event bit updated to the P8R2 definition.
