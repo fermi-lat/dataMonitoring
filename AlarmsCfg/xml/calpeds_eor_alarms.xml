@@ -103,8 +103,18 @@
 	<warning_limits min="0.45" max="1.5"/>
 	<error_limits   min="0.0" max="2.0"/>
         <condition name="min_entries" value="750000"/>
+      	<parameter name="exclude" value="[3060+1]"/>
       </alarm> 
-    </alarmSet>
+     <!-- relaxing limits for channel 3060 see:  -->
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="-0.45" max="1.5"/>
+	<error_limits   min="-1.0" max="2.0"/>
+        <condition name="min_entries" value="750000"/>
+	<parameter name="only" value="[3060+1]"/>
+      </alarm> 
+     </alarmSet>
+
+
 
     <alarmSet name="CalXAdcPedPedMeanDifference_HEX8_TH1" enabled="True">
       <alarm function="y_values" enabled="True">
@@ -202,7 +212,14 @@
 	<warning_limits min="-0.5" max="2.0"/>
 	<error_limits   min="-1.0" max="3.0"/>
         <condition name="min_entries" value="750000"/>
+	<parameter name="exclude" value="[3060+1]"/>
       </alarm> 
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="-1.5" max="2.0"/>
+	<error_limits   min="-2.0" max="3.0"/>
+        <condition name="min_entries" value="750000"/>
+	<parameter name="only" value="[3060+1]"/>
+      </alarm>	
     </alarmSet>
 
     <alarmSet name="CalXAdcPedPedRMSDifference_HEX8_TH1" enabled="True">
