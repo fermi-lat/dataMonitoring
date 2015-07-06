@@ -4,6 +4,7 @@
  *
  *                  EOH
  
+ DigiReconCalMeritCfg-02-01-06 06-Jul-2015 maldera updating normalizations files
 
 
  -Updating the normalization files to the pass8 event classes. New normalizations cumputed using 12 day of data, from run 456835199 t\o 457867529
