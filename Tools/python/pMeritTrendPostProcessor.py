@@ -2,11 +2,12 @@
 from pMeritTrendProcessor import *
 
 
-NOT_ROCK_ANGLE_CUT = '!(%s)' % ROCK_ANGLE_CUT
-MIN_NORM_RATE    = 0.3
+#NOT_ROCK_ANGLE_CUT = '!(%s)' % ROCK_ANGLE_CUT
+NOT_ROCK_ANGLE_CUT= ' !(abs(abs(Mean_PtSCzenith) - 50) < 0.2)   && !(abs(abs(Mean_PtSCzenith) - 55) < 0.2)'
+MIN_NORM_RATE    = 0.1
 LIMB_FIT_FORMULA = '[0] + [1]*(x>[3])*(x-[3]) + [2]*(x>[3])*(x-[3])**2'
 MIN_ROCK_ANGLE   = 0
-LIMB_ROCK_ANGLE  = 35
+LIMB_ROCK_ANGLE  = 30
 MAX_ROCK_ANGLE   = 95
 LON_FIT_FORMULA  = 'min(1, 1 - [0] + [0]*abs([2]*(x - [1])))'
 
