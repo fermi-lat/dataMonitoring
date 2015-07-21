@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ DigiReconCalMeritCfg-02-01-07 21-Jul-2015 maldera Updating normalization files
  -Updating the normalization files. Fixing a small bug in the fits for Earth limb correction. 
   Computed using 26 days of data, from run 456835199 to  459113403
 
