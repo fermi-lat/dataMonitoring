@@ -180,6 +180,41 @@ class pMeritTrendProcessor:
     def formatNumber(self, number, numDecPlaces):
         formatString = '%%.%df' % numDecPlaces
         return (formatString % number).rstrip('0').rstrip('.')
+    
+    #filling empty histogram bins, looking for the closer bin !=0, in the 5 bins around
+    def fillEmptyBins(self,h,  binErrorCorr,   binContentCorr):
+           numBins=h.GetNbinsX()
+           nRange=6 #max dbin distance between the empty bin and the one used.
+           for i in range(1, numBins + 1):
+               if (h.GetBinContent(i)==0):
+                   binIndexDiff_left=100
+                   binIndexDiff_right=100
+                   binIndexDiff=0
+                   for jj in range(1,nRange):
+                       if (i-jj)>1 and  i+jj<numBins+1:
+                           if (h.GetBinContent(i-jj)!=0):
+                               binIndexDiff_left=jj
+                               break
+                   for jj in range(1,nRange):
+                       if (i-jj)>1 and  i+jj<numBins+1:
+                           if  h.GetBinContent(i+jj)!=0:
+                               binIndexDiff_right=jj
+                               break
+                   if  not(binIndexDiff_left==100 and binIndexDiff_right==100):
+                        if  binIndexDiff_left<binIndexDiff_right:
+                            binIndexDiff=-binIndexDiff_left
+                        else:   
+                            binIndexDiff=binIndexDiff_right
+                   
+                   binContentCorr[i]= h.GetBinContent(i+binIndexDiff)
+                   binErrorCorr[i]= h.GetBinError(i+binIndexDiff) 
+                            
+                   #in case of 1 bin hole, fill with the average
+                   if (i-1)>1 and  i+1<numBins+1:
+                       if ( h.GetBinContent(i-1)!=0 and  h.GetBinContent(i+1)!=0):
+                           binContentCorr[i]=(h.GetBinContent(i-1)+ h.GetBinContent(i+1))/2.
+                           binErrorCorr[i]= 0.5*math.sqrt((h.GetBinError(i-1)**2) +(h.GetBinError(i+1)**2))
+
 
     def getHistAsText(self, varName, index = None):
         h = self.getHist(varName, index)
@@ -211,11 +246,22 @@ class pMeritTrendProcessor:
         text = VARIABLE_PREAMBLE %\
                (compVarName, status, yMeanText, yMeanRmsText,
                 self.getFullCorrection(varName, index))
+
+        ######### empty bins correction
+        binErrorCorr=[0.]* (numBins+1)
+        binContentCorr=[0.]* (numBins+1)
+        self.fillEmptyBins(h,  binErrorCorr,   binContentCorr)
+
         for i in range(1, numBins + 1):
             loEdge = h.GetBinLowEdge(i)
             hiEdge = loEdge + h.GetBinWidth(i)
             binContent = h.GetBinContent(i)
             binError = h.GetBinError(i)
+            #empty bin correction
+            if binContent==0: 
+                binContent=binContentCorr[i]
+                binError=binErrorCorr[i]      
+
             if yMean > 0:
                 binContent /= yMean
                 binError   /= yMean
