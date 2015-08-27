@@ -73,6 +73,12 @@
       <alarm function="values" enabled="True">
 	<warning_limits min="0.0" max="0.2"/>
 	<error_limits   min="0.0" max="0.3"/>
+	<parameter      name="exclude"  value="[143]"></parameter>  
+      </alarm> 
+      <alarm function="values" enabled="True">
+	<warning_limits min="0.0" max="0.3"/>
+	<error_limits   min="0.0" max="0.4"/>
+	<parameter  name="only" value="[143]"></parameter>  <!-- tower 3, plane 35 -->
       </alarm> 
     </alarmSet>
    <alarmSet name="Time::OutF_Normalized_ToT_0_WhenTkrHitsExist_TowerPlane" enabled="True">
