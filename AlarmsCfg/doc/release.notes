@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-03 27-Aug-2015 maldera relaxing alarm limits for OutF_Normalized_ToT_250_TowerPlane (tower 3, plane 35)
    -Relaxing alarms limits for the quantity OutF_Normalized_ToT_250_TowerPlane, tower 3, plane 35:
     upper limits changed from 0.2(warning)0.3(error) to 0.3 0.4    
     Relevant thread:  https://www-glast.stanford.edu/protected/mail/datamon/14841.html  
