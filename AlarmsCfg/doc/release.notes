@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-04 18-Dec-2015 maldera relaxing warning limits for Lac_Thresholds on channles 13_1_1 (Pos face) and 13_1_4 (Neg face)
  AlarmsCfg-07-00-04 18-Dec-2015 maldera relaxing alarm limits for OutF_Normalized_ToT_250_TowerPlane (tower 3, plane 35)
   -Relaxing the warning limit for the quantities Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn (for tower 13, layer 1, column 1) and 
    Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn (for tower 13, layer 1, column 4) in xml/recon_eor_alarms.xml . 
