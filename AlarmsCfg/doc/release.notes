@@ -4,6 +4,12 @@
  *
  *                  EOH
 
+  -Relaxing the warning limit for the quantities Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn (for tower 13, layer 1, column 1) and 
+   Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn (for tower 13, layer 1, column 4) in xml/recon_eor_alarms.xml . 
+   In both cases the upper warning limit has been chaged from 2.75 to 2.8
+   Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/15245.html  
+
+
  AlarmsCfg-07-00-03 27-Aug-2015 maldera relaxing alarm limits for OutF_Normalized_ToT_250_TowerPlane (tower 3, plane 35)
    -Relaxing alarms limits for the quantity OutF_Normalized_ToT_250_TowerPlane, tower 3, plane 35:
     upper limits changed from 0.2(warning)0.3(error) to 0.3 0.4    
