@@ -3,8 +3,12 @@
  * Coordinator: Luca Baldini
  *
  *                  EOH
+ 
+  -Relaxing warning limit on the quantity "OutF_NormRateEvtsBeforeFilters" in xml/merit_trend_alarms.xml: 
+   upper warning limit changed from 1.17 to 1.24.
+   Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/15625.html
 
- AlarmsCfg-07-00-04 18-Dec-2015 maldera relaxing warning limits for Lac_Thresholds on channles 13_1_1 (Pos face) and 13_1_4 (Neg face)
+ AlarmsCfg-07-00-04 18-Dec-2015 maldera relaxing warning limits for Lac_Thresholds on channels 13_1_1 (Pos face) and 13_1_4 (Neg face)
   -Relaxing the warning limit for the quantities Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn (for tower 13, layer 1, column 1) and Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn (for tower 13, layer 1, column 4) in xml/recon_eor_alarms.xml . 
    In both cases the upper warning limit has been changed from 2.75 to 2.8
    Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/15245.html  
