@@ -4,6 +4,7 @@
  *
  *                  EOH
  
+ AlarmsCfg-07-00-05 01-Apr-2016 maldera updating upper warning limit on OutF_NormRateEvtsBeforeFilters
   -Relaxing warning limit on the quantity "OutF_NormRateEvtsBeforeFilters" in xml/merit_trend_alarms.xml: 
    upper warning limit changed from 1.17 to 1.24.
    Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/15625.html
