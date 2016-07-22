@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-06 22-Jul-2016 maldera updating upper warning limit on AcdPedPedMeanDeviation_PMTB_TH1 (ACD tile 10)
 
  -relaxing  warning limit for AcdPedPedMeanDeviation_PMTB_TH1 (acd tile 10) in xml/acdpeds_eor_alarms.xml:  
   Upper warning limit changed from 8 to 12. 
