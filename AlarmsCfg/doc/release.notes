@@ -3,6 +3,10 @@
  * Coordinator: Luca Baldini
  *
  *                  EOH
+ 
+ - Relaxing alarm limits for Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_13_1_1 and  Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_11_7_2:
+   Upper warning limit changed from 2.75 to 2.85 for both channels
+   Relevant threads:https://www-glast.stanford.edu/protected/mail/datamon/16719.html  
 
  AlarmsCfg-07-00-06 22-Jul-2016 maldera updating upper warning limit on AcdPedPedMeanDeviation_PMTB_TH1 (ACD tile 10)
 
