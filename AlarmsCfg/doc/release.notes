@@ -4,6 +4,7 @@
  *
  *                  EOH
  
+ AlarmsCfg-07-00-07 07-Apr-2017 maldera changing warning limits on LAC thershods (13_1_1neg and 11_7_2pos)
  - Relaxing alarm limits for Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_13_1_1 and  Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_11_7_2:
    Upper warning limit changed from 2.75 to 2.85 for both channels
    Relevant threads:https://www-glast.stanford.edu/protected/mail/datamon/16719.html  
