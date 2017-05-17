@@ -71,7 +71,7 @@ def getCanvas(name, title = None, width = 800, height = 500, grid = False):
     return canvas
 
 def getSkinnyCanvas(name, title = None, grid = False):
-    return getCanvas(name, title, 1000, 400, grid)
+    return getCanvas(name, title, 1200, 400, grid)
 
 def saveCanvas(canvas, epsFilePath = None):
     epsFilePath = epsFilePath or '%s.eps' % canvas.GetName()
