@@ -17,7 +17,7 @@ TIME_FORMAT = '%b %d, 20%y%F2001-01-01 00:00:00'
 LAUNCH_DATE = '11/Jun/2008'
 LAUNCH_TIME = utc2met(string2sec(LAUNCH_DATE, '%d/%b/%Y'))
 MIN_TIME    = 2.40e8
-MAX_TIME    = 3.35e8
+MAX_TIME    = 5.16e8
 
 SECS_PER_YEAR = 60*60*24*365
 
@@ -46,7 +46,30 @@ STRIP_MASK_DICT   = {LAUNCH_DATE  : (0, 203, 'Pre-flight'),
                      '30/Nov/2010': (16, 362, 'OBCONF-144'),
                      '10/Jan/2011': (19, 381, 'OBCONF-145'),
                      '21/Mar/2011': (13, 394, 'OBCONF-148'),
-                     '27/May/2011': (22, 416, 'OBCONF-151')
+                     '27/May/2011': (22, 416, 'OBCONF-151'),
+                     '05/Aug/2011': (39, 455, 'OBCONF-154'),
+                     '04/Jan/2012': (28, 483, 'OBCONF-160'),
+                     '05/May/2012': (27, 510, 'OBCONF-162'),
+                     '12/Dec/2012': (14, 524, 'OBCONF-168'),
+                     '15/Jul/2013': (14, 538, 'OBCONF-171'),
+                     '19/Sep/2013': (1, 539, 'OBCONF-172'),
+                     '16/Dec/2013': (1, 540, 'OBCONF-173'),
+                     '10/Feb/2014': (1, 541, 'OBCONF-174'),
+                     '19/May/2014': (1, 542, 'OBCONF-175'),
+                     '15/Jul/2014': (1, 543, 'OBCONF-176'),
+                     '10/Nov/2014': (2, 545, 'OBCONF-177'),
+                     '13/Jul/2015': (3, 548, 'OBCONF-178'),
+                     '14/Nov/2015': (13, 561, 'OBCONF-179'),
+                     '13/Dec/2015': (1, 562, 'OBCONF-180'),
+                     '18/Jan/2016': (2, 564, 'OBCONF-181'),
+                     '11/Feb/2016': (3, 567, 'OBCONF-182'),
+                     '16/May/2016': (1, 568, 'OBCONF-183'),
+                     '12/Sep/2016': (1, 569, 'OBCONF-185'),
+                     '27/Sep/2016': (1, 570, 'OBCONF-186'),
+                     '08/Oct/2016': (4, 574, 'OBCONF-187'),
+                     '31/Oct/2016': (2, 576, 'OBCONF-188'),
+                     '18/Apr/2017': (6, 582, 'OBCONF-190'),
+                     '16/May/2017': (1, 583, 'OBCONF-191')
                      }
 
 STRIP_MASK_DICT_0 = {LAUNCH_DATE  : (0 , 18 , 'Pre-flight'),
@@ -69,7 +92,27 @@ STRIP_MASK_DICT_3 = {LAUNCH_DATE  : (0 , 1, 'Pre-flight'),
                      '30/Nov/2010': (14, 34, 'OBCONF-144'),
                      '10/Jan/2011': (19, 53, 'OBCONF-145'),
                      '21/Mar/2011': (12, 65, 'OBCONF-148'),
-                     '27/May/2011': (21, 86, 'OBCONF-151')
+                     '27/May/2011': (21, 86, 'OBCONF-151'),
+                     '05/Aug/2011': (39, 125, 'OBCONF-154'),
+                     '04/Jan/2012': (27, 152, 'OBCONF-160'),
+                     '05/May/2012': (22, 174, 'OBCONF-162'),
+                     '12/Dec/2012': (14, 188, 'OBCONF-168'),
+                     '15/Jul/2013': (9, 197, 'OBCONF-171'),
+                     '19/Sep/2013': (1, 198, 'OBCONF-172'),
+                     '19/May/2014': (1, 199, 'OBCONF-175'),
+                     '15/Jul/2014': (1, 200, 'OBCONF-176'),
+                     '10/Nov/2014': (2, 202, 'OBCONF-177'),
+                     '13/Jul/2015': (3, 205, 'OBCONF-178'),
+                     '14/Nov/2015': (13, 218, 'OBCONF-179'),
+                     '13/Dec/2015': (1, 219, 'OBCONF-180'),
+                     '18/Jan/2016': (2, 221, 'OBCONF-181'),
+                     '11/Feb/2016': (2, 223, 'OBCONF-182'),
+                     '12/Sep/2016': (1, 224, 'OBCONF-185'),
+                     '27/Sep/2016': (1, 225, 'OBCONF-186'),
+                     '08/Oct/2016': (4, 229, 'OBCONF-187'),
+                     '31/Oct/2016': (2, 231, 'OBCONF-188'),
+                     '18/Apr/2017': (5, 236, 'OBCONF-190'),
+                     '16/May/2017': (1, 237, 'OBCONF-191')
                      }
 
 # There was a bug in the tkr monitoring code that screwed up the
@@ -129,7 +172,7 @@ def drawMarker(timestamp, ymin, ymax, text, color = ROOT.kBlue, ylabel = None):
     l = ROOT.TLine(timestamp, ymin, timestamp, ymax)
     l.SetLineColor(color)
     l.SetLineWidth(2)
-    l.SetLineStyle(7)    
+    l.SetLineStyle(7)
     l.Draw()
     store(l)
     ylabel = ylabel or ymax
@@ -147,7 +190,7 @@ def drawSIUReboot(ymin, ymax, ylabel = None):
     ylabel = ylabel or 1.1*ymax
     drawMarker(SIU_REBOOT, ymin, ymax, 'SIU reboot', ROOT.kRed, ylabel)
     drawMarker(SIU_RECOVER, ymin, ymax, '', ROOT.kRed, ylabel)
-        
+
 def fitTrend(g, minTime = MIN_TIME, maxTime = MAX_TIME,
              label = 'Average value', draw = True):
     gName = g.GetName()
@@ -255,7 +298,7 @@ class pTkrTrendPlotter:
             t = 0.5*(startTime[0] + stopTime[0])
             self.Timestamps.append(t)
         print 'Done.'
-        
+
     def getTimestamp(self, i):
         return self.Timestamps[i]
 
@@ -323,7 +366,7 @@ class pTkrTrendPlotter:
                                     'Hit efficiency, tower %d' % tower,
                                     grid = True)
                 g.Draw('ap')
-                drawTitle('Tower %d' % tower) 
+                drawTitle('Tower %d' % tower)
                 l98h.Draw()
                 drawSIUReboot(0.96, 1.005, 1.006)
                 c.Update()
@@ -407,7 +450,7 @@ class pTkrTrendPlotter:
                                     grid = True)
                 g.Draw('ap')
                 drawSIUReboot(0.8, 1.1, 1.108)
-                drawTitle('Tower %d' % tower) 
+                drawTitle('Tower %d' % tower)
             f = fitTrend(g, 1.06*MIN_TIME, draw = (tower in sampleTowers))
             if tower in sampleTowers:
                 saveCanvas(c)
@@ -626,7 +669,7 @@ class pTkrTrendPlotter:
     def plotMaskStripChart(self, minTime = LAUNCH_TIME, maxTime = MAX_TIME):
         ROOT.gStyle.SetOptStat(0)
         ymin = 0
-        ymax = 475
+        ymax = 650
         sc = getMaskedStripChart(ymin, ymax, ROOT.kBlack)
         sc0 = getMaskedStripChart(ymin, ymax, ROOT.kRed, 0)
         sc3 = getMaskedStripChart(ymin, ymax, ROOT.kBlue, 3)
@@ -680,15 +723,15 @@ class pTkrTrendPlotter:
                     l.SetTextColor(ROOT.kBlue)
                     l.SetTextSize(TEXT_SIZE - 5)
                     l.Draw()
-        l = ROOT.TLatex(1.18*MIN_TIME, 290, 'Full LAT')
+        l = ROOT.TLatex(1.18*MIN_TIME, 280, 'Full LAT')
         l.SetTextColor(ROOT.kBlack)
         l.Draw()
         store(l)
-        l = ROOT.TLatex(1.18*MIN_TIME, 75, 'Tower 0')
+        l = ROOT.TLatex(1.18*MIN_TIME, 140, 'Tower 0')
         l.SetTextColor(ROOT.kRed)
         l.Draw()
         store(l)
-        l = ROOT.TLatex(1.25*MIN_TIME, 50, 'Tower 3')
+        l = ROOT.TLatex(1.6*MIN_TIME, 280, 'Tower 3')
         l.SetTextColor(ROOT.kBlue)
         l.Draw()
         store(l)
@@ -698,9 +741,9 @@ class pTkrTrendPlotter:
 
 if __name__ == '__main__':
     print LAUNCH_TIME
-    p = pTkrTrendPlotter('/data/work/datamon/runs/tkrtrend/tkrtrend.root')
+    p = pTkrTrendPlotter('tkrtrend_5years.root')
     #p.plotHitEfficiency(outputFilePath = 'trend_hit_efficiency.root')
     #p.plotTrigEfficiency(outputFilePath = 'trend_trg_efficiency.root')
     #p.plotTOTPeak()
     p.plotNoiseOcc(outputFilePath = 'trend_noise_occupancy.root')
-    #p.plotMaskStripChart()
+    p.plotMaskStripChart()
