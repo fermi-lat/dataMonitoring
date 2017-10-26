@@ -4,6 +4,7 @@
  *
  *                  EOH
  
+ AlarmsCfg-07-00-08 26-Oct-2017 maldera Relaxing warning limits on AcdPedPedMeanDeviation_PMTA_TH1 (tile 68)
  - Relaxing alarm limits for AcdPedPedMeanDeviation_PMTA_TH1 (acd tile 68) in xml/acdpeds_eor_alarms.xml:  
    Upper warning limit changed from 10 to 12  
    Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/17402.html 
