@@ -90,7 +90,7 @@
 	<parameter name="window_half_width" value="12"/>
 	<parameter name="threshold" value="15"/>
 	<parameter name="start_x" value="0.5"/>
-	<warning_limits min="1.25" max="2.88"/>
+	<warning_limits min="1.25" max="2.9"/>
 	<error_limits min="1.0" max="3.0"/>
       </alarm>
     </alarmSet>
