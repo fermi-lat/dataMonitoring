@@ -4,10 +4,19 @@
  *
  *                  EOH
 
- - Updating alarm limits on CalXAdcPedPedRMSDifference_LEX1_TH1 for channel 3060 in xml/calpeds_eor_alarms.xml:
-     lower warning limit changed from -1.5 to -2.5
-     lower error limit changed from -2 to -3
-     Relevant thread:https://www-glast.stanford.edu/protected/mail/datamon/17693.html
+
+ - Relaxing alarm limits for Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_10_5_1 in xml/recon_eor_alarms.xml:
+     Upper warning limit changed from 2.75 to 2.8 	    
+     Relevant thread:https://www-glast.stanford.edu/protected/mail/datamon/17745.html
+
+ - Updating alarm limits on CalXAdcPedPedRMSDifference_LEX1_TH1 for channel 3060 and on CalLogEndRangeHitCounter_Range0_TH2_Tower_15:
+     CalXAdcPedPedRMSDifference_LEX1_TH1 (in xml/calpeds_eor_alarms.xml):
+       lower warning limit changed from -1.5 to -2.5
+       lower error limit changed from -2 to -3
+     CalLogEndRangeHitCounter_Range0_TH2_Tower_15 (in xml/fastmon_eor_alarms.xml):
+       upper warning limit rised to 900 (from 500)
+       upper error limit rised to 1400 (from 1000)
+    Relevant thread:https://www-glast.stanford.edu/protected/mail/datamon/17693.html  
 
 
  AlarmsCfg-07-00-09 07-Dec-2017 maldera relaxing alarm limits on Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_13_1_4
