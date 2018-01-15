@@ -849,7 +849,7 @@
 
   <alarmList group="CAL" name="CAL base" enabled="True">
 
-    <alarmSet name="CalLogEndRangeHitCounter_Range0_TH2_Tower_*" enabled="True">
+    <alarmSet name="CalLogEndRangeHitCounter_Range0_TH2_Tower_*" exclude="[15]" enabled="True">
       <alarm function="empty_bins" enabled="False">
       	<condition name="min_entries" value="750000"/>
 	<parameter name="num_neighbours" value="2"/>
@@ -859,10 +859,27 @@
 	<error_limits min="0" max="30"/>
       </alarm>
       <alarm function="spikes_and_holes" enabled="True">
-	<warning_limits min="0.0" max="500.0"/>
+      	<warning_limits min="0.0" max="500.0"/>
 	<error_limits min="0.0" max="1000.0"/>
       </alarm>
     </alarmSet>
+
+    <alarmSet name="CalLogEndRangeHitCounter_Range0_TH2_Tower_15"  enabled="True">
+      <alarm function="empty_bins" enabled="False">
+      	<condition name="min_entries" value="750000"/>
+	<parameter name="num_neighbours" value="2"/>
+	<parameter name="out_low_cut" value="0.0"/>
+	<parameter name="out_high_cut" value="0.25"/>
+	<warning_limits min="0" max="10"/>
+	<error_limits min="0" max="30"/>
+      </alarm>
+      <alarm function="spikes_and_holes" enabled="True">
+      	<warning_limits min="0.0" max="900.0"/>
+	<error_limits min="0.0" max="1400.0"/>
+      </alarm>
+    </alarmSet>
+
+    
 
     <alarmSet name="CalLogEndRangeHitCounter_Range1_TH2_Tower_*" enabled="True">
       <alarm function="empty_bins" enabled="True">

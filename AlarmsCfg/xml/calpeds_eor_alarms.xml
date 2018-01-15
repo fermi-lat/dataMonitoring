@@ -215,8 +215,8 @@
 	<parameter name="exclude" value="[3060+1]"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
-	<warning_limits min="-1.5" max="2.0"/>
-	<error_limits   min="-2.0" max="3.0"/>
+	<warning_limits min="-2.5" max="2.0"/>
+	<error_limits   min="-3.0" max="3.0"/>
         <condition name="min_entries" value="750000"/>
 	<parameter name="only" value="[3060+1]"/>
       </alarm>	
