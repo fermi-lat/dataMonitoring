@@ -4,9 +4,16 @@
  *
  *                  EOH
 
- AlarmsCfg-07-00-10 15-Jan-2018 maldera updating alarm limits
+- Relaxing alarm limits for Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_13_1_1:
+    upper warning limit changed from 2.85  to 2.95
+ - Relaxing alarm limits for Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_8_5_3:
+    upper warning limit changed from 2.75  to 2.85
+  Relevant thread:  https://www-glast.stanford.edu/protected/mail/datamon/18377.html
+ 
 
- - Relaxing alarm limits for Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_10_5_1 in xml/recon_eor_alarms.xml:
+AlarmsCfg-07-00-10 15-Jan-2018 maldera updating alarm limits
+
+- Relaxing alarm limits for Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_10_5_1 in xml/recon_eor_alarms.xml:
      Upper warning limit changed from 2.75 to 2.8 	    
      Relevant thread:https://www-glast.stanford.edu/protected/mail/datamon/17745.html
 
