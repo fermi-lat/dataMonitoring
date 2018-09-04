@@ -4,6 +4,11 @@
  *
  *                  EOH
 
+- Relaxing alarm limits for CalXAdcPedPedMeanDeviation_LEX1_TH1 and  CalXAdcPedPedMeanDeviation_HEX1_TH1 for CAL channel 2784:
+    Upper warning limit changed from 3.5  to 4.0
+    Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/18679.html
+
+
  AlarmsCfg-07-00-11 21-Jun-2018 maldera relaxing alarm limits on Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_13_1_1 and Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_8_5_3
 - Relaxing alarm limits for Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_13_1_1:
     upper warning limit changed from 2.85  to 2.95
