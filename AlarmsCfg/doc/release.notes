@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-15 10-May-2019 maldera updating alarm limits on RPM_RMS(ch.808)
 
   -Relaxing warning limit for RPM_RMS_TH1 (function="y_values"):
      upper warning limit changed from 0.4 to 0.5
