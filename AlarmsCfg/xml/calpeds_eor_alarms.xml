@@ -123,7 +123,7 @@
       </alarm>
         <alarm function="y_values" enabled="True">
 	<warning_limits min="-1.0" max="1.5"/>
-	<error_limits   min="-1.0" max="2.0"/>
+	<error_limits   min="-2.0" max="2.0"/>
         <condition name="min_entries" value="750000"/>
 	<parameter name="only" value="[2779+1]"/>
       </alarm>
@@ -246,7 +246,7 @@
 	<warning_limits min="-2.0" max="2.0"/>
 	<error_limits   min="-3.0" max="3.0"/>
         <condition name="min_entries" value="750000"/>
-	<parameter name="only" value="[3060+1]"/>
+	<parameter name="only" value="[2779+1]"/>
       </alarm>
 
       
