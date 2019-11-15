@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-17 15-Nov-2019 maldera updating alarm settings in calpeds_eor_alarms.xml
   - CalXAdcPedRMS_LEX8_TH1 (y_average):  upper warning limit changed from 5.75 to 5.85 
     Relevant thread:  https://www-glast.stanford.edu/protected/mail/datamon/20149.html 
 
