@@ -95,23 +95,38 @@
 	<warning_limits min="0.0" max="1.5"/>
 	<error_limits   min="-2.0" max="3.0"/>
         <condition name="min_entries" value="750000"/>
+	<parameter name="exclude" value="[2779+1]"/>
+      </alarm>
+       <alarm function="y_values" enabled="True">
+	<warning_limits min="-15.0" max="8.0"/>
+	<error_limits   min="-20.0" max="15.0"/>
+        <condition name="min_entries" value="750000"/>
+	<parameter name="only" value="[2779+1]"/>
       </alarm> 
     </alarmSet>
+    
 
+    
     <alarmSet name="CalXAdcPedPedMeanDifference_LEX1_TH1" enabled="True">
       <alarm function="y_values" enabled="True">
 	<warning_limits min="0.45" max="1.5"/>
 	<error_limits   min="0.0" max="2.0"/>
         <condition name="min_entries" value="750000"/>
-      	<parameter name="exclude" value="[3060+1]"/>
+      	<parameter name="exclude" value="[3060+1,2779+1]"/>
       </alarm> 
      <!-- relaxing limits for channel 3060 see:  -->
       <alarm function="y_values" enabled="True">
-	<warning_limits min="-0.45" max="1.5"/>
+	<warning_limits min="-0.5" max="1.5"/>
 	<error_limits   min="-1.0" max="2.0"/>
         <condition name="min_entries" value="750000"/>
 	<parameter name="only" value="[3060+1]"/>
-      </alarm> 
+      </alarm>
+        <alarm function="y_values" enabled="True">
+	<warning_limits min="-1.0" max="1.5"/>
+	<error_limits   min="-1.0" max="2.0"/>
+        <condition name="min_entries" value="750000"/>
+	<parameter name="only" value="[2779+1]"/>
+      </alarm>
      </alarmSet>
 
 
@@ -146,7 +161,7 @@
         <condition name="min_entries" value="750000"/>
       </alarm>
       <alarm function="y_average" enabled="True">
-	<warning_limits min="5.25" max="5.75"/>
+	<warning_limits min="5.25" max="5.85"/>
 	<error_limits   min="4.25" max="7.25"/>
         <condition name="min_entries" value="750000"/>
         <parameter name="exclude" value="[1983+1, 2414+1, 1160+1, 1685+1, 824+1, 848+1, 1250+1]"/>
@@ -204,6 +219,13 @@
 	<warning_limits min="-1.5" max="2.5"/>
 	<error_limits   min="-3.0" max="6.0"/>
         <condition name="min_entries" value="750000"/>
+	<parameter name="exclude" value="[2779+1]"/>
+      </alarm> 
+       <alarm function="y_values" enabled="True">
+	<warning_limits min="-15.0" max="8.0"/>
+	<error_limits   min="-20.0" max="15.0"/>
+        <condition name="min_entries" value="750000"/>
+	<parameter name="only" value="[2779+1]"/>
       </alarm> 
     </alarmSet>
 
@@ -212,14 +234,22 @@
 	<warning_limits min="-0.5" max="2.0"/>
 	<error_limits   min="-1.0" max="3.0"/>
         <condition name="min_entries" value="750000"/>
-	<parameter name="exclude" value="[3060+1]"/>
+	<parameter name="exclude" value="[3060+1,2779+1]"/>
       </alarm> 
       <alarm function="y_values" enabled="True">
 	<warning_limits min="-2.5" max="2.0"/>
 	<error_limits   min="-3.0" max="3.0"/>
         <condition name="min_entries" value="750000"/>
 	<parameter name="only" value="[3060+1]"/>
-      </alarm>	
+      </alarm>
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="-2.0" max="2.0"/>
+	<error_limits   min="-3.0" max="3.0"/>
+        <condition name="min_entries" value="750000"/>
+	<parameter name="only" value="[3060+1]"/>
+      </alarm>
+
+      
     </alarmSet>
 
     <alarmSet name="CalXAdcPedPedRMSDifference_HEX8_TH1" enabled="True">
