@@ -37,7 +37,7 @@
       <alarm function="reference_histogram" enabled="True">
         <condition name="min_entries" value="25000"/>
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
-	<warning_limits min="" max="110"/>
+	<warning_limits min="" max="160"/>
 	<error_limits min="" max="1000"/>
       </alarm>
     </alarmSet>    
@@ -113,7 +113,7 @@
       </alarm>
       <alarm function="reference_histogram" enabled="True">
 	<parameter name="ref_file_name" value="'FASTMONHIST_reference.root'"/>
-	<warning_limits min="" max="50"/>
+	<warning_limits min="" max="75"/>
 	<error_limits   min="" max="100"/>
         <condition name="min_entries" value="100000"/>
       </alarm>
