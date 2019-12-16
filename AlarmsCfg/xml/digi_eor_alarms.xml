@@ -67,7 +67,7 @@
       <alarm function="reference_histogram" enabled="True">
         <condition name="min_entries" value="25000"/>
 	<parameter name="ref_file_name" value="'DIGIHIST_reference.root'"/>
-	<warning_limits min="" max="160"/>
+	<warning_limits min="" max="170"/>
 	<error_limits min="" max="1000"/>
       </alarm>
     </alarmSet>    

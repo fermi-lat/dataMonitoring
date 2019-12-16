@@ -3,11 +3,10 @@
  * Coordinator: Luca Baldini
  *
  *                  EOH
-
- AlarmsCfg-07-00-18 16-Dec-2019 maldera updating alarm limits in digi_eor_alarms.xml and fastmon_eor_ala
-
+ 
+ AlarmsCfg-07-00-18 16-Dec-2019 maldera updating alarm limits in digi_eor_alarms.xml and fastmon_eor_alarms.xml
  -updating alarm limits for  CondSummaryWord_TH1 and CondArrTKRTrigger_TH1:
-      CondSummaryWord_TH1(function="reference_histogram")  upper warning limit changed from 110 to 160 (in digi_eor_alarms.xml and fastmon_eor_alarms.xml)
+      CondSummaryWord_TH1(function="reference_histogram")  upper warning limit changed from 110 to 170 (in digi_eor_alarms.xml and fastmon_eor_alarms.xml)
       CondArrTKRTrigger_TH1(function="reference_histogram") upper warning limit changed from 50 to 75 (in digi_eor_alarms.xml and fastmon_eor_alarms.xml)  
       Relevant thread:	https://www-glast.stanford.edu/protected/mail/datamon/20504.html			   
 
