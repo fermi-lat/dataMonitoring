@@ -1,6 +1,5 @@
 G77 = /usr/bin/g77
-#F2PY = f2py2.6
-F2PY = f2py
+F2PY = f2py2.6
 LDFLAGS = -shared 
 
 igrf.so: igrf_sub.f
