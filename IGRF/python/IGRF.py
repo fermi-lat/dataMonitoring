@@ -25,11 +25,11 @@ class IGRF:
     def compute(self,lat,lon,alt,year):
         if year < 1990:
             raise ValueError, 'This model is valid only after 1990.'
-        elif year >= 2020:
+        elif year >= 2025:
             if 'IGNORE_IGRF_BOUNDARY' in os.environ.keys():
-                year = 2019.999
+                year = 2024.999
             else:
-                raise ValueError, 'This model is valid only until 2020.'
+                raise ValueError, 'This model is valid only until 2025.'
 	igrf.initize()
         self.DipoleMoment=igrf.feldcof(year)
         rigidity_const= 0.25 * self.DipoleMoment * earth_radius *  3e-2
@@ -62,7 +62,15 @@ class IGRF:
 
 if __name__ == '__main__':
     model = IGRF()
-    model.compute(0, 0, 565, 2014.0)
-    print model
-    model.compute(0, 0, 565, 2015.7)
-    print model
+    model.compute(0, 315, 530, 2014.0)
+    print "Babs=", model.BAbs*1e5
+    print "Bx=", model.BNorth*1e5
+    print "By=", model.BEast*1e5
+    print "Bz=", model.BDown*1e5
+
+    
+
+
+    
+    #model.compute(0, 0, 565, 2015.7)
+    #print model
