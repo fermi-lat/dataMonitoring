@@ -71,7 +71,7 @@
 	<error_limits min="1.0" max="3.0"/>
       </alarm>
     </alarmSet>
-     <!-- 15 Jan 2018  relaxing warning limits on xtal 10 5 1 - further updated on Jan 2019  -->  
+     <!-- 15 Jan 2018  relaxing warning limits on xtal 10 5 1 - further update on Jan 2019  -->  
     <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_10_5_1" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
 	<condition name="min_entries" value="750"/>
