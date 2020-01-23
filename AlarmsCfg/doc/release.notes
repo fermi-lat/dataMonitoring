@@ -3,7 +3,11 @@
  * Coordinator: Luca Baldini
  *
  *                  EOH
- 
+
+  -Relaxing alarm limits for Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_10_5_1:
+      upper warning limit changed from 2.8 to 2.9
+      Relevant thread:https://www-glast.stanford.edu/protected/mail/datamon/20618.html
+
  AlarmsCfg-07-00-19 16-Dec-2019 maldera fixing a typo in digi_eor_alarms.xml
  AlarmsCfg-07-00-18 16-Dec-2019 maldera updating alarm limits in digi_eor_alarms.xml and fastmon_eor_alarms.xml
  -updating alarm limits for  CondSummaryWord_TH1 and CondArrTKRTrigger_TH1:
