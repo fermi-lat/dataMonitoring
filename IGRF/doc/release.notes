@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ IGRF-03-01-05 02-Mar-2020 maldera updating to IGRF-13
  IGRF-03-01-04 09-Apr-2015 monzani f2py2.6, 64 bits
  IGRF-03-01-03 13-Feb-2015 monzani attempt at calling f2py2.6
  IGRF-03-01-02 13-Feb-2015 monzani fixing initize function which had the wrong number of parameters
