@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-21 22-Jul-2020 maldera updating limits in calpeds_eor_alarms.xml
   -Relaxing alarm limits for CalXAdcPedPedMeanDeviation_HEX1_TH1 and CalXAdcPedPedMeanDeviation_LEX1_TH1   :
       upper warning limit for the y_rms function changed from 0.25 to 0.3 in  both alarms 
       Relevant thread:https:https://www-glast.stanford.edu/protected/mail/datamon/21317.html
