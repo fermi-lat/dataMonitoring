@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+  -Relaxing alarm limits for CalXAdcPedPedMeanDeviation_HEX1_TH1 and CalXAdcPedPedMeanDeviation_LEX1_TH1   :
+      upper warning limit for the y_rms function changed from 0.25 to 0.3 in  both alarms 
+      Relevant thread:https:https://www-glast.stanford.edu/protected/mail/datamon/21317.html
+ 
  AlarmsCfg-07-00-20 23-Jan-2020 maldera relaxing alarm limits for  Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_10_5_1
   -Relaxing alarm limits for Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_10_5_1:
       upper warning limit changed from 2.8 to 2.9
