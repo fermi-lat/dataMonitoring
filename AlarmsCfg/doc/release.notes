@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-22 25-Sep-2020 maldera updating warning limits in calpeds_eor_alarms.xml
    -Relaxing alarm limits for CalXAdcPedPedMeanDeviation_LEX1_TH1 and  CalXAdcPedPedMeanDeviation_HEX1_TH1 for CAL channel 2784:
       Upper warning limit changed from 4  to 4.5
       Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/21574.html
