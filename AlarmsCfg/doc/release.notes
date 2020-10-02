@@ -4,8 +4,15 @@
  *
  *                  EOH
 
+
+  -Relaxing warning limits on the Lac_Threshold for some cal xtals:
+     Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_3_3:  upper warning limit changed from 2.75 to 2.8
+     Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_3_5_0:   upper warning limit changed from 2.85 to 2.9
+     Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_1_1_2:   upper warning limit changed from 2.75 to 2.8
+     Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/21636.html
+
  AlarmsCfg-07-00-22 25-Sep-2020 maldera updating warning limits in calpeds_eor_alarms.xml
-   -Relaxing alarm limits for CalXAdcPedPedMeanDeviation_LEX1_TH1 and  CalXAdcPedPedMeanDeviation_HEX1_TH1 for CAL channel 2784:
+  -Relaxing alarm limits for CalXAdcPedPedMeanDeviation_LEX1_TH1 and  CalXAdcPedPedMeanDeviation_HEX1_TH1 for CAL channel 2784:
       Upper warning limit changed from 4  to 4.5
       Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/21574.html
 
@@ -21,14 +28,14 @@
 
  AlarmsCfg-07-00-19 16-Dec-2019 maldera fixing a typo in digi_eor_alarms.xml
  AlarmsCfg-07-00-18 16-Dec-2019 maldera updating alarm limits in digi_eor_alarms.xml and fastmon_eor_alarms.xml
- -updating alarm limits for  CondSummaryWord_TH1 and CondArrTKRTrigger_TH1:
+  -updating alarm limits for  CondSummaryWord_TH1 and CondArrTKRTrigger_TH1:
       CondSummaryWord_TH1(function="reference_histogram")  upper warning limit changed from 110 to 170 (in digi_eor_alarms.xml and fastmon_eor_alarms.xml)
       CondArrTKRTrigger_TH1(function="reference_histogram") upper warning limit changed from 50 to 75 (in digi_eor_alarms.xml and fastmon_eor_alarms.xml)  
       Relevant thread:	https://www-glast.stanford.edu/protected/mail/datamon/20504.html			   
 
 
  AlarmsCfg-07-00-17 15-Nov-2019 maldera updating alarm settings in calpeds_eor_alarms.xml
-  - CalXAdcPedRMS_LEX8_TH1 (y_average):  upper warning limit changed from 5.75 to 5.85 
+  -CalXAdcPedRMS_LEX8_TH1 (y_average):  upper warning limit changed from 5.75 to 5.85 
     Relevant thread:  https://www-glast.stanford.edu/protected/mail/datamon/20149.html 
 
     Relexing limits on CalXAdcPedPedMean/RMSDifference_LEX8/1 for channel 2997:
