@@ -63,7 +63,7 @@
         <condition name="min_entries" value="750000"/>
       </alarm>
       <alarm function="y_values" enabled="True">
-	<warning_limits min="-8.0" max="12.0"/>
+	<warning_limits min="-8.0" max="14.0"/>
 	<error_limits   min="-15.0" max="15.0"/>
         <parameter name="only" value="[73+1]"/>
         <condition name="min_entries" value="750000"/>

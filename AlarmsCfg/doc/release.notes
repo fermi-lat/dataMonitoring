@@ -4,6 +4,19 @@
  *
  *                  EOH
 
+  -Relaxing alarm limits for AcdPedPedMeanDeviation_PMTB_TH1 (ACD tile 73) in xml/acdpeds_eor_alarms.xml:  
+     Upper warning limit changed from 12 to 14
+     Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/22252.html
+
+  -Relaxing alarm limits for some cal Lac thresholds:
+      Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_13_5_10:  upper warning limit changed from 2.75 to 2.85
+      Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_10_7_6:  upper warning limit changed from 2.75 to 2.85
+      Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_1_4:  upper warning limit changed from 2.75 to 2.85
+      Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_1_1:  upper warning limit changed from 2.9 to 2.95
+
+      Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/22250.html
+      
+
  AlarmsCfg-07-00-24 13-Nov-2020 maldera Updating alarm settings
   -Relaxing alarm limits for AcdPedPedMeanDeviation_PMTB_TH1 (ACD tile 7) in xml/acdpeds_eor_alarms.xml:  
      Upper warning limit changed from 8 to 10  
