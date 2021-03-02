@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-25 02-Mar-2021 maldera updating DQM alarm limits
   -Relaxing alarm limits for AcdPedPedMeanDeviation_PMTB_TH1 (ACD tile 73) in xml/acdpeds_eor_alarms.xml:  
      Upper warning limit changed from 12 to 14
      Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/22252.html
