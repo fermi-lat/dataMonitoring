@@ -4,6 +4,14 @@
  *
  *                  EOH
 
+ -Relaxing alarm limits on Lac thresholds for 3 channels:
+      Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_13_1_1:  upper warning limit changed from 2.95 to 3.1, upper error limit form 3 to 3.5
+      Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_11_7_2:  upper warning limit changed from  2.95 to 3.1, upper error limit form 3 to 3.5
+      Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_4_5_10:  upper warning limit changed from 2.75 to 2.85
+
+      Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/22687.html
+
+
  AlarmsCfg-07-00-25 02-Mar-2021 maldera updating DQM alarm limits
   -Relaxing alarm limits for AcdPedPedMeanDeviation_PMTB_TH1 (ACD tile 73) in xml/acdpeds_eor_alarms.xml:  
      Upper warning limit changed from 12 to 14
