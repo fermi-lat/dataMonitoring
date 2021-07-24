@@ -8,7 +8,7 @@
       <alarm function="y_values" enabled="True">
 	<warning_limits min="-8.0" max="8.0"/>
 	<error_limits   min="-15.0" max="15.0"/>
-        <parameter name="exclude" value="[68 + 1] + range(90, 97) + range(105, 129)"/>
+        <parameter name="exclude" value="[68 + 1,79+1] + range(90, 97) + range(105, 129)"/>
         <condition name="min_entries" value="750000"/>
       </alarm>
       <alarm function="y_values" enabled="True">
@@ -17,6 +17,16 @@
         <parameter name="only" value="[68 + 1]"/>
         <condition name="min_entries" value="750000"/>
       </alarm>
+      <!-- relaxing limits in channel 79 24/07/2021-->
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="-8.0" max="10.0"/>
+	<error_limits   min="-15.0" max="15.0"/>
+        <parameter name="only" value="[79 + 1]"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
+      
+
+      
       <alarm function="y_average" enabled="True">
 	<warning_limits min="-1.5" max="1.5"/>
 	<error_limits   min="-3.0" max="3.0"/>
