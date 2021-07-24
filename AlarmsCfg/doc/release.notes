@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-27 23-Jul-2021 maldera updating alarm limits
 
   - Relaxing warning limit for AcdPedPedMeanDeviation_PMTA_TH1 (ACD tile 79) in xml/acdpeds_eor_alarms.xml:  
      Upper warning limit changed from 8 to 10
