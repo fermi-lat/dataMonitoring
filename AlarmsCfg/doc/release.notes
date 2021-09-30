@@ -4,8 +4,13 @@
  *
  *                  EOH
 
- AlarmsCfg-07-00-27 23-Jul-2021 maldera updating alarm limits
+     -Relaxing alarm limits on   Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_8_6_3:
+          upper warning limit changed from 2.75 to 2.85
 
+	  relevant therad: https://www-glast.stanford.edu/protected/mail/datamon/23132.html
+
+
+ AlarmsCfg-07-00-27 23-Jul-2021 maldera updating alarm limits
   - Relaxing warning limit for AcdPedPedMeanDeviation_PMTA_TH1 (ACD tile 79) in xml/acdpeds_eor_alarms.xml:  
      Upper warning limit changed from 8 to 10
        Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/22798.html

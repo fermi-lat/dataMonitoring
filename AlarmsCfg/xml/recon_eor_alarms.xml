@@ -39,7 +39,7 @@
 
 
     
-    <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_*_*_*" exclude="[846,1311,1172,1051,1333,1314]" enabled="True">
+    <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_*_*_*" exclude="[846,1311,1172,1051,1333,1314,863]" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
 	<condition name="min_entries" value="750"/>
 	<parameter name="window_half_width" value="12"/>
@@ -50,6 +50,18 @@
       </alarm>
     </alarmSet>
 
+
+    <!-- 30 Sept 2021  relaxing warning limits on xtal  8 6 3 --> 
+    <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_8_6_3" enabled="True">
+      <alarm function="leftmost_edge" enabled="True">
+	<condition name="min_entries" value="750"/>
+	<parameter name="window_half_width" value="12"/>
+	<parameter name="threshold" value="15"/>
+	<parameter name="start_x" value="0.5"/>
+	<warning_limits min="1.25" max="2.85"/>
+	<error_limits min="1.0" max="3.0"/>
+      </alarm>
+    </alarmSet>
     
  <!-- 2 March 2021  relaxing warning limits on xtal 13 1 4 --> 
     <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_1_4" enabled="True">
