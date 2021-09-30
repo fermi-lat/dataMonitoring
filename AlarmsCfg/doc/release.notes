@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-28 30-Sep-2021 maldera relaxing alarm limits for Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_8_6_3
      -Relaxing alarm limits on   Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_8_6_3:
           upper warning limit changed from 2.75 to 2.85
 
