@@ -4,6 +4,10 @@
  *
  *                  EOH
 
+
+  -Update SAA polygon  
+     see https://jira.slac.stanford.edu/browse/OBCONF-210 and      https://confluence.slac.stanford.edu/display/SCIGRPS/2020+analysis+of+LAT+SAA+region+polygon+boundary 
+
  FastMonCfg-02-02-03 11-Jun-2015 monzani Changing all types int to int32
  FastMonCfg-02-02-02 10-Jun-2015 monzani DO NOT overload the numpy int type - incosistent with ROOT
  FastMonCfg-02-02-01 27-Sep-2011 lbaldini Some obsolete quantities from the merging configuration file removed.
