@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-29 07-Dec-2021 maldera updating alarm limits for Lac_Thresholds 13_1_1 Pos
      -Relaxing alarm limits on Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_1_1:
            upper warning limit changed from 2.95 to 3.5, upper error limit from 3 to 4
 	   relevant therad: https://www-glast.stanford.edu/protected/mail/datamon/23512.html
