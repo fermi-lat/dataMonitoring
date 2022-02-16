@@ -39,7 +39,7 @@
 
 
     
-    <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_*_*_*" exclude="[846,1311,1172,1051,1333,1314,863]" enabled="True">
+    <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_*_*_*" exclude="[846,1311,1172,1051,1333,1314,863,1332]" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
 	<condition name="min_entries" value="750"/>
 	<parameter name="window_half_width" value="12"/>
@@ -122,6 +122,17 @@
       </alarm>
     </alarmSet>
 
+<!-- 16 Feb 2022  relaxing warning limits on xtal  13 3 2   -->  
+    <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_3_2" enabled="True">
+      <alarm function="leftmost_edge" enabled="True">
+	<condition name="min_entries" value="750"/>
+	<parameter name="window_half_width" value="12"/>
+	<parameter name="threshold" value="15"/>
+	<parameter name="start_x" value="0.5"/>
+	<warning_limits min="1.25" max="2.9"/>
+	<error_limits min="1.0" max="3.0"/>
+      </alarm>
+    </alarmSet>
 
     <alarmSet name="Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_*_*_*" exclude="[13410, 428,1314,1311,853,350,112,11111,1076, 13510,4510]" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
@@ -157,14 +168,14 @@
       </alarm>
  </alarmSet>
 
- <!-- 20  June  2018  relaxing warning limits on xtal 8 5 3 -->  
+ <!-- 20  June  2018  relaxing warning limits on xtal 8 5 3, further update on 16 Feb 2022 -->  
  <alarmSet name="Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_8_5_3" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
 	<condition name="min_entries" value="750"/>
 	<parameter name="window_half_width" value="12"/>
 	<parameter name="threshold" value="15"/>
 	<parameter name="start_x" value="0.5"/>
-	<warning_limits min="1.25" max="2.85"/>
+	<warning_limits min="1.25" max="2.95"/>
 	<error_limits min="1.0" max="3.0"/>
       </alarm>
  </alarmSet>

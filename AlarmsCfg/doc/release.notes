@@ -4,6 +4,12 @@
  *
  *                  EOH
 
+
+  -Relaxing alarm limits on Lac thresholds for 2 channels:
+      Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_8_5_3:   upper warning limit changed from 2.85 to 2.95 
+      Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_3_2:  upper warning limit changed from  2.75 to 2.9
+    
+
  AlarmsCfg-07-00-29 07-Dec-2021 maldera updating alarm limits for Lac_Thresholds 13_1_1 Pos
      -Relaxing alarm limits on Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_1_1:
            upper warning limit changed from 2.95 to 3.5, upper error limit from 3 to 4
