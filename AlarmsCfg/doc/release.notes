@@ -5,21 +5,21 @@
  *                  EOH
 
  AlarmsCfg-07-00-30 16-Feb-2022 maldera updating Lac threshold limits for 2 cal channels:
-
   -Relaxing alarm limits on Lac thresholds for 2 channels:
       Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_8_5_3:   upper warning limit changed from 2.85 to 2.95 
       Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_3_2:  upper warning limit changed from  2.75 to 2.9
-    
+      relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/23834.html
+
 
  AlarmsCfg-07-00-29 07-Dec-2021 maldera updating alarm limits for Lac_Thresholds 13_1_1 Pos
      -Relaxing alarm limits on Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_1_1:
            upper warning limit changed from 2.95 to 3.5, upper error limit from 3 to 4
-	   relevant therad: https://www-glast.stanford.edu/protected/mail/datamon/23512.html
+	   relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/23512.html
 
  AlarmsCfg-07-00-28 30-Sep-2021 maldera relaxing alarm limits for Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_8_6_3
      -Relaxing alarm limits on   Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_8_6_3:
           upper warning limit changed from 2.75 to 2.85
-	  relevant therad: https://www-glast.stanford.edu/protected/mail/datamon/23132.html
+	  relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/23132.html
 
  AlarmsCfg-07-00-27 23-Jul-2021 maldera updating alarm limits
   - Relaxing warning limit for AcdPedPedMeanDeviation_PMTA_TH1 (ACD tile 79) in xml/acdpeds_eor_alarms.xml:  
