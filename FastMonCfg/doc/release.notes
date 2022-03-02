@@ -4,10 +4,13 @@
  *
  *                  EOH
 
- FastMonCfg-02-02-04 22-Oct-2021 maldera Updating SAA polygon
+ 
+   -Update SAA polygon (final polygon)
+    definition in: https://jira.slac.stanford.edu/browse/OBCONF-210
 
-  -Update SAA polygon  
-     see https://jira.slac.stanford.edu/browse/OBCONF-210 and      https://confluence.slac.stanford.edu/display/SCIGRPS/2020+analysis+of+LAT+SAA+region+polygon+boundary 
+ FastMonCfg-02-02-04 22-Oct-2021 maldera Updating SAA polygon
+  -Update SAA polygon (intermim polygon) 
+     see https://jira.slac.stanford.edu/browse/OBCONF-210 and https://confluence.slac.stanford.edu/display/SCIGRPS/2020+analysis+of+LAT+SAA+region+polygon+boundary 
 
  FastMonCfg-02-02-03 11-Jun-2015 monzani Changing all types int to int32
  FastMonCfg-02-02-02 10-Jun-2015 monzani DO NOT overload the numpy int type - incosistent with ROOT
