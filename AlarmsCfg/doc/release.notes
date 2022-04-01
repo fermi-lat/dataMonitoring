@@ -4,7 +4,12 @@
  *
  *                  EOH
 
- AlarmsCfg-07-00-30 16-Feb-2022 maldera updating Lac threshold limits for 2 cal channels:
+-Relaxing alarm limits for CalXAdcPedPedMeanDeviation_LEX1_TH1 and  CalXAdcPedPedMeanDeviation_HEX1_TH1 for CAL channel 2784:
+      Upper warning limit changed from 4.5  to 5.0
+      Upper error limit changed from 5.0  to 5.5
+      Relevant threads:https://www-glast.stanford.edu/protected/mail/datamon/0409.html and https://www-glast.stanford.edu/protected/mail/datamon/0445.html
+
+AlarmsCfg-07-00-30 16-Feb-2022 maldera updating Lac threshold limits for 2 cal channels:
   -Relaxing alarm limits on Lac thresholds for 2 channels:
       Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_8_5_3:   upper warning limit changed from 2.85 to 2.95 
       Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_3_2:  upper warning limit changed from  2.75 to 2.9
