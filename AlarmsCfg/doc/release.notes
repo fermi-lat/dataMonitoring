@@ -4,6 +4,18 @@
  *
  *                  EOH
 
+ -Relaxing warning limits on ReconAcd2PhaMipsCorrectedAngle_PMT*_Zoom_TH1_AcdTile_* for 4 ACD channels: 
+      tile 62 PMTA
+      tile 46 PMTB
+      tile 59 PMTB
+      tile 61 PMTB
+      lower warning limit changed from 0.9 to 0.8
+      Relevant thread:  https://www-glast.stanford.edu/protected/mail/datamon/0813.html
+ -Relaxing alarm limits on Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_1_4_0:
+     upper warning limit changed from 2.75 to 2.85
+     Relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/0962.html
+  
+
  AlarmsCfg-07-00-31 01-Apr-2022 maldera updating CalXAdcPedPedMeanDeviation_LEX1_TH1 and  CalXAdcPedPedMeanDeviation_HEX1_TH1 limits for CAL channel 2784
 -Relaxing alarm limits for CalXAdcPedPedMeanDeviation_LEX1_TH1 and  CalXAdcPedPedMeanDeviation_HEX1_TH1 for CAL channel 2784:
       Upper warning limit changed from 4.5  to 5.0
