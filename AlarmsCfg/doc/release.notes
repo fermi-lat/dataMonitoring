@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-32 06-Jul-2022 maldera updating  alarm limits
  -Relaxing warning limits on ReconAcd2PhaMipsCorrectedAngle_PMT*_Zoom_TH1_AcdTile_* for 4 ACD channels: 
       tile 62 PMTA
       tile 46 PMTB
