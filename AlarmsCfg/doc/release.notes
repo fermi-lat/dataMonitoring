@@ -10,7 +10,8 @@
  -Relaxing alarm limits on AcdPedPedMeanDeviation_PMTB_TH1 for channel 82:
       Lower warning limit changed from -8.0  to -15.0
       Lower error limit changed from -15.0  to -20.0
-
+      relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/1133.html
+  
  AlarmsCfg-07-00-32 06-Jul-2022 maldera updating  alarm limits
  -Relaxing warning limits on ReconAcd2PhaMipsCorrectedAngle_PMT*_Zoom_TH1_AcdTile_* for 4 ACD channels: 
       tile 62 PMTA
