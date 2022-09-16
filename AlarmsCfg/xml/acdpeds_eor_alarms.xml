@@ -45,7 +45,7 @@
       <alarm function="y_values" enabled="True">
 	<warning_limits min="-8.0" max="8.0"/>
 	<error_limits   min="-15.0" max="15.0"/>
-        <parameter name="exclude" value="range(90, 97) + range(105, 129) + [73+1, 96+1, 69+1, 62+1, 41+1, 44+1, 10+1, 7+1]"/>
+        <parameter name="exclude" value="range(90, 97) + range(105, 129) + [73+1, 96+1, 69+1, 62+1, 41+1, 44+1, 10+1, 7+1,82+1]"/>
 	<condition name="min_entries" value="750000"/>
       </alarm>
       <alarm function="y_values" enabled="True">
@@ -97,6 +97,14 @@
 	<warning_limits min="-8.0" max="10.0"/>
 	<error_limits   min="-15.0" max="15.0"/>
         <parameter name="only" value="[7+1]"/>
+        <condition name="min_entries" value="750000"/>
+      </alarm>
+
+      <!-- 16/Sept/2022 relaxing warning limits for channel 82, PMTB ... -->
+      <alarm function="y_values" enabled="True">
+	<warning_limits min="-15.0" max="10.0"/>
+	<error_limits   min="-20.0" max="15.0"/>
+        <parameter name="only" value="[82+1]"/>
         <condition name="min_entries" value="750000"/>
       </alarm>
 

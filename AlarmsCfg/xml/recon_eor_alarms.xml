@@ -155,14 +155,14 @@
 	<error_limits min="1.0" max="3.0"/>
       </alarm>
     </alarmSet>
-
+ <!-- 16/09/2022 updating rning limits on xtal 13 1 4   --> 
  <alarmSet name="Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_13_1_4" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
 	<condition name="min_entries" value="750"/>
 	<parameter name="window_half_width" value="12"/>
 	<parameter name="threshold" value="15"/>
 	<parameter name="start_x" value="0.5"/>
-	<warning_limits min="1.25" max="3.0"/>
+	<warning_limits min="1.25" max="3.2"/>
 	<error_limits min="1.0" max="4.0"/>
       </alarm>
     </alarmSet>
@@ -203,14 +203,14 @@
       </alarm>
  </alarmSet>
 
-<!-- 2 October  2020  relaxing warning limits on xtal 1 1 2   -->  
+<!-- 2 October  2020  relaxing warning limits on xtal 1 1 2    (updated on 16/09/2022) -->  
  <alarmSet name="Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_1_1_2" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
 	<condition name="min_entries" value="750"/>
 	<parameter name="window_half_width" value="12"/>
 	<parameter name="threshold" value="15"/>
 	<parameter name="start_x" value="0.5"/>
-	<warning_limits min="1.25" max="2.8"/>
+	<warning_limits min="1.25" max="2.9"/>
 	<error_limits min="1.0" max="3.0"/>
       </alarm>
  </alarmSet>

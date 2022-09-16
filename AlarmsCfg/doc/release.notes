@@ -3,6 +3,13 @@
  * Coordinator: Luca Baldini
  *
  *                  EOH
+ -Relaxing alarm limits on Lac thresholds for 2 channels:
+      Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_13_1_4:   upper warning limit changed from 3 to 3.2 
+      Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_1_1_2:  upper warning limit changed from 2.8 to 2.9
+      relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/1289.html
+ -Relaxing alarm limits on AcdPedPedMeanDeviation_PMTB_TH1 for channel 82:
+      Lower warning limit changed from -8.0  to -15.0
+      Lower error limit changed from -15.0  to -20.0
 
  AlarmsCfg-07-00-32 06-Jul-2022 maldera updating  alarm limits
  -Relaxing warning limits on ReconAcd2PhaMipsCorrectedAngle_PMT*_Zoom_TH1_AcdTile_* for 4 ACD channels: 
