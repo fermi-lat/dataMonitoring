@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-35 20-Jan-2023 maldera updating  alarm limits
 
  -Relaxing alarm limits on Lac thresholds for 2 channels:
       Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_5_10:   upper warning limit changed from 2.75 to 2.85 
