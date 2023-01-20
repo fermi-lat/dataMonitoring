@@ -51,7 +51,7 @@
     </alarmSet>
 
      <!-- 20 Jan 2023  relaxing warning limits on xtal  13 5 10 --> 
-    <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_4_10" enabled="True">
+    <alarmSet name="Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_5_10" enabled="True">
       <alarm function="leftmost_edge" enabled="True">
 	<condition name="min_entries" value="750"/>
 	<parameter name="window_half_width" value="12"/>
