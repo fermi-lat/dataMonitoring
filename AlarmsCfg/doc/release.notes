@@ -4,7 +4,12 @@
  *
  *                  EOH
 
- AlarmsCfg-07-00-33 16-Sep-2022 maldera updating alarms limits
+ -Relaxing alarm limits on Lac thresholds for 2 channels:
+      Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_4_10:   upper warning limit changed from 2.75 to 2.85 
+      Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_2_4_3:  upper warning limit changed from 2.75 to 2.85 
+      relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/1289.html
+
+AlarmsCfg-07-00-33 16-Sep-2022 maldera updating alarms limits
  -Relaxing alarm limits on Lac thresholds for 2 channels:
       Lac_Thresholds_FaceNeg_TH1_TowerCalLayerCalColumn_13_1_4:   upper warning limit changed from 3 to 3.2 
       Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_1_1_2:  upper warning limit changed from 2.8 to 2.9
