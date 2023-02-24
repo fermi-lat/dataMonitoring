@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-36 24-Feb-2023 maldera changing alarm limits for ACD tile 8PMTA pedestal
 
 -Relaxing warning limits for acd ped deviaton for tile 8, pmt A
        AcdPedPedMeanDeviation_PMTA_TH1:  lower warning limit changed from -8 to -11 (for channel 8)
