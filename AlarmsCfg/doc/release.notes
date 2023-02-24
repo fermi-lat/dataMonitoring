@@ -4,8 +4,13 @@
  *
  *                  EOH
 
- AlarmsCfg-07-00-35 20-Jan-2023 maldera updating  alarm limits
 
+-Relaxing warning limits for acd ped deviaton for tile 8, pmt A
+       AcdPedPedMeanDeviation_PMTA_TH1:  lower warning limit changed from -8 to -11 (for channel 8)
+       channel 8 exluded from the computation of the y_rms
+       relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/1906.html
+
+AlarmsCfg-07-00-35 20-Jan-2023 maldera updating  alarm limits
  -Relaxing alarm limits on Lac thresholds for 2 channels:
       Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_13_5_10:   upper warning limit changed from 2.75 to 2.85 
       Lac_Thresholds_FacePos_TH1_TowerCalLayerCalColumn_2_4_3:  upper warning limit changed from 2.75 to 2.85 
