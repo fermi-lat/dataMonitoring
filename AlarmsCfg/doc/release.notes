@@ -4,6 +4,7 @@
  *
  *                  EOH
 
+ AlarmsCfg-07-00-37 23-May-2023 maldera updating alarms limit
 
 
  -Relaxing warning limit for y_rms of  acd ped deviaton(pmt A):
