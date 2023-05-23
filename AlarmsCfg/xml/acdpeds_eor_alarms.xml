@@ -40,8 +40,9 @@
         <parameter name="exclude" value="range(90, 97) + range(105, 129)"/>
         <condition name="min_entries" value="750000"/>
       </alarm>
+      <!-- reaxling limits on y_rms 05/23/2023-->
       <alarm function="y_rms" enabled="True">
-	<warning_limits min="0.0" max="3.0"/>
+	<warning_limits min="0.0" max="3.2"/>
 	<error_limits   min="0.0" max="5.0"/>
         <parameter name="exclude" value="[8+1]+range(90, 97) + range(105, 129)"/>
         <condition name="min_entries" value="750000"/>
