@@ -4,6 +4,8 @@
  *
  *                  EOH
 
+- Harcode path to f2py for compatibility with s3df
+
  IGRF-03-01-06 23-Jul-2021 maldera updating alarms limits
  IGRF-03-01-05 02-Mar-2020 maldera updating to IGRF-13
  IGRF-03-01-04 09-Apr-2015 monzani f2py2.6, 64 bits
