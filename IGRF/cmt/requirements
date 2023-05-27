@@ -1,5 +1,5 @@
 package IGRF
-version v3r1p6
+version v3r2p0
 
 # this requirements file was just copied from common. Doesn't work yet
 
