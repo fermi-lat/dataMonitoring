@@ -4,9 +4,13 @@
  *
  *                  EOH
 
+
+ -Relaxing alarm limits for CalXAdcPedPedMeanDeviation_LEX1_TH1 and  CalXAdcPedPedMeanDeviation_HEX1_TH1 for CAL channel 2784:
+      Upper warning limit changed from 5.0  to 5.5
+      Upper error limit changed from 5.5  to 6.0
+      Relevant threads https://www-glast.stanford.edu/protected/mail/datamon/3260.html     
+
  AlarmsCfg-07-00-37 23-May-2023 maldera updating alarms limit
-
-
  -Relaxing warning limit for y_rms of  acd ped deviaton(pmt A):
        AcdPedPedMeanDeviation_PMTA_TH1 y_rms: upper warning limit changed from 3 to 3.2
        relevant thread: https://www-glast.stanford.edu/protected/mail/datamon/2330.html

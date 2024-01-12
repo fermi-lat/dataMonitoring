@@ -30,8 +30,8 @@
         <parameter name="exclude" value="[2784+1]"/>
       </alarm>
       <alarm function="y_values" enabled="True">
-	<warning_limits min="-1.5" max="5.0"/>
-	<error_limits   min="-3.0" max="5.5"/>
+	<warning_limits min="-1.5" max="5.5"/>
+	<error_limits   min="-3.0" max="6.0"/>
         <condition name="min_entries" value="750000"/>
         <parameter name="only" value="[2784+1]"/>
       </alarm>
@@ -73,8 +73,8 @@
         <parameter name="exclude" value="[2784+1]"/>
       </alarm>
       <alarm function="y_values" enabled="True">
-	<warning_limits min="-2.0" max="5.0"/>
-	<error_limits   min="-3.0" max="5.5"/>
+	<warning_limits min="-2.0" max="5.5"/>
+	<error_limits   min="-3.0" max="6.8"/>
         <condition name="min_entries" value="750000"/>
         <parameter name="only" value="[2784+1]"/>
       </alarm>
@@ -164,7 +164,7 @@
 	<warning_limits min="5.25" max="5.85"/>
 	<error_limits   min="4.25" max="7.25"/>
         <condition name="min_entries" value="750000"/>
-        <parameter name="exclude" value="[1983+1, 2414+1, 1160+1, 1685+1, 824+1, 848+1, 1250+1]"/>
+        <parameter name="exclude" value="[1983+1, 2414+1, 1160+1, 1685+1, 824+1, 848+1, 1250+1,1692+1]"/> 
       </alarm>
     </alarmSet>
 
